@@ -1,0 +1,9 @@
+
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+        }
+        .dot-pattern {
+            background-image: radial-gradient(#994ce6 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+        }
+    

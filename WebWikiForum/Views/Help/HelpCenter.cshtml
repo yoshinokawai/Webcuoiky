@@ -1,0 +1,173 @@
+@section Styles {
+    <link rel="stylesheet" href="~/css/HelpCenter.css" />
+}
+
+
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+
+<main class="flex-1">
+<section class="relative py-16 md:py-24 px-6 overflow-hidden">
+<div class="absolute inset-0 bg-primary/5 -z-10" style="background-image: radial-gradient(circle at 2px 2px, #994ce622 1px, transparent 0); background-size: 32px 32px;"></div>
+<div class="max-w-[800px] mx-auto text-center flex flex-col items-center gap-8">
+<div class="flex flex-col gap-3">
+<h1 class="text-slate-900 dark:text-slate-100 text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight">
+                                How can we help?
+                            </h1>
+<p class="text-slate-600 dark:text-slate-400 text-base md:text-lg max-w-xl mx-auto">
+                                Search our knowledge base for VTuber setup guides, wiki contribution tutorials, and community support.
+                            </p>
+</div>
+<div class="w-full max-w-2xl relative">
+<div class="flex items-center bg-white dark:bg-slate-800 rounded-xl shadow-xl shadow-primary/5 border border-primary/20 p-2 group focus-within:ring-2 focus-within:ring-primary/30 transition-all">
+<span class="material-symbols-outlined text-primary ml-3">search</span>
+<input class="flex-1 bg-transparent border-none focus:ring-0 text-lg px-3 placeholder:text-slate-400" placeholder="Search for articles, guides, or FAQs..." type="text"/>
+<button class="bg-primary text-white px-6 py-3 rounded-lg font-bold hover:brightness-110 transition-all">
+                                    Search
+                                </button>
+</div>
+<div class="mt-4 flex flex-wrap justify-center gap-2 text-sm">
+<span class="text-slate-500">Popular:</span>
+<a class="text-primary hover:underline" href="#">Model setup</a>
+<a class="text-primary hover:underline" href="#">OBS settings</a>
+<a class="text-primary hover:underline" href="#">Naming conventions</a>
+</div>
+</div>
+</div>
+</section>
+<section class="max-w-[1200px] mx-auto px-6 py-12">
+<h2 class="text-2xl font-bold mb-8 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">category</span>
+                        Browse by Category
+                    </h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="flex flex-col gap-4 rounded-xl border border-primary/10 bg-white dark:bg-slate-900 p-6 hover:border-primary/40 hover:shadow-lg transition-all group cursor-pointer">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-3xl">manage_accounts</span>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="text-lg font-bold">Account Management</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Update your profile, security settings, and permissions.</p>
+</div>
+</div>
+<div class="flex flex-col gap-4 rounded-xl border border-primary/10 bg-white dark:bg-slate-900 p-6 hover:border-primary/40 hover:shadow-lg transition-all group cursor-pointer">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-3xl">edit_note</span>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="text-lg font-bold">Editing Guide</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Learn the syntax, formatting, and media upload rules.</p>
+</div>
+</div>
+<div class="flex flex-col gap-4 rounded-xl border border-primary/10 bg-white dark:bg-slate-900 p-6 hover:border-primary/40 hover:shadow-lg transition-all group cursor-pointer">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-3xl">gavel</span>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="text-lg font-bold">Community Guidelines</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Code of conduct, content policy, and moderation info.</p>
+</div>
+</div>
+<div class="flex flex-col gap-4 rounded-xl border border-primary/10 bg-white dark:bg-slate-900 p-6 hover:border-primary/40 hover:shadow-lg transition-all group cursor-pointer">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-3xl">construction</span>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="text-lg font-bold">Technical Support</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Troubleshoot API errors, login issues, and site bugs.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="max-w-[1200px] mx-auto px-6 py-12 grid grid-cols-1 lg:grid-cols-3 gap-12">
+<div class="lg:col-span-2">
+<h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">trending_up</span>
+                            Promoted Articles
+                        </h2>
+<div class="flex flex-col border border-primary/10 bg-white dark:bg-slate-900 rounded-xl overflow-hidden divide-y divide-primary/10">
+<a class="p-5 flex items-center justify-between hover:bg-primary/5 transition-colors group" href="#">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary">article</span>
+<span class="font-medium group-hover:text-primary transition-colors">How to create a new VTuber profile page</span>
+</div>
+<span class="material-symbols-outlined text-slate-300 group-hover:text-primary">chevron_right</span>
+</a>
+<a class="p-5 flex items-center justify-between hover:bg-primary/5 transition-colors group" href="#">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary">article</span>
+<span class="font-medium group-hover:text-primary transition-colors">Image optimization for wiki galleries</span>
+</div>
+<span class="material-symbols-outlined text-slate-300 group-hover:text-primary">chevron_right</span>
+</a>
+<a class="p-5 flex items-center justify-between hover:bg-primary/5 transition-colors group" href="#">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary">article</span>
+<span class="font-medium group-hover:text-primary transition-colors">Understanding agency vs. independent tags</span>
+</div>
+<span class="material-symbols-outlined text-slate-300 group-hover:text-primary">chevron_right</span>
+</a>
+<a class="p-5 flex items-center justify-between hover:bg-primary/5 transition-colors group" href="#">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary">article</span>
+<span class="font-medium group-hover:text-primary transition-colors">Troubleshooting VTube Studio integration</span>
+</div>
+<span class="material-symbols-outlined text-slate-300 group-hover:text-primary">chevron_right</span>
+</a>
+<a class="p-5 flex items-center justify-between hover:bg-primary/5 transition-colors group" href="#">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary">article</span>
+<span class="font-medium group-hover:text-primary transition-colors">Copyright and fair use of streamer assets</span>
+</div>
+<span class="material-symbols-outlined text-slate-300 group-hover:text-primary">chevron_right</span>
+</a>
+</div>
+</div>
+<aside class="flex flex-col gap-8">
+<div class="bg-primary/10 rounded-xl p-8 flex flex-col gap-6 relative overflow-hidden">
+<div class="absolute -top-4 -right-4 size-24 bg-primary/20 rounded-full blur-2xl"></div>
+<h3 class="text-xl font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">contact_support</span>
+                                Still need help?
+                            </h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm">
+                                If you can't find what you're looking for, our community and support team are here to assist.
+                            </p>
+<div class="flex flex-col gap-3">
+<a class="flex items-center justify-center gap-2 bg-primary text-white font-bold py-3 rounded-lg hover:brightness-110 transition-all" href="#">
+<span class="material-symbols-outlined text-sm">mail</span>
+                                    Contact Form
+                                </a>
+<a class="flex items-center justify-center gap-2 bg-[#5865F2] text-white font-bold py-3 rounded-lg hover:brightness-110 transition-all" href="#">
+<span class="material-symbols-outlined text-sm">forum</span>
+                                    Join our Discord
+                                </a>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 border border-primary/10 rounded-xl p-6">
+<h3 class="font-bold mb-4">Wiki Stats</h3>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col">
+<span class="text-2xl font-black text-primary">12k+</span>
+<span class="text-xs text-slate-500 uppercase font-bold tracking-wider">Articles</span>
+</div>
+<div class="flex flex-col">
+<span class="text-2xl font-black text-primary">45k+</span>
+<span class="text-xs text-slate-500 uppercase font-bold tracking-wider">Members</span>
+</div>
+<div class="flex flex-col">
+<span class="text-2xl font-black text-primary">800+</span>
+<span class="text-xs text-slate-500 uppercase font-bold tracking-wider">Active Editors</span>
+</div>
+<div class="flex flex-col">
+<span class="text-2xl font-black text-primary">5min</span>
+<span class="text-xs text-slate-500 uppercase font-bold tracking-wider">Avg Response</span>
+</div>
+</div>
+</div>
+</aside>
+</section>
+</main>
+
+</div>
+</div>

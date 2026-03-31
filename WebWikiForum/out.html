@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> - Web Wiki Forum</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Be Vietnam Pro"', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#994ce6',
+                        secondary: '#d1c4e9',
+                        dark: '#1e0f33',
+                        darkAlpha: 'rgba(30, 15, 51, 0.7)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background-color: #fbf8ff; /* Light mode base */
+            margin: 0;
+            padding: 0;
+        }
+        .backdrop-blur {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+    
+    <link rel="stylesheet" href="/css/Index.css" />
+
+</head>
+<body class="text-gray-800 antialiased min-h-screen">
+    
+
+<header class="sticky top-0 z-50 w-full border-b border-slate-200/60 dark:border-slate-800/60 bg-surface-light/80 dark:bg-surface-dark/80 backdrop-blur-xl supports-[backdrop-filter]:bg-surface-light/60">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16 gap-4">
+<div class="flex items-center gap-2 flex-shrink-0">
+<div class="text-primary p-1.5 rounded-lg bg-primary/10">
+<span class="material-symbols-outlined text-[24px]">smart_display</span>
+</div>
+<span class="text-xl font-black tracking-tight text-slate-900 dark:text-white">VTWiki</span>
+</div>
+<nav class="hidden md:flex gap-8">
+<a class="text-sm font-semibold text-slate-900 dark:text-white hover:text-primary transition-colors" href="#">Home</a>
+<div class="relative group">
+<button class="flex items-center gap-1 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors py-2">
+        Explore
+        <span class="material-symbols-outlined text-[16px] group-hover:rotate-180 transition-transform">expand_more</span>
+</button>
+<div class="absolute top-full left-0 w-48 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[60]">
+<div class="bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700 rounded-xl shadow-xl p-2 space-y-1">
+<a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="#">Agencies</a>
+<a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="#">Independent</a>
+<a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="#">Virtual Events</a>
+<a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="#">Fan Tools</a>
+<a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="#">Top Talents</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="flex items-center gap-1 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors py-2">
+        Community
+        <span class="material-symbols-outlined text-[16px] group-hover:rotate-180 transition-transform">expand_more</span>
+</button>
+<div class="absolute top-full left-0 w-48 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[60]">
+<div class="bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700 rounded-xl shadow-xl p-2 space-y-1">
+<a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="#">Recent Changes</a>
+<a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="#">Guidelines</a>
+<a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="#">Editors Hub</a>
+<a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="#">Wiki Forum</a>
+<a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="#">Discord Link</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="flex items-center gap-1 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors py-2">
+        Wiki
+        <span class="material-symbols-outlined text-[16px] group-hover:rotate-180 transition-transform">expand_more</span>
+</button>
+<div class="absolute top-full left-0 w-48 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[60]">
+<div class="bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700 rounded-xl shadow-xl p-2 space-y-1">
+<a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="#">About Us</a>
+<a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="#">Random Page</a>
+<a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="#">Translation Project</a>
+<a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="#">Help Center</a>
+<a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="#">Donate</a>
+</div>
+</div>
+</div>
+</nav>
+<div class="flex items-center gap-4 flex-1 justify-end max-w-lg">
+<div class="relative hidden sm:block w-full max-w-xs group z-50">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-slate-400 text-[20px]">search</span>
+</div>
+<input class="peer block w-full pl-10 pr-3 py-2 border border-slate-200 dark:border-slate-700 rounded-xl leading-5 bg-slate-50/50 dark:bg-slate-800/50 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary sm:text-sm transition-all shadow-sm" placeholder="Search talents, agencies..." type="text"/>
+<div class="absolute top-full left-0 w-full mt-2 bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-slate-700 shadow-xl opacity-0 invisible peer-focus:opacity-100 peer-focus:visible transition-all duration-200 origin-top transform">
+<div class="p-2 space-y-1">
+<div class="px-3 py-1.5 text-xs font-semibold text-slate-500 uppercase tracking-wider">Suggested</div>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
+<div class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJXS6pnrCTJ1X6EeK8lpH4SeMzj7O6AcMO4pPEYFu0ZiZn-hh_Awm2sgjqWiNLeiF88V72yUPAIUU5vAD0VaG__pUGUgfWG2roQ7tDhJzq7bUz11WXo9711X0TETqKlFyv-RcONydBXFgdf7z7phcEQdOMRXfKhRec_wHz69-zBnprVgLny3QJCbkL8-OhhFdQfISz2kjB9T_22D56CznAcjOmC5cJY81DiDYB4ifo-VXXLfIZsay__FyuOfaSh-hOm4aKdBojRn8"/>
+</div>
+<div class="flex-1">
+<div class="text-sm font-medium text-slate-900 dark:text-white">Hoshimachi Suisei</div>
+<div class="text-xs text-slate-500">Hololive</div>
+</div>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
+<div class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDC9nhIowxDOUHnjmX6tKW0uiMzBPLNWTUWrPXXeplL78T3L6YieJ_j6ZKcQKqeK5ZCmEi11JqAKqp42VjvFp4Rs1aQF22leTUe5EH4bcvZ1gMk0IBWZZGWxL8rqSx2jEsgizTng620nLsclu5iYQZmKhJxp-SUZBGwipa76Z-JZWlLxyKlK2O02ZHfm6ev_Cmoo16JuYn4yTgGCas8Ui3ILYLMd0s2HDcfMYp-rzLouc-Lh47hfSKSuRCW5aPQsy010rzARkK9l8w"/>
+</div>
+<div class="flex-1">
+<div class="text-sm font-medium text-slate-900 dark:text-white">Gawr Gura</div>
+<div class="text-xs text-slate-500">Hololive English</div>
+</div>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
+<div class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-lg">search</span>
+</div>
+<div class="flex-1">
+<div class="text-sm font-medium text-slate-900 dark:text-white">Search for "<span class="text-primary">suisei</span>"</div>
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="hidden sm:flex items-center justify-center h-9 px-4 rounded-xl border border-slate-200 dark:border-slate-700 text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                        Log In
+                    </button>
+<button class="flex items-center justify-center h-9 px-4 rounded-xl bg-primary text-white text-sm font-bold shadow-md shadow-primary/20 hover:bg-primary-dark transition-colors">
+                        Sign Up
+                    </button>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+<section class="relative overflow-hidden rounded-3xl bg-surface-light dark:bg-surface-dark shadow-soft border border-slate-100 dark:border-slate-800/50 group">
+<div class="absolute top-0 right-0 w-3/4 h-full bg-gradient-to-l from-primary/10 via-lavender/30 to-transparent dark:from-primary/20 dark:via-purple-900/10 pointer-events-none"></div>
+<div class="absolute -right-20 -top-20 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+<div class="grid lg:grid-cols-12 gap-8 items-center relative z-10 min-h-[480px]">
+<div class="lg:col-span-7 p-8 lg:p-12 lg:pr-0 flex flex-col justify-center h-full">
+<div class="space-y-6">
+<div class="flex items-center gap-3 mb-2">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary text-white text-xs font-bold uppercase tracking-wider shadow-glow">
+<span class="material-symbols-outlined text-[16px] filled">stars</span>
+                            Spotlight
+                        </div>
+<span class="text-sm font-semibold text-slate-500 dark:text-slate-400">Week 42 • Editor's Choice</span>
+</div>
+<div>
+<h1 class="text-5xl lg:text-7xl font-black text-slate-900 dark:text-white tracking-tight leading-[0.95] mb-4">
+                            Hoshimachi<br/><span class="text-primary text-transparent bg-clip-text bg-gradient-to-r from-primary to-indigo-500">Suisei</span>
+</h1>
+<div class="flex items-center gap-3 text-lg">
+<img alt="Hololive" class="w-6 h-6 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwx-rCgYZjI_j0g5KEyDP_U2A_fJWZNYSCE_CTqmfnNgtfti8k1Q59xdD4w7Havfse_uA1UjcgdrpGnbWL7-2yiP4sjBR20oOP_5BJ9RSAjvMY_80iNo3FKdvMLqDl-WSvI0NyI4Vj2eUgpBDTt17aDF0zCfXPH4JhsmN-UTuxuub7tWzAWZALK3nBnrRSclNQeahIWCJUtKN6ump1bqMzgHEreANFu9_dRC2a9J_apOWZGb4Q_QR_lyev7G69FQ2uUKgFrh9I-VQ"/>
+<span class="font-bold text-slate-700 dark:text-slate-200">Hololive Production</span>
+<span class="text-slate-300 dark:text-slate-600">•</span>
+<span class="text-slate-500 dark:text-slate-400 font-medium">Generation 0</span>
+</div>
+</div>
+<p class="text-slate-600 dark:text-slate-300 text-lg leading-relaxed max-w-xl border-l-4 border-primary/30 pl-4">
+                        The virtual idol who defied the odds. Known for her powerhouse vocals, tetris mastery, and blue-haired charisma. From humble indie beginnings to shining on the biggest stages.
+                    </p>
+<div class="flex flex-wrap gap-4 pt-4">
+<button class="flex items-center gap-2 h-12 px-8 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold shadow-lg hover:scale-105 transition-all duration-300">
+<span>Read Full Wiki</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+<button class="flex items-center gap-2 h-12 px-6 rounded-xl bg-white dark:bg-slate-800 text-red-600 border border-red-100 dark:border-red-900/30 font-bold hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[20px] filled">play_arrow</span>
+                            Latest Stream
+                        </button>
+</div>
+<div class="grid grid-cols-3 gap-6 pt-6 mt-2 border-t border-slate-200 dark:border-slate-800">
+<div>
+<p class="text-xs text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wide mb-1">Subscribers</p>
+<p class="text-2xl font-black text-slate-900 dark:text-white">2.4M<span class="text-primary">+</span></p>
+</div>
+<div>
+<p class="text-xs text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wide mb-1">Fan Name</p>
+<p class="text-2xl font-black text-slate-900 dark:text-white">Hoshiyomis</p>
+</div>
+<div>
+<p class="text-xs text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wide mb-1">Oshi Mark</p>
+<p class="text-2xl font-black text-slate-900 dark:text-white">☄️</p>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-5 relative h-[500px] lg:h-full w-full flex items-end justify-center lg:justify-end overflow-visible">
+<div class="absolute bottom-0 right-0 lg:-right-8 w-auto h-[115%] z-20 transition-transform duration-700 ease-out group-hover:scale-[1.02] origin-bottom">
+<img alt="Hoshimachi Suisei" class="h-full w-auto object-contain drop-shadow-2xl hero-mask" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJXS6pnrCTJ1X6EeK8lpH4SeMzj7O6AcMO4pPEYFu0ZiZn-hh_Awm2sgjqWiNLeiF88V72yUPAIUU5vAD0VaG__pUGUgfWG2roQ7tDhJzq7bUz11WXo9711X0TETqKlFyv-RcONydBXFgdf7z7phcEQdOMRXfKhRec_wHz69-zBnprVgLny3QJCbkL8-OhhFdQfISz2kjB9T_22D56CznAcjOmC5cJY81DiDYB4ifo-VXXLfIZsay__FyuOfaSh-hOm4aKdBojRn8"/>
+</div>
+<div class="absolute bottom-0 right-0 lg:right-10 w-[450px] h-[450px] bg-gradient-to-tr from-indigo-500/20 to-primary/20 rounded-full blur-2xl z-10"></div>
+</div>
+</div>
+</section>
+<section>
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">groups</span>
+                Browse by Agency
+            </h2>
+<a class="text-sm font-bold text-primary hover:text-primary-dark transition-colors" href="#">View All Agencies</a>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+<a class="group flex flex-col items-center justify-center p-6 rounded-2xl bg-white dark:bg-surface-dark border border-slate-100 dark:border-slate-800 hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition-all duration-300" href="#">
+<div class="w-16 h-16 mb-3 rounded-full bg-[#2fb4d6]/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="font-black text-[#2fb4d6] text-xs">HOLO</span>
+</div>
+<span class="font-bold text-slate-700 dark:text-slate-200 group-hover:text-primary">Hololive</span>
+</a>
+<a class="group flex flex-col items-center justify-center p-6 rounded-2xl bg-white dark:bg-surface-dark border border-slate-100 dark:border-slate-800 hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition-all duration-300" href="#">
+<div class="w-16 h-16 mb-3 rounded-full bg-[#ff7300]/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="font-black text-[#ff7300] text-xs">2434</span>
+</div>
+<span class="font-bold text-slate-700 dark:text-slate-200 group-hover:text-primary">Nijisanji</span>
+</a>
+<a class="group flex flex-col items-center justify-center p-6 rounded-2xl bg-white dark:bg-surface-dark border border-slate-100 dark:border-slate-800 hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition-all duration-300" href="#">
+<div class="w-16 h-16 mb-3 rounded-full bg-[#ff0066]/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="font-black text-[#ff0066] text-xs">VS</span>
+</div>
+<span class="font-bold text-slate-700 dark:text-slate-200 group-hover:text-primary">VShojo</span>
+</a>
+<a class="group flex flex-col items-center justify-center p-6 rounded-2xl bg-white dark:bg-surface-dark border border-slate-100 dark:border-slate-800 hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition-all duration-300" href="#">
+<div class="w-16 h-16 mb-3 rounded-full bg-[#8a2be2]/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="font-black text-[#8a2be2] text-xs">PHASE</span>
+</div>
+<span class="font-bold text-slate-700 dark:text-slate-200 group-hover:text-primary">Phase</span>
+</a>
+<a class="group flex flex-col items-center justify-center p-6 rounded-2xl bg-white dark:bg-surface-dark border border-slate-100 dark:border-slate-800 hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition-all duration-300" href="#">
+<div class="w-16 h-16 mb-3 rounded-full bg-[#ffaccf]/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="font-black text-[#ffaccf] text-xs">IDOL</span>
+</div>
+<span class="font-bold text-slate-700 dark:text-slate-200 group-hover:text-primary">Idol Corp</span>
+</a>
+<a class="group flex flex-col items-center justify-center p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition-all duration-300" href="#">
+<div class="w-16 h-16 mb-3 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-slate-500">person_search</span>
+</div>
+<span class="font-bold text-slate-700 dark:text-slate-200 group-hover:text-primary">Indies</span>
+</a>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<div class="lg:col-span-6 space-y-6">
+<div class="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-slate-800">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">newspaper</span>
+                    Recent News
+                </h2>
+<a class="text-sm font-bold text-primary hover:text-primary/80" href="#">View All</a>
+</div>
+<div class="space-y-4">
+<article class="group flex gap-4 p-4 rounded-2xl bg-white dark:bg-surface-dark border border-slate-100 dark:border-slate-800 hover:border-primary/30 hover:shadow-soft transition-all cursor-pointer">
+<div class="w-28 h-28 shrink-0 rounded-xl bg-slate-200 dark:bg-slate-700 overflow-hidden relative">
+<img alt="Concert stage lighting" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Concert stage with vibrant purple lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9GV3pMOtHNuxKOCKwzrAnvFc-NW4p-hJwBAQWu5MZL6S_Nf8HxLnUa2Iy__U1IEkpHFAY7p9TH3x_eI5rbMBUd4heQxUo3xa30LhafkUnzR-zBx7_C7ez0YwK4uKslcxneAXqwTQhrWJM7OmEZS3RfRjVAs7HPfIefQRF-HZ50hs65jn8gKDlLHHyxqH-TEHElThK2oI_oBH5o_CumxufJeBgII_91hMjBhJp0QCqzM-F1XObFJYwluJqUFokjdkWxCQRruMwbH8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<div class="flex flex-col justify-between flex-1 py-1">
+<div>
+<span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-0.5 rounded-full mb-2">Event</span>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white leading-tight group-hover:text-primary transition-colors line-clamp-2">
+                                Hololive Production Announces 'Hololive Super Expo 2024' Details
+                            </h3>
+</div>
+<div class="flex items-center gap-3 mt-2 text-xs text-slate-500 dark:text-slate-400 font-medium">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 2h ago
+                            </span>
+<span>•</span>
+<span>By Admin</span>
+</div>
+</div>
+</article>
+<article class="group flex gap-4 p-4 rounded-2xl bg-white dark:bg-surface-dark border border-slate-100 dark:border-slate-800 hover:border-primary/30 hover:shadow-soft transition-all cursor-pointer">
+<div class="w-28 h-28 shrink-0 rounded-xl bg-slate-200 dark:bg-slate-700 overflow-hidden relative">
+<img alt="Digital art setup" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Digital drawing tablet on a desk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAt9U1O6yJyAlBfbmpU6C5wLbS1Gn3oe8Al2kBZpLQeYW4ooe2CiUgHbOK_SyuDxL_i9snitI69UZtNZvu94MC9spbRYR80wLWVICKIaK_RnPOxd44ewSclO7B_byQuuAD1Do3USujsFkpBmBljlsioPNa3Q1hEsDDO5xqUlOqLT5KyiVvvFbLwNHkLzuNY3aNXPOxsFVZDElyyy9sIPlcMj0FiJ8syHm4Z0UIC0CPoC4OmmmRWw_w7sJKx88SDv15-qXSBZEcRil0"/>
+</div>
+<div class="flex flex-col justify-between flex-1 py-1">
+<div>
+<span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-blue-600 bg-blue-100 dark:bg-blue-900/30 px-2 py-0.5 rounded-full mb-2">Debut</span>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white leading-tight group-hover:text-primary transition-colors line-clamp-2">
+                                New Indie VTuber Agency 'Prism Project' Teases Generation 5
+                            </h3>
+</div>
+<div class="flex items-center gap-3 mt-2 text-xs text-slate-500 dark:text-slate-400 font-medium">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 5h ago
+                            </span>
+<span>•</span>
+<span>By Staff</span>
+</div>
+</div>
+</article>
+<article class="group flex gap-4 p-4 rounded-2xl bg-white dark:bg-surface-dark border border-slate-100 dark:border-slate-800 hover:border-primary/30 hover:shadow-soft transition-all cursor-pointer">
+<div class="w-28 h-28 shrink-0 rounded-xl bg-slate-200 dark:bg-slate-700 overflow-hidden relative">
+<img alt="Music studio recording" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Music production studio equipment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfdYboe5AY4vdzCg3MUnI-8nBCE_LUfYrqcKGr6fSXv55jKJFsGIvoDQPu7TRg7O-dH0ZBQCBEm9Wc3cA0CAM1Dq1CxOjCbdfJoNSP1Mp_vroUIf5W5WEA15R7rrraqc0xXU4nUmt_4xpC9Wk3qld7LM-a5JPimDPdUK1xCoHP7K2X6sENFl318hPeyYjOezzNX6gr7sol8PoZQV_AMo78mKpsqQOjwB6UWcpjOidkkS0BlZHRwCxSPA9Y3tkTO0dmTUpky_Jva7M"/>
+</div>
+<div class="flex flex-col justify-between flex-1 py-1">
+<div>
+<span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-green-600 bg-green-100 dark:bg-green-900/30 px-2 py-0.5 rounded-full mb-2">Music</span>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white leading-tight group-hover:text-primary transition-colors line-clamp-2">
+                                Mori Calliope releases new EP 'JIGOKU 6' featuring diverse artists
+                            </h3>
+</div>
+<div class="flex items-center gap-3 mt-2 text-xs text-slate-500 dark:text-slate-400 font-medium">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 1d ago
+                            </span>
+<span>•</span>
+<span>By MusicTeam</span>
+</div>
+</div>
+</article>
+</div>
+</div>
+<div class="lg:col-span-3 space-y-6">
+<div class="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-slate-800">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">trending_up</span>
+                    Trending
+                </h2>
+</div>
+<div class="space-y-3 bg-white dark:bg-surface-dark p-4 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
+<div class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer group">
+<span class="text-lg font-black text-primary w-6 text-center italic">1</span>
+<div class="relative w-10 h-10 rounded-full overflow-hidden ring-2 ring-slate-100 dark:ring-slate-700">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="Female portrait representing VTuber avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDC9nhIowxDOUHnjmX6tKW0uiMzBPLNWTUWrPXXeplL78T3L6YieJ_j6ZKcQKqeK5ZCmEi11JqAKqp42VjvFp4Rs1aQF22leTUe5EH4bcvZ1gMk0IBWZZGWxL8rqSx2jEsgizTng620nLsclu5iYQZmKhJxp-SUZBGwipa76Z-JZWlLxyKlK2O02ZHfm6ev_Cmoo16JuYn4yTgGCas8Ui3ILYLMd0s2HDcfMYp-rzLouc-Lh47hfSKSuRCW5aPQsy010rzARkK9l8w"/>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="text-sm font-bold text-slate-900 dark:text-white truncate group-hover:text-primary">Gawr Gura</h4>
+<p class="text-[10px] text-slate-500 font-medium uppercase tracking-wide truncate">Hololive EN</p>
+</div>
+<span class="material-symbols-outlined text-green-500 text-[18px]">arrow_drop_up</span>
+</div>
+<div class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer group">
+<span class="text-lg font-bold text-slate-400 w-6 text-center italic">2</span>
+<div class="relative w-10 h-10 rounded-full overflow-hidden ring-2 ring-slate-100 dark:ring-slate-700">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="Male portrait representing VTuber avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXF4rABwNtvzPKc8aUbS20uIExyNNVHxnqlD53KZmsvkLwe7HAjOAiTMh6O-au_z8itQAU3dW7NnFUFb82jv5otfnyNy-Pc29zNfOe8EgmkAjiCT3lsZ51mAg3Z1HGryMIp9rqVZqKzDLWFZ8atOllyTsPOvqM9X-CWaovAID6DbFTqmHSlIkLO3mfkOX7CXFJfyd6Hxdlss74DY0wgOm-u20FX99uakNCxBUc1QSav-ZCkawtvCxtsgT9RJ-ESrGEvwqKJ3YH4z8"/>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="text-sm font-bold text-slate-900 dark:text-white truncate group-hover:text-primary">Kuzuha</h4>
+<p class="text-[10px] text-slate-500 font-medium uppercase tracking-wide truncate">Nijisanji JP</p>
+</div>
+<span class="material-symbols-outlined text-slate-300 text-[18px]">remove</span>
+</div>
+<div class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer group">
+<span class="text-lg font-bold text-slate-400 w-6 text-center italic">3</span>
+<div class="relative w-10 h-10 rounded-full overflow-hidden ring-2 ring-slate-100 dark:ring-slate-700">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="Female portrait representing VTuber avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRYPHOCPOfcDiosbPAmKR2uSPPOh9UilXqR8Ru6hJX6OFfa5ysOeoqBGUCOxyIVJ4uO4I_rRuXJMohQQS7KL1XUG4mWKmfKPWGl0DcvjgUJNx5o-aHz3wXjKzJCyaT-_egou_4Lf66VwPBwmbcz252XS-hPBHbpketMVxesrqhYXgZ4yo75oM_MXNPE6_AYRbBf40DgNdwv__Hiwau5m2dk1TM4Bn4DC8l9pV7VDlToe78smctfIwrB87vQeWoWdHbABXw7BopjzI"/>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="text-sm font-bold text-slate-900 dark:text-white truncate group-hover:text-primary">Ironmouse</h4>
+<p class="text-[10px] text-slate-500 font-medium uppercase tracking-wide truncate">VShojo</p>
+</div>
+<span class="material-symbols-outlined text-green-500 text-[18px]">arrow_drop_up</span>
+</div>
+<div class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer group">
+<span class="text-lg font-bold text-slate-400 w-6 text-center italic">4</span>
+<div class="relative w-10 h-10 rounded-full overflow-hidden ring-2 ring-slate-100 dark:ring-slate-700">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="Female portrait representing VTuber avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBh7y1WZvuwhoVWx1DoQoFvGeaAgGnhXJeqtz3BYjbGV-vZTwOVu_3D4jR3wa4dN6f5g8mFVdMa0qn2W0Bg_epNxqbPC-XgeSzLFGJwanx586sSac_TWPRNtgJ1M5yPIhhSUudwXdkCMuEI_6J8Q5Q7PB0gpMUxXwXiKwx4cpbFAnBh6iEZKCx8mpq33SOKgtYVV1NuYhoOXs4i7s9tYLFbmhIgwc2xAWC-_eU9imOUXpA7T9o70MSefnYI2sC3sWWrE3xH7pS5TCc"/>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="text-sm font-bold text-slate-900 dark:text-white truncate group-hover:text-primary">Usada Pekora</h4>
+<p class="text-[10px] text-slate-500 font-medium uppercase tracking-wide truncate">Hololive JP</p>
+</div>
+<span class="material-symbols-outlined text-red-400 text-[18px]">arrow_drop_down</span>
+</div>
+<div class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer group">
+<span class="text-lg font-bold text-slate-400 w-6 text-center italic">5</span>
+<div class="relative w-10 h-10 rounded-full overflow-hidden ring-2 ring-slate-100 dark:ring-slate-700">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="Female portrait representing VTuber avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5XzDS1UL7xP06ta-dvh480TV9pT_6vjFdhHwSAdwZvKNL_Q91UlWZp_3I6Pu19IPc_QFoTKS8FWLXvD6icHzQKHXnbrSdqfAiUtvZYEd3Tn-IAc2i8NxGkLtkBwNeV92OrrYdAOFN0f_pmWDAa3TDmCnBCpm_2DmJRXLzeceheOeDV5vyLLV3LqbiI77DhvfodjyklTa9EqX9kGU4T-0gnAhAx5hS7rZCOS2fRAuCqejfOcqOoLP5z3oiGnDXsn0Q9em_Pl2eT5E"/>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="text-sm font-bold text-slate-900 dark:text-white truncate group-hover:text-primary">Shylily</h4>
+<p class="text-[10px] text-slate-500 font-medium uppercase tracking-wide truncate">Indie</p>
+</div>
+<span class="material-symbols-outlined text-green-500 text-[18px]">arrow_drop_up</span>
+</div>
+</div>
+</div>
+<div class="lg:col-span-3 space-y-6">
+<div class="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-slate-800">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">forum</span>
+                    Activity
+                </h2>
+</div>
+<div class="relative pl-4 border-l-2 border-slate-200 dark:border-slate-700 space-y-8">
+<div class="relative">
+<div class="absolute -left-[23px] top-1 h-3.5 w-3.5 rounded-full bg-primary ring-4 ring-background-light dark:ring-background-dark"></div>
+<p class="text-sm text-slate-900 dark:text-white leading-snug">
+<span class="font-bold text-primary">WikiBot</span> updated 
+                        <a class="font-semibold underline decoration-slate-300 hover:text-primary decoration-2" href="#">Top 100 List</a>
+</p>
+<span class="text-xs text-slate-500 mt-1.5 block font-medium">5 minutes ago</span>
+</div>
+<div class="relative">
+<div class="absolute -left-[23px] top-1 h-3.5 w-3.5 rounded-full bg-slate-300 dark:bg-slate-600 ring-4 ring-background-light dark:ring-background-dark"></div>
+<p class="text-sm text-slate-900 dark:text-white leading-snug">
+<span class="font-bold">User_88</span> commented on 
+                        <a class="font-semibold underline decoration-slate-300 hover:text-primary decoration-2" href="#">Selen's Lore</a>
+</p>
+<p class="text-xs text-slate-500 italic mt-1.5 line-clamp-2 bg-slate-50 dark:bg-slate-800/50 p-2 rounded border border-slate-100 dark:border-slate-700">"Wait, I thought the dragon form was actually..."</p>
+<span class="text-xs text-slate-400 mt-1 block font-medium">22 minutes ago</span>
+</div>
+<div class="relative">
+<div class="absolute -left-[23px] top-1 h-3.5 w-3.5 rounded-full bg-slate-300 dark:bg-slate-600 ring-4 ring-background-light dark:ring-background-dark"></div>
+<p class="text-sm text-slate-900 dark:text-white leading-snug">
+<span class="font-bold">HoloFanJP</span> created page 
+                        <a class="font-semibold underline decoration-slate-300 hover:text-primary decoration-2" href="#">ReGLOSS</a>
+</p>
+<span class="text-xs text-slate-500 mt-1.5 block font-medium">1 hour ago</span>
+</div>
+<div class="relative">
+<div class="absolute -left-[23px] top-1 h-3.5 w-3.5 rounded-full bg-slate-300 dark:bg-slate-600 ring-4 ring-background-light dark:ring-background-dark"></div>
+<p class="text-sm text-slate-900 dark:text-white leading-snug">
+<span class="font-bold">ModTeam</span> pinned 
+                        <a class="font-semibold underline decoration-slate-300 hover:text-primary decoration-2" href="#">Forum Rules v2</a>
+</p>
+<span class="text-xs text-slate-500 mt-1.5 block font-medium">3 hours ago</span>
+</div>
+</div>
+<button class="w-full py-2.5 rounded-xl text-sm font-bold text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+                View More Activity
+            </button>
+</div>
+</div>
+</main>
+<footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-surface-dark mt-auto">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="col-span-1 md:col-span-1">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary text-[24px]">smart_display</span>
+<span class="text-lg font-bold text-slate-900 dark:text-white">VTWiki</span>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-4 leading-relaxed">
+                    The ultimate community-driven encyclopedia for Virtual YouTubers. Discover, learn, and contribute to the expanding virtual world.
+                </p>
+<div class="flex gap-4">
+<a class="text-slate-400 hover:text-primary transition-colors" href="#">
+<svg class="h-5 w-5" fill="currentColor" viewbox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path></svg>
+</a>
+<a class="text-slate-400 hover:text-primary transition-colors" href="#">
+<svg class="h-5 w-5" fill="currentColor" viewbox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg>
+</a>
+</div>
+</div>
+<div class="col-span-1">
+<h3 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-4">Wiki</h3>
+<ul class="space-y-2">
+<li><a class="text-sm text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="#">About Us</a></li>
+<li><a class="text-sm text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="#">Guidelines</a></li>
+<li><a class="text-sm text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="#">Editors Hub</a></li>
+<li><a class="text-sm text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="#">Random Page</a></li>
+</ul>
+</div>
+<div class="col-span-1">
+<h3 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-4">Explore</h3>
+<ul class="space-y-2">
+<li><a class="text-sm text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="#">Agencies</a></li>
+<li><a class="text-sm text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="#">Indie VTubers</a></li>
+<li><a class="text-sm text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="#">Events</a></li>
+<li><a class="text-sm text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="#">Merchandise</a></li>
+</ul>
+</div>
+<div class="col-span-1">
+<h3 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-4">Subscribe</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-3">Get the latest VTuber news delivered to your inbox.</p>
+<div class="flex gap-2">
+<input class="w-full px-3 py-2 text-sm border border-slate-200 dark:border-slate-700 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary" placeholder="Email address" type="email"/>
+<button class="px-4 py-2 bg-primary text-white text-sm font-bold rounded-xl hover:bg-primary-dark transition-colors">
+                        Go
+                    </button>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-xs text-slate-400">© 2024 VTWiki. All rights reserved. Not affiliated with any agency.</p>
+<div class="flex gap-6">
+<a class="text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-300" href="#">Privacy Policy</a>
+<a class="text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-300" href="#">Terms of Service</a>
+</div>
+</div>
+</div>
+</footer>
+
+
+    
+</body>
+</html>

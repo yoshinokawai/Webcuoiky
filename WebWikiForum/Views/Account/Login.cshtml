@@ -1,0 +1,133 @@
+@{ Layout = "_Layout_Blank"; }
+@section Styles {
+    <link rel="stylesheet" href="~/css/Login.css" />
+}
+
+
+<div class="flex min-h-screen w-full overflow-hidden">
+    <!-- Left Side: Visual/Illustration -->
+    <div class="relative hidden lg:flex w-1/2 flex-col justify-end p-12 overflow-hidden bg-primary/10">
+<!-- Background Image -->
+<div class="absolute inset-0 z-0 h-full w-full bg-cover bg-center" data-alt="Anime style illustration with purple neon lighting aesthetic" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA9G3vFTFMQhg7boEgjIPndNNCAybDznl5cvjmRZNwiTxv1soDnii6b-EDcIAMpGbEFS1SU9crafgfJHRDmB98XOTIHNRlqhjMIAwrU7WUdI0JXW7AAAzLMqAITiVzwANQxGm3lhLmmJ-pKG_rkQ8WjuH36JFhBqOADNtNv3jrjUn6ruuKmWSEXNo7oAbFjSrdbGAnG2WYYeCkqknHWKELdx_0oQy_Pc7pHcUYS3BHgwgELCgxOCqo5BcVQ9PHYLbQMMAG7Ltmjpqo');">
+</div>
+<!-- Gradient Overlay for readability -->
+<div class="absolute inset-0 z-10 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent"></div>
+<!-- Content Overlay -->
+<div class="relative z-20 max-w-lg">
+<div class="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-white/20 backdrop-blur-md border border-white/30 text-white shadow-lg">
+<span class="material-symbols-outlined text-2xl">auto_stories</span>
+</div>
+<h1 class="text-4xl font-black text-white leading-tight tracking-tight mb-4">
+                Dive back into the <br/>Virtual World
+            </h1>
+<p class="text-lg text-white/90 font-medium leading-relaxed">
+                Your number one source for everything VTuber. Edit articles, discover new talents, and discuss with the community.
+            </p>
+<div class="mt-8 flex gap-2">
+<span class="h-1.5 w-8 rounded-full bg-white"></span>
+<span class="h-1.5 w-2 rounded-full bg-white/40"></span>
+<span class="h-1.5 w-2 rounded-full bg-white/40"></span>
+</div>
+</div>
+</div>
+<!-- Right Side: Login Form -->
+<div class="flex flex-1 flex-col justify-center items-center px-6 py-12 lg:px-24 w-full bg-background-light dark:bg-background-dark relative">
+<!-- Mobile Top Nav (Back Home) -->
+<div class="absolute top-6 left-6 lg:top-10 lg:left-10">
+<a class="group flex items-center gap-2 text-slate-500 hover:text-primary transition-colors text-sm font-medium" href="/">
+<span class="material-symbols-outlined text-lg group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                Back to Wiki
+            </a>
+</div>
+<div class="w-full max-w-[420px] flex flex-col">
+<!-- Header -->
+<div class="mb-8">
+<div class="mb-6 h-12 w-12 flex items-center justify-center rounded-xl bg-primary text-white shadow-primary/30 shadow-lg">
+<span class="material-symbols-outlined">lock_open</span>
+</div>
+<h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-2 tracking-tight">Login to VTuber Wiki</h2>
+<p class="text-slate-500 dark:text-slate-400">Welcome back! Please enter your details.</p>
+</div>
+<!-- Form -->
+<form asp-action="Login" asp-controller="Account" method="post" class="flex flex-col gap-5">
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="returnUrl" value="@ViewData["ReturnUrl"]" />
+    <!-- Username Input -->
+<div class="space-y-1.5">
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-200" for="username">
+                        Username or Email
+                    </label>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-slate-400 group-focus-within:text-primary transition-colors">person</span>
+</div>
+<input name="username" class="block w-full rounded-xl border-slate-200 bg-white dark:bg-surface-dark dark:border-slate-700 pl-11 pr-4 py-3 text-slate-900 dark:text-white placeholder-slate-400 focus:border-primary focus:ring-primary/20 shadow-sm transition-all text-base" id="username" placeholder="HololiveFan123" type="text"/>
+</div>
+</div>
+<!-- Password Input -->
+<div class="space-y-1.5">
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-200" for="password">
+                        Password
+                    </label>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-slate-400 group-focus-within:text-primary transition-colors">key</span>
+</div>
+<input name="password" class="block w-full rounded-xl border-slate-200 bg-white dark:bg-surface-dark dark:border-slate-700 pl-11 pr-4 py-3 text-slate-900 dark:text-white placeholder-slate-400 focus:border-primary focus:ring-primary/20 shadow-sm transition-all text-base" id="password" placeholder="••••••••" type="password"/>
+<div class="absolute inset-y-0 right-0 pr-4 flex items-center cursor-pointer text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors" onclick="const p = document.getElementById('password'); const span = this.querySelector('span'); if(p.type === 'password'){ p.type = 'text'; span.textContent = 'visibility'; } else { p.type = 'password'; span.textContent = 'visibility_off'; }">
+<span class="material-symbols-outlined text-[20px]">visibility_off</span>
+</div>
+</div>
+</div>
+<!-- Options Row -->
+<div class="flex items-center justify-between mt-1">
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="h-4 w-4 rounded border-slate-300 text-primary focus:ring-primary/30 transition-all" type="checkbox"/>
+<span class="text-sm font-medium text-slate-600 dark:text-slate-400 group-hover:text-slate-800 dark:group-hover:text-slate-200 transition-colors">Remember me</span>
+</label>
+<a class="text-sm font-bold text-primary hover:text-primary-dark transition-colors" href="#">Forgot password?</a>
+</div>
+<!-- Submit Button -->
+<button class="mt-2 w-full flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold py-3.5 px-4 rounded-full shadow-lg shadow-primary/25 hover:shadow-primary/40 active:scale-[0.98] transition-all duration-200" type="submit">
+<span>Log In</span>
+<span class="material-symbols-outlined text-sm">login</span>
+</button>
+</form>
+<!-- Social / Separator -->
+<div class="relative my-8">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-slate-200 dark:border-slate-700"></div>
+</div>
+<div class="relative flex justify-center text-sm">
+<span class="bg-background-light dark:bg-background-dark px-2 text-slate-500">Or continue with</span>
+</div>
+</div>
+<!-- Social Login Buttons -->
+<div class="grid grid-cols-2 gap-3 mb-8">
+<button class="flex items-center justify-center gap-2 rounded-xl bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700 py-2.5 px-4 text-slate-700 dark:text-slate-200 font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<img alt="Google" class="h-5 w-5" data-alt="Google G Logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqo64h8cIiojcKChsXeY_2T6FOfgItzi0w3MTXAhyRmNimymdCSsYaEURuBcbogcJEGINLDG-uK1A7MpJOjY1K9yj_kTnx7Dh4ajpyYxsoGvL4YYEA7Mb6BKZ6G9k0MKpBG_Hs43VjtsZTJHvRpnfUjA5nVujRBK0I0QLs5FqVucRxxOaQxRTwIm56BHaJrA1EXAugOeVgN8Ki3-gcrqJj866JRob_5EWz8UjLMJbusnZHLIvDA5uB1IEuI_esVh0jBFgN5PHhoo0"/>
+<span>Google</span>
+</button>
+<button class="flex items-center justify-center gap-2 rounded-xl bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700 py-2.5 px-4 text-slate-700 dark:text-slate-200 font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<img alt="Discord" class="h-5 w-5" data-alt="Discord Logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgfUtIm1sn3RLNuQpbpzfBp05R4M2kaqm-vnqoL4EixN-8g_42HuL9J3sgNIwEhagOHIedRIOHpZCMuHE3jLOyQfd2uOAIklvjg1qB6qWaJM4HhTz0mNFlk3P6IfyEDRyFC3vpFVC-vdCfyMHSYZVfpWEU6BpuqMjXr-SZ5MAoJQZguNM0FX-MOcWAGuULU3wffyiJjhT1Le-3ktVjgpwQ92vFqQp7_TomrDqngpOR0-5D_bObUHslVNhg4A6ahONGOSlUzw7X0L0"/>
+<span>Discord</span>
+</button>
+</div>
+<!-- Sign Up Footer -->
+<div class="text-center">
+<p class="text-slate-600 dark:text-slate-400 text-sm">
+                    Don't have an account? 
+                    <a class="font-bold text-primary hover:text-primary-dark transition-colors ml-1 inline-flex items-center gap-0.5" href="/Account/CreateAccount">
+                        Create an account
+                        <span class="material-symbols-outlined text-sm font-bold">arrow_forward</span>
+</a>
+</p>
+</div>
+</div>
+<!-- Footer Copy -->
+        <div class="absolute bottom-6 w-full text-center text-xs text-slate-400 dark:text-slate-600">
+            © 2024 VTuber Wiki. All rights reserved.
+        </div>
+    </div>
+</div>
+

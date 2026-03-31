@@ -1,0 +1,11 @@
+
+        .bg-dots {
+            background-image: radial-gradient(#994ce6 1px, transparent 1px);
+            background-size: 24px 24px;
+            opacity: 0.05;
+        }
+        .dark .bg-dots {
+            background-image: radial-gradient(#994ce6 1px, transparent 1px);
+            opacity: 0.1;
+        }
+    

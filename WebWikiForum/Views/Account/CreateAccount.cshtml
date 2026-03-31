@@ -1,0 +1,126 @@
+@{ Layout = "_Layout_Blank"; }
+@section Styles {
+    <link rel="stylesheet" href="~/css/CreateAccount.css" />
+}
+
+
+<div class="flex flex-col lg:flex-row min-h-screen w-full">
+<!-- Left Side: Illustration & Stats -->
+<div class="hidden lg:flex lg:w-1/2 relative flex-col justify-center p-12 bg-primary/10 dark:bg-primary/5 overflow-hidden">
+<!-- Decorative Background Element -->
+<div class="absolute top-[-10%] right-[-10%] w-96 h-96 bg-primary/20 rounded-full blur-3xl"></div>
+<div class="absolute bottom-[-5%] left-[-5%] w-64 h-64 bg-primary/30 rounded-full blur-2xl"></div>
+<div class="relative z-10 max-w-xl mx-auto">
+<div class="mb-8 flex items-center gap-3">
+<div class="text-primary">
+<span class="material-symbols-outlined text-4xl">star_half</span>
+</div>
+<h2 class="text-2xl font-bold tracking-tight">VTuber Wiki</h2>
+</div>
+<div class="rounded-xl overflow-hidden shadow-2xl mb-10 border-4 border-white dark:border-slate-800">
+<img alt="Community Mascot" class="w-full h-[400px] object-cover" data-alt="Vibrant anime character illustration with purple accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5-RBTYMNcSE6LQ5Vu_Rz5GU4npPsKTE0v1YCMd1C1LmaH2hqoBqzf5KK_iULDgsNF3yCEnHiq4dlTh4QDdJ81lGvDvMeasHO7dCeWs5PwoZDPk7xXbplH5M2Fj2tWGgdKCrpORBnHvQOoq1pkS4pWpat_3cqzgxCdWN8jGYTKtzKBXBo2nWVXa7YfqVku5ai4flcwDn4PnKWI6KxbFFyBMBQ1GCudMUaINhxDOE6PWYTjFmqidkgtLofgvjfgXLQ8gJXMRG7f9Js"/>
+</div>
+<h1 class="text-5xl font-black leading-tight mb-4 text-slate-900 dark:text-white">
+                    Join the <span class="text-primary">Community</span>
+</h1>
+<p class="text-lg text-slate-600 dark:text-slate-400 mb-8">
+                    Be part of the world's largest collaborative encyclopedia dedicated to virtual YouTubers.
+                </p>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-primary/20 shadow-sm">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium mb-1">Articles</p>
+<p class="text-3xl font-bold text-primary">10,000+</p>
+</div>
+<div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-primary/20 shadow-sm">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium mb-1">Fan Groups</p>
+<p class="text-3xl font-bold text-primary">Active</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Side: Form -->
+<div class="flex-1 flex flex-col justify-center items-center p-6 md:p-12 lg:p-20 bg-background-light dark:bg-background-dark">
+<div class="w-full max-w-md">
+<div class="mb-10 lg:hidden flex flex-col items-center text-center">
+<div class="size-12 bg-primary rounded-xl flex items-center justify-center text-white mb-4">
+<span class="material-symbols-outlined">auto_awesome</span>
+</div>
+<h2 class="text-3xl font-bold">Create your account</h2>
+<p class="text-slate-500 mt-2">Start your journey in the VTuber world</p>
+</div>
+<div class="hidden lg:block mb-8">
+<h2 class="text-3xl font-bold text-slate-900 dark:text-white">Create your account</h2>
+<p class="text-slate-500 dark:text-slate-400 mt-2">Enter your details to get started</p>
+</div>
+<!-- Social Logins -->
+<div class="flex flex-col sm:flex-row gap-3 mb-8">
+<button class="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors font-medium">
+<img alt="Google" class="w-5 h-5" data-alt="Google logo icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_C_axBosfevuU7Rhou0i9ZGmLi1cC2bQNyt7IOl2qkEtaF4-UajucQUbKm8dU4vMeeP0rdvWdcsF2mLoGR5yI8Cj3jIT8LQQ_x0yOR8q9XSaKtgS4la_tiKKKVIFGnJqv_z5sxmk1uywO2bojfXe0aEKUdOKZF5QZgY3rh7lZsI9hPNPfhiYbxT5tBiZYIUbIjk3IB68AeZXrc8EZh7Uz4sM_IY-i7ilGsrV9VRcQu8P-BNS3yt-N2m16giUUHcUg56iQbmafgBY"/>
+<span>Google</span>
+</button>
+<button class="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors font-medium">
+<span class="material-symbols-outlined text-[#5865F2]">chat</span>
+<span>Discord</span>
+</button>
+</div>
+<div class="relative mb-8">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-slate-200 dark:border-slate-700"></div>
+</div>
+<div class="relative flex justify-center text-sm uppercase">
+<span class="bg-background-light dark:bg-background-dark px-4 text-slate-500">Or continue with</span>
+</div>
+</div>
+<!-- Registration Form -->
+<form class="space-y-5" onsubmit="return false;">
+<div>
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5" for="username">Username</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">person</span>
+<input class="w-full pl-12 pr-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" id="username" placeholder="v-fan-99" type="text"/>
+</div>
+</div>
+<div>
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5" for="email">Email Address</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">mail</span>
+<input class="w-full pl-12 pr-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" id="email" placeholder="name@@example.com" type="email"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5" for="password">Password</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">lock</span>
+<input class="w-full pl-12 pr-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" id="password" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<div>
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5" for="confirm-password">Confirm</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">shield</span>
+<input class="w-full pl-12 pr-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" id="confirm-password" placeholder="••••••••" type="password"/>
+</div>
+</div>
+</div>
+<div class="flex items-start gap-3 py-2">
+<input class="mt-1 rounded text-primary focus:ring-primary h-4 w-4 border-slate-300" id="terms" type="checkbox"/>
+<label class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed" for="terms">
+                            By creating an account, you agree to our <a class="text-primary hover:underline" href="#">Terms of Service</a> and <a class="text-primary hover:underline" href="#">Privacy Policy</a>.
+                        </label>
+</div>
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/25 transition-all transform active:scale-[0.98]" type="submit">
+                        Create Account
+                    </button>
+</form>
+<div class="mt-8 text-center">
+<p class="text-slate-600 dark:text-slate-400">
+                        Already have an account? 
+                        <a class="text-primary font-bold hover:underline ml-1 inline-flex items-center gap-1" href="/Account/Login">
+                            Back to Login <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</p>
+</div>
+</div>
+</div>
+</div>

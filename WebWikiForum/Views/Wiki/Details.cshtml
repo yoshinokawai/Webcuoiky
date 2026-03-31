@@ -1,0 +1,81 @@
+@model WebWikiForum.Models.Vtuber
+@{
+    ViewData["Title"] = Model.Name + " - VTuber Profile";
+}
+
+<div class="max-w-4xl mx-auto px-4 py-8 sm:px-6 lg:px-8 mt-12 mb-20">
+    <div class="bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-800 rounded-3xl overflow-hidden shadow-xl">
+        
+        <!-- Header Banner (Blurred Avatar) -->
+        <div class="h-64 sm:h-80 relative overflow-hidden bg-primary/10">
+            @if (!string.IsNullOrEmpty(Model.AvatarUrl))
+            {
+                <div class="absolute inset-0 bg-cover bg-center blur-2xl opacity-50 scale-110" style="background-image: url('@Model.AvatarUrl')"></div>
+            }
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
+        </div>
+
+        <!-- Profile Content -->
+        <div class="relative px-6 sm:px-12 pb-12">
+            <!-- Avatar Overlay -->
+            <div class="-mt-24 sm:-mt-32 mb-6 flex justify-between items-end">
+                <div class="relative">
+                    @if (!string.IsNullOrEmpty(Model.AvatarUrl))
+                    {
+                        <img src="@Model.AvatarUrl" alt="@Model.Name Avatar" class="w-40 h-40 sm:w-48 sm:h-48 rounded-full border-4 border-white dark:border-surface-dark shadow-2xl object-cover bg-white dark:bg-surface-dark" />
+                    }
+                    else
+                    {
+                        <div class="w-40 h-40 sm:w-48 sm:h-48 rounded-full border-4 border-white dark:border-surface-dark shadow-2xl flex items-center justify-center bg-slate-100 dark:bg-slate-800 text-slate-400">
+                            <span class="material-symbols-outlined text-6xl">person</span>
+                        </div>
+                    }
+                    <div class="absolute bottom-2 right-2 w-6 h-6 bg-green-500 border-2 border-white dark:border-surface-dark rounded-full"></div>
+                </div>
+                
+                <a href="/Wiki/Create" class="mb-4 bg-primary hover:bg-primary-dark text-white rounded-full px-6 py-2.5 font-bold transition-transform hover:scale-105 inline-flex items-center gap-2 text-sm shadow-md">
+                    <span class="material-symbols-outlined text-lg">edit</span>
+                    Edit Profile
+                </a>
+            </div>
+
+            <!-- Basic Info -->
+            <div class="mb-8 border-b border-slate-200 dark:border-slate-800 pb-8">
+                <h1 class="text-4xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight mb-2">@Model.Name</h1>
+                
+                <div class="flex flex-wrap items-center gap-4 text-slate-600 dark:text-slate-400 font-medium">
+                    <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">
+                        @(Model.Agency != null ? Model.Agency.Name : "Independent VTuber")
+                    </span>
+                    @if (Model.Age.HasValue)
+                    {
+                        <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">cake</span> Age @Model.Age</span>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.Birthday))
+                    {
+                        <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">calendar_month</span> @Model.Birthday</span>
+                    }
+                </div>
+            </div>
+
+            <!-- Lore Section -->
+            <div>
+                <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-200 mb-4 flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary">auto_awesome</span>
+                    Background Lore
+                </h2>
+                <div class="prose dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 leading-relaxed bg-slate-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-slate-100 dark:border-slate-700/50">
+                    @if (!string.IsNullOrEmpty(Model.Lore))
+                    {
+                        @Html.Raw(Model.Lore.Replace("\n", "<br/>"))
+                    }
+                    else
+                    {
+                        <p class="italic text-slate-500">This VTuber's mysterious past has not been documented yet...</p>
+                    }
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
