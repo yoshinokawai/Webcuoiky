@@ -19,10 +19,10 @@
 <span class="material-symbols-outlined text-2xl">auto_stories</span>
 </div>
 <h1 class="text-4xl font-black text-white leading-tight tracking-tight mb-4">
-                Dive back into the <br/>Virtual World
+                @Html.Raw(Localizer["Account_Login_Hero_Title"].Value.Replace("<br/>", "<br/>"))
             </h1>
 <p class="text-lg text-white/90 font-medium leading-relaxed">
-                Your number one source for everything VTuber. Edit articles, discover new talents, and discuss with the community.
+                @Localizer["Account_Login_Hero_Desc"]
             </p>
 <div class="mt-8 flex gap-2">
 <span class="h-1.5 w-8 rounded-full bg-white"></span>
@@ -37,7 +37,7 @@
 <div class="absolute top-6 left-6 lg:top-10 lg:left-10">
 <a class="group flex items-center gap-2 text-slate-500 hover:text-primary transition-colors text-sm font-medium" href="/">
 <span class="material-symbols-outlined text-lg group-hover:-translate-x-1 transition-transform">arrow_back</span>
-                Back to Wiki
+                @Localizer["Account_Login_Back"]
             </a>
 </div>
 <div class="w-full max-w-[420px] flex flex-col">
@@ -46,8 +46,8 @@
 <div class="mb-6 h-12 w-12 flex items-center justify-center rounded-xl bg-primary text-white shadow-primary/30 shadow-lg">
 <span class="material-symbols-outlined">lock_open</span>
 </div>
-<h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-2 tracking-tight">Login to VTuber Wiki</h2>
-<p class="text-slate-500 dark:text-slate-400">Welcome back! Please enter your details.</p>
+<h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-2 tracking-tight">@Localizer["Account_Login_Welcome"]</h2>
+<p class="text-slate-500 dark:text-slate-400">@Localizer["Account_Login_Subtitle"]</p>
 </div>
 
 <!-- Validation Errors -->
@@ -60,20 +60,20 @@
     <!-- Username Input -->
 <div class="space-y-1.5">
 <label class="block text-sm font-semibold text-slate-700 dark:text-slate-200" asp-for="Username">
-                        Username or Email
+                        @Localizer["Account_Login_Label_User"]
                     </label>
 <div class="relative group">
 <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
 <span class="material-symbols-outlined text-slate-400 group-focus-within:text-primary transition-colors">person</span>
 </div>
-<input asp-for="Username" class="block w-full rounded-xl border-slate-200 bg-white dark:bg-surface-dark dark:border-slate-700 pl-11 pr-4 py-3 text-slate-900 dark:text-white placeholder-slate-400 focus:border-primary focus:ring-primary/20 shadow-sm transition-all text-base" placeholder="HololiveFan123" type="text"/>
+<input asp-for="Username" class="block w-full rounded-xl border-slate-200 bg-white dark:bg-surface-dark dark:border-slate-700 pl-11 pr-4 py-3 text-slate-900 dark:text-white placeholder-slate-400 focus:border-primary focus:ring-primary/20 shadow-sm transition-all text-base" placeholder="@Localizer["Account_Login_Label_User"]" type="text"/>
 </div>
 <span asp-validation-for="Username" class="text-red-500 text-xs mt-1 block"></span>
 </div>
     <!-- Password Input -->
 <div class="space-y-1.5">
 <label class="block text-sm font-semibold text-slate-700 dark:text-slate-200" asp-for="Password">
-                        Password
+                        @Localizer["Account_Login_Label_Pass"]
                     </label>
 <div class="relative group">
 <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
@@ -90,13 +90,13 @@
 <div class="flex items-center justify-between mt-1">
 <label class="flex items-center gap-2 cursor-pointer group">
 <input class="h-4 w-4 rounded border-slate-300 text-primary focus:ring-primary/30 transition-all" type="checkbox"/>
-<span class="text-sm font-medium text-slate-600 dark:text-slate-400 group-hover:text-slate-800 dark:group-hover:text-slate-200 transition-colors">Remember me</span>
+<span class="text-sm font-medium text-slate-600 dark:text-slate-400 group-hover:text-slate-800 dark:group-hover:text-slate-200 transition-colors">@Localizer["Account_Login_Label_Remember"]</span>
 </label>
-<a class="text-sm font-bold text-primary hover:text-primary-dark transition-colors" href="#">Forgot password?</a>
+<a class="text-sm font-bold text-primary hover:text-primary-dark transition-colors" href="#">@Localizer["Account_Login_Forgot"]</a>
 </div>
     <!-- Submit Button -->
 <button class="mt-2 w-full flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold py-3.5 px-4 rounded-full shadow-lg shadow-primary/25 hover:shadow-primary/40 active:scale-[0.98] transition-all duration-200" type="submit">
-<span>Log In</span>
+<span>@Localizer["Account_Login_Btn"]</span>
 <span class="material-symbols-outlined text-sm">login</span>
 </button>
 </form>
@@ -106,7 +106,7 @@
 <div class="w-full border-t border-slate-200 dark:border-slate-700"></div>
 </div>
 <div class="relative flex justify-center text-sm">
-<span class="bg-background-light dark:bg-background-dark px-2 text-slate-500">Or continue with</span>
+<span class="bg-background-light dark:bg-background-dark px-2 text-slate-500">@Localizer["Account_OrContinue"]</span>
 </div>
 </div>
 <!-- Social Login Buttons -->
@@ -123,9 +123,9 @@
 <!-- Sign Up Footer -->
 <div class="text-center">
 <p class="text-slate-600 dark:text-slate-400 text-sm">
-                    Don't have an account? 
+                    @Localizer["Account_Login_NoAccount"] 
                     <a class="font-bold text-primary hover:text-primary-dark transition-colors ml-1 inline-flex items-center gap-0.5" href="/Account/CreateAccount">
-                        Create an account
+                        @Localizer["Nav_Signup"]
                         <span class="material-symbols-outlined text-sm font-bold">arrow_forward</span>
 </a>
 </p>

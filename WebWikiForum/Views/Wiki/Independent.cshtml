@@ -14,17 +14,17 @@
 <div class="relative overflow-hidden rounded-3xl bg-primary/10 p-8 md:p-12">
 <div class="relative z-10 max-w-2xl">
 <h1 class="text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-4 leading-tight">
-                            Independent VTubers
+                            @Localizer["Indie_Title"]
                         </h1>
 <p class="text-lg text-slate-600 dark:text-slate-300 mb-8">
-                            Discover the incredible talents carving their own paths. From rising stars to industry veterans, explore the diverse world of indie VTubing.
+                            @Localizer["Indie_Desc"]
                         </p>
 <div class="flex flex-wrap gap-4">
 <button class="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-xl font-bold transition-all transform hover:scale-105">
-                                Learn More
+                                @Localizer["Indie_Btn_Learn"]
                             </button>
 <button class="bg-white/50 dark:bg-slate-800/50 backdrop-blur px-8 py-3 rounded-xl font-bold border border-primary/20 hover:bg-white transition-all">
-                                How to Start
+                                @Localizer["Indie_Btn_HowTo"]
                             </button>
 </div>
 </div>
@@ -38,44 +38,44 @@
 <div class="flex flex-col md:flex-row gap-4">
 <div class="flex-grow relative">
 <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary">search</span>
-<input class="w-full pl-12 pr-4 py-4 bg-white dark:bg-slate-900 border border-primary/10 rounded-2xl shadow-sm focus:ring-2 focus:ring-primary/20 focus:border-primary" placeholder="Search independent VTubers..." type="text"/>
+<input class="w-full pl-12 pr-4 py-4 bg-white dark:bg-slate-900 border border-primary/10 rounded-2xl shadow-sm focus:ring-2 focus:ring-primary/20 focus:border-primary" placeholder="@Localizer["Indie_Search_Placeholder"]" type="text"/>
 </div>
 <div class="flex gap-3 overflow-x-auto pb-2 md:pb-0 scrollbar-hide">
 <!-- Region Filter -->
 <div class="relative group">
 <button class="flex items-center gap-2 px-6 py-4 bg-white dark:bg-slate-900 border border-primary/10 rounded-2xl whitespace-nowrap hover:bg-primary/5 transition-colors font-medium">
 <span class="material-symbols-outlined !text-lg text-primary">public</span>
-                                Region
+                                @Localizer["Indie_Filter_Region"]
                                 <span class="material-symbols-outlined !text-lg text-primary group-hover:rotate-180 transition-transform">expand_more</span>
 </button>
 <div class="absolute top-full right-0 md:left-0 mt-2 w-48 bg-white dark:bg-slate-800 rounded-xl shadow-xl border border-primary/5 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-20">
-<a class="block px-4 py-2 text-sm hover:bg-primary/10" href="#">North America</a>
-<a class="block px-4 py-2 text-sm hover:bg-primary/10" href="#">Europe</a>
-<a class="block px-4 py-2 text-sm hover:bg-primary/10" href="#">Asia</a>
-<a class="block px-4 py-2 text-sm hover:bg-primary/10" href="#">South America</a>
-<a class="block px-4 py-2 text-sm hover:bg-primary/10" href="#">Oceania</a>
+<a class="block px-4 py-2 text-sm hover:bg-primary/10" href="#">@Localizer["Region_NA"]</a>
+<a class="block px-4 py-2 text-sm hover:bg-primary/10" href="#">@Localizer["Region_EU"]</a>
+<a class="block px-4 py-2 text-sm hover:bg-primary/10" href="#">@Localizer["Region_Asia"]</a>
+<a class="block px-4 py-2 text-sm hover:bg-primary/10" href="#">@Localizer["Region_SA"]</a>
+<a class="block px-4 py-2 text-sm hover:bg-primary/10" href="#">@Localizer["Region_Oceania"]</a>
 </div>
 </div>
 <!-- Language Filter -->
 <div class="relative group">
 <button class="flex items-center gap-2 px-6 py-4 bg-white dark:bg-slate-900 border border-primary/10 rounded-2xl whitespace-nowrap hover:bg-primary/5 transition-colors font-medium">
 <span class="material-symbols-outlined !text-lg text-primary">language</span>
-                                Language
+                                @Localizer["Indie_Filter_Language"]
                                 <span class="material-symbols-outlined !text-lg text-primary group-hover:rotate-180 transition-transform">expand_more</span>
 </button>
 <div class="absolute top-full right-0 md:left-0 mt-2 w-48 bg-white dark:bg-slate-800 rounded-xl shadow-xl border border-primary/5 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-20">
-<a class="block px-4 py-2 text-sm hover:bg-primary/10" href="#">English</a>
-<a class="block px-4 py-2 text-sm hover:bg-primary/10" href="#">Japanese</a>
-<a class="block px-4 py-2 text-sm hover:bg-primary/10" href="#">Spanish</a>
-<a class="block px-4 py-2 text-sm hover:bg-primary/10" href="#">Korean</a>
-<a class="block px-4 py-2 text-sm hover:bg-primary/10" href="#">French</a>
+<a class="block px-4 py-2 text-sm hover:bg-primary/10" href="#">@Localizer["Lang_EN"]</a>
+<a class="block px-4 py-2 text-sm hover:bg-primary/10" href="#">@Localizer["Lang_JP"]</a>
+<a class="block px-4 py-2 text-sm hover:bg-primary/10" href="#">@Localizer["Lang_ES"]</a>
+<a class="block px-4 py-2 text-sm hover:bg-primary/10" href="#">@Localizer["Lang_KR"]</a>
+<a class="block px-4 py-2 text-sm hover:bg-primary/10" href="#">@Localizer["Lang_FR"]</a>
 </div>
 </div>
 <!-- Debut Year (Date Selector) Filter -->
 <div class="relative group">
 <button class="flex items-center gap-2 px-6 py-4 bg-white dark:bg-slate-900 border border-primary/10 rounded-2xl whitespace-nowrap hover:bg-primary/5 transition-colors font-medium">
 <span class="material-symbols-outlined !text-lg text-primary">calendar_month</span>
-                                Debut Year
+                                @Localizer["Indie_Filter_Debut"]
                                 <span class="material-symbols-outlined !text-lg text-primary group-hover:rotate-180 transition-transform">expand_more</span>
 </button>
 <div class="absolute top-full right-0 mt-2 w-80 bg-white dark:bg-slate-800 rounded-xl shadow-xl border border-primary/5 p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-20">
@@ -93,18 +93,18 @@
 <div class="space-y-2">
 <label class="text-[10px] font-bold uppercase text-slate-400">Month</label>
 <select class="w-full text-sm bg-slate-50 dark:bg-slate-900 border-primary/10 rounded-lg focus:ring-primary/20">
-<option>Jan</option>
-<option>Feb</option>
-<option>Mar</option>
-<option>Apr</option>
-<option>May</option>
-<option>Jun</option>
-<option>Jul</option>
-<option>Aug</option>
-<option>Sep</option>
-<option>Oct</option>
-<option>Nov</option>
-<option>Dec</option>
+<option>@Localizer["Time_Jan"]</option>
+<option>@Localizer["Time_Feb"]</option>
+<option>@Localizer["Time_Mar"]</option>
+<option>@Localizer["Time_Apr"]</option>
+<option>@Localizer["Time_May"]</option>
+<option>@Localizer["Time_Jun"]</option>
+<option>@Localizer["Time_Jul"]</option>
+<option>@Localizer["Time_Aug"]</option>
+<option>@Localizer["Time_Sep"]</option>
+<option>@Localizer["Time_Oct"]</option>
+<option>@Localizer["Time_Nov"]</option>
+<option>@Localizer["Time_Dec"]</option>
 </select>
 </div>
 <div class="space-y-2">
@@ -118,13 +118,13 @@
 </select>
 </div>
 </div>
-<button class="w-full mt-4 py-2 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primary/90 transition-colors">Apply Filter</button>
+<button class="w-full mt-4 py-2 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primary/90 transition-colors">@Localizer["Indie_Filter_Apply"]</button>
 </div>
 </div>
 </div>
 </div>
 <div class="flex flex-wrap gap-2">
-<span class="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full uppercase tracking-wider">Popular Tags:</span>
+<span class="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full uppercase tracking-wider">@Localizer["Indie_PopularTags"]</span>
 <a class="px-3 py-1 bg-white dark:bg-slate-800 border border-primary/5 rounded-full text-xs hover:border-primary transition-colors" href="#">Gaming</a>
 <a class="px-3 py-1 bg-white dark:bg-slate-800 border border-primary/5 rounded-full text-xs hover:border-primary transition-colors" href="#">Singing</a>
 <a class="px-3 py-1 bg-white dark:bg-slate-800 border border-primary/5 rounded-full text-xs hover:border-primary transition-colors" href="#">ASMR</a>
@@ -138,7 +138,7 @@
 <div class="aspect-square relative overflow-hidden">
 <img alt="Shylily Avatar" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Anime style white-haired girl with blue eyes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcwqJmvI6QRhBoLIvALsqquG49TuN0g7UBVPkcoSNKKy9vCM6dN1_VrD4lpd7U7We5VcrAh0xyQ_pF7ZRJWi9xRe8pGEIncoMe78B52USIo5eq2dLHcBLuwQnGtyHU8D72b_9E38dspsL3CjHGaANusFkBvfszldyi6RRlEtSikuNm-3uo1iLiB8rsBRVu4OLrXFtBNSTOLkpM5nOLYuI9Gy3NJhrtjwM8Y0D1FbZ8Ql6_6Tu4OtbFSTWFM7Wrl_dk-1yA5gTxYzE"/>
 <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-<span class="text-white text-xs font-bold bg-primary px-2 py-1 rounded">DEBUT: 2022</span>
+<span class="text-white text-xs font-bold bg-primary px-2 py-1 rounded">@string.Format(Localizer["Indie_Card_Debut"].Value, "2022")</span>
 </div>
 </div>
 <div class="p-5">
@@ -157,7 +157,7 @@
 <div class="aspect-square relative overflow-hidden">
 <img alt="Filian Avatar" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Anime style energetic white-haired character" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLcFhjHtjvzfH9HT0uyxEO4mplc9JkEGXfi1MnszXpPgz-H-1CS4K9FZax9I9083Zckab7YXk20adSR7Q_5LfKmPviKvXCVeYL9RtOKNnz8fI3XXho5RWpEodVI02yigAjGlCjh342VeCiWWpylsw-uU5pCvPgUIplbQUCvgPpQj6fuctbDVW5_6exvXAzN-mts65aHDeZbcBazd057xYaMteCOujQcZKiWf2qaw-0Anezonht6bnpCJJIk1SjqXciVc3Am2Srpus"/>
 <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-<span class="text-white text-xs font-bold bg-primary px-2 py-1 rounded">DEBUT: 2021</span>
+<span class="text-white text-xs font-bold bg-primary px-2 py-1 rounded">@string.Format(Localizer["Indie_Card_Debut"].Value, "2021")</span>
 </div>
 </div>
 <div class="p-5">
@@ -176,7 +176,7 @@
 <div class="aspect-square relative overflow-hidden">
 <img alt="Vedal987 Avatar" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Abstract turtle logo representing an AI VTuber" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuKdCFM3Po6IOBQLkX5C5nhglCN9PCNst_WHSVv_ZyY4GmWrDod9p_K9bQ88eMPXudthSD8KlIp86ziWXHliFZor3rghfxtxDc3Qu_oWSfXd3XHESGSgdu80JiYlIqopAUpZnd6CR0Ypzlo6RXm2HA8yJqtmWoIxgmqD6s_owOYIlJTNWANMQDJ3IiOOxETlSlrxAOLa6blI56FCJ37pbx0US4C0Cs8BVjgLCWztFLB-VKVvqNNBAnLlEg7pNxQlVzV8N37LaJizI"/>
 <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-<span class="text-white text-xs font-bold bg-primary px-2 py-1 rounded">DEBUT: 2022</span>
+<span class="text-white text-xs font-bold bg-primary px-2 py-1 rounded">@string.Format(Localizer["Indie_Card_Debut"].Value, "2022")</span>
 </div>
 </div>
 <div class="p-5">
@@ -195,7 +195,7 @@
 <div class="aspect-square relative overflow-hidden">
 <img alt="Saruei Avatar" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Anime style character with grey hair and sunglasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnDVC6BsqkBhuyYJ2kxvNRzMuz2BoVcrDDRYoZ-XDrUcuUCjUjIwKH_IrTPr-vvyhbapDPqoxn9oNy8WNPEhGV17Ky7l8VWAtiGzmyNQ6bxxiZdjpnCnhASG4JFBD2WNOvlNMW6kXEzSXaimOBfa3fNBfZfLWGS5fqYGvXJMweu829GGAZFVMOSbgs1pHVeUmsL3N7yr1WISZiQKBToiJ_oX9PjaZu7-b2YweBF_BrHnQm8GmRK7_pK8yT1g9tNKSdhCqyhQpGib8"/>
 <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-<span class="text-white text-xs font-bold bg-primary px-2 py-1 rounded">DEBUT: 2021</span>
+<span class="text-white text-xs font-bold bg-primary px-2 py-1 rounded">@string.Format(Localizer["Indie_Card_Debut"].Value, "2021")</span>
 </div>
 </div>
 <div class="p-5">
@@ -205,7 +205,7 @@
                             English / French
                         </p>
 <button class="w-full bg-primary/5 hover:bg-primary text-primary hover:text-white py-3 rounded-xl font-bold transition-all">
-                            View Profile
+                            @Localizer["Btn_ViewProfile"]
                         </button>
 </div>
 </div>
@@ -213,7 +213,7 @@
 <!-- Pagination/Load More -->
 <div class="mt-12 flex justify-center">
 <button class="flex items-center gap-2 px-10 py-4 bg-white dark:bg-slate-900 border border-primary/20 rounded-2xl font-bold hover:bg-primary/5 transition-all">
-                    Load More Talents
+                    @Localizer["Indie_Btn_LoadMore"]
                     <span class="material-symbols-outlined">expand_more</span>
 </button>
 </div>

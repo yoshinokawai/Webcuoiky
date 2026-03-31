@@ -5,23 +5,25 @@ namespace WebWikiForum.ViewModels
 {
     public class VtuberViewModel
     {
-        [Required(ErrorMessage = "Name is required.")]
-        [Display(Name = "VTuber Name")]
+        [Required(ErrorMessage = "Wiki_Required_Name")]
+        [Display(Name = "Wiki_Label_Name")]
         public string Name { get; set; }
 
+        [Display(Name = "Wiki_Label_Age")]
         public int? Age { get; set; }
 
         [DataType(DataType.Date)]
-        [Display(Name = "Debut Date")]
+        [Display(Name = "Wiki_Label_Debut")]
         public DateTime? DebutDate { get; set; }
 
-        [Display(Name = "Birthday (e.g., Dec 25)")]
+        [Display(Name = "Wiki_Label_Birthday")]
         public string Birthday { get; set; }
 
         [DataType(DataType.MultilineText)]
+        [Display(Name = "Wiki_Label_Lore")]
         public string Lore { get; set; }
 
-        [Display(Name = "Agency")]
+        [Display(Name = "Wiki_Label_Agency")]
         public int? AgencyId { get; set; }
     }
 }

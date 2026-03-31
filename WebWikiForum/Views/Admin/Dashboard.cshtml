@@ -1,6 +1,6 @@
 @model IEnumerable<WebWikiForum.Models.Vtuber>
 @{
-    ViewData["Title"] = "Admin Dashboard";
+    ViewData["Title"] = Localizer["Dash_Title"];
 }
 
 <!-- Success Toast Notification -->
@@ -11,7 +11,7 @@
             <span class="material-symbols-outlined text-white text-xl">check_circle</span>
         </div>
         <div class="flex-1">
-            <p class="text-sm font-bold text-green-800">Success!</p>
+            <p class="text-sm font-bold text-green-800">@Localizer["Dash_Success"]</p>
             <p class="text-xs text-green-600 mt-0.5">@TempData["SuccessMessage"]</p>
         </div>
         <button onclick="document.getElementById('toast-success').style.display='none'" class="text-green-400 hover:text-green-600 transition-colors ml-2">
@@ -37,18 +37,18 @@
         <div>
             <h1 class="text-3xl font-black text-slate-900 dark:text-white flex items-center gap-3">
                 <span class="material-symbols-outlined text-primary text-4xl">admin_panel_settings</span>
-                Admin Dashboard
+                @Localizer["Dash_Title"]
             </h1>
-            <p class="text-slate-600 dark:text-slate-400 mt-2">Manage all registered VTubers, approve edits, and maintain the wiki quality.</p>
+            <p class="text-slate-600 dark:text-slate-400 mt-2">@Localizer["Dash_Desc"]</p>
         </div>
         <div class="flex items-center gap-3 w-full md:w-auto">
             <div class="relative flex-1 md:flex-none">
                 <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">search</span>
-                <input type="text" placeholder="Search VTuber..." class="w-full md:w-72 pl-12 pr-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-surface-dark focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" />
+                <input type="text" placeholder="@Localizer["Dash_Search_Placeholder"]" class="w-full md:w-72 pl-12 pr-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-surface-dark focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" />
             </div>
             <a href="/Wiki/Create" class="flex items-center gap-2 px-5 py-3 bg-primary text-white font-bold rounded-xl shadow-lg shadow-primary/25 hover:bg-primary-dark hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 whitespace-nowrap group">
                 <span class="material-symbols-outlined text-xl group-hover:rotate-90 transition-transform duration-300">add</span>
-                Add VTuber
+                @Localizer["Dash_Btn_Add"]
             </a>
         </div>
     </div>
@@ -61,7 +61,7 @@
             </div>
             <div>
                 <p class="text-2xl font-black text-slate-900 dark:text-white">@(Model?.Count() ?? 0)</p>
-                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Total VTubers</p>
+                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">@Localizer["Dash_Stat_Total"]</p>
             </div>
         </div>
         <div class="bg-white dark:bg-surface-dark rounded-2xl border border-slate-200 dark:border-slate-800 p-5 flex items-center gap-4 shadow-sm">
@@ -70,7 +70,7 @@
             </div>
             <div>
                 <p class="text-2xl font-black text-slate-900 dark:text-white">@(Model?.Count(v => v.Status == "Approved") ?? 0)</p>
-                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Approved</p>
+                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">@Localizer["Dash_Stat_Approved"]</p>
             </div>
         </div>
         <div class="bg-white dark:bg-surface-dark rounded-2xl border border-slate-200 dark:border-slate-800 p-5 flex items-center gap-4 shadow-sm">
@@ -79,7 +79,7 @@
             </div>
             <div>
                 <p class="text-2xl font-black text-slate-900 dark:text-white">@(Model?.Count(v => v.Status != "Approved") ?? 0)</p>
-                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Pending</p>
+                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">@Localizer["Dash_Stat_Pending"]</p>
             </div>
         </div>
     </div>
@@ -90,10 +90,10 @@
             <table class="w-full text-left border-collapse">
                 <thead>
                     <tr class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-700 text-sm uppercase text-slate-500 font-bold tracking-wider">
-                        <th class="p-5 font-semibold">Talent (Avatar & Name)</th>
-                        <th class="p-5 font-semibold">Information</th>
-                        <th class="p-5 font-semibold text-center">Status</th>
-                        <th class="p-5 font-semibold text-right">Actions</th>
+                        <th class="p-5 font-semibold">@Localizer["Dash_Col_Talent"]</th>
+                        <th class="p-5 font-semibold">@Localizer["Dash_Col_Info"]</th>
+                        <th class="p-5 font-semibold text-center">@Localizer["Dash_Col_Status"]</th>
+                        <th class="p-5 font-semibold text-right">@Localizer["Dash_Col_Actions"]</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
@@ -118,37 +118,37 @@
                                             <div class="font-bold text-lg text-slate-900 dark:text-white">@item.Name</div>
                                             <div class="text-xs text-primary font-semibold flex items-center gap-1">
                                                 <span class="material-symbols-outlined !text-[12px]">domain</span>
-                                                @(item.Agency != null ? item.Agency.Name : "Independent")
+                                                @(item.Agency != null ? item.Agency.Name : Localizer["Dash_Independent"])
                                             </div>
                                         </div>
                                     </div>
                                 </td>
                                 <td class="p-5">
                                     <div class="text-sm text-slate-600 dark:text-slate-400 line-clamp-2 max-w-xs">
-                                        @(string.IsNullOrEmpty(item.Lore) ? "No history provided." : item.Lore)
+                                        @(string.IsNullOrEmpty(item.Lore) ? Localizer["Dash_No_History"].Value : item.Lore)
                                     </div>
                                     <div class="text-xs text-slate-500 mt-2 font-medium flex items-center gap-2">
                                         <span class="material-symbols-outlined !text-[14px]">calendar_month</span>
-                                        Debuted: @(item.DebutDate?.ToString("MMMM dd, yyyy") ?? "Unknown")
+                                        @Localizer["Dash_Debuted"] @(item.DebutDate?.ToString("MMMM dd, yyyy") ?? Localizer["Dash_Unknown"].Value)
                                     </div>
                                 </td>
                                 <td class="p-5 text-center">
                                     @if (item.Status == "Approved")
                                     {
                                         <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold leading-none bg-green-100 text-green-700 border border-green-200 shadow-sm">
-                                            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> Approved
+                                            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> @Localizer["Dash_Status_Approved"]
                                         </span>
                                     }
                                     else
                                     {
                                         <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold leading-none bg-orange-100 text-orange-700 border border-orange-200 shadow-sm">
-                                            <span class="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse"></span> @item.Status
+                                            <span class="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse"></span> @Localizer["Dash_Status_Pending"]
                                         </span>
                                     }
                                 </td>
                                 <td class="p-5 text-right whitespace-nowrap">
                                     <div class="flex items-center justify-end gap-2">
-                                        <a href="/Wiki/Details/@item.Id" target="_blank" class="w-9 h-9 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-primary hover:bg-primary/10 transition-colors tooltip" title="View Profile">
+                                        <a href="/Wiki/Details/@item.Id" target="_blank" class="w-9 h-9 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-primary hover:bg-primary/10 transition-colors tooltip" title="@Localizer["Dash_Action_View"]">
                                             <span class="material-symbols-outlined !text-[18px]">visibility</span>
                                         </a>
 
@@ -156,15 +156,15 @@
                                         {
                                             <form asp-controller="Admin" asp-action="Approve" method="post" style="display:inline;">
                                                 <input type="hidden" name="id" value="@item.Id" />
-                                                <button type="submit" class="w-9 h-9 flex items-center justify-center rounded-xl bg-green-50 text-green-600 hover:text-white hover:bg-green-500 transition-colors shadow-sm" title="Approve VTuber">
+                                                <button type="submit" class="w-9 h-9 flex items-center justify-center rounded-xl bg-green-50 text-green-600 hover:text-white hover:bg-green-500 transition-colors shadow-sm" title="@Localizer["Dash_Action_Approve"]">
                                                     <span class="material-symbols-outlined !text-[18px]">check</span>
                                                 </button>
                                             </form>
                                         }
 
-                                        <form asp-controller="Admin" asp-action="Delete" method="post" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete @item.Name? This action is irreversible.');">
+                                        <form asp-controller="Admin" asp-action="Delete" method="post" style="display:inline;" onsubmit="return confirm('@string.Format(Localizer["Dash_Confirm_Delete"].Value, item.Name)');">
                                             <input type="hidden" name="id" value="@item.Id" />
-                                            <button type="submit" class="w-9 h-9 flex items-center justify-center rounded-xl bg-red-50 text-red-600 hover:text-white hover:bg-red-500 transition-colors shadow-sm" title="Delete VTuber">
+                                            <button type="submit" class="w-9 h-9 flex items-center justify-center rounded-xl bg-red-50 text-red-600 hover:text-white hover:bg-red-500 transition-colors shadow-sm" title="@Localizer["Dash_Action_Delete"]">
                                                 <span class="material-symbols-outlined !text-[18px]">delete</span>
                                             </button>
                                         </form>
@@ -179,11 +179,11 @@
                             <td colspan="4" class="p-12 text-center text-slate-500">
                                 <div class="flex flex-col items-center justify-center gap-4">
                                     <span class="material-symbols-outlined text-5xl text-slate-300">hourglass_empty</span>
-                                    <p class="text-lg font-medium">No VTubers found in the database.</p>
-                                    <p class="text-sm">Start by adding a new VTuber profile using the button above.</p>
+                                    <p class="text-lg font-medium">@Localizer["Dash_Empty_Title"]</p>
+                                    <p class="text-sm">@Localizer["Dash_Empty_Desc"]</p>
                                     <a href="/Wiki/Create" class="mt-2 inline-flex items-center gap-2 px-6 py-3 bg-primary text-white font-bold rounded-xl shadow-lg shadow-primary/25 hover:bg-primary-dark transition-all">
                                         <span class="material-symbols-outlined text-xl">add</span>
-                                        Add Your First VTuber
+                                        @Localizer["Dash_Empty_Btn"]
                                     </a>
                                 </div>
                             </td>

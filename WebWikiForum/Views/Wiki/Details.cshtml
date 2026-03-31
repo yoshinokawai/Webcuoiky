@@ -35,7 +35,7 @@
                 
                 <a href="/Wiki/Create" class="mb-4 bg-primary hover:bg-primary-dark text-white rounded-full px-6 py-2.5 font-bold transition-transform hover:scale-105 inline-flex items-center gap-2 text-sm shadow-md">
                     <span class="material-symbols-outlined text-lg">edit</span>
-                    Edit Profile
+                    @Localizer["Details_Btn_Edit"]
                 </a>
             </div>
 
@@ -45,11 +45,11 @@
                 
                 <div class="flex flex-wrap items-center gap-4 text-slate-600 dark:text-slate-400 font-medium">
                     <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">
-                        @(Model.Agency != null ? Model.Agency.Name : "Independent VTuber")
+                        @(Model.Agency != null ? Model.Agency.Name : Localizer["Details_Independent"])
                     </span>
                     @if (Model.Age.HasValue)
                     {
-                        <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">cake</span> Age @Model.Age</span>
+                        <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">cake</span> @Localizer["Details_Label_Age"] @Model.Age</span>
                     }
                     @if (!string.IsNullOrEmpty(Model.Birthday))
                     {
@@ -62,7 +62,7 @@
             <div>
                 <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-200 mb-4 flex items-center gap-2">
                     <span class="material-symbols-outlined text-primary">auto_awesome</span>
-                    Background Lore
+                    @Localizer["Details_Lore_Title"]
                 </h2>
                 <div class="prose dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 leading-relaxed bg-slate-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-slate-100 dark:border-slate-700/50">
                     @if (!string.IsNullOrEmpty(Model.Lore))
@@ -71,7 +71,7 @@
                     }
                     else
                     {
-                        <p class="italic text-slate-500">This VTuber's mysterious past has not been documented yet...</p>
+                        <p class="italic text-slate-500">@Localizer["Details_Lore_Empty"]</p>
                     }
                 </div>
             </div>

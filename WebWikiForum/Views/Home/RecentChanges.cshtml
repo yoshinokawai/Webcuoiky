@@ -8,20 +8,20 @@
 <div class="flex flex-col lg:flex-row gap-8">
 <div class="flex-1">
 <div class="mb-8">
-<h2 class="text-3xl font-black text-slate-900 dark:text-white mb-2">Recent Changes</h2>
-<p class="text-slate-500 dark:text-slate-400">Monitoring all live updates to the VTuber database.</p>
+<h2 class="text-3xl font-black text-slate-900 dark:text-white mb-2">@Localizer["RC_Title"]</h2>
+<p class="text-slate-500 dark:text-slate-400">@Localizer["RC_Desc"]</p>
 </div>
 <div class="flex flex-wrap gap-2 mb-8 bg-white dark:bg-slate-800/50 p-2 rounded-xl border border-primary/10 shadow-sm">
-<button class="px-4 py-2 rounded-lg text-sm font-bold bg-primary text-white">All Changes</button>
-<button class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-primary/10">Articles</button>
-<button class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-primary/10">Media</button>
-<button class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-primary/10">Users</button>
-<button class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-primary/10">Community</button>
+<button class="px-4 py-2 rounded-lg text-sm font-bold bg-primary text-white">@Localizer["RC_Filter_All"]</button>
+<button class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-primary/10">@Localizer["RC_Filter_Articles"]</button>
+<button class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-primary/10">@Localizer["RC_Filter_Media"]</button>
+<button class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-primary/10">@Localizer["RC_Filter_Users"]</button>
+<button class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-primary/10">@Localizer["RC_Filter_Community"]</button>
 </div>
 <div class="space-y-8">
 <section>
 <h3 class="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-primary mb-4">
-<span class="material-symbols-outlined text-xs">calendar_today</span> Today
+<span class="material-symbols-outlined text-xs">calendar_today</span> @Localizer["RC_Today"]
                         </h3>
 <div class="space-y-4">
 <div class="bg-white dark:bg-slate-800/40 p-4 rounded-xl border border-slate-200 dark:border-slate-700/50 flex items-start gap-4 transition-all hover:border-primary/30 group">
@@ -38,7 +38,7 @@
 <img alt="Editor Avatar" class="w-full h-full object-cover" data-alt="Avatar of a wiki contributor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoNQSek8iaxLSzeq5LIQDnk6bAo000vEojA_tz0hMm5Bl4jbzMry0Sl4hcQ6hNcvUxl4K-ExVIlpHsioHu5VHqGot95qSfzXAmljUTQ2JnZ0ulrHJEYWt02ixc9usx2KwEC4OAljsON0_oCvFliS5Blr0nuljJmSZQzwM3JPKQ-2SA8o5RIGDEkjAV72DvPpysQ5d_1we6bL-r0NRwLMylEXUxnQTRbfO-xhgsGLJTvEUVHtjTshumd9X0jBIzfTvY4qfQf9YpeFE"/>
 </div>
 <span class="text-sm font-medium text-slate-700 dark:text-slate-300">SharkBite24</span>
-<span class="text-xs font-bold text-green-600 bg-green-50 dark:bg-green-900/20 px-2 py-0.5 rounded">+1,420 chars</span>
+<span class="text-xs font-bold text-green-600 bg-green-50 dark:bg-green-900/20 px-2 py-0.5 rounded">@string.Format(Localizer["RC_Edit_AddedChars"].Value, "1,420")</span>
 </div>
 <p class="text-sm text-slate-500 dark:text-slate-400 italic">"Added full setlist and international ticketing info."</p>
 </div>
@@ -61,7 +61,7 @@
 <img alt="Editor Avatar" class="w-full h-full object-cover" data-alt="Avatar of a wiki contributor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0531mcjcVqVGNigjigMVswcVSDXAZ3aYtM2l5w2-EZ0EAkb6MLZ2nOBtafa62xd-QnUTLmmZutvikcKZ-jelbKjekQQXqPOGUp0x_8WoRDindCrw4xPdPSQNy3VPSqfgmmwYQUlsWOVukbgzhEu6ERIzgoyW0R7z5-5ruK2XLGu7WHE7Ua-vM-Rr1XJDZgQDzlIhT8d4N0tmh4ru5SzsqU7VpI25CuzrB1je175Ldp_22i7N9iXFQHqI0EcS-Ys0wfPskzC0iBWk"/>
 </div>
 <span class="text-sm font-medium text-slate-700 dark:text-slate-300">Pekora_Fan_99</span>
-<span class="text-xs font-bold text-slate-500 bg-slate-100 dark:bg-slate-700 px-2 py-0.5 rounded">-12 chars</span>
+<span class="text-xs font-bold text-slate-500 bg-slate-100 dark:bg-slate-700 px-2 py-0.5 rounded">@string.Format(Localizer["RC_Edit_RemovedChars"].Value, "12")</span>
 </div>
 <p class="text-sm text-slate-500 dark:text-slate-400 italic">"Corrected date for Usada Pekora's anniversary stream."</p>
 </div>
@@ -74,7 +74,7 @@
 </section>
 <section>
 <h3 class="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-slate-400 mb-4">
-<span class="material-symbols-outlined text-xs">history</span> Yesterday
+<span class="material-symbols-outlined text-xs">history</span> @Localizer["RC_Yesterday"]
                         </h3>
 <div class="space-y-4 opacity-80">
 <div class="bg-white dark:bg-slate-800/40 p-4 rounded-xl border border-slate-200 dark:border-slate-700/50 flex items-start gap-4">
@@ -91,7 +91,7 @@
 <img alt="Editor Avatar" class="w-full h-full object-cover" data-alt="Avatar of a wiki contributor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIzc_ipc6god5Ue3G-jkb5yby2D4gGBY7iJJDBbKIGRtZqqsKtCVqwrMGmVZ1qe7d7A8QYxJw2bUauTPmxRCDZpTssl3c5OkhT5DMnJ72BqVGWiPBhhtv5aj2XPrG6b4fCbMeo4qH-JpAoz_5Facf9TQR97thmv1WGbZnjcBJf5ivcGGT2iggKNWFQUiQAECJKqQeCdbQZ8teAsSFjXHdWbGzrmtjagjR3TaCgkMSvw3CFeuQ0tqssea3oELFdjBS0Y5AaNadMeDM"/>
 </div>
 <span class="text-sm font-medium text-slate-700 dark:text-slate-300">Mod_Sora</span>
-<span class="text-xs font-bold text-blue-600 bg-blue-50 dark:bg-blue-900/20 px-2 py-0.5 rounded">New Comment</span>
+<span class="text-xs font-bold text-blue-600 bg-blue-50 dark:bg-blue-900/20 px-2 py-0.5 rounded">@Localizer["RC_Label_NewComment"]</span>
 </div>
 <p class="text-sm text-slate-500 dark:text-slate-400 italic">"Reminder to keep discussion civil and cite official sources."</p>
 </div>
@@ -104,7 +104,7 @@
 </div>
 <div class="mt-8 flex justify-center">
 <button class="px-6 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl font-bold text-primary hover:bg-primary hover:text-white transition-all shadow-sm">
-                        Load More Changes
+                        @Localizer["RC_Btn_LoadMore"]
                     </button>
 </div>
 </div>
@@ -115,26 +115,26 @@
                     </h4>
 <div class="space-y-4">
 <div class="flex items-center justify-between">
-<span class="text-sm text-slate-500">Total Articles</span>
+<span class="text-sm text-slate-500">@Localizer["RC_Stat_Articles"]</span>
 <span class="font-bold">12,482</span>
 </div>
 <div class="flex items-center justify-between">
-<span class="text-sm text-slate-500">Active Editors</span>
+<span class="text-sm text-slate-500">@Localizer["RC_Stat_Editors"]</span>
 <span class="font-bold">842</span>
 </div>
 <div class="flex items-center justify-between">
-<span class="text-sm text-slate-500">Total Media Files</span>
+<span class="text-sm text-slate-500">@Localizer["RC_Stat_Media"]</span>
 <span class="font-bold">45,102</span>
 </div>
 <div class="flex items-center justify-between border-t border-slate-100 dark:border-slate-700 pt-4">
-<span class="text-sm text-slate-500">Last 24h Edits</span>
+<span class="text-sm text-slate-500">@Localizer["RC_Stat_Last24h"]</span>
 <span class="font-bold text-primary">2,144</span>
 </div>
 </div>
 </div>
 <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-primary/10 shadow-sm">
 <h4 class="text-lg font-bold mb-4 flex items-center gap-2">
-<span class="material-symbols-outlined text-primary">leaderboard</span> Top Contributors
+<span class="material-symbols-outlined text-primary">leaderboard</span> @Localizer["RC_Section_Contributors"]
                     </h4>
 <div class="space-y-4">
 <div class="flex items-center gap-3">
@@ -170,12 +170,12 @@
 </div>
 <div class="flex-1 min-w-0">
 <p class="text-sm font-bold truncate">LoreKeeper_01</p>
-<p class="text-[10px] text-slate-400 uppercase font-black">1,504 edits</p>
+<p class="text-[10px] text-slate-400 uppercase font-black">@string.Format(Localizer["RC_Label_Edits"].Value, "1,504")</p>
 </div>
 </div>
 </div>
 <button class="w-full mt-6 py-2 rounded-lg text-xs font-bold text-primary bg-primary/5 hover:bg-primary/10 transition-colors">
-                        View Full Leaderboard
+                        @Localizer["Trans_Btn_Leaderboard"]
                     </button>
 </div>
 </aside>
