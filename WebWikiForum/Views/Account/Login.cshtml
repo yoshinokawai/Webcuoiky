@@ -1,3 +1,4 @@
+@model WebWikiForum.ViewModels.LoginViewModel
 @{ Layout = "_Layout_Blank"; }
 @section Styles {
     <link rel="stylesheet" href="~/css/Login.css" />
@@ -30,8 +31,8 @@
 </div>
 </div>
 </div>
-<!-- Right Side: Login Form -->
-<div class="flex flex-1 flex-col justify-center items-center px-6 py-12 lg:px-24 w-full bg-background-light dark:bg-background-dark relative">
+    <!-- Right Side: Login Form -->
+    <div class="flex flex-1 flex-col justify-center items-center px-6 py-12 lg:px-24 w-full bg-background-light dark:bg-background-dark relative">
 <!-- Mobile Top Nav (Back Home) -->
 <div class="absolute top-6 left-6 lg:top-10 lg:left-10">
 <a class="group flex items-center gap-2 text-slate-500 hover:text-primary transition-colors text-sm font-medium" href="/">
@@ -48,38 +49,44 @@
 <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-2 tracking-tight">Login to VTuber Wiki</h2>
 <p class="text-slate-500 dark:text-slate-400">Welcome back! Please enter your details.</p>
 </div>
+
+<!-- Validation Errors -->
+<div asp-validation-summary="All" class="text-red-500 text-sm mb-4"></div>
+
 <!-- Form -->
 <form asp-action="Login" asp-controller="Account" method="post" class="flex flex-col gap-5">
     @Html.AntiForgeryToken()
-    <input type="hidden" name="returnUrl" value="@ViewData["ReturnUrl"]" />
+    <input type="hidden" asp-for="ReturnUrl" value="@ViewData["ReturnUrl"]" />
     <!-- Username Input -->
 <div class="space-y-1.5">
-<label class="block text-sm font-semibold text-slate-700 dark:text-slate-200" for="username">
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-200" asp-for="Username">
                         Username or Email
                     </label>
 <div class="relative group">
 <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
 <span class="material-symbols-outlined text-slate-400 group-focus-within:text-primary transition-colors">person</span>
 </div>
-<input name="username" class="block w-full rounded-xl border-slate-200 bg-white dark:bg-surface-dark dark:border-slate-700 pl-11 pr-4 py-3 text-slate-900 dark:text-white placeholder-slate-400 focus:border-primary focus:ring-primary/20 shadow-sm transition-all text-base" id="username" placeholder="HololiveFan123" type="text"/>
+<input asp-for="Username" class="block w-full rounded-xl border-slate-200 bg-white dark:bg-surface-dark dark:border-slate-700 pl-11 pr-4 py-3 text-slate-900 dark:text-white placeholder-slate-400 focus:border-primary focus:ring-primary/20 shadow-sm transition-all text-base" placeholder="HololiveFan123" type="text"/>
 </div>
+<span asp-validation-for="Username" class="text-red-500 text-xs mt-1 block"></span>
 </div>
-<!-- Password Input -->
+    <!-- Password Input -->
 <div class="space-y-1.5">
-<label class="block text-sm font-semibold text-slate-700 dark:text-slate-200" for="password">
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-200" asp-for="Password">
                         Password
                     </label>
 <div class="relative group">
 <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
 <span class="material-symbols-outlined text-slate-400 group-focus-within:text-primary transition-colors">key</span>
 </div>
-<input name="password" class="block w-full rounded-xl border-slate-200 bg-white dark:bg-surface-dark dark:border-slate-700 pl-11 pr-4 py-3 text-slate-900 dark:text-white placeholder-slate-400 focus:border-primary focus:ring-primary/20 shadow-sm transition-all text-base" id="password" placeholder="••••••••" type="password"/>
+<input asp-for="Password" class="block w-full rounded-xl border-slate-200 bg-white dark:bg-surface-dark dark:border-slate-700 pl-11 pr-4 py-3 text-slate-900 dark:text-white placeholder-slate-400 focus:border-primary focus:ring-primary/20 shadow-sm transition-all text-base" id="password" placeholder="••••••••" type="password"/>
 <div class="absolute inset-y-0 right-0 pr-4 flex items-center cursor-pointer text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors" onclick="const p = document.getElementById('password'); const span = this.querySelector('span'); if(p.type === 'password'){ p.type = 'text'; span.textContent = 'visibility'; } else { p.type = 'password'; span.textContent = 'visibility_off'; }">
 <span class="material-symbols-outlined text-[20px]">visibility_off</span>
 </div>
 </div>
+<span asp-validation-for="Password" class="text-red-500 text-xs mt-1 block"></span>
 </div>
-<!-- Options Row -->
+    <!-- Options Row -->
 <div class="flex items-center justify-between mt-1">
 <label class="flex items-center gap-2 cursor-pointer group">
 <input class="h-4 w-4 rounded border-slate-300 text-primary focus:ring-primary/30 transition-all" type="checkbox"/>
@@ -87,7 +94,7 @@
 </label>
 <a class="text-sm font-bold text-primary hover:text-primary-dark transition-colors" href="#">Forgot password?</a>
 </div>
-<!-- Submit Button -->
+    <!-- Submit Button -->
 <button class="mt-2 w-full flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold py-3.5 px-4 rounded-full shadow-lg shadow-primary/25 hover:shadow-primary/40 active:scale-[0.98] transition-all duration-200" type="submit">
 <span>Log In</span>
 <span class="material-symbols-outlined text-sm">login</span>
@@ -105,11 +112,11 @@
 <!-- Social Login Buttons -->
 <div class="grid grid-cols-2 gap-3 mb-8">
 <button class="flex items-center justify-center gap-2 rounded-xl bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700 py-2.5 px-4 text-slate-700 dark:text-slate-200 font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
-<img alt="Google" class="h-5 w-5" data-alt="Google G Logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqo64h8cIiojcKChsXeY_2T6FOfgItzi0w3MTXAhyRmNimymdCSsYaEURuBcbogcJEGINLDG-uK1A7MpJOjY1K9yj_kTnx7Dh4ajpyYxsoGvL4YYEA7Mb6BKZ6G9k0MKpBG_Hs43VjtsZTJHvRpnfUjA5nVujRBK0I0QLs5FqVucRxxOaQxRTwIm56BHaJrA1EXAugOeVgN8Ki3-gcrqJj866JRob_5EWz8UjLMJbusnZHLIvDA5uB1IEuI_esVh0jBFgN5PHhoo0"/>
+<img alt="Google" class="h-5 w-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqo64h8cIiojcKChsXeY_2T6FOfgItzi0w3MTXAhyRmNimymdCSsYaEURuBcbogcJEGINLDG-uK1A7MpJOjY1K9yj_kTnx7Dh4ajpyYxsoGvL4YYEA7Mb6BKZ6G9k0MKpBG_Hs43VjtsZTJHvRpnfUjA5nVujRBK0I0QLs5FqVucRxxOaQxRTwIm56BHaJrA1EXAugOeVgN8Ki3-gcrqJj866JRob_5EWz8UjLMJbusnZHLIvDA5uB1IEuI_esVh0jBFgN5PHhoo0"/>
 <span>Google</span>
 </button>
 <button class="flex items-center justify-center gap-2 rounded-xl bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700 py-2.5 px-4 text-slate-700 dark:text-slate-200 font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
-<img alt="Discord" class="h-5 w-5" data-alt="Discord Logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgfUtIm1sn3RLNuQpbpzfBp05R4M2kaqm-vnqoL4EixN-8g_42HuL9J3sgNIwEhagOHIedRIOHpZCMuHE3jLOyQfd2uOAIklvjg1qB6qWaJM4HhTz0mNFlk3P6IfyEDRyFC3vpFVC-vdCfyMHSYZVfpWEU6BpuqMjXr-SZ5MAoJQZguNM0FX-MOcWAGuULU3wffyiJjhT1Le-3ktVjgpwQ92vFqQp7_TomrDqngpOR0-5D_bObUHslVNhg4A6ahONGOSlUzw7X0L0"/>
+<img alt="Discord" class="h-5 w-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgfUtIm1sn3RLNuQpbpzfBp05R4M2kaqm-vnqoL4EixN-8g_42HuL9J3sgNIwEhagOHIedRIOHpZCMuHE3jLOyQfd2uOAIklvjg1qB6qWaJM4HhTz0mNFlk3P6IfyEDRyFC3vpFVC-vdCfyMHSYZVfpWEU6BpuqMjXr-SZ5MAoJQZguNM0FX-MOcWAGuULU3wffyiJjhT1Le-3ktVjgpwQ92vFqQp7_TomrDqngpOR0-5D_bObUHslVNhg4A6ahONGOSlUzw7X0L0"/>
 <span>Discord</span>
 </button>
 </div>
@@ -130,4 +137,3 @@
         </div>
     </div>
 </div>
-

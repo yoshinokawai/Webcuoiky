@@ -1,3 +1,4 @@
+@model WebWikiForum.ViewModels.RegisterViewModel
 @{ Layout = "_Layout_Blank"; }
 @section Styles {
     <link rel="stylesheet" href="~/css/CreateAccount.css" />
@@ -55,7 +56,7 @@
 <!-- Social Logins -->
 <div class="flex flex-col sm:flex-row gap-3 mb-8">
 <button class="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors font-medium">
-<img alt="Google" class="w-5 h-5" data-alt="Google logo icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_C_axBosfevuU7Rhou0i9ZGmLi1cC2bQNyt7IOl2qkEtaF4-UajucQUbKm8dU4vMeeP0rdvWdcsF2mLoGR5yI8Cj3jIT8LQQ_x0yOR8q9XSaKtgS4la_tiKKKVIFGnJqv_z5sxmk1uywO2bojfXe0aEKUdOKZF5QZgY3rh7lZsI9hPNPfhiYbxT5tBiZYIUbIjk3IB68AeZXrc8EZh7Uz4sM_IY-i7ilGsrV9VRcQu8P-BNS3yt-N2m16giUUHcUg56iQbmafgBY"/>
+<img alt="Google" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_C_axBosfevuU7Rhou0i9ZGmLi1cC2bQNyt7IOl2qkEtaF4-UajucQUbKm8dU4vMeeP0rdvWdcsF2mLoGR5yI8Cj3jIT8LQQ_x0yOR8q9XSaKtgS4la_tiKKKVIFGnJqv_z5sxmk1uywO2bojfXe0aEKUdOKZF5QZgY3rh7lZsI9hPNPfhiYbxT5tBiZYIUbIjk3IB68AeZXrc8EZh7Uz4sM_IY-i7ilGsrV9VRcQu8P-BNS3yt-N2m16giUUHcUg56iQbmafgBY"/>
 <span>Google</span>
 </button>
 <button class="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors font-medium">
@@ -71,36 +72,52 @@
 <span class="bg-background-light dark:bg-background-dark px-4 text-slate-500">Or continue with</span>
 </div>
 </div>
+
+<!-- Validation Errors -->
+<div asp-validation-summary="All" class="text-red-500 text-sm mb-4"></div>
+
 <!-- Registration Form -->
-<form class="space-y-5" onsubmit="return false;">
+<form asp-action="CreateAccount" asp-controller="Account" method="post" class="space-y-5">
+@Html.AntiForgeryToken()
+
 <div>
-<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5" for="username">Username</label>
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5" asp-for="Username">Username</label>
 <div class="relative">
 <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">person</span>
-<input class="w-full pl-12 pr-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" id="username" placeholder="v-fan-99" type="text"/>
+<input asp-for="Username" class="w-full pl-12 pr-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" placeholder="v-fan-99" type="text"/>
 </div>
+<span asp-validation-for="Username" class="text-red-500 text-xs mt-1 block"></span>
 </div>
 <div>
-<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5" for="email">Email Address</label>
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5" asp-for="Email">Email Address</label>
 <div class="relative">
 <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">mail</span>
-<input class="w-full pl-12 pr-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" id="email" placeholder="name@@example.com" type="email"/>
+<input asp-for="Email" class="w-full pl-12 pr-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" placeholder="name@@example.com" type="email"/>
 </div>
+<span asp-validation-for="Email" class="text-red-500 text-xs mt-1 block"></span>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 <div>
-<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5" for="password">Password</label>
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5" asp-for="Password">Password</label>
 <div class="relative">
 <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">lock</span>
-<input class="w-full pl-12 pr-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" id="password" placeholder="••••••••" type="password"/>
+<input asp-for="Password" class="w-full pl-12 pr-12 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" id="reg-password" placeholder="••••••••" type="password"/>
+<div class="absolute inset-y-0 right-0 pr-4 flex items-center cursor-pointer text-slate-400 hover:text-slate-600 transition-colors" onclick="const p = document.getElementById('reg-password'); const span = this.querySelector('span'); if(p.type === 'password'){ p.type = 'text'; span.textContent = 'visibility'; } else { p.type = 'password'; span.textContent = 'visibility_off'; }">
+<span class="material-symbols-outlined text-[20px]">visibility_off</span>
 </div>
+</div>
+<span asp-validation-for="Password" class="text-red-500 text-xs mt-1 block"></span>
 </div>
 <div>
-<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5" for="confirm-password">Confirm</label>
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5" asp-for="ConfirmPassword">Confirm</label>
 <div class="relative">
 <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">shield</span>
-<input class="w-full pl-12 pr-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" id="confirm-password" placeholder="••••••••" type="password"/>
+<input asp-for="ConfirmPassword" class="w-full pl-12 pr-12 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" id="reg-confirm" placeholder="••••••••" type="password"/>
+<div class="absolute inset-y-0 right-0 pr-4 flex items-center cursor-pointer text-slate-400 hover:text-slate-600 transition-colors" onclick="const p = document.getElementById('reg-confirm'); const span = this.querySelector('span'); if(p.type === 'password'){ p.type = 'text'; span.textContent = 'visibility'; } else { p.type = 'password'; span.textContent = 'visibility_off'; }">
+<span class="material-symbols-outlined text-[20px]">visibility_off</span>
 </div>
+</div>
+<span asp-validation-for="ConfirmPassword" class="text-red-500 text-xs mt-1 block"></span>
 </div>
 </div>
 <div class="flex items-start gap-3 py-2">

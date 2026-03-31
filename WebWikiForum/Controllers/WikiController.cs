@@ -36,8 +36,9 @@ namespace WebWikiForum.Controllers
 
         [Authorize]
         [HttpGet]
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            ViewBag.Agencies = await _context.Agencies.ToListAsync();
             return View();
         }
 
@@ -47,27 +48,35 @@ namespace WebWikiForum.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Gọi Service để lưu file ảnh vật lý
-                string fileName = await _fileService.UploadImageAsync(avatarFile, "vtubers");
-
-                var vtuber = new Vtuber
+                try
                 {
-                    Name = model.Name,
-                    Age = model.Age,
-                    DebutDate = model.DebutDate,
-                    Birthday = model.Birthday,
-                    Lore = model.Lore,
-                    AvatarUrl = string.IsNullOrEmpty(fileName) ? null : "/uploads/vtubers/" + fileName,
-                    AgencyId = model.AgencyId,
-                    Status = "Pending" // Trạng thái chờ Admin duyệt
-                };
+                    // Gọi Service để lưu file ảnh vật lý
+                    string fileName = await _fileService.UploadImageAsync(avatarFile, "vtubers");
 
-                _context.Add(vtuber);
-                await _context.SaveChangesAsync();
-                
-                // Redirect to the newly created Details page
-                return RedirectToAction(nameof(Details), new { id = vtuber.Id });
+                    var vtuber = new Vtuber
+                    {
+                        Name = model.Name,
+                        Age = model.Age,
+                        DebutDate = model.DebutDate,
+                        Birthday = model.Birthday,
+                        Lore = model.Lore,
+                        AvatarUrl = string.IsNullOrEmpty(fileName) ? null : "/uploads/vtubers/" + fileName,
+                        AgencyId = model.AgencyId,
+                        Status = "Pending" // Trạng thái chờ Admin duyệt
+                    };
+
+                    _context.Add(vtuber);
+                    await _context.SaveChangesAsync();
+                    
+                    TempData["SuccessMessage"] = $"VTuber '{vtuber.Name}' has been created successfully and is pending approval!";
+                    return RedirectToAction("Dashboard", "Admin");
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", $"Error saving VTuber: {ex.InnerException?.Message ?? ex.Message}");
+                }
             }
+            ViewBag.Agencies = await _context.Agencies.ToListAsync();
             return View(model);
         }
 

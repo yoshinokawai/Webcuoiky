@@ -11,5 +11,6 @@ namespace WebWikiForum.Data
 
         public DbSet<Vtuber> Vtubers { get; set; }
         public DbSet<Agency> Agencies { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }
