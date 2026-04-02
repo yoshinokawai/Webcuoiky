@@ -53,3 +53,17 @@ window.showConfirmModal = function(options) {
     cancelBtn.onclick = closeModal;
     overlay.onclick = closeModal;
 };
+
+// Auto-hide global toast after 5 seconds
+document.addEventListener('DOMContentLoaded', () => {
+    const toast = document.getElementById('global-toast');
+    if (toast) {
+        setTimeout(() => {
+            toast.style.opacity = '0';
+            toast.style.transform = 'translateX(120%)';
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 500);
+        }, 5000);
+    }
+});

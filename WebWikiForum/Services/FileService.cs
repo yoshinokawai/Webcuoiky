@@ -36,5 +36,15 @@ namespace WebWikiForum.Services
 
             return uniqueFileName;
         }
+        public void DeleteFile(string fileName, string folderName)
+        {
+            if (string.IsNullOrEmpty(fileName)) return;
+
+            string filePath = Path.Combine(_env.WebRootPath, "uploads", folderName, fileName);
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
+        }
     }
 }

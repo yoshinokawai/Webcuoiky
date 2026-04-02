@@ -33,10 +33,23 @@
                     <div class="absolute bottom-2 right-2 w-6 h-6 bg-green-500 border-2 border-white dark:border-surface-dark rounded-full"></div>
                 </div>
                 
-                <a href="/Wiki/Create" class="mb-4 bg-primary hover:bg-primary-dark text-white rounded-full px-6 py-2.5 font-bold transition-transform hover:scale-105 inline-flex items-center gap-2 text-sm shadow-md">
-                    <span class="material-symbols-outlined text-lg">edit</span>
-                    @Localizer["Details_Btn_Edit"]
-                </a>
+                <div class="flex flex-wrap gap-2 justify-end">
+                    <a href="/Wiki/Create" class="mb-4 bg-primary hover:bg-primary-dark text-white rounded-full px-6 py-2.5 font-bold transition-transform hover:scale-105 inline-flex items-center gap-2 text-sm shadow-md">
+                        <span class="material-symbols-outlined text-lg">edit</span>
+                        @Localizer["Details_Btn_Edit"]
+                    </a>
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <form asp-controller="Wiki" asp-action="Delete" method="post" onsubmit="event.preventDefault(); window.showConfirmModal({ title: '@Localizer["Dash_Action_Delete"]', message: '@string.Format(Localizer["Dash_Confirm_Delete"].Value, Model.Name)', onConfirm: () => this.submit() });" style="display:inline;">
+                            <input type="hidden" name="id" value="@Model.Id" />
+                            <button type="submit" class="mb-4 bg-red-500 hover:bg-red-600 text-white rounded-full px-6 py-2.5 font-bold transition-transform hover:scale-105 inline-flex items-center gap-2 text-sm shadow-md">
+                                <span class="material-symbols-outlined text-lg">delete</span>
+                                @Localizer["Dash_Action_Delete"]
+                            </button>
+                        </form>
+                    }
+                </div>
             </div>
 
             <!-- Basic Info -->

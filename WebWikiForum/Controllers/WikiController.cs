@@ -201,6 +201,34 @@ namespace WebWikiForum.Controllers
             return RedirectToAction("Agencies");
         }
 
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var vtuber = await _context.Vtubers.FindAsync(id);
+            if (vtuber == null) return NotFound();
+
+            try
+            {
+                // Delete image file if exists
+                if (!string.IsNullOrEmpty(vtuber.AvatarUrl))
+                {
+                    string fileName = Path.GetFileName(vtuber.AvatarUrl);
+                    _fileService.DeleteFile(fileName, "vtubers");
+                }
+
+                _context.Vtubers.Remove(vtuber);
+                await _context.SaveChangesAsync();
+                TempData["SuccessMessage"] = $"VTuber '{vtuber.Name}' has been deleted.";
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = "Error deleting VTuber: " + ex.Message;
+            }
+
+            return RedirectToAction("Independent");
+        }
+
         [HttpGet]
         public async Task<IActionResult> Details(int id)
         {
