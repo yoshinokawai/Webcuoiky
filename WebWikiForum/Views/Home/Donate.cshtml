@@ -1,8 +1,288 @@
 @{
-    ViewData["Title"] = "Donate";
+    ViewData["Title"] = "Support VTuber Wiki";
 }
-<div class="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8 text-center min-h-[50vh] flex flex-col items-center justify-center">
-    <span class="material-symbols-outlined text-6xl text-primary mb-4">volunteer_activism</span>
-    <h1 class="text-4xl font-black text-slate-900 dark:text-white mb-2">Support Us</h1>
-    <p class="text-slate-600 dark:text-slate-400">The donation gateway is being integrated. Thank you for your support!</p>
+
+@section Styles {
+    <style>
+        .donate-hero {
+            background: linear-gradient(135deg, rgba(153, 76, 230, 0.9) 0%, rgba(88, 28, 135, 0.95) 100%);
+        }
+        .tier-card {
+            transition: all 0.3s ease;
+        }
+        .tier-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(153, 76, 230, 0.15);
+        }
+        .progress-bar-fill {
+            animation: fillProgress 1.5s ease-out forwards;
+        }
+        @@keyframes fillProgress {
+            from { width: 0%; }
+            to { width: 65%; }
+        }
+        .donor-avatar {
+            background: linear-gradient(135deg, #994ce6, #581c87);
+        }
+    </style>
+}
+
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<main class="flex-1">
+
+    <!-- Hero Section -->
+    <section class="donate-hero text-white py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-4 md:px-10 text-center">
+            <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
+                <span class="material-symbols-outlined text-lg">volunteer_activism</span>
+                <span class="text-sm font-bold uppercase tracking-wider">Support the Wiki</span>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-black mb-6 tracking-tight">Support VTuber Wiki</h1>
+            <p class="text-lg md:text-xl text-white/85 max-w-3xl mx-auto leading-relaxed mb-10">
+                We are a community-driven project dedicated to documenting the ever-expanding world of virtual talent.
+                Your contributions directly fund our server infrastructure and community-led events.
+            </p>
+
+            <!-- Progress Section -->
+            <div class="max-w-xl mx-auto bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
+                <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-lg">schedule</span>
+                        <span class="text-sm font-bold">Monthly Goal</span>
+                    </div>
+                    <span class="text-sm font-bold">65% reached</span>
+                </div>
+                <div class="w-full bg-white/20 rounded-full h-3 mb-2">
+                    <div class="progress-bar-fill bg-white h-3 rounded-full" style="width: 65%"></div>
+                </div>
+                <p class="text-xs text-white/70 text-right">October — 12 days remaining</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donation Tiers -->
+    <section class="max-w-7xl mx-auto px-4 md:px-10 py-16">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-black text-slate-900 dark:text-white mb-3">Choose Your Support Tier</h2>
+            <p class="text-slate-500 dark:text-slate-400">Every contribution helps us grow and improve</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Tier 1: Supporter -->
+            <div class="tier-card bg-white dark:bg-slate-800/50 rounded-2xl border border-primary/10 p-8 flex flex-col">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-primary text-2xl">favorite</span>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">Supporter</h3>
+                        <p class="text-xs text-slate-500">Basic tier</p>
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <span class="text-4xl font-black text-primary">$5</span>
+                    <span class="text-slate-500 text-sm">/month</span>
+                </div>
+                <ul class="space-y-3 flex-1 mb-8">
+                    <li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+                        <span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                        Supporter badge on profile
+                    </li>
+                    <li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+                        <span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                        Name in credits page
+                    </li>
+                    <li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+                        <span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                        Access to supporter Discord channel
+                    </li>
+                </ul>
+                <button class="w-full py-3 bg-primary/10 text-primary font-bold rounded-xl hover:bg-primary hover:text-white transition-all">
+                    Become a Supporter
+                </button>
+            </div>
+
+            <!-- Tier 2: Patron (Featured) -->
+            <div class="tier-card bg-white dark:bg-slate-800/50 rounded-2xl border-2 border-primary p-8 flex flex-col relative shadow-lg shadow-primary/10">
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider">
+                    Most Popular
+                </div>
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-primary text-2xl">star</span>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">Patron</h3>
+                        <p class="text-xs text-slate-500">Premium tier</p>
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <span class="text-4xl font-black text-primary">$15</span>
+                    <span class="text-slate-500 text-sm">/month</span>
+                </div>
+                <ul class="space-y-3 flex-1 mb-8">
+                    <li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+                        <span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                        All Supporter benefits
+                    </li>
+                    <li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+                        <span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                        Patron badge with custom color
+                    </li>
+                    <li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+                        <span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                        Early access to new features
+                    </li>
+                    <li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+                        <span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                        Vote on wiki priorities
+                    </li>
+                </ul>
+                <button class="w-full py-3 bg-primary text-white font-bold rounded-xl hover:bg-primary-dark transition-all shadow-md shadow-primary/20">
+                    Become a Patron
+                </button>
+            </div>
+
+            <!-- Tier 3: Legendary -->
+            <div class="tier-card bg-white dark:bg-slate-800/50 rounded-2xl border border-primary/10 p-8 flex flex-col">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-primary text-2xl">trophy</span>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">Legendary</h3>
+                        <p class="text-xs text-slate-500">Ultimate tier</p>
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <span class="text-4xl font-black text-primary">$50</span>
+                    <span class="text-slate-500 text-sm">/month</span>
+                </div>
+                <ul class="space-y-3 flex-1 mb-8">
+                    <li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+                        <span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                        All Patron benefits
+                    </li>
+                    <li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+                        <span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                        Legendary animated badge
+                    </li>
+                    <li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+                        <span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                        Hall of Fame featured slot
+                    </li>
+                    <li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+                        <span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                        Direct line to admin team
+                    </li>
+                </ul>
+                <button class="w-full py-3 bg-primary/10 text-primary font-bold rounded-xl hover:bg-primary hover:text-white transition-all">
+                    Become Legendary
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Methods -->
+    <section class="bg-white dark:bg-slate-800/30 border-y border-slate-200 dark:border-slate-700/50">
+        <div class="max-w-7xl mx-auto px-4 md:px-10 py-12">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+                <div class="flex items-center gap-4">
+                    <span class="material-symbols-outlined text-primary text-3xl">payments</span>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">Payment Methods</h3>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 flex items-center gap-1">
+                            <span class="material-symbols-outlined text-sm text-green-500">lock</span>
+                            All payments are encrypted and processed securely.
+                        </p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="px-4 py-2 bg-slate-100 dark:bg-slate-700 rounded-lg text-sm font-bold text-slate-600 dark:text-slate-300">Visa</div>
+                    <div class="px-4 py-2 bg-slate-100 dark:bg-slate-700 rounded-lg text-sm font-bold text-slate-600 dark:text-slate-300">Mastercard</div>
+                    <div class="px-4 py-2 bg-slate-100 dark:bg-slate-700 rounded-lg text-sm font-bold text-slate-600 dark:text-slate-300">PayPal</div>
+                    <div class="px-4 py-2 bg-slate-100 dark:bg-slate-700 rounded-lg text-sm font-bold text-slate-600 dark:text-slate-300">Crypto</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hall of Fame -->
+    <section class="max-w-7xl mx-auto px-4 md:px-10 py-16">
+        <div class="flex items-center gap-3 mb-8">
+            <span class="material-symbols-outlined text-primary text-3xl">trophy</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Hall of Fame</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <!-- Donor 1 -->
+            <div class="flex items-center gap-4 bg-white dark:bg-slate-800/50 p-5 rounded-xl border border-primary/10 hover:border-primary/30 transition-all">
+                <div class="donor-avatar w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg shrink-0">H</div>
+                <div class="flex-1 min-w-0">
+                    <p class="font-bold text-slate-900 dark:text-white truncate">HololiveEnthusiast</p>
+                    <div class="flex items-center gap-1">
+                        <span class="material-symbols-outlined text-yellow-500 text-sm">star</span>
+                        <span class="text-xs font-bold text-yellow-600 dark:text-yellow-400">Legendary Patron</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Donor 2 -->
+            <div class="flex items-center gap-4 bg-white dark:bg-slate-800/50 p-5 rounded-xl border border-primary/10 hover:border-primary/30 transition-all">
+                <div class="donor-avatar w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg shrink-0">V</div>
+                <div class="flex-1 min-w-0">
+                    <p class="font-bold text-slate-900 dark:text-white truncate">V-Simp-99</p>
+                    <div class="flex items-center gap-1">
+                        <span class="material-symbols-outlined text-yellow-500 text-sm">star</span>
+                        <span class="text-xs font-bold text-yellow-600 dark:text-yellow-400">Legendary Patron</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Donor 3 -->
+            <div class="flex items-center gap-4 bg-white dark:bg-slate-800/50 p-5 rounded-xl border border-primary/10 hover:border-primary/30 transition-all">
+                <div class="donor-avatar w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg shrink-0">N</div>
+                <div class="flex-1 min-w-0">
+                    <p class="font-bold text-slate-900 dark:text-white truncate">NijisanjiEnjoyer</p>
+                    <div class="flex items-center gap-1">
+                        <span class="material-symbols-outlined text-primary text-sm">favorite</span>
+                        <span class="text-xs font-bold text-primary">Supporter</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <a asp-controller="Home" asp-action="Donate" class="inline-flex items-center gap-2 text-primary font-bold hover:underline">
+                View All Donors
+                <span class="material-symbols-outlined text-lg">arrow_forward</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Quick Links / CTA -->
+    <section class="bg-primary/5 dark:bg-primary/10 border-t border-primary/10">
+        <div class="max-w-7xl mx-auto px-4 md:px-10 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <a asp-controller="Home" asp-action="AboutUs" class="flex items-center gap-4 bg-white dark:bg-slate-800/50 p-5 rounded-xl border border-primary/10 hover:border-primary/30 transition-all group">
+                    <span class="material-symbols-outlined text-primary text-2xl group-hover:scale-110 transition-transform">info</span>
+                    <div>
+                        <h4 class="font-bold text-slate-900 dark:text-white">About Us</h4>
+                        <p class="text-xs text-slate-500">Learn more about VTuber Wiki</p>
+                    </div>
+                </a>
+                <a asp-controller="Forum" asp-action="WikiForum" class="flex items-center gap-4 bg-white dark:bg-slate-800/50 p-5 rounded-xl border border-primary/10 hover:border-primary/30 transition-all group">
+                    <span class="material-symbols-outlined text-primary text-2xl group-hover:scale-110 transition-transform">forum</span>
+                    <div>
+                        <h4 class="font-bold text-slate-900 dark:text-white">Community Forum</h4>
+                        <p class="text-xs text-slate-500">Join the discussion</p>
+                    </div>
+                </a>
+                <a asp-controller="Help" asp-action="HelpCenter" class="flex items-center gap-4 bg-white dark:bg-slate-800/50 p-5 rounded-xl border border-primary/10 hover:border-primary/30 transition-all group">
+                    <span class="material-symbols-outlined text-primary text-2xl group-hover:scale-110 transition-transform">help</span>
+                    <div>
+                        <h4 class="font-bold text-slate-900 dark:text-white">Help Center</h4>
+                        <p class="text-xs text-slate-500">Get support and answers</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+</main>
 </div>

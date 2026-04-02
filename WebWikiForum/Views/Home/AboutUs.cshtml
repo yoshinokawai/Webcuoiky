@@ -23,9 +23,9 @@
                                         @Localizer["About_Hero_Desc"]
                                     </p>
 <div class="flex gap-4 pt-4">
-<button class="px-6 py-3 bg-primary text-white font-bold rounded-lg shadow-lg shadow-primary/20 hover:scale-105 transition-transform">@Localizer["About_Btn_Explore"]</button>
-<button class="px-6 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 font-bold rounded-lg hover:bg-slate-50 transition-colors">@Localizer["About_Btn_Join"]</button>
-</div>
+                        <a asp-controller="Home" asp-action="Explore" class="px-6 py-3 bg-primary text-white font-bold rounded-lg shadow-lg shadow-primary/20 hover:scale-105 transition-transform">@Localizer["About_Btn_Explore"]</a>
+                        <a asp-controller="Home" asp-action="JoinDiscord" class="px-6 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 font-bold rounded-lg hover:bg-slate-50 transition-colors">@Localizer["About_Btn_Join"]</a>
+                    </div>
 </div>
 <div class="w-full md:w-1/3 aspect-square rounded-2xl bg-primary/20 flex items-center justify-center border border-primary/20" data-alt="Stylized purple holographic mascot character illustration">
 <span class="material-symbols-outlined text-8xl text-primary/40">auto_awesome</span>
@@ -128,44 +128,44 @@
 <span class="material-symbols-outlined text-primary">link</span>
                                 @Localizer["About_Sidebar_Links"]
                             </h3>
-<ul class="space-y-3">
-<li>
-<a class="flex items-center justify-between p-3 rounded-lg hover:bg-primary/5 group transition-colors" href="#">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-slate-400 group-hover:text-primary">gavel</span>
-<span class="font-medium">Wiki Guidelines</span>
-</div>
-<span class="material-symbols-outlined text-sm text-slate-300 group-hover:text-primary">chevron_right</span>
-</a>
-</li>
-<li>
-<a class="flex items-center justify-between p-3 rounded-lg hover:bg-primary/5 group transition-colors" href="#">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-slate-400 group-hover:text-primary">forum</span>
-<span class="font-medium">Community Forum</span>
-</div>
-<span class="material-symbols-outlined text-sm text-slate-300 group-hover:text-primary">chevron_right</span>
-</a>
-</li>
-<li>
-<a class="flex items-center justify-between p-3 rounded-lg hover:bg-primary/5 group transition-colors" href="#">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-slate-400 group-hover:text-primary">mail</span>
-<span class="font-medium">Contact Us</span>
-</div>
-<span class="material-symbols-outlined text-sm text-slate-300 group-hover:text-primary">chevron_right</span>
-</a>
-</li>
-<li>
-<a class="flex items-center justify-between p-3 rounded-lg hover:bg-primary/5 group transition-colors" href="#">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-slate-400 group-hover:text-primary">volunteer_activism</span>
-<span class="font-medium">Support the Project</span>
-</div>
-<span class="material-symbols-outlined text-sm text-slate-300 group-hover:text-primary">chevron_right</span>
-</a>
-</li>
-</ul>
+                        <ul class="space-y-3">
+                            <li>
+                                <a asp-controller="Help" asp-action="Guidelines" class="flex items-center justify-between p-3 rounded-lg hover:bg-primary/5 group transition-colors">
+                                    <div class="flex items-center gap-3">
+                                        <span class="material-symbols-outlined text-slate-400 group-hover:text-primary">gavel</span>
+                                        <span class="font-medium">@Localizer["Page_Guidelines"]</span>
+                                    </div>
+                                    <span class="material-symbols-outlined text-sm text-slate-300 group-hover:text-primary">chevron_right</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-controller="Forum" asp-action="WikiForum" class="flex items-center justify-between p-3 rounded-lg hover:bg-primary/5 group transition-colors">
+                                    <div class="flex items-center gap-3">
+                                        <span class="material-symbols-outlined text-slate-400 group-hover:text-primary">forum</span>
+                                        <span class="font-medium">@Localizer["Page_Forum"]</span>
+                                    </div>
+                                    <span class="material-symbols-outlined text-sm text-slate-300 group-hover:text-primary">chevron_right</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-controller="Help" asp-action="HelpCenter" class="flex items-center justify-between p-3 rounded-lg hover:bg-primary/5 group transition-colors">
+                                    <div class="flex items-center gap-3">
+                                        <span class="material-symbols-outlined text-slate-400 group-hover:text-primary">mail</span>
+                                        <span class="font-medium">@Localizer["Page_HelpCenter"]</span>
+                                    </div>
+                                    <span class="material-symbols-outlined text-sm text-slate-300 group-hover:text-primary">chevron_right</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-controller="Home" asp-action="Donate" class="flex items-center justify-between p-3 rounded-lg hover:bg-primary/5 group transition-colors">
+                                    <div class="flex items-center gap-3">
+                                        <span class="material-symbols-outlined text-slate-400 group-hover:text-primary">volunteer_activism</span>
+                                        <span class="font-medium">@Localizer["Page_Donate"]</span>
+                                    </div>
+                                    <span class="material-symbols-outlined text-sm text-slate-300 group-hover:text-primary">chevron_right</span>
+                                </a>
+                            </li>
+                        </ul>
 <div class="mt-8 p-4 bg-primary/5 rounded-lg border border-primary/10">
 <h4 class="text-sm font-bold text-primary uppercase tracking-wider mb-2">@Localizer["About_Stats_Title"]</h4>
 <div class="grid grid-cols-2 gap-4">

@@ -11,12 +11,12 @@
 <h2 class="text-3xl font-black text-slate-900 dark:text-white mb-2">@Localizer["RC_Title"]</h2>
 <p class="text-slate-500 dark:text-slate-400">@Localizer["RC_Desc"]</p>
 </div>
-<div class="flex flex-wrap gap-2 mb-8 bg-white dark:bg-slate-800/50 p-2 rounded-xl border border-primary/10 shadow-sm">
-<button class="px-4 py-2 rounded-lg text-sm font-bold bg-primary text-white">@Localizer["RC_Filter_All"]</button>
-<button class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-primary/10">@Localizer["RC_Filter_Articles"]</button>
-<button class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-primary/10">@Localizer["RC_Filter_Media"]</button>
-<button class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-primary/10">@Localizer["RC_Filter_Users"]</button>
-<button class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-primary/10">@Localizer["RC_Filter_Community"]</button>
+<div class="flex flex-wrap gap-2 mb-8 bg-white dark:bg-slate-800/50 p-2 rounded-xl border border-primary/10 shadow-sm" data-filter-group="rc-changes">
+<button data-filter="all" class="px-4 py-2 rounded-lg text-sm font-bold bg-primary text-white">@Localizer["RC_Filter_All"]</button>
+<button data-filter="article" class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-primary/10">@Localizer["RC_Filter_Articles"]</button>
+<button data-filter="media" class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-primary/10">@Localizer["RC_Filter_Media"]</button>
+<button data-filter="user" class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-primary/10">@Localizer["RC_Filter_Users"]</button>
+<button data-filter="community" class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-primary/10">@Localizer["RC_Filter_Community"]</button>
 </div>
 <div class="space-y-8">
 <section>
@@ -24,7 +24,7 @@
 <span class="material-symbols-outlined text-xs">calendar_today</span> @Localizer["RC_Today"]
                         </h3>
 <div class="space-y-4">
-<div class="bg-white dark:bg-slate-800/40 p-4 rounded-xl border border-slate-200 dark:border-slate-700/50 flex items-start gap-4 transition-all hover:border-primary/30 group">
+<div class="bg-white dark:bg-slate-800/40 p-4 rounded-xl border border-slate-200 dark:border-slate-700/50 flex items-start gap-4 transition-all hover:border-primary/30 group" data-filter-target="rc-changes" data-category="article">
 <div class="mt-1 bg-green-100 dark:bg-green-900/30 text-green-600 p-2 rounded-lg">
 <span class="material-symbols-outlined">add_circle</span>
 </div>
@@ -47,7 +47,7 @@
 <a class="text-xs font-bold px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded hover:bg-primary/10 transition-colors" href="#">hist</a>
 </div>
 </div>
-<div class="bg-white dark:bg-slate-800/40 p-4 rounded-xl border border-slate-200 dark:border-slate-700/50 flex items-start gap-4 transition-all hover:border-primary/30 group">
+<div class="bg-white dark:bg-slate-800/40 p-4 rounded-xl border border-slate-200 dark:border-slate-700/50 flex items-start gap-4 transition-all hover:border-primary/30 group" data-filter-target="rc-changes" data-category="article">
 <div class="mt-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 p-2 rounded-lg">
 <span class="material-symbols-outlined">edit</span>
 </div>
@@ -77,7 +77,7 @@
 <span class="material-symbols-outlined text-xs">history</span> @Localizer["RC_Yesterday"]
                         </h3>
 <div class="space-y-4 opacity-80">
-<div class="bg-white dark:bg-slate-800/40 p-4 rounded-xl border border-slate-200 dark:border-slate-700/50 flex items-start gap-4">
+<div class="bg-white dark:bg-slate-800/40 p-4 rounded-xl border border-slate-200 dark:border-slate-700/50 flex items-start gap-4" data-filter-target="rc-changes" data-category="community">
 <div class="mt-1 bg-purple-100 dark:bg-purple-900/30 text-purple-600 p-2 rounded-lg">
 <span class="material-symbols-outlined">forum</span>
 </div>

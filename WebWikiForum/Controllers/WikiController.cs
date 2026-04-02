@@ -21,13 +21,62 @@ namespace WebWikiForum.Controllers
             _fileService = fileService;
         }
 
-        public IActionResult Agencies()
+        public async Task<IActionResult> Agencies(string? searchTerm, string? region, string? focus)
         {
-            return View();
+            var agencies = _context.Agencies.AsQueryable();
+
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                agencies = agencies.Where(a => a.Name.Contains(searchTerm) || a.Description.Contains(searchTerm));
+            }
+
+            if (!string.IsNullOrEmpty(region) && region != "all")
+            {
+                agencies = agencies.Where(a => a.Region == region);
+            }
+
+            if (!string.IsNullOrEmpty(focus) && focus != "all")
+            {
+                agencies = agencies.Where(a => a.Focus.Contains(focus));
+            }
+
+            ViewData["SearchTerm"] = searchTerm;
+            ViewData["Region"] = region;
+            ViewData["Focus"] = focus;
+
+            return View(await agencies.ToListAsync());
         }
-        public IActionResult Independent()
+
+        public async Task<IActionResult> Independent(string? searchTerm, string? region, string? language, string? tag)
         {
-            return View();
+            var vtubers = _context.Vtubers.Where(v => v.IsIndependent && v.Status == "Approved").AsQueryable();
+
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                vtubers = vtubers.Where(v => v.Name.Contains(searchTerm) || v.Lore.Contains(searchTerm));
+            }
+
+            if (!string.IsNullOrEmpty(region) && region != "all")
+            {
+                vtubers = vtubers.Where(v => v.Region == region);
+            }
+
+            if (!string.IsNullOrEmpty(language) && language != "all")
+            {
+                vtubers = vtubers.Where(v => v.Language.Contains(language));
+            }
+
+            if (!string.IsNullOrEmpty(tag))
+            {
+                vtubers = vtubers.Where(v => v.Tags.Contains(tag));
+            }
+
+            ViewData["SearchTerm"] = searchTerm;
+            ViewData["Region"] = region;
+            ViewData["Language"] = language;
+            ViewData["Tag"] = tag;
+
+            return View(await vtubers.ToListAsync());
         }
         public IActionResult Translation()
         {

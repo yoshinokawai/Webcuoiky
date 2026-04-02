@@ -1,3 +1,4 @@
+@model IEnumerable<WebWikiForum.Models.Agency>
 @section Styles {
     <link rel="stylesheet" href="~/css/Agencies.css" />
 }
@@ -32,188 +33,80 @@
 </div>
 </div>
 </div>
-<div class="sticky top-[73px] z-40 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md py-4 -mx-4 px-4">
+<form method="get" asp-action="Agencies" class="sticky top-[73px] z-40 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md py-4 -mx-4 px-4">
 <div class="flex flex-col md:flex-row gap-3">
 <label class="flex flex-col flex-1 h-12">
 <div class="flex w-full flex-1 items-stretch rounded-xl h-full shadow-sm border border-slate-200/50 dark:border-slate-700/50 overflow-hidden">
 <div class="text-primary flex border-none bg-white dark:bg-slate-800 items-center justify-center pl-4 border-r-0">
 <span class="material-symbols-outlined">search</span>
 </div>
-<input class="form-input flex w-full min-w-0 flex-1 border-none bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:ring-0 h-full placeholder:text-slate-400 px-4" placeholder="@Localizer["Agencies_Search_Placeholder"]" value=""/>
+<input name="searchTerm" value="@ViewData["SearchTerm"]" class="form-input flex w-full min-w-0 flex-1 border-none bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:ring-0 h-full placeholder:text-slate-400 px-4" placeholder="@Localizer["Agencies_Search_Placeholder"]" type="text"/>
 </div>
 </label>
-<div class="flex gap-2 overflow-x-auto pb-2 md:pb-0 no-scrollbar">
-<button class="flex h-12 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-white dark:bg-slate-800 px-4 text-slate-700 dark:text-slate-200 border border-slate-200/50 dark:border-slate-700/50 hover:border-primary/30 transition-all shadow-sm">
-<span class="text-sm font-semibold">@Localizer["Agencies_Label_Region"]</span>
-<span class="material-symbols-outlined text-lg">expand_more</span>
-</button>
-<button class="flex h-12 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-white dark:bg-slate-800 px-4 text-slate-700 dark:text-slate-200 border border-slate-200/50 dark:border-slate-700/50 hover:border-primary/30 transition-all shadow-sm">
-<span class="text-sm font-semibold">@Localizer["Agencies_Label_Focus"]</span>
-<span class="material-symbols-outlined text-lg">expand_more</span>
-</button>
-<button class="flex h-12 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-primary px-4 text-white shadow-lg shadow-primary/20 transition-all hover:brightness-110">
+<div class="flex gap-2 pb-2 md:pb-0">
+<div class="relative">
+<select name="region" onchange="this.form.submit()" class="flex h-12 items-center justify-center gap-x-2 rounded-xl bg-white dark:bg-slate-800 px-4 text-slate-700 dark:text-slate-200 border border-slate-200/50 dark:border-slate-700/50 hover:border-primary/30 transition-all shadow-sm appearance-none cursor-pointer pr-10">
+<option value="all">@Localizer["Agencies_Label_Region"]</option>
+<option value="Japan" selected='@(ViewData["Region"]?.ToString() == "Japan")'>Japan</option>
+<option value="US" selected='@(ViewData["Region"]?.ToString() == "US")'>United States</option>
+<option value="Canada" selected='@(ViewData["Region"]?.ToString() == "Canada")'>Canada</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">expand_more</span>
+</div>
+<div class="relative">
+<select name="focus" onchange="this.form.submit()" class="flex h-12 items-center justify-center gap-x-2 rounded-xl bg-white dark:bg-slate-800 px-4 text-slate-700 dark:text-slate-200 border border-slate-200/50 dark:border-slate-700/50 hover:border-primary/30 transition-all shadow-sm appearance-none cursor-pointer pr-10">
+<option value="all">@Localizer["Agencies_Label_Focus"]</option>
+<option value="Idol" selected='@(ViewData["Focus"]?.ToString() == "Idol")'>Idol</option>
+<option value="Gaming" selected='@(ViewData["Focus"]?.ToString() == "Gaming")'>Gaming</option>
+<option value="Variety" selected='@(ViewData["Focus"]?.ToString() == "Variety")'>Variety</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">expand_more</span>
+</div>
+<button type="submit" class="flex h-12 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-primary px-4 text-white shadow-lg shadow-primary/20 transition-all hover:brightness-110">
 <span class="material-symbols-outlined text-lg">tune</span>
 <span class="text-sm font-semibold">@Localizer["Agencies_Label_Filters"]</span>
 </button>
 </div>
 </div>
-</div>
-<div class="flex flex-col gap-6 pt-4">
+</form><div class="flex flex-col gap-6 pt-4">
 <div class="flex items-center justify-between">
 <h2 class="text-slate-900 dark:text-slate-100 text-2xl font-bold tracking-tight">@Localizer["Agencies_Major_Agencies"]</h2>
 <span class="text-primary text-sm font-semibold cursor-pointer hover:underline">@Localizer["Agencies_Count"]</span>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+@foreach (var agency in Model)
+{
 <div class="group flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 hover:border-primary/50 transition-all hover:shadow-xl hover:shadow-primary/5">
 <div class="h-40 w-full relative overflow-hidden">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Vibrant digital art with blue and pink patterns" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8OeEiECbxBMCzmVnvYD7-RlVhP3pQwFLMcL32o8JQjsa7RHTk8yM64H6--M3hCH-IQiRwpDyx3def2PgKv_oo66RsbsgP7IX-jGRgFoiZ5lkiQIoMA1jDXrjqJpTRD-5ul8KFVNbzSH1rxRPk0pu6H4MxVxod8rpuG6Xs6EX8WpF6C2adLCMq5yDgKVbCfd35THKbnSxt5ENTTX_K1FENQF-wLcZbYHtDfpzhVUbDZ1n3HfveWw0es1HdvshAt-J5pYCU_BuxkXA"/>
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="@agency.Name visual" src="@(string.IsNullOrEmpty(agency.LogoUrl) ? "https://lh3.googleusercontent.com/aida-public/AB6AXuC8OeEiECbxBMCzmVnvYD7-RlVhP3pQwFLMcL32o8JQjsa7RHTk8yM64H6--M3hCH-IQiRwpDyx3def2PgKv_oo66RsbsgP7IX-jGRgFoiZ5lkiQIoMA1jDXrjqJpTRD-5ul8KFVNbzSH1rxRPk0pu6H4MxVxod8rpuG6Xs6EX8WpF6C2adLCMq5yDgKVbCfd35THKbnSxt5ENTTX_K1FENQF-wLcZbYHtDfpzhVUbDZ1n3HfveWw0es1HdvshAt-J5pYCU_BuxkXA" : agency.LogoUrl)"/>
 <div class="absolute top-4 left-4 bg-white/90 dark:bg-slate-900/90 p-2 rounded-lg shadow-lg">
-<div class="w-12 h-12 bg-slate-100 dark:bg-slate-700 rounded flex items-center justify-center font-bold text-primary">H</div>
+<div class="w-12 h-12 bg-slate-100 dark:bg-slate-700 rounded flex items-center justify-center font-bold text-primary">@agency.Name.Substring(0, 1)</div>
 </div>
-<div class="absolute top-4 right-4 bg-primary text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wider">Top Tier</div>
 </div>
 <div class="p-6 flex flex-col gap-4">
 <div>
-<h3 class="text-xl font-bold text-slate-900 dark:text-white">Hololive Production</h3>
-<p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Owned by Cover Corp. Pioneers of the idol-centric VTuber model.</p>
+<h3 class="text-xl font-bold text-slate-900 dark:text-white">@agency.Name</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-1 line-clamp-2">@agency.Description</p>
 </div>
 <div class="flex flex-wrap gap-2">
-<span class="px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full">Japan</span>
-<span class="px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full">EN</span>
-<span class="px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full">ID</span>
+<span class="px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full">@agency.Region</span>
 </div>
 <div class="grid grid-cols-2 gap-4 py-4 border-y border-slate-100 dark:border-slate-700">
 <div>
 <p class="text-[10px] text-slate-400 dark:text-slate-500 uppercase font-bold tracking-widest">@Localizer["Agencies_Label_Talents"]</p>
-<p class="text-lg font-bold text-slate-800 dark:text-slate-200">80+</p>
+<p class="text-lg font-bold text-slate-800 dark:text-slate-200">@agency.TalentCount</p>
 </div>
 <div>
 <p class="text-[10px] text-slate-400 dark:text-slate-500 uppercase font-bold tracking-widest">@Localizer["Agencies_Label_Focus_Card"]</p>
-<p class="text-lg font-bold text-slate-800 dark:text-slate-200">Idol, Gaming</p>
+<p class="text-lg font-bold text-slate-800 dark:text-slate-200">@agency.Focus</p>
 </div>
 </div>
-<button class="w-full py-2 bg-slate-100 dark:bg-slate-700 hover:bg-primary hover:text-white transition-all rounded-lg font-bold text-sm">                    @Localizer["Agencies_Btn_ViewDirectory"]
-                </button>
+<button class="w-full py-2 bg-slate-100 dark:bg-slate-700 hover:bg-primary hover:text-white transition-all rounded-lg font-bold text-sm">
+                        @Localizer["Agencies_Btn_ViewDirectory"]
+                    </button>
 </div>
 </div>
-<div class="group flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 hover:border-primary/50 transition-all hover:shadow-xl hover:shadow-primary/5">
-<div class="h-40 w-full relative overflow-hidden">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Sleek abstract geometry in dark tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuYNM6diV0xqUilhs0-X83HUslPvDCpacHkk6OOsS_4I5N_RkpRW3ZHBiF-hlwa1Jlt9rSVmnCDhkoU53HMCiTDoSQY2eQVo4lY0IKTjDvjhjgHH5FzSaj5CKGzFk_jRdzuYulVAhGiRR9U2vmCc18-Yuqd3Vb9kNG_D19tmPQe7PhVMbkquoJJVK1I4xFr4XKSMuuGMt4M3D9zSUC-4_y3roqfUQGES5W3qZc28cDbw03kbK69sk2xgGnVGLCl2X8xl608_9OfQU"/>
-<div class="absolute top-4 left-4 bg-white/90 dark:bg-slate-900/90 p-2 rounded-lg shadow-lg">
-<div class="w-12 h-12 bg-slate-100 dark:bg-slate-700 rounded flex items-center justify-center font-bold text-primary">N</div>
-</div>
-<div class="absolute top-4 right-4 bg-primary text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wider">Top Tier</div>
-</div>
-<div class="p-6 flex flex-col gap-4">
-<div>
-<h3 class="text-xl font-bold text-slate-900 dark:text-white">NIJISANJI</h3>
-<p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Managed by ANYCOLOR Inc. Known for its massive roster and variety.</p>
-</div>
-<div class="flex flex-wrap gap-2">
-<span class="px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full">Japan</span>
-<span class="px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full">EN</span>
-<span class="px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full">KR</span>
-</div>
-<div class="grid grid-cols-2 gap-4 py-4 border-y border-slate-100 dark:border-slate-700">
-<div>
-<p class="text-[10px] text-slate-400 dark:text-slate-500 uppercase font-bold tracking-widest">Talents</p>
-<p class="text-lg font-bold text-slate-800 dark:text-slate-200">200+</p>
-</div>
-<div>
-<p class="text-[10px] text-slate-400 dark:text-slate-500 uppercase font-bold tracking-widest">Focus</p>
-<p class="text-lg font-bold text-slate-800 dark:text-slate-200">Variety, Chat</p>
-</div>
-</div>
-<button class="w-full py-2 bg-slate-100 dark:bg-slate-700 hover:bg-primary hover:text-white transition-all rounded-lg font-bold text-sm">View Directory</button>
-</div>
-</div>
-<div class="group flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 hover:border-primary/50 transition-all hover:shadow-xl hover:shadow-primary/5">
-<div class="h-40 w-full relative overflow-hidden">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Dark aesthetic neon light background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB25sYQfkgHeh5dOi7HC6mSVxt9mU68BVhCPBvMsA-Up7SSdoazPKmjg_mITEOkXWK1mJwS3G_pWMt2gL81Dxp54oRhdCNE7gq3YgL0TodmHjO8sohOPD0kefb1KqGi_xYQUPVBNNsv9c-mSzum-eVzIPb4rMB2ScbBMzlwF29PEi7r9sLl61dhMPOfgr46ZViCByTcDndSuT6Q4IEgLm8w6pPKmONIS54EwBnvrZ5csF65ALsrNyCxH3Ebu8TjYdgnKhnCGV6N6JE"/>
-<div class="absolute top-4 left-4 bg-white/90 dark:bg-slate-900/90 p-2 rounded-lg shadow-lg">
-<div class="w-12 h-12 bg-slate-100 dark:bg-slate-700 rounded flex items-center justify-center font-bold text-primary">V</div>
-</div>
-<div class="absolute top-4 right-4 bg-primary/80 text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wider">EN Leader</div>
-</div>
-<div class="p-6 flex flex-col gap-4">
-<div>
-<h3 class="text-xl font-bold text-slate-900 dark:text-white">VShojo</h3>
-<p class="text-sm text-slate-500 dark:text-slate-400 mt-1">A talent-first agency focusing on creator freedom and IP ownership.</p>
-</div>
-<div class="flex flex-wrap gap-2">
-<span class="px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full">US</span>
-<span class="px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full">Japan</span>
-</div>
-<div class="grid grid-cols-2 gap-4 py-4 border-y border-slate-100 dark:border-slate-700">
-<div>
-<p class="text-[10px] text-slate-400 dark:text-slate-500 uppercase font-bold tracking-widest">@Localizer["Agencies_Label_Talents"]</p>
-<p class="text-lg font-bold text-slate-800 dark:text-slate-200">14</p>
-</div>
-<div>
-<p class="text-[10px] text-slate-400 dark:text-slate-500 uppercase font-bold tracking-widest">Focus</p>
-<p class="text-lg font-bold text-slate-800 dark:text-slate-200">Streamer-led</p>
-</div>
-</div>
-<button class="w-full py-2 bg-slate-100 dark:bg-slate-700 hover:bg-primary hover:text-white transition-all rounded-lg font-bold text-sm">View Directory</button>
-</div>
-</div>
-<div class="group flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 hover:border-primary/50 transition-all hover:shadow-xl hover:shadow-primary/5">
-<div class="h-40 w-full relative overflow-hidden">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Abstract fluid design with purple accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVHyULL3HGVssYuD7DxS5hrdgnCJH28XtQ01U6rYy9m5mhcpdTkY1Wy-_3yMm7e6WcRRm_8ETB9TLi-Z2mJZmYSEAVHQH_UjsLhsZfoLdVNIW4kbr_MO-mxVP_q7RPncAKQGMeVLMWF808WcgY4tNrcMrccfyvsCu9ILn2oOt1zNwgQQWeO_F6Zo3suFM0J2GmTnwk2gM7I50SaR4QHjtWhU_n_2RzJxYZIDCkd9LShM6tRiFU6Sa3Xq5g4MYYzJlTK6OaTMsc9nw"/>
-<div class="absolute top-4 left-4 bg-white/90 dark:bg-slate-900/90 p-2 rounded-lg shadow-lg">
-<div class="w-12 h-12 bg-slate-100 dark:bg-slate-700 rounded flex items-center justify-center font-bold text-primary">P</div>
-</div>
-</div>
-<div class="p-6 flex flex-col gap-4">
-<div>
-<h3 class="text-xl font-bold text-slate-900 dark:text-white">Phase Connect</h3>
-<p class="text-sm text-slate-500 dark:text-slate-400 mt-1">A coffee-loving agency known for its quirky and high-energy talents.</p>
-</div>
-<div class="flex flex-wrap gap-2">
-<span class="px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full">Canada</span>
-<span class="px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full">EN</span>
-</div>
-<div class="grid grid-cols-2 gap-4 py-4 border-y border-slate-100 dark:border-slate-700">
-<div>
-<p class="text-[10px] text-slate-400 dark:text-slate-500 uppercase font-bold tracking-widest">Talents</p>
-<p class="text-lg font-bold text-slate-800 dark:text-slate-200">25+</p>
-</div>
-<div>
-<p class="text-[10px] text-slate-400 dark:text-slate-500 uppercase font-bold tracking-widest">Focus</p>
-<p class="text-lg font-bold text-slate-800 dark:text-slate-200">Gaming, Variety</p>
-</div>
-</div>
-<button class="w-full py-2 bg-slate-100 dark:bg-slate-700 hover:bg-primary hover:text-white transition-all rounded-lg font-bold text-sm">View Directory</button>
-</div>
-</div>
-<div class="group flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 hover:border-primary/50 transition-all hover:shadow-xl hover:shadow-primary/5">
-<div class="h-40 w-full relative overflow-hidden">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Smooth colorful gradient mesh background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMiDk1z1AZASVeDYacX0MqhhNljYFUjS9fRTh7oFUKf8WfCkg6GKXrr35ZxJ6AqaFpIvryQSu6JphqbBeJ30E5j3pc4op5LKZeEZ3a3gnTRdtKBjSQjX480TTuSz0ngyxAAAmZAo0ts1tS2xVSjfSwpkZMHO_MS-oK8cy_lXc39VerrNdH54sP5NivIAAf180jT8RCIFSPGuMmv1VASFWU-qbW2asfVlv-iXYYSd8KbfdMNmay_NBbzr-wtIniWtjn_RhHoSQHIhQ"/>
-<div class="absolute top-4 left-4 bg-white/90 dark:bg-slate-900/90 p-2 rounded-lg shadow-lg">
-<div class="w-12 h-12 bg-slate-100 dark:bg-slate-700 rounded flex items-center justify-center font-bold text-primary">7</div>
-</div>
-</div>
-<div class="p-6 flex flex-col gap-4">
-<div>
-<h3 class="text-xl font-bold text-slate-900 dark:text-white">774 inc.</h3>
-<p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Multi-group agency including AniMare and HoneyStrap.</p>
-</div>
-<div class="flex flex-wrap gap-2">
-<span class="px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full">Japan</span>
-</div>
-<div class="grid grid-cols-2 gap-4 py-4 border-y border-slate-100 dark:border-slate-700">
-<div>
-<p class="text-[10px] text-slate-400 dark:text-slate-500 uppercase font-bold tracking-widest">Talents</p>
-<p class="text-lg font-bold text-slate-800 dark:text-slate-200">30+</p>
-</div>
-<div>
-<p class="text-[10px] text-slate-400 dark:text-slate-500 uppercase font-bold tracking-widest">Focus</p>
-<p class="text-lg font-bold text-slate-800 dark:text-slate-200">Entertainment</p>
-</div>
-</div>
-<button class="w-full py-2 bg-slate-100 dark:bg-slate-700 hover:bg-primary hover:text-white transition-all rounded-lg font-bold text-sm">View Directory</button>
-</div>
-</div>
+}
 <div class="flex flex-col items-center justify-center bg-primary/5 border-2 border-dashed border-primary/30 rounded-xl p-8 text-center gap-4 hover:bg-primary/10 transition-colors group cursor-pointer">
 <div class="size-16 bg-white dark:bg-slate-800 rounded-full flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
 <span class="material-symbols-outlined text-3xl text-primary">add_circle</span>

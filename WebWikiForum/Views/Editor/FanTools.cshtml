@@ -30,34 +30,31 @@
 <div class="flex flex-col md:flex-row gap-4 items-center">
 <div class="relative w-full md:max-w-md">
 <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
-<input class="w-full bg-white dark:bg-slate-800 border-primary/20 rounded-lg pl-10 pr-4 py-3 focus:border-primary focus:ring-primary" placeholder="Search fan tools..." type="text"/>
+<input data-search-input="fantools" class="w-full bg-white dark:bg-slate-800 border-primary/20 rounded-lg pl-10 pr-4 py-3 focus:border-primary focus:ring-primary" placeholder="Search fan tools..." type="text"/>
 </div>
 <div class="flex gap-2 w-full overflow-x-auto pb-2 md:pb-0 scrollbar-hide">
-<button class="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg whitespace-nowrap">
+<button data-category-tab="all" class="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg whitespace-nowrap">
 <span class="material-symbols-outlined text-sm">filter_list</span>
                                 All Tools
                             </button>
-<button class="flex items-center gap-2 bg-white dark:bg-slate-800 border border-primary/20 px-4 py-2 rounded-lg whitespace-nowrap hover:bg-primary/5">
+<button data-category-tab="avatar" class="flex items-center gap-2 bg-white dark:bg-slate-800 border border-primary/20 px-4 py-2 rounded-lg whitespace-nowrap hover:bg-primary/5">
 <span class="material-symbols-outlined text-sm">face</span>
                                 Avatar Creation
                             </button>
-<button class="flex items-center gap-2 bg-white dark:bg-slate-800 border border-primary/20 px-4 py-2 rounded-lg whitespace-nowrap hover:bg-primary/5">
-<span class="material-symbols-outlined text-sm">videocam</span>
+<button data-category-tab="streaming" class="flex items-center gap-2 bg-white dark:bg-slate-800 border border-primary/20 px-4 py-2 rounded-lg whitespace-nowrap hover:bg-primary/5">
                                 Streaming Assets
                             </button>
-<button class="flex items-center gap-2 bg-white dark:bg-slate-800 border border-primary/20 px-4 py-2 rounded-lg whitespace-nowrap hover:bg-primary/5">
-<span class="material-symbols-outlined text-sm">translate</span>
+<button data-category-tab="translation" class="flex items-center gap-2 bg-white dark:bg-slate-800 border border-primary/20 px-4 py-2 rounded-lg whitespace-nowrap hover:bg-primary/5">
                                 Translation
                             </button>
-<button class="flex items-center gap-2 bg-white dark:bg-slate-800 border border-primary/20 px-4 py-2 rounded-lg whitespace-nowrap hover:bg-primary/5">
-<span class="material-symbols-outlined text-sm">auto_stories</span>
+<button data-category-tab="wiki" class="flex items-center gap-2 bg-white dark:bg-slate-800 border border-primary/20 px-4 py-2 rounded-lg whitespace-nowrap hover:bg-primary/5">
                                 Wiki Helpers
                             </button>
 </div>
 </div>
 </div>
 <div class="space-y-12">
-<section>
+<section data-tool-section="avatar" data-search-target="fantools">
 <div class="flex items-center justify-between mb-6">
 <h2 class="text-2xl font-bold flex items-center gap-3">
 <span class="material-symbols-outlined text-primary">draw</span>
@@ -136,7 +133,7 @@
 </div>
 </div>
 </section>
-<section>
+<section data-tool-section="streaming" data-search-target="fantools">
 <div class="flex items-center justify-between mb-6">
 <h2 class="text-2xl font-bold flex items-center gap-3">
 <span class="material-symbols-outlined text-primary">auto_fix_high</span>

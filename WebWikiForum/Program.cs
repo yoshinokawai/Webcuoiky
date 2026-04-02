@@ -41,9 +41,19 @@ using (var scope = app.Services.CreateScope())
         if (!db.Agencies.Any())
         {
             db.Agencies.AddRange(
-                new Agency { Name = "Hololive Production", LogoUrl = "" },
-                new Agency { Name = "Nijisanji", LogoUrl = "" },
-                new Agency { Name = "VShojo", LogoUrl = "" }
+                new Agency { Name = "Hololive Production", LogoUrl = "https://upload.wikimedia.org/wikipedia/commons/e/e6/Hololive_Production_logo.png", Region = "Japan", Focus = "Idol, Gaming", Description = "Pioneers of the idol-centric VTuber model.", TalentCount = 80 },
+                new Agency { Name = "NIJISANJI", LogoUrl = "https://upload.wikimedia.org/wikipedia/commons/e/e3/ANYCOLOR_Inc_logo.png", Region = "Japan", Focus = "Variety, Chat", Description = "Known for its massive roster and variety of streamers.", TalentCount = 200 },
+                new Agency { Name = "VShojo", LogoUrl = "https://upload.wikimedia.org/wikipedia/en/thumb/0/07/VShojo_logo.png/250px-VShojo_logo.png", Region = "US", Focus = "Streamer-led", Description = "A talent-first agency focusing on creator freedom and IP ownership.", TalentCount = 14 }
+            );
+            db.SaveChanges();
+        }
+
+        if (!db.Vtubers.Any(v => v.IsIndependent))
+        {
+            db.Vtubers.AddRange(
+                new Vtuber { Name = "Shylily", Age = 24, DebutDate = new DateTime(2022, 1, 11), Birthday = "January 11", AvatarUrl = "https://lh3.googleusercontent.com/aida-public/AB6AXuBcwqJmvI6QRhBoLIvALsqquG49TuN0g7UBVPkcoSNKKy9vCM6dN1_VrD4lpd7U7We5VcrAh0xyQ_pF7ZRJWi9xRe8pGEIncoMe78B52USIo5eq2dLHcBLuwQnGtyHU8D72b_9E38dspsL3CjHGaANusFkBvfszldyi6RRlEtSikuNm-3uo1iLiB8rsBRVu4OLrXFtBNSTOLkpM5nOLYuI9Gy3NJhrtjwM8Y0D1FbZ8Ql6_6Tu4OtbFSTWFM7Wrl_dk-1yA5gTxYzE", Status = "Approved", Language = "English / German", Region = "Europe", Tags = "Gaming, Variety", IsIndependent = true, Lore = "Orca VTuber based in Europe. Known for her high-energy variety streams and unique design." },
+                new Vtuber { Name = "Filian", DebutDate = new DateTime(2021, 4, 24), AvatarUrl = "https://lh3.googleusercontent.com/aida-public/AB6AXuBLcFhjHtjvzfH9HT0uyxEO4mplc9JkEGXfi1MnszXpPgz-H-1CS4K9FZax9I9083Zckab7YXk20adSR7Q_5LfKmPviKvXCVeYL9RtOKNnz8fI3XXho5RWpEodVI02yigAjGlCjh342VeCiWWpylsw-uU5pCvPgUIplbQUCvgPpQj6fuctbDVW5_6exvXAzN-mts65aHDeZbcBazd057xYaMteCOujQcZKiWf2qaw-0Anezonht6bnpCJJIk1SjqXciVc3Am2Srpus", Status = "Approved", Language = "English", Region = "NA", Tags = "Gaming, Comedy", IsIndependent = true, Lore = "Chaotic variety streamer known for VR games and parkour. Member of the 'Mint' group." },
+                new Vtuber { Name = "Saruei", DebutDate = new DateTime(2021, 9, 17), AvatarUrl = "https://lh3.googleusercontent.com/aida-public/AB6AXuBnDVC6BsqkBhuyYJ2kxvNRzMuz2BoVcrDDRYoZ-XDrUcuUCjUjIwKH_IrTPr-vvyhbapDPqoxn9oNy8WNPEhGV17Ky7l8VWAtiGzmyNQ6bxxiZdjpnCnhASG4JFBD2WNOvlNMW6kXEzSXaimOBfa3fNBfZfLWGS5fqYGvXJMweu829GGAZFVMOSbgs1pHVeUmsL3N7yr1WISZiQKBToiJ_oX9PjaZu7-b2YweBF_BrHnQm8GmRK7_pK8yT1g9tNKSdhCqyhQpGib8", Status = "Approved", Language = "English / French", Region = "Europe", Tags = "Art, ASMR", IsIndependent = true, Lore = "French illustrator and VTuber. Known for her art streams and unique dark aesthetic." }
             );
             db.SaveChanges();
         }

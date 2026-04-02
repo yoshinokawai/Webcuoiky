@@ -27,6 +27,16 @@ namespace WebWikiForum.Models
         [StringLength(50)]
         public string Status { get; set; } = "Pending";
 
+        [StringLength(50)]
+        public string Language { get; set; }
+
+        [StringLength(50)]
+        public string Region { get; set; }
+
+        public string Tags { get; set; } // Comma-separated list
+
+        public bool IsIndependent { get; set; } = true;
+
         // Foreign Key
         public int? AgencyId { get; set; }
         [ForeignKey("AgencyId")]

@@ -14,6 +14,16 @@ namespace WebWikiForum.Models
 
         public string LogoUrl { get; set; }
 
+        [StringLength(50)]
+        public string Region { get; set; }
+
+        [StringLength(50)]
+        public string Focus { get; set; }
+
+        public string Description { get; set; }
+
+        public int TalentCount { get; set; }
+
         public virtual ICollection<Vtuber> Vtubers { get; set; }
     }
 }
