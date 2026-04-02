@@ -99,7 +99,6 @@ namespace WebWikiForum.Controllers
             {
                 try
                 {
-                    // Gọi Service để lưu file ảnh vật lý
                     string fileName = await _fileService.UploadImageAsync(avatarFile, "vtubers");
 
                     var vtuber = new Vtuber
@@ -111,14 +110,18 @@ namespace WebWikiForum.Controllers
                         Lore = model.Lore,
                         AvatarUrl = string.IsNullOrEmpty(fileName) ? null : "/uploads/vtubers/" + fileName,
                         AgencyId = model.AgencyId,
-                        Status = "Pending" // Trạng thái chờ Admin duyệt
+                        IsIndependent = model.AgencyId == null,
+                        Region = model.Region,
+                        Language = model.Language,
+                        Tags = model.Tags,
+                        Status = "Approved" // Auto-approve for demo
                     };
 
                     _context.Add(vtuber);
                     await _context.SaveChangesAsync();
                     
-                    TempData["SuccessMessage"] = $"VTuber '{vtuber.Name}' has been created successfully and is pending approval!";
-                    return RedirectToAction("Dashboard", "Admin");
+                    TempData["SuccessMessage"] = $"VTuber '{vtuber.Name}' has been created successfully!";
+                    return RedirectToAction("Independent");
                 }
                 catch (Exception ex)
                 {
@@ -127,6 +130,75 @@ namespace WebWikiForum.Controllers
             }
             ViewBag.Agencies = await _context.Agencies.ToListAsync();
             return View(model);
+        }
+
+        [Authorize]
+        [HttpGet]
+        public IActionResult CreateAgency()
+        {
+            return View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> CreateAgency(AgencyViewModel model, IFormFile logoFile)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    string fileName = await _fileService.UploadImageAsync(logoFile, "agencies");
+
+                    var agency = new Agency
+                    {
+                        Name = model.Name,
+                        Region = model.Region,
+                        Focus = model.Focus,
+                        Description = model.Description,
+                        TalentCount = model.TalentCount,
+                        LogoUrl = string.IsNullOrEmpty(fileName) ? null : "/uploads/agencies/" + fileName
+                    };
+
+                    _context.Add(agency);
+                    await _context.SaveChangesAsync();
+
+                    TempData["SuccessMessage"] = $"Agency '{agency.Name}' has been created successfully!";
+                    return RedirectToAction("Agencies");
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", $"Error saving Agency: {ex.InnerException?.Message ?? ex.Message}");
+                }
+            }
+            return View(model);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> DeleteAgency(int id)
+        {
+            var agency = await _context.Agencies.FindAsync(id);
+            if (agency == null) return NotFound();
+
+            try {
+                var relatedVtubers = await _context.Vtubers.Where(v => v.AgencyId == id).ToListAsync();
+                foreach (var vtuber in relatedVtubers) {
+                    vtuber.AgencyId = null;
+                    vtuber.IsIndependent = true;
+                }
+                
+                if (!string.IsNullOrEmpty(agency.LogoUrl)) {
+                    string filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", agency.LogoUrl.TrimStart('/'));
+                    if (System.IO.File.Exists(filePath)) System.IO.File.Delete(filePath);
+                }
+
+                _context.Agencies.Remove(agency);
+                await _context.SaveChangesAsync();
+                TempData["SuccessMessage"] = $"Agency '{agency.Name}' deleted.";
+            } catch (Exception ex) {
+                TempData["ErrorMessage"] = "Error deleting: " + ex.Message;
+            }
+            return RedirectToAction("Agencies");
         }
 
         [HttpGet]
@@ -139,6 +211,18 @@ namespace WebWikiForum.Controllers
             if (vtuber == null)
             {
                 return NotFound();
+            }
+
+            // Increment ViewCount
+            try
+            {
+                vtuber.ViewCount++;
+                _context.Update(vtuber);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception)
+            {
+                // Silently fail if view count update fails to not block the user
             }
             
             return View(vtuber);

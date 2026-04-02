@@ -1,0 +1,83 @@
+@model WebWikiForum.ViewModels.AgencyViewModel
+
+@{
+    ViewData["Title"] = "Add New Agency";
+    Layout = "_Layout";
+}
+
+<div class="max-w-3xl mx-auto px-4 py-12">
+    <div class="mb-8">
+        <h1 class="text-3xl font-black tracking-tight text-slate-900 dark:text-white mb-2">Add New Agency</h1>
+        <p class="text-slate-500 dark:text-slate-400">Help expand the database by adding a new VTuber agency or group.</p>
+    </div>
+
+    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm p-6 sm:p-8">
+        <form asp-action="CreateAgency" asp-controller="Wiki" method="post" enctype="multipart/form-data" class="space-y-6">
+            @Html.AntiForgeryToken()
+            <div asp-validation-summary="ModelOnly" class="text-red-500 text-sm mb-4"></div>
+
+            <!-- Logo Upload -->
+            <div>
+                <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Agency Logo</label>
+                <div class="mt-1 flex flex-col justify-center items-center px-6 pt-5 pb-6 border-2 border-slate-300 dark:border-slate-700 border-dashed rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors cursor-pointer" onclick="document.getElementById('logoFile').click()">
+                    <div class="space-y-1 text-center">
+                        <span class="material-symbols-outlined text-slate-400 text-4xl mb-2">add_photo_alternate</span>
+                        <div class="text-sm text-slate-600 dark:text-slate-400 flex justify-center items-center gap-1">
+                            <span class="font-medium text-primary hover:text-primary-dark">Upload logo</span>
+                            <span>or drag and drop</span>
+                            <input id="logoFile" name="logoFile" type="file" class="sr-only" accept="image/*" onchange="document.getElementById('fileNameDisplay').textContent = this.files[0] ? 'Selected: ' + this.files[0].name : 'PNG, JPG, GIF up to 5MB';">
+                        </div>
+                        <p id="fileNameDisplay" class="text-xs text-slate-500 dark:text-slate-500 mt-2">Square logo recommended (PNG/JPG)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Name -->
+                <div class="md:col-span-2">
+                    <label asp-for="Name" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Agency Name</label>
+                    <input asp-for="Name" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white transition-colors text-slate-900 dark:text-white" placeholder="e.g. Hololive Production" />
+                    <span asp-validation-for="Name" class="text-red-500 text-xs mt-1 block"></span>
+                </div>
+
+                <!-- Region -->
+                <div>
+                    <label asp-for="Region" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Region</label>
+                    <select asp-for="Region" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white transition-colors text-slate-900 dark:text-white">
+                        <option value="Japan">Japan</option>
+                        <option value="United States">United States</option>
+                        <option value="Canada">Canada</option>
+                        <option value="Vietnam">Vietnam</option>
+                        <option value="Indonesia">Indonesia</option>
+                        <option value="Global">Global / Multiple</option>
+                    </select>
+                </div>
+
+                <!-- Focus -->
+                <div>
+                    <label asp-for="Focus" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Core Focus</label>
+                    <input asp-for="Focus" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white transition-colors text-slate-900 dark:text-white" placeholder="e.g. Idol, Gaming, Variety" />
+                </div>
+
+                <!-- TalentCount -->
+                <div>
+                    <label asp-for="TalentCount" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Estimated Talents</label>
+                    <input asp-for="TalentCount" type="number" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white transition-colors text-slate-900 dark:text-white" placeholder="e.g. 50" />
+                </div>
+            </div>
+
+            <!-- Description -->
+            <div>
+                <label asp-for="Description" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Description</label>
+                <textarea asp-for="Description" rows="5" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white transition-colors resize-none text-slate-900 dark:text-white" placeholder="Tell us more about this agency..."></textarea>
+            </div>
+
+            <div class="pt-4 flex justify-end gap-3">
+                <a asp-action="Agencies" class="px-6 py-3 border border-slate-200 dark:border-slate-700 rounded-full font-bold text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">Cancel</a>
+                <button type="submit" class="px-8 py-3 bg-primary text-white font-bold rounded-full shadow-lg shadow-primary/25 hover:brightness-110 transition-all">
+                    Submit Agency
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

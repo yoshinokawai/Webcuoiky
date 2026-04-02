@@ -36,6 +36,8 @@ namespace WebWikiForum.Models
         public string Tags { get; set; } // Comma-separated list
 
         public bool IsIndependent { get; set; } = true;
+        
+        public int ViewCount { get; set; } = 0;
 
         // Foreign Key
         public int? AgencyId { get; set; }

@@ -1,8 +1,149 @@
+@model IEnumerable<WebWikiForum.Models.Vtuber>
 @{
-    ViewData["Title"] = "Top Talent";
+    ViewData["Title"] = "Top Talents - Leaderboard";
+    var top3 = Model.Take(3).ToList();
+    var others = Model.Skip(3).ToList();
 }
-<div class="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8 text-center min-h-[50vh] flex flex-col items-center justify-center">
-    <span class="material-symbols-outlined text-6xl text-primary mb-4">stars</span>
-    <h1 class="text-4xl font-black text-slate-900 dark:text-white mb-2">Top Talents</h1>
-    <p class="text-slate-600 dark:text-slate-400">This module is currently under construction. Please check back later!</p>
+
+<div class="relative min-h-screen py-16 px-4 sm:px-6 lg:px-8">
+    <!-- Background Patterns -->
+    <div class="fixed inset-0 wiki-pattern pointer-events-none opacity-10"></div>
+    <div class="fixed inset-0 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none"></div>
+
+    <div class="max-w-6xl mx-auto relative z-10">
+        <div class="text-center mb-16">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-black uppercase tracking-widest mb-4">
+                <span class="material-symbols-outlined text-lg">hotel_class</span>
+                Hall of Fame
+            </div>
+            <h1 class="text-5xl md:text-6xl font-black text-slate-900 dark:text-white mb-6 tracking-tight">
+                Top <span class="text-primary italic">Talents</span>
+            </h1>
+            <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-lg">
+                Discover the most popular VTubers across the community, ranked by total profile views and engagement.
+            </p>
+        </div>
+
+        @if (!Model.Any())
+        {
+            <div class="text-center py-20 bg-white/50 dark:bg-slate-900/50 backdrop-blur-xl rounded-3xl border border-slate-200 dark:border-slate-800">
+                <span class="material-symbols-outlined text-6xl text-slate-300 dark:text-slate-700 mb-4">analytics</span>
+                <p class="text-slate-500 font-bold">No ranking data available yet. Be the first to explore the Wiki!</p>
+            </div>
+        }
+        else
+        {
+            <!-- Podium Section -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 items-end">
+                @if (top3.Count >= 2)
+                {
+                    <!-- 2nd Place -->
+                    <div class="order-2 md:order-1">
+                        <div class="relative group bg-white dark:bg-slate-900 rounded-3xl p-6 border-2 border-slate-200 dark:border-slate-800 hover:border-slate-300 transition-all text-center shadow-lg shadow-slate-200/50 dark:shadow-none translate-y-4">
+                            <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 bg-slate-200 dark:bg-slate-700 rounded-full flex items-center justify-center font-black text-slate-600 dark:text-slate-300 border-4 border-white dark:border-slate-900 shadow-lg">2</div>
+                            <div class="w-24 h-24 mx-auto rounded-full p-1 bg-gradient-to-tr from-slate-400 to-slate-100 mb-4 overflow-hidden ring-4 ring-white dark:ring-slate-900">
+                                <img src="@(string.IsNullOrEmpty(top3[1].AvatarUrl) ? "https://via.placeholder.com/150" : top3[1].AvatarUrl)" class="w-full h-full object-cover rounded-full" />
+                            </div>
+                            <h3 class="text-xl font-black text-slate-900 dark:text-white mb-1">@top3[1].Name</h3>
+                            <p class="text-xs font-bold text-primary uppercase mb-4">@(top3[1].Agency?.Name ?? "Independent")</p>
+                            <div class="flex items-center justify-center gap-2 text-slate-500 font-bold bg-slate-100 dark:bg-slate-800 py-2 rounded-xl">
+                                <span class="material-symbols-outlined text-sm">visibility</span>
+                                @top3[1].ViewCount.ToString("N0")
+                            </div>
+                            <a href="/Wiki/Details/@top3[1].Id" class="absolute inset-0 z-10"></a>
+                        </div>
+                    </div>
+                }
+
+                @if (top3.Count >= 1)
+                {
+                    <!-- 1st Place -->
+                    <div class="order-1 md:order-2">
+                        <div class="relative group bg-white dark:bg-slate-900 rounded-3xl p-8 border-4 border-primary/20 hover:border-primary/40 transition-all text-center shadow-2xl shadow-primary/20 scale-105 md:scale-110 z-20">
+                            <div class="absolute -top-8 left-1/2 -translate-x-1/2 w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center font-black text-yellow-900 border-4 border-white dark:border-slate-900 shadow-xl animate-bounce">
+                                <span class="material-symbols-outlined text-3xl">workspace_premium</span>
+                            </div>
+                            <div class="w-32 h-32 mx-auto rounded-full p-1 bg-gradient-to-tr from-yellow-400 to-yellow-100 mb-4 overflow-hidden ring-4 ring-white dark:ring-slate-900">
+                                <img src="@(string.IsNullOrEmpty(top3[0].AvatarUrl) ? "https://via.placeholder.com/150" : top3[0].AvatarUrl)" class="w-full h-full object-cover rounded-full shadow-inner" />
+                            </div>
+                            <h3 class="text-2xl font-black text-slate-900 dark:text-white mb-1">@top3[0].Name</h3>
+                            <p class="text-sm font-bold text-primary uppercase mb-6 tracking-widest">@(top3[0].Agency?.Name ?? "Independent")</p>
+                            <div class="flex items-center justify-center gap-3 text-primary font-black bg-primary/10 py-3 rounded-2xl">
+                                <span class="material-symbols-outlined">visibility</span>
+                                @top3[0].ViewCount.ToString("N0") views
+                            </div>
+                            <a href="/Wiki/Details/@top3[0].Id" class="absolute inset-0 z-10"></a>
+                        </div>
+                    </div>
+                }
+
+                @if (top3.Count >= 3)
+                {
+                    <!-- 3rd Place -->
+                    <div class="order-3">
+                        <div class="relative group bg-white dark:bg-slate-900 rounded-3xl p-6 border-2 border-orange-200 dark:border-orange-900 hover:border-orange-300 transition-all text-center shadow-lg shadow-orange-100/50 dark:shadow-none translate-y-8">
+                            <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 bg-orange-200 dark:bg-orange-800 rounded-full flex items-center justify-center font-black text-orange-700 dark:text-orange-200 border-4 border-white dark:border-slate-900 shadow-lg">3</div>
+                            <div class="w-24 h-24 mx-auto rounded-full p-1 bg-gradient-to-tr from-orange-400 to-orange-100 mb-4 overflow-hidden ring-4 ring-white dark:ring-slate-900">
+                                <img src="@(string.IsNullOrEmpty(top3[2].AvatarUrl) ? "https://via.placeholder.com/150" : top3[2].AvatarUrl)" class="w-full h-full object-cover rounded-full" />
+                            </div>
+                            <h3 class="text-xl font-black text-slate-900 dark:text-white mb-1">@top3[2].Name</h3>
+                            <p class="text-xs font-bold text-primary uppercase mb-4">@(top3[2].Agency?.Name ?? "Independent")</p>
+                            <div class="flex items-center justify-center gap-2 text-slate-500 font-bold bg-slate-100 dark:bg-slate-800 py-2 rounded-xl">
+                                <span class="material-symbols-outlined text-sm">visibility</span>
+                                @top3[2].ViewCount.ToString("N0")
+                            </div>
+                            <a href="/Wiki/Details/@top3[2].Id" class="absolute inset-0 z-10"></a>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <!-- Leaderboard Table -->
+            @if (others.Any())
+            {
+                <div class="bg-white dark:bg-slate-900/80 backdrop-blur-xl rounded-[2.5rem] border border-slate-200/60 dark:border-slate-800/60 overflow-hidden shadow-2xl shadow-slate-200/40 dark:shadow-none">
+                    <div class="p-8 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                        <h2 class="text-2xl font-black text-slate-900 dark:text-white">Community Rankings</h2>
+                        <span class="text-sm font-bold text-slate-400 uppercase tracking-widest">Global Standings</span>
+                    </div>
+                    
+                    <div class="divide-y divide-slate-100 dark:divide-slate-800">
+                        @for (int i = 0; i < others.Count; i++)
+                        {
+                            var talent = others[i];
+                            <div class="group relative flex items-center gap-4 p-5 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all cursor-pointer">
+                                <div class="w-10 text-center text-slate-400 font-black italic">@(i + 4)</div>
+                                <div class="w-12 h-12 rounded-full overflow-hidden ring-2 ring-slate-100 dark:ring-slate-800 group-hover:ring-primary/40 transition-all">
+                                    <img src="@(string.IsNullOrEmpty(talent.AvatarUrl) ? "https://via.placeholder.com/150" : talent.AvatarUrl)" class="w-full h-full object-cover" />
+                                </div>
+                                <div class="flex-grow">
+                                    <div class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">@talent.Name</div>
+                                    <div class="text-xs font-bold text-slate-500 uppercase">@(talent.Agency?.Name ?? "Independent")</div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="flex items-center gap-2 text-slate-900 dark:text-white font-black">
+                                        <span class="material-symbols-outlined text-[18px] text-primary">visibility</span>
+                                        @talent.ViewCount.ToString("N0")
+                                    </div>
+                                    <div class="text-[10px] text-slate-400 font-bold uppercase">Total Views</div>
+                                </div>
+                                <a href="/Wiki/Details/@talent.Id" class="absolute inset-0"></a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        }
+    </div>
 </div>
+
+@section Styles {
+    <style>
+        .wiki-pattern {
+            background-color: transparent;
+            background-image: radial-gradient(#994ce6 0.5px, transparent 0.5px), radial-gradient(#994ce6 0.5px, transparent 0.5px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+        }
+    </style>
+}
