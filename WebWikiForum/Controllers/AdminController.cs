@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 using WebWikiForum.Data;
 using WebWikiForum.Models;
 using WebWikiForum.Services;
+using WebWikiForum.ViewModels;
 using System.IO;
+using System;
 
 namespace WebWikiForum.Controllers
 {
@@ -22,15 +24,26 @@ namespace WebWikiForum.Controllers
             _fileService = fileService;
         }
 
+
         // GET: Admin/Dashboard
         public async Task<IActionResult> Dashboard()
         {
-            // Lấy tất cả VTuber kèm theo Entity Agency (để hiển thị tên Agency nếu có)
             var vtubers = await _context.Vtubers
                                         .Include(v => v.Agency)
                                         .OrderByDescending(v => v.Id)
                                         .ToListAsync();
-            return View(vtubers);
+
+            var agencies = await _context.Agencies
+                                        .OrderByDescending(a => a.Id)
+                                        .ToListAsync();
+
+            var viewModel = new AdminDashboardViewModel
+            {
+                Vtubers = vtubers,
+                Agencies = agencies
+            };
+
+            return View(viewModel);
         }
 
         // POST: Admin/Approve/5
@@ -46,6 +59,24 @@ namespace WebWikiForum.Controllers
             // Allowed statuses: Active, Graduated, Hiatus
             vtuber.Status = status;
             _context.Update(vtuber);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Dashboard));
+        }
+
+        // POST: Admin/ApproveAgency/5
+        [HttpPost]
+        public async Task<IActionResult> ApproveAgency(int id, string status = "Active")
+        {
+            var agency = await _context.Agencies.FindAsync(id);
+            if (agency == null)
+            {
+                return NotFound();
+            }
+
+            // Allowed statuses: Active, Defunct
+            agency.Status = status;
+            _context.Update(agency);
             await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(Dashboard));

@@ -23,6 +23,9 @@ namespace WebWikiForum.Models
         public string Description { get; set; }
 
         public int TalentCount { get; set; }
+        
+        [StringLength(20)]
+        public string Status { get; set; } = "Active";
 
         public virtual ICollection<Vtuber> Vtubers { get; set; }
     }

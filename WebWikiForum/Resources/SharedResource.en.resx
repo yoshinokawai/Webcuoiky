@@ -362,4 +362,6 @@
   <data name="Explore_Tab_Langs" xml:space="preserve"><value>Languages</value></data>
   <data name="Explore_Showing_Results" xml:space="preserve"><value>Showing {0} Results</value></data>
   <data name="Explore_No_Results" xml:space="preserve"><value>No VTubers found matching your filters.</value></data>
+  <data name="Nav_Search_Suggested" xml:space="preserve"><value>Suggested</value></data>
+  <data name="Nav_Search_NoResults" xml:space="preserve"><value>No results found</value></data>
 </root>

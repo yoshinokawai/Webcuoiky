@@ -72,46 +72,43 @@
 <span class="material-symbols-outlined text-primary">groups</span>
                 @Localizer["Home_BrowseAgency"]
             </h2>
-<a class="text-sm font-bold text-primary hover:text-primary-dark transition-colors" href="#">@Localizer["Home_ViewAllAgencies"]</a>
+<a class="text-sm font-bold text-primary hover:text-primary-dark transition-colors" href="/Wiki/Agencies">@Localizer["Home_ViewAllAgencies"]</a>
 </div>
-<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-<a class="group flex flex-col items-center justify-center p-6 rounded-2xl bg-white dark:bg-surface-dark border border-slate-100 dark:border-slate-800 hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition-all duration-300" href="#">
-<div class="w-16 h-16 mb-3 rounded-full bg-[#2fb4d6]/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-<span class="font-black text-[#2fb4d6] text-xs">HOLO</span>
-</div>
-<span class="font-bold text-slate-700 dark:text-slate-200 group-hover:text-primary">@Localizer["Home_Agency_Holo"]</span>
-</a>
-<a class="group flex flex-col items-center justify-center p-6 rounded-2xl bg-white dark:bg-surface-dark border border-slate-100 dark:border-slate-800 hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition-all duration-300" href="#">
-<div class="w-16 h-16 mb-3 rounded-full bg-[#ff7300]/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-<span class="font-black text-[#ff7300] text-xs">2434</span>
-</div>
-<span class="font-bold text-slate-700 dark:text-slate-200 group-hover:text-primary">@Localizer["Home_Agency_Niji"]</span>
-</a>
-<a class="group flex flex-col items-center justify-center p-6 rounded-2xl bg-white dark:bg-surface-dark border border-slate-100 dark:border-slate-800 hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition-all duration-300" href="#">
-<div class="w-16 h-16 mb-3 rounded-full bg-[#ff0066]/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-<span class="font-black text-[#ff0066] text-xs">VS</span>
-</div>
-<span class="font-bold text-slate-700 dark:text-slate-200 group-hover:text-primary">@Localizer["Home_Agency_VShojo"]</span>
-</a>
-<a class="group flex flex-col items-center justify-center p-6 rounded-2xl bg-white dark:bg-surface-dark border border-slate-100 dark:border-slate-800 hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition-all duration-300" href="#">
-<div class="w-16 h-16 mb-3 rounded-full bg-[#8a2be2]/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-<span class="font-black text-[#8a2be2] text-xs">PHASE</span>
-</div>
-<span class="font-bold text-slate-700 dark:text-slate-200 group-hover:text-primary">@Localizer["Home_Agency_Phase"]</span>
-</a>
-<a class="group flex flex-col items-center justify-center p-6 rounded-2xl bg-white dark:bg-surface-dark border border-slate-100 dark:border-slate-800 hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition-all duration-300" href="#">
-<div class="w-16 h-16 mb-3 rounded-full bg-[#ffaccf]/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-<span class="font-black text-[#ffaccf] text-xs">IDOL</span>
-</div>
-<span class="font-bold text-slate-700 dark:text-slate-200 group-hover:text-primary">@Localizer["Home_Agency_Idol"]</span>
-</a>
-<a class="group flex flex-col items-center justify-center p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition-all duration-300" href="#">
-<div class="w-16 h-16 mb-3 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center group-hover:scale-110 transition-transform">
-<span class="material-symbols-outlined text-slate-500">person_search</span>
-</div>
-<span class="font-bold text-slate-700 dark:text-slate-200 group-hover:text-primary">@Localizer["Home_Agency_Indie"]</span>
-</a>
-</div>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            @if (ViewBag.Agencies != null)
+            {
+                var colors = new[] { "#2fb4d6", "#ff7300", "#ff0066", "#8a2be2", "#ffaccf" };
+                int colorIdx = 0;
+                foreach (var agency in ViewBag.Agencies as List<WebWikiForum.Models.Agency>)
+                {
+                    var color = colors[colorIdx % colors.Length];
+                    colorIdx++;
+
+                    // Generate a 4-letter short name for the badge
+                    string shortName = agency.Name.Length >= 4 ? agency.Name.Substring(0, 4).ToUpper() : agency.Name.ToUpper();
+                    if (agency.Name.Contains(" "))
+                    {
+                        var parts = agency.Name.Split(' ');
+                        shortName = "";
+                        foreach (var p in parts.Take(2)) if (p.Length > 0) shortName += p[0];
+                        if (shortName.Length < 4 && parts.Length > 0 && parts[0].Length > 1) shortName = parts[0].Substring(0, Math.Min(4, parts[0].Length)).ToUpper();
+                    }
+
+                    <a class="group flex flex-col items-center justify-center p-6 rounded-2xl bg-white dark:bg-surface-dark border border-slate-100 dark:border-slate-800 hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition-all duration-300" href="/Wiki/AgencyDetails/@agency.Id">
+                        <div class="w-16 h-16 mb-3 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform" style="background-color: @(color)1a;">
+                            <span class="font-black text-xs" style="color: @color;">@shortName</span>
+                        </div>
+                        <span class="font-bold text-slate-700 dark:text-slate-200 group-hover:text-primary text-center line-clamp-1">@agency.Name</span>
+                    </a>
+                }
+            }
+            <a class="group flex flex-col items-center justify-center p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition-all duration-300" href="/Home/Explore?tab=Independent">
+                <div class="w-16 h-16 mb-3 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <span class="material-symbols-outlined text-slate-500">person_search</span>
+                </div>
+                <span class="font-bold text-slate-700 dark:text-slate-200 group-hover:text-primary">@Localizer["Home_Agency_Indie"]</span>
+            </a>
+        </div>
 </section>
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
 <div class="lg:col-span-6 space-y-6">
@@ -120,7 +117,7 @@
 <span class="material-symbols-outlined text-primary">newspaper</span>
                     @Localizer["Home_RecentNews"]
                 </h2>
-<a class="text-sm font-bold text-primary hover:text-primary/80" href="#">@Localizer["Home_ViewAll"]</a>
+<a class="text-sm font-bold text-primary hover:text-primary/80" href="/Home/VirtualEvents">@Localizer["Home_ViewAll"]</a>
 </div>
 <div class="space-y-4">
 <article class="group flex gap-4 p-4 rounded-2xl bg-white dark:bg-surface-dark border border-slate-100 dark:border-slate-800 hover:border-primary/30 hover:shadow-soft transition-all cursor-pointer">
@@ -193,63 +190,29 @@
                     @Localizer["Home_Trending"]
                 </h2>
 </div>
-<div class="space-y-3 bg-white dark:bg-surface-dark p-4 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
-<div class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer group">
-<span class="text-lg font-black text-primary w-6 text-center italic">1</span>
-<div class="relative w-10 h-10 rounded-full overflow-hidden ring-2 ring-slate-100 dark:ring-slate-700">
-<img alt="Profile" class="w-full h-full object-cover" data-alt="Female portrait representing VTuber avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDC9nhIowxDOUHnjmX6tKW0uiMzBPLNWTUWrPXXeplL78T3L6YieJ_j6ZKcQKqeK5ZCmEi11JqAKqp42VjvFp4Rs1aQF22leTUe5EH4bcvZ1gMk0IBWZZGWxL8rqSx2jEsgizTng620nLsclu5iYQZmKhJxp-SUZBGwipa76Z-JZWlLxyKlK2O02ZHfm6ev_Cmoo16JuYn4yTgGCas8Ui3ILYLMd0s2HDcfMYp-rzLouc-Lh47hfSKSuRCW5aPQsy010rzARkK9l8w"/>
-</div>
-<div class="flex-1 min-w-0">
-<h4 class="text-sm font-bold text-slate-900 dark:text-white truncate group-hover:text-primary">Gawr Gura</h4>
-<p class="text-[10px] text-slate-500 font-medium uppercase tracking-wide truncate">Hololive EN</p>
-</div>
-<span class="material-symbols-outlined text-green-500 text-[18px]">arrow_drop_up</span>
-</div>
-<div class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer group">
-<span class="text-lg font-bold text-slate-400 w-6 text-center italic">2</span>
-<div class="relative w-10 h-10 rounded-full overflow-hidden ring-2 ring-slate-100 dark:ring-slate-700">
-<img alt="Profile" class="w-full h-full object-cover" data-alt="Male portrait representing VTuber avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXF4rABwNtvzPKc8aUbS20uIExyNNVHxnqlD53KZmsvkLwe7HAjOAiTMh6O-au_z8itQAU3dW7NnFUFb82jv5otfnyNy-Pc29zNfOe8EgmkAjiCT3lsZ51mAg3Z1HGryMIp9rqVZqKzDLWFZ8atOllyTsPOvqM9X-CWaovAID6DbFTqmHSlIkLO3mfkOX7CXFJfyd6Hxdlss74DY0wgOm-u20FX99uakNCxBUc1QSav-ZCkawtvCxtsgT9RJ-ESrGEvwqKJ3YH4z8"/>
-</div>
-<div class="flex-1 min-w-0">
-<h4 class="text-sm font-bold text-slate-900 dark:text-white truncate group-hover:text-primary">Kuzuha</h4>
-<p class="text-[10px] text-slate-500 font-medium uppercase tracking-wide truncate">Nijisanji JP</p>
-</div>
-<span class="material-symbols-outlined text-slate-300 text-[18px]">remove</span>
-</div>
-<div class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer group">
-<span class="text-lg font-bold text-slate-400 w-6 text-center italic">3</span>
-<div class="relative w-10 h-10 rounded-full overflow-hidden ring-2 ring-slate-100 dark:ring-slate-700">
-<img alt="Profile" class="w-full h-full object-cover" data-alt="Female portrait representing VTuber avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRYPHOCPOfcDiosbPAmKR2uSPPOh9UilXqR8Ru6hJX6OFfa5ysOeoqBGUCOxyIVJ4uO4I_rRuXJMohQQS7KL1XUG4mWKmfKPWGl0DcvjgUJNx5o-aHz3wXjKzJCyaT-_egou_4Lf66VwPBwmbcz252XS-hPBHbpketMVxesrqhYXgZ4yo75oM_MXNPE6_AYRbBf40DgNdwv__Hiwau5m2dk1TM4Bn4DC8l9pV7VDlToe78smctfIwrB87vQeWoWdHbABXw7BopjzI"/>
-</div>
-<div class="flex-1 min-w-0">
-<h4 class="text-sm font-bold text-slate-900 dark:text-white truncate group-hover:text-primary">Ironmouse</h4>
-<p class="text-[10px] text-slate-500 font-medium uppercase tracking-wide truncate">VShojo</p>
-</div>
-<span class="material-symbols-outlined text-green-500 text-[18px]">arrow_drop_up</span>
-</div>
-<div class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer group">
-<span class="text-lg font-bold text-slate-400 w-6 text-center italic">4</span>
-<div class="relative w-10 h-10 rounded-full overflow-hidden ring-2 ring-slate-100 dark:ring-slate-700">
-<img alt="Profile" class="w-full h-full object-cover" data-alt="Female portrait representing VTuber avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBh7y1WZvuwhoVWx1DoQoFvGeaAgGnhXJeqtz3BYjbGV-vZTwOVu_3D4jR3wa4dN6f5g8mFVdMa0qn2W0Bg_epNxqbPC-XgeSzLFGJwanx586sSac_TWPRNtgJ1M5yPIhhSUudwXdkCMuEI_6J8Q5Q7PB0gpMUxXwXiKwx4cpbFAnBh6iEZKCx8mpq33SOKgtYVV1NuYhoOXs4i7s9tYLFbmhIgwc2xAWC-_eU9imOUXpA7T9o70MSefnYI2sC3sWWrE3xH7pS5TCc"/>
-</div>
-<div class="flex-1 min-w-0">
-<h4 class="text-sm font-bold text-slate-900 dark:text-white truncate group-hover:text-primary">Usada Pekora</h4>
-<p class="text-[10px] text-slate-500 font-medium uppercase tracking-wide truncate">Hololive JP</p>
-</div>
-<span class="material-symbols-outlined text-red-400 text-[18px]">arrow_drop_down</span>
-</div>
-<div class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer group">
-<span class="text-lg font-bold text-slate-400 w-6 text-center italic">5</span>
-<div class="relative w-10 h-10 rounded-full overflow-hidden ring-2 ring-slate-100 dark:ring-slate-700">
-<img alt="Profile" class="w-full h-full object-cover" data-alt="Female portrait representing VTuber avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5XzDS1UL7xP06ta-dvh480TV9pT_6vjFdhHwSAdwZvKNL_Q91UlWZp_3I6Pu19IPc_QFoTKS8FWLXvD6icHzQKHXnbrSdqfAiUtvZYEd3Tn-IAc2i8NxGkLtkBwNeV92OrrYdAOFN0f_pmWDAa3TDmCnBCpm_2DmJRXLzeceheOeDV5vyLLV3LqbiI77DhvfodjyklTa9EqX9kGU4T-0gnAhAx5hS7rZCOS2fRAuCqejfOcqOoLP5z3oiGnDXsn0Q9em_Pl2eT5E"/>
-</div>
-<div class="flex-1 min-w-0">
-<h4 class="text-sm font-bold text-slate-900 dark:text-white truncate group-hover:text-primary">Shylily</h4>
-<p class="text-[10px] text-slate-500 font-medium uppercase tracking-wide truncate">@Localizer["Dash_Independent"]</p>
-</div>
-<span class="material-symbols-outlined text-green-500 text-[18px]">arrow_drop_up</span>
-</div>
-</div>
+                <div class="space-y-3 bg-white dark:bg-surface-dark p-4 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
+                    @if (ViewBag.Trending != null)
+                    {
+                        int rank = 1;
+                        foreach (var vtuber in ViewBag.Trending as List<WebWikiForum.Models.Vtuber>)
+                        {
+                            <a href="/Wiki/Details/@vtuber.Id" class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer group">
+                                <span class="text-lg font-black @(rank == 1 ? "text-primary" : "text-slate-400") w-6 text-center italic">@rank</span>
+                                <div class="relative w-10 h-10 rounded-full overflow-hidden ring-2 ring-slate-100 dark:ring-slate-700">
+                                    <img src="@(string.IsNullOrEmpty(vtuber.AvatarUrl) ? "/images/default-avatar.png" : vtuber.AvatarUrl)" alt="@vtuber.Name" class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <h4 class="text-sm font-bold text-slate-900 dark:text-white truncate group-hover:text-primary">@vtuber.Name</h4>
+                                    <p class="text-[10px] text-slate-500 font-medium uppercase tracking-wide truncate">
+                                        @(vtuber.Agency != null ? vtuber.Agency.Name : Localizer["Dash_Independent"].Value)
+                                    </p>
+                                </div>
+                                <span class="material-symbols-outlined text-green-500 text-[18px]">arrow_drop_up</span>
+                            </a>
+                            rank++;
+                        }
+                    }
+                </div>
 </div>
 <div class="lg:col-span-3 space-y-6">
 <div class="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-slate-800">

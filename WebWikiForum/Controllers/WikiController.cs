@@ -134,6 +134,75 @@ namespace WebWikiForum.Controllers
 
         [Authorize]
         [HttpGet]
+        public async Task<IActionResult> EditAgency(int id)
+        {
+            var agency = await _context.Agencies.FindAsync(id);
+            if (agency == null) return NotFound();
+
+            var model = new AgencyViewModel
+            {
+                Name = agency.Name,
+                Region = agency.Region,
+                Focus = agency.Focus,
+                Description = agency.Description,
+                TalentCount = agency.TalentCount
+            };
+
+            ViewBag.CurrentLogo = agency.LogoUrl;
+            ViewBag.Id = agency.Id;
+            return View(model);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> EditAgency(int id, AgencyViewModel model, IFormFile? logoFile)
+        {
+            if (ModelState.IsValid)
+            {
+                var agency = await _context.Agencies.FindAsync(id);
+                if (agency == null) return NotFound();
+
+                try
+                {
+                    if (logoFile != null && logoFile.Length > 0)
+                    {
+                        // Delete old logo if exists
+                        if (!string.IsNullOrEmpty(agency.LogoUrl))
+                        {
+                            string oldFileName = Path.GetFileName(agency.LogoUrl);
+                            _fileService.DeleteFile(oldFileName, "agencies");
+                        }
+
+                        // Upload new logo
+                        string fileName = await _fileService.UploadImageAsync(logoFile, "agencies");
+                        agency.LogoUrl = "/uploads/agencies/" + fileName;
+                    }
+
+                    agency.Name = model.Name;
+                    agency.Region = model.Region;
+                    agency.Focus = model.Focus;
+                    agency.Description = model.Description;
+                    agency.TalentCount = model.TalentCount;
+
+                    _context.Update(agency);
+                    await _context.SaveChangesAsync();
+
+                    TempData["SuccessMessage"] = $"Agency '{agency.Name}' updated successfully!";
+                    return RedirectToAction("Agencies");
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", $"Error updating Agency: {ex.Message}");
+                }
+            }
+
+            ViewBag.CurrentLogo = (await _context.Agencies.FindAsync(id))?.LogoUrl;
+            ViewBag.Id = id;
+            return View(model);
+        }
+
+        [Authorize]
+        [HttpGet]
         public IActionResult CreateAgency()
         {
             return View();
@@ -334,6 +403,40 @@ namespace WebWikiForum.Controllers
             }
             
             return View(vtuber);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> SearchSuggest(string query)
+        {
+            if (string.IsNullOrEmpty(query)) return Json(new List<object>());
+
+            var results = await _context.Vtubers
+                .Include(v => v.Agency)
+                .Where(v => v.Name.Contains(query) || (v.Agency != null && v.Agency.Name.Contains(query)))
+                .Take(8)
+                .Select(v => new {
+                    id = v.Id,
+                    name = v.Name,
+                    avatarUrl = v.AvatarUrl,
+                    agencyName = v.Agency != null ? v.Agency.Name : "Independent"
+                })
+                .ToListAsync();
+
+            return Json(results);
+        }
+        [HttpGet]
+        public async Task<IActionResult> AgencyDetails(int id)
+        {
+            var agency = await _context.Agencies
+                .Include(a => a.Vtubers)
+                .FirstOrDefaultAsync(a => a.Id == id);
+
+            if (agency == null)
+            {
+                return NotFound();
+            }
+
+            return View(agency);
         }
     }
 }

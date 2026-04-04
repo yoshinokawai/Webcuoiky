@@ -360,4 +360,6 @@
   <data name="Status_Graduated" xml:space="preserve"><value>Đã tốt nghiệp</value></data>
   <data name="Status_Hiatus" xml:space="preserve"><value>Tạm nghỉ</value></data>
   <data name="Status_Pending" xml:space="preserve"><value>Chờ duyệt</value></data>
+  <data name="Nav_Search_Suggested" xml:space="preserve"><value>Gợi ý</value></data>
+  <data name="Nav_Search_NoResults" xml:space="preserve"><value>Không tìm thấy kết quả</value></data>
 </root>

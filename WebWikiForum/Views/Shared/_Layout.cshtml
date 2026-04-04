@@ -34,431 +34,250 @@
             background-color: #f7f6f8;
             background-image: radial-gradient(#994ce6 0.5px, transparent 0.5px), radial-gradient(#994ce6 0.5px, #f7f6f8 0.5px);
             background-size: 20px 20px;
-            background-position: 0 0, 10px 10px;
-            opacity: 0.05;
-            position: absolute;
-            inset: 0;
-            z-index: -1;
+            background-position: 0 0, 10px 10px; opacity: 0.05; position: absolute; inset: 0; z-index: -1;
         }
-        .group:hover .group-hover\:rotate-180 {
-            transform: rotate(180deg);
-        }
+        .group:hover .group-hover\:rotate-180 { transform: rotate(180deg); }
     </style>
     @await RenderSectionAsync("Styles", required: false)
 </head>
-<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased min-h-screen flex flex-col">
     <header class="sticky top-0 z-50 w-full border-b border-slate-200/60 dark:border-slate-800/60 bg-surface-light/80 dark:bg-surface-dark/80 backdrop-blur-xl supports-[backdrop-filter]:bg-surface-light/60">
-
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-<div class="flex items-center justify-between h-16 gap-4">
-
-<a href="/Home/Index" class="flex items-center gap-2 flex-shrink-0">
-
-<div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary text-white shadow-sm ring-4 ring-primary/10">
-
-<span class="material-symbols-outlined text-[20px]">smart_display</span>
-
-</div>
-
-<span class="text-xl font-black tracking-tight text-slate-900 dark:text-white ml-2"><span class="text-primary">VT</span>Wiki</span>
-
-</a>
-
-<nav class="hidden md:flex items-center gap-8">
-
-<a class="flex items-center text-sm font-bold text-primary transition-colors py-2" href="/Home/Index">@Localizer["Nav_Home"]</a>
-
-<div class="relative group">
-
-<a href="/Home/Explore" class="flex items-center gap-1 text-sm font-bold @(ViewContext.RouteData.Values["Action"]?.ToString() == "Explore" ? "text-primary border-b-2 border-primary" : "text-slate-700 dark:text-slate-300 hover:text-primary") transition-colors py-2">
-        @Localizer["Nav_Explore"]
-        <span class="material-symbols-outlined text-[16px] group-hover:rotate-180 transition-transform">expand_more</span>
-</a>
-
-<div class="absolute top-full left-0 w-48 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[60]">
-
-<div class="bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700 rounded-xl shadow-xl p-2 space-y-1">
-
-<a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Wiki/Agencies">@Localizer["Nav_Agencies"]</a>
-<a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Wiki/Independent">@Localizer["Nav_Independent"]</a>
-<a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Home/VirtualEvents">@Localizer["Nav_VirtualEvents"]</a>
-<a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Editor/FanTools">@Localizer["Nav_FanTools"]</a>
-<a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Home/TopTalent">@Localizer["Nav_TopTalents"]</a>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="relative group">
-
-<button class="flex items-center gap-1 text-sm font-bold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors py-2">
-
-        @Localizer["Nav_Community"]
-
-        <span class="material-symbols-outlined text-[16px] group-hover:rotate-180 transition-transform">expand_more</span>
-
-</button>
-
-<div class="absolute top-full left-0 w-48 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[60]">
-
-<div class="bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700 rounded-xl shadow-xl p-2 space-y-1">
-
-<a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Home/RecentChanges">@Localizer["Nav_RecentChanges"]</a>
-<a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Help/Guidelines">@Localizer["Nav_Guidelines"]</a>
-<a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Editor/EditorHub">@Localizer["Nav_EditorHub"]</a>
-<a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Forum/WikiForum">@Localizer["Nav_WikiForum"]</a>
-<a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Home/JoinDiscord">@Localizer["Nav_Discord"]</a>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="relative group">
-
-<button class="flex items-center gap-1 text-sm font-bold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors py-2">
-
-        @Localizer["Nav_Wiki"]
-
-        <span class="material-symbols-outlined text-[16px] group-hover:rotate-180 transition-transform">expand_more</span>
-
-</button>
-
-<div class="absolute top-full left-0 w-48 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[60]">
-
-<div class="bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700 rounded-xl shadow-xl p-2 space-y-1">
-
-<a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Home/AboutUs">@Localizer["Nav_AboutUs"]</a>
-<a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Admin/Dashboard">@Localizer["Nav_Dashboard"]</a>
-<a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Wiki/Translation">@Localizer["Nav_Translation"]</a>
-<a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Help/HelpCenter">@Localizer["Nav_HelpCenter"]</a>
-<a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Home/Donate">@Localizer["Nav_Donate"]</a>
-
-</div>
-
-</div>
-
-</div>
-
-
-</nav>
-
-<div class="flex items-center gap-4 flex-1 justify-end max-w-none">
-
-<div class="relative hidden sm:block w-full max-w-md group z-50">
-
-<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-
-<span class="material-symbols-outlined text-slate-400 text-[20px]">search</span>
-
-</div>
-
-<input class="peer block w-full pl-10 pr-3 py-2 border border-slate-200 dark:border-slate-700/50 rounded-full leading-5 bg-slate-50/80 dark:bg-slate-800/80 text-slate-900 font-medium tracking-wide dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary sm:text-sm transition-all shadow-sm" placeholder="@Localizer["Nav_Search"]" type="text"/>
-
-<div class="absolute top-full left-0 w-full mt-2 bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-slate-700 shadow-xl opacity-0 invisible peer-focus:opacity-100 peer-focus:visible transition-all duration-200 origin-top transform">
-
-<div class="p-2 space-y-1">
-
-<div class="px-3 py-1.5 text-xs font-semibold text-slate-500 uppercase tracking-wider">Suggested</div>
-
-<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
-
-<div class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden">
-
-<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJXS6pnrCTJ1X6EeK8lpH4SeMzj7O6AcMO4pPEYFu0ZiZn-hh_Awm2sgjqWiNLeiF88V72yUPAIUU5vAD0VaG__pUGUgfWG2roQ7tDhJzq7bUz11WXo9711X0TETqKlFyv-RcONydBXFgdf7z7phcEQdOMRXfKhRec_wHz69-zBnprVgLny3QJCbkL8-OhhFdQfISz2kjB9T_22D56CznAcjOmC5cJY81DiDYB4ifo-VXXLfIZsay__FyuOfaSh-hOm4aKdBojRn8"/>
-
-</div>
-
-<div class="flex-1">
-
-<div class="text-sm font-medium text-slate-900 dark:text-white">Hoshimachi Suisei</div>
-
-<div class="text-xs text-slate-500">Hololive</div>
-
-</div>
-
-</a>
-
-<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
-
-<div class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden">
-
-<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDC9nhIowxDOUHnjmX6tKW0uiMzBPLNWTUWrPXXeplL78T3L6YieJ_j6ZKcQKqeK5ZCmEi11JqAKqp42VjvFp4Rs1aQF22leTUe5EH4bcvZ1gMk0IBWZZGWxL8rqSx2jEsgizTng620nLsclu5iYQZmKhJxp-SUZBGwipa76Z-JZWlLxyKlK2O02ZHfm6ev_Cmoo16JuYn4yTgGCas8Ui3ILYLMd0s2HDcfMYp-rzLouc-Lh47hfSKSuRCW5aPQsy010rzARkK9l8w"/>
-
-</div>
-
-<div class="flex-1">
-
-<div class="text-sm font-medium text-slate-900 dark:text-white">Gawr Gura</div>
-
-<div class="text-xs text-slate-500">@Localizer["Home_Agency_Holo_EN"]</div>
-
-</div>
-
-</a>
-
-<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
-
-<div class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center">
-
-<span class="material-symbols-outlined text-lg">search</span>
-
-</div>
-
-<div class="flex-1">
-
-<div class="text-sm font-medium text-slate-900 dark:text-white">@string.Format(Localizer["Nav_Search_Result"].Value, "suisei")</div>
-
-</div>
-
-</a>
-
-</div>
-
-</div>
-
-</div>
-<!-- Language Switcher -->
-<div class="relative group z-50">
-    <button class="flex items-center gap-1 text-sm font-bold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors h-10 px-3 rounded-full border border-slate-200 dark:border-slate-700/50 hover:bg-slate-50 dark:hover:bg-slate-800/80">
-        <span class="material-symbols-outlined text-[18px]">language</span>
-        <span class="material-symbols-outlined text-[16px] group-hover:rotate-180 transition-transform">expand_more</span>
-    </button>
-    <div class="absolute top-full right-0 w-32 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 origin-top transform">
-        <div class="bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700 rounded-xl shadow-xl p-1">
-            <form action="/Language/ChangeLanguage" method="post" class="flex flex-col">
-                <input type="hidden" name="returnUrl" value="@Context.Request.Path" />
-                <button type="submit" name="culture" value="en" class="w-full text-left px-3 py-2 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors font-medium">English</button>
-                <button type="submit" name="culture" value="vi" class="w-full text-left px-3 py-2 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors font-medium">Tiếng Việt</button>
-                <button type="submit" name="culture" value="ja" class="w-full text-left px-3 py-2 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors font-medium">日本語</button>
-            </form>
-        </div>
-    </div>
-</div>
-
-<div class="flex items-center gap-3">
-
-@if (User.Identity.IsAuthenticated)
-{
-<div class="flex items-center gap-3">
-    <div class="hidden sm:flex items-center gap-2 h-10 px-4 rounded-full bg-slate-100 dark:bg-slate-800 text-sm font-bold text-slate-700 dark:text-slate-300">
-        <span class="material-symbols-outlined text-primary text-[18px]">person</span>
-        @User.Identity.Name
-    </div>
-    <a href="/Account/Logout" class="flex items-center justify-center h-10 px-5 rounded-full border border-slate-200 dark:border-slate-700/50 text-sm font-bold text-slate-700 dark:text-slate-300 hover:bg-red-50 hover:text-red-600 hover:border-red-200 transition-colors shadow-sm gap-2">
-        <span class="material-symbols-outlined text-[18px]">logout</span>
-        @Localizer["Nav_Logout"]
-    </a>
-</div>
-}
-else
-{
-<a href="/Account/Login" class="hidden sm:flex items-center justify-center h-10 px-6 rounded-full border border-slate-200 dark:border-slate-700/50 text-sm font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors shadow-sm">
-                        @Localizer["Nav_Login"]
-                    </a>
-
-<a href="/Account/CreateAccount" class="flex items-center justify-center h-10 px-6 rounded-full bg-primary text-white text-sm font-bold shadow-sm shadow-primary/20 hover:bg-primary-dark transition-colors">
-                        @Localizer["Nav_Signup"]
-                    </a>
-}
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</header>
-    @RenderBody()
-    <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-surface-dark mt-auto">
-
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-
-<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-
-<div class="col-span-1 md:col-span-1">
-
-<a href="/Home/Index" class="flex items-center gap-2 mb-4">
-
-<span class="material-symbols-outlined text-primary text-[24px]">smart_display</span>
-
-<span class="text-lg font-bold text-slate-900 dark:text-white"><span class="text-primary">VT</span>Wiki</span>
-
-</a>
-
-<p class="text-sm text-slate-500 dark:text-slate-400 mb-4 leading-relaxed">
-                    @Localizer["Footer_Desc"]
-                </p>
-
-<div class="flex gap-4">
-
-<a class="text-slate-400 hover:text-primary transition-colors" href="#">
-
-<svg class="h-5 w-5" fill="currentColor" viewbox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path></svg>
-
-</a>
-
-<a class="text-slate-400 hover:text-primary transition-colors" href="#">
-
-<svg class="h-5 w-5" fill="currentColor" viewbox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg>
-
-</a>
-
-</div>
-
-</div>
-
-<div class="col-span-1">
-
-<h3 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-4">@Localizer["Footer_Wiki"]</h3>
-
-<ul class="space-y-2">
-
-<li><a class="text-sm text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="/Home/AboutUs">About Us</a></li>
-
-<li><a class="text-sm text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="/Help/Guidelines">Guidelines</a></li>
-
-<li><a class="text-sm text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="/Editor/EditorHub">Editors Hub</a></li>
-
-<li><a class="text-sm text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="/Home/Index">Random Page</a></li>
-
-</ul>
-
-</div>
-
-<div class="col-span-1">
-
-<h3 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-4">@Localizer["Footer_Explore"]</h3>
-
-<ul class="space-y-2">
-
-<li><a class="text-sm text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="/Wiki/Agencies">Agencies</a></li>
-
-<li><a class="text-sm text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="/Wiki/Independent">Indie VTubers</a></li>
-
-<li><a class="text-sm text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="/Home/VirtualEvents">Events</a></li>
-
-<li><a class="text-sm text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="/Home/Donate">Merchandise</a></li>
-
-</ul>
-
-</div>
-
-<div class="col-span-1">
-
-<h3 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-4">@Localizer["Footer_Subscribe"]</h3>
-
-<p class="text-sm text-slate-500 dark:text-slate-400 mb-3">@Localizer["Footer_Subscribe_Desc"]</p>
-
-<div class="flex gap-2">
-
-<input class="w-full px-4 py-2 text-sm border border-slate-200 dark:border-slate-700/50 rounded-full bg-slate-50 dark:bg-slate-800/80 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all font-medium" placeholder="@Localizer["Footer_Email_Placeholder"]" type="email"/>
-
-<button class="px-5 py-2 bg-primary text-white text-sm font-bold rounded-full shadow-sm hover:bg-primary-dark transition-colors">
-
-                        @Localizer["Footer_Go"]
-
-                    </button>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="mt-8 pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
-
-<p class="text-xs text-slate-400">@Localizer["Footer_Rights"]</p>
-
-<div class="flex gap-6">
-
-<a class="text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-300" href="/Home/Privacy">@Localizer["Footer_Privacy"]</a>
-
-<a class="text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-300" href="/Home/Privacy">@Localizer["Footer_Terms"]</a>
-
-</div>
-
-</div>
-
-</div>
-
-</footer>
-
-    <!-- Global Confirmation Modal -->
-    <div id="confirmModal" class="fixed inset-0 z-[100] hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-            <div id="modalOverlay" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm transition-opacity opacity-0 duration-300" aria-hidden="true"></div>
-            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-            <div id="modalContent" class="inline-block align-bottom bg-white dark:bg-surface-dark rounded-2xl text-left overflow-hidden shadow-2xl shadow-primary/20 transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full transform opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95 duration-300 border border-slate-200 dark:border-slate-800">
-                <div class="bg-white dark:bg-surface-dark px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                    <div class="sm:flex sm:items-start">
-                        <div class="mx-auto flex-shrink-0 flex items-center justify-center h-14 w-14 rounded-full bg-red-100 dark:bg-red-900/30 sm:mx-0 sm:h-12 sm:w-12">
-                            <span class="material-symbols-outlined text-red-600 dark:text-red-400">warning</span>
-                        </div>
-                        <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                            <h3 class="text-xl leading-6 font-black text-slate-900 dark:text-white" id="modal-title">Confirm Action</h3>
-                            <div class="mt-2">
-                                <p id="modal-message" class="text-sm text-slate-500 dark:text-slate-400">Are you sure you want to proceed?</p>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 gap-4">
+                <!-- Left: Logo -->
+                <a href="/Home/Index" class="flex items-center gap-2 flex-shrink-0">
+                    <div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary text-white shadow-sm ring-4 ring-primary/10">
+                        <span class="material-symbols-outlined text-[20px]">smart_display</span>
+                    </div>
+                    <span class="text-xl font-black tracking-tight text-slate-900 dark:text-white ml-2"><span class="text-primary">VT</span>Wiki</span>
+                </a>
+
+                <!-- Middle: Navigation -->
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a class="text-sm font-bold @(ViewContext.RouteData.Values["Action"]?.ToString() == "Index" ? "text-primary border-b-2 border-primary" : "text-slate-700 dark:text-slate-300 hover:text-primary") transition-colors py-2" href="/Home/Index">@Localizer["Nav_Home"]</a>
+                    
+                    <div class="relative group">
+                        <a href="/Home/Explore" class="flex items-center gap-1 text-sm font-bold @(ViewContext.RouteData.Values["Action"]?.ToString() == "Explore" ? "text-primary border-b-2 border-primary" : "text-slate-700 dark:text-slate-300 hover:text-primary") transition-colors py-2">
+                            @Localizer["Nav_Explore"]
+                            <span class="material-symbols-outlined text-[16px] group-hover:rotate-180 transition-transform">expand_more</span>
+                        </a>
+                        <div class="absolute top-full left-0 w-48 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[60]">
+                            <div class="bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700 rounded-xl shadow-xl p-2 space-y-1">
+                                <a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Wiki/Agencies">@Localizer["Nav_Agencies"]</a>
+                                <a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Wiki/Independent">@Localizer["Nav_Independent"]</a>
+                                <a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Home/VirtualEvents">@Localizer["Nav_VirtualEvents"]</a>
+                                <a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Editor/FanTools">@Localizer["Nav_FanTools"]</a>
+                                <a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Home/TopTalent">@Localizer["Nav_TopTalents"]</a>
                             </div>
                         </div>
                     </div>
+
+                    <div class="relative group">
+                        <button class="flex items-center gap-1 text-sm font-bold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors py-2">
+                            @Localizer["Nav_Community"]
+                            <span class="material-symbols-outlined text-[16px] group-hover:rotate-180 transition-transform">expand_more</span>
+                        </button>
+                        <div class="absolute top-full left-0 w-48 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[60]">
+                            <div class="bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700 rounded-xl shadow-xl p-2 space-y-1">
+                                <a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Forum/Community">Community Hub</a>
+                                <a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Forum/WikiForum">Forum</a>
+                                <a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Home/JoinDiscord">Discord</a>
+                                <a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Home/RecentChanges">Recent Changes</a>
+                                <a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Help/Guidelines">Guidelines</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative group">
+                        <button class="flex items-center gap-1 text-sm font-bold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors py-2">
+                            @Localizer["Nav_Wiki"]
+                            <span class="material-symbols-outlined text-[16px] group-hover:rotate-180 transition-transform">expand_more</span>
+                        </button>
+                        <div class="absolute top-full left-0 w-48 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[60]">
+                            <div class="bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700 rounded-xl shadow-xl p-2 space-y-1">
+                                <a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Home/AboutUs">About Us</a>
+                                <a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Admin/Dashboard">Dashboard</a>
+                                <a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Wiki/Translation">Translation</a>
+                                <a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Help/HelpCenter">Help Center</a>
+                                <a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Home/Donate">Donate</a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+
+                <!-- Right: Search & Profile -->
+                <div class="flex items-center gap-3 flex-1 justify-end">
+                    <!-- Dynamic Search -->
+                    <div class="relative hidden sm:block w-full max-w-[240px] group z-[70]">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <span class="material-symbols-outlined text-slate-400 text-[18px]">search</span>
+                        </div>
+                        <input id="searchInput" class="peer block w-full pl-9 pr-3 py-1.5 border border-slate-200 dark:border-slate-700/50 rounded-full leading-5 bg-slate-50/80 dark:bg-slate-800/80 text-slate-900 font-medium dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary text-xs transition-all shadow-sm" placeholder="@Localizer["Nav_Search"]" type="text" autocomplete="off"/>
+                        
+                        <div id="searchDropdown" class="absolute top-full left-0 w-full mt-2 bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-slate-700 shadow-xl opacity-0 invisible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 origin-top transform z-[100]">
+                            <div id="searchResults" class="p-2 space-y-1 max-h-[400px] overflow-y-auto">
+                                <div class="px-3 py-1.5 text-xs font-semibold text-slate-500 uppercase tracking-wider">@Localizer["Nav_Search_Suggested"]</div>
+                                <div id="searchLoading" class="hidden px-3 py-4 text-center">
+                                    <div class="inline-block animate-spin rounded-full h-4 w-4 border-2 border-primary border-t-transparent"></div>
+                                </div>
+                                <div id="searchEmpty" class="hidden px-3 py-4 text-center text-sm text-slate-500">
+                                    @Localizer["Nav_Search_NoResults"]
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Language -->
+                    <div class="relative group z-50">
+                        <button class="flex items-center gap-1 text-sm font-bold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors h-10 px-3 rounded-full border border-slate-200 dark:border-slate-700/50 hover:bg-slate-50 dark:hover:bg-slate-800/80">
+                            <span class="material-symbols-outlined text-[18px]">language</span>
+                            <span class="material-symbols-outlined text-[16px] group-hover:rotate-180 transition-transform">expand_more</span>
+                        </button>
+                        <div class="absolute top-full right-0 w-32 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 origin-top transform">
+                            <div class="bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700 rounded-xl shadow-xl p-1">
+                                <form action="/Language/ChangeLanguage" method="post" class="flex flex-col">
+                                    <input type="hidden" name="returnUrl" value="@Context.Request.Path" />
+                                    <button type="submit" name="culture" value="en" class="w-full text-left px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg">English</button>
+                                    <button type="submit" name="culture" value="vi" class="w-full text-left px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg">Tiếng Việt</button>
+                                    <button type="submit" name="culture" value="ja" class="w-full text-left px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg">日本語</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Profile -->
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <div class="flex items-center gap-2">
+                            <div class="hidden md:flex items-center gap-2 h-10 px-4 rounded-full bg-slate-100 dark:bg-slate-800 text-sm font-bold text-slate-700 dark:text-slate-300">
+                                <span class="material-symbols-outlined text-primary text-[18px]">person</span>
+                                @User.Identity.Name
+                            </div>
+                            <a href="/Account/Logout" class="flex items-center h-10 px-4 rounded-full border border-slate-200 dark:border-slate-700/50 text-sm font-bold text-slate-700 dark:text-slate-300 hover:text-primary hover:border-primary/30 transition-colors gap-2">
+                                <span class="material-symbols-outlined text-[18px]">logout</span>
+                                <span class="hidden sm:inline">@Localizer["Nav_Logout"]</span>
+                            </a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="flex items-center gap-2">
+                            <a href="/Account/Login" class="hidden sm:flex items-center h-10 px-5 rounded-full border border-slate-200 dark:border-slate-700/50 text-sm font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">@Localizer["Nav_Login"]</a>
+                            <a href="/Account/CreateAccount" class="flex items-center h-10 px-5 rounded-full bg-primary text-white text-sm font-bold hover:bg-primary-dark transition-colors">@Localizer["Nav_Signup"]</a>
+                        </div>
+                    }
                 </div>
-                <div class="bg-slate-50 dark:bg-slate-800/50 px-4 py-4 sm:px-6 sm:flex sm:flex-row-reverse gap-2">
-                    <button type="button" id="modalConfirmBtn" class="w-full inline-flex justify-center rounded-full border border-transparent shadow-sm px-6 py-2.5 bg-red-600 text-sm font-bold text-white hover:bg-red-700 transition-colors sm:ml-3 sm:w-auto">Confirm</button>
-                    <button type="button" id="modalCancelBtn" class="mt-3 w-full inline-flex justify-center rounded-full border border-slate-300 dark:border-slate-600 shadow-sm px-6 py-2.5 bg-white dark:bg-slate-700 text-sm font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-600 transition-colors sm:mt-0 sm:ml-3 sm:w-auto">Cancel</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-1">
+        @RenderBody()
+    </main>
+
+    <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-surface-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="col-span-1">
+                    <a href="/Home/Index" class="flex items-center gap-2 mb-4">
+                        <span class="material-symbols-outlined text-primary text-[24px]">smart_display</span>
+                        <span class="text-lg font-bold text-slate-900 dark:text-white"><span class="text-primary">VT</span>Wiki</span>
+                    </a>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">@Localizer["Footer_Desc"]</p>
+                </div>
+                <div>
+                    <h3 class="text-sm font-bold text-slate-900 dark:text-white uppercase mb-4">@Localizer["Footer_Wiki"]</h3>
+                    <ul class="space-y-2">
+                        <li><a class="text-sm text-slate-500 hover:text-primary transition-colors" href="/Home/AboutUs">About Us</a></li>
+                        <li><a class="text-sm text-slate-500 hover:text-primary transition-colors" href="/Help/Guidelines">Guidelines</a></li>
+                        <li><a class="text-sm text-slate-500 hover:text-primary transition-colors" href="/Editor/EditorHub">Editors Hub</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-bold text-slate-900 dark:text-white uppercase mb-4">@Localizer["Footer_Explore"]</h3>
+                    <ul class="space-y-2">
+                        <li><a class="text-sm text-slate-500 hover:text-primary transition-colors" href="/Wiki/Agencies">Agencies</a></li>
+                        <li><a class="text-sm text-slate-500 hover:text-primary transition-colors" href="/Wiki/Independent">Indie VTubers</a></li>
+                        <li><a class="text-sm text-slate-500 hover:text-primary transition-colors" href="/Home/VirtualEvents">Events</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-bold text-slate-900 dark:text-white uppercase mb-4">@Localizer["Footer_Subscribe"]</h3>
+                    <div class="flex gap-2">
+                        <input class="w-full px-4 py-2 text-sm border border-slate-200 dark:border-slate-700/50 rounded-full bg-slate-50 dark:bg-slate-800 text-white focus:outline-none focus:ring-2 focus:ring-primary/50" placeholder="Email" type="email"/>
+                        <button class="px-4 py-2 bg-primary text-white text-sm font-bold rounded-full hover:bg-primary-dark">Go</button>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center text-xs text-slate-400">
+                <p>@Localizer["Footer_Rights"]</p>
+                <div class="flex gap-6">
+                    <a href="/Home/Privacy">@Localizer["Footer_Privacy"]</a>
+                    <a href="/Home/Privacy">@Localizer["Footer_Terms"]</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Global Modal & Toast -->
+    <div id="confirmModal" class="fixed inset-0 z-[100] hidden">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div id="modalOverlay" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm"></div>
+            <div id="modalContent" class="relative bg-white dark:bg-surface-dark p-6 rounded-2xl shadow-2xl max-w-md w-full border border-slate-200 dark:border-slate-800">
+                <h3 class="text-xl font-black text-slate-900 dark:text-white mb-2" id="modal-title">Confirm</h3>
+                <p id="modal-message" class="text-sm text-slate-500 dark:text-slate-400 mb-6">Are you sure?</p>
+                <div class="flex justify-end gap-3">
+                    <button id="modalCancelBtn" class="px-5 py-2 text-sm font-bold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full">Cancel</button>
+                    <button id="modalConfirmBtn" class="px-5 py-2 text-sm font-bold bg-red-600 text-white rounded-full hover:bg-red-700">Confirm</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Global Toast Notifications -->
-    @if (TempData["SuccessMessage"] != null || TempData["ErrorMessage"] != null)
-    {
-        var isError = TempData["ErrorMessage"] != null;
-        var message = isError ? TempData["ErrorMessage"] : TempData["SuccessMessage"];
-        var bgColor = isError ? "bg-red-50" : "bg-green-50";
-        var borderColor = isError ? "border-red-200" : "border-green-200";
-        var shadowColor = isError ? "shadow-red-500/10" : "shadow-green-500/10";
-        var iconColor = isError ? "bg-red-500" : "bg-green-500";
-        var icon = isError ? "error" : "check_circle";
-        var titleColor = isError ? "text-red-800" : "text-green-800";
-        var msgColor = isError ? "text-red-600" : "text-green-600";
-        var btnColor = isError ? "text-red-400 hover:text-red-600" : "text-green-400 hover:text-green-600";
-        var toastTitle = isError ? "Error!" : (Localizer["Dash_Success"].ResourceNotFound ? "Success!" : Localizer["Dash_Success"].Value);
-
-        <div id="global-toast" class="fixed top-20 right-6 z-[100] flex items-center gap-3 px-5 py-4 rounded-2xl @bgColor border @borderColor shadow-2xl @shadowColor transform translate-x-0 transition-all duration-500 ease-out" style="animation: slideInRight 0.5s ease-out, fadeOut 0.5s ease-in 4.5s forwards;">
-            <div class="w-10 h-10 rounded-xl @iconColor flex items-center justify-center shrink-0 shadow-sm">
-                <span class="material-symbols-outlined text-white text-xl">@icon</span>
-            </div>
-            <div class="flex-1">
-                <p class="text-sm font-bold @titleColor">@toastTitle</p>
-                <p class="text-xs @msgColor mt-0.5">@message</p>
-            </div>
-            <button onclick="document.getElementById('global-toast').style.display='none'" class="@btnColor transition-colors ml-2">
-                <span class="material-symbols-outlined text-lg">close</span>
-            </button>
+    @if (TempData["SuccessMessage"] != null || TempData["ErrorMessage"] != null) {
+        var isErr = TempData["ErrorMessage"] != null;
+        var msg = isErr ? TempData["ErrorMessage"] : TempData["SuccessMessage"];
+        <div id="global-toast" class="fixed top-20 right-6 z-[100] flex items-center gap-3 px-5 py-3 rounded-2xl border bg-white dark:bg-surface-dark shadow-2xl scale-100 transition-all duration-300">
+            <span class="material-symbols-outlined @(isErr ? "text-red-500":"text-green-500")">@(isErr ? "error":"check_circle")</span>
+            <div class="text-sm font-medium">@msg</div>
+            <button onclick="this.parentElement.remove()" class="text-slate-400 hover:text-slate-600"><span class="material-symbols-outlined text-sm">close</span></button>
         </div>
+        <script>setTimeout(() => document.getElementById('global-toast')?.remove(), 5000);</script>
     }
-
-    <style>
-        @@keyframes slideInRight {
-            from { transform: translateX(120%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-        @@keyframes fadeOut {
-            from { opacity: 1; transform: translateX(0); }
-            to { opacity: 0; transform: translateX(120%); }
-        }
-    </style>
 
     <script src="~/js/site.js"></script>
     <script src="~/js/filters.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const si = document.getElementById('searchInput'), sd = document.getElementById('searchDropdown'), sr = document.getElementById('searchResults');
+            let dt;
+            si?.addEventListener('input', () => {
+                clearTimeout(dt);
+                const q = si.value.trim();
+                if (q.length < 1) return;
+                dt = setTimeout(async () => {
+                   document.getElementById('searchLoading')?.classList.remove('hidden');
+                   sr.querySelectorAll('.dynamic-result').forEach(e => e.remove());
+                   try {
+                       const r = await fetch(`/Wiki/SearchSuggest?query=${encodeURIComponent(q)}`);
+                       const d = await r.json();
+                       document.getElementById('searchLoading')?.classList.add('hidden');
+                       if (d.length === 0) document.getElementById('searchEmpty')?.classList.remove('hidden');
+                       else {
+                           document.getElementById('searchEmpty')?.classList.add('hidden');
+                           d.forEach(i => {
+                               const a = document.createElement('a');
+                               a.className = 'dynamic-result flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800';
+                               a.href = `/Wiki/Details/${i.id}`;
+                               a.innerHTML = `<div class="w-8 h-8 rounded-full bg-slate-200 overflow-hidden flex items-center justify-center">${i.avatarUrl ? `<img src="${i.avatarUrl}" class="w-full h-full object-cover">` : '<span class="material-symbols-outlined text-slate-400">person</span>'}</div><div class="flex-1"><div class="text-sm font-medium">${i.name}</div><div class="text-xs text-slate-500">${i.agencyName}</div></div>`;
+                               sr.appendChild(a);
+                           });
+                       }
+                   } catch(e) {}
+                }, 300);
+            });
+        });
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

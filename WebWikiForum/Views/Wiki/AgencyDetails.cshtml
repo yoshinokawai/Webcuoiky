@@ -1,0 +1,122 @@
+@model WebWikiForum.Models.Agency
+@{
+    ViewData["Title"] = Model.Name + " - VTuber Agency Profile";
+}
+
+<div class="fixed inset-0 pointer-events-none bg-dots z-0"></div>
+<div class="relative z-10">
+    <!-- Hero Section -->
+    <div class="relative h-64 md:h-80 w-full overflow-hidden">
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: linear-gradient(to bottom, rgba(15, 12, 41, 0.6), rgba(48, 43, 99, 0.9)), url('https://lh3.googleusercontent.com/aida-public/AB6AXuCW5qV6oO-FbZCzkG8lJFjCUFA6d7C5qheRi7wTIlxOTKGrkQuyvqstCrN_1m800t-hiKaZFuZ4stXuhV6PJMzlmZ0fJKIYIdRWt5Z9QpThwj6VqppNrpvKXf2pMiARX4x1zPRqb1gAlW-3CYpabGwLAjGZ0jGfxE447N6DT2-EHJbeqIIj5cPQu9SleHGnFkssI6oVK3iN4-7KBP0WcKJMhQ3a-cjb0nEPoHa44yHJ4hIo4bgFWfm2UF8xuv5DUcDI3-7GBn9jDnw');"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+            <div class="max-w-7xl mx-auto px-4 w-full flex flex-col md:flex-row items-center gap-8 translate-y-12 md:translate-y-16">
+                <!-- Agency Logo Large -->
+                <div class="w-32 h-32 md:w-48 md:h-48 rounded-3xl bg-white dark:bg-slate-800 shadow-2xl shadow-primary/20 border-4 border-white dark:border-slate-800 flex items-center justify-center overflow-hidden shrink-0">
+                    @if (!string.IsNullOrEmpty(Model.LogoUrl))
+                    {
+                        <img src="@Model.LogoUrl" alt="@Model.Name" class="w-full h-full object-cover" />
+                    }
+                    else
+                    {
+                        <span class="text-4xl font-black text-primary">@Model.Name.Substring(0, 1)</span>
+                    }
+                </div>
+                <!-- Agency Header Info -->
+                <div class="text-center md:text-left text-white">
+                    <div class="flex flex-wrap items-center justify-center md:justify-start gap-3 mb-2">
+                        <span class="px-3 py-1 rounded-full bg-primary/20 backdrop-blur-md border border-primary/30 text-xs font-bold uppercase tracking-widest">
+                            Agency Profile
+                        </span>
+                        <span class="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-bold uppercase tracking-widest flex items-center gap-1">
+                            <span class="material-symbols-outlined text-[14px]">location_on</span>
+                            @Model.Region
+                        </span>
+                    </div>
+                    <h1 class="text-4xl md:text-6xl font-black tracking-tighter mb-4">@Model.Name</h1>
+                    <div class="flex items-center justify-center md:justify-start gap-6 opacity-80 font-bold overflow-x-auto no-scrollbar">
+                        <div class="flex items-center gap-2 whitespace-nowrap">
+                            <span class="material-symbols-outlined">groups</span>
+                            <span>@(Model.Vtubers?.Count ?? 0) Talents</span>
+                        </div>
+                        <div class="flex items-center gap-2 whitespace-nowrap">
+                            <span class="material-symbols-outlined">stars</span>
+                            <span>@Model.Focus</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 pt-24 md:pt-32 pb-16">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Sidebar: About -->
+            <div class="lg:col-span-1 space-y-6">
+                <div class="bg-white dark:bg-surface-dark rounded-3xl p-8 border border-slate-200 dark:border-slate-800 shadow-sm">
+                    <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary">info</span>
+                        About @Model.Name
+                    </h2>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
+                        @(string.IsNullOrEmpty(Model.Description) ? "No description available for this agency." : Model.Description)
+                    </p>
+                </div>
+                
+                <div class="bg-primary/5 rounded-3xl p-8 border border-primary/10">
+                    <h3 class="font-bold text-primary mb-3">Community Links</h3>
+                    <div class="space-y-3">
+                        <a href="#" class="flex items-center justify-between p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:border-primary transition-all group">
+                            <span class="text-sm font-bold text-slate-700 dark:text-slate-300">Official Website</span>
+                            <span class="material-symbols-outlined text-slate-400 group-hover:text-primary">open_in_new</span>
+                        </a>
+                        <a href="#" class="flex items-center justify-between p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:border-primary transition-all group">
+                            <span class="text-sm font-bold text-slate-700 dark:text-slate-300">YouTube Channel</span>
+                            <span class="material-symbols-outlined text-slate-400 group-hover:text-primary">smart_display</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Talents Grid -->
+            <div class="lg:col-span-2 space-y-6">
+                <div class="flex items-center justify-between px-2">
+                    <h2 class="text-2xl font-black text-slate-900 dark:text-white tracking-tight">Current Talents</h2>
+                    <div class="flex items-center gap-2 text-xs font-bold text-slate-500">
+                        <span class="material-symbols-outlined text-sm">sort</span>
+                        Recently Active
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    @if (Model.Vtubers != null && Model.Vtubers.Any())
+                    {
+                        foreach (var vtuber in Model.Vtubers)
+                        {
+                            <a href="/Wiki/Details/@vtuber.Id" class="group flex items-center p-4 rounded-2xl bg-white dark:bg-surface-dark border border-slate-100 dark:border-slate-800 hover:border-primary hover:shadow-xl hover:shadow-primary/5 transition-all">
+                                <div class="w-16 h-16 rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 shrink-0">
+                                    <img src="@(string.IsNullOrEmpty(vtuber.AvatarUrl) ? "https://lh3.googleusercontent.com/pw/AP1GczPLjX65S_A" : vtuber.AvatarUrl)" alt="@vtuber.Name" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                                </div>
+                                <div class="ml-4 flex-1">
+                                    <h3 class="font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">@vtuber.Name</h3>
+                                    <div class="flex items-center gap-2 mt-1">
+                                        <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-700 uppercase">@vtuber.Status</span>
+                                        <span class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">@vtuber.Region</span>
+                                    </div>
+                                </div>
+                                <span class="material-symbols-outlined text-slate-300 group-hover:text-primary group-hover:translate-x-1 transition-all">chevron_right</span>
+                            </a>
+                        }
+                    }
+                    else
+                    {
+                        <div class="col-span-full p-12 bg-slate-50 dark:bg-slate-800/50 rounded-3xl border-2 border-dashed border-slate-200 dark:border-slate-700 text-center">
+                            <span class="material-symbols-outlined text-4xl text-slate-300 mb-2">person_search</span>
+                            <p class="font-bold text-slate-500">No talents linked to this agency yet.</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -15,8 +15,20 @@ namespace WebWikiForum.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            // Top 5 VTubers for the Trending section
+            ViewBag.Trending = await _context.Vtubers
+                .Include(v => v.Agency)
+                .OrderByDescending(v => v.ViewCount)
+                .Take(5)
+                .ToListAsync();
+
+            // Top 5 Agencies for the Browse section
+            ViewBag.Agencies = await _context.Agencies
+                .Take(5)
+                .ToListAsync();
+                
             return View();
         }
 
