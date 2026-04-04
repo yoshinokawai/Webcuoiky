@@ -229,6 +229,86 @@ namespace WebWikiForum.Controllers
             return RedirectToAction("Independent");
         }
 
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var vtuber = await _context.Vtubers.FindAsync(id);
+            if (vtuber == null) return NotFound();
+
+            var model = new VtuberViewModel
+            {
+                Name = vtuber.Name,
+                Age = vtuber.Age,
+                DebutDate = vtuber.DebutDate,
+                Birthday = vtuber.Birthday,
+                Lore = vtuber.Lore,
+                AgencyId = vtuber.AgencyId,
+                Region = vtuber.Region,
+                Language = vtuber.Language,
+                Tags = vtuber.Tags
+            };
+
+            ViewBag.Agencies = await _context.Agencies.ToListAsync();
+            ViewBag.CurrentAvatar = vtuber.AvatarUrl;
+            ViewBag.Id = vtuber.Id;
+            return View(model);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, VtuberViewModel model, IFormFile? avatarFile)
+        {
+            if (ModelState.IsValid)
+            {
+                var vtuber = await _context.Vtubers.FindAsync(id);
+                if (vtuber == null) return NotFound();
+
+                try
+                {
+                    if (avatarFile != null && avatarFile.Length > 0)
+                    {
+                        // Delete old image if exists
+                        if (!string.IsNullOrEmpty(vtuber.AvatarUrl))
+                        {
+                            string oldFileName = Path.GetFileName(vtuber.AvatarUrl);
+                            _fileService.DeleteFile(oldFileName, "vtubers");
+                        }
+
+                        // Upload new image
+                        string fileName = await _fileService.UploadImageAsync(avatarFile, "vtubers");
+                        vtuber.AvatarUrl = "/uploads/vtubers/" + fileName;
+                    }
+
+                    vtuber.Name = model.Name;
+                    vtuber.Age = model.Age;
+                    vtuber.DebutDate = model.DebutDate;
+                    vtuber.Birthday = model.Birthday;
+                    vtuber.Lore = model.Lore;
+                    vtuber.AgencyId = model.AgencyId;
+                    vtuber.IsIndependent = model.AgencyId == null;
+                    vtuber.Region = model.Region;
+                    vtuber.Language = model.Language;
+                    vtuber.Tags = model.Tags;
+
+                    _context.Update(vtuber);
+                    await _context.SaveChangesAsync();
+
+                    TempData["SuccessMessage"] = $"VTuber '{vtuber.Name}' updated successfully!";
+                    return RedirectToAction("Details", new { id = vtuber.Id });
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", $"Error updating VTuber: {ex.Message}");
+                }
+            }
+
+            ViewBag.Agencies = await _context.Agencies.ToListAsync();
+            ViewBag.CurrentAvatar = (await _context.Vtubers.FindAsync(id))?.AvatarUrl;
+            ViewBag.Id = id;
+            return View(model);
+        }
+
         [HttpGet]
         public async Task<IActionResult> Details(int id)
         {

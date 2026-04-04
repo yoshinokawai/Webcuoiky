@@ -26,7 +26,7 @@
     </div>
 
     <!-- Stats Cards -->
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+    <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 mb-8">
         <div class="bg-white dark:bg-surface-dark rounded-2xl border border-slate-200 dark:border-slate-800 p-5 flex items-center gap-4 shadow-sm">
             <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
                 <span class="material-symbols-outlined text-primary text-2xl">groups</span>
@@ -38,11 +38,11 @@
         </div>
         <div class="bg-white dark:bg-surface-dark rounded-2xl border border-slate-200 dark:border-slate-800 p-5 flex items-center gap-4 shadow-sm">
             <div class="w-12 h-12 rounded-xl bg-green-50 flex items-center justify-center">
-                <span class="material-symbols-outlined text-green-500 text-2xl">verified</span>
+                <span class="material-symbols-outlined text-green-500 text-2xl">sensors</span>
             </div>
             <div>
-                <p class="text-2xl font-black text-slate-900 dark:text-white">@(Model?.Count(v => v.Status == "Approved") ?? 0)</p>
-                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">@Localizer["Dash_Stat_Approved"]</p>
+                <p class="text-2xl font-black text-slate-900 dark:text-white">@(Model?.Count(v => v.Status == "Active") ?? 0)</p>
+                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">@Localizer["Status_Active"]</p>
             </div>
         </div>
         <div class="bg-white dark:bg-surface-dark rounded-2xl border border-slate-200 dark:border-slate-800 p-5 flex items-center gap-4 shadow-sm">
@@ -50,8 +50,17 @@
                 <span class="material-symbols-outlined text-orange-500 text-2xl">pending</span>
             </div>
             <div>
-                <p class="text-2xl font-black text-slate-900 dark:text-white">@(Model?.Count(v => v.Status != "Approved") ?? 0)</p>
-                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">@Localizer["Dash_Stat_Pending"]</p>
+                <p class="text-2xl font-black text-slate-900 dark:text-white">@(Model?.Count(v => v.Status == "Pending") ?? 0)</p>
+                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">@Localizer["Status_Pending"]</p>
+            </div>
+        </div>
+        <div class="bg-white dark:bg-surface-dark rounded-2xl border border-slate-200 dark:border-slate-800 p-5 flex items-center gap-4 shadow-sm">
+            <div class="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center">
+                <span class="material-symbols-outlined text-slate-500 text-2xl">history_edu</span>
+            </div>
+            <div>
+                <p class="text-2xl font-black text-slate-900 dark:text-white">@(Model?.Count(v => v.Status == "Graduated" || v.Status == "Hiatus") ?? 0)</p>
+                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Other / Hiatus</p>
             </div>
         </div>
     </div>
@@ -105,16 +114,34 @@
                                     </div>
                                 </td>
                                 <td class="p-5 text-center">
-                                    @if (item.Status == "Approved")
+                                    @if (item.Status == "Active")
                                     {
                                         <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold leading-none bg-green-100 text-green-700 border border-green-200 shadow-sm">
-                                            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> @Localizer["Dash_Status_Approved"]
+                                            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> @Localizer["Status_Active"]
+                                        </span>
+                                    }
+                                    else if (item.Status == "Graduated")
+                                    {
+                                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold leading-none bg-slate-100 text-slate-700 border border-slate-200 shadow-sm">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-slate-500"></span> @Localizer["Status_Graduated"]
+                                        </span>
+                                    }
+                                    else if (item.Status == "Hiatus")
+                                    {
+                                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold leading-none bg-amber-100 text-amber-700 border border-amber-200 shadow-sm">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> @Localizer["Status_Hiatus"]
+                                        </span>
+                                    }
+                                    else if (item.Status == "Approved")
+                                    {
+                                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold leading-none bg-blue-100 text-blue-700 border border-blue-200 shadow-sm">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span> Approved
                                         </span>
                                     }
                                     else
                                     {
                                         <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold leading-none bg-orange-100 text-orange-700 border border-orange-200 shadow-sm">
-                                            <span class="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse"></span> @Localizer["Dash_Status_Pending"]
+                                            <span class="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse"></span> @Localizer["Status_Pending"]
                                         </span>
                                     }
                                 </td>
@@ -124,14 +151,55 @@
                                             <span class="material-symbols-outlined !text-[18px]">visibility</span>
                                         </a>
 
-                                        @if (item.Status != "Approved")
+                                        <a href="/Wiki/Edit/@item.Id" class="w-9 h-9 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-primary hover:bg-primary/10 transition-colors tooltip" title="@Localizer["Dash_Action_Edit"]">
+                                            <span class="material-symbols-outlined !text-[18px]">edit</span>
+                                        </a>
+
+                                        @if (item.Status == "Pending" || item.Status == "Approved")
                                         {
-                                            <form asp-controller="Admin" asp-action="Approve" method="post" style="display:inline;">
-                                                <input type="hidden" name="id" value="@item.Id" />
-                                                <button type="submit" class="w-9 h-9 flex items-center justify-center rounded-xl bg-green-50 text-green-600 hover:text-white hover:bg-green-500 transition-colors shadow-sm" title="@Localizer["Dash_Action_Approve"]">
-                                                    <span class="material-symbols-outlined !text-[18px]">check</span>
-                                                </button>
-                                            </form>
+                                            <div class="flex items-center gap-1 p-1 bg-slate-100 dark:bg-slate-800 rounded-xl">
+                                                <form asp-controller="Admin" asp-action="Approve" method="post" style="display:inline;">
+                                                    <input type="hidden" name="id" value="@item.Id" />
+                                                    <input type="hidden" name="status" value="Active" />
+                                                    <button type="submit" class="w-8 h-8 flex items-center justify-center rounded-lg text-green-600 hover:bg-green-100 transition-colors" title="Set Active">
+                                                        <span class="material-symbols-outlined !text-[18px]">check_circle</span>
+                                                    </button>
+                                                </form>
+                                                <form asp-controller="Admin" asp-action="Approve" method="post" style="display:inline;">
+                                                    <input type="hidden" name="id" value="@item.Id" />
+                                                    <input type="hidden" name="status" value="Hiatus" />
+                                                    <button type="submit" class="w-8 h-8 flex items-center justify-center rounded-lg text-amber-600 hover:bg-amber-100 transition-colors" title="Set Hiatus">
+                                                        <span class="material-symbols-outlined !text-[18px]">timer</span>
+                                                    </button>
+                                                </form>
+                                                <form asp-controller="Admin" asp-action="Approve" method="post" style="display:inline;">
+                                                    <input type="hidden" name="id" value="@item.Id" />
+                                                    <input type="hidden" name="status" value="Graduated" />
+                                                    <button type="submit" class="w-8 h-8 flex items-center justify-center rounded-lg text-slate-600 hover:bg-slate-200 transition-colors" title="Set Graduated">
+                                                        <span class="material-symbols-outlined !text-[18px]">logout</span>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <!-- Allow changing status even if already set -->
+                                            <div class="flex items-center gap-1">
+                                                 <form asp-controller="Admin" asp-action="Approve" method="post" style="display:inline;">
+                                                    <input type="hidden" name="id" value="@item.Id" />
+                                                    <input type="hidden" name="status" value="Active" />
+                                                    <button type="submit" class="w-8 h-8 flex items-center justify-center rounded-lg @(item.Status == "Active" ? "bg-green-500 text-white" : "text-green-600 hover:bg-green-50") transition-colors" title="Active">
+                                                        <span class="material-symbols-outlined !text-[18px]">check_circle</span>
+                                                    </button>
+                                                </form>
+                                                <form asp-controller="Admin" asp-action="Approve" method="post" style="display:inline;">
+                                                    <input type="hidden" name="id" value="@item.Id" />
+                                                    <input type="hidden" name="status" value="Graduated" />
+                                                    <button type="submit" class="w-8 h-8 flex items-center justify-center rounded-lg @(item.Status == "Graduated" ? "bg-slate-500 text-white" : "text-slate-600 hover:bg-slate-50") transition-colors" title="Graduated">
+                                                        <span class="material-symbols-outlined !text-[18px]">logout</span>
+                                                    </button>
+                                                </form>
+                                            </div>
                                         }
 
                                         <form asp-controller="Admin" asp-action="Delete" method="post" style="display:inline;" onsubmit="event.preventDefault(); window.showConfirmModal({ title: '@Localizer["Dash_Action_Delete"]', message: '@string.Format(Localizer["Dash_Confirm_Delete"].Value, item.Name)', onConfirm: () => this.submit() });">

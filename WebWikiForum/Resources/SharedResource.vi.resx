@@ -60,6 +60,9 @@
   <data name="Agencies_Collab_Title" xml:space="preserve"><value>Cộng Đồng &amp; Hợp Tác</value></data>
   <data name="Agencies_Collab_Desc" xml:space="preserve"><value>Dễ dàng hợp tác với các thành viên cùng thế hệ.</value></data>
   <data name="Wiki_Create_Profile" xml:space="preserve"><value>Tạo Hồ Sơ VTuber</value></data>
+  <data name="Wiki_Edit_Profile" xml:space="preserve"><value>Chỉnh sửa Hồ Sơ VTuber</value></data>
+  <data name="Wiki_Edit_Subtitle" xml:space="preserve"><value>Cập nhật thông tin và tiểu sử cho tài năng này.</value></data>
+  <data name="Wiki_Btn_Update" xml:space="preserve"><value>Cập nhật Hồ Sơ</value></data>
   <data name="Wiki_Create_Subtitle" xml:space="preserve"><value>Thêm một VTuber mới vào bách khoa toàn thư do cộng đồng xây dựng. Các bài gửi sẽ được quản trị viên xem xét.</value></data>
   <data name="Wiki_Label_Avatar" xml:space="preserve"><value>Ảnh Đại Diện</value></data>
   <data name="Wiki_Label_Name" xml:space="preserve"><value>Tên VTuber</value></data>
@@ -118,6 +121,7 @@
   <data name="Dash_Col_Actions" xml:space="preserve"><value>Hành Động</value></data>
   <data name="Dash_Status_Approved" xml:space="preserve"><value>Đã Duyệt</value></data>
   <data name="Dash_Action_View" xml:space="preserve"><value>Xem Hồ Sơ</value></data>
+  <data name="Dash_Action_Edit" xml:space="preserve"><value>Sửa VTuber</value></data>
   <data name="Dash_Action_Approve" xml:space="preserve"><value>Phê Duyệt</value></data>
   <data name="Dash_Action_Delete" xml:space="preserve"><value>Xóa VTuber</value></data>
   <data name="Dash_Confirm_Delete" xml:space="preserve"><value>Bạn có chắc chắn muốn xóa {0}? Hành động này không thể hoàn tác.</value></data>
@@ -271,7 +275,7 @@
   <data name="Explore_Tab_Agencies" xml:space="preserve"><value>Công ty</value></data>
   <data name="Explore_Tab_Gens" xml:space="preserve"><value>Thế hệ</value></data>
   <data name="Explore_Tab_Langs" xml:space="preserve"><value>Ngôn ngữ</value></data>
-  <data name="Explore_Showing_Results" xml:space="preserve"><value>Hiển thị {0} kết quả Độc lập</value></data>
+  <data name="Explore_Showing_Results" xml:space="preserve"><value>Hiển thị {0} kết quả</value></data>
   <data name="Explore_Trending" xml:space="preserve"><value>Xu hướng hiện nay</value></data>
   <data name="Explore_Recommended" xml:space="preserve"><value>Tài năng đề xuất</value></data>
   <data name="Explore_News_Major" xml:space="preserve"><value>Tin quan trọng</value></data>
@@ -343,4 +347,17 @@
   <data name="Time_Oct" xml:space="preserve"><value>Tháng 10</value></data>
   <data name="Time_Nov" xml:space="preserve"><value>Tháng 11</value></data>
   <data name="Time_Dec" xml:space="preserve"><value>Tháng 12</value></data>
+  <data name="RC_Stat_Articles" xml:space="preserve"><value>Bài viết</value></data>
+  <data name="RC_Stat_Editors" xml:space="preserve"><value>Biên tập viên</value></data>
+  <data name="RC_Stat_Media" xml:space="preserve"><value>Tệp phương tiện</value></data>
+  <data name="Wiki_TalentsTracked" xml:space="preserve"><value>Thành viên theo dõi</value></data>
+  <data name="Explore_News_Major" xml:space="preserve"><value>Tin chính</value></data>
+  <data name="Explore_News_Outfit" xml:space="preserve"><value>Trang phục mới</value></data>
+  <data name="Explore_Tab_Gens" xml:space="preserve"><value>Thế hệ</value></data>
+  <data name="Explore_Tab_Langs" xml:space="preserve"><value>Ngôn ngữ</value></data>
+  <data name="Explore_No_Results" xml:space="preserve"><value>Không tìm thấy VTuber nào khớp với bộ lọc của bạn.</value></data>
+  <data name="Status_Active" xml:space="preserve"><value>Đang hoạt động</value></data>
+  <data name="Status_Graduated" xml:space="preserve"><value>Đã tốt nghiệp</value></data>
+  <data name="Status_Hiatus" xml:space="preserve"><value>Tạm nghỉ</value></data>
+  <data name="Status_Pending" xml:space="preserve"><value>Chờ duyệt</value></data>
 </root>

@@ -1,217 +1,184 @@
+@model IEnumerable<WebWikiForum.Models.Vtuber>
 @section Styles {
     <link rel="stylesheet" href="~/css/Explore.css" />
 }
 
-
-<!-- Top Navigation Bar -->
-
 <main class="max-w-[1200px] mx-auto px-4 md:px-10 py-8">
-<!-- Search & Discovery Section -->
-<section class="mb-10">
-<h2 class="text-3xl font-bold mb-6 text-slate-900 dark:text-white">@Localizer["Explore_Title"]</h2>
-<div class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-primary/5">
-<div class="relative w-full mb-4">
-<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary text-2xl">search</span>
-<input class="w-full h-14 bg-background-light dark:bg-slate-800 border-none rounded-xl pl-14 pr-6 text-lg focus:ring-2 focus:ring-primary/40 transition-all shadow-inner" placeholder="@Localizer["Explore_Search_Placeholder"]" type="text"/>
-</div>
-<div class="flex flex-wrap gap-2 items-center">
-<span class="text-xs font-bold uppercase tracking-wider text-slate-400 mr-2">@Localizer["Explore_Popular"]</span>
-<button class="flex items-center gap-1.5 px-3 py-1.5 bg-primary text-white rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-primary/40"><span class="material-symbols-outlined text-sm">tag</span> @Localizer["Explore_Label_Indie"]</button>
-<button class="flex items-center gap-1.5 px-3 py-1.5 bg-primary/10 text-primary rounded-lg text-sm font-medium hover:bg-primary/20 transition-colors hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-primary/40">
-<span class="material-symbols-outlined text-sm">tag</span> @Localizer["Explore_Label_3D"]
+    <form method="get" asp-action="Explore" id="filterForm">
+        <!-- Search & Discovery Section -->
+        <section class="mb-10">
+            <h2 class="text-3xl font-bold mb-6 text-slate-900 dark:text-white">@Localizer["Explore_Title"]</h2>
+            <div class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-primary/5">
+                <div class="relative w-full mb-4">
+                    <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary text-2xl">search</span>
+                    <input name="searchTerm" value="@ViewData["SearchTerm"]" class="w-full h-14 bg-background-light dark:bg-slate-800 border-none rounded-xl pl-14 pr-6 text-lg focus:ring-2 focus:ring-primary/40 transition-all shadow-inner" placeholder="@Localizer["Explore_Search_Placeholder"]" type="text"/>
+                </div>
+                <div class="flex flex-wrap gap-2 items-center">
+                    <span class="text-xs font-bold uppercase tracking-wider text-slate-400 mr-2">@Localizer["Explore_Popular"]</span>
+                    <button type="submit" name="searchTerm" value="Indie" class="flex items-center gap-1.5 px-3 py-1.5 bg-primary text-white rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-primary/40"><span class="material-symbols-outlined text-sm">tag</span> @Localizer["Explore_Label_Indie"]</button>
+                    <button type="submit" name="searchTerm" value="3D" class="flex items-center gap-1.5 px-3 py-1.5 bg-primary/10 text-primary rounded-lg text-sm font-medium hover:bg-primary/20 transition-colors hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-primary/40">
+                        <span class="material-symbols-outlined text-sm">tag</span> @Localizer["Explore_Label_3D"]
                     </button>
-<button class="flex items-center gap-1.5 px-3 py-1.5 bg-primary/10 text-primary rounded-lg text-sm font-medium hover:bg-primary/20 transition-colors hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-primary/40">
-<span class="material-symbols-outlined text-sm">tag</span> @Localizer["Explore_Label_ASMR"]
+                    <button type="submit" name="searchTerm" value="ASMR" class="flex items-center gap-1.5 px-3 py-1.5 bg-primary/10 text-primary rounded-lg text-sm font-medium hover:bg-primary/20 transition-colors hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-primary/40">
+                        <span class="material-symbols-outlined text-sm">tag</span> @Localizer["Explore_Label_ASMR"]
                     </button>
-<button class="flex items-center gap-1.5 px-3 py-1.5 bg-primary/10 text-primary rounded-lg text-sm font-medium hover:bg-primary/20 transition-colors hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-primary/40">
-<span class="material-symbols-outlined text-sm">tag</span> @Localizer["Explore_Label_Karaoke"]
+                    <button type="submit" name="searchTerm" value="Karaoke" class="flex items-center gap-1.5 px-3 py-1.5 bg-primary/10 text-primary rounded-lg text-sm font-medium hover:bg-primary/20 transition-colors hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-primary/40">
+                        <span class="material-symbols-outlined text-sm">tag</span> @Localizer["Explore_Label_Karaoke"]
                     </button>
-<button class="flex items-center gap-1.5 px-3 py-1.5 bg-primary/10 text-primary rounded-lg text-sm font-medium hover:bg-primary/20 transition-colors hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-primary/40">
-<span class="material-symbols-outlined text-sm">tag</span> @Localizer["Explore_Label_Debut"]
+                    <button type="submit" name="searchTerm" value="Debut" class="flex items-center gap-1.5 px-3 py-1.5 bg-primary/10 text-primary rounded-lg text-sm font-medium hover:bg-primary/20 transition-colors hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-primary/40">
+                        <span class="material-symbols-outlined text-sm">tag</span> @Localizer["Explore_Label_Debut"]
                     </button>
+                </div>
 </div>
-</div>
-</section><div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-primary/10 shadow-sm mb-8 flex flex-wrap items-center gap-6">
-<!-- Sort By -->
-<div class="flex flex-col gap-1.5 min-w-[180px]">
-<label class="text-[10px] font-bold uppercase tracking-wider text-slate-400 ml-1">@Localizer["Explore_Filter_SortBy"]</label>
-<div class="relative">
-<select class="w-full appearance-none bg-background-light dark:bg-slate-800 border-none rounded-lg py-2 pl-3 pr-10 text-sm font-medium focus:ring-2 focus:ring-primary/20 hover:bg-primary/5 focus:ring-primary transition-colors cursor-pointer">
-<option selected="selected">@Localizer["Explore_Sort_Newest"]</option>
-<option>@Localizer["Explore_Sort_Followers"]</option>
-<option>@Localizer["Explore_Sort_AZ"]</option>
-<option>@Localizer["Explore_Sort_ZA"]</option>
-</select>
-<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">expand_more</span>
-</div>
-</div>
-<!-- Content Type -->
-<div class="flex flex-col gap-1.5 min-w-[200px]">
-<label class="text-[10px] font-bold uppercase tracking-wider text-slate-400 ml-1">@Localizer["Explore_Filter_ContentType"]</label>
-<div class="relative">
-<select class="w-full appearance-none bg-background-light dark:bg-slate-800 border-none rounded-lg py-2 pl-3 pr-10 text-sm font-medium focus:ring-2 focus:ring-primary/20 hover:bg-primary/5 focus:ring-primary transition-colors cursor-pointer">
-<option selected="selected">@Localizer["Explore_Type_All"]</option>
-<option>@Localizer["Explore_Type_Gaming"]</option>
-<option>@Localizer["Explore_Label_ASMR"]</option>
-<option>@Localizer["Explore_Type_Music"]</option>
-<option>@Localizer["Explore_Type_Variety"]</option>
-<option>@Localizer["Explore_Type_Education"]</option>
-</select>
-<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">expand_more</span>
-</div>
-</div>
-<!-- Status -->
-<div class="flex flex-col gap-1.5 min-w-[160px]">
-<label class="text-[10px] font-bold uppercase tracking-wider text-slate-400 ml-1">@Localizer["Explore_Filter_Status"]</label>
-<div class="flex bg-background-light dark:bg-slate-800 rounded-lg p-1">
-<button class="flex-1 py-1 px-3 text-xs font-bold bg-white dark:bg-slate-700 rounded-md shadow-sm text-primary ring-2 ring-primary/20 focus:outline-none focus:ring-1 focus:ring-primary/30 transition-all">@Localizer["Explore_Stat_Active"]</button>
-<button class="flex-1 py-1 px-3 text-xs font-medium text-slate-500 hover:text-primary transition-colors focus:outline-none focus:ring-1 focus:ring-primary/30 transition-all">@Localizer["Explore_Stat_Graduated"]</button>
-<button class="flex-1 py-1 px-3 text-xs font-medium text-slate-500 hover:text-primary transition-colors focus:outline-none focus:ring-1 focus:ring-primary/30 transition-all">@Localizer["Explore_Stat_Hiatus"]</button>
-</div>
-</div>
-<!-- Clear Filters -->
-<button class="ml-auto self-end mb-1 text-slate-400 hover:text-primary text-xs font-bold transition-colors flex items-center gap-1">
-<span class="material-symbols-outlined text-sm">restart_alt</span> @Localizer["Explore_Btn_Reset"]
-    </button>
-</div>
-<!-- Main Content Area -->
-<div class="flex flex-col lg:flex-row gap-8">
-<!-- Left Grid & Navigation -->
-<div class="flex-1 space-y-10">
-<!-- Filters & Categorized Browsing -->
-<div class="border-b border-primary/10">
-<div class="flex gap-8 overflow-x-auto no-scrollbar">
-<button class="border-b-2 border-primary text-primary font-bold pb-4 whitespace-nowrap">@Localizer["Explore_Tab_All"]</button>
-<button class="border-b-2 border-transparent text-slate-500 hover:text-primary font-medium pb-4 transition-colors whitespace-nowrap">@Localizer["Explore_Tab_Agencies"]</button>
-<button class="border-b-2 border-transparent text-slate-500 hover:text-primary font-medium pb-4 transition-colors whitespace-nowrap">@Localizer["Explore_Tab_Gens"]</button>
-<button class="border-b-2 border-transparent text-slate-500 hover:text-primary font-medium pb-4 transition-colors whitespace-nowrap">@Localizer["Explore_Tab_Langs"]</button>
-</div>
-</div>
-<!-- Language Selector Pill -->
-<div class="flex items-center justify-between">
-<div class="inline-flex bg-primary/5 p-1 rounded-xl">
-<button class="px-6 py-2 rounded-lg text-sm font-bold bg-white dark:bg-slate-800 shadow-sm text-primary hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all">EN</button>
-<button class="px-6 py-2 rounded-lg text-sm font-medium text-slate-500 hover:text-primary transition-colors hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all">JP</button>
-<button class="px-6 py-2 rounded-lg text-sm font-medium text-slate-500 hover:text-primary transition-colors hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all">ID</button>
-<button class="px-6 py-2 rounded-lg text-sm font-medium text-slate-500 hover:text-primary transition-colors hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all">KR</button>
-</div>
-<div class="text-sm text-slate-500">@string.Format(Localizer["Explore_Showing_Results"].Value, "420")</div>
-</div>
+        <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-primary/10 shadow-sm mb-8 flex flex-wrap items-center gap-6">
+            <!-- Sort By -->
+            <div class="flex flex-col gap-1.5 min-w-[180px]">
+                <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400 ml-1">@Localizer["Explore_Filter_SortBy"]</label>
+                <div class="relative">
+                    <select name="sortBy" onchange="this.form.submit()" class="w-full appearance-none bg-background-light dark:bg-slate-800 border-none rounded-lg py-2 pl-3 pr-10 text-sm font-medium focus:ring-2 focus:ring-primary/20 hover:bg-primary/5 focus:ring-primary transition-colors cursor-pointer">
+                        <option value="Newest Debut" selected='@(ViewData["SortBy"]?.ToString() == "Newest Debut")'>@Localizer["Explore_Sort_Newest"]</option>
+                        <option value="Most Popular" selected='@(ViewData["SortBy"]?.ToString() == "Most Popular")'>@Localizer["Explore_Sort_Followers"]</option>
+                        <option value="A-Z" selected='@(ViewData["SortBy"]?.ToString() == "A-Z")'>@Localizer["Explore_Sort_AZ"]</option>
+                        <option value="Z-A" selected='@(ViewData["SortBy"]?.ToString() == "Z-A")'>@Localizer["Explore_Sort_ZA"]</option>
+                    </select>
+                    <span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">expand_more</span>
+                </div>
+            </div>
+            <!-- Content Type -->
+            <div class="flex flex-col gap-1.5 min-w-[200px]">
+                <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400 ml-1">@Localizer["Explore_Filter_ContentType"]</label>
+                <div class="relative">
+                    <select name="contentType" onchange="this.form.submit()" class="w-full appearance-none bg-background-light dark:bg-slate-800 border-none rounded-lg py-2 pl-3 pr-10 text-sm font-medium focus:ring-2 focus:ring-primary/20 hover:bg-primary/5 focus:ring-primary transition-colors cursor-pointer">
+                        <option value="All Types" selected='@(ViewData["ContentType"]?.ToString() == "All Types")'>@Localizer["Explore_Type_All"]</option>
+                        <option value="Gaming" selected='@(ViewData["ContentType"]?.ToString() == "Gaming")'>@Localizer["Explore_Type_Gaming"]</option>
+                        <option value="ASMR" selected='@(ViewData["ContentType"]?.ToString() == "ASMR")'>@Localizer["Explore_Label_ASMR"]</option>
+                        <option value="Music" selected='@(ViewData["ContentType"]?.ToString() == "Music")'>@Localizer["Explore_Type_Music"]</option>
+                        <option value="Variety" selected='@(ViewData["ContentType"]?.ToString() == "Variety")'>@Localizer["Explore_Type_Variety"]</option>
+                    </select>
+                    <span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">expand_more</span>
+                </div>
+            </div>
+            <!-- Status -->
+            <div class="flex flex-col gap-1.5 min-w-[160px]">
+                <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400 ml-1">@Localizer["Explore_Filter_Status"]</label>
+                <div class="flex bg-background-light dark:bg-slate-800 rounded-lg p-1">
+                    <input type="hidden" name="status" id="statusInput" value='@ViewData["Status"]' />
+                    <button type="button" onclick="setStatus('Active')" class='flex-1 py-1 px-3 text-xs font-bold rounded-md shadow-sm transition-all @(ViewData["Status"]?.ToString() == "Active" ? "bg-white dark:bg-slate-700 text-primary ring-2 ring-primary/20" : "text-slate-500 hover:text-primary")'>@Localizer["Explore_Stat_Active"]</button>
+                    <button type="button" onclick="setStatus('Graduated')" class='flex-1 py-1 px-3 text-xs font-bold rounded-md shadow-sm transition-all @(ViewData["Status"]?.ToString() == "Graduated" ? "bg-white dark:bg-slate-700 text-primary ring-2 ring-primary/20" : "text-slate-500 hover:text-primary")'>@Localizer["Explore_Stat_Graduated"]</button>
+                    <button type="button" onclick="setStatus('Hiatus')" class='flex-1 py-1 px-3 text-xs font-bold rounded-md shadow-sm transition-all @(ViewData["Status"]?.ToString() == "Hiatus" ? "bg-white dark:bg-slate-700 text-primary ring-2 ring-primary/20" : "text-slate-500 hover:text-primary")'>@Localizer["Explore_Stat_Hiatus"]</button>
+                </div>
+            </div>
+            <!-- Clear Filters -->
+            <a asp-action="Explore" class="ml-auto self-end mb-1 text-slate-400 hover:text-primary text-xs font-bold transition-colors flex items-center gap-1">
+                <span class="material-symbols-outlined text-sm">restart_alt</span> @Localizer["Explore_Btn_Reset"]
+            </a>
+        </div>
+        
+        <script>
+            function setStatus(status) {
+                document.getElementById('statusInput').value = status;
+                document.getElementById('filterForm').submit();
+            }
+            function setLanguage(lang) {
+                document.getElementById('languageInput').value = lang;
+                document.getElementById('filterForm').submit();
+            }
+            function setTab(tab) {
+                document.getElementById('tabInput').value = tab;
+                document.getElementById('filterForm').submit();
+            }
+        </script>
+
+        <!-- Main Content Area -->
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Left Grid & Navigation -->
+            <div class="flex-1 space-y-10">
+                <!-- Filters & Categorized Browsing -->
+                <div class="border-b border-primary/10">
+                    <input type="hidden" name="tab" id="tabInput" value='@ViewData["Tab"]' />
+                    <div class="flex gap-8 overflow-x-auto no-scrollbar">
+                        <button type="button" onclick="setTab('All')" class='font-bold pb-4 whitespace-nowrap @(ViewData["Tab"]?.ToString() == "All" ? "border-b-2 border-primary text-primary" : "border-b-2 border-transparent text-slate-500 hover:text-primary font-medium transition-colors")'>@Localizer["Explore_Tab_All"]</button>
+                        <button type="button" onclick="setTab('Agencies')" class='font-bold pb-4 whitespace-nowrap @(ViewData["Tab"]?.ToString() == "Agencies" ? "border-b-2 border-primary text-primary" : "border-b-2 border-transparent text-slate-500 hover:text-primary font-medium transition-colors")'>@Localizer["Explore_Tab_Agencies"]</button>
+                        <button type="button" onclick="setTab('Generations')" class='font-bold pb-4 whitespace-nowrap @(ViewData["Tab"]?.ToString() == "Generations" ? "border-b-2 border-primary text-primary" : "border-b-2 border-transparent text-slate-500 hover:text-primary font-medium transition-colors")'>@Localizer["Explore_Tab_Gens"]</button>
+                        <button type="button" onclick="setTab('Languages')" class='font-bold pb-4 whitespace-nowrap @(ViewData["Tab"]?.ToString() == "Languages" ? "border-b-2 border-primary text-primary" : "border-b-2 border-transparent text-slate-500 hover:text-primary font-medium transition-colors")'>@Localizer["Explore_Tab_Langs"]</button>
+                    </div>
+                </div>
+                <!-- Language Selector Pill -->
+                <div class="flex items-center justify-between">
+                    <div class="inline-flex bg-primary/5 p-1 rounded-xl">
+                        <input type="hidden" name="language" id="languageInput" value='@ViewData["Language"]' />
+                        <button type="button" onclick="setLanguage('EN')" class='px-6 py-2 rounded-lg text-sm font-bold shadow-sm transition-all @(ViewData["Language"]?.ToString() == "EN" ? "bg-white dark:bg-slate-800 text-primary" : "text-slate-500 hover:text-primary")'>EN</button>
+                        <button type="button" onclick="setLanguage('JP')" class='px-6 py-2 rounded-lg text-sm font-bold shadow-sm transition-all @(ViewData["Language"]?.ToString() == "JP" ? "bg-white dark:bg-slate-800 text-primary" : "text-slate-500 hover:text-primary")'>JP</button>
+                        <button type="button" onclick="setLanguage('ID')" class='px-6 py-2 rounded-lg text-sm font-bold shadow-sm transition-all @(ViewData["Language"]?.ToString() == "ID" ? "bg-white dark:bg-slate-800 text-primary" : "text-slate-500 hover:text-primary")'>ID</button>
+                        <button type="button" onclick="setLanguage('KR')" class='px-6 py-2 rounded-lg text-sm font-bold shadow-sm transition-all @(ViewData["Language"]?.ToString() == "KR" ? "bg-white dark:bg-slate-800 text-primary" : "text-slate-500 hover:text-primary")'>KR</button>
+                    </div>
+                    <div class="text-sm text-slate-500">@string.Format(Localizer["Explore_Showing_Results"].Value, Model.Count())</div>
+                </div>
 <!-- Trending Now Section -->
-<section>
-<div class="flex items-center justify-between mb-4">
-<h3 class="text-xl font-bold flex items-center gap-2">
-<span class="material-symbols-outlined text-orange-500">trending_up</span> @Localizer["Explore_Trending"]
-                        </h3>
-<a class="text-primary text-sm font-bold hover:underline" href="#">@Localizer["Home_Btn_ViewAll"]</a>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-<div class="group relative overflow-hidden rounded-xl aspect-[16/9] cursor-pointer">
-<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Abstract vibrant gradient purple background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxC5kIlWSwQTQeoqkQWXuXYl-xN4m-GhfzCz8rQmpLaiacj0G-8Vpvwl0k4Bu0hxPpH7Ha7cQfw9DDvdeburCCXtMl72aNedZ8yzgI8DO_CLGjPcq0p22BLRaQmnxa3pI-xmulRqoI3lV5ELpSaa5lbzXGbUdVaYvlvWqikjpO9k-8EmmNzEzn3AMXzu87OakV7d98XRYPQrhz1S0Eomdni8xahVNNz3ZNsVsGRDoCdrcxPYmpPC5CnBAuF-m68Owollh31wVjdFE"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-6 flex flex-col justify-end">
-<span class="bg-primary text-white text-[10px] font-bold px-2 py-1 rounded w-fit mb-2 uppercase tracking-widest">@Localizer["Explore_News_Major"]</span>
-<h4 class="text-white text-xl font-bold leading-tight">Hololive English -Advent- celebrate 6 months since debut!</h4>
-</div>
-</div>
-<div class="group relative overflow-hidden rounded-xl aspect-[16/9] cursor-pointer">
-<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Dark abstract geometric background with purple accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8-kkKkEPh8XYSeleT15Px8x73dxLrJwdVv2th0Qi6EaOrUrE1Nowi6_FQw__rSwBQPoDJv-fXQsn71VLnLMbFVdf_0YmITnKxXUai6cQxfTz1VrdrIxqRv7CpTiKS2pVRpkU3aXxbisXnNFCYLaSSjwyCJjzAMBv4kbS0dgn9YBrTC9wASIXEx6dpv_d9pxqAtD9svO3tCSl4L_P1lXtJpQRRieYHxM2nAMIRXiUUb8Rw6neTT9StRDnX55Rq4DKl9BhrLeZ_5YM"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-6 flex flex-col justify-end">
-<span class="bg-blue-500 text-white text-[10px] font-bold px-2 py-1 rounded w-fit mb-2 uppercase tracking-widest">@Localizer["Explore_News_Outfit"]</span>
-<h4 class="text-white text-xl font-bold leading-tight">Kuzuha reveals stunning new street-wear outfit 3D model</h4>
-</div>
-</div>
-</div>
+<section class="mb-10">
+    <div class="flex items-center justify-between mb-4">
+        <h3 class="text-xl font-bold flex items-center gap-2">
+            <span class="material-symbols-outlined text-orange-500">trending_up</span> @Localizer["Explore_Trending"]
+        </h3>
+        <a class="text-primary text-sm font-bold hover:underline" href="/Home/TopTalent">@Localizer["Home_ViewAll"]</a>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        @if (ViewBag.Trending != null)
+        {
+            foreach (var trend in (List<WebWikiForum.Models.Vtuber>)ViewBag.Trending)
+            {
+                <a asp-controller="Wiki" asp-action="Details" asp-route-id="@trend.Id" class="group relative overflow-hidden rounded-xl aspect-[16/9] cursor-pointer block">
+                    <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-70" src="@trend.AvatarUrl" data-alt="@trend.Name"/>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent p-6 flex flex-col justify-end">
+                        <span class="bg-primary text-white text-[10px] font-bold px-2 py-1 rounded w-fit mb-2 uppercase tracking-widest">@Localizer["Explore_News_Major"]</span>
+                        <h4 class="text-white text-xl font-bold leading-tight">@trend.Name - @(trend.Agency?.Name ?? "Independent")</h4>
+                        <p class="text-slate-300 text-xs line-clamp-1">@trend.Lore</p>
+                    </div>
+                </a>
+            }
+        }
+    </div>
 </section>
-<!-- VTuber Grid -->
-<section>
-<div class="flex items-center justify-between mb-6">
-<h3 class="text-xl font-bold">@Localizer["Explore_Recommended"]</h3>
-<div class="flex gap-2">
-<button class="size-8 rounded-lg border border-primary/20 flex items-center justify-center text-primary hover:bg-primary/10 hover:scale-110 active:scale-90 transition-transform focus:outline-none focus:ring-2 focus:ring-primary/40"><span class="material-symbols-outlined text-sm">filter_list</span></button>
-<button class="size-8 rounded-lg border border-primary/20 flex items-center justify-center text-primary hover:bg-primary/10 hover:scale-110 active:scale-90 transition-transform focus:outline-none focus:ring-2 focus:ring-primary/40"><span class="material-symbols-outlined text-sm">grid_view</span></button>
-</div>
-</div>
-<div class="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-6">
-<!-- Profile Card 1 -->
-<div class="group bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-primary/5 hover:border-primary/40 transition-all hover:shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-primary/60 focus:outline-none focus:ring-2 focus:ring-primary/40 cursor-pointer" tabindex="0">
-<div class="aspect-square relative overflow-hidden">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Stylized anime girl character art" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8nLJYEIysL3pfG5GMmbo2c6hKVH7MROW_vR0VqvCuf-82IL3q4hJvFa3voZ806PDyFf5NL-wCAV_xPqYQWiW4ZMlDTk-6hPjzR-XgTSNRkPSsZ7RIBKTAKF3nRd9RpuXDfFpGq8MRAMqu217ECNVKkyDrASYvV9pD_pHk66nG3ecnx8_8cOZreSmoe7Vk749vMik3QAvmaUwEXZUy-4Em0ByQwjUm6pyvf4jukcDPHsobBuZ77lSCswyZBqBfyWkwiH2EXSKT1D8"/>
-<div class="absolute top-2 right-2 bg-black/50 backdrop-blur-md px-2 py-1 rounded text-[10px] font-bold text-white uppercase">Active</div>
-</div>
-<div class="p-4">
-<h5 class="font-bold text-slate-900 dark:text-white mb-1">Gawr Gura</h5>
-<div class="flex items-center gap-1.5 mb-3">
-<div class="size-3 rounded-full bg-blue-400"></div>
-<span class="text-xs text-slate-500 font-medium">Hololive EN</span>
-</div>
-<div class="flex items-center justify-between text-[11px] text-slate-400 border-t border-slate-50 pt-3 dark:border-slate-800">
-<span>Debuted:</span>
-<span class="font-semibold text-slate-600 dark:text-slate-300">Sept 13, 2020</span>
-</div>
-</div>
-</div>
-<!-- Profile Card 2 -->
-<div class="group bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-primary/5 hover:border-primary/40 transition-all hover:shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-primary/60 focus:outline-none focus:ring-2 focus:ring-primary/40 cursor-pointer" tabindex="0">
-<div class="aspect-square relative overflow-hidden">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Anime style illustration of a boy with white hair" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_NbVAHdxpATFGKIMz7zyuE-OL9fWabBpzNTcBOBiHJ-uBv3Tuhi3pUG3tlXT4s9pDyIV8rs8wdOfi8zU3WbhCLb7OBAhYVJUxzwGwyYvnPc5Z80FWT_q26_9mI6vg19DpG-cZs8cHaPN4bkHy_FVgYCKDDhRRzj-d5akOdsLUnZa7Sn_VTKCqny2KlQ8AgU03a9QmeDp3bnoHxI_FKLQ-XWN0Q-OcPKRnZSXSAbf61ssJn7N1D6q8ezMOysv-EGKqWTbfb8p9Ku0"/>
-<div class="absolute top-2 right-2 bg-black/50 backdrop-blur-md px-2 py-1 rounded text-[10px] font-bold text-white uppercase">Active</div>
-</div>
-<div class="p-4">
-<h5 class="font-bold text-slate-900 dark:text-white mb-1">Vox Akuma</h5>
-<div class="flex items-center gap-1.5 mb-3">
-<div class="size-3 rounded-full bg-red-400"></div>
-<span class="text-xs text-slate-500 font-medium">Nijisanji EN</span>
-</div>
-<div class="flex items-center justify-between text-[11px] text-slate-400 border-t border-slate-50 pt-3 dark:border-slate-800">
-<span>Debuted:</span>
-<span class="font-semibold text-slate-600 dark:text-slate-300">Dec 20, 2021</span>
-</div>
-</div>
-</div>
-<!-- Profile Card 3 -->
-<div class="group bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-primary/5 hover:border-primary/40 transition-all hover:shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-primary/60 focus:outline-none focus:ring-2 focus:ring-primary/40 cursor-pointer" tabindex="0">
-<div class="aspect-square relative overflow-hidden">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Abstract anime character portrait with bright colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1sP67bTpdquCOiMcJGaoEMYt5HbUEcQ-JpjfH3YRHpkL0v8kndOam8Kh7pzTZHr7uezucC2xBMV8okcl-x4C2Q-YFmV3wiRrnEERPLxl_c7bzB22Gtjz_ivNatF2KMIozDNvhBWAkwkdkU4ze_nf4eX9AezmP5yOL5JXIesCFRvLneW3lEo3iEyhfUdZHtxnEr0D-gRPEVO4KCLl7h7yvl5mja7DK2QuCpLnzNYWV6iBBggLhjvzWf6aIRa_0djIn0USx9CNGFL4"/>
-<div class="absolute top-2 right-2 bg-black/50 backdrop-blur-md px-2 py-1 rounded text-[10px] font-bold text-white uppercase">Active</div>
-</div>
-<div class="p-4">
-<h5 class="font-bold text-slate-900 dark:text-white mb-1">Ironmouse</h5>
-<div class="flex items-center gap-1.5 mb-3">
-<div class="size-3 rounded-full bg-pink-400"></div>
-<span class="text-xs text-slate-500 font-medium">VShojo</span>
-</div>
-<div class="flex items-center justify-between text-[11px] text-slate-400 border-t border-slate-50 pt-3 dark:border-slate-800">
-<span>Debuted:</span>
-<span class="font-semibold text-slate-600 dark:text-slate-300">Aug 5, 2017</span>
-</div>
-</div>
-</div>
-<!-- Profile Card 4 -->
-<div class="group bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-primary/5 hover:border-primary/40 transition-all hover:shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-primary/60 focus:outline-none focus:ring-2 focus:ring-primary/40 cursor-pointer" tabindex="0">
-<div class="aspect-square relative overflow-hidden">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Minimalist anime character sketch" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAykRH2EDh_VVl_YXojTgdkKyQku-6qiMHeWCUv3rE4Vk2zioPO0XMQdjydqxmKQt93rL2-pSEhUTRRv9nGavPn3tAGjWs3hlT8jpGk2TuiDkx6I9Uq89Z0aenHsHF5OOnhgcs3jKG0nPCXjXrq2ht1YUi-2gm09oDAYhlvwisxJDkWCP371Pepy1VUMVzfs39rrgU0yiWVVa4qtDxJ_f3g6NhyUx294s2yRw4eUqROHiKYU7QpSjyaXjnwS3pScDLGjAFEG8CB3uQ"/>
-<div class="absolute top-2 right-2 bg-black/50 backdrop-blur-md px-2 py-1 rounded text-[10px] font-bold text-white uppercase">@Localizer["Explore_Stat_Active"]</div>
-</div>
-<div class="p-4">
-<h5 class="font-bold text-slate-900 dark:text-white mb-1">Houshou Marine</h5>
-<div class="flex items-center gap-1.5 mb-3">
-<div class="size-3 rounded-full bg-blue-600"></div>
-<span class="text-xs text-slate-500 font-medium">Hololive JP</span>
-</div>
-<div class="flex items-center justify-between text-[11px] text-slate-400 border-t border-slate-50 pt-3 dark:border-slate-800">
-<span>@Localizer["Explore_Label_Debuted"]</span>
-<span class="font-semibold text-slate-600 dark:text-slate-300">Aug 11, 2019</span>
-</div>
-</div>
-</div>
-</div>
-<div class="mt-10 flex justify-center">
-<button class="bg-primary/10 hover:bg-primary/20 text-primary font-bold px-8 py-3 rounded-xl transition-all flex items-center gap-2">
-                            @Localizer["Explore_Btn_LoadMore"] <span class="material-symbols-outlined">expand_more</span>
-</button>
-</div>
-</section>
-</div>
+        <!-- VTuber Grid -->
+        <section>
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="text-xl font-bold">@Localizer["Explore_Recommended"]</h3>
+                <div class="flex gap-2">
+                    <button type="button" class="size-8 rounded-lg border border-primary/20 flex items-center justify-center text-primary hover:bg-primary/10 hover:scale-110 active:scale-90 transition-transform focus:outline-none focus:ring-2 focus:ring-primary/40"><span class="material-symbols-outlined text-sm">filter_list</span></button>
+                    <button type="button" class="size-8 rounded-lg border border-primary/20 flex items-center justify-center text-primary hover:bg-primary/10 hover:scale-110 active:scale-90 transition-transform focus:outline-none focus:ring-2 focus:ring-primary/40"><span class="material-symbols-outlined text-sm">grid_view</span></button>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-6">
+                @if (!Model.Any())
+                {
+                    <div class="col-span-full py-20 text-center">
+                        <span class="material-symbols-outlined text-4xl text-slate-300 mb-4">search_off</span>
+                        <p class="text-slate-500 font-medium">@Localizer["Explore_No_Results"]</p>
+                    </div>
+                }
+                @foreach (var vtuber in Model)
+                {
+                    <a asp-controller="Wiki" asp-action="Details" asp-route-id="@vtuber.Id" class="group bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-primary/5 hover:border-primary/40 transition-all hover:shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-primary/60 focus:outline-none focus:ring-2 focus:ring-primary/40 cursor-pointer" tabindex="0">
+                        <div class="aspect-square relative overflow-hidden">
+                            <img class="w-full h-full object-cover transition-transform group-hover:scale-105" data-alt="@vtuber.Name avatar" src="@(string.IsNullOrEmpty(vtuber.AvatarUrl) ? "https://via.placeholder.com/400" : vtuber.AvatarUrl)"/>
+                            <div class="absolute top-2 right-2 bg-black/50 backdrop-blur-md px-2 py-1 rounded text-[10px] font-bold text-white uppercase">@vtuber.Status</div>
+                        </div>
+                        <div class="p-4">
+                            <h5 class="font-bold text-slate-900 dark:text-white mb-1">@vtuber.Name</h5>
+                            <div class="flex items-center gap-1.5 mb-3">
+                                <div class="size-3 rounded-full bg-primary/40"></div>
+                                <span class="text-xs text-slate-500 font-medium">@(vtuber.Agency?.Name ?? Localizer["Dash_Independent"].Value)</span>
+                            </div>
+                            <div class="flex items-center justify-between text-[11px] text-slate-400 border-t border-slate-50 pt-3 dark:border-slate-800">
+                                <span>@Localizer["Explore_Label_Debuted"]:</span>
+                                <span class="font-semibold text-slate-600 dark:text-slate-300">@(vtuber.DebutDate?.ToString("MMM dd, yyyy") ?? "N/A")</span>
+                            </div>
+                        </div>
+                    </a>
+                }
+            </div>
+        </section>
+    </div>
 <!-- Sidebar -->
 <aside class="w-full lg:w-80 space-y-8">
 <!-- Wiki Statistics -->
@@ -219,24 +186,24 @@
 <h4 class="text-lg font-bold mb-5 flex items-center gap-2">
 <span class="material-symbols-outlined text-primary">analytics</span> @Localizer["Explore_Sidebar_Stats"]
                     </h4>
-<div class="space-y-4">
-<div class="flex items-center justify-between p-3 bg-background-light dark:bg-slate-800 rounded-lg">
-<span class="text-sm font-medium text-slate-500">@Localizer["RC_Stat_Articles"]</span>
-<span class="text-sm font-bold text-slate-900 dark:text-white">12,584</span>
-</div>
-<div class="flex items-center justify-between p-3 bg-background-light dark:bg-slate-800 rounded-lg">
-<span class="text-sm font-medium text-slate-500">@Localizer["RC_Stat_Editors"]</span>
-<span class="text-sm font-bold text-slate-900 dark:text-white">842</span>
-</div>
-<div class="flex items-center justify-between p-3 bg-background-light dark:bg-slate-800 rounded-lg">
-<span class="text-sm font-medium text-slate-500">@Localizer["RC_Stat_Media"]</span>
-<span class="text-sm font-bold text-slate-900 dark:text-white">45.2k</span>
-</div>
-<div class="flex items-center justify-between p-3 bg-background-light dark:bg-slate-800 rounded-lg">
-<span class="text-sm font-medium text-slate-500">@Localizer["Wiki_TalentsTracked"]</span>
-<span class="text-sm font-bold text-slate-900 dark:text-white">3,120</span>
-</div>
-</div>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-3 bg-background-light dark:bg-slate-800 rounded-lg">
+                            <span class="text-sm font-medium text-slate-500">@Localizer["RC_Stat_Articles"]</span>
+                            <span class="text-sm font-bold text-slate-900 dark:text-white">@ViewBag.TotalArticles</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-background-light dark:bg-slate-800 rounded-lg">
+                            <span class="text-sm font-medium text-slate-500">@Localizer["RC_Stat_Editors"]</span>
+                            <span class="text-sm font-bold text-slate-900 dark:text-white">@ViewBag.TotalEditors</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-background-light dark:bg-slate-800 rounded-lg">
+                            <span class="text-sm font-medium text-slate-500">@Localizer["RC_Stat_Media"]</span>
+                            <span class="text-sm font-bold text-slate-900 dark:text-white">45.2k</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-background-light dark:bg-slate-800 rounded-lg">
+                            <span class="text-sm font-medium text-slate-500">@Localizer["Wiki_TalentsTracked"]</span>
+                            <span class="text-sm font-bold text-slate-900 dark:text-white">@ViewBag.TalentsTracked</span>
+                        </div>
+                    </div>
 <button class="w-full mt-6 py-2.5 rounded-lg border-2 border-primary/20 text-primary font-bold text-sm hover:bg-primary hover:text-white transition-all">
                         @Localizer["Explore_Btn_Contribute"]
                     </button>
@@ -290,7 +257,8 @@
 </div>
 </div>
 </aside>
-</div>
+        </div>
+    </form>
 </main>
 <!-- Footer -->
 

@@ -61,6 +61,9 @@
   <data name="Agencies_Collab_Title" xml:space="preserve"><value>Community &amp; Collaboration</value></data>
   <data name="Agencies_Collab_Desc" xml:space="preserve"><value>Easier collabs with gen-mates.</value></data>
   <data name="Wiki_Create_Profile" xml:space="preserve"><value>Create VTuber Profile</value></data>
+  <data name="Wiki_Edit_Profile" xml:space="preserve"><value>Edit VTuber Profile</value></data>
+  <data name="Wiki_Edit_Subtitle" xml:space="preserve"><value>Update the information and backstory for this talent.</value></data>
+  <data name="Wiki_Btn_Update" xml:space="preserve"><value>Update Profile</value></data>
   <data name="Wiki_Create_Subtitle" xml:space="preserve"><value>Add a new Virtual YouTuber to our community-driven encyclopedia. Submissions will be reviewed by administrators.</value></data>
   <data name="Wiki_Label_Avatar" xml:space="preserve"><value>Profile Avatar</value></data>
   <data name="Wiki_Label_Name" xml:space="preserve"><value>VTuber Name</value></data>
@@ -118,7 +121,12 @@
   <data name="Dash_Col_Status" xml:space="preserve"><value>Status</value></data>
   <data name="Dash_Col_Actions" xml:space="preserve"><value>Actions</value></data>
   <data name="Dash_Status_Approved" xml:space="preserve"><value>Approved</value></data>
+  <data name="Status_Active" xml:space="preserve"><value>Active</value></data>
+  <data name="Status_Graduated" xml:space="preserve"><value>Graduated</value></data>
+  <data name="Status_Hiatus" xml:space="preserve"><value>Hiatus</value></data>
+  <data name="Status_Pending" xml:space="preserve"><value>Pending</value></data>
   <data name="Dash_Action_View" xml:space="preserve"><value>View Profile</value></data>
+  <data name="Dash_Action_Edit" xml:space="preserve"><value>Edit VTuber</value></data>
   <data name="Dash_Action_Approve" xml:space="preserve"><value>Approve VTuber</value></data>
   <data name="Dash_Action_Delete" xml:space="preserve"><value>Delete VTuber</value></data>
   <data name="Dash_Confirm_Delete" xml:space="preserve"><value>Are you sure you want to delete {0}? This action is irreversible.</value></data>
@@ -272,7 +280,7 @@
   <data name="Explore_Tab_Agencies" xml:space="preserve"><value>Agencies</value></data>
   <data name="Explore_Tab_Gens" xml:space="preserve"><value>Generations</value></data>
   <data name="Explore_Tab_Langs" xml:space="preserve"><value>Languages</value></data>
-  <data name="Explore_Showing_Results" xml:space="preserve"><value>Showing {0} Indie Results</value></data>
+  <data name="Explore_Showing_Results" xml:space="preserve"><value>Showing {0} Results</value></data>
   <data name="Explore_Trending" xml:space="preserve"><value>Trending Now</value></data>
   <data name="Explore_Recommended" xml:space="preserve"><value>Recommended Talents</value></data>
   <data name="Explore_News_Major" xml:space="preserve"><value>Major News</value></data>
@@ -344,4 +352,14 @@
   <data name="Time_Oct" xml:space="preserve"><value>Oct</value></data>
   <data name="Time_Nov" xml:space="preserve"><value>Nov</value></data>
   <data name="Time_Dec" xml:space="preserve"><value>Dec</value></data>
+  <data name="RC_Stat_Articles" xml:space="preserve"><value>Articles</value></data>
+  <data name="RC_Stat_Editors" xml:space="preserve"><value>Editors</value></data>
+  <data name="RC_Stat_Media" xml:space="preserve"><value>Media Files</value></data>
+  <data name="Wiki_TalentsTracked" xml:space="preserve"><value>Talents Tracked</value></data>
+  <data name="Explore_News_Major" xml:space="preserve"><value>Major News</value></data>
+  <data name="Explore_News_Outfit" xml:space="preserve"><value>New Outfit</value></data>
+  <data name="Explore_Tab_Gens" xml:space="preserve"><value>Generations</value></data>
+  <data name="Explore_Tab_Langs" xml:space="preserve"><value>Languages</value></data>
+  <data name="Explore_Showing_Results" xml:space="preserve"><value>Showing {0} Results</value></data>
+  <data name="Explore_No_Results" xml:space="preserve"><value>No VTubers found matching your filters.</value></data>
 </root>

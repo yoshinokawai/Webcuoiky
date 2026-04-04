@@ -42,6 +42,6 @@ namespace WebWikiForum.Models
         // Foreign Key
         public int? AgencyId { get; set; }
         [ForeignKey("AgencyId")]
-        public virtual Agency Agency { get; set; }
+        public virtual Agency? Agency { get; set; }
     }
 }

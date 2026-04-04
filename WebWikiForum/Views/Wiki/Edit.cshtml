@@ -1,0 +1,131 @@
+@model WebWikiForum.ViewModels.VtuberViewModel
+
+@{
+    ViewData["Title"] = Localizer["Wiki_Edit_Profile"] ?? "Edit Profile";
+    Layout = "_Layout";
+}
+
+<div class="max-w-3xl mx-auto px-4 py-12">
+    <div class="mb-8">
+        <h1 class="text-3xl font-black tracking-tight text-slate-900 dark:text-white mb-2">@Localizer["Wiki_Edit_Profile"]</h1>
+        <p class="text-slate-500 dark:text-slate-400">@Localizer["Wiki_Edit_Subtitle"]</p>
+    </div>
+
+    <div class="bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm p-6 sm:p-8">
+        <form asp-action="Edit" asp-controller="Wiki" method="post" enctype="multipart/form-data" class="space-y-6">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="id" value="@ViewBag.Id" />
+            <div asp-validation-summary="ModelOnly" class="text-red-500 text-sm mb-4"></div>
+
+            <!-- Avatar Upload -->
+            <div>
+                <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">@Localizer["Wiki_Label_Avatar"]</label>
+                
+                @if (!string.IsNullOrEmpty(ViewBag.CurrentAvatar))
+                {
+                    <div class="mb-4 flex items-center gap-4 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-100 dark:border-slate-700">
+                        <img src="@ViewBag.CurrentAvatar" class="w-16 h-16 rounded-full object-cover border-2 border-primary/20" />
+                        <div>
+                            <p class="text-xs font-bold text-slate-500 uppercase tracking-wider">Current Avatar</p>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">Leave empty to keep current image</p>
+                        </div>
+                    </div>
+                }
+
+                <div class="mt-1 flex flex-col justify-center items-center px-6 pt-5 pb-6 border-2 border-slate-300 dark:border-slate-700 border-dashed rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors cursor-pointer" onclick="document.getElementById('avatarFile').click()">
+                    <div class="space-y-1 text-center">
+                        <span class="material-symbols-outlined text-slate-400 text-4xl mb-2">cloud_upload</span>
+                        <div class="text-sm text-slate-600 dark:text-slate-400 flex justify-center items-center gap-1">
+                            <span class="font-medium text-primary hover:text-primary-dark">Upload a new file</span>
+                            <span>or drag and drop</span>
+                            <input id="avatarFile" name="avatarFile" type="file" class="sr-only" accept="image/*" onchange="document.getElementById('fileNameDisplay').textContent = this.files[0] ? 'Selected: ' + this.files[0].name : 'PNG, JPG, GIF up to 5MB'; document.getElementById('fileNameDisplay').className = this.files[0] ? 'text-xs font-bold text-primary mt-2' : 'text-xs text-slate-500 dark:text-slate-500 mt-2';">
+                        </div>
+                        <p id="fileNameDisplay" class="text-xs text-slate-500 dark:text-slate-500 mt-2">PNG, JPG, GIF up to 5MB</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Name -->
+                <div class="md:col-span-2">
+                    <label asp-for="Name" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">VTuber Name</label>
+                    <input asp-for="Name" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white dark:focus:bg-surface-dark transition-colors" placeholder="e.g. Hoshimachi Suisei" />
+                    <span asp-validation-for="Name" class="text-red-500 text-xs mt-1 block"></span>
+                </div>
+
+                <!-- Age -->
+                <div>
+                    <label asp-for="Age" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Age (Optional)</label>
+                    <input asp-for="Age" type="number" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white dark:focus:bg-surface-dark transition-colors" placeholder="e.g. 18" />
+                </div>
+
+                <!-- Birthday -->
+                <div>
+                    <label asp-for="Birthday" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Birthday</label>
+                    <input asp-for="Birthday" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white dark:focus:bg-surface-dark transition-colors" placeholder="e.g. March 22" />
+                </div>
+
+                <!-- Debut Date -->
+                <div>
+                    <label asp-for="DebutDate" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Debut Date</label>
+                    <input asp-for="DebutDate" type="date" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white dark:focus:bg-surface-dark transition-colors text-slate-700 dark:text-slate-300" />
+                </div>
+
+                <!-- AgencyId -->
+                <div>
+                    <label asp-for="AgencyId" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Agency</label>
+                    <select asp-for="AgencyId" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white dark:focus:bg-surface-dark transition-colors text-slate-700 dark:text-slate-300">
+                        <option value="">-- Independent VTuber --</option>
+                        @if (ViewBag.Agencies != null)
+                        {
+                            foreach (var agency in ViewBag.Agencies)
+                            {
+                                <option value="@agency.Id">@agency.Name</option>
+                            }
+                        }
+                    </select>
+                </div>
+
+                <!-- Region -->
+                <div>
+                    <label asp-for="Region" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Region</label>
+                    <select asp-for="Region" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white dark:focus:bg-surface-dark transition-colors text-slate-700 dark:text-slate-300">
+                        <option value="Japan">Japan</option>
+                        <option value="NA">North America</option>
+                        <option value="Europe">Europe</option>
+                        <option value="SEA">Southeast Asia</option>
+                        <option value="Vietnam">Vietnam</option>
+                    </select>
+                    <span asp-validation-for="Region" class="text-red-500 text-xs mt-1 block"></span>
+                </div>
+
+                <!-- Language -->
+                <div>
+                    <label asp-for="Language" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Language</label>
+                    <input asp-for="Language" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white dark:focus:bg-surface-dark transition-colors" placeholder="e.g. English / Japanese" />
+                    <span asp-validation-for="Language" class="text-red-500 text-xs mt-1 block"></span>
+                </div>
+
+                <!-- Tags -->
+                <div>
+                    <label asp-for="Tags" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Tags (Comma-separated)</label>
+                    <input asp-for="Tags" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white dark:focus:bg-surface-dark transition-colors" placeholder="e.g. Gaming, Art, ASMR" />
+                    <span asp-validation-for="Tags" class="text-red-500 text-xs mt-1 block"></span>
+                </div>
+            </div>
+
+            <!-- Lore -->
+            <div>
+                <label asp-for="Lore" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Lore & Backstory (MD)</label>
+                <textarea asp-for="Lore" rows="5" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white dark:focus:bg-surface-dark transition-colors resize-none" placeholder="Write a short background story or biography section for this VTuber..."></textarea>
+            </div>
+
+            <div class="pt-4 flex justify-end gap-3">
+                <a asp-action="Details" asp-controller="Wiki" asp-route-id="@ViewBag.Id" class="px-6 py-3 border border-slate-200 dark:border-slate-700 rounded-full font-bold text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">@Localizer["Wiki_Btn_Cancel"]</a>
+                <button type="submit" class="px-8 py-3 bg-primary text-white font-bold rounded-full shadow-sm hover:bg-primary-dark transition-colors">
+                    @Localizer["Wiki_Btn_Update"]
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

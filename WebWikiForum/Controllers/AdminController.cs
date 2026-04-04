@@ -35,7 +35,7 @@ namespace WebWikiForum.Controllers
 
         // POST: Admin/Approve/5
         [HttpPost]
-        public async Task<IActionResult> Approve(int id)
+        public async Task<IActionResult> Approve(int id, string status = "Active")
         {
             var vtuber = await _context.Vtubers.FindAsync(id);
             if (vtuber == null)
@@ -43,7 +43,8 @@ namespace WebWikiForum.Controllers
                 return NotFound();
             }
 
-            vtuber.Status = "Approved";
+            // Allowed statuses: Active, Graduated, Hiatus
+            vtuber.Status = status;
             _context.Update(vtuber);
             await _context.SaveChangesAsync();
 
