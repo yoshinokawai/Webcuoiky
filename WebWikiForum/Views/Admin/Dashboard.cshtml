@@ -110,7 +110,18 @@
                                         </div>
                                     </div>
                                 </td>
-                                <!-- ... other cols ... -->
+                                <td class="p-5 text-sm">
+                                    <div class="flex flex-col gap-1">
+                                        <div class="flex items-center gap-1.5 text-slate-700 dark:text-slate-300 font-medium whitespace-nowrap">
+                                            <span class="material-symbols-outlined text-[16px] text-slate-400">public</span>
+                                            @item.Region
+                                        </div>
+                                        <div class="flex items-center gap-1.5 text-slate-500 dark:text-slate-400 text-xs whitespace-nowrap">
+                                            <span class="material-symbols-outlined text-[16px]">calendar_month</span>
+                                            @(item.DebutDate.HasValue ? item.DebutDate.Value.ToString("MMM dd, yyyy") : "N/A")
+                                        </div>
+                                    </div>
+                                </td>
                                 <td class="p-5 text-center">
                                     <div x-data="{ open: false }" class="relative flex justify-center">
                                         <button @@click="open = !open" type="button" class="px-3 py-1 rounded-full text-xs font-black transition-all hover:scale-105 @(item.Status == "Active" ? "bg-green-100 text-green-700" : item.Status == "Graduated" ? "bg-slate-100 text-slate-700" : "bg-orange-100 text-orange-700") flex items-center gap-1">
@@ -129,6 +140,9 @@
                                 </td>
                                 <td class="p-5 text-right">
                                     <div class="flex items-center justify-end gap-2">
+                                        <a href="/Wiki/Details/@item.Id" target="_blank" class="p-2 hover:bg-primary/10 text-slate-600 hover:text-primary rounded-lg transition-colors" title="View Profile">
+                                            <span class="material-symbols-outlined text-[20px]">visibility</span>
+                                        </a>
                                         <a href="/Wiki/Edit/@item.Id" class="p-2 hover:bg-primary/10 text-slate-600 hover:text-primary rounded-lg transition-colors">
                                             <span class="material-symbols-outlined text-[20px]">edit</span>
                                         </a>
