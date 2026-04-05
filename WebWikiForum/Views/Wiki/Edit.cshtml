@@ -74,16 +74,21 @@
                 <!-- AgencyId -->
                 <div>
                     <label asp-for="AgencyId" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Agency</label>
-                    <select asp-for="AgencyId" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white dark:focus:bg-surface-dark transition-colors text-slate-700 dark:text-slate-300">
-                        <option value="">-- Independent VTuber --</option>
-                        @if (ViewBag.Agencies != null)
-                        {
-                            foreach (var agency in ViewBag.Agencies)
+                    <div class="flex gap-2">
+                        <select asp-for="AgencyId" id="agencySelect" class="flex-1 px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white dark:focus:bg-surface-dark transition-colors text-slate-700 dark:text-slate-300">
+                            <option value="">-- Independent VTuber --</option>
+                            @if (ViewBag.Agencies != null)
                             {
-                                <option value="@agency.Id">@agency.Name</option>
+                                foreach (var agency in ViewBag.Agencies)
+                                {
+                                    <option value="@agency.Id">@agency.Name</option>
+                                }
                             }
-                        }
-                    </select>
+                        </select>
+                        <button type="button" onclick="openAgencyModal()" class="w-12 h-12 flex items-center justify-center bg-primary/10 hover:bg-primary/20 text-primary rounded-xl transition-colors border border-primary/20" title="Quick Add New Agency">
+                            <span class="material-symbols-outlined">add</span>
+                        </button>
+                    </div>
                 </div>
 
                 <!-- Region -->
@@ -129,3 +134,98 @@
         </form>
     </div>
 </div>
+
+<!-- Quick Add Agency Modal -->
+<div id="quickAgencyModal" class="fixed inset-0 z-[100] hidden">
+    <div class="flex items-center justify-center min-h-screen p-4">
+        <div class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm" onclick="closeAgencyModal()"></div>
+        <div class="relative bg-white dark:bg-surface-dark p-6 rounded-2xl shadow-2xl max-w-md w-full border border-slate-200 dark:border-slate-800">
+            <h3 class="text-xl font-black text-slate-900 dark:text-white mb-4">Quick Add Agency</h3>
+            
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Agency Name</label>
+                    <input type="text" id="quickAgencyName" class="w-full px-4 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary/20" placeholder="e.g. Hololive English" />
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Region</label>
+                    <select id="quickAgencyRegion" class="w-full px-4 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg">
+                        <option value="Japan">Japan</option>
+                        <option value="Global">Global</option>
+                        <option value="Vietnam">Vietnam</option>
+                        <option value="SEA">Southeast Asia</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Focus</label>
+                    <input type="text" id="quickAgencyFocus" class="w-full px-4 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg" placeholder="e.g. Virtual Idols, Gaming" />
+                </div>
+            </div>
+
+            <div class="flex justify-end gap-3 mt-8">
+                <button type="button" onclick="closeAgencyModal()" class="px-5 py-2 text-sm font-bold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">Cancel</button>
+                <button type="button" id="quickAgencySaveBtn" onclick="saveQuickAgency()" class="px-6 py-2 text-sm font-bold bg-primary text-white rounded-full hover:bg-primary-dark shadow-sm transition-all flex items-center gap-2">
+                    <span>Save Agency</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function openAgencyModal() {
+            document.getElementById('quickAgencyModal').classList.remove('hidden');
+        }
+
+        function closeAgencyModal() {
+            document.getElementById('quickAgencyModal').classList.add('hidden');
+        }
+
+        async function saveQuickAgency() {
+            const name = document.getElementById('quickAgencyName').value;
+            const region = document.getElementById('quickAgencyRegion').value;
+            const focus = document.getElementById('quickAgencyFocus').value;
+            const btn = document.getElementById('quickAgencySaveBtn');
+
+            if (!name) {
+                alert('Please enter an agency name');
+                return;
+            }
+
+            btn.disabled = true;
+            btn.innerHTML = '<span class="animate-spin material-symbols-outlined text-sm">progress_activity</span> saving...';
+
+            try {
+                const response = await fetch('/Wiki/ApiCreateAgency', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
+                    },
+                    body: JSON.stringify({ name, region, focus })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    const select = document.getElementById('agencySelect');
+                    const option = new Option(result.name, result.id);
+                    select.add(option);
+                    select.value = result.id;
+                    
+                    closeAgencyModal();
+                    document.getElementById('quickAgencyName').value = '';
+                    document.getElementById('quickAgencyFocus').value = '';
+                } else {
+                    alert('Error: ' + result.message);
+                }
+            } catch (error) {
+                alert('Connection error');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<span>Save Agency</span>';
+            }
+        }
+    </script>
+}

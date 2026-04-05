@@ -49,7 +49,7 @@ namespace WebWikiForum.Controllers
 
         public async Task<IActionResult> Independent(string? searchTerm, string? region, string? language, string? tag)
         {
-            var vtubers = _context.Vtubers.Where(v => v.IsIndependent && v.Status == "Approved").AsQueryable();
+            var vtubers = _context.Vtubers.Where(v => v.IsIndependent && (v.Status == "Approved" || v.Status == "Active")).AsQueryable();
 
             if (!string.IsNullOrEmpty(searchTerm))
             {
@@ -121,7 +121,7 @@ namespace WebWikiForum.Controllers
                     await _context.SaveChangesAsync();
                     
                     TempData["SuccessMessage"] = $"VTuber '{vtuber.Name}' has been created successfully!";
-                    return RedirectToAction("Independent");
+                    return RedirectToAction("Dashboard", "Admin");
                 }
                 catch (Exception ex)
                 {
@@ -188,7 +188,7 @@ namespace WebWikiForum.Controllers
                     await _context.SaveChangesAsync();
 
                     TempData["SuccessMessage"] = $"Agency '{agency.Name}' updated successfully!";
-                    return RedirectToAction("Agencies");
+                    return RedirectToAction("AgencyDetails", new { id = agency.Id });
                 }
                 catch (Exception ex)
                 {
@@ -257,8 +257,8 @@ namespace WebWikiForum.Controllers
                 }
                 
                 if (!string.IsNullOrEmpty(agency.LogoUrl)) {
-                    string filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", agency.LogoUrl.TrimStart('/'));
-                    if (System.IO.File.Exists(filePath)) System.IO.File.Delete(filePath);
+                    string fileName = Path.GetFileName(agency.LogoUrl);
+                    _fileService.DeleteFile(fileName, "agencies");
                 }
 
                 _context.Agencies.Remove(agency);
@@ -295,7 +295,7 @@ namespace WebWikiForum.Controllers
                 TempData["ErrorMessage"] = "Error deleting VTuber: " + ex.Message;
             }
 
-            return RedirectToAction("Independent");
+            return RedirectToAction("Dashboard", "Admin");
         }
 
         [Authorize]
@@ -364,7 +364,7 @@ namespace WebWikiForum.Controllers
                     await _context.SaveChangesAsync();
 
                     TempData["SuccessMessage"] = $"VTuber '{vtuber.Name}' updated successfully!";
-                    return RedirectToAction("Details", new { id = vtuber.Id });
+                    return RedirectToAction("Dashboard", "Admin");
                 }
                 catch (Exception ex)
                 {
@@ -437,6 +437,35 @@ namespace WebWikiForum.Controllers
             }
 
             return View(agency);
+        }
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> ApiCreateAgency([FromBody] AgencyViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var agency = new Agency
+                    {
+                        Name = model.Name,
+                        Region = model.Region,
+                        Focus = model.Focus,
+                        Description = model.Description ?? "Quickly added",
+                        TalentCount = 0
+                    };
+
+                    _context.Agencies.Add(agency);
+                    await _context.SaveChangesAsync();
+
+                    return Json(new { success = true, id = agency.Id, name = agency.Name });
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { success = false, message = ex.Message });
+                }
+            }
+            return Json(new { success = false, message = "Invalid data" });
         }
     }
 }
