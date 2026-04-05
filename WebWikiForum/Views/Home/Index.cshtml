@@ -5,67 +5,99 @@
 
 
 <main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
-<section class="relative overflow-hidden rounded-3xl bg-surface-light dark:bg-surface-dark shadow-soft border border-slate-100 dark:border-slate-800/50 group">
-<div class="absolute top-0 right-0 w-3/4 h-full bg-gradient-to-l from-primary/10 via-lavender/30 to-transparent dark:from-primary/20 dark:via-purple-900/10 pointer-events-none"></div>
-<div class="absolute -right-20 -top-20 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
-<div class="grid lg:grid-cols-12 gap-8 items-center relative z-10 min-h-[480px]">
-<div class="lg:col-span-7 p-8 lg:p-12 lg:pr-0 flex flex-col justify-center h-full">
-<div class="space-y-6">
-<div class="flex items-center gap-3 mb-2">
-<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary text-white text-xs font-bold uppercase tracking-wider shadow-glow">
-<span class="material-symbols-outlined text-[16px] filled">stars</span>
-                            @Localizer["Home_Spotlight"]
+    <section class="relative overflow-hidden rounded-3xl bg-surface-light dark:bg-surface-dark shadow-soft border border-slate-100 dark:border-slate-800/50 group spotlight-slider">
+        <div class="slides-container relative h-full">
+            @if (ViewBag.Spotlight != null)
+            {
+                var spotlightList = ViewBag.Spotlight as List<WebWikiForum.Models.Vtuber>;
+                for (int i = 0; i < spotlightList.Count; i++)
+                {
+                    var vt = spotlightList[i];
+                    <div class="spotlight-slide @(i == 0 ? "active" : "")" data-index="@i">
+                        <div class="absolute top-0 right-0 w-3/4 h-full bg-gradient-to-l from-primary/10 via-lavender/30 to-transparent dark:from-primary/20 dark:via-purple-900/10 pointer-events-none"></div>
+                        <div class="grid lg:grid-cols-12 gap-8 items-center relative z-10 min-h-[480px]">
+                            <div class="lg:col-span-7 p-8 lg:p-12 lg:pr-0 flex flex-col justify-center h-full">
+                                <div class="space-y-6">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary text-white text-xs font-bold uppercase tracking-wider shadow-glow">
+                                            <span class="material-symbols-outlined text-[16px] filled">stars</span>
+                                            @Localizer["Home_Spotlight"]
+                                        </div>
+                                        <span class="text-sm font-semibold text-slate-500 dark:text-slate-400">@Localizer["Home_Choice"]</span>
+                                    </div>
+                                    <div>
+                                        <h1 class="text-5xl lg:text-7xl font-black text-slate-900 dark:text-white tracking-tight leading-[0.95] mb-4">
+                                            @vt.Name
+                                        </h1>
+                                        <div class="flex items-center gap-3 text-lg">
+                                            @if (vt.Agency != null && !string.IsNullOrEmpty(vt.Agency.LogoUrl))
+                                            {
+                                                <img alt="@vt.Agency.Name" class="w-6 h-6 rounded-full" src="@vt.Agency.LogoUrl" />
+                                            }
+                                            <span class="font-bold text-slate-700 dark:text-slate-200">@(vt.Agency != null ? vt.Agency.Name : Localizer["Dash_Independent"].Value)</span>
+                                            <span class="text-slate-300 dark:text-slate-600">•</span>
+                                            <span class="text-slate-500 dark:text-slate-400 font-medium">Debut: @(vt.DebutDate?.ToString("MMM dd, yyyy") ?? "Unknown")</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-slate-600 dark:text-slate-300 text-lg leading-relaxed max-w-xl border-l-4 border-primary/30 pl-4 line-clamp-3">
+                                        @vt.Lore
+                                    </p>
+                                    <div class="flex flex-wrap gap-4 pt-4">
+                                        <a href="/Wiki/Details/@vt.Id" class="flex items-center gap-2 h-12 px-8 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold shadow-lg hover:scale-105 transition-all duration-300">
+                                            <span>@Localizer["Home_ReadWiki"]</span>
+                                            <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+                                        </a>
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-6 pt-6 mt-2 border-t border-slate-200 dark:border-slate-800">
+                                        <div>
+                                            <p class="text-xs text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wide mb-1 flex items-center gap-1">
+                                                <span class="material-symbols-outlined text-[14px]">visibility</span>
+                                                Views
+                                            </p>
+                                            <p class="text-2xl font-black text-slate-900 dark:text-white">@vt.ViewCount.ToString("N0")<span class="text-primary">+</span></p>
+                                        </div>
+                                        <div>
+                                            @if (vt.Age.HasValue) 
+                                            {
+                                                <p class="text-xs text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wide mb-1">Age</p>
+                                                <p class="text-2xl font-black text-slate-900 dark:text-white">@vt.Age.Value</p>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-5 relative h-[500px] lg:h-full w-full flex items-end justify-center lg:justify-end overflow-visible">
+                                <div class="absolute bottom-0 right-0 lg:-right-8 w-auto h-[115%] z-20 transition-transform duration-700 ease-out origin-bottom">
+                                    <img alt="@vt.Name" class="h-full w-auto object-contain drop-shadow-2xl hero-mask" src="@(string.IsNullOrEmpty(vt.AvatarUrl) ? "/images/default-avatar.png" : vt.AvatarUrl)" />
+                                </div>
+                                <div class="absolute bottom-0 right-0 lg:right-10 w-[450px] h-[450px] bg-gradient-to-tr from-indigo-500/20 to-primary/20 rounded-full blur-2xl z-10"></div>
+                            </div>
                         </div>
-<span class="text-sm font-semibold text-slate-500 dark:text-slate-400">@Localizer["Home_Choice"]</span>
-</div>
-<div>
-<h1 class="text-5xl lg:text-7xl font-black text-slate-900 dark:text-white tracking-tight leading-[0.95] mb-4">
-                            Hoshimachi<br/><span class="text-primary text-transparent bg-clip-text bg-gradient-to-r from-primary to-indigo-500">Suisei</span>
-</h1>
-<div class="flex items-center gap-3 text-lg">
-<img alt="Hololive" class="w-6 h-6 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwx-rCgYZjI_j0g5KEyDP_U2A_fJWZNYSCE_CTqmfnNgtfti8k1Q59xdD4w7Havfse_uA1UjcgdrpGnbWL7-2yiP4sjBR20oOP_5BJ9RSAjvMY_80iNo3FKdvMLqDl-WSvI0NyI4Vj2eUgpBDTt17aDF0zCfXPH4JhsmN-UTuxuub7tWzAWZALK3nBnrRSclNQeahIWCJUtKN6ump1bqMzgHEreANFu9_dRC2a9J_apOWZGb4Q_QR_lyev7G69FQ2uUKgFrh9I-VQ"/>
-<span class="font-bold text-slate-700 dark:text-slate-200">@Localizer["Home_Agency_Holo"]</span>
-<span class="text-slate-300 dark:text-slate-600">•</span>
-<span class="text-slate-500 dark:text-slate-400 font-medium">@Localizer["Home_Hero_Gen0"]</span>
-</div>
-</div>
-<p class="text-slate-600 dark:text-slate-300 text-lg leading-relaxed max-w-xl border-l-4 border-primary/30 pl-4">
-                        @Localizer["Home_Hero_Desc"]
-                    </p>
-<div class="flex flex-wrap gap-4 pt-4">
-<button class="flex items-center gap-2 h-12 px-8 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold shadow-lg hover:scale-105 transition-all duration-300">
-<span>@Localizer["Home_ReadWiki"]</span>
-<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
-</button>
-<button class="flex items-center gap-2 h-12 px-6 rounded-xl bg-white dark:bg-slate-800 text-red-600 border border-red-100 dark:border-red-900/30 font-bold hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors shadow-sm">
-<span class="material-symbols-outlined text-[20px] filled">play_arrow</span>
-                            @Localizer["Home_LatestStream"]
-                        </button>
-</div>
-<div class="grid grid-cols-3 gap-6 pt-6 mt-2 border-t border-slate-200 dark:border-slate-800">
-<div>
-<p class="text-xs text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wide mb-1">@Localizer["Home_Subscribers"]</p>
-<p class="text-2xl font-black text-slate-900 dark:text-white">2.4M<span class="text-primary">+</span></p>
-</div>
-<div>
-<p class="text-xs text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wide mb-1">@Localizer["Home_FanName"]</p>
-<p class="text-2xl font-black text-slate-900 dark:text-white">@Localizer["Home_Hero_FanName_Value"]</p>
-</div>
-<div>
-<p class="text-xs text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wide mb-1">@Localizer["Home_OshiMark"]</p>
-<p class="text-2xl font-black text-slate-900 dark:text-white">☄️</p>
-</div>
-</div>
-</div>
-</div>
-<div class="lg:col-span-5 relative h-[500px] lg:h-full w-full flex items-end justify-center lg:justify-end overflow-visible">
-<div class="absolute bottom-0 right-0 lg:-right-8 w-auto h-[115%] z-20 transition-transform duration-700 ease-out group-hover:scale-[1.02] origin-bottom">
-<img alt="Hoshimachi Suisei" class="h-full w-auto object-contain drop-shadow-2xl hero-mask" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJXS6pnrCTJ1X6EeK8lpH4SeMzj7O6AcMO4pPEYFu0ZiZn-hh_Awm2sgjqWiNLeiF88V72yUPAIUU5vAD0VaG__pUGUgfWG2roQ7tDhJzq7bUz11WXo9711X0TETqKlFyv-RcONydBXFgdf7z7phcEQdOMRXfKhRec_wHz69-zBnprVgLny3QJCbkL8-OhhFdQfISz2kjB9T_22D56CznAcjOmC5cJY81DiDYB4ifo-VXXLfIZsay__FyuOfaSh-hOm4aKdBojRn8"/>
-</div>
-<div class="absolute bottom-0 right-0 lg:right-10 w-[450px] h-[450px] bg-gradient-to-tr from-indigo-500/20 to-primary/20 rounded-full blur-2xl z-10"></div>
-</div>
-</div>
-</section>
+                    </div>
+                }
+            }
+        </div>
+        
+        <!-- Slider Navigation -->
+        <button class="slider-btn prev absolute left-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-white/80 dark:bg-slate-800/80 shadow-md flex items-center justify-center text-slate-700 dark:text-white hover:bg-primary hover:text-white transition-all opacity-0 group-hover:opacity-100">
+            <span class="material-symbols-outlined">chevron_left</span>
+        </button>
+        <button class="slider-btn next absolute right-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-white/80 dark:bg-slate-800/80 shadow-md flex items-center justify-center text-slate-700 dark:text-white hover:bg-primary hover:text-white transition-all opacity-0 group-hover:opacity-100">
+            <span class="material-symbols-outlined">chevron_right</span>
+        </button>
+        
+        <!-- Slider Dots -->
+        <div class="slider-dots absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex gap-2">
+            @if (ViewBag.Spotlight != null)
+            {
+                var spotlightList = ViewBag.Spotlight as List<WebWikiForum.Models.Vtuber>;
+                for (int i = 0; i < spotlightList.Count; i++)
+                {
+                    <button class="slider-dot w-2 h-2 rounded-full bg-slate-300 dark:bg-slate-700 transition-all @(i == 0 ? "active" : "")" data-index="@i"></button>
+                }
+            }
+        </div>
+    </section>
 <section>
 <div class="flex items-center justify-between mb-6">
 <h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
@@ -262,4 +294,67 @@
 </div>
 </div>
 </main>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.spotlight-slide');
+            const dots = document.querySelectorAll('.slider-dot');
+            const prevBtn = document.querySelector('.slider-btn.prev');
+            const nextBtn = document.querySelector('.slider-btn.next');
+            let currentIndex = 0;
+            let slideInterval;
+
+            function showSlide(index) {
+                slides.forEach(s => s.classList.remove('active'));
+                dots.forEach(d => d.classList.remove('active'));
+                
+                slides[index].classList.add('active');
+                dots[index].classList.add('active');
+                currentIndex = index;
+            }
+
+            function nextSlide() {
+                let next = (currentIndex + 1) % slides.length;
+                showSlide(next);
+            }
+
+            function prevSlide() {
+                let prev = (currentIndex - 1 + slides.length) % slides.length;
+                showSlide(prev);
+            }
+
+            if (nextBtn) nextBtn.addEventListener('click', () => {
+                nextSlide();
+                resetInterval();
+            });
+            
+            if (prevBtn) prevBtn.addEventListener('click', () => {
+                prevSlide();
+                resetInterval();
+            });
+
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    const index = parseInt(dot.getAttribute('data-index'));
+                    showSlide(index);
+                    resetInterval();
+                });
+            });
+
+            function startInterval() {
+                slideInterval = setInterval(nextSlide, 5000);
+            }
+
+            function resetInterval() {
+                clearInterval(slideInterval);
+                startInterval();
+            }
+
+            if (slides.length > 1) {
+                startInterval();
+            }
+        });
+    </script>
+}
 

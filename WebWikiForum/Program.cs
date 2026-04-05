@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using WebWikiForum.Data;
 using WebWikiForum.Models;
 using WebWikiForum.Services;
+using Microsoft.Extensions.Options;
 using WebWikiForum;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,6 +21,7 @@ builder.Services.AddControllersWithViews()
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("Cloudinary"));
 builder.Services.AddScoped<IFileService, FileService>();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)

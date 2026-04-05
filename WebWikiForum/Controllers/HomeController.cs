@@ -17,6 +17,13 @@ namespace WebWikiForum.Controllers
 
         public async Task<IActionResult> Index()
         {
+            // Top 5 VTubers for the Spotlight section
+            ViewBag.Spotlight = await _context.Vtubers
+                .Include(v => v.Agency)
+                .OrderByDescending(v => v.ViewCount)
+                .Take(5)
+                .ToListAsync();
+
             // Top 5 VTubers for the Trending section
             ViewBag.Trending = await _context.Vtubers
                 .Include(v => v.Agency)

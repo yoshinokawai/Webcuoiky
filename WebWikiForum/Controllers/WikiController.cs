@@ -108,7 +108,7 @@ namespace WebWikiForum.Controllers
                         DebutDate = model.DebutDate,
                         Birthday = model.Birthday,
                         Lore = model.Lore,
-                        AvatarUrl = string.IsNullOrEmpty(fileName) ? null : "/uploads/vtubers/" + fileName,
+                        AvatarUrl = fileName,
                         AgencyId = model.AgencyId,
                         IsIndependent = model.AgencyId == null,
                         Region = model.Region,
@@ -175,7 +175,7 @@ namespace WebWikiForum.Controllers
 
                         // Upload new logo
                         string fileName = await _fileService.UploadImageAsync(logoFile, "agencies");
-                        agency.LogoUrl = "/uploads/agencies/" + fileName;
+                        agency.LogoUrl = fileName;
                     }
 
                     agency.Name = model.Name;
@@ -225,7 +225,7 @@ namespace WebWikiForum.Controllers
                         Focus = model.Focus,
                         Description = model.Description,
                         TalentCount = model.TalentCount,
-                        LogoUrl = string.IsNullOrEmpty(fileName) ? null : "/uploads/agencies/" + fileName
+                        LogoUrl = fileName
                     };
 
                     _context.Add(agency);
@@ -346,7 +346,7 @@ namespace WebWikiForum.Controllers
 
                         // Upload new image
                         string fileName = await _fileService.UploadImageAsync(avatarFile, "vtubers");
-                        vtuber.AvatarUrl = "/uploads/vtubers/" + fileName;
+                        vtuber.AvatarUrl = fileName;
                     }
 
                     vtuber.Name = model.Name;
