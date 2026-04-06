@@ -37,10 +37,15 @@ namespace WebWikiForum.Controllers
                                         .OrderByDescending(a => a.Id)
                                         .ToListAsync();
 
+            var news = await _context.News
+                                     .OrderByDescending(n => n.PublishDate)
+                                     .ToListAsync();
+
             var viewModel = new AdminDashboardViewModel
             {
                 Vtubers = vtubers,
-                Agencies = agencies
+                Agencies = agencies,
+                News = news
             };
 
             return View(viewModel);

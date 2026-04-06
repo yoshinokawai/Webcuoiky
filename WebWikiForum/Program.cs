@@ -59,6 +59,18 @@ using (var scope = app.Services.CreateScope())
             );
             db.SaveChanges();
         }
+
+        if (!db.News.Any())
+        {
+            db.News.AddRange(
+                new News { Title = "Hololive Production Announces 'Hololive Super Expo 2024' Details", Type = "Event", Author = "Admin", IsFeatured = true, PublishDate = DateTime.Now.AddHours(-2), ImageUrl = "https://lh3.googleusercontent.com/aida-public/AB6AXuC9GV3pMOtHNuxKOCKwzrAnvFc-NW4p-hJwBAQWu5MZL6S_Nf8HxLnUa2Iy__U1IEkpHFAY7p9TH3x_eI5rbMBUd4heQxUo3xa30LhafkUnzR-zBx7_C7ez0YwK4uKslcxneAXqwTQhrWJM7OmEZS3RfRjVAs7HPfIefQRF-HZ50hs65jn8gKDlLHHyxqH-TEHElThK2oI_oBH5o_CumxufJeBgII_91hMjBhJp0QCqzM-F1XObFJYwluJqUFokjdkWxCQRruMwbH8" },
+                new News { Title = "New Indie VTuber Agency 'Prism Project' Teases Generation 5", Type = "Debut", Author = "Staff", PublishDate = DateTime.Now.AddHours(-5), ImageUrl = "https://lh3.googleusercontent.com/aida-public/AB6AXuAGvY6T_M_u2W9v9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8" },
+                new News { Title = "Mori Calliope releases new EP 'JIGOKU 6' featuring diverse artists", Type = "Music", Author = "MusicTeam", PublishDate = DateTime.Now.AddDays(-1), ImageUrl = "https://i.ytimg.com/vi/6u2OyeL6h7I/maxresdefault.jpg" },
+                new News { Title = "ASMR Masters: Top 10 VTubers for your Night Comfort", Type = "ASMR", Author = "Editorial", PublishDate = DateTime.Now.AddDays(-2), ImageUrl = "https://i.ytimg.com/vi/6fR0eSIn2zI/maxresdefault.jpg" },
+                new News { Title = "CR Cup Overwatch 2: VTuber teams confirmed for the finals", Type = "Gaming", Author = "GamingDaily", PublishDate = DateTime.Now.AddDays(-3), ImageUrl = "https://i.ytimg.com/vi/4T_L_7L-e08/maxresdefault.jpg" }
+            );
+            db.SaveChanges();
+        }
     }
     catch (Exception ex)
     {

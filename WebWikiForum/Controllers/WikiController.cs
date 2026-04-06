@@ -7,6 +7,7 @@ using WebWikiForum.Data;
 using WebWikiForum.Services;
 using WebWikiForum.ViewModels;
 using WebWikiForum.Models;
+using System.Linq;
 
 namespace WebWikiForum.Controllers
 {
@@ -19,6 +20,155 @@ namespace WebWikiForum.Controllers
         {
             _context = context;
             _fileService = fileService;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> VirtualEvents(string? type)
+        {
+            var query = _context.News.AsQueryable();
+
+            if (!string.IsNullOrEmpty(type) && type != "all")
+            {
+                query = query.Where(n => n.Type == type);
+            }
+
+            var events = await query.OrderByDescending(n => n.PublishDate).ToListAsync();
+            ViewData["CurrentType"] = type ?? "all";
+            
+            return View(events);
+        }
+
+        [Authorize]
+        [HttpGet]
+        public IActionResult CreateEvent()
+        {
+            return View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> CreateEvent(NewsViewModel model, IFormFile? imageFile)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    string imageUrl = "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=800&auto=format&fit=crop"; // Default
+                    if (imageFile != null && imageFile.Length > 0)
+                    {
+                        imageUrl = await _fileService.UploadImageAsync(imageFile, "news");
+                    }
+
+                    var news = new News
+                    {
+                        Title = model.Title,
+                        Type = model.Type,
+                        Content = model.Content,
+                        Author = model.Author,
+                        IsFeatured = model.IsFeatured,
+                        ImageUrl = imageUrl,
+                        PublishDate = DateTime.Now
+                    };
+
+                    _context.News.Add(news);
+                    await _context.SaveChangesAsync();
+
+                    TempData["SuccessMessage"] = "Event/News added successfully!";
+                    return RedirectToAction("VirtualEvents");
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", "Error: " + ex.Message);
+                }
+            }
+            return View(model);
+        }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> EditEvent(int id)
+        {
+            var news = await _context.News.FindAsync(id);
+            if (news == null) return NotFound();
+
+            var model = new NewsViewModel
+            {
+                Title = news.Title,
+                Type = news.Type,
+                Content = news.Content,
+                Author = news.Author,
+                IsFeatured = news.IsFeatured,
+                CurrentImageUrl = news.ImageUrl
+            };
+
+            ViewBag.Id = id;
+            return View(model);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> EditEvent(int id, NewsViewModel model, IFormFile? imageFile)
+        {
+            if (ModelState.IsValid)
+            {
+                var news = await _context.News.FindAsync(id);
+                if (news == null) return NotFound();
+
+                try
+                {
+                    if (imageFile != null && imageFile.Length > 0)
+                    {
+                        // Delete old image if it's on Cloudinary (not a generic unsplash link)
+                        if (!string.IsNullOrEmpty(news.ImageUrl) && news.ImageUrl.Contains("res.cloudinary.com"))
+                        {
+                            _fileService.DeleteFile(Path.GetFileName(news.ImageUrl), "news");
+                        }
+                        news.ImageUrl = await _fileService.UploadImageAsync(imageFile, "news");
+                    }
+
+                    news.Title = model.Title;
+                    news.Type = model.Type;
+                    news.Content = model.Content;
+                    news.Author = model.Author;
+                    news.IsFeatured = model.IsFeatured;
+
+                    _context.Update(news);
+                    await _context.SaveChangesAsync();
+
+                    TempData["SuccessMessage"] = "Event updated successfully!";
+                    return RedirectToAction("VirtualEvents");
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", "Error: " + ex.Message);
+                }
+            }
+            ViewBag.Id = id;
+            return View(model);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> DeleteEvent(int id)
+        {
+            var news = await _context.News.FindAsync(id);
+            if (news == null) return NotFound();
+
+            try
+            {
+                if (!string.IsNullOrEmpty(news.ImageUrl) && news.ImageUrl.Contains("res.cloudinary.com"))
+                {
+                    _fileService.DeleteFile(Path.GetFileName(news.ImageUrl), "news");
+                }
+                _context.News.Remove(news);
+                await _context.SaveChangesAsync();
+                TempData["SuccessMessage"] = "Event deleted.";
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = "Error: " + ex.Message;
+            }
+            return RedirectToAction("VirtualEvents");
         }
 
         public async Task<IActionResult> Agencies(string? searchTerm, string? region, string? focus)

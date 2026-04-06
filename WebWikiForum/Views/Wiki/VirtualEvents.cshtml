@@ -1,0 +1,141 @@
+@model IEnumerable<WebWikiForum.Models.News>
+@{
+    ViewData["Title"] = Localizer["Nav_Events"] ?? "Virtual Events";
+    string currentType = ViewData["CurrentType"]?.ToString() ?? "all";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/VirtualEvents.css" />
+}
+
+<div class="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8 bg-pattern">
+    <div class="mb-12 text-center">
+        <h1 class="text-4xl sm:text-6xl font-black text-slate-900 dark:text-white mb-4 tracking-tight">
+            Virtual <span class="text-primary italic">Events</span>
+        </h1>
+        <p class="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">
+            Stay updated with the latest news, debuts, music releases, and gaming events from across the VTuber Multiverse.
+        </p>
+    </div>
+
+    <!-- Filter & Admin Bar -->
+    <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-12">
+        <div class="flex flex-wrap justify-center md:justify-start gap-3">
+            <a href="/Wiki/VirtualEvents?type=all" class="filter-chip @(currentType == "all" ? "active" : "")">
+                <span class="material-symbols-outlined text-sm">grid_view</span>
+                All
+            </a>
+            <a href="/Wiki/VirtualEvents?type=Event" class="filter-chip @(currentType == "Event" ? "active" : "")">
+                <span class="material-symbols-outlined text-sm">event</span>
+                Events
+            </a>
+            <a href="/Wiki/VirtualEvents?type=Debut" class="filter-chip @(currentType == "Debut" ? "active" : "")">
+                <span class="material-symbols-outlined text-sm">star</span>
+                Debuts
+            </a>
+            <a href="/Wiki/VirtualEvents?type=Music" class="filter-chip @(currentType == "Music" ? "active" : "")">
+                <span class="material-symbols-outlined text-sm">music_note</span>
+                Music
+            </a>
+            <a href="/Wiki/VirtualEvents?type=ASMR" class="filter-chip @(currentType == "ASMR" ? "active" : "")">
+                <span class="material-symbols-outlined text-sm">headphones</span>
+                ASMR
+            </a>
+            <a href="/Wiki/VirtualEvents?type=Gaming" class="filter-chip @(currentType == "Gaming" ? "active" : "")">
+                <span class="material-symbols-outlined text-sm">sports_esports</span>
+                Gaming
+            </a>
+        </div>
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a href="/Wiki/CreateEvent" class="flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-full font-bold shadow-lg shadow-primary/30 transition-all hover:-translate-y-1 active:scale-95 shrink-0">
+                <span class="material-symbols-outlined">add_circle</span>
+                Add Event
+            </a>
+        }
+    </div>
+
+    <!-- Events Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        @foreach (var item in Model)
+        {
+            <div class="event-card group animate-in slide-in-from-bottom duration-500">
+                <div class="aspect-video rounded-2xl overflow-hidden relative mb-4">
+                    <img src="@item.ImageUrl" alt="@item.Title" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                    <div class="absolute top-4 left-4">
+                        <span class="tag-badge tag-@(item.Type.ToLower())">@item.Type</span>
+                    </div>
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <div class="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+                            <a href="/Wiki/EditEvent/@item.Id" class="w-10 h-10 rounded-full bg-white/90 dark:bg-slate-800/90 text-blue-600 flex items-center justify-center shadow-lg hover:bg-blue-600 hover:text-white transition-all">
+                                <span class="material-symbols-outlined text-xl">edit</span>
+                            </a>
+                            <button onclick="confirmDeleteEvent(@item.Id, '@Html.Raw(item.Title.Replace("'", "\\'"))')" class="w-10 h-10 rounded-full bg-white/90 dark:bg-slate-800/90 text-red-600 flex items-center justify-center shadow-lg hover:bg-red-600 hover:text-white transition-all">
+                                <span class="material-symbols-outlined text-xl">delete</span>
+                            </button>
+                        </div>
+                    }
+                </div>
+                <div class="px-2">
+                    <div class="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400 mb-2 font-bold uppercase tracking-widest">
+                        <span>@item.PublishDate.ToString("MMM dd, yyyy")</span>
+                        <span>•</span>
+                        <span>By @item.Author</span>
+                    </div>
+                    <h3 class="text-xl font-black text-slate-900 dark:text-white leading-tight group-hover:text-primary transition-colors">
+                        @item.Title
+                    </h3>
+                </div>
+            </div>
+        }
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="text-center py-20 bg-slate-50 dark:bg-slate-800/50 rounded-3xl border-2 border-dashed border-slate-200 dark:border-slate-700">
+            <span class="material-symbols-outlined text-6xl text-slate-300 dark:text-slate-600 mb-4 scale-125">event_busy</span>
+            <h3 class="text-xl font-bold text-slate-600 dark:text-slate-400">No events found in this category.</h3>
+            <p class="text-slate-500 dark:text-slate-500 mt-2">Try changing your filters or check back later!</p>
+        </div>
+    }
+</div>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <form id="deleteEventForm" method="post" style="display:none;">
+        @Html.AntiForgeryToken()
+    </form>
+
+    <script>
+        function confirmDeleteEvent(id, title) {
+            const modal = document.getElementById('confirmModal');
+            const titleEl = document.getElementById('modal-title');
+            const msgEl = document.getElementById('modal-message');
+            const confirmBtn = document.getElementById('modalConfirmBtn');
+            const cancelBtn = document.getElementById('modalCancelBtn');
+
+            titleEl.textContent = 'Delete Event?';
+            msgEl.textContent = `Are you sure you want to delete "${title}"? This action cannot be undone.`;
+            
+            modal.classList.remove('hidden');
+
+            const doDelete = () => {
+                const form = document.getElementById('deleteEventForm');
+                form.action = `/Wiki/DeleteEvent/${id}`;
+                form.submit();
+            };
+
+            const doCancel = () => {
+                modal.classList.add('hidden');
+                confirmBtn.removeEventListener('click', doDelete);
+                cancelBtn.removeEventListener('click', doCancel);
+            };
+
+            confirmBtn.addEventListener('click', doDelete);
+            cancelBtn.addEventListener('click', doCancel);
+        }
+    </script>
+}

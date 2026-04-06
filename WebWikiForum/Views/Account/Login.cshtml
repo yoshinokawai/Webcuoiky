@@ -8,31 +8,28 @@
 <div class="flex min-h-screen w-full overflow-hidden">
     <!-- Left Side: Visual/Illustration -->
     <div class="relative hidden lg:flex w-1/2 flex-col justify-end p-12 overflow-hidden bg-primary/10">
-<!-- Background Image -->
-<div class="absolute inset-0 z-0 h-full w-full bg-cover bg-center" data-alt="Anime style illustration with purple neon lighting aesthetic" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA9G3vFTFMQhg7boEgjIPndNNCAybDznl5cvjmRZNwiTxv1soDnii6b-EDcIAMpGbEFS1SU9crafgfJHRDmB98XOTIHNRlqhjMIAwrU7WUdI0JXW7AAAzLMqAITiVzwANQxGm3lhLmmJ-pKG_rkQ8WjuH36JFhBqOADNtNv3jrjUn6ruuKmWSEXNo7oAbFjSrdbGAnG2WYYeCkqknHWKELdx_0oQy_Pc7pHcUYS3BHgwgELCgxOCqo5BcVQ9PHYLbQMMAG7Ltmjpqo');">
-</div>
-<!-- Gradient Overlay for readability -->
-<div class="absolute inset-0 z-10 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent"></div>
-<!-- Content Overlay -->
+        <div class="login-hero-bg" data-alt="Anime style illustration with purple neon lighting aesthetic"></div>
+        <div class="login-hero-overlay"></div>
+        <!-- Content Overlay -->
 <div class="relative z-20 max-w-lg">
-<div class="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-white/20 backdrop-blur-md border border-white/30 text-white shadow-lg">
-<span class="material-symbols-outlined text-2xl">auto_stories</span>
-</div>
+    <div class="login-icon-box">
+        <span class="material-symbols-outlined text-2xl">auto_stories</span>
+    </div>
 <h1 class="text-4xl font-black text-white leading-tight tracking-tight mb-4">
                 @Html.Raw(Localizer["Account_Login_Hero_Title"].Value.Replace("<br/>", "<br/>"))
             </h1>
 <p class="text-lg text-white/90 font-medium leading-relaxed">
                 @Localizer["Account_Login_Hero_Desc"]
             </p>
-<div class="mt-8 flex gap-2">
-<span class="h-1.5 w-8 rounded-full bg-white"></span>
-<span class="h-1.5 w-2 rounded-full bg-white/40"></span>
-<span class="h-1.5 w-2 rounded-full bg-white/40"></span>
+<div class="login-pagination-dots">
+    <span class="login-dot login-dot-active"></span>
+    <span class="login-dot login-dot-inactive"></span>
+    <span class="login-dot login-dot-inactive"></span>
 </div>
 </div>
 </div>
     <!-- Right Side: Login Form -->
-    <div class="flex flex-1 flex-col justify-center items-center px-6 py-12 lg:px-24 w-full bg-background-light dark:bg-background-dark relative">
+    <div class="flex flex-1 flex-col justify-center items-center px-6 py-12 lg:px-24 w-full login-form-side relative">
 <!-- Mobile Top Nav (Back Home) -->
 <div class="absolute top-6 left-6 lg:top-10 lg:left-10">
 <a class="group flex items-center gap-2 text-slate-500 hover:text-primary transition-colors text-sm font-medium" href="/">

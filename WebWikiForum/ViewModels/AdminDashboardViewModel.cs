@@ -7,5 +7,6 @@ namespace WebWikiForum.ViewModels
     {
         public IEnumerable<Vtuber> Vtubers { get; set; }
         public IEnumerable<Agency> Agencies { get; set; }
+        public IEnumerable<News> News { get; set; }
     }
 }
