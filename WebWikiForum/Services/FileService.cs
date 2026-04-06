@@ -38,7 +38,7 @@ namespace WebWikiForum.Services
                     File = new FileDescription(file.FileName, stream),
                     Folder = "vtwiki/" + folderName,
                     // Optional: Transformations to keep sizes consistent
-                    Transformation = new Transformation().Quality("auto").FetchFormat("auto")
+                    Transformation = new Transformation().Quality(100).Effect("improve").Effect("sharpen:100").FetchFormat("auto").Dpr("auto")
                 };
 
                 uploadResult = await _cloudinary.UploadAsync(uploadParams);
