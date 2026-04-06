@@ -1,0 +1,46 @@
+@model WebWikiForum.Models.Agency
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResource> Localizer
+
+<div class="group flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 hover:border-primary/50 transition-all hover:shadow-xl hover:shadow-primary/5">
+    <div class="h-40 w-full relative overflow-hidden">
+        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="@(string.IsNullOrEmpty(Model.LogoUrl) ? "https://lh3.googleusercontent.com/aida-public/AB6AXuC8OeEiECbxBMCzmVnvYD7-RlVhP3pQwFLMcL32o8JQjsa7RHTk8yM64H6--M3hCH-IQiRwpDyx3def2PgKv_oo66RsbsgP7IX-jGRgFoiZ5lkiQIoMA1jDXrjqJpTRD-5ul8KFVNbzSH1rxRPk0pu6H4MxVxod8rpuG6Xs6EX8WpF6C2adLCMq5yDgKVbCfd35THKbnSxt5ENTTX_K1FENQF-wLcZbYHtDfpzhVUbDZ1n3HfveWw0es1HdvshAt-J5pYCU_BuxkXA" : Model.LogoUrl)"/>
+        <div class="absolute top-4 left-4 bg-white/90 dark:bg-slate-900/90 p-2 rounded-lg shadow-lg">
+            <div class="w-12 h-12 bg-slate-100 dark:bg-slate-700 rounded flex items-center justify-center font-bold text-primary">@Model.Name.Substring(0, 1)</div>
+        </div>
+        @if (User.Identity?.IsAuthenticated == true)
+        {
+            <div class="absolute top-4 right-4 z-20 flex gap-2">
+                <a href="/Wiki/EditAgency/@Model.Id" class="p-2 bg-indigo-500/80 hover:bg-indigo-600 text-white rounded-lg backdrop-blur-sm transition-colors shadow-lg shadow-indigo-500/20">
+                    <span class="material-symbols-outlined text-sm">edit</span>
+                </a>
+                <form asp-action="DeleteAgency" asp-route-id="@Model.Id" method="post" onsubmit="event.preventDefault(); window.showConfirmModal({ title: 'Delete Agency', message: 'Are you sure you want to delete @Model.Name? All its VTubers will be marked as independent.', onConfirm: () => this.submit() });">
+                    <button type="submit" class="p-2 bg-red-500/80 hover:bg-red-600 text-white rounded-lg backdrop-blur-sm transition-colors shadow-lg shadow-red-500/20">
+                        <span class="material-symbols-outlined text-sm">delete</span>
+                    </button>
+                </form>
+            </div>
+        }
+    </div>
+    <div class="p-6 flex flex-col gap-4">
+        <div>
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white">@Model.Name</h3>
+            <p class="text-sm text-slate-500 dark:text-slate-400 mt-1 line-clamp-2">@Model.Description</p>
+        </div>
+        <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full">@Model.Region</span>
+        </div>
+        <div class="grid grid-cols-2 gap-4 py-4 border-y border-slate-100 dark:border-slate-700">
+            <div>
+                <p class="text-[10px] text-slate-400 dark:text-slate-500 uppercase font-bold tracking-widest">@Localizer["Agencies_Label_Talents"]</p>
+                <p class="text-lg font-bold text-slate-800 dark:text-slate-200">@(Model.TalentCount > 0 ? Model.TalentCount + "+" : "N/A")</p>
+            </div>
+            <div>
+                <p class="text-[10px] text-slate-400 dark:text-slate-500 uppercase font-bold tracking-widest">@Localizer["Agencies_Label_Focus_Card"]</p>
+                <p class="text-lg font-bold text-slate-800 dark:text-slate-200">@(string.IsNullOrEmpty(Model.Focus) ? "N/A" : Model.Focus)</p>
+            </div>
+        </div>
+        <a href="/Wiki/AgencyDetails/@Model.Id" class="block w-full py-2 bg-slate-100 dark:bg-slate-700 hover:bg-primary hover:text-white transition-all rounded-lg font-bold text-sm text-center">
+            @Localizer["Agencies_Btn_ViewDirectory"]
+        </a>
+    </div>
+</div>

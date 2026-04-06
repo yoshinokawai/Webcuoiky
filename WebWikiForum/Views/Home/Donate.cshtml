@@ -3,28 +3,7 @@
 }
 
 @section Styles {
-    <style>
-        .donate-hero {
-            background: linear-gradient(135deg, rgba(153, 76, 230, 0.9) 0%, rgba(88, 28, 135, 0.95) 100%);
-        }
-        .tier-card {
-            transition: all 0.3s ease;
-        }
-        .tier-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(153, 76, 230, 0.15);
-        }
-        .progress-bar-fill {
-            animation: fillProgress 1.5s ease-out forwards;
-        }
-        @@keyframes fillProgress {
-            from { width: 0%; }
-            to { width: 65%; }
-        }
-        .donor-avatar {
-            background: linear-gradient(135deg, #994ce6, #581c87);
-        }
-    </style>
+    <link href="~/css/Donate.css" rel="stylesheet" />
 }
 
 <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">

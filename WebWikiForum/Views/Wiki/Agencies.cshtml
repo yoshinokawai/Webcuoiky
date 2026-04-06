@@ -74,52 +74,10 @@
 <span class="text-primary text-sm font-semibold cursor-pointer hover:underline">@Localizer["Agencies_Count"]</span>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-@foreach (var agency in Model)
-{
-<div class="group flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 hover:border-primary/50 transition-all hover:shadow-xl hover:shadow-primary/5">
-<div class="h-40 w-full relative overflow-hidden">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="@agency.Name visual" src="@(string.IsNullOrEmpty(agency.LogoUrl) ? "https://lh3.googleusercontent.com/aida-public/AB6AXuC8OeEiECbxBMCzmVnvYD7-RlVhP3pQwFLMcL32o8JQjsa7RHTk8yM64H6--M3hCH-IQiRwpDyx3def2PgKv_oo66RsbsgP7IX-jGRgFoiZ5lkiQIoMA1jDXrjqJpTRD-5ul8KFVNbzSH1rxRPk0pu6H4MxVxod8rpuG6Xs6EX8WpF6C2adLCMq5yDgKVbCfd35THKbnSxt5ENTTX_K1FENQF-wLcZbYHtDfpzhVUbDZ1n3HfveWw0es1HdvshAt-J5pYCU_BuxkXA" : agency.LogoUrl)"/>
-<div class="absolute top-4 left-4 bg-white/90 dark:bg-slate-900/90 p-2 rounded-lg shadow-lg">
-<div class="w-12 h-12 bg-slate-100 dark:bg-slate-700 rounded flex items-center justify-center font-bold text-primary">@agency.Name.Substring(0, 1)</div>
-</div>
-@if (User.Identity?.IsAuthenticated == true)
-{
-<div class="absolute top-4 right-4 z-20 flex gap-2">
-<a href="/Wiki/EditAgency/@agency.Id" class="p-2 bg-indigo-500/80 hover:bg-indigo-600 text-white rounded-lg backdrop-blur-sm transition-colors shadow-lg shadow-indigo-500/20">
-<span class="material-symbols-outlined text-sm">edit</span>
-</a>
-<form asp-action="DeleteAgency" asp-route-id="@agency.Id" method="post" onsubmit="event.preventDefault(); window.showConfirmModal({ title: 'Delete Agency', message: 'Are you sure you want to delete @agency.Name? All its VTubers will be marked as independent.', onConfirm: () => this.submit() });">
-<button type="submit" class="p-2 bg-red-500/80 hover:bg-red-600 text-white rounded-lg backdrop-blur-sm transition-colors shadow-lg shadow-red-500/20">
-<span class="material-symbols-outlined text-sm">delete</span>
-</button>
-</form>
-</div>
-}
-</div>
-<div class="p-6 flex flex-col gap-4">
-<div>
-<h3 class="text-xl font-bold text-slate-900 dark:text-white">@agency.Name</h3>
-<p class="text-sm text-slate-500 dark:text-slate-400 mt-1 line-clamp-2">@agency.Description</p>
-</div>
-<div class="flex flex-wrap gap-2">
-<span class="px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full">@agency.Region</span>
-</div>
-<div class="grid grid-cols-2 gap-4 py-4 border-y border-slate-100 dark:border-slate-700">
-<div>
-<p class="text-[10px] text-slate-400 dark:text-slate-500 uppercase font-bold tracking-widest">@Localizer["Agencies_Label_Talents"]</p>
-<p class="text-lg font-bold text-slate-800 dark:text-slate-200">@(agency.TalentCount > 0 ? agency.TalentCount + "+" : "N/A")</p>
-</div>
-<div>
-<p class="text-[10px] text-slate-400 dark:text-slate-500 uppercase font-bold tracking-widest">@Localizer["Agencies_Label_Focus_Card"]</p>
-<p class="text-lg font-bold text-slate-800 dark:text-slate-200">@(string.IsNullOrEmpty(agency.Focus) ? "N/A" : agency.Focus)</p>
-</div>
-</div>
-<a href="/Wiki/AgencyDetails/@agency.Id" class="block w-full py-2 bg-slate-100 dark:bg-slate-700 hover:bg-primary hover:text-white transition-all rounded-lg font-bold text-sm text-center">
-                        @Localizer["Agencies_Btn_ViewDirectory"]
-                    </a>
-</div>
-</div>
-}
+        @foreach (var agency in Model)
+        {
+            <partial name="_AgencyMajorCard" model="@agency" />
+        }
 <div class="flex flex-col items-center justify-center bg-primary/5 border-2 border-dashed border-primary/30 rounded-xl p-8 text-center gap-4 hover:bg-primary/10 transition-colors group cursor-pointer">
 <div class="size-16 bg-white dark:bg-slate-800 rounded-full flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
 <span class="material-symbols-outlined text-3xl text-primary">add_circle</span>

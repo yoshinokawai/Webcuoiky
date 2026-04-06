@@ -1,0 +1,44 @@
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResource> Localizer
+
+@{
+    string category = ViewData["Category"]?.ToString() ?? "News";
+    string categoryColor = ViewData["CategoryColor"]?.ToString() ?? "primary";
+    string title = ViewData["Title"]?.ToString() ?? "Title";
+    string time = ViewData["Time"]?.ToString() ?? "0";
+    string author = ViewData["Author"]?.ToString() ?? "Admin";
+    string imageUrl = ViewData["ImageUrl"]?.ToString() ?? "https://lh3.googleusercontent.com/aida-public/AB6AXuC9GV3pMOtHNuxKOCKwzrAnvFc-NW4p-hJwBAQWu5MZL6S_Nf8HxLnUa2Iy__U1IEkpHFAY7p9TH3x_eI5rbMBUd4heQxUo3xa30LhafkUnzR-zBx7_C7ez0YwK4uKslcxneAXqwTQhrWJM7OmEZS3RfRjVAs7HPfIefQRF-HZ50hs65jn8gKDlLHHyxqH-TEHElThK2oI_oBH5o_CumxufJeBgII_91hMjBhJp0QCqzM-F1XObFJYwluJqUFokjdkWxCQRruMwbH8";
+    string altText = ViewData["AltText"]?.ToString() ?? "";
+}
+
+<article class="group flex gap-4 p-4 rounded-2xl bg-white dark:bg-surface-dark border border-slate-100 dark:border-slate-800 hover:border-primary/30 hover:shadow-soft transition-all cursor-pointer">
+    <div class="w-28 h-28 shrink-0 rounded-xl bg-slate-200 dark:bg-slate-700 overflow-hidden relative">
+        <img alt="@altText" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="@imageUrl"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+    </div>
+    <div class="flex flex-col justify-between flex-1 py-1">
+        <div>
+            @if (categoryColor == "primary")
+            {
+                <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-0.5 rounded-full mb-2">@category</span>
+            }
+            else if (categoryColor == "blue")
+            {
+                <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-blue-600 bg-blue-100 dark:bg-blue-900/30 px-2 py-0.5 rounded-full mb-2">@category</span>
+            }
+            else if (categoryColor == "green")
+            {
+                <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-green-600 bg-green-100 dark:bg-green-900/30 px-2 py-0.5 rounded-full mb-2">@category</span>
+            }
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white leading-tight group-hover:text-primary transition-colors line-clamp-2">
+                @title
+            </h3>
+        </div>
+        <div class="flex items-center gap-3 mt-2 text-xs text-slate-500 dark:text-slate-400 font-medium">
+            <span class="flex items-center gap-1">
+                <span class="material-symbols-outlined text-[14px]">schedule</span> @time
+            </span>
+            <span>•</span>
+            <span>@string.Format(Localizer["Home_Label_By"].Value, author)</span>
+        </div>
+    </div>
+</article>

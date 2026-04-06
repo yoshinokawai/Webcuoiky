@@ -1,31 +1,62 @@
+/* Global styles for WebWikiForum */
+
+:root {
+    --color-primary: #994ce6;
+    --color-primary-dark: #7e37c3;
+    --color-background-light: #f7f6f8;
+    --color-background-dark: #191121;
+    --color-surface-light: #ffffff;
+    --color-surface-dark: #1f1826;
+}
+
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+html, body {
+    height: 100%;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+.wiki-pattern {
+    background-color: var(--color-background-light);
+    background-image: radial-gradient(var(--color-primary) 0.5px, transparent 0.5px), radial-gradient(var(--color-primary) 0.5px, var(--color-background-light) 0.5px);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+    opacity: 0.05;
+    position: absolute;
+    inset: 0;
+    z-index: -1;
 }
 
-body {
-  margin-bottom: 60px;
+.dark .wiki-pattern {
+    background-color: var(--color-background-dark);
+    background-image: radial-gradient(var(--color-primary) 0.5px, transparent 0.5px), radial-gradient(var(--color-primary) 0.5px, var(--color-background-dark) 0.5px);
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+.group:hover .group-hover\:rotate-180 {
+    transform: rotate(180deg);
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+/* Scrollbar styles */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(153, 76, 230, 0.2);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(153, 76, 230, 0.4);
 }

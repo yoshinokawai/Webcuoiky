@@ -1,0 +1,20 @@
+@model WebWikiForum.Models.Vtuber
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResource> Localizer
+
+@{
+    var rank = ViewData["Rank"] as int? ?? 0;
+}
+
+<a href="/Wiki/Details/@Model.Id" class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer group">
+    <span class="text-lg font-black @(rank == 1 ? "text-primary" : "text-slate-400") w-6 text-center italic">@rank</span>
+    <div class="relative w-10 h-10 rounded-full overflow-hidden ring-2 ring-slate-100 dark:ring-slate-700">
+        <img src="@(string.IsNullOrEmpty(Model.AvatarUrl) ? "/images/default-avatar.png" : Model.AvatarUrl)" alt="@Model.Name" class="w-full h-full object-cover">
+    </div>
+    <div class="flex-1 min-w-0">
+        <h4 class="text-sm font-bold text-slate-900 dark:text-white truncate group-hover:text-primary">@Model.Name</h4>
+        <p class="text-[10px] text-slate-500 font-medium uppercase tracking-wide truncate">
+            @(Model.Agency != null ? Model.Agency.Name : Localizer["Dash_Independent"].Value)
+        </p>
+    </div>
+    <span class="material-symbols-outlined text-green-500 text-[18px]">arrow_drop_up</span>
+</a>

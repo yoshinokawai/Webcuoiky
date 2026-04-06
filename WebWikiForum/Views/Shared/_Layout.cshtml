@@ -29,15 +29,7 @@
             },
         }
     </script>
-    <style>
-        .wiki-pattern {
-            background-color: #f7f6f8;
-            background-image: radial-gradient(#994ce6 0.5px, transparent 0.5px), radial-gradient(#994ce6 0.5px, #f7f6f8 0.5px);
-            background-size: 20px 20px;
-            background-position: 0 0, 10px 10px; opacity: 0.05; position: absolute; inset: 0; z-index: -1;
-        }
-        .group:hover .group-hover\:rotate-180 { transform: rotate(180deg); }
-    </style>
+    <link href="~/css/site.css" rel="stylesheet" />
     @await RenderSectionAsync("Styles", required: false)
 </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased min-h-screen flex flex-col">

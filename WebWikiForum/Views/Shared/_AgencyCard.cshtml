@@ -1,0 +1,25 @@
+@model WebWikiForum.Models.Agency
+
+@{
+    var colors = new[] { "#2fb4d6", "#ff7300", "#ff0066", "#8a2be2", "#ffaccf" };
+    var index = ViewData["Index"] as int? ?? 0;
+    var color = colors[index % colors.Length];
+    
+    // Generate short name logic
+    string shortName = Model.Name.Length >= 4 ? Model.Name.Substring(0, 4).ToUpper() : Model.Name.ToUpper();
+    if (Model.Name.Contains(" "))
+    {
+        var parts = Model.Name.Split(' ');
+        shortName = "";
+        foreach (var p in parts.Take(2)) if (p.Length > 0) shortName += p[0];
+        if (shortName.Length < 4 && parts.Length > 0 && parts[0].Length > 1) 
+            shortName = parts[0].Substring(0, Math.Min(4, parts[0].Length)).ToUpper();
+    }
+}
+
+<a class="group flex flex-col items-center justify-center p-6 rounded-2xl bg-white dark:bg-surface-dark border border-slate-100 dark:border-slate-800 hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition-all duration-300" href="/Wiki/AgencyDetails/@Model.Id">
+    <div class="w-16 h-16 mb-3 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform" style="background-color: @(color)1a;">
+        <span class="font-black text-xs" style="color: @color;">@shortName</span>
+    </div>
+    <span class="font-bold text-slate-700 dark:text-slate-200 group-hover:text-primary text-center line-clamp-1">@Model.Name</span>
+</a>

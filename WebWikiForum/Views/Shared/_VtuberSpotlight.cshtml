@@ -1,0 +1,64 @@
+@model WebWikiForum.Models.Vtuber
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResource> Localizer
+
+<div class="spotlight-slide @(ViewData["IsActive"]?.ToString() == "True" ? "active" : "")" data-index="@ViewData["Index"]">
+    <div class="absolute top-0 right-0 w-3/4 h-full bg-gradient-to-l from-primary/10 via-lavender/30 to-transparent dark:from-primary/20 dark:via-purple-900/10 pointer-events-none"></div>
+    <div class="grid lg:grid-cols-12 gap-8 items-center relative z-10 min-h-[480px]">
+        <div class="lg:col-span-7 p-8 lg:p-12 lg:pr-0 flex flex-col justify-center h-full">
+            <div class="space-y-6">
+                <div class="flex items-center gap-3 mb-2">
+                    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary text-white text-xs font-bold uppercase tracking-wider shadow-glow">
+                        <span class="material-symbols-outlined text-[16px] filled">stars</span>
+                        @Localizer["Home_Spotlight"]
+                    </div>
+                    <span class="text-sm font-semibold text-slate-500 dark:text-slate-400">@Localizer["Home_Choice"]</span>
+                </div>
+                <div>
+                    <h1 class="text-5xl lg:text-7xl font-black text-slate-900 dark:text-white tracking-tight leading-[0.95] mb-4">
+                        @Model.Name
+                    </h1>
+                    <div class="flex items-center gap-3 text-lg">
+                        @if (Model.Agency != null && !string.IsNullOrEmpty(Model.Agency.LogoUrl))
+                        {
+                            <img alt="@Model.Agency.Name" class="w-6 h-6 rounded-full" src="@Model.Agency.LogoUrl" />
+                        }
+                        <span class="font-bold text-slate-700 dark:text-slate-200">@(Model.Agency != null ? Model.Agency.Name : Localizer["Dash_Independent"].Value)</span>
+                        <span class="text-slate-300 dark:text-slate-600">•</span>
+                        <span class="text-slate-500 dark:text-slate-400 font-medium">Debut: @(Model.DebutDate?.ToString("MMM dd, yyyy") ?? "Unknown")</span>
+                    </div>
+                </div>
+                <p class="text-slate-600 dark:text-slate-300 text-lg leading-relaxed max-w-xl border-l-4 border-primary/30 pl-4 line-clamp-3">
+                    @Model.Lore
+                </p>
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <a href="/Wiki/Details/@Model.Id" class="flex items-center gap-2 h-12 px-8 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold shadow-lg hover:scale-105 transition-all duration-300">
+                        <span>@Localizer["Home_ReadWiki"]</span>
+                        <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+                    </a>
+                </div>
+                <div class="grid grid-cols-2 gap-6 pt-6 mt-2 border-t border-slate-200 dark:border-slate-800">
+                    <div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wide mb-1 flex items-center gap-1">
+                            <span class="material-symbols-outlined text-[14px]">visibility</span>
+                            Views
+                        </p>
+                        <p class="text-2xl font-black text-slate-900 dark:text-white">@Model.ViewCount.ToString("N0")<span class="text-primary">+</span></p>
+                    </div>
+                    <div>
+                        @if (Model.Age.HasValue)
+                        {
+                            <p class="text-xs text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wide mb-1">Age</p>
+                            <p class="text-2xl font-black text-slate-900 dark:text-white">@Model.Age.Value</p>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="lg:col-span-5 relative h-[500px] lg:h-full w-full flex items-end justify-center lg:justify-end overflow-visible">
+            <div class="absolute bottom-0 right-0 lg:-right-8 w-auto h-[115%] z-20 transition-transform duration-700 ease-out origin-bottom">
+                <img alt="@Model.Name" class="h-full w-auto object-contain drop-shadow-2xl hero-mask" src="@(string.IsNullOrEmpty(Model.AvatarUrl) ? "/images/default-avatar.png" : Model.AvatarUrl)" />
+            </div>
+            <div class="absolute bottom-0 right-0 lg:right-10 w-[450px] h-[450px] bg-gradient-to-tr from-indigo-500/20 to-primary/20 rounded-full blur-2xl z-10"></div>
+        </div>
+    </div>
+</div>

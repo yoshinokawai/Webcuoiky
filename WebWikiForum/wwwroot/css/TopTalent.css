@@ -1,0 +1,6 @@
+.wiki-pattern {
+    background-color: transparent;
+    background-image: radial-gradient(#994ce6 0.5px, transparent 0.5px), radial-gradient(#994ce6 0.5px, transparent 0.5px);
+    background-size: 30px 30px;
+    background-position: 0 0, 15px 15px;
+}

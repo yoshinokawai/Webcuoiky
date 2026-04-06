@@ -1,0 +1,30 @@
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResource> Localizer
+
+@{
+    string author = ViewData["Author"]?.ToString() ?? "User";
+    string isBot = ViewData["IsBot"]?.ToString() ?? "False";
+    string activityCode = ViewData["ActivityCode"]?.ToString() ?? "Updated"; // Updated, Commented, Created, Pinned
+    string targetName = ViewData["TargetName"]?.ToString() ?? "Item";
+    string timeDescription = ViewData["TimeDescription"]?.ToString() ?? "Just now";
+    string? quote = ViewData["Quote"]?.ToString();
+}
+
+<div class="relative">
+    <div class="absolute -left-[23px] top-1 h-3.5 w-3.5 rounded-full @(isBot == "True" ? "bg-primary" : "bg-slate-300 dark:bg-slate-600") ring-4 ring-background-light dark:ring-background-dark"></div>
+    <p class="text-sm text-slate-900 dark:text-white leading-snug">
+        <span class="font-bold @(isBot == "True" ? "text-primary" : "")">@author</span> 
+        @switch (activityCode)
+        {
+            case "Updated": @string.Format(Localizer["Home_Label_Updated"].Value, "") break;
+            case "Commented": @string.Format(Localizer["Home_Label_Commented"].Value, "") break;
+            case "Created": @string.Format(Localizer["Home_Label_Created"].Value, "") break;
+            case "Pinned": @string.Format(Localizer["Home_Label_Pinned"].Value, "") break;
+        }
+        <a class="font-semibold underline decoration-slate-300 hover:text-primary decoration-2" href="#">@targetName</a>
+    </p>
+    @if (!string.IsNullOrEmpty(quote))
+    {
+        <p class="text-xs text-slate-500 italic mt-1.5 line-clamp-2 bg-slate-50 dark:bg-slate-800/50 p-2 rounded border border-slate-100 dark:border-slate-700">"@quote"</p>
+    }
+    <span class="text-xs text-slate-500 mt-1.5 block font-medium">@timeDescription</span>
+</div>
