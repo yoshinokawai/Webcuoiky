@@ -1,0 +1,179 @@
+@model IEnumerable<WebWikiForum.Models.Discussion>
+@{
+    ViewData["Title"] = "Community Hub";
+}
+
+<div class="min-h-screen bg-slate-50 dark:bg-surface-dark/30 py-8 px-6 lg:px-40">
+    <div class="max-w-[1440px] mx-auto space-y-8">
+        
+        <!-- Header / Hero Section -->
+        <header class="relative overflow-hidden rounded-3xl bg-primary p-8 lg:p-12 text-white shadow-2xl shadow-primary/20">
+            <div class="relative z-10 max-w-2xl">
+                <h1 class="text-4xl lg:text-5xl font-black mb-4 leading-tight">Welcome to the<br />Community Hub</h1>
+                <p class="text-white/80 text-lg mb-8 max-w-lg">Your central dashboard for all the latest happenings within the multiverse. Check discussions, news, and upcoming events.</p>
+                
+                <div class="flex flex-wrap gap-4">
+                    <a href="/Forum/Community" class="bg-white text-primary px-6 h-12 rounded-xl font-bold flex items-center gap-2 hover:bg-slate-100 transition-all active:scale-95">
+                        <span class="material-symbols-outlined">forum</span>
+                        Enter Forum
+                    </a>
+                    <a href="https://discord.gg/" target="_blank" class="bg-white/10 text-white border border-white/20 backdrop-blur px-6 h-12 rounded-xl font-bold flex items-center gap-2 hover:bg-white/20 transition-all active:scale-95">
+                        <span class="material-symbols-outlined">groups</span>
+                        Join Discord
+                    </a>
+                </div>
+            </div>
+
+            <!-- Abstract Decor -->
+            <div class="absolute -right-20 -top-20 size-[400px] bg-white/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute right-20 bottom-0 size-[200px] bg-purple-400/20 rounded-full blur-2xl pointer-events-none"></div>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- Main Content Area (2 Cols) -->
+            <div class="lg:col-span-2 space-y-8">
+                
+                <!-- Recent Discussions Section -->
+                <section>
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary">chat_bubble</span>
+                            Recent Conversations
+                        </h2>
+                        <a href="/Forum/Community" class="text-primary font-bold text-sm hover:underline">View All</a>
+                    </div>
+
+                    <div class="grid gap-4">
+                        @if (Model != null && Model.Any())
+                        {
+                            @foreach (var topic in Model)
+                            {
+                                <a href="@Url.Action("Topic", "Forum", new { id = topic.Id })" class="group bg-white dark:bg-slate-800/40 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-primary/30 transition-all shadow-sm">
+                                    <div class="flex gap-4 items-start">
+                                        <div class="size-10 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-400 group-hover:bg-primary/10 group-hover:text-primary transition-colors">
+                                            <span class="material-symbols-outlined">forum</span>
+                                        </div>
+                                        <div class="flex-1 min-w-0">
+                                            <h3 class="font-bold text-slate-800 dark:text-slate-100 group-hover:text-primary transition-colors truncate">@topic.Title</h3>
+                                            <div class="flex items-center gap-3 mt-1 text-xs text-slate-500">
+                                                <span>by <span class="font-medium text-slate-700 dark:text-slate-300">@topic.Author</span></span>
+                                                <span class="size-1 bg-slate-300 rounded-full"></span>
+                                                <span>@topic.CreatedAt.ToString("MMM dd")</span>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center gap-1 text-primary font-bold text-xs bg-primary/5 px-2 py-1 rounded-lg">
+                                            <span>@topic.ReplyCount</span>
+                                            <span class="material-symbols-outlined text-[14px]">reply</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            }
+                        }
+                    </div>
+                </section>
+
+                <!-- Latest News Section -->
+                <section>
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary">newspaper</span>
+                            Latest News & Events
+                        </h2>
+                        <a href="/Wiki/VirtualEvents" class="text-primary font-bold text-sm hover:underline">View Calendar</a>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        @if (ViewBag.News != null)
+                        {
+                            @foreach (var article in (IEnumerable<WebWikiForum.Models.News>)ViewBag.News)
+                            {
+                                <div class="bg-white dark:bg-slate-800/40 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden shadow-sm flex flex-col h-full">
+                                    <div class="h-32 bg-slate-200 dark:bg-slate-700 relative">
+                                        @if (!string.IsNullOrEmpty(article.ImageUrl)) {
+                                            <img src="@article.ImageUrl" class="w-full h-full object-cover" />
+                                        } else {
+                                            <div class="w-full h-full flex items-center justify-center text-slate-100 dark:text-slate-100/10">
+                                                <span class="material-symbols-outlined text-4xl">image</span>
+                                            </div>
+                                        }
+                                        <span class="absolute top-3 left-3 bg-primary text-white text-[10px] font-black uppercase px-2 py-1 rounded">@article.Type</span>
+                                    </div>
+                                    <div class="p-5 flex flex-col grow">
+                                        <h3 class="font-bold text-slate-800 dark:text-slate-100 mb-2 line-clamp-2">@article.Title</h3>
+                                        <div class="mt-auto flex items-center justify-between text-xs text-slate-500">
+                                            <span>@article.PublishDate.ToString("MMM dd, yyyy")</span>
+                                            <button class="text-primary font-bold">Read More</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                </section>
+            </div>
+
+            <!-- Right Sidebar Area -->
+            <aside class="space-y-8">
+                
+                <!-- Quick Actions / Navigation -->
+                <div class="bg-white dark:bg-slate-800/60 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+                    <h3 class="font-bold text-slate-900 dark:text-white mb-4">Quick Navigation</h3>
+                    <div class="grid grid-cols-2 gap-3">
+                        <a href="/Home/Explore" class="p-4 bg-slate-50 dark:bg-slate-800 flex flex-col items-center gap-2 rounded-xl hover:bg-primary/5 hover:text-primary transition-all text-center">
+                            <span class="material-symbols-outlined text-primary">search</span>
+                            <span class="text-xs font-bold uppercase tracking-wider">Wiki</span>
+                        </a>
+                        <a href="/Wiki/VirtualEvents" class="p-4 bg-slate-50 dark:bg-slate-800 flex flex-col items-center gap-2 rounded-xl hover:bg-primary/5 hover:text-primary transition-all">
+                            <span class="material-symbols-outlined text-primary">event</span>
+                            <span class="text-xs font-bold uppercase tracking-wider">Events</span>
+                        </a>
+                        <a href="/Help/Guidelines" class="p-4 bg-slate-50 dark:bg-slate-800 flex flex-col items-center gap-2 rounded-xl hover:bg-primary/5 hover:text-primary transition-all">
+                            <span class="material-symbols-outlined text-primary">gavel</span>
+                            <span class="text-xs font-bold uppercase tracking-wider">Rules</span>
+                        </a>
+                        <a href="/Wiki/Agencies" class="p-4 bg-slate-50 dark:bg-slate-800 flex flex-col items-center gap-2 rounded-xl hover:bg-primary/5 hover:text-primary transition-all">
+                            <span class="material-symbols-outlined text-primary">corporate_fare</span>
+                            <span class="text-xs font-bold uppercase tracking-wider">Agencies</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Trending Topics (Mini) -->
+                <div class="bg-white dark:bg-slate-800/60 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+                    <h3 class="font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary">trending_up</span>
+                        Trending Now
+                    </h3>
+                    <div class="space-y-4">
+                        @if (ViewBag.Trending != null)
+                        {
+                            @foreach (var t in (IEnumerable<WebWikiForum.Models.Discussion>)ViewBag.Trending)
+                            {
+                                <div class="flex flex-col gap-1 border-b border-slate-100 dark:border-slate-700 pb-3 last:border-0 last:pb-0">
+                                    <a href="/Forum/Topic/@t.Id" class="text-sm font-bold text-slate-800 dark:text-slate-100 hover:text-primary transition-colors line-clamp-1">@t.Title</a>
+                                    <div class="flex items-center gap-2 text-[10px] text-slate-400 font-bold uppercase">
+                                        <span>@t.Category</span>
+                                        <span>•</span>
+                                        <span>@t.ReplyCount REPLIES</span>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+
+                <!-- Stats / CTA Card -->
+                <div class="bg-gradient-to-br from-indigo-600 to-purple-700 p-6 rounded-2xl text-white shadow-xl shadow-indigo-500/20 relative overflow-hidden">
+                    <div class="relative z-10">
+                        <h4 class="font-black text-xl mb-1">Fan Art Showcase</h4>
+                        <p class="text-white/70 text-sm mb-4">Share your creativity with thousands of other fans.</p>
+                        <button class="w-full h-10 bg-white text-indigo-600 font-bold rounded-lg hover:bg-slate-100 transition-all">Upload Artwork</button>
+                    </div>
+                    <!-- Icon Decor -->
+                    <span class="material-symbols-outlined absolute -bottom-4 -right-4 text-white/10 text-[120px] pointer-events-none rotate-12">brush</span>
+                </div>
+            </aside>
+        </div>
+    </div>
+</div>

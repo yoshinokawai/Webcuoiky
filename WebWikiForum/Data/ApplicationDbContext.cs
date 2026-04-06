@@ -13,5 +13,7 @@ namespace WebWikiForum.Data
         public DbSet<Agency> Agencies { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<News> News { get; set; }
+        public DbSet<Discussion> Discussions { get; set; }
+        public DbSet<DiscussionReply> DiscussionReplies { get; set; }
     }
 }

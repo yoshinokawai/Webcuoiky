@@ -364,4 +364,10 @@
   <data name="Explore_No_Results" xml:space="preserve"><value>No VTubers found matching your filters.</value></data>
   <data name="Nav_Search_Suggested" xml:space="preserve"><value>Suggested</value></data>
   <data name="Nav_Search_NoResults" xml:space="preserve"><value>No results found</value></data>
+  <data name="Forum_Header" xml:space="preserve"><value>Community Discussions</value></data>
+  <data name="Forum_Subheader" xml:space="preserve"><value>Connect with fellow fans, discuss your favorite VTubers, and contribute to the growing lore.</value></data>
+  <data name="Forum_Category_General" xml:space="preserve"><value>General Discussion</value></data>
+  <data name="Forum_Category_News" xml:space="preserve"><value>News &amp; Updates</value></data>
+  <data name="Forum_Category_FanArt" xml:space="preserve"><value>Fan Art</value></data>
+  <data name="Forum_Category_Lore" xml:space="preserve"><value>Lore &amp; Theories</value></data>
 </root>

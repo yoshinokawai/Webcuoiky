@@ -57,7 +57,7 @@
                             <div class="bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700 rounded-xl shadow-xl p-2 space-y-1">
                                 <a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Wiki/Agencies">@Localizer["Nav_Agencies"]</a>
                                 <a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Wiki/Independent">@Localizer["Nav_Independent"]</a>
-                                <a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Home/VirtualEvents">@Localizer["Nav_VirtualEvents"]</a>
+                                <a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Wiki/VirtualEvents">@Localizer["Nav_VirtualEvents"]</a>
                                 <a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Editor/FanTools">@Localizer["Nav_FanTools"]</a>
                                 <a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Home/TopTalent">@Localizer["Nav_TopTalents"]</a>
                             </div>
@@ -71,8 +71,8 @@
                         </button>
                         <div class="absolute top-full left-0 w-48 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[60]">
                             <div class="bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700 rounded-xl shadow-xl p-2 space-y-1">
-                                <a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Forum/Community">Community Hub</a>
-                                <a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Forum/WikiForum">Forum</a>
+                                <a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Forum/CommunityHub">Community Hub</a>
+                                <a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Forum/Community">Forum</a>
                                 <a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Home/JoinDiscord">Discord</a>
                                 <a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Home/RecentChanges">Recent Changes</a>
                                 <a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Help/Guidelines">Guidelines</a>
@@ -259,9 +259,17 @@
                            document.getElementById('searchEmpty')?.classList.add('hidden');
                            d.forEach(i => {
                                const a = document.createElement('a');
-                               a.className = 'dynamic-result flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800';
-                               a.href = `/Wiki/Details/${i.id}`;
-                               a.innerHTML = `<div class="w-8 h-8 rounded-full bg-slate-200 overflow-hidden flex items-center justify-center">${i.avatarUrl ? `<img src="${i.avatarUrl}" class="w-full h-full object-cover">` : '<span class="material-symbols-outlined text-slate-400">person</span>'}</div><div class="flex-1"><div class="text-sm font-medium">${i.name}</div><div class="text-xs text-slate-500">${i.agencyName}</div></div>`;
+                               a.className = 'dynamic-result flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-all';
+                               a.href = i.type === 'vtuber' ? `/Wiki/Details/${i.id}` : `/Wiki/AgencyDetails/${i.id}`;
+                               const typeBadge = i.type === 'agency' ? '<span class="text-[9px] font-black bg-indigo-100 text-indigo-700 px-1.5 py-0.5 rounded-md uppercase ml-1.5">Agency</span>' : '';
+                               a.innerHTML = `
+                                   <div class="w-9 h-9 rounded-xl ${i.type === 'agency' ? 'bg-indigo-50 text-indigo-500' : 'bg-slate-100 text-slate-400'} overflow-hidden flex items-center justify-center border border-slate-200 dark:border-slate-700 flex-shrink-0">
+                                       ${i.avatarUrl ? `<img src="${i.avatarUrl}" class="w-full h-full object-cover">` : `<span class="material-symbols-outlined text-lg">${i.type === 'agency' ? 'domain' : 'person'}</span>`}
+                                   </div>
+                                   <div class="flex-1 min-w-0">
+                                       <div class="text-sm font-bold text-slate-900 dark:text-white truncate flex items-center">${i.name}${typeBadge}</div>
+                                       <div class="text-[10px] text-slate-500 font-medium truncate">${i.subtext}</div>
+                                   </div>`;
                                sr.appendChild(a);
                            });
                        }

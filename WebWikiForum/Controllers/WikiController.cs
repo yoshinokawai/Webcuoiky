@@ -563,19 +563,36 @@ namespace WebWikiForum.Controllers
         {
             if (string.IsNullOrEmpty(query)) return Json(new List<object>());
 
-            var results = await _context.Vtubers
+            var queryLower = query.ToLower();
+
+            var vtubers = await _context.Vtubers
                 .Include(v => v.Agency)
-                .Where(v => v.Name.Contains(query) || (v.Agency != null && v.Agency.Name.Contains(query)))
-                .Take(8)
+                .Where(v => v.Name.Contains(queryLower) || (v.Agency != null && v.Agency.Name.Contains(queryLower)))
+                .Take(5)
                 .Select(v => new {
                     id = v.Id,
                     name = v.Name,
                     avatarUrl = v.AvatarUrl,
-                    agencyName = v.Agency != null ? v.Agency.Name : "Independent"
+                    subtext = v.Agency != null ? v.Agency.Name : "Independent",
+                    type = "vtuber"
                 })
                 .ToListAsync();
 
-            return Json(results);
+            var agencies = await _context.Agencies
+                .Where(a => a.Name.Contains(queryLower))
+                .Take(3)
+                .Select(a => new {
+                    id = a.Id,
+                    name = a.Name,
+                    avatarUrl = a.LogoUrl,
+                    subtext = a.Focus ?? "Agency",
+                    type = "agency"
+                })
+                .ToListAsync();
+
+            var combined = vtubers.Cast<object>().Concat(agencies.Cast<object>()).ToList();
+
+            return Json(combined);
         }
         [HttpGet]
         public async Task<IActionResult> AgencyDetails(int id)

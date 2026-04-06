@@ -157,7 +157,7 @@ namespace WebWikiForum.Controllers
 
         public IActionResult VirtualEvents()
         {
-            return View();
+            return RedirectToAction("VirtualEvents", "Wiki");
         }
 
         public async Task<IActionResult> TopTalent()

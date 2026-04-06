@@ -1,3 +1,7 @@
+@model IEnumerable<WebWikiForum.Models.Discussion>
+@{
+    ViewData["Title"] = "Community Discussions";
+}
 @section Styles {
     <link rel="stylesheet" href="~/css/Community.css" />
 }
@@ -17,118 +21,85 @@
                                 Connect with fellow fans, discuss your favorite VTubers, share fan art, and contribute to the growing lore of the multiverse.
                             </p>
 </div>
-<button class="z-10 flex min-w-[160px] cursor-pointer items-center justify-center gap-2 rounded-lg h-12 px-6 bg-primary text-white text-base font-bold shadow-lg shadow-primary/30 hover:bg-primary/90 transition-all active:scale-95">
+<a href="@Url.Action("StartTopic", "Forum")" class="z-10 flex min-w-[160px] cursor-pointer items-center justify-center gap-2 rounded-lg h-12 px-6 bg-primary text-white text-base font-bold shadow-lg shadow-primary/30 hover:bg-primary/90 transition-all active:scale-95">
 <span class="material-symbols-outlined">add_circle</span>
 <span>Start a Topic</span>
-</button>
+</a>
 </div>
 </section>
 <div class="flex flex-col lg:flex-row gap-8">
 <div class="flex-1 flex flex-col gap-6">
 <div class="flex items-center justify-between border-b border-primary/10 pb-4">
 <div class="flex gap-6">
-<button class="text-primary font-bold border-b-2 border-primary pb-4 -mb-[18px]">All Categories</button>
-<button class="text-slate-500 hover:text-primary transition-colors font-medium">Recent</button>
-<button class="text-slate-500 hover:text-primary transition-colors font-medium">Trending</button>
+    @{
+        var curSort = ViewBag.CurrentSort as string ?? "Default";
+        var curCat = ViewBag.CurrentCategory as string ?? "All";
+        bool showCards = (curCat == "All" && curSort == "Default");
+    }
+    <a href="/Forum/Community?category=All&sort=Default" class="@(showCards ? "text-primary font-bold border-b-2 border-primary" : "text-slate-500 hover:text-primary") pb-4 -mb-[18px] transition-colors">All Categories</a>
+    <a href="/Forum/Community?category=All&sort=Recent" class="@(curSort == "Recent" ? "text-primary font-bold border-b-2 border-primary" : "text-slate-500 hover:text-primary") pb-4 -mb-[18px] transition-colors">Recent</a>
+    <a href="/Forum/Community?category=All&sort=Trending" class="@(curSort == "Trending" ? "text-primary font-bold border-b-2 border-primary" : "text-slate-500 hover:text-primary") pb-4 -mb-[18px] transition-colors">Trending</a>
 </div>
 </div>
 <div class="grid gap-4">
-<div class="bg-white dark:bg-slate-800/50 p-6 rounded-xl border border-primary/5 hover:border-primary/20 transition-all flex flex-col md:flex-row gap-6 items-start md:items-center">
-<div class="size-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0">
-<span class="material-symbols-outlined text-3xl">forum</span>
-</div>
-<div class="flex-1">
-<h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-1 hover:text-primary cursor-pointer transition-colors">General Discussion</h3>
-<p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-1">Anything and everything related to the VTubing scene.</p>
-<div class="flex items-center gap-4 mt-3">
-<div class="flex items-center gap-1 text-xs text-slate-400">
-<span class="material-symbols-outlined text-sm">chat_bubble</span>
-<span>2.4k Posts</span>
-</div>
-<div class="flex items-center gap-1 text-xs text-slate-400">
-<span class="material-symbols-outlined text-sm">group</span>
-<span>156 Active</span>
-</div>
-</div>
-</div>
-<div class="hidden md:flex flex-col items-end shrink-0 w-48">
-<span class="text-[10px] uppercase font-bold text-slate-400 mb-1">Last Post</span>
-<p class="text-sm font-medium text-slate-700 dark:text-slate-300 truncate w-full text-right">Upcoming Indie Debuts...</p>
-<span class="text-xs text-primary">2 mins ago by KoboFan</span>
-</div>
-</div>
-<div class="bg-white dark:bg-slate-800/50 p-6 rounded-xl border border-primary/5 hover:border-primary/20 transition-all flex flex-col md:flex-row gap-6 items-start md:items-center">
-<div class="size-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0">
-<span class="material-symbols-outlined text-3xl">corporate_fare</span>
-</div>
-<div class="flex-1">
-<h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-1 hover:text-primary cursor-pointer transition-colors">Agencies</h3>
-<p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-1">Hololive, Nijisanji, VShojo, and other corporate updates.</p>
-<div class="flex items-center gap-4 mt-3">
-<div class="flex items-center gap-1 text-xs text-slate-400">
-<span class="material-symbols-outlined text-sm">chat_bubble</span>
-<span>5.1k Posts</span>
-</div>
-<div class="flex items-center gap-1 text-xs text-slate-400">
-<span class="material-symbols-outlined text-sm">group</span>
-<span>312 Active</span>
-</div>
-</div>
-</div>
-<div class="hidden md:flex flex-col items-end shrink-0 w-48">
-<span class="text-[10px] uppercase font-bold text-slate-400 mb-1">Last Post</span>
-<p class="text-sm font-medium text-slate-700 dark:text-slate-300 truncate w-full text-right">New Hololive Gen Auditions</p>
-<span class="text-xs text-primary">15 mins ago by YagooBest</span>
-</div>
-</div>
-<div class="bg-white dark:bg-slate-800/50 p-6 rounded-xl border border-primary/5 hover:border-primary/20 transition-all flex flex-col md:flex-row gap-6 items-start md:items-center">
-<div class="size-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0">
-<span class="material-symbols-outlined text-3xl">auto_stories</span>
-</div>
-<div class="flex-1">
-<h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-1 hover:text-primary cursor-pointer transition-colors">Lore &amp; Theories</h3>
-<p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-1">Deep dives into character backstories and world building.</p>
-<div class="flex items-center gap-4 mt-3">
-<div class="flex items-center gap-1 text-xs text-slate-400">
-<span class="material-symbols-outlined text-sm">chat_bubble</span>
-<span>1.8k Posts</span>
-</div>
-<div class="flex items-center gap-1 text-xs text-slate-400">
-<span class="material-symbols-outlined text-sm">group</span>
-<span>89 Active</span>
-</div>
-</div>
-</div>
-<div class="hidden md:flex flex-col items-end shrink-0 w-48">
-<span class="text-[10px] uppercase font-bold text-slate-400 mb-1">Last Post</span>
-<p class="text-sm font-medium text-slate-700 dark:text-slate-300 truncate w-full text-right">The connection between Sora and...</p>
-<span class="text-xs text-primary">1 hour ago by LoreMaster</span>
-</div>
-</div>
-<div class="bg-white dark:bg-slate-800/50 p-6 rounded-xl border border-primary/5 hover:border-primary/20 transition-all flex flex-col md:flex-row gap-6 items-start md:items-center">
-<div class="size-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0">
-<span class="material-symbols-outlined text-3xl">build</span>
-</div>
-<div class="flex-1">
-<h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-1 hover:text-primary cursor-pointer transition-colors">Technical Help</h3>
-<p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-1">VTube Studio, OBS settings, and rigging assistance.</p>
-<div class="flex items-center gap-4 mt-3">
-<div class="flex items-center gap-1 text-xs text-slate-400">
-<span class="material-symbols-outlined text-sm">chat_bubble</span>
-<span>3.2k Posts</span>
-</div>
-<div class="flex items-center gap-1 text-xs text-slate-400">
-<span class="material-symbols-outlined text-sm">group</span>
-<span>64 Active</span>
-</div>
-</div>
-</div>
-<div class="hidden md:flex flex-col items-end shrink-0 w-48">
-<span class="text-[10px] uppercase font-bold text-slate-400 mb-1">Last Post</span>
-<p class="text-sm font-medium text-slate-700 dark:text-slate-300 truncate w-full text-right">VBridger Setup Guide</p>
-<span class="text-xs text-primary">3 hours ago by Rigger01</span>
-</div>
-</div>
+    @if (!showCards) {
+        <!-- Show topic list for filtered category -->
+        @foreach (var topic in Model) {
+            <div class="bg-white dark:bg-slate-800/50 p-6 rounded-xl border border-primary/5 hover:border-primary/20 transition-all flex flex-col md:flex-row gap-6 items-start md:items-center">
+                <div class="size-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                    <span class="material-symbols-outlined text-3xl">forum</span>
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-1 hover:text-primary cursor-pointer transition-colors">
+                        <a href="@Url.Action("Topic", "Forum", new { id = topic.Id })">@topic.Title</a>
+                    </h3>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-1">@topic.Author</p>
+                    <div class="flex items-center gap-4 mt-3">
+                        <div class="flex items-center gap-1 text-xs text-slate-400">
+                            <span class="material-symbols-outlined text-sm">chat_bubble</span>
+                            <span>@topic.ReplyCount Replies</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden md:flex flex-col items-end shrink-0 w-48 text-right">
+                    <span class="text-[10px] uppercase font-bold text-slate-400 mb-1">Last Activity</span>
+                    <span class="text-xs text-primary">@topic.CreatedAt.ToString("MMM dd")</span>
+                </div>
+            </div>
+        }
+    } else {
+        <!-- Categories Loop using real database stats -->
+        @foreach (var cat in (IEnumerable<WebWikiForum.ViewModels.CategorySummary>)ViewBag.CategoryStats) {
+            <a href="/Forum/Community?category=@cat.Identifier" class="bg-white dark:bg-slate-800/50 p-6 rounded-xl border border-primary/5 hover:border-primary/20 transition-all flex flex-col md:flex-row gap-6 items-start md:items-center">
+                <div class="size-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                    <span class="material-symbols-outlined text-3xl">@cat.Icon</span>
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-1">@cat.Name</h3>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-1">@cat.Description</p>
+                    <div class="flex items-center gap-4 mt-3">
+                        <div class="flex items-center gap-1 text-xs text-slate-400">
+                            <span class="material-symbols-outlined text-sm">chat_bubble</span>
+                            <span>@cat.TopicCount Topics</span>
+                        </div>
+                        <div class="flex items-center gap-1 text-xs text-slate-400">
+                            <span class="material-symbols-outlined text-sm">group</span>
+                            <span>@cat.ActiveMemberCount Active</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden md:flex flex-col items-end shrink-0 w-48 text-right">
+                    <span class="text-[10px] uppercase font-bold text-slate-400 mb-1">Last Post</span>
+                    @if (cat.LastPostDate != null) {
+                        <p class="text-sm font-medium text-slate-700 dark:text-slate-300 truncate w-full">@cat.LastPostTitle</p>
+                        <span class="text-xs text-primary">By @cat.LastPostAuthor | @cat.LastPostDate?.ToString("MMM dd")</span>
+                    } else {
+                        <p class="text-xs text-slate-400 italic">No activity yet</p>
+                    }
+                </div>
+            </a>
+        }
+    }
 </div>
 </div>
 <aside class="w-full lg:w-80 flex flex-col gap-6">

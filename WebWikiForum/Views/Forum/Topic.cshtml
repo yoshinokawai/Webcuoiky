@@ -1,0 +1,105 @@
+@model WebWikiForum.Models.Discussion
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="max-w-5xl mx-auto px-4 py-12">
+    <!-- Main Discussion Post -->
+    <div class="bg-white dark:bg-surface-dark p-8 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-800 mb-8 overflow-hidden relative">
+        <div class="flex items-center gap-4 mb-6">
+            <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+                <span class="material-symbols-outlined text-3xl">person</span>
+            </div>
+            <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 mb-1">
+                    <span class="text-sm font-black text-slate-900 dark:text-white">@Model.Author</span>
+                    <span class="text-[10px] px-2 py-0.5 rounded-full bg-primary/10 text-primary font-bold uppercase">OP</span>
+                </div>
+                <div class="text-xs text-slate-500 font-medium">Posted on @Model.CreatedAt.ToString("MMM dd, yyyy HH:mm")</div>
+            </div>
+            <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                <span class="material-symbols-outlined text-primary text-[18px]">visibility</span>
+                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">@Model.ViewCount Views</span>
+            </div>
+        </div>
+
+        <h1 class="text-3xl font-black text-slate-900 dark:text-white mb-6 leading-tight">@Model.Title</h1>
+        
+        <div class="prose dark:prose-invert max-w-none text-slate- main-content text-lg leading-relaxed text-slate-700 dark:text-slate-300 whitespace-pre-wrap mb-8">
+            @Model.Content
+        </div>
+
+        <div class="flex items-center gap-6 pt-6 border-t border-slate-100 dark:border-slate-800/50">
+            <button class="flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-primary transition-colors">
+                <span class="material-symbols-outlined text-[20px]">thumb_up</span>
+                <span>Like</span>
+            </button>
+            <button onclick="document.getElementById('replyArea').focus()" class="flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-primary transition-colors">
+                <span class="material-symbols-outlined text-[20px]">reply</span>
+                <span>Reply</span>
+            </button>
+            <button class="flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-primary transition-colors ml-auto">
+                <span class="material-symbols-outlined text-[20px]">share</span>
+                <span>Share</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Replies -->
+    <div class="space-y-6 mb-12">
+        <h3 class="text-xl font-black text-slate-900 dark:text-white flex items-center gap-3 ml-2">
+            <span class="material-symbols-outlined text-primary">chat_bubble</span>
+            Replies (@Model.Replies.Count)
+        </h3>
+
+        @if (Model.Replies != null && Model.Replies.Any())
+        {
+            @foreach (var reply in Model.Replies.OrderBy(r => r.CreatedAt))
+            {
+                <div class="bg-white dark:bg-surface-dark p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-400">
+                            <span class="material-symbols-outlined text-2xl">person</span>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="text-sm font-black text-slate-900 dark:text-white mb-0.5">@reply.Author</div>
+                            <div class="text-[10px] text-slate-400 font-medium">@reply.CreatedAt.ToString("MMM dd, yyyy HH:mm")</div>
+                        </div>
+                    </div>
+                    <div class="text-slate-700 dark:text-slate-300 whitespace-pre-wrap leading-relaxed">
+                        @reply.Content
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="p-12 text-center bg-slate-50/50 dark:bg-slate-800/20 rounded-3xl border border-dashed border-slate-200 dark:border-slate-700">
+                <p class="text-slate-500 italic">No replies yet. Be the first to start the conversation!</p>
+            </div>
+        }
+    </div>
+
+    <!-- Reply Form -->
+    <div class="bg-white dark:bg-surface-dark p-8 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-800 sticky bottom-8 transform translate-z-10 z-20 ring-4 ring-background-light dark:ring-background-dark">
+        <h4 class="text-lg font-black text-slate-900 dark:text-white mb-4">Post a Reply</h4>
+        
+        @if (User.Identity.IsAuthenticated)
+        {
+            <form asp-action="PostReply" method="post" class="space-y-4">
+                <input type="hidden" name="discussionId" value="@Model.Id" />
+                <textarea id="replyArea" name="content" rows="4" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder-slate-400" placeholder="Write your reply..." required></textarea>
+                <div class="flex justify-end">
+                    <button type="submit" class="px-8 py-2.5 bg-primary text-white font-bold rounded-xl hover:bg-primary-dark shadow-lg shadow-primary/20 transition-all active:scale-95">Post Reply</button>
+                </div>
+            </form>
+        }
+        else
+        {
+            <div class="p-6 text-center bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700">
+                <p class="text-slate-600 dark:text-slate-400 mb-4">You need to log in to post a reply.</p>
+                <a href="/Account/Login?returnUrl=@Context.Request.Path" class="inline-block px-8 py-2 bg-primary text-white font-bold rounded-xl hover:bg-primary-dark transition-all shadow-lg shadow-primary/10">Log In</a>
+            </div>
+        }
+    </div>
+</div>
