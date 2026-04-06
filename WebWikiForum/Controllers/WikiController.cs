@@ -114,6 +114,7 @@ namespace WebWikiForum.Controllers
                         Region = model.Region,
                         Language = model.Language,
                         Tags = model.Tags,
+                        YoutubeUrl = model.YoutubeUrl,
                         Status = "Approved" // Auto-approve for demo
                     };
 
@@ -315,7 +316,8 @@ namespace WebWikiForum.Controllers
                 AgencyId = vtuber.AgencyId,
                 Region = vtuber.Region,
                 Language = vtuber.Language,
-                Tags = vtuber.Tags
+                Tags = vtuber.Tags,
+                YoutubeUrl = vtuber.YoutubeUrl
             };
 
             ViewBag.Agencies = await _context.Agencies.ToListAsync();
@@ -359,6 +361,7 @@ namespace WebWikiForum.Controllers
                     vtuber.Region = model.Region;
                     vtuber.Language = model.Language;
                     vtuber.Tags = model.Tags;
+                    vtuber.YoutubeUrl = model.YoutubeUrl;
 
                     _context.Update(vtuber);
                     await _context.SaveChangesAsync();

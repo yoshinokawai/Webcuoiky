@@ -38,6 +38,7 @@ namespace WebWikiForum.Models
         public bool IsIndependent { get; set; } = true;
         
         public int ViewCount { get; set; } = 0;
+        public string? YoutubeUrl { get; set; }
 
         // Foreign Key
         public int? AgencyId { get; set; }

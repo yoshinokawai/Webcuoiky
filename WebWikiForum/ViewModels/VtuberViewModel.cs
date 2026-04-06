@@ -37,5 +37,9 @@ namespace WebWikiForum.ViewModels
 
         [Display(Name = "Wiki_Label_Agency")]
         public int? AgencyId { get; set; }
+
+        [Url(ErrorMessage = "Please enter a valid URL")]
+        [Display(Name = "YouTube Channel URL")]
+        public string? YoutubeUrl { get; set; }
     }
 }

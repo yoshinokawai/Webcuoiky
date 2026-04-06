@@ -35,6 +35,13 @@
                         <span>@Localizer["Home_ReadWiki"]</span>
                         <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
                     </a>
+                    @if (!string.IsNullOrEmpty(Model.YoutubeUrl))
+                    {
+                        <a href="@Model.YoutubeUrl" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 h-12 px-6 rounded-xl bg-red-600 text-white font-bold shadow-lg hover:scale-105 transition-all duration-300">
+                            <i class="fa-brands fa-youtube text-lg"></i>
+                            <span>YouTube</span>
+                        </a>
+                    }
                 </div>
                 <div class="grid grid-cols-2 gap-6 pt-6 mt-2 border-t border-slate-200 dark:border-slate-800">
                     <div>

@@ -68,6 +68,14 @@
                     {
                         <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">calendar_month</span> @Model.Birthday</span>
                     }
+
+                    @if (!string.IsNullOrEmpty(Model.YoutubeUrl))
+                    {
+                        <a href="@Model.YoutubeUrl" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-red-600 text-white hover:bg-red-700 transition shadow-sm font-bold text-sm">
+                            <i class="fa-brands fa-youtube"></i>
+                            YouTube
+                        </a>
+                    }
                 </div>
             </div>
 
