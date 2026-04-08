@@ -93,30 +93,71 @@
 </div>
 <span asp-validation-for="Email" class="text-red-500 text-xs mt-1 block"></span>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-<div>
-<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5" asp-for="Password">@Localizer["Account_Signup_Label_Pass"]</label>
-<div class="relative">
-<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">lock</span>
-<input asp-for="Password" class="w-full pl-12 pr-12 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" id="reg-password" placeholder="••••••••" type="password"/>
-<div class="absolute inset-y-0 right-0 pr-4 flex items-center cursor-pointer text-slate-400 hover:text-slate-600 transition-colors" onclick="const p = document.getElementById('reg-password'); const span = this.querySelector('span'); if(p.type === 'password'){ p.type = 'text'; span.textContent = 'visibility'; } else { p.type = 'password'; span.textContent = 'visibility_off'; }">
-<span class="material-symbols-outlined text-[20px]">visibility_off</span>
-</div>
-</div>
-<span asp-validation-for="Password" class="text-red-500 text-xs mt-1 block"></span>
-</div>
-<div>
-<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5" asp-for="ConfirmPassword">@Localizer["Account_Signup_Label_Confirm"]</label>
-<div class="relative">
-<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">shield</span>
-<input asp-for="ConfirmPassword" class="w-full pl-12 pr-12 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" id="reg-confirm" placeholder="••••••••" type="password"/>
-<div class="absolute inset-y-0 right-0 pr-4 flex items-center cursor-pointer text-slate-400 hover:text-slate-600 transition-colors" onclick="const p = document.getElementById('reg-confirm'); const span = this.querySelector('span'); if(p.type === 'password'){ p.type = 'text'; span.textContent = 'visibility'; } else { p.type = 'password'; span.textContent = 'visibility_off'; }">
-<span class="material-symbols-outlined text-[20px]">visibility_off</span>
-</div>
-</div>
-<span asp-validation-for="ConfirmPassword" class="text-red-500 text-xs mt-1 block"></span>
-</div>
-</div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+            <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5" asp-for="Password">@Localizer["Account_Signup_Label_Pass"]</label>
+            <div class="relative">
+                <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">lock</span>
+                <input asp-for="Password" class="w-full pl-12 pr-12 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" id="reg-password" placeholder="••••••••" type="password"/>
+                <div class="absolute inset-y-0 right-0 pr-4 flex items-center cursor-pointer text-slate-400 hover:text-slate-600 transition-colors" onclick="const p = document.getElementById('reg-password'); const span = this.querySelector('span'); if(p.type === 'password'){ p.type = 'text'; span.textContent = 'visibility'; } else { p.type = 'password'; span.textContent = 'visibility_off'; }">
+                    <span class="material-symbols-outlined text-[20px]">visibility_off</span>
+                </div>
+            </div>
+            <span asp-validation-for="Password" class="text-red-500 text-xs mt-1 block"></span>
+        </div>
+        <div>
+            <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5" asp-for="ConfirmPassword">@Localizer["Account_Signup_Label_Confirm"]</label>
+            <div class="relative">
+                <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">shield</span>
+                <input asp-for="ConfirmPassword" class="w-full pl-12 pr-12 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" id="reg-confirm" placeholder="••••••••" type="password"/>
+                <div class="absolute inset-y-0 right-0 pr-4 flex items-center cursor-pointer text-slate-400 hover:text-slate-600 transition-colors" onclick="const p = document.getElementById('reg-confirm'); const span = this.querySelector('span'); if(p.type === 'password'){ p.type = 'text'; span.textContent = 'visibility'; } else { p.type = 'password'; span.textContent = 'visibility_off'; }">
+                    <span class="material-symbols-outlined text-[20px]">visibility_off</span>
+                </div>
+            </div>
+            <span asp-validation-for="ConfirmPassword" class="text-red-500 text-xs mt-1 block"></span>
+        </div>
+    </div>
+
+    @* Role Selection *@
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+            <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5" asp-for="Role">Register As</label>
+            <div class="relative">
+                <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">badge</span>
+                <select asp-for="Role" id="role-select" class="w-full pl-12 pr-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all appearance-none cursor-pointer">
+                    <option value="User">Standard User</option>
+                    <option value="Admin">Administrator</option>
+                </select>
+                <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">expand_more</span>
+            </div>
+        </div>
+        <div id="admin-key-group" style="display: none;">
+            <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5" asp-for="AdminKey">Admin Secret Key</label>
+            <div class="relative">
+                <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">key</span>
+                <input asp-for="AdminKey" class="w-full pl-12 pr-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" placeholder=""/>
+            </div>
+            <span asp-validation-for="AdminKey" class="text-red-500 text-xs mt-1 block"></span>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const roleSelect = document.getElementById('role-select');
+            const adminKeyGroup = document.getElementById('admin-key-group');
+            
+            function toggleAdminKey() {
+                if (roleSelect.value === 'Admin') {
+                    adminKeyGroup.style.display = 'block';
+                } else {
+                    adminKeyGroup.style.display = 'none';
+                }
+            }
+            
+            roleSelect.addEventListener('change', toggleAdminKey);
+            toggleAdminKey(); // Initial state
+        });
+    </script>
 <div class="flex items-start gap-3 py-2">
 <input class="mt-1 rounded text-primary focus:ring-primary h-4 w-4 border-slate-300" id="terms" type="checkbox"/>
 <label class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed" for="terms">

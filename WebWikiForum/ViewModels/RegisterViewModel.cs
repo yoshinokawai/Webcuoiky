@@ -21,5 +21,9 @@ namespace WebWikiForum.ViewModels
         [Compare("Password", ErrorMessage = "Passwords do not match.")]
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
+
+        public string Role { get; set; } = "User";
+
+        public string? AdminKey { get; set; }
     }
 }

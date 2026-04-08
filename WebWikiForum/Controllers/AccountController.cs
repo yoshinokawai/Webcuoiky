@@ -119,12 +119,23 @@ namespace WebWikiForum.Controllers
                 return View(model);
             }
 
+            // Admin role validation
+            if (model.Role == "Admin")
+            {
+                if (model.AdminKey != "Yoshino")
+                {
+                    ModelState.AddModelError("AdminKey", "Invalid Admin Secret Key.");
+                    return View(model);
+                }
+            }
+
             // Create the user
             var user = new User
             {
                 Username = model.Username,
                 Email = model.Email,
                 PasswordHash = HashPassword(model.Password),
+                Role = model.Role ?? "User",
                 CreatedAt = DateTime.UtcNow
             };
 
