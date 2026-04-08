@@ -73,7 +73,12 @@
                             <div class="bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700 rounded-xl shadow-xl p-2 space-y-1">
                                 <a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Forum/CommunityHub">Community Hub</a>
                                 <a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Forum/Community">Forum</a>
-                                <a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Home/JoinDiscord">Discord</a>
+                                <a class="group px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-[#5865F2] rounded-lg transition-all flex items-center gap-2" href="/Home/JoinDiscord">
+                                    <svg class="w-4 h-4 fill-current group-hover:drop-shadow-[0_0_8px_rgba(88,101,242,0.5)]" viewBox="0 0 24 24">
+                                        <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.1028 1.543 4.1335 2.4812 6.126 3.1047a.077.077 0 00.0828-.0272c.4654-.6363.876-1.3142 1.226-2.0304a.0759.0759 0 00-.0416-.1057 13.1163 13.1163 0 01-1.9213-.9148.0772.0772 0 01-.0066-.1269c.13-.0974.26-.198.3846-.3012a.0741.0741 0 01.0774-.0102c4.0125 1.8341 8.3562 1.8341 12.33 0a.0721.0721 0 01.0774.0102c.1246.1032.2546.2038.3846.3012a.0772.0772 0 01-.0066.1269 12.2991 12.2991 0 01-1.9213.9148.0759.0759 0 00-.0416.1057c.35.7162.7606 1.3941 1.226 2.0304a.077.077 0 00.0828.0272c1.9925-.6235 4.0232-1.5617 6.126-3.1047a.078.078 0 00.0312-.0561c.5002-5.1772-.8382-9.6739-3.5485-13.6604a.0688.0688 0 00-.0312-.0281zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189z"/>
+                                    </svg>
+                                    Discord
+                                </a>
                                 <a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Home/RecentChanges">Recent Changes</a>
                                 <a class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg transition-colors" href="/Help/Guidelines">Guidelines</a>
                             </div>
@@ -158,7 +163,113 @@
                             <a href="/Account/CreateAccount" class="flex items-center h-10 px-5 rounded-full bg-primary text-white text-sm font-bold hover:bg-primary-dark transition-colors">@Localizer["Nav_Signup"]</a>
                         </div>
                     }
+                    <!-- Mobile Menu Button -->
+                    <button id="mobileMenuBtn" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                        <span class="material-symbols-outlined text-[28px]" id="menuIcon">menu</span>
+                    </button>
                 </div>
+            </div>
+            
+            <!-- Mobile Dropdown Menu -->
+            <div id="mobileDropdown" class="lg:hidden hidden overflow-hidden transition-all duration-300 max-h-0 border-t border-slate-100 dark:border-slate-800">
+                <nav class="p-4 space-y-4 bg-white dark:bg-surface-dark shadow-inner max-h-[80vh] overflow-y-auto">
+                    <!-- Home Section -->
+                    <div class="space-y-1">
+                        <a href="/Home/Index" class="flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-slate-700 dark:text-slate-300 hover:bg-primary/10 hover:text-primary transition-all">
+                            <span class="material-symbols-outlined text-[20px]">home</span>
+                            @Localizer["Nav_Home"]
+                        </a>
+                    </div>
+                    
+                    <!-- Explore Section -->
+                    <div class="space-y-1">
+                        <div class="px-4 py-1 text-[10px] font-black uppercase tracking-widest text-slate-400">@Localizer["Nav_Explore"]</div>
+                        <a href="/Wiki/Agencies" class="flex items-center gap-3 px-4 py-2 rounded-xl text-sm font-bold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800">
+                            <span class="material-symbols-outlined text-[18px]">domain</span>
+                            @Localizer["Nav_Agencies"]
+                        </a>
+                        <a href="/Wiki/Independent" class="flex items-center gap-3 px-4 py-2 rounded-xl text-sm font-bold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800">
+                            <span class="material-symbols-outlined text-[18px]">person</span>
+                            @Localizer["Nav_Independent"]
+                        </a>
+                        <a href="/Wiki/VirtualEvents" class="flex items-center gap-3 px-4 py-2 rounded-xl text-sm font-bold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800">
+                            <span class="material-symbols-outlined text-[18px]">event</span>
+                            @Localizer["Nav_VirtualEvents"]
+                        </a>
+                        <a href="/Editor/FanTools" class="flex items-center gap-3 px-4 py-2 rounded-xl text-sm font-bold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800">
+                            <span class="material-symbols-outlined text-[18px]">build</span>
+                            @Localizer["Nav_FanTools"]
+                        </a>
+                        <a href="/Home/TopTalent" class="flex items-center gap-3 px-4 py-2 rounded-xl text-sm font-bold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800">
+                            <span class="material-symbols-outlined text-[18px]">star</span>
+                            @Localizer["Nav_TopTalents"]
+                        </a>
+                    </div>
+
+                    <!-- Community Section -->
+                    <div class="space-y-1">
+                        <div class="px-4 py-1 text-[10px] font-black uppercase tracking-widest text-slate-400">@Localizer["Nav_Community"]</div>
+                        <a href="/Forum/CommunityHub" class="flex items-center gap-3 px-4 py-2 rounded-xl text-sm font-bold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800">
+                            <span class="material-symbols-outlined text-[18px]">groups</span>
+                            Community Hub
+                        </a>
+                        <a href="/Forum/Community" class="flex items-center gap-3 px-4 py-2 rounded-xl text-sm font-bold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800">
+                            <span class="material-symbols-outlined text-[18px]">forum</span>
+                            Forum
+                        </a>
+                        <a href="/Home/JoinDiscord" class="flex items-center gap-3 px-4 py-2 rounded-xl text-sm font-bold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+                            <svg class="w-[18px] h-[18px] fill-[#5865F2]" viewBox="0 0 24 24">
+                                <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.1028 1.543 4.1335 2.4812 6.126 3.1047a.077.077 0 00.0828-.0272c.4654-.6363.876-1.3142 1.226-2.0304a.0759.0759 0 00-.0416-.1057 13.1163 13.1163 0 01-1.9213-.9148.0772.0772 0 01-.0066-.1269c.13-.0974.26-.198.3846-.3012a.0741.0741 0 01.0774-.0102c4.0125 1.8341 8.3562 1.8341 12.33 0a.0721.0721 0 01.0774.0102c.1246.1032.2546.2038.3846.3012a.0772.0772 0 01-.0066.1269 12.2991 12.2991 0 01-1.9213.9148.0759.0759 0 00-.0416.1057c.35.7162.7606 1.3941 1.226 2.0304a.077.077 0 00.0828.0272c1.9925-.6235 4.0232-1.5617 6.126-3.1047a.078.078 0 00.0312-.0561c.5002-5.1772-.8382-9.6739-3.5485-13.6604a.0688.0688 0 00-.0312-.0281zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189z"/>
+                            </svg>
+                            Discord
+                        </a>
+                        <a href="/Home/RecentChanges" class="flex items-center gap-3 px-4 py-2 rounded-xl text-sm font-bold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800">
+                            <span class="material-symbols-outlined text-[18px]">history</span>
+                            Recent Changes
+                        </a>
+                        <a href="/Help/Guidelines" class="flex items-center gap-3 px-4 py-2 rounded-xl text-sm font-bold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800">
+                            <span class="material-symbols-outlined text-[18px]">gavel</span>
+                            Guidelines
+                        </a>
+                    </div>
+
+                    <!-- Wiki/System Section -->
+                    <div class="space-y-1">
+                        <div class="px-4 py-1 text-[10px] font-black uppercase tracking-widest text-slate-400">@Localizer["Nav_Wiki"]</div>
+                        <a href="/Home/AboutUs" class="flex items-center gap-3 px-4 py-2 rounded-xl text-sm font-bold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800">
+                            <span class="material-symbols-outlined text-[18px]">info</span>
+                            About Us
+                        </a>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a href="/Admin/Dashboard" class="flex items-center gap-3 px-4 py-2 rounded-xl text-sm font-bold text-primary hover:bg-primary/5">
+                                <span class="material-symbols-outlined text-[18px]">dashboard</span>
+                                Dashboard
+                            </a>
+                        }
+                        <a href="/Wiki/Translation" class="flex items-center gap-3 px-4 py-2 rounded-xl text-sm font-bold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800">
+                            <span class="material-symbols-outlined text-[18px]">translate</span>
+                            Translation
+                        </a>
+                        <a href="/Help/HelpCenter" class="flex items-center gap-3 px-4 py-2 rounded-xl text-sm font-bold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800">
+                            <span class="material-symbols-outlined text-[18px]">help</span>
+                            Help Center
+                        </a>
+                        <a href="/Home/Donate" class="flex items-center gap-3 px-4 py-2 rounded-xl text-sm font-bold text-amber-600 hover:bg-amber-50">
+                            <span class="material-symbols-outlined text-[18px]">volunteer_activism</span>
+                            Donate
+                        </a>
+                    </div>
+
+                    <!-- Auth Section for Guest -->
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <div class="pt-4 grid grid-cols-2 gap-3 px-2 border-t border-slate-100 dark:border-slate-800">
+                            <a href="/Account/Login" class="h-11 flex items-center justify-center rounded-xl border border-slate-200 dark:border-slate-700 font-bold text-sm text-slate-700 dark:text-slate-300">Login</a>
+                            <a href="/Account/CreateAccount" class="h-11 flex items-center justify-center rounded-xl bg-primary text-white font-bold text-sm shadow-lg shadow-primary/20">Sign Up</a>
+                        </div>
+                    }
+                </nav>
             </div>
         </div>
     </header>

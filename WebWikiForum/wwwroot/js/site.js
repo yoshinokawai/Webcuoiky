@@ -2,7 +2,7 @@
  * Global Confirmation Modal
  * Usage: showConfirmModal({ title: 'Delete', message: 'Sure?', onConfirm: () => { ... } });
  */
-window.showConfirmModal = function(options) {
+window.showConfirmModal = function (options) {
     const modal = document.getElementById('confirmModal');
     const overlay = document.getElementById('modalOverlay');
     const content = document.getElementById('modalContent');
@@ -21,7 +21,7 @@ window.showConfirmModal = function(options) {
 
     // Show modal
     modal.classList.remove('hidden');
-    
+
     // Animate in
     setTimeout(() => {
         overlay.classList.replace('opacity-0', 'opacity-100');
@@ -35,7 +35,7 @@ window.showConfirmModal = function(options) {
         content.classList.replace('opacity-100', 'opacity-0');
         content.classList.replace('translate-y-0', 'translate-y-4');
         content.classList.replace('sm:scale-100', 'sm:scale-95');
-        
+
         setTimeout(() => {
             modal.classList.add('hidden');
             // Reset listeners
@@ -65,5 +65,42 @@ document.addEventListener('DOMContentLoaded', () => {
                 toast.style.display = 'none';
             }, 500);
         }, 5000);
+    }
+
+    // Mobile Dropdown Logic
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileDropdown = document.getElementById('mobileDropdown');
+    const menuIcon = document.getElementById('menuIcon');
+
+    if (mobileMenuBtn && mobileDropdown) {
+        mobileMenuBtn.onclick = () => {
+            const isHidden = mobileDropdown.classList.contains('hidden');
+            
+            if (isHidden) {
+                mobileDropdown.classList.remove('hidden');
+                menuIcon.innerText = 'close';
+                setTimeout(() => {
+                    mobileDropdown.style.maxHeight = mobileDropdown.scrollHeight + 'px';
+                }, 10);
+            } else {
+                mobileDropdown.style.maxHeight = '0px';
+                menuIcon.innerText = 'menu';
+                setTimeout(() => {
+                    mobileDropdown.classList.add('hidden');
+                }, 300);
+            }
+        };
+
+        document.addEventListener('click', (e) => {
+            if (!mobileMenuBtn.contains(e.target) && !mobileDropdown.contains(e.target)) {
+                if (!mobileDropdown.classList.contains('hidden')) {
+                    mobileDropdown.style.maxHeight = '0px';
+                    menuIcon.innerText = 'menu';
+                    setTimeout(() => {
+                        mobileDropdown.classList.add('hidden');
+                    }, 300);
+                }
+            }
+        });
     }
 });
