@@ -26,6 +26,7 @@ namespace WebWikiForum.Models
         public int ViewCount { get; set; } = 0;
 
         public int ReplyCount { get; set; } = 0;
+        public int LikeCount { get; set; } = 0;
 
         public bool IsPinned { get; set; } = false;
 
@@ -50,5 +51,6 @@ namespace WebWikiForum.Models
 
         public int DiscussionId { get; set; }
         public Discussion Discussion { get; set; }
+        public int LikeCount { get; set; } = 0;
     }
 }

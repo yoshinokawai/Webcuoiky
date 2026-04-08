@@ -117,10 +117,26 @@ namespace WebWikiForum.Controllers
 
             if (discussion == null) return NotFound();
 
-            // Increment ViewCount
-            discussion.ViewCount++;
-            _context.Update(discussion);
-            await _context.SaveChangesAsync();
+            // Get Liked IDs for the current user
+            var likedDiscussionIds = new List<int>();
+            var likedReplyIds = new List<int>();
+
+            if (User.Identity.IsAuthenticated)
+            {
+                var username = User.Identity.Name;
+                likedDiscussionIds = await _context.DiscussionLikes
+                    .Where(l => l.Username == username && l.DiscussionId != null)
+                    .Select(l => l.DiscussionId.Value)
+                    .ToListAsync();
+                
+                likedReplyIds = await _context.DiscussionLikes
+                    .Where(l => l.Username == username && l.ReplyId != null)
+                    .Select(l => l.ReplyId.Value)
+                    .ToListAsync();
+            }
+
+            ViewBag.LikedDiscussionIds = likedDiscussionIds;
+            ViewBag.LikedReplyIds = likedReplyIds;
 
             return View(discussion);
         }
@@ -180,6 +196,185 @@ namespace WebWikiForum.Controllers
 
             await _activityService.LogActivityAsync($"Reply to: {discussion.Title}", content, "Community", "Commented", User.Identity.Name, $"/Forum/Topic/{discussionId}", "New Comment");
 
+            return RedirectToAction("Topic", new { id = discussionId });
+        }
+
+        // --- Like System ---
+
+        [HttpPost]
+        public async Task<IActionResult> ToggleLikeDiscussion(int id)
+        {
+            if (!User.Identity.IsAuthenticated) return Unauthorized();
+
+            var username = User.Identity.Name;
+            var like = await _context.DiscussionLikes
+                .FirstOrDefaultAsync(l => l.DiscussionId == id && l.Username == username);
+
+            var discussion = await _context.Discussions.FindAsync(id);
+            if (discussion == null) return NotFound();
+
+            bool isLiked;
+            if (like == null)
+            {
+                _context.DiscussionLikes.Add(new DiscussionLike { DiscussionId = id, Username = username });
+                isLiked = true;
+            }
+            else
+            {
+                _context.DiscussionLikes.Remove(like);
+                isLiked = false;
+            }
+
+            await _context.SaveChangesAsync();
+            
+            // Sync LikeCount to be safe
+            discussion.LikeCount = await _context.DiscussionLikes.CountAsync(l => l.DiscussionId == id);
+            _context.Update(discussion);
+            await _context.SaveChangesAsync();
+
+            return Json(new { success = true, likeCount = discussion.LikeCount, isLiked = isLiked });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ToggleLikeReply(int id)
+        {
+            if (!User.Identity.IsAuthenticated) return Unauthorized();
+
+            var username = User.Identity.Name;
+            var like = await _context.DiscussionLikes
+                .FirstOrDefaultAsync(l => l.ReplyId == id && l.Username == username);
+
+            var reply = await _context.DiscussionReplies.FindAsync(id);
+            if (reply == null) return NotFound();
+
+            bool isLiked;
+            if (like == null)
+            {
+                _context.DiscussionLikes.Add(new DiscussionLike { ReplyId = id, Username = username });
+                isLiked = true;
+            }
+            else
+            {
+                _context.DiscussionLikes.Remove(like);
+                isLiked = false;
+            }
+
+            await _context.SaveChangesAsync();
+
+            // Sync LikeCount to be safe
+            reply.LikeCount = await _context.DiscussionLikes.CountAsync(l => l.ReplyId == id);
+            _context.Update(reply);
+            await _context.SaveChangesAsync();
+
+            return Json(new { success = true, likeCount = reply.LikeCount, isLiked = isLiked });
+        }
+
+        // --- Topic Management ---
+
+        [HttpGet]
+        public async Task<IActionResult> EditTopic(int id)
+        {
+            var discussion = await _context.Discussions.FindAsync(id);
+            if (discussion == null) return NotFound();
+
+            // Auth Check
+            if (discussion.Author != User.Identity.Name && !User.IsInRole("Admin"))
+            {
+                return Forbid();
+            }
+
+            return View(discussion);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditTopic(Discussion model)
+        {
+            var discussion = await _context.Discussions.FindAsync(model.Id);
+            if (discussion == null) return NotFound();
+
+            // Auth Check
+            if (discussion.Author != User.Identity.Name && !User.IsInRole("Admin"))
+            {
+                return Forbid();
+            }
+
+            if (ModelState.IsValid)
+            {
+                discussion.Title = model.Title;
+                discussion.Content = model.Content;
+                discussion.Category = model.Category;
+                discussion.UpdatedAt = DateTime.Now;
+
+                _context.Update(discussion);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Topic", new { id = discussion.Id });
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteTopic(int id)
+        {
+            var discussion = await _context.Discussions.FindAsync(id);
+            if (discussion == null) return NotFound();
+
+            // Auth Check
+            if (discussion.Author != User.Identity.Name && !User.IsInRole("Admin"))
+            {
+                return Forbid();
+            }
+
+            _context.Discussions.Remove(discussion);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Community");
+        }
+
+        // --- Reply Management ---
+
+        [HttpPost]
+        public async Task<IActionResult> EditReply(int id, string content)
+        {
+            var reply = await _context.DiscussionReplies.FindAsync(id);
+            if (reply == null) return NotFound();
+
+            // Auth Check
+            if (reply.Author != User.Identity.Name && !User.IsInRole("Admin"))
+            {
+                return Forbid();
+            }
+
+            if (string.IsNullOrWhiteSpace(content)) return BadRequest();
+
+            reply.Content = content;
+            _context.Update(reply);
+            await _context.SaveChangesAsync();
+
+            return Json(new { success = true, content = reply.Content });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteReply(int id)
+        {
+            var reply = await _context.DiscussionReplies.FindAsync(id);
+            if (reply == null) return NotFound();
+
+            // Auth Check
+            if (reply.Author != User.Identity.Name && !User.IsInRole("Admin"))
+            {
+                return Forbid();
+            }
+
+            var discussionId = reply.DiscussionId;
+            var discussion = await _context.Discussions.FindAsync(discussionId);
+            if (discussion != null)
+            {
+                discussion.ReplyCount--;
+                _context.Update(discussion);
+            }
+
+            _context.DiscussionReplies.Remove(reply);
+            await _context.SaveChangesAsync();
+            
             return RedirectToAction("Topic", new { id = discussionId });
         }
     }
