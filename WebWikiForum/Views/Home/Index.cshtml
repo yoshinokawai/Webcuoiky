@@ -131,39 +131,17 @@
                 </h2>
 </div>
 <div class="relative pl-4 border-l-2 border-slate-200 dark:border-slate-700 space-y-8">
-    <partial name="_ActivityItem" view-data='new ViewDataDictionary(ViewData) {
-        { "Author", "WikiBot" },
-        { "IsBot", "True" },
-        { "ActivityCode", "Updated" },
-        { "TargetName", "Top 100 List" },
-        { "TimeDescription", string.Format(Localizer["Home_Label_Time_Minutes"].Value, "5") }
-    }' />
-
-    <partial name="_ActivityItem" view-data='new ViewDataDictionary(ViewData) {
-        { "Author", "User_88" },
-        { "ActivityCode", "Commented" },
-        { "TargetName", "Selen\"s Lore" },
-        { "Quote", "Wait, I thought the dragon form was actually..." },
-        { "TimeDescription", string.Format(Localizer["Home_Label_Time_Minutes"].Value, "22") }
-    }' />
-
-    <partial name="_ActivityItem" view-data='new ViewDataDictionary(ViewData) {
-        { "Author", "HoloFanJP" },
-        { "ActivityCode", "Created" },
-        { "TargetName", "ReGLOSS" },
-        { "TimeDescription", string.Format(Localizer["Home_Label_Time_Hours"].Value, "1") }
-    }' />
-
-    <partial name="_ActivityItem" view-data='new ViewDataDictionary(ViewData) {
-        { "Author", "ModTeam" },
-        { "ActivityCode", "Pinned" },
-        { "TargetName", "Forum Rules v2" },
-        { "TimeDescription", string.Format(Localizer["Home_Label_Time_Hours"].Value, "3") }
-    }' />
+    @if (ViewBag.RecentActivities != null)
+    {
+        foreach (var activity in (List<WebWikiForum.Models.Activity>)ViewBag.RecentActivities)
+        {
+            <partial name="_ActivityItem" model="@activity" />
+        }
+    }
 </div>
-<button class="w-full py-2.5 rounded-xl text-sm font-bold text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+            <a href="/Forum/CommunityHub" class="block w-full text-center py-2.5 rounded-xl text-sm font-bold text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
                 @Localizer["Home_ViewMoreActivity"]
-            </button>
+            </a>
 </div>
 </div>
 </main>

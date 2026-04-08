@@ -15,11 +15,13 @@ namespace WebWikiForum.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly IFileService _fileService;
+        private readonly IActivityService _activityService;
 
-        public WikiController(ApplicationDbContext context, IFileService fileService)
+        public WikiController(ApplicationDbContext context, IFileService fileService, IActivityService activityService)
         {
             _context = context;
             _fileService = fileService;
+            _activityService = activityService;
         }
 
         [HttpGet]
@@ -72,6 +74,8 @@ namespace WebWikiForum.Controllers
 
                     _context.News.Add(news);
                     await _context.SaveChangesAsync();
+
+                    await _activityService.LogActivityAsync(news.Title, news.Content, "Article", "Created", news.Author, "/Wiki/VirtualEvents", "New Event");
 
                     TempData["SuccessMessage"] = "Event/News added successfully!";
                     return RedirectToAction("VirtualEvents");
@@ -134,6 +138,8 @@ namespace WebWikiForum.Controllers
 
                     _context.Update(news);
                     await _context.SaveChangesAsync();
+
+                    await _activityService.LogActivityAsync(news.Title, news.Content, "Article", "Updated", news.Author, "/Wiki/VirtualEvents", "Updated Event");
 
                     TempData["SuccessMessage"] = "Event updated successfully!";
                     return RedirectToAction("VirtualEvents");
@@ -271,6 +277,8 @@ namespace WebWikiForum.Controllers
                     _context.Add(vtuber);
                     await _context.SaveChangesAsync();
                     
+                    await _activityService.LogActivityAsync(vtuber.Name, vtuber.Lore, "Article", "Created", User.Identity?.Name ?? "Admin", $"/Wiki/Details/{vtuber.Id}", "New VTuber");
+                    
                     TempData["SuccessMessage"] = $"VTuber '{vtuber.Name}' has been created successfully!";
                     return RedirectToAction("Dashboard", "Admin");
                 }
@@ -382,6 +390,8 @@ namespace WebWikiForum.Controllers
                     _context.Add(agency);
                     await _context.SaveChangesAsync();
 
+                    await _activityService.LogActivityAsync(agency.Name, agency.Description, "Article", "Created", User.Identity?.Name ?? "Admin", $"/Wiki/AgencyDetails/{agency.Id}", "New Agency");
+
                     TempData["SuccessMessage"] = $"Agency '{agency.Name}' has been created successfully!";
                     return RedirectToAction("Agencies");
                 }
@@ -414,6 +424,8 @@ namespace WebWikiForum.Controllers
 
                 _context.Agencies.Remove(agency);
                 await _context.SaveChangesAsync();
+
+                await _activityService.LogActivityAsync(agency.Name, agency.Description, "Article", "Deleted", User.Identity?.Name ?? "Admin", "/Wiki/Agencies", "Agency Deleted");
                 TempData["SuccessMessage"] = $"Agency '{agency.Name}' deleted.";
             } catch (Exception ex) {
                 TempData["ErrorMessage"] = "Error deleting: " + ex.Message;
@@ -515,6 +527,8 @@ namespace WebWikiForum.Controllers
 
                     _context.Update(vtuber);
                     await _context.SaveChangesAsync();
+
+                    await _activityService.LogActivityAsync(vtuber.Name, vtuber.Lore, "Article", "Updated", User.Identity?.Name ?? "Admin", $"/Wiki/Details/{vtuber.Id}", "Updated VTuber");
 
                     TempData["SuccessMessage"] = $"VTuber '{vtuber.Name}' updated successfully!";
                     return RedirectToAction("Dashboard", "Admin");

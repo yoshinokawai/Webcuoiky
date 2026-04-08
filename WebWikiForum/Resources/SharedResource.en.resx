@@ -370,4 +370,7 @@
   <data name="Forum_Category_News" xml:space="preserve"><value>News &amp; Updates</value></data>
   <data name="Forum_Category_FanArt" xml:space="preserve"><value>Fan Art</value></data>
   <data name="Forum_Category_Lore" xml:space="preserve"><value>Lore &amp; Theories</value></data>
+  <data name="RC_Label_Edits" xml:space="preserve"><value>{0} Edits</value></data>
+  <data name="RC_Older" xml:space="preserve"><value>Older</value></data>
+  <data name="RC_NoActivities" xml:space="preserve"><value>No recent activities found.</value></data>
 </root>

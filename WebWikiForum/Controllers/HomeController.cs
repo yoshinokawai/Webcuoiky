@@ -3,6 +3,10 @@ using Microsoft.EntityFrameworkCore;
 using WebWikiForum.Data;
 using System.Threading.Tasks;
 using System.Linq;
+using System.Collections.Generic;
+using WebWikiForum.ViewModels;
+using System;
+using WebWikiForum.Models;
 
 namespace WebWikiForum.Controllers
 {
@@ -34,6 +38,12 @@ namespace WebWikiForum.Controllers
             // Top 5 Agencies for the Browse section
             ViewBag.Agencies = await _context.Agencies
                 .Take(5)
+                .ToListAsync();
+
+            // Recent Activities for the sidebar/feed
+            ViewBag.RecentActivities = await _context.Activities
+                .OrderByDescending(a => a.Timestamp)
+                .Take(4)
                 .ToListAsync();
                 
             return View();
@@ -150,9 +160,40 @@ namespace WebWikiForum.Controllers
             return View();
         }
 
-        public IActionResult RecentChanges()
+        public async Task<IActionResult> RecentChanges()
         {
-            return View();
+            var activities = await _context.Activities
+                .OrderByDescending(a => a.Timestamp)
+                .Take(20)
+                .ToListAsync();
+
+            var last24h = DateTime.Now.AddDays(-1);
+            
+            var viewModel = new RecentChangesViewModel
+            {
+                RecentActivities = activities,
+                TotalArticles = await _context.Vtubers.CountAsync() + await _context.Agencies.CountAsync() + await _context.News.CountAsync(),
+                TotalEditors = await _context.Activities.Select(a => a.Author).Distinct().CountAsync(),
+                TotalMedia = await _context.Activities.CountAsync(a => a.ActivityType == "Media") + (await _context.Vtubers.CountAsync() * 2), // Estimation
+                Last24hEdits = await _context.Activities.CountAsync(a => a.Timestamp > last24h),
+                
+                TopContributors = (await _context.Activities
+                    .GroupBy(a => a.Author)
+                    .Select(g => new { Author = g.Key, Count = g.Count() })
+                    .OrderByDescending(x => x.Count)
+                    .Take(3)
+                    .ToListAsync())
+                    .Select((x, index) => new ContributorViewModel
+                    {
+                        Name = x.Author,
+                        EditCount = x.Count,
+                        Rank = index + 1,
+                        AvatarUrl = $"https://ui-avatars.com/api/?name={x.Author}&background=random"
+                    })
+                    .ToList()
+            };
+
+            return View(viewModel);
         }
 
         public IActionResult VirtualEvents()

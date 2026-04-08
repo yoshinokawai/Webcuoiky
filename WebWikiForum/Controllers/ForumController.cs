@@ -6,16 +6,19 @@ using WebWikiForum.ViewModels;
 using System.Threading.Tasks;
 using System.Linq;
 using System;
+using WebWikiForum.Services;
 
 namespace WebWikiForum.Controllers
 {
     public class ForumController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IActivityService _activityService;
 
-        public ForumController(ApplicationDbContext context)
+        public ForumController(ApplicationDbContext context, IActivityService activityService)
         {
             _context = context;
+            _activityService = activityService;
         }
 
         // Community Hub / All Discussions
@@ -141,6 +144,9 @@ namespace WebWikiForum.Controllers
                 
                 _context.Discussions.Add(model);
                 await _context.SaveChangesAsync();
+
+                await _activityService.LogActivityAsync(model.Title, model.Content, "Community", "Created", model.Author, $"/Forum/Topic/{model.Id}", "New Discussion");
+                
                 return RedirectToAction("Community");
             }
             return View(model);
@@ -171,6 +177,8 @@ namespace WebWikiForum.Controllers
             _context.DiscussionReplies.Add(reply);
             _context.Update(discussion);
             await _context.SaveChangesAsync();
+
+            await _activityService.LogActivityAsync($"Reply to: {discussion.Title}", content, "Community", "Commented", User.Identity.Name, $"/Forum/Topic/{discussionId}", "New Comment");
 
             return RedirectToAction("Topic", new { id = discussionId });
         }

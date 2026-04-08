@@ -23,6 +23,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("Cloudinary"));
 builder.Services.AddScoped<IFileService, FileService>();
+builder.Services.AddScoped<IActivityService, ActivityService>();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
@@ -68,6 +69,18 @@ using (var scope = app.Services.CreateScope())
                 new News { Title = "Mori Calliope releases new EP 'JIGOKU 6' featuring diverse artists", Type = "Music", Author = "MusicTeam", PublishDate = DateTime.Now.AddDays(-1), ImageUrl = "https://i.ytimg.com/vi/6u2OyeL6h7I/maxresdefault.jpg" },
                 new News { Title = "ASMR Masters: Top 10 VTubers for your Night Comfort", Type = "ASMR", Author = "Editorial", PublishDate = DateTime.Now.AddDays(-2), ImageUrl = "https://i.ytimg.com/vi/6fR0eSIn2zI/maxresdefault.jpg" },
                 new News { Title = "CR Cup Overwatch 2: VTuber teams confirmed for the finals", Type = "Gaming", Author = "GamingDaily", PublishDate = DateTime.Now.AddDays(-3), ImageUrl = "https://i.ytimg.com/vi/4T_L_7L-e08/maxresdefault.jpg" }
+            );
+            db.SaveChanges();
+        }
+
+        if (!db.Activities.Any())
+        {
+            db.Activities.AddRange(
+                new Activity { Title = "Gawr Gura: 2024 Concert Tour", ActivityType = "Article", Action = "Updated", Author = "SharkBite24", Timestamp = DateTime.Now.AddMinutes(-38), Description = "Added full setlist and international ticketing info.", Detail = "+1,420 chars" },
+                new Activity { Title = "Hololive Gen 3: Records", ActivityType = "Article", Action = "Updated", Author = "Pekora_Fan_99", Timestamp = DateTime.Now.AddHours(-1), Description = "Corrected date for Usada Pekora's anniversary stream.", Detail = "-12 chars" },
+                new Activity { Title = "Talk: Nijisanji EN Graduation", ActivityType = "Community", Action = "Commented", Author = "Mod_Sora", Timestamp = DateTime.Now.AddHours(-3), Description = "Reminder to keep discussion civil and cite official sources.", Detail = "New Comment" },
+                new Activity { Title = "Kobo Kanaeru", ActivityType = "Article", Action = "Created", Author = "Raindrops_01", Timestamp = DateTime.Now.AddHours(-5), Description = "Initial page creation for Kobo Kanaeru.", Detail = "New Page" },
+                new Activity { Title = "Houshou Marine 1st Album", ActivityType = "Media", Action = "Created", Author = "Ahoy_Captain", Timestamp = DateTime.Now.AddDays(-1), Description = "Uploaded high-resolution cover art.", Detail = "New Image" }
             );
             db.SaveChanges();
         }

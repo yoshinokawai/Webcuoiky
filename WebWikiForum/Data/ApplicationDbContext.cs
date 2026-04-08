@@ -15,5 +15,6 @@ namespace WebWikiForum.Data
         public DbSet<News> News { get; set; }
         public DbSet<Discussion> Discussions { get; set; }
         public DbSet<DiscussionReply> DiscussionReplies { get; set; }
+        public DbSet<Activity> Activities { get; set; }
     }
 }
