@@ -130,7 +130,7 @@
                     @Localizer["Home_Activity"]
                 </h2>
 </div>
-<div class="relative pl-4 border-l-2 border-slate-200 dark:border-slate-700 space-y-8">
+<div class="space-y-3 overflow-hidden">
     @if (ViewBag.RecentActivities != null)
     {
         foreach (var activity in (List<WebWikiForum.Models.Activity>)ViewBag.RecentActivities)

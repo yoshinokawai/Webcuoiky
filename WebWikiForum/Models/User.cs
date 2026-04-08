@@ -20,5 +20,8 @@ namespace WebWikiForum.Models
         public string PasswordHash { get; set; }
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
+        /// <summary>Role: "Admin" or "User"</summary>
+        public string Role { get; set; } = "User";
     }
 }

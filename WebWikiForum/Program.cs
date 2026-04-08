@@ -30,6 +30,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     {
         options.LoginPath = "/Account/Login";
         options.LogoutPath = "/Account/Logout";
+        options.AccessDeniedPath = "/Account/AccessDenied";
         options.ExpireTimeSpan = TimeSpan.FromDays(7);
     });
 var app = builder.Build();
@@ -84,11 +85,54 @@ using (var scope = app.Services.CreateScope())
             );
             db.SaveChanges();
         }
+
+        // ===== SEED ADMIN ACCOUNTS =====
+        var adminAccounts = new[]
+        {
+            new { Username = "Yoshino",  Email = "yoshino@vtwiki.com",  Password = "12345" },
+            new { Username = "Loc123",   Email = "loc123@vtwiki.com",   Password = "12345" },
+            new { Username = "QuocAnh", Email = "quocanh@vtwiki.com",  Password = "12345" },
+        };
+
+        foreach (var admin in adminAccounts)
+        {
+            if (!db.Users.Any(u => u.Username == admin.Username))
+            {
+                db.Users.Add(new WebWikiForum.Models.User
+                {
+                    Username     = admin.Username,
+                    Email        = admin.Email,
+                    PasswordHash = SeedHashPassword(admin.Password),
+                    Role         = "Admin",
+                    CreatedAt    = DateTime.UtcNow
+                });
+            }
+            else
+            {
+                // Promote existing account to Admin
+                var existing = db.Users.First(u => u.Username == admin.Username);
+                if (existing.Role != "Admin")
+                {
+                    existing.Role = "Admin";
+                    db.Users.Update(existing);
+                }
+            }
+        }
+        db.SaveChanges();
     }
     catch (Exception ex)
     {
         Console.WriteLine($"Seed warning: {ex.Message}");
     }
+}
+
+// Helper: same hash algorithm as AccountController
+static string SeedHashPassword(string password)
+{
+    using var sha256 = System.Security.Cryptography.SHA256.Create();
+    var saltedPassword = "VTWiki_Salt_" + password;
+    var bytes = sha256.ComputeHash(System.Text.Encoding.UTF8.GetBytes(saltedPassword));
+    return Convert.ToBase64String(bytes);
 }
 
 // Configure the HTTP request pipeline.

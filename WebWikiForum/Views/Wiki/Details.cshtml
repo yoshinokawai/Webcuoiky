@@ -34,13 +34,13 @@
                 </div>
                 
                 <div class="flex flex-wrap gap-2 justify-end">
-                    <a href="/Wiki/Edit/@Model.Id" class="mb-4 bg-primary hover:bg-primary-dark text-white rounded-full px-6 py-2.5 font-bold transition-transform hover:scale-105 inline-flex items-center gap-2 text-sm shadow-md">
-                        <span class="material-symbols-outlined text-lg">edit</span>
-                        @Localizer["Details_Btn_Edit"]
-                    </a>
-
-                    @if (User.Identity.IsAuthenticated)
+                    @if (User.IsInRole("Admin"))
                     {
+                        <a href="/Wiki/Edit/@Model.Id" class="mb-4 bg-primary hover:bg-primary-dark text-white rounded-full px-6 py-2.5 font-bold transition-transform hover:scale-105 inline-flex items-center gap-2 text-sm shadow-md">
+                            <span class="material-symbols-outlined text-lg">edit</span>
+                            @Localizer["Details_Btn_Edit"]
+                        </a>
+
                         <form asp-controller="Wiki" asp-action="Delete" method="post" onsubmit="event.preventDefault(); window.showConfirmModal({ title: '@Localizer["Dash_Action_Delete"]', message: '@string.Format(Localizer["Dash_Confirm_Delete"].Value, Model.Name)', onConfirm: () => this.submit() });" style="display:inline;">
                             <input type="hidden" name="id" value="@Model.Id" />
                             <button type="submit" class="mb-4 bg-red-500 hover:bg-red-600 text-white rounded-full px-6 py-2.5 font-bold transition-transform hover:scale-105 inline-flex items-center gap-2 text-sm shadow-md">

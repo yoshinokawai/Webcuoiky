@@ -61,7 +61,7 @@ namespace WebWikiForum.Controllers
                 new Claim(ClaimTypes.Name, user.Username),
                 new Claim(ClaimTypes.Email, user.Email),
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Role, "User")
+                new Claim(ClaimTypes.Role, user.Role ?? "User")
             };
 
             var claimsIdentity = new ClaimsIdentity(
@@ -137,7 +137,7 @@ namespace WebWikiForum.Controllers
                 new Claim(ClaimTypes.Name, user.Username),
                 new Claim(ClaimTypes.Email, user.Email),
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Role, "User")
+                new Claim(ClaimTypes.Role, user.Role ?? "User")
             };
 
             var claimsIdentity = new ClaimsIdentity(
@@ -155,6 +155,14 @@ namespace WebWikiForum.Controllers
 
             TempData["SuccessMessage"] = $"Welcome to VTWiki, {user.Username}! Your account has been created.";
             return RedirectToAction("Index", "Home");
+        }
+
+        // ==================== ACCESS DENIED ====================
+
+        public IActionResult AccessDenied(string returnUrl = "/")
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+            return View();
         }
 
         // ==================== LOGOUT ====================

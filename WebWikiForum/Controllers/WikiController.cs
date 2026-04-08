@@ -40,14 +40,14 @@ namespace WebWikiForum.Controllers
             return View(events);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult CreateEvent()
         {
             return View();
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> CreateEvent(NewsViewModel model, IFormFile? imageFile)
         {
@@ -88,7 +88,7 @@ namespace WebWikiForum.Controllers
             return View(model);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> EditEvent(int id)
         {
@@ -109,7 +109,7 @@ namespace WebWikiForum.Controllers
             return View(model);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> EditEvent(int id, NewsViewModel model, IFormFile? imageFile)
         {
@@ -153,7 +153,7 @@ namespace WebWikiForum.Controllers
             return View(model);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> DeleteEvent(int id)
         {
@@ -239,7 +239,7 @@ namespace WebWikiForum.Controllers
             return View();
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> Create()
         {
@@ -247,7 +247,7 @@ namespace WebWikiForum.Controllers
             return View();
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Create(VtuberViewModel model, IFormFile avatarFile)
         {
@@ -291,7 +291,7 @@ namespace WebWikiForum.Controllers
             return View(model);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> EditAgency(int id)
         {
@@ -312,7 +312,7 @@ namespace WebWikiForum.Controllers
             return View(model);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> EditAgency(int id, AgencyViewModel model, IFormFile? logoFile)
         {
@@ -360,14 +360,14 @@ namespace WebWikiForum.Controllers
             return View(model);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult CreateAgency()
         {
             return View();
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> CreateAgency(AgencyViewModel model, IFormFile logoFile)
         {
@@ -403,7 +403,7 @@ namespace WebWikiForum.Controllers
             return View(model);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> DeleteAgency(int id)
         {
@@ -433,7 +433,7 @@ namespace WebWikiForum.Controllers
             return RedirectToAction("Agencies");
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
@@ -461,7 +461,7 @@ namespace WebWikiForum.Controllers
             return RedirectToAction("Dashboard", "Admin");
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
@@ -488,7 +488,7 @@ namespace WebWikiForum.Controllers
             return View(model);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Edit(int id, VtuberViewModel model, IFormFile? avatarFile)
         {
@@ -622,7 +622,7 @@ namespace WebWikiForum.Controllers
 
             return View(agency);
         }
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> ApiCreateAgency([FromBody] AgencyViewModel model)
         {

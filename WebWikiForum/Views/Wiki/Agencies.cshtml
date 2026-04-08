@@ -86,7 +86,10 @@
 <h3 class="text-lg font-bold text-slate-900 dark:text-white">@Localizer["Agencies_Submit_Title"]</h3>
 <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">@Localizer["Agencies_Submit_Desc"]</p>
 </div>
+@if (User.IsInRole("Admin"))
+{
 <a asp-action="CreateAgency" asp-controller="Wiki" class="mt-2 text-primary font-bold text-sm underline decoration-2 underline-offset-4">@Localizer["Agencies_Submit_Btn"]</a>
+}
 </div>
 </div>
 </div>
