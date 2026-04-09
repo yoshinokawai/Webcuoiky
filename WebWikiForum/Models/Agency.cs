@@ -27,6 +27,10 @@ namespace WebWikiForum.Models
         [StringLength(20)]
         public string Status { get; set; } = "Active";
 
+        public string? WebsiteUrl { get; set; }
+        public string? YoutubeUrl { get; set; }
+        public string? TwitterUrl { get; set; }
+
         public virtual ICollection<Vtuber> Vtubers { get; set; }
     }
 }

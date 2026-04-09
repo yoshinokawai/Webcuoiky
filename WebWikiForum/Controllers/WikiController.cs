@@ -304,7 +304,10 @@ namespace WebWikiForum.Controllers
                 Region = agency.Region,
                 Focus = agency.Focus,
                 Description = agency.Description,
-                TalentCount = agency.TalentCount
+                TalentCount = agency.TalentCount,
+                WebsiteUrl = agency.WebsiteUrl,
+                YoutubeUrl = agency.YoutubeUrl,
+                TwitterUrl = agency.TwitterUrl
             };
 
             ViewBag.CurrentLogo = agency.LogoUrl;
@@ -342,6 +345,9 @@ namespace WebWikiForum.Controllers
                     agency.Focus = model.Focus;
                     agency.Description = model.Description;
                     agency.TalentCount = model.TalentCount;
+                    agency.WebsiteUrl = model.WebsiteUrl;
+                    agency.YoutubeUrl = model.YoutubeUrl;
+                    agency.TwitterUrl = model.TwitterUrl;
 
                     _context.Update(agency);
                     await _context.SaveChangesAsync();
@@ -384,6 +390,9 @@ namespace WebWikiForum.Controllers
                         Focus = model.Focus,
                         Description = model.Description,
                         TalentCount = model.TalentCount,
+                        WebsiteUrl = model.WebsiteUrl,
+                        YoutubeUrl = model.YoutubeUrl,
+                        TwitterUrl = model.TwitterUrl,
                         LogoUrl = fileName
                     };
 

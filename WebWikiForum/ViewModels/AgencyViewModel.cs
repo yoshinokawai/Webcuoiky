@@ -22,5 +22,17 @@ namespace WebWikiForum.ViewModels
 
         [Display(Name = "Number of Talents")]
         public int TalentCount { get; set; } = 0;
+
+        [Url]
+        [Display(Name = "Official Website")]
+        public string? WebsiteUrl { get; set; }
+
+        [Url]
+        [Display(Name = "YouTube Channel")]
+        public string? YoutubeUrl { get; set; }
+
+        [Url]
+        [Display(Name = "Twitter / X")]
+        public string? TwitterUrl { get; set; }
     }
 }
