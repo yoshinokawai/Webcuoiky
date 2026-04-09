@@ -343,4 +343,76 @@
   <data name="Time_Oct" xml:space="preserve"><value>10月</value></data>
   <data name="Time_Nov" xml:space="preserve"><value>11月</value></data>
   <data name="Time_Dec" xml:space="preserve"><value>12月</value></data>
+  <data name="RC_Stat_Editors" xml:space="preserve">
+    <value>編集者</value>
+  </data>
+  <data name="Status_Pending" xml:space="preserve">
+    <value>保留中</value>
+  </data>
+  <data name="Forum_Category_FanArt" xml:space="preserve">
+    <value>ファンアート</value>
+  </data>
+  <data name="Status_Active" xml:space="preserve">
+    <value>活動中</value>
+  </data>
+  <data name="Forum_Category_Lore" xml:space="preserve">
+    <value>背景＆考察</value>
+  </data>
+  <data name="Forum_Category_General" xml:space="preserve">
+    <value>一般討論</value>
+  </data>
+  <data name="RC_Label_Edits" xml:space="preserve">
+    <value>{0} 編集</value>
+  </data>
+  <data name="Nav_Search_NoResults" xml:space="preserve">
+    <value>結果が見つかりません</value>
+  </data>
+  <data name="Status_Graduated" xml:space="preserve">
+    <value>卒業</value>
+  </data>
+  <data name="Forum_Subheader" xml:space="preserve">
+    <value>ファンと繋がり、お気に入りのVTuberについて語り合い、彼らのストーリーへ貢献しよう。</value>
+  </data>
+  <data name="Explore_No_Results" xml:space="preserve">
+    <value>条件に一致するVTuberが見つかりません。</value>
+  </data>
+  <data name="Dash_Action_Edit" xml:space="preserve">
+    <value>VTuberの編集</value>
+  </data>
+  <data name="Wiki_Edit_Subtitle" xml:space="preserve">
+    <value>このタレントの情報と背景を更新する。</value>
+  </data>
+  <data name="Forum_Header" xml:space="preserve">
+    <value>コミュニティディスカッション</value>
+  </data>
+  <data name="Nav_Search_Suggested" xml:space="preserve">
+    <value>提案</value>
+  </data>
+  <data name="RC_NoActivities" xml:space="preserve">
+    <value>最近の活動は見つかりません。</value>
+  </data>
+  <data name="RC_Stat_Media" xml:space="preserve">
+    <value>メディアファイル</value>
+  </data>
+  <data name="Forum_Category_News" xml:space="preserve">
+    <value>ニュース＆アップデート</value>
+  </data>
+  <data name="Wiki_TalentsTracked" xml:space="preserve">
+    <value>追跡中のタレント</value>
+  </data>
+  <data name="Wiki_Btn_Update" xml:space="preserve">
+    <value>プロフィール更新</value>
+  </data>
+  <data name="Wiki_Edit_Profile" xml:space="preserve">
+    <value>VTuberプロフィール編集</value>
+  </data>
+  <data name="Status_Hiatus" xml:space="preserve">
+    <value>休止中</value>
+  </data>
+  <data name="RC_Older" xml:space="preserve">
+    <value>以前の</value>
+  </data>
+  <data name="RC_Stat_Articles" xml:space="preserve">
+    <value>記事</value>
+  </data>
 </root>

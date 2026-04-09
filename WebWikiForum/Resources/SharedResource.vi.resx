@@ -365,4 +365,22 @@
   <data name="RC_Label_Edits" xml:space="preserve"><value>{0} Chỉnh Sửa</value></data>
   <data name="RC_Older" xml:space="preserve"><value>Cũ Hơn</value></data>
   <data name="RC_NoActivities" xml:space="preserve"><value>Không tìm thấy hoạt động gần đây.</value></data>
+  <data name="Forum_Subheader" xml:space="preserve">
+    <value>Kết nối với những fan hâm mộ khác, thảo luận về VTuber yêu thích của bạn, và đóng góp vào những câu chuyện truyền thuyết.</value>
+  </data>
+  <data name="Forum_Category_News" xml:space="preserve">
+    <value>Tin tức &amp; Cập nhật</value>
+  </data>
+  <data name="Forum_Header" xml:space="preserve">
+    <value>Thảo luận Cộng đồng</value>
+  </data>
+  <data name="Forum_Category_FanArt" xml:space="preserve">
+    <value>Fan Art</value>
+  </data>
+  <data name="Forum_Category_Lore" xml:space="preserve">
+    <value>Câu chuyện &amp; Giả thuyết</value>
+  </data>
+  <data name="Forum_Category_General" xml:space="preserve">
+    <value>Thảo luận Chung</value>
+  </data>
 </root>
