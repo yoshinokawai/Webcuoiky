@@ -25,19 +25,19 @@
             <div class="flex-1 min-w-0">
                 <div class="flex items-center gap-2 mb-1">
                     <span class="text-sm font-black text-slate-900 dark:text-white">@Model.Author</span>
-                    <span class="text-[10px] px-2 py-0.5 rounded-full bg-primary/10 text-primary font-bold uppercase">OP</span>
+                    <span class="text-[10px] px-2 py-0.5 rounded-full bg-primary/10 text-primary font-bold uppercase">@Localizer["Forum_Badge_OP"]</span>
                 </div>
-                <div class="text-xs text-slate-500 font-medium">Posted on @Model.CreatedAt.ToString("MMM dd, yyyy HH:mm")</div>
+                <div class="text-xs text-slate-500 font-medium">@Localizer["Forum_Topic_PostedOn"] @Model.CreatedAt.ToString("MMM dd, yyyy HH:mm")</div>
             </div>
             <div class="flex items-center gap-4">
                 @if (User.Identity.IsAuthenticated && (User.Identity.Name == Model.Author || User.IsInRole("Admin")))
                 {
                     <div class="flex items-center gap-2">
-                        <a asp-action="EditTopic" asp-route-id="@Model.Id" class="p-2 rounded-xl text-slate-400 hover:text-primary hover:bg-primary/5 transition-all" title="Edit Post">
+                        <a asp-action="EditTopic" asp-route-id="@Model.Id" class="p-2 rounded-xl text-slate-400 hover:text-primary hover:bg-primary/5 transition-all" title="@Localizer["Forum_Topic_EditReply"]">
                             <span class="material-symbols-outlined text-[20px]">edit</span>
                         </a>
-                        <form asp-action="DeleteTopic" asp-route-id="@Model.Id" method="post" onsubmit="return confirm('Are you sure you want to delete this discussion?');" class="inline">
-                            <button type="submit" class="p-2 rounded-xl text-slate-400 hover:text-red-500 hover:bg-red-50 transition-all" title="Delete Post">
+                        <form asp-action="DeleteTopic" asp-route-id="@Model.Id" method="post" onsubmit="return confirm('@Localizer["Forum_Topic_ConfirmDeleteTitle"]');" class="inline">
+                            <button type="submit" class="p-2 rounded-xl text-slate-400 hover:text-red-500 hover:bg-red-50 transition-all" title="@Localizer["Forum_Topic_DeleteReply"]">
                                 <span class="material-symbols-outlined text-[20px]">delete</span>
                             </button>
                         </form>
@@ -45,7 +45,7 @@
                 }
                 <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
                     <span class="material-symbols-outlined text-primary text-[18px]">visibility</span>
-                    <span class="text-xs font-bold text-slate-700 dark:text-slate-300">@Model.ViewCount Views</span>
+                    <span class="text-xs font-bold text-slate-700 dark:text-slate-300">@Model.ViewCount @Localizer["Forum_Topic_Views"]</span>
                 </div>
             </div>
         </div>
@@ -64,15 +64,15 @@
                     class="flex items-center gap-2 text-sm font-bold transition-all @(isPostLiked ? "text-primary scale-110" : "text-slate-500 hover:text-primary")">
                 <span class="material-symbols-outlined text-[22px] @(isPostLiked ? "fill-1" : "")">thumb_up</span>
                 <span class="like-count">@Model.LikeCount</span>
-                <span>Likes</span>
+                <span>@Localizer["Forum_Topic_Likes"]</span>
             </button>
             <button onclick="document.getElementById('replyArea').focus()" class="flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-primary transition-colors">
                 <span class="material-symbols-outlined text-[22px]">reply</span>
-                <span>Reply</span>
+                <span>@Localizer["Forum_Topic_Reply"]</span>
             </button>
             <button class="flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-primary transition-colors ml-auto">
                 <span class="material-symbols-outlined text-[22px]">share</span>
-                <span>Share</span>
+                <span>@Localizer["Forum_Topic_Share"]</span>
             </button>
         </div>
     </div>
@@ -81,7 +81,7 @@
     <div class="space-y-6 mb-12">
         <h3 class="text-xl font-black text-slate-900 dark:text-white flex items-center gap-3 ml-2">
             <span class="material-symbols-outlined text-primary">chat_bubble</span>
-            Replies (@Model.Replies.Count)
+            @Localizer["Forum_Topic_RepliesTitle"] (@Model.Replies.Count)
         </h3>
 
         @if (Model.Replies != null && Model.Replies.Any())
@@ -115,7 +115,7 @@
                                 <button onclick="enableEditReply(@reply.Id)" class="p-1.5 rounded-lg text-slate-400 hover:text-primary hover:bg-primary/5 transition-all">
                                     <span class="material-symbols-outlined text-[18px]">edit</span>
                                 </button>
-                                <form asp-action="DeleteReply" asp-route-id="@reply.Id" method="post" onsubmit="return confirm('Delete this reply?');" class="inline">
+                                <form asp-action="DeleteReply" asp-route-id="@reply.Id" method="post" onsubmit="return confirm('@Localizer["Forum_Topic_DeleteConfirmReply"]');" class="inline">
                                     <button type="submit" class="p-1.5 rounded-lg text-slate-400 hover:text-red-500 hover:bg-red-50 transition-all">
                                         <span class="material-symbols-outlined text-[18px]">delete</span>
                                     </button>
@@ -131,8 +131,8 @@
                     <div id="reply-edit-box-@reply.Id" class="hidden mb-4">
                         <textarea id="reply-textarea-@reply.Id" class="w-full px-4 py-3 rounded-xl border border-primary/30 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-primary/20 outline-none transition-all mb-2">@reply.Content</textarea>
                         <div class="flex justify-end gap-2">
-                            <button onclick="cancelEditReply(@reply.Id)" class="px-4 py-1.5 text-xs font-bold text-slate-500 hover:bg-slate-100 rounded-lg transition-all">Cancel</button>
-                            <button onclick="saveEditReply(@reply.Id)" class="px-4 py-1.5 text-xs font-bold bg-primary text-white rounded-lg hover:bg-primary-dark transition-all">Save Changes</button>
+                            <button onclick="cancelEditReply(@reply.Id)" class="px-4 py-1.5 text-xs font-bold text-slate-500 hover:bg-slate-100 rounded-lg transition-all">@Localizer["Forum_Topic_BtnCancel"]</button>
+                            <button onclick="saveEditReply(@reply.Id)" class="px-4 py-1.5 text-xs font-bold bg-primary text-white rounded-lg hover:bg-primary-dark transition-all">@Localizer["Forum_Topic_BtnSave"]</button>
                         </div>
                     </div>
 
@@ -152,30 +152,30 @@
         else
         {
             <div class="p-12 text-center bg-slate-50/50 dark:bg-slate-800/20 rounded-3xl border border-dashed border-slate-200 dark:border-slate-700">
-                <p class="text-slate-500 italic">No replies yet. Be the first to start the conversation!</p>
+                <p class="text-slate-500 italic">@Localizer["Forum_Topic_NoReplies"]</p>
             </div>
         }
     </div>
 
     <!-- Reply Form -->
     <div class="bg-white dark:bg-surface-dark p-8 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-800 sticky bottom-8 transform translate-z-10 z-20 ring-4 ring-background-light dark:ring-background-dark">
-        <h4 class="text-lg font-black text-slate-900 dark:text-white mb-4">Post a Reply</h4>
+        <h4 class="text-lg font-black text-slate-900 dark:text-white mb-4">@Localizer["Forum_Topic_PostReplyTitle"]</h4>
         
         @if (User.Identity.IsAuthenticated)
         {
             <form asp-action="PostReply" method="post" class="space-y-4">
                 <input type="hidden" name="discussionId" value="@Model.Id" />
-                <textarea id="replyArea" name="content" rows="4" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder-slate-400" placeholder="Write your reply..." required></textarea>
+                <textarea id="replyArea" name="content" rows="4" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder-slate-400" placeholder="@Localizer["Forum_Topic_PlaceholderReply"]" required></textarea>
                 <div class="flex justify-end">
-                    <button type="submit" class="px-8 py-2.5 bg-primary text-white font-bold rounded-xl hover:bg-primary-dark shadow-lg shadow-primary/20 transition-all active:scale-95">Post Reply</button>
+                    <button type="submit" class="px-8 py-2.5 bg-primary text-white font-bold rounded-xl hover:bg-primary-dark shadow-lg shadow-primary/20 transition-all active:scale-95">@Localizer["Forum_Topic_BtnPostReply"]</button>
                 </div>
             </form>
         }
         else
         {
             <div class="p-6 text-center bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700">
-                <p class="text-slate-600 dark:text-slate-400 mb-4">You need to log in to post a reply.</p>
-                <a href="/Account/Login?returnUrl=@Context.Request.Path" class="inline-block px-8 py-2 bg-primary text-white font-bold rounded-xl hover:bg-primary-dark transition-all shadow-lg shadow-primary/10">Log In</a>
+                <p class="text-slate-600 dark:text-slate-400 mb-4">@Localizer["Forum_Topic_LoginToReply"]</p>
+                <a href="/Account/Login?returnUrl=@Context.Request.Path" class="inline-block px-8 py-2 bg-primary text-white font-bold rounded-xl hover:bg-primary-dark transition-all shadow-lg shadow-primary/10">@Localizer["Forum_Topic_LogIn"]</a>
             </div>
         }
     </div>

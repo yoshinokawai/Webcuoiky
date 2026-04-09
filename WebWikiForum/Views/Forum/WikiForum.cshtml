@@ -15,21 +15,21 @@
 <div class="flex flex-col gap-2">
 <div class="flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-wider">
 <span class="material-symbols-outlined text-sm">forum</span>
-                        Community Forum
+                        @Localizer["Forum_Wiki_Breadcrumb"]
                     </div>
-<h1 class="text-slate-900 dark:text-slate-100 text-4xl font-black leading-tight tracking-tight">V-Space Discussions</h1>
-<p class="text-slate-600 dark:text-slate-400 text-lg">Your central hub for all things Virtual YouTuber—news, debuts, and fan art.</p>
+<h1 class="text-slate-900 dark:text-slate-100 text-4xl font-black leading-tight tracking-tight">@Localizer["Forum_Wiki_Title"]</h1>
+<p class="text-slate-600 dark:text-slate-400 text-lg">@Localizer["Forum_Wiki_Desc"]</p>
 </div>
 <!-- Forum Tabs -->
 <div class="flex border-b border-primary/10 gap-8">
 <a data-forum-tab="categories" class="flex items-center gap-2 border-b-[3px] border-primary text-slate-900 dark:text-slate-100 pb-3 font-bold text-sm" href="#">
-<span class="material-symbols-outlined text-sm">category</span> Categories
+<span class="material-symbols-outlined text-sm">category</span> @Localizer["Forum_Wiki_TabCategories"]
                     </a>
 <a data-forum-tab="recent" class="flex items-center gap-2 border-b-[3px] border-transparent text-slate-500 hover:text-primary pb-3 font-bold text-sm transition-colors" href="#">
-<span class="material-symbols-outlined text-sm">schedule</span> Recent
+<span class="material-symbols-outlined text-sm">schedule</span> @Localizer["Forum_Wiki_TabRecent"]
                     </a>
 <a data-forum-tab="trending" class="flex items-center gap-2 border-b-[3px] border-transparent text-slate-500 hover:text-primary pb-3 font-bold text-sm transition-colors" href="#">
-<span class="material-symbols-outlined text-sm">trending_up</span> Trending
+<span class="material-symbols-outlined text-sm">trending_up</span> @Localizer["Forum_Wiki_TabTrending"]
                     </a>
 </div>
 <!-- Forum Table -->
@@ -37,9 +37,9 @@
 <table class="w-full text-left">
 <thead class="bg-primary/5">
 <tr>
-<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">Category</th>
-<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 text-center">Topics</th>
-<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">Recent Post</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">@Localizer["Forum_Wiki_ThCategory"]</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 text-center">@Localizer["Forum_Wiki_ThTopics"]</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">@Localizer["Forum_Wiki_ThRecentPost"]</th>
 </tr>
 </thead>
 <tbody class="divide-y divide-primary/10">
@@ -50,8 +50,8 @@
 <span class="material-symbols-outlined">chat_bubble</span>
 </div>
 <div>
-<div class="text-slate-900 dark:text-slate-100 font-bold">General Discussion</div>
-<div class="text-slate-500 text-xs">Off-topic and general chatter</div>
+<div class="text-slate-900 dark:text-slate-100 font-bold">@Localizer["Forum_Wiki_CatGeneral"]</div>
+<div class="text-slate-500 text-xs">@Localizer["Forum_Wiki_CatGeneralDesc"]</div>
 </div>
 </div>
 </td>
@@ -59,7 +59,7 @@
 <td class="px-6 py-5">
 <div class="flex flex-col">
 <span class="text-sm font-medium text-slate-900 dark:text-slate-100 truncate max-w-[200px]">New stream schedule update</span>
-<span class="text-xs text-primary font-medium">by KizunaAI_Fan • 2m ago</span>
+<span class="text-xs text-primary font-medium">@Localizer["Forum_Item_By"] KizunaAI_Fan • 2m @Localizer["Forum_Item_Ago"]</span>
 </div>
 </td>
 </tr>
@@ -70,8 +70,8 @@
 <span class="material-symbols-outlined">newspaper</span>
 </div>
 <div>
-<div class="text-slate-900 dark:text-slate-100 font-bold">Agency News</div>
-<div class="text-slate-500 text-xs">Updates from Hololive, Nijisanji, and more</div>
+<div class="text-slate-900 dark:text-slate-100 font-bold">@Localizer["Forum_Wiki_CatNews"]</div>
+<div class="text-slate-500 text-xs">@Localizer["Forum_Wiki_CatNewsDesc"]</div>
 </div>
 </div>
 </td>
@@ -79,7 +79,7 @@
 <td class="px-6 py-5">
 <div class="flex flex-col">
 <span class="text-sm font-medium text-slate-900 dark:text-slate-100 truncate max-w-[200px]">3rd Generation Anniversary Concert</span>
-<span class="text-xs text-primary font-medium">by HoloLiveUpdate • 15m ago</span>
+<span class="text-xs text-primary font-medium">@Localizer["Forum_Item_By"] HoloLiveUpdate • 15m @Localizer["Forum_Item_Ago"]</span>
 </div>
 </td>
 </tr>
@@ -90,8 +90,8 @@
 <span class="material-symbols-outlined">celebration</span>
 </div>
 <div>
-<div class="text-slate-900 dark:text-slate-100 font-bold">Debut Announcements</div>
-<div class="text-slate-500 text-xs">Welcome the newest stars to the sky</div>
+<div class="text-slate-900 dark:text-slate-100 font-bold">@Localizer["Forum_Wiki_CatDebut"]</div>
+<div class="text-slate-500 text-xs">@Localizer["Forum_Wiki_CatDebutDesc"]</div>
 </div>
 </div>
 </td>
@@ -99,7 +99,7 @@
 <td class="px-6 py-5">
 <div class="flex flex-col">
 <span class="text-sm font-medium text-slate-900 dark:text-slate-100 truncate max-w-[200px]">New Indie VTuber Debut next Friday</span>
-<span class="text-xs text-primary font-medium">by NewbieVT • 1h ago</span>
+<span class="text-xs text-primary font-medium">@Localizer["Forum_Item_By"] NewbieVT • 1h @Localizer["Forum_Item_Ago"]</span>
 </div>
 </td>
 </tr>
@@ -110,8 +110,8 @@
 <span class="material-symbols-outlined">palette</span>
 </div>
 <div>
-<div class="text-slate-900 dark:text-slate-100 font-bold">Fan Creations</div>
-<div class="text-slate-500 text-xs">Art, music, and community projects</div>
+<div class="text-slate-900 dark:text-slate-100 font-bold">@Localizer["Forum_Wiki_CatFan"]</div>
+<div class="text-slate-500 text-xs">@Localizer["Forum_Wiki_CatFanDesc"]</div>
 </div>
 </div>
 </td>
@@ -119,7 +119,7 @@
 <td class="px-6 py-5">
 <div class="flex flex-col">
 <span class="text-sm font-medium text-slate-900 dark:text-slate-100 truncate max-w-[200px]">Fan-made Live2D model showcase</span>
-<span class="text-xs text-primary font-medium">by ArtistPro • 3h ago</span>
+<span class="text-xs text-primary font-medium">@Localizer["Forum_Item_By"] ArtistPro • 3h @Localizer["Forum_Item_Ago"]</span>
 </div>
 </td>
 </tr>
@@ -131,13 +131,13 @@
 <aside class="w-80 flex flex-col gap-6">
 <button class="w-full flex items-center justify-center gap-2 bg-primary text-white py-3 px-6 rounded-xl font-bold shadow-lg shadow-primary/20 hover:brightness-110 transition-all">
 <span class="material-symbols-outlined text-lg">add</span>
-                    Start New Topic
+                    @Localizer["Forum_Community_StartTopic"]
                 </button>
 <!-- Top Contributors -->
 <div class="bg-white dark:bg-slate-900/50 rounded-xl border border-primary/10 p-5">
 <h3 class="text-slate-900 dark:text-slate-100 font-bold mb-4 flex items-center gap-2">
 <span class="material-symbols-outlined text-primary">emoji_events</span>
-                        Top Contributors
+                        @Localizer["Forum_Wiki_TopContributors"]
                     </h3>
 <div class="flex flex-col gap-4">
 <div class="flex items-center justify-between">
@@ -165,27 +165,27 @@
 </div>
 <!-- Recent Discussions -->
 <div class="bg-white dark:bg-slate-900/50 rounded-xl border border-primary/10 p-5">
-<h3 class="text-slate-900 dark:text-slate-100 font-bold mb-4">Recent Discussions</h3>
+<h3 class="text-slate-900 dark:text-slate-100 font-bold mb-4">@Localizer["Forum_Wiki_RecentDiscussions"]</h3>
 <div class="flex flex-col gap-4">
 <div class="group cursor-pointer">
 <p class="text-sm font-medium group-hover:text-primary transition-colors line-clamp-2">How to improve Live2D performance on OBS?</p>
 <div class="flex items-center gap-2 mt-1">
-<span class="text-[10px] uppercase font-bold text-slate-400">Tech Support</span>
-<span class="text-[10px] text-slate-400">• 5m ago</span>
+<span class="text-[10px] uppercase font-bold text-slate-400">@Localizer["Forum_Wiki_CatTech"]</span>
+<span class="text-[10px] text-slate-400">• 5m @Localizer["Forum_Item_Ago"]</span>
 </div>
 </div>
 <div class="group cursor-pointer">
 <p class="text-sm font-medium group-hover:text-primary transition-colors line-clamp-2">Best mic for starting out under $100?</p>
 <div class="flex items-center gap-2 mt-1">
-<span class="text-[10px] uppercase font-bold text-slate-400">General</span>
-<span class="text-[10px] text-slate-400">• 12m ago</span>
+<span class="text-[10px] uppercase font-bold text-slate-400">@Localizer["Forum_Wiki_CatGeneral_Sidebar"]</span>
+<span class="text-[10px] text-slate-400">• 12m @Localizer["Forum_Item_Ago"]</span>
 </div>
 </div>
 <div class="group cursor-pointer">
 <p class="text-sm font-medium group-hover:text-primary transition-colors line-clamp-2">Lore building tips for mythological avatars</p>
 <div class="flex items-center gap-2 mt-1">
-<span class="text-[10px] uppercase font-bold text-slate-400">Creative</span>
-<span class="text-[10px] text-slate-400">• 45m ago</span>
+<span class="text-[10px] uppercase font-bold text-slate-400">@Localizer["Forum_Wiki_CatCreative"]</span>
+<span class="text-[10px] text-slate-400">• 45m @Localizer["Forum_Item_Ago"]</span>
 </div>
 </div>
 </div>
@@ -194,13 +194,13 @@
 <div class="bg-primary rounded-xl p-5 text-white">
 <div class="flex flex-col gap-4">
 <div class="flex items-center justify-between">
-<span class="text-xs opacity-80 uppercase font-bold tracking-wider">Members Online</span>
+<span class="text-xs opacity-80 uppercase font-bold tracking-wider">@Localizer["Forum_Wiki_MembersOnline"]</span>
 <span class="text-sm font-black">4,291</span>
 </div>
 <div class="h-1 w-full bg-white/20 rounded-full overflow-hidden">
 <div class="h-full bg-white w-2/3"></div>
 </div>
-<p class="text-[11px] opacity-70">Join 120,000+ other members and contribute to the encyclopedia of VTubing.</p>
+<p class="text-[11px] opacity-70">@Localizer["Forum_Wiki_JoinMsg"]</p>
 </div>
 </div>
 </aside>

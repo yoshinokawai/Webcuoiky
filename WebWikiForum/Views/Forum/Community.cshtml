@@ -1,6 +1,6 @@
 @model IEnumerable<WebWikiForum.Models.Discussion>
 @{
-    ViewData["Title"] = "Community Discussions";
+    ViewData["Title"] = Localizer["Forum_Community_Title"];
 }
 @section Styles {
     <link rel="stylesheet" href="~/css/Community.css" />
@@ -15,15 +15,15 @@
 <div class="flex min-h-[320px] flex-col gap-6 bg-cover bg-center bg-no-repeat rounded-xl items-center justify-center p-8 relative overflow-hidden" data-alt="Abstract purple and neon light trails representing community energy" style='background-image: linear-gradient(rgba(25, 17, 33, 0.7) 0%, rgba(153, 76, 230, 0.4) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuCunxmUml22OXwBMK2UUCqSt2j1fKJiu5QPFcsZEZB2mRAb8PXT8eSC3CG0FU1rnpOSLr3w0zWCn1XBcOr4zMWEm-REa_kylfzFaLEZ5MIDXvPg66fDuongEje5Kd-do1mln0kvXxKq-bNremlOM7z0uG5f1246T7hIec0QvzADDTGcKAISGxn9GunFlVILEN3XBnI2waxMVz6eVmGfud8Z4IMPXtoiugDnWEL-07NokV2Zz7yKmZ_YOsGVbLd9dtzrbkUP5ZkkkKE");'>
 <div class="flex flex-col gap-3 text-center max-w-2xl z-10">
 <h1 class="text-white text-4xl font-black leading-tight tracking-tight md:text-5xl">
-                                Community Discussions
-                            </h1>
+    @Localizer["Forum_Community_Title"]
+</h1>
 <p class="text-slate-100 text-base md:text-lg opacity-90">
-                                Connect with fellow fans, discuss your favorite VTubers, share fan art, and contribute to the growing lore of the multiverse.
-                            </p>
+    @Localizer["Forum_Community_Description"]
+</p>
 </div>
 <a href="@Url.Action("StartTopic", "Forum")" class="z-10 flex min-w-[160px] cursor-pointer items-center justify-center gap-2 rounded-lg h-12 px-6 bg-primary text-white text-base font-bold shadow-lg shadow-primary/30 hover:bg-primary/90 transition-all active:scale-95">
 <span class="material-symbols-outlined">add_circle</span>
-<span>Start a Topic</span>
+<span>@Localizer["Forum_Community_StartTopic"]</span>
 </a>
 </div>
 </section>
@@ -36,9 +36,9 @@
         var curCat = ViewBag.CurrentCategory as string ?? "All";
         bool showCards = (curCat == "All" && curSort == "Default");
     }
-    <a href="/Forum/Community?category=All&sort=Default" class="@(showCards ? "text-primary font-bold border-b-2 border-primary" : "text-slate-500 hover:text-primary") pb-4 -mb-[18px] transition-colors">All Categories</a>
-    <a href="/Forum/Community?category=All&sort=Recent" class="@(curSort == "Recent" ? "text-primary font-bold border-b-2 border-primary" : "text-slate-500 hover:text-primary") pb-4 -mb-[18px] transition-colors">Recent</a>
-    <a href="/Forum/Community?category=All&sort=Trending" class="@(curSort == "Trending" ? "text-primary font-bold border-b-2 border-primary" : "text-slate-500 hover:text-primary") pb-4 -mb-[18px] transition-colors">Trending</a>
+    <a href="/Forum/Community?category=All&sort=Default" class="@(showCards ? "text-primary font-bold border-b-2 border-primary" : "text-slate-500 hover:text-primary") pb-4 -mb-[18px] transition-colors">@Localizer["Forum_Community_AllCategories"]</a>
+    <a href="/Forum/Community?category=All&sort=Recent" class="@(curSort == "Recent" ? "text-primary font-bold border-b-2 border-primary" : "text-slate-500 hover:text-primary") pb-4 -mb-[18px] transition-colors">@Localizer["Forum_Community_Recent"]</a>
+    <a href="/Forum/Community?category=All&sort=Trending" class="@(curSort == "Trending" ? "text-primary font-bold border-b-2 border-primary" : "text-slate-500 hover:text-primary") pb-4 -mb-[18px] transition-colors">@Localizer["Forum_Community_Trending"]</a>
 </div>
 </div>
 <div class="grid gap-4">
@@ -69,12 +69,12 @@
                     <div class="flex items-center gap-4 mt-3">
                         <div class="flex items-center gap-1 text-xs text-slate-400">
                             <span class="material-symbols-outlined text-sm">chat_bubble</span>
-                            <span>@topic.ReplyCount Replies</span>
+                            <span>@topic.ReplyCount @Localizer["Forum_Community_Replies"]</span>
                         </div>
                     </div>
                 </div>
                 <div class="hidden md:flex flex-col items-end shrink-0 w-48 text-right">
-                    <span class="text-[10px] uppercase font-bold text-slate-400 mb-1">Last Activity</span>
+                    <span class="text-[10px] uppercase font-bold text-slate-400 mb-1">@Localizer["Forum_Community_LastActivity"]</span>
                     <span class="text-xs text-primary">@topic.CreatedAt.ToString("MMM dd")</span>
                 </div>
             </div>
@@ -92,16 +92,16 @@
                     <div class="flex items-center gap-4 mt-3">
                         <div class="flex items-center gap-1 text-xs text-slate-400">
                             <span class="material-symbols-outlined text-sm">chat_bubble</span>
-                            <span>@cat.TopicCount Topics</span>
+                            <span>@cat.TopicCount @Localizer["Forum_Community_Topics"]</span>
                         </div>
                         <div class="flex items-center gap-1 text-xs text-slate-400">
                             <span class="material-symbols-outlined text-sm">group</span>
-                            <span>@cat.ActiveMemberCount Active</span>
+                            <span>@cat.ActiveMemberCount @Localizer["Forum_Community_Active"]</span>
                         </div>
                     </div>
                 </div>
                 <div class="hidden md:flex flex-col items-end shrink-0 w-48 text-right">
-                    <span class="text-[10px] uppercase font-bold text-slate-400 mb-1">Last Post</span>
+                    <span class="text-[10px] uppercase font-bold text-slate-400 mb-1">@Localizer["Forum_Community_LastPost"]</span>
                     @if (cat.LastPostDate != null) {
                         <p class="text-sm font-medium text-slate-700 dark:text-slate-300 truncate w-full">@cat.LastPostTitle</p>
                         <div class="flex items-center gap-2 justify-end">
@@ -117,7 +117,7 @@
                             }
                         </div>
                     } else {
-                        <p class="text-xs text-slate-400 italic">No activity yet</p>
+                        <p class="text-xs text-slate-400 italic">@Localizer["Forum_Community_NoActivity"]</p>
                     }
                 </div>
             </a>
@@ -129,8 +129,8 @@
 <div class="bg-white dark:bg-slate-800/50 p-6 rounded-xl border border-primary/5">
 <h4 class="font-bold text-slate-900 dark:text-slate-100 mb-4 flex items-center gap-2">
 <span class="material-symbols-outlined text-primary">trending_up</span>
-                                Trending Topics
-                            </h4>
+    @Localizer["Forum_Community_TrendingTopics"]
+</h4>
 <div class="flex flex-col gap-4">
 <a class="group" href="#">
 <p class="text-sm font-medium group-hover:text-primary transition-colors">#HololiveEnglish New Member Rumors</p>
@@ -149,8 +149,8 @@
 <div class="bg-white dark:bg-slate-800/50 p-6 rounded-xl border border-primary/5">
 <h4 class="font-bold text-slate-900 dark:text-slate-100 mb-4 flex items-center gap-2">
 <span class="material-symbols-outlined text-primary">groups</span>
-                                Active Members
-                            </h4>
+    @Localizer["Forum_Community_ActiveMembers"]
+</h4>
 <div class="flex flex-wrap gap-3">
 <div class="size-10 rounded-full border-2 border-primary bg-cover bg-center" data-alt="User avatar 1" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBwZouhsuvASziCO6gxCXuEgXYcOffsV1h_zgWriyAat_LkJHHzdn3UeJCoAPU8wO-B4fUWvoimsN-73BxJzTGTJ0ppsoa_98TPwGdoBMR96yqK5vbvf-m1d75Pqx2MQdelQQ7DD2lAT2OBFoSijY-ht1PhQ3Y9_-FJJ1Kb-QrfuM_GunHHcird9jDX4mngFcvJ4SoJJ1IQsIhyB45cb05CAqQzijcVp2tzRNzMvKL40v2EVo_fR-MQYsKXxHpt43x-ACHFGPO0L6o");'></div>
 <div class="size-10 rounded-full border-2 border-primary/20 bg-cover bg-center" data-alt="User avatar 2" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuARZLWNqRBV8ZHeP6L_VIJ5sdqes8S-Xk0qDofU5inZq1SWPiNOpoo0gorBZnEvsK2zRiHG7VmsrvXSP6Rr-DGwJrfHSsGvYIOzFKtk_BtHDbnT2zqSOdPzTu2aeWtHr-qpnLl2R9BcjRi7ANRyy0eoKhR4VEUQtisar4dTN-RVo-aQUszS2abQZeCtUxXeMZKTgHDnRv-vvL_4VOuwfhPTnYpT3eU9xX91wGxJSiV1_sxwa3RTvXeK8ehINr0aex_L3jm2I-lVtgo");'></div>
@@ -162,9 +162,9 @@
 </div>
 </div>
 <div class="bg-gradient-to-br from-primary to-purple-700 p-6 rounded-xl text-white">
-<h4 class="font-bold mb-2">Wiki Contributor?</h4>
-<p class="text-sm opacity-90 mb-4">Help us keep the lore accurate. Your contributions make the community better!</p>
-<button class="w-full py-2 bg-white text-primary rounded font-bold text-sm hover:bg-slate-100 transition-colors">Apply for Moderator</button>
+<h4 class="font-bold mb-2">@Localizer["Forum_Community_ContributorTitle"]</h4>
+<p class="text-sm opacity-90 mb-4">@Localizer["Forum_Community_ContributorDesc"]</p>
+<button class="w-full py-2 bg-white text-primary rounded font-bold text-sm hover:bg-slate-100 transition-colors">@Localizer["Forum_Community_ApplyMod"]</button>
 </div>
 </aside>
 </div>

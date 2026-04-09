@@ -1,370 +1,1100 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <root>
-  <data name="Nav_Home" xml:space="preserve"><value>Trang Chủ</value></data>
-  <data name="Nav_Explore" xml:space="preserve"><value>Khám Phá</value></data>
-  <data name="Nav_Community" xml:space="preserve"><value>Cộng Đồng</value></data>
-  <data name="Nav_Wiki" xml:space="preserve"><value>Bách Khoa</value></data>
-  <data name="Nav_Search" xml:space="preserve"><value>Tìm kiếm nhân vật, công ty...</value></data>
-  <data name="Nav_Login" xml:space="preserve"><value>Đăng Nhập</value></data>
-  <data name="Nav_Signup" xml:space="preserve"><value>Đăng Ký</value></data>
-  <data name="Nav_Dashboard" xml:space="preserve"><value>Quản Trị</value></data>
-  <data name="Nav_Agencies" xml:space="preserve"><value>Công Ty</value></data>
-  <data name="Nav_Independent" xml:space="preserve"><value>Tự Do (Indie)</value></data>
-  <data name="Nav_VirtualEvents" xml:space="preserve"><value>Sự Kiện Ảo</value></data>
-  <data name="Nav_FanTools" xml:space="preserve"><value>Công Cụ Fan</value></data>
-  <data name="Nav_TopTalents" xml:space="preserve"><value>Tài Năng Nổi Bật</value></data>
-  <data name="Nav_RecentChanges" xml:space="preserve"><value>Thay Đổi Gần Đây</value></data>
-  <data name="Nav_Guidelines" xml:space="preserve"><value>Hướng Dẫn</value></data>
-  <data name="Nav_EditorHub" xml:space="preserve"><value>Trung Tâm Biên Tập</value></data>
-  <data name="Nav_WikiForum" xml:space="preserve"><value>Diễn Đàn Wiki</value></data>
-  <data name="Nav_Discord" xml:space="preserve"><value>Liên Kết Discord</value></data>
-  <data name="Nav_AboutUs" xml:space="preserve"><value>Về Chúng Tôi</value></data>
-  <data name="Nav_Translation" xml:space="preserve"><value>Dự Án Dịch Thuật</value></data>
-  <data name="Nav_HelpCenter" xml:space="preserve"><value>Trung Tâm Trợ Giúp</value></data>
-  <data name="Nav_Donate" xml:space="preserve"><value>Ủng Hộ</value></data>
-  <data name="Home_Spotlight" xml:space="preserve"><value>Nổi Bật</value></data>
-  <data name="Home_Choice" xml:space="preserve"><value>Tuần 42 • Lựa chọn của Biên tập viên</value></data>
-  <data name="Home_Hero_Desc" xml:space="preserve"><value>Thần tượng ảo đã vượt qua mọi giới hạn. Nổi tiếng với giọng hát đầy nội lực, kỹ năng chơi Tetris điêu luyện và sức hút từ mái tóc xanh. Từ khởi đầu khiêm tốn của một indie đến tỏa sáng trên những sân khấu lớn nhất.</value></data>
-  <data name="Home_ReadWiki" xml:space="preserve"><value>Đọc Toàn Bộ Wiki</value></data>
-  <data name="Home_LatestStream" xml:space="preserve"><value>Buổi Phát Trực Tiếp Mới Nhất</value></data>
-  <data name="Home_Subscribers" xml:space="preserve"><value>Người đăng ký</value></data>
-  <data name="Home_FanName" xml:space="preserve"><value>Tên Fan</value></data>
-  <data name="Home_OshiMark" xml:space="preserve"><value>Oshi Mark</value></data>
-  <data name="Home_BrowseAgency" xml:space="preserve"><value>Duyệt Theo Công Ty</value></data>
-  <data name="Home_ViewAllAgencies" xml:space="preserve"><value>Xem Tất Cả Công Ty</value></data>
-  <data name="Home_RecentNews" xml:space="preserve"><value>Tin Tức Gần Đây</value></data>
-  <data name="Home_ViewAll" xml:space="preserve"><value>Xem Tất Cả</value></data>
-  <data name="Home_Trending" xml:space="preserve"><value>Xu Hướng</value></data>
-  <data name="Home_Activity" xml:space="preserve"><value>Hoạt Động</value></data>
-  <data name="Home_ViewMoreActivity" xml:space="preserve"><value>Xem Thêm Hoạt Động</value></data>
-  <data name="Agencies_Title" xml:space="preserve"><value>Các Công Ty VTuber</value></data>
-  <data name="Agencies_Hero_Desc" xml:space="preserve"><value>Khám phá những thế lực đứng sau các ngôi sao ảo. Từ những gã khổng lồ trong ngành đến các nhãn hiệu mới nổi, tìm hiểu về các tổ chức cung cấp quản lý, đổi mới kỹ thuật và xây dựng thương hiệu toàn cầu cho VTubers.</value></data>
-  <data name="Agencies_Btn_Explore" xml:space="preserve"><value>Khám Phá Tất Cả</value></data>
-  <data name="Agencies_Btn_FAQ" xml:space="preserve"><value>Hỏi Đáp Về Công Ty</value></data>
-  <data name="Agencies_Search_Placeholder" xml:space="preserve"><value>Tìm kiếm công ty theo tên, tài năng hoặc từ khóa...</value></data>
-  <data name="Agencies_Label_Region" xml:space="preserve"><value>Khu Vực: Tất Cả</value></data>
-  <data name="Agencies_Label_Focus" xml:space="preserve"><value>Trọng Tâm: Tất Cả</value></data>
-  <data name="Agencies_Label_Filters" xml:space="preserve"><value>Bộ Lọc</value></data>
-  <data name="Agencies_Major_Agencies" xml:space="preserve"><value>Các Công Ty Chính</value></data>
-  <data name="Agencies_Count" xml:space="preserve"><value>Xem Tất Cả (42)</value></data>
-  <data name="Agencies_Label_Talents" xml:space="preserve"><value>Thành Viên</value></data>
-  <data name="Agencies_Label_Focus_Card" xml:space="preserve"><value>Trọng Tâm</value></data>
-  <data name="Agencies_Btn_ViewDirectory" xml:space="preserve"><value>Xem Danh Mục</value></data>
-  <data name="Agencies_Submit_Title" xml:space="preserve"><value>Gửi Thông Tin Công Ty</value></data>
-  <data name="Agencies_Submit_Desc" xml:space="preserve"><value>Giúp chúng tôi phát triển cơ sở dữ liệu bằng cách gửi thông tin công ty còn thiếu.</value></data>
-  <data name="Agencies_Submit_Btn" xml:space="preserve"><value>Cổng Thông Tin Đóng Góp</value></data>
-  <data name="Agencies_Why_Title" xml:space="preserve"><value>Tại sao các công ty lại quan trọng?</value></data>
-  <data name="Agencies_Why_Desc" xml:space="preserve"><value>Các công ty cung cấp cơ sở hạ tầng cho phép VTubers tiếp cận khán giả toàn cầu. Điều này bao gồm mọi thứ từ cung cấp các mô hình 3D/2D, studio ghi hình chuyển động, hỗ trợ pháp lý, các chiến dịch tiếp thị và sản xuất hàng hóa.</value></data>
-  <data name="Agencies_Support_Title" xml:space="preserve"><value>Hỗ Trợ Chuyên Nghiệp</value></data>
-  <data name="Agencies_Support_Desc" xml:space="preserve"><value>Hỗ trợ kỹ thuật, pháp lý và lịch trình.</value></data>
-  <data name="Agencies_Collab_Title" xml:space="preserve"><value>Cộng Đồng &amp; Hợp Tác</value></data>
-  <data name="Agencies_Collab_Desc" xml:space="preserve"><value>Dễ dàng hợp tác với các thành viên cùng thế hệ.</value></data>
-  <data name="Wiki_Create_Profile" xml:space="preserve"><value>Tạo Hồ Sơ VTuber</value></data>
-  <data name="Wiki_Edit_Profile" xml:space="preserve"><value>Chỉnh sửa Hồ Sơ VTuber</value></data>
-  <data name="Wiki_Edit_Subtitle" xml:space="preserve"><value>Cập nhật thông tin và tiểu sử cho tài năng này.</value></data>
-  <data name="Wiki_Btn_Update" xml:space="preserve"><value>Cập nhật Hồ Sơ</value></data>
-  <data name="Wiki_Create_Subtitle" xml:space="preserve"><value>Thêm một VTuber mới vào bách khoa toàn thư do cộng đồng xây dựng. Các bài gửi sẽ được quản trị viên xem xét.</value></data>
-  <data name="Wiki_Label_Avatar" xml:space="preserve"><value>Ảnh Đại Diện</value></data>
-  <data name="Wiki_Label_Name" xml:space="preserve"><value>Tên VTuber</value></data>
-  <data name="Wiki_Label_Age" xml:space="preserve"><value>Tuổi (Tùy chọn)</value></data>
-  <data name="Wiki_Label_Birthday" xml:space="preserve"><value>Ngày Sinh</value></data>
-  <data name="Wiki_Label_Debut" xml:space="preserve"><value>Ngày Debut</value></data>
-  <data name="Wiki_Label_Agency" xml:space="preserve"><value>Công Ty/Tổ Chức</value></data>
-  <data name="Wiki_Label_Lore" xml:space="preserve"><value>Tiểu Sử &amp; Cốt Truyện</value></data>
-  <data name="Wiki_Btn_Submit" xml:space="preserve"><value>Gửi Hồ Sơ</value></data>
-  <data name="Wiki_Btn_Cancel" xml:space="preserve"><value>Hủy</value></data>
-  <data name="Wiki_Required_Name" xml:space="preserve"><value>Vui lòng nhập tên VTuber.</value></data>
-  <data name="Details_Btn_Edit" xml:space="preserve"><value>Chỉnh Sửa Hồ Sơ</value></data>
-  <data name="Details_Independent" xml:space="preserve"><value>VTuber Tự Do</value></data>
-  <data name="Details_Label_Age" xml:space="preserve"><value>Tuổi</value></data>
-  <data name="Details_Lore_Title" xml:space="preserve"><value>Tiểu Sử Thành Viên</value></data>
-  <data name="Details_Lore_Empty" xml:space="preserve"><value>Quá khứ bí ẩn của VTuber này vẫn chưa được ghi lại...</value></data>
-  <data name="Account_Login_Welcome" xml:space="preserve"><value>Đăng nhập vào VTuber Wiki</value></data>
-  <data name="Account_Login_Subtitle" xml:space="preserve"><value>Chào mừng trở lại! Vui lòng nhập thông tin của bạn.</value></data>
-  <data name="Account_Login_Hero_Title" xml:space="preserve"><value>Quay lại với Thế Giới Ảo</value></data>
-  <data name="Account_Login_Hero_Desc" xml:space="preserve"><value>Nguồn thông tin số một về mọi thứ VTuber. Chỉnh sửa bài viết, khám phá tài năng mới và thảo luận cùng cộng đồng.</value></data>
-  <data name="Account_Login_Back" xml:space="preserve"><value>Quay lại Wiki</value></data>
-  <data name="Account_Login_Label_User" xml:space="preserve"><value>Tên đăng nhập hoặc Email</value></data>
-  <data name="Account_Login_Label_Pass" xml:space="preserve"><value>Mật khẩu</value></data>
-  <data name="Account_Login_Label_Remember" xml:space="preserve"><value>Ghi nhớ tôi</value></data>
-  <data name="Account_Login_Forgot" xml:space="preserve"><value>Quên mật khẩu?</value></data>
-  <data name="Account_Login_Btn" xml:space="preserve"><value>Đăng Nhập</value></data>
-  <data name="Account_Login_NoAccount" xml:space="preserve"><value>Chưa có tài khoản?</value></data>
-  <data name="Account_Signup_Title" xml:space="preserve"><value>Tạo tài khoản của bạn</value></data>
-  <data name="Account_Signup_Subtitle" xml:space="preserve"><value>Nhập thông tin chi tiết để bắt đầu</value></data>
-  <data name="Account_Signup_Hero_Title" xml:space="preserve"><value>Tham Gia Cộng Đồng</value></data>
-  <data name="Account_Signup_Hero_Desc" xml:space="preserve"><value>Trở thành một phần của bách khoa toàn thư cộng đồng lớn nhất thế giới dành cho các VTuber.</value></data>
-  <data name="Account_Signup_Stats_Articles" xml:space="preserve"><value>Bài viết</value></data>
-  <data name="Account_Signup_Stats_Groups" xml:space="preserve"><value>Nhóm Fan</value></data>
-  <data name="Account_Signup_Stats_Active" xml:space="preserve"><value>Hoạt động</value></data>
-  <data name="Account_Signup_Label_User" xml:space="preserve"><value>Tên đăng nhập</value></data>
-  <data name="Account_Signup_Label_Email" xml:space="preserve"><value>Địa chỉ Email</value></data>
-  <data name="Account_Signup_Label_Pass" xml:space="preserve"><value>Mật khẩu</value></data>
-  <data name="Account_Signup_Label_Confirm" xml:space="preserve"><value>Xác nhận</value></data>
-  <data name="Account_Signup_Terms" xml:space="preserve"><value>Bằng cách tạo tài khoản, bạn đồng ý với {0} và {1} của chúng tôi.</value></data>
-  <data name="Account_Signup_Terms_Link" xml:space="preserve"><value>Điều khoản Dịch vụ</value></data>
-  <data name="Account_Signup_Privacy_Link" xml:space="preserve"><value>Chính sách Bảo mật</value></data>
-  <data name="Account_Signup_Btn" xml:space="preserve"><value>Tạo Tài Khoản</value></data>
-  <data name="Account_Signup_HasAccount" xml:space="preserve"><value>Đã có tài khoản?</value></data>
-  <data name="Account_Signup_BackToLogin" xml:space="preserve"><value>Quay lại Đăng nhập</value></data>
-  <data name="Account_OrContinue" xml:space="preserve"><value>Hoặc tiếp tục với</value></data>
-  <data name="Dash_Title" xml:space="preserve"><value>Bảng Quản Trị</value></data>
-  <data name="Dash_Desc" xml:space="preserve"><value>Quản lý tất cả VTuber đã đăng ký, phê duyệt chỉnh sửa và duy trì chất lượng wiki.</value></data>
-  <data name="Dash_Search_Placeholder" xml:space="preserve"><value>Tìm kiếm VTuber...</value></data>
-  <data name="Dash_Btn_Add" xml:space="preserve"><value>Thêm VTuber</value></data>
-  <data name="Dash_Stat_Total" xml:space="preserve"><value>Tổng số VTuber</value></data>
-  <data name="Dash_Stat_Approved" xml:space="preserve"><value>Đã Duyệt</value></data>
-  <data name="Dash_Stat_Pending" xml:space="preserve"><value>Chờ Duyệt</value></data>
-  <data name="Dash_Col_Talent" xml:space="preserve"><value>Tài Năng (Ảnh &amp; Tên)</value></data>
-  <data name="Dash_Col_Info" xml:space="preserve"><value>Thông Tin</value></data>
-  <data name="Dash_Col_Status" xml:space="preserve"><value>Trạng Thái</value></data>
-  <data name="Dash_Col_Actions" xml:space="preserve"><value>Hành Động</value></data>
-  <data name="Dash_Status_Approved" xml:space="preserve"><value>Đã Duyệt</value></data>
-  <data name="Dash_Action_View" xml:space="preserve"><value>Xem Hồ Sơ</value></data>
-  <data name="Dash_Action_Edit" xml:space="preserve"><value>Sửa VTuber</value></data>
-  <data name="Dash_Action_Approve" xml:space="preserve"><value>Phê Duyệt</value></data>
-  <data name="Dash_Action_Delete" xml:space="preserve"><value>Xóa VTuber</value></data>
-  <data name="Dash_Confirm_Delete" xml:space="preserve"><value>Bạn có chắc chắn muốn xóa {0}? Hành động này không thể hoàn tác.</value></data>
-  <data name="Dash_Empty_Title" xml:space="preserve"><value>Không tìm thấy VTuber nào trong cơ sở dữ liệu.</value></data>
-  <data name="Dash_Empty_Desc" xml:space="preserve"><value>Bắt đầu bằng cách thêm một hồ sơ VTuber mới bằng nút bên trên.</value></data>
-  <data name="Dash_Empty_Btn" xml:space="preserve"><value>Thêm VTuber Đầu Tiên</value></data>
-  <data name="Dash_No_History" xml:space="preserve"><value>Chưa có thông tin tiểu sử.</value></data>
-  <data name="Dash_Debuted" xml:space="preserve"><value>Ngày ra mắt:</value></data>
-  <data name="Dash_Unknown" xml:space="preserve"><value>Không xác định</value></data>
-  <data name="Dash_Independent" xml:space="preserve"><value>Tự Do</value></data>
-  <data name="Dash_Success" xml:space="preserve"><value>Thành Công!</value></data>
-  <data name="Page_AboutUs" xml:space="preserve"><value>Về VTuber Wiki</value></data>
-  <data name="Page_Guidelines" xml:space="preserve"><value>Hướng Dẫn Cộng Đồng</value></data>
-  <data name="Page_HelpCenter" xml:space="preserve"><value>Hỗ Trợ &amp; Giúp Đỡ</value></data>
-  <data name="Page_Forum" xml:space="preserve"><value>Diễn Đàn Thảo Luận Wiki</value></data>
-  <data name="Page_Translation" xml:space="preserve"><value>Trung Tâm Hợp Tác Dịch Thuật</value></data>
-  <data name="Page_RecentChanges" xml:space="preserve"><value>Thay Đổi &amp; Tin Tức Gần Đây</value></data>
-  <data name="Page_Independent" xml:space="preserve"><value>Danh Mục VTuber Tự Do</value></data>
-  <data name="Page_VirtualEvents" xml:space="preserve"><value>Sự Kiện Ảo Sắp Tới</value></data>
-  <data name="Page_FanTools" xml:space="preserve"><value>Công Cụ Cho Nhà Sáng Tạo &amp; Fan</value></data>
-  <data name="Page_TopTalents" xml:space="preserve"><value>Tài Năng Đang Thịnh Hành</value></data>
-  <data name="Page_Donate" xml:space="preserve"><value>Ủng Hộ Wiki</value></data>
-  <data name="Page_Discord" xml:space="preserve"><value>Tham gia Discord của chúng tôi</value></data>
-  <data name="Indie_Title" xml:space="preserve"><value>VTuber Tự Do</value></data>
-  <data name="Indie_Desc" xml:space="preserve"><value>Khám phá những tài năng tuyệt vời đang tự mình tạo dựng con đường riêng. Từ những ngôi sao mới nổi đến những cái tên kỳ cựu, hãy cùng khám phá thế giới đa dạng của VTuber độc lập.</value></data>
-  <data name="Indie_Btn_Learn" xml:space="preserve"><value>Tìm Hiểu Thêm</value></data>
-  <data name="Indie_Btn_HowTo" xml:space="preserve"><value>Cách Bắt Đầu</value></data>
-  <data name="Indie_Search_Placeholder" xml:space="preserve"><value>Tìm kiếm VTuber tự do...</value></data>
-  <data name="Indie_Filter_Region" xml:space="preserve"><value>Khu Vực</value></data>
-  <data name="Indie_Filter_Language" xml:space="preserve"><value>Ngôn Ngữ</value></data>
-  <data name="Indie_Filter_Debut" xml:space="preserve"><value>Năm Ra Mắt</value></data>
-  <data name="Indie_Filter_Apply" xml:space="preserve"><value>Áp Dụng Bộ Lọc</value></data>
-  <data name="Indie_PopularTags" xml:space="preserve"><value>Thẻ Phổ Biến:</value></data>
-  <data name="Indie_Btn_LoadMore" xml:space="preserve"><value>Xem Thêm Tài Năng</value></data>
-  <data name="Indie_Card_Debut" xml:space="preserve"><value>RA MẮT: {0}</value></data>
-  <data name="Trans_Title" xml:space="preserve"><value>Dự Án Dịch Thuật</value></data>
-  <data name="Trans_Subtitle" xml:space="preserve"><value>Dự Án Cộng Đồng</value></data>
-  <data name="Trans_Desc" xml:space="preserve"><value>Tham gia vào các nỗ lực do cộng đồng dẫn dắt để thu hẹp khoảng cách ngôn ngữ. Giúp chúng tôi dịch các buổi live, thông tin cốt truyện và lịch sử VTuber cho người hâm mộ trên toàn thế giới. Mỗi từ ngữ đều đưa chúng ta đến gần nhau hơn.</value></data>
-  <data name="Trans_Btn_Guidelines" xml:space="preserve"><value>Xem Hướng Dẫn</value></data>
-  <data name="Trans_Btn_Discord" xml:space="preserve"><value>Discord Nhóm Dịch Thuật</value></data>
-  <data name="Trans_Section_Current" xml:space="preserve"><value>Dự Án Hiện Tại</value></data>
-  <data name="Trans_Filter_All" xml:space="preserve"><value>Tất Cả</value></data>
-  <data name="Trans_Filter_InProgress" xml:space="preserve"><value>Đang Thực Hiện</value></data>
-  <data name="Trans_Filter_Completed" xml:space="preserve"><value>Đã Hoàn Thành</value></data>
-  <data name="Trans_Label_SourceTarget" xml:space="preserve"><value>Nguồn/Đích</value></data>
-  <data name="Trans_Btn_Join" xml:space="preserve"><value>Tham Gia Dự Án</value></data>
-  <data name="Trans_Btn_Review" xml:space="preserve"><value>Hỗ Trợ Kiểm Duyệt</value></data>
-  <data name="Trans_Label_Archived" xml:space="preserve"><value>Lưu trữ vào {0}</value></data>
-  <data name="Trans_Btn_Results" xml:space="preserve"><value>Xem Kết Quả</value></data>
-  <data name="Trans_Section_Request" xml:space="preserve"><value>Gửi Yêu Cầu Dịch Thuật</value></data>
-  <data name="Trans_Request_Title" xml:space="preserve"><value>Tiêu Đề Nội Dung</value></data>
-  <data name="Trans_Request_Link" xml:space="preserve"><value>Liên Kết Nguồn/Video</value></data>
-  <data name="Trans_Request_Langs" xml:space="preserve"><value>Yêu Cầu Ngôn Ngữ</value></data>
-  <data name="Trans_Request_From" xml:space="preserve"><value>Từ (vd: JP)</value></data>
-  <data name="Trans_Request_To" xml:space="preserve"><value>Sang (vd: VI)</value></data>
-  <data name="Trans_Btn_Submit" xml:space="preserve"><value>Gửi Yêu Cầu</value></data>
-  <data name="Trans_Sidebar_Resources" xml:space="preserve"><value>Tài Nguyên Dịch Thuật</value></data>
-  <data name="Trans_Sidebar_Leaderboard" xml:space="preserve"><value>Bảng Xếp Hạng Dịch Giả</value></data>
-  <data name="Trans_Btn_Leaderboard" xml:space="preserve"><value>Xem Toàn Bộ Bảng Xếp Hạng</value></data>
-  <data name="Trans_Donate_Title" xml:space="preserve"><value>Hỗ Trợ Máy Chủ</value></data>
-  <data name="Trans_Donate_Desc" xml:space="preserve"><value>Wiki được tài trợ bởi cộng đồng. Hãy giúp chúng tôi duy trì hoạt động.</value></data>
-  <data name="Trans_Btn_Donate" xml:space="preserve"><value>Ủng Hộ Ngay</value></data>
-  <data name="About_Hero_Title" xml:space="preserve"><value>VTuber Wiki</value></data>
-  <data name="About_Hero_Desc" xml:space="preserve"><value>Bách khoa toàn thư cuối cùng do cộng đồng dẫn dắt dành cho các Virtual YouTuber. Chúng tôi tận tâm ghi lại lịch sử, cốt truyện và các cột mốc quan trọng của vũ trụ VTubing không ngừng mở rộng.</value></data>
-  <data name="About_Btn_Explore" xml:space="preserve"><value>Bắt Đầu Khám Phá</value></data>
-  <data name="About_Btn_Join" xml:space="preserve"><value>Tham Gia Cộng Đồng</value></data>
-  <data name="About_Section_Story" xml:space="preserve"><value>Câu Chuyện Của Chúng Tôi</value></data>
-  <data name="About_Story_P1" xml:space="preserve"><value>Được thành lập vào cuối năm 2018, VTuber Wiki bắt đầu như một dự án fan hâm mộ nhỏ bé trên một bảng tính chung để theo dõi các tài năng ảo mới nổi tại Nhật Bản. Những gì bắt đầu chỉ với vài chục mục nhập cho những người tiên phong như Kizuna AI và các làn sóng Nijisanji đầu tiên đã nhanh chóng chuyển mình thành một phong trào toàn cầu.</value></data>
-  <data name="About_Story_P2" xml:space="preserve"><value>Khi VTubing bùng nổ trên thế giới vào năm 2020, cộng đồng của chúng tôi đã phát triển từ một vài người đóng góp lên hàng ngàn biên tập viên tận tụy. Ngày nay, chúng tôi tự hào là kho lưu trữ kỹ thuật số toàn diện nhất về văn hóa ảo, bao gồm các nhà sáng tạo độc lập, các công ty quản lý, những đổi mới kỹ thuật và tác động văn hóa của phương tiện độc đáo này.</value></data>
-  <data name="About_Section_Mission" xml:space="preserve"><value>Sứ Mệnh Của Chúng Tôi</value></data>
-  <data name="About_Mission_Acc_Title" xml:space="preserve"><value>Sự Chính Xác</value></data>
-  <data name="About_Mission_Acc_Desc" xml:space="preserve"><value>Chúng tôi ưu tiên thông tin thực tế, có nguồn gốc rõ ràng để đảm bảo lịch sử của các nhà sáng tạo được bảo tồn một cách chính trực.</value></data>
-  <data name="About_Mission_Comm_Title" xml:space="preserve"><value>Cộng Đồng</value></data>
-  <data name="About_Mission_Comm_Desc" xml:space="preserve"><value>Một nền tảng được xây dựng bởi fan, dành cho fan. Chúng tôi thúc đẩy một môi trường hợp tác nơi mọi người đều có thể đóng góp.</value></data>
-  <data name="About_Mission_Inc_Title" xml:space="preserve"><value>Sự Hòa Nhập</value></data>
-  <data name="About_Mission_Inc_Desc" xml:space="preserve"><value>Từ những ngôi sao lớn nhất của các công ty đến những cá nhân độc lập nhỏ nhất, chúng tôi tôn trọng sự đa dạng trong không gian ảo.</value></data>
-  <data name="About_Section_Team" xml:space="preserve"><value>Đội Ngũ Quản Trị</value></data>
-  <data name="About_Team_Admin" xml:space="preserve"><value>Quản Trị Viên Trưởng</value></data>
-  <data name="About_Team_Mod" xml:space="preserve"><value>Điều Phối Viên Cấp Cao</value></data>
-  <data name="About_Team_Editor" xml:space="preserve"><value>Trưởng Nhóm Nội Dung</value></data>
-  <data name="About_Team_Tech" xml:space="preserve"><value>Trưởng Nhóm Kỹ Thuật</value></data>
-  <data name="About_Sidebar_Links" xml:space="preserve"><value>Tài Nguyên Nhanh</value></data>
-  <data name="About_Stats_Title" xml:space="preserve"><value>Thống Kê Wiki</value></data>
-  <data name="About_Stats_Articles" xml:space="preserve"><value>Bài Viết</value></data>
-  <data name="About_Stats_Contributors" xml:space="preserve"><value>Người Đóng Góp</value></data>
-  <data name="RC_Title" xml:space="preserve"><value>Thay Đổi Gần Đây</value></data>
-  <data name="RC_Desc" xml:space="preserve"><value>Theo dõi tất cả các cập nhật trực tiếp cho cơ sở dữ liệu VTuber.</value></data>
-  <data name="RC_Filter_All" xml:space="preserve"><value>Tất Cả Thay Đổi</value></data>
-  <data name="RC_Filter_Articles" xml:space="preserve"><value>Bài Viết</value></data>
-  <data name="RC_Filter_Media" xml:space="preserve"><value>Phương Tiện</value></data>
-  <data name="RC_Filter_Users" xml:space="preserve"><value>Người Dùng</value></data>
-  <data name="RC_Filter_Community" xml:space="preserve"><value>Cộng Đồng</value></data>
-  <data name="RC_Today" xml:space="preserve"><value>Hôm Nay</value></data>
-  <data name="RC_Yesterday" xml:space="preserve"><value>Hôm Qua</value></data>
-  <data name="RC_Btn_LoadMore" xml:space="preserve"><value>Xem Thêm Thay Đổi</value></data>
-  <data name="RC_Stat_Last24h" xml:space="preserve"><value>Chỉnh Sửa Trong 24h Qua</value></data>
-  <data name="RC_Section_Contributors" xml:space="preserve"><value>Người Đóng Góp Hàng Đầu</value></data>
-  <data name="RC_Edit_AddedChars" xml:space="preserve"><value>+{0} ký tự</value></data>
-  <data name="RC_Edit_RemovedChars" xml:space="preserve"><value>-{0} ký tự</value></data>
-  <data name="RC_Label_NewComment" xml:space="preserve"><value>Bình Luận Mới</value></data>
-  <data name="Discord_Hero_Title" xml:space="preserve"><value>Kết nối với Cộng đồng {0}</value></data>
-  <data name="Discord_Hero_Desc" xml:space="preserve"><value>Tham gia máy chủ Discord chính thức của VTuber Wiki để cập nhật thông tin về các buổi ra mắt, tham gia các sự kiện cộng đồng độc quyền và cộng tác với các biên tập viên trong thời gian thực.</value></data>
-  <data name="Discord_Btn_Join" xml:space="preserve"><value>Tham gia Discord của chúng tôi</value></data>
-  <data name="Discord_Btn_Rules" xml:space="preserve"><value>Xem Nội Quy Máy Chủ</value></data>
-  <data name="Discord_Stat_Members" xml:space="preserve"><value>Tổng Thành Viên</value></data>
-  <data name="Discord_Stat_Online" xml:space="preserve"><value>Đang Trực Tuyến</value></data>
-  <data name="Discord_Label_Online" xml:space="preserve"><value>{0} Trực Tuyến</value></data>
-  <data name="Discord_Section_Why" xml:space="preserve"><value>Tại Sao Nên Tham Gia?</value></data>
-  <data name="Discord_Why_Desc" xml:space="preserve"><value>Trải nghiệm cộng đồng VTuber Wiki tốt nhất với các tính năng độc quyền và sự hợp tác trong thời gian thực.</value></data>
-  <data name="Discord_Feature_Updates_Title" xml:space="preserve"><value>Cập Nhật Thời Gian Thực</value></data>
-  <data name="Discord_Feature_Updates_Desc" xml:space="preserve"><value>Nhận thông báo tức thì về các buổi ra mắt mới, cập nhật cốt truyện và các bản sửa đổi wiki quan trọng trước bất kỳ ai khác.</value></data>
-  <data name="Discord_Feature_Events_Title" xml:space="preserve"><value>Sự Kiện Cộng Đồng</value></data>
-  <data name="Discord_Feature_Events_Desc" xml:space="preserve"><value>Tham gia các buổi xem chung, đêm chơi game và các cuộc thi nghệ thuật cộng đồng. Kết nối với những fan có cùng oshi với bạn.</value></data>
-  <data name="Discord_Feature_EditorHelp_Title" xml:space="preserve"><value>Hỗ Trợ Biên Tập Viên</value></data>
-  <data name="Discord_Feature_EditorHelp_Desc" xml:space="preserve"><value>Tiếp cận trực tiếp với các biên tập viên kỳ cựu. Nhận hỗ trợ thời gian thực về định dạng, nguồn và tối ưu hóa hình ảnh cho các trang wiki yêu thích của bạn.</value></data>
-  <data name="Discord_Feature_Roles_Title" xml:space="preserve"><value>Danh Hiệu Độc Quyền</value></data>
-  <data name="Discord_Feature_Roles_Desc" xml:space="preserve"><value>Nhận huy hiệu và các vai trò đặc biệt dựa trên đóng góp của bạn. Thể hiện kiến thức chuyên sâu của bạn về các công ty hoặc giới indie.</value></data>
-  <data name="Discord_Feature_Hubs_Title" xml:space="preserve"><value>Trung Tâm Công Ty</value></data>
-  <data name="Discord_Feature_Hubs_Desc" xml:space="preserve"><value>Các kênh dành riêng cho Hololive, Nijisanji, VShojo, Phase Connect và giới VTuber độc lập.</value></data>
-  <data name="Discord_Feature_Indie_Title" xml:space="preserve"><value>Quảng Bá Indie</value></data>
-  <data name="Discord_Feature_Indie_Desc" xml:space="preserve"><value>Nền tảng cho các ngôi sao đang lên. Chia sẻ về các VTuber sắp ra mắt yêu thích của bạn và giúp họ xây dựng sự hiện diện trên wiki.</value></data>
-  <data name="Discord_CTA_Title" xml:space="preserve"><value>Sẵn sàng gia nhập "tổ đội"?</value></data>
-  <data name="Discord_CTA_Desc" xml:space="preserve"><value>Tham gia cùng hơn 25.000 thành viên trong cộng đồng VTuber năng động nhất trên Discord.</value></data>
-  <data name="Discord_CTA_Btn" xml:space="preserve"><value>Tham Gia Discord Chính Thức</value></data>
-  <data name="Discord_CTA_Note" xml:space="preserve"><value>Bằng cách tham gia, bạn đồng ý tuân thủ các nguyên tắc cộng đồng và tiêu chuẩn wiki.</value></data>
-  <data name="Explore_Title" xml:space="preserve"><value>Khám Phá Tài Năng</value></data>
-  <data name="Explore_Search_Placeholder" xml:space="preserve"><value>Tìm kiếm VTuber, công ty hoặc tin tức...</value></data>
-  <data name="Explore_Popular" xml:space="preserve"><value>Phổ biến:</value></data>
-  <data name="Explore_Label_Indie" xml:space="preserve"><value>Độc lập</value></data>
-  <data name="Explore_Label_3D" xml:space="preserve"><value>Mô hình 3D</value></data>
-  <data name="Explore_Label_ASMR" xml:space="preserve"><value>ASMR</value></data>
-  <data name="Explore_Label_Karaoke" xml:space="preserve"><value>Karaoke</value></data>
-  <data name="Explore_Label_Debut" xml:space="preserve"><value>Ra mắt</value></data>
-  <data name="Explore_Filter_SortBy" xml:space="preserve"><value>Sắp xếp theo</value></data>
-  <data name="Explore_Sort_Newest" xml:space="preserve"><value>Mới ra mắt</value></data>
-  <data name="Explore_Sort_Followers" xml:space="preserve"><value>Nhiều người theo dõi nhất</value></data>
-  <data name="Explore_Sort_AZ" xml:space="preserve"><value>Tên A-Z</value></data>
-  <data name="Explore_Sort_ZA" xml:space="preserve"><value>Tên Z-A</value></data>
-  <data name="Explore_Filter_ContentType" xml:space="preserve"><value>Loại nội dung</value></data>
-  <data name="Explore_Type_All" xml:space="preserve"><value>Tất cả các loại</value></data>
-  <data name="Explore_Type_Gaming" xml:space="preserve"><value>Chơi game</value></data>
-  <data name="Explore_Type_Music" xml:space="preserve"><value>Âm nhạc</value></data>
-  <data name="Explore_Type_Variety" xml:space="preserve"><value>Đa dạng</value></data>
-  <data name="Explore_Type_Education" xml:space="preserve"><value>Giáo dục</value></data>
-  <data name="Explore_Filter_Status" xml:space="preserve"><value>Trạng thái</value></data>
-  <data name="Explore_Stat_Active" xml:space="preserve"><value>Đang hoạt động</value></data>
-  <data name="Explore_Stat_Graduated" xml:space="preserve"><value>Đã tốt nghiệp</value></data>
-  <data name="Explore_Stat_Hiatus" xml:space="preserve"><value>Tạm nghỉ</value></data>
-  <data name="Explore_Btn_Reset" xml:space="preserve"><value>Đặt lại</value></data>
-  <data name="Explore_Tab_All" xml:space="preserve"><value>Tất cả VTuber</value></data>
-  <data name="Explore_Tab_Agencies" xml:space="preserve"><value>Công ty</value></data>
-  <data name="Explore_Tab_Gens" xml:space="preserve"><value>Thế hệ</value></data>
-  <data name="Explore_Tab_Langs" xml:space="preserve"><value>Ngôn ngữ</value></data>
-  <data name="Explore_Showing_Results" xml:space="preserve"><value>Hiển thị {0} kết quả</value></data>
-  <data name="Explore_Trending" xml:space="preserve"><value>Xu hướng hiện nay</value></data>
-  <data name="Explore_Recommended" xml:space="preserve"><value>Tài năng đề xuất</value></data>
-  <data name="Explore_News_Major" xml:space="preserve"><value>Tin quan trọng</value></data>
-  <data name="Explore_News_Outfit" xml:space="preserve"><value>Trang phục mới</value></data>
-  <data name="Explore_Label_Debuted" xml:space="preserve"><value>Ngày ra mắt:</value></data>
-  <data name="Explore_Btn_LoadMore" xml:space="preserve"><value>Xem thêm kết quả</value></data>
-  <data name="Explore_Sidebar_Stats" xml:space="preserve"><value>Thống kê Wiki</value></data>
-  <data name="Explore_Sidebar_Contributors" xml:space="preserve"><value>Người đóng góp hàng đầu</value></data>
-  <data name="Explore_Btn_Contribute" xml:space="preserve"><value>Đóng góp ngay</value></data>
-  <data name="Explore_Label_EditsMonth" xml:space="preserve"><value>{0} chỉnh sửa trong tháng này</value></data>
-  <data name="Explore_Btn_Profiles" xml:space="preserve"><value>Xem hồ sơ</value></data>
-  <data name="Home_Agency_Holo" xml:space="preserve"><value>Hololive Production</value></data>
-  <data name="Home_Agency_Niji" xml:space="preserve"><value>Nijisanji</value></data>
-  <data name="Home_Agency_VShojo" xml:space="preserve"><value>VShojo</value></data>
-  <data name="Home_Agency_Phase" xml:space="preserve"><value>Phase Connect</value></data>
-  <data name="Home_Agency_Idol" xml:space="preserve"><value>Idol Corp</value></data>
-  <data name="Home_Agency_Indie" xml:space="preserve"><value>VTuber Tự Do</value></data>
-  <data name="Home_Hero_Gen0" xml:space="preserve"><value>Thế hệ 0</value></data>
-  <data name="Home_Hero_FanName_Value" xml:space="preserve"><value>Hoshiyomis</value></data>
-  <data name="Home_Category_News" xml:space="preserve"><value>Tin tức</value></data>
-  <data name="Home_Category_Debut" xml:space="preserve"><value>Ra mắt</value></data>
-  <data name="Home_Category_Music" xml:space="preserve"><value>Âm nhạc</value></data>
-  <data name="Home_Category_Event" xml:space="preserve"><value>Sự kiện</value></data>
-  <data name="Home_Label_Time_Hours" xml:space="preserve"><value>{0} giờ trước</value></data>
-  <data name="Home_Label_Time_Minutes" xml:space="preserve"><value>{0} phút trước</value></data>
-  <data name="Home_Label_Time_Days" xml:space="preserve"><value>{0} ngày trước</value></data>
-  <data name="Home_Label_By" xml:space="preserve"><value>Bởi {0}</value></data>
-  <data name="Home_Label_Updated" xml:space="preserve"><value>đã cập nhật {0}</value></data>
-  <data name="Home_Label_Commented" xml:space="preserve"><value>đã bình luận về {0}</value></data>
-  <data name="Home_Label_Created" xml:space="preserve"><value>đã tạo trang {0}</value></data>
-  <data name="Home_Label_Pinned" xml:space="preserve"><value>đã ghim {0}</value></data>
-  <data name="Dash_Status_Approved" xml:space="preserve"><value>Đã phê duyệt</value></data>
-  <data name="Dash_Status_Pending" xml:space="preserve"><value>Chờ duyệt</value></data>
-  <data name="Dash_Independent" xml:space="preserve"><value>Tự do</value></data>
-  <data name="Dash_Unknown" xml:space="preserve"><value>Không rõ</value></data>
-  <data name="Dash_No_History" xml:space="preserve"><value>Không có thông tin tiểu sử.</value></data>
-  <data name="Nav_Logout" xml:space="preserve"><value>Đăng xuất</value></data>
-  <data name="Footer_Desc" xml:space="preserve"><value>Cuốn bách khoa toàn thư tối ưu do cộng đồng xây dựng dành cho các YouTuber ảo. Khám phá, học hỏi và đóng góp vào thế giới ảo đang ngày càng mở rộng.</value></data>
-  <data name="Footer_Wiki" xml:space="preserve"><value>Wiki</value></data>
-  <data name="Footer_Explore" xml:space="preserve"><value>Khám phá</value></data>
-  <data name="Footer_Subscribe" xml:space="preserve"><value>Đăng ký</value></data>
-  <data name="Footer_Subscribe_Desc" xml:space="preserve"><value>Nhận tin tức VTuber mới nhất trực tiếp trong hộp thư của bạn.</value></data>
-  <data name="Footer_Email_Placeholder" xml:space="preserve"><value>Địa chỉ email</value></data>
-  <data name="Footer_Go" xml:space="preserve"><value>Gửi</value></data>
-  <data name="Footer_Rights" xml:space="preserve"><value>© 2024 VTWiki. Bảo lưu mọi quyền. Không liên kết với bất kỳ công ty nào.</value></data>
-  <data name="Footer_Privacy" xml:space="preserve"><value>Chính sách bảo mật</value></data>
-  <data name="Footer_Terms" xml:space="preserve"><value>Điều khoản dịch vụ</value></data>
-  <data name="Home_Agency_Holo_EN" xml:space="preserve"><value>Hololive Tiếng Anh</value></data>
-  <data name="Home_Agency_Holo_JP" xml:space="preserve"><value>Hololive Nhật Bản</value></data>
-  <data name="Region_NA" xml:space="preserve"><value>Bắc Mỹ</value></data>
-  <data name="Region_EU" xml:space="preserve"><value>Châu Âu</value></data>
-  <data name="Region_Asia" xml:space="preserve"><value>Châu Á</value></data>
-  <data name="Region_SA" xml:space="preserve"><value>Nam Mỹ</value></data>
-  <data name="Region_Oceania" xml:space="preserve"><value>Châu Đại Dương</value></data>
-  <data name="Lang_EN" xml:space="preserve"><value>Tiếng Anh</value></data>
-  <data name="Lang_JP" xml:space="preserve"><value>Tiếng Nhật</value></data>
-  <data name="Lang_ES" xml:space="preserve"><value>Tiếng Tây Ban Nha</value></data>
-  <data name="Lang_KR" xml:space="preserve"><value>Tiếng Hàn</value></data>
-  <data name="Lang_FR" xml:space="preserve"><value>Tiếng Pháp</value></data>
-  <data name="Time_Jan" xml:space="preserve"><value>Tháng 1</value></data>
-  <data name="Time_Feb" xml:space="preserve"><value>Tháng 2</value></data>
-  <data name="Time_Mar" xml:space="preserve"><value>Tháng 3</value></data>
-  <data name="Time_Apr" xml:space="preserve"><value>Tháng 4</value></data>
-  <data name="Time_May" xml:space="preserve"><value>Tháng 5</value></data>
-  <data name="Time_Jun" xml:space="preserve"><value>Tháng 6</value></data>
-  <data name="Time_Jul" xml:space="preserve"><value>Tháng 7</value></data>
-  <data name="Time_Aug" xml:space="preserve"><value>Tháng 8</value></data>
-  <data name="Time_Sep" xml:space="preserve"><value>Tháng 9</value></data>
-  <data name="Time_Oct" xml:space="preserve"><value>Tháng 10</value></data>
-  <data name="Time_Nov" xml:space="preserve"><value>Tháng 11</value></data>
-  <data name="Time_Dec" xml:space="preserve"><value>Tháng 12</value></data>
-  <data name="RC_Stat_Articles" xml:space="preserve"><value>Bài viết</value></data>
-  <data name="RC_Stat_Editors" xml:space="preserve"><value>Biên tập viên</value></data>
-  <data name="RC_Stat_Media" xml:space="preserve"><value>Tệp phương tiện</value></data>
-  <data name="Wiki_TalentsTracked" xml:space="preserve"><value>Thành viên theo dõi</value></data>
-  <data name="Explore_News_Major" xml:space="preserve"><value>Tin chính</value></data>
-  <data name="Explore_News_Outfit" xml:space="preserve"><value>Trang phục mới</value></data>
-  <data name="Explore_Tab_Gens" xml:space="preserve"><value>Thế hệ</value></data>
-  <data name="Explore_Tab_Langs" xml:space="preserve"><value>Ngôn ngữ</value></data>
-  <data name="Explore_No_Results" xml:space="preserve"><value>Không tìm thấy VTuber nào khớp với bộ lọc của bạn.</value></data>
-  <data name="Status_Active" xml:space="preserve"><value>Đang hoạt động</value></data>
-  <data name="Status_Graduated" xml:space="preserve"><value>Đã tốt nghiệp</value></data>
-  <data name="Status_Hiatus" xml:space="preserve"><value>Tạm nghỉ</value></data>
-  <data name="Status_Pending" xml:space="preserve"><value>Chờ duyệt</value></data>
-  <data name="Nav_Search_Suggested" xml:space="preserve"><value>Gợi ý</value></data>
-  <data name="Nav_Search_NoResults" xml:space="preserve"><value>Không tìm thấy kết quả</value></data>
-  <data name="RC_Label_Edits" xml:space="preserve"><value>{0} Chỉnh Sửa</value></data>
-  <data name="RC_Older" xml:space="preserve"><value>Cũ Hơn</value></data>
-  <data name="RC_NoActivities" xml:space="preserve"><value>Không tìm thấy hoạt động gần đây.</value></data>
+  <data name="Nav_Home" xml:space="preserve">
+    <value>Trang Chủ</value>
+  </data>
+  <data name="Nav_Explore" xml:space="preserve">
+    <value>Khám Phá</value>
+  </data>
+  <data name="Nav_Community" xml:space="preserve">
+    <value>Cộng Đồng</value>
+  </data>
+  <data name="Nav_Wiki" xml:space="preserve">
+    <value>Bách Khoa</value>
+  </data>
+  <data name="Nav_Search" xml:space="preserve">
+    <value>Tìm kiếm nhân vật, công ty...</value>
+  </data>
+  <data name="Nav_Login" xml:space="preserve">
+    <value>Đăng Nhập</value>
+  </data>
+  <data name="Nav_Signup" xml:space="preserve">
+    <value>Đăng Ký</value>
+  </data>
+  <data name="Nav_Dashboard" xml:space="preserve">
+    <value>Quản Trị</value>
+  </data>
+  <data name="Nav_Agencies" xml:space="preserve">
+    <value>Công Ty</value>
+  </data>
+  <data name="Nav_Independent" xml:space="preserve">
+    <value>Tự Do (Indie)</value>
+  </data>
+  <data name="Nav_VirtualEvents" xml:space="preserve">
+    <value>Sự Kiện Ảo</value>
+  </data>
+  <data name="Nav_FanTools" xml:space="preserve">
+    <value>Công Cụ Fan</value>
+  </data>
+  <data name="Nav_TopTalents" xml:space="preserve">
+    <value>Tài Năng Nổi Bật</value>
+  </data>
+  <data name="Nav_RecentChanges" xml:space="preserve">
+    <value>Thay Đổi Gần Đây</value>
+  </data>
+  <data name="Nav_Guidelines" xml:space="preserve">
+    <value>Hướng Dẫn</value>
+  </data>
+  <data name="Nav_EditorHub" xml:space="preserve">
+    <value>Trung Tâm Biên Tập</value>
+  </data>
+  <data name="Nav_WikiForum" xml:space="preserve">
+    <value>Diễn Đàn Wiki</value>
+  </data>
+  <data name="Nav_Discord" xml:space="preserve">
+    <value>Liên Kết Discord</value>
+  </data>
+  <data name="Nav_AboutUs" xml:space="preserve">
+    <value>Về Chúng Tôi</value>
+  </data>
+  <data name="Nav_Translation" xml:space="preserve">
+    <value>Dự Án Dịch Thuật</value>
+  </data>
+  <data name="Nav_HelpCenter" xml:space="preserve">
+    <value>Trung Tâm Trợ Giúp</value>
+  </data>
+  <data name="Nav_Donate" xml:space="preserve">
+    <value>Ủng Hộ</value>
+  </data>
+  <data name="Home_Spotlight" xml:space="preserve">
+    <value>Nổi Bật</value>
+  </data>
+  <data name="Home_Choice" xml:space="preserve">
+    <value>Tuần 42 • Lựa chọn của Biên tập viên</value>
+  </data>
+  <data name="Home_Hero_Desc" xml:space="preserve">
+    <value>Thần tượng ảo đã vượt qua mọi giới hạn. Nổi tiếng với giọng hát đầy nội lực, kỹ năng chơi Tetris điêu luyện và sức hút từ mái tóc xanh. Từ khởi đầu khiêm tốn của một indie đến tỏa sáng trên những sân khấu lớn nhất.</value>
+  </data>
+  <data name="Home_ReadWiki" xml:space="preserve">
+    <value>Đọc Toàn Bộ Wiki</value>
+  </data>
+  <data name="Home_LatestStream" xml:space="preserve">
+    <value>Buổi Phát Trực Tiếp Mới Nhất</value>
+  </data>
+  <data name="Home_Subscribers" xml:space="preserve">
+    <value>Người đăng ký</value>
+  </data>
+  <data name="Home_FanName" xml:space="preserve">
+    <value>Tên Fan</value>
+  </data>
+  <data name="Home_OshiMark" xml:space="preserve">
+    <value>Oshi Mark</value>
+  </data>
+  <data name="Home_BrowseAgency" xml:space="preserve">
+    <value>Duyệt Theo Công Ty</value>
+  </data>
+  <data name="Home_ViewAllAgencies" xml:space="preserve">
+    <value>Xem Tất Cả Công Ty</value>
+  </data>
+  <data name="Home_RecentNews" xml:space="preserve">
+    <value>Tin Tức Gần Đây</value>
+  </data>
+  <data name="Home_ViewAll" xml:space="preserve">
+    <value>Xem Tất Cả</value>
+  </data>
+  <data name="Home_Trending" xml:space="preserve">
+    <value>Xu Hướng</value>
+  </data>
+  <data name="Home_Activity" xml:space="preserve">
+    <value>Hoạt Động</value>
+  </data>
+  <data name="Home_ViewMoreActivity" xml:space="preserve">
+    <value>Xem Thêm Hoạt Động</value>
+  </data>
+  <data name="Agencies_Title" xml:space="preserve">
+    <value>Các Công Ty VTuber</value>
+  </data>
+  <data name="Agencies_Hero_Desc" xml:space="preserve">
+    <value>Khám phá những thế lực đứng sau các ngôi sao ảo. Từ những gã khổng lồ trong ngành đến các nhãn hiệu mới nổi, tìm hiểu về các tổ chức cung cấp quản lý, đổi mới kỹ thuật và xây dựng thương hiệu toàn cầu cho VTubers.</value>
+  </data>
+  <data name="Agencies_Btn_Explore" xml:space="preserve">
+    <value>Khám Phá Tất Cả</value>
+  </data>
+  <data name="Agencies_Btn_FAQ" xml:space="preserve">
+    <value>Hỏi Đáp Về Công Ty</value>
+  </data>
+  <data name="Agencies_Search_Placeholder" xml:space="preserve">
+    <value>Tìm kiếm công ty theo tên, tài năng hoặc từ khóa...</value>
+  </data>
+  <data name="Agencies_Label_Region" xml:space="preserve">
+    <value>Khu Vực: Tất Cả</value>
+  </data>
+  <data name="Agencies_Label_Focus" xml:space="preserve">
+    <value>Trọng Tâm: Tất Cả</value>
+  </data>
+  <data name="Agencies_Label_Filters" xml:space="preserve">
+    <value>Bộ Lọc</value>
+  </data>
+  <data name="Agencies_Major_Agencies" xml:space="preserve">
+    <value>Các Công Ty Chính</value>
+  </data>
+  <data name="Agencies_Count" xml:space="preserve">
+    <value>Xem Tất Cả (42)</value>
+  </data>
+  <data name="Agencies_Label_Talents" xml:space="preserve">
+    <value>Thành Viên</value>
+  </data>
+  <data name="Agencies_Label_Focus_Card" xml:space="preserve">
+    <value>Trọng Tâm</value>
+  </data>
+  <data name="Agencies_Btn_ViewDirectory" xml:space="preserve">
+    <value>Xem Danh Mục</value>
+  </data>
+  <data name="Agencies_Submit_Title" xml:space="preserve">
+    <value>Gửi Thông Tin Công Ty</value>
+  </data>
+  <data name="Agencies_Submit_Desc" xml:space="preserve">
+    <value>Giúp chúng tôi phát triển cơ sở dữ liệu bằng cách gửi thông tin công ty còn thiếu.</value>
+  </data>
+  <data name="Agencies_Submit_Btn" xml:space="preserve">
+    <value>Cổng Thông Tin Đóng Góp</value>
+  </data>
+  <data name="Agencies_Why_Title" xml:space="preserve">
+    <value>Tại sao các công ty lại quan trọng?</value>
+  </data>
+  <data name="Agencies_Why_Desc" xml:space="preserve">
+    <value>Các công ty cung cấp cơ sở hạ tầng cho phép VTubers tiếp cận khán giả toàn cầu. Điều này bao gồm mọi thứ từ cung cấp các mô hình 3D/2D, studio ghi hình chuyển động, hỗ trợ pháp lý, các chiến dịch tiếp thị và sản xuất hàng hóa.</value>
+  </data>
+  <data name="Agencies_Support_Title" xml:space="preserve">
+    <value>Hỗ Trợ Chuyên Nghiệp</value>
+  </data>
+  <data name="Agencies_Support_Desc" xml:space="preserve">
+    <value>Hỗ trợ kỹ thuật, pháp lý và lịch trình.</value>
+  </data>
+  <data name="Agencies_Collab_Title" xml:space="preserve">
+    <value>Cộng Đồng &amp; Hợp Tác</value>
+  </data>
+  <data name="Agencies_Collab_Desc" xml:space="preserve">
+    <value>Dễ dàng hợp tác với các thành viên cùng thế hệ.</value>
+  </data>
+  <data name="Wiki_Create_Profile" xml:space="preserve">
+    <value>Tạo Hồ Sơ VTuber</value>
+  </data>
+  <data name="Wiki_Edit_Profile" xml:space="preserve">
+    <value>Chỉnh sửa Hồ Sơ VTuber</value>
+  </data>
+  <data name="Wiki_Edit_Subtitle" xml:space="preserve">
+    <value>Cập nhật thông tin và tiểu sử cho tài năng này.</value>
+  </data>
+  <data name="Wiki_Btn_Update" xml:space="preserve">
+    <value>Cập nhật Hồ Sơ</value>
+  </data>
+  <data name="Wiki_Create_Subtitle" xml:space="preserve">
+    <value>Thêm một VTuber mới vào bách khoa toàn thư do cộng đồng xây dựng. Các bài gửi sẽ được quản trị viên xem xét.</value>
+  </data>
+  <data name="Wiki_Label_Avatar" xml:space="preserve">
+    <value>Ảnh Đại Diện</value>
+  </data>
+  <data name="Wiki_Label_Name" xml:space="preserve">
+    <value>Tên VTuber</value>
+  </data>
+  <data name="Wiki_Label_Age" xml:space="preserve">
+    <value>Tuổi (Tùy chọn)</value>
+  </data>
+  <data name="Wiki_Label_Birthday" xml:space="preserve">
+    <value>Ngày Sinh</value>
+  </data>
+  <data name="Wiki_Label_Debut" xml:space="preserve">
+    <value>Ngày Debut</value>
+  </data>
+  <data name="Wiki_Label_Agency" xml:space="preserve">
+    <value>Công Ty/Tổ Chức</value>
+  </data>
+  <data name="Wiki_Label_Lore" xml:space="preserve">
+    <value>Tiểu Sử &amp; Cốt Truyện</value>
+  </data>
+  <data name="Wiki_Btn_Submit" xml:space="preserve">
+    <value>Gửi Hồ Sơ</value>
+  </data>
+  <data name="Wiki_Btn_Cancel" xml:space="preserve">
+    <value>Hủy</value>
+  </data>
+  <data name="Wiki_Required_Name" xml:space="preserve">
+    <value>Vui lòng nhập tên VTuber.</value>
+  </data>
+  <data name="Details_Btn_Edit" xml:space="preserve">
+    <value>Chỉnh Sửa Hồ Sơ</value>
+  </data>
+  <data name="Details_Independent" xml:space="preserve">
+    <value>VTuber Tự Do</value>
+  </data>
+  <data name="Details_Label_Age" xml:space="preserve">
+    <value>Tuổi</value>
+  </data>
+  <data name="Details_Lore_Title" xml:space="preserve">
+    <value>Tiểu Sử Thành Viên</value>
+  </data>
+  <data name="Details_Lore_Empty" xml:space="preserve">
+    <value>Quá khứ bí ẩn của VTuber này vẫn chưa được ghi lại...</value>
+  </data>
+  <data name="Account_Login_Welcome" xml:space="preserve">
+    <value>Đăng nhập vào VTuber Wiki</value>
+  </data>
+  <data name="Account_Login_Subtitle" xml:space="preserve">
+    <value>Chào mừng trở lại! Vui lòng nhập thông tin của bạn.</value>
+  </data>
+  <data name="Account_Login_Hero_Title" xml:space="preserve">
+    <value>Quay lại với Thế Giới Ảo</value>
+  </data>
+  <data name="Account_Login_Hero_Desc" xml:space="preserve">
+    <value>Nguồn thông tin số một về mọi thứ VTuber. Chỉnh sửa bài viết, khám phá tài năng mới và thảo luận cùng cộng đồng.</value>
+  </data>
+  <data name="Account_Login_Back" xml:space="preserve">
+    <value>Quay lại Wiki</value>
+  </data>
+  <data name="Account_Login_Label_User" xml:space="preserve">
+    <value>Tên đăng nhập hoặc Email</value>
+  </data>
+  <data name="Account_Login_Label_Pass" xml:space="preserve">
+    <value>Mật khẩu</value>
+  </data>
+  <data name="Account_Login_Label_Remember" xml:space="preserve">
+    <value>Ghi nhớ tôi</value>
+  </data>
+  <data name="Account_Login_Forgot" xml:space="preserve">
+    <value>Quên mật khẩu?</value>
+  </data>
+  <data name="Account_Login_Btn" xml:space="preserve">
+    <value>Đăng Nhập</value>
+  </data>
+  <data name="Account_Login_NoAccount" xml:space="preserve">
+    <value>Chưa có tài khoản?</value>
+  </data>
+  <data name="Account_Signup_Title" xml:space="preserve">
+    <value>Tạo tài khoản của bạn</value>
+  </data>
+  <data name="Account_Signup_Subtitle" xml:space="preserve">
+    <value>Nhập thông tin chi tiết để bắt đầu</value>
+  </data>
+  <data name="Account_Signup_Hero_Title" xml:space="preserve">
+    <value>Tham Gia Cộng Đồng</value>
+  </data>
+  <data name="Account_Signup_Hero_Desc" xml:space="preserve">
+    <value>Trở thành một phần của bách khoa toàn thư cộng đồng lớn nhất thế giới dành cho các VTuber.</value>
+  </data>
+  <data name="Account_Signup_Stats_Articles" xml:space="preserve">
+    <value>Bài viết</value>
+  </data>
+  <data name="Account_Signup_Stats_Groups" xml:space="preserve">
+    <value>Nhóm Fan</value>
+  </data>
+  <data name="Account_Signup_Stats_Active" xml:space="preserve">
+    <value>Hoạt động</value>
+  </data>
+  <data name="Account_Signup_Label_User" xml:space="preserve">
+    <value>Tên đăng nhập</value>
+  </data>
+  <data name="Account_Signup_Label_Email" xml:space="preserve">
+    <value>Địa chỉ Email</value>
+  </data>
+  <data name="Account_Signup_Label_Pass" xml:space="preserve">
+    <value>Mật khẩu</value>
+  </data>
+  <data name="Account_Signup_Label_Confirm" xml:space="preserve">
+    <value>Xác nhận</value>
+  </data>
+  <data name="Account_Signup_Terms" xml:space="preserve">
+    <value>Bằng cách tạo tài khoản, bạn đồng ý với {0} và {1} của chúng tôi.</value>
+  </data>
+  <data name="Account_Signup_Terms_Link" xml:space="preserve">
+    <value>Điều khoản Dịch vụ</value>
+  </data>
+  <data name="Account_Signup_Privacy_Link" xml:space="preserve">
+    <value>Chính sách Bảo mật</value>
+  </data>
+  <data name="Account_Signup_Btn" xml:space="preserve">
+    <value>Tạo Tài Khoản</value>
+  </data>
+  <data name="Account_Signup_HasAccount" xml:space="preserve">
+    <value>Đã có tài khoản?</value>
+  </data>
+  <data name="Account_Signup_BackToLogin" xml:space="preserve">
+    <value>Quay lại Đăng nhập</value>
+  </data>
+  <data name="Account_OrContinue" xml:space="preserve">
+    <value>Hoặc tiếp tục với</value>
+  </data>
+  <data name="Dash_Title" xml:space="preserve">
+    <value>Bảng Quản Trị</value>
+  </data>
+  <data name="Dash_Desc" xml:space="preserve">
+    <value>Quản lý tất cả VTuber đã đăng ký, phê duyệt chỉnh sửa và duy trì chất lượng wiki.</value>
+  </data>
+  <data name="Dash_Search_Placeholder" xml:space="preserve">
+    <value>Tìm kiếm VTuber...</value>
+  </data>
+  <data name="Dash_Btn_Add" xml:space="preserve">
+    <value>Thêm VTuber</value>
+  </data>
+  <data name="Dash_Stat_Total" xml:space="preserve">
+    <value>Tổng số VTuber</value>
+  </data>
+  <data name="Dash_Stat_Approved" xml:space="preserve">
+    <value>Đã Duyệt</value>
+  </data>
+  <data name="Dash_Stat_Pending" xml:space="preserve">
+    <value>Chờ Duyệt</value>
+  </data>
+  <data name="Dash_Col_Talent" xml:space="preserve">
+    <value>Tài Năng (Ảnh &amp; Tên)</value>
+  </data>
+  <data name="Dash_Col_Info" xml:space="preserve">
+    <value>Thông Tin</value>
+  </data>
+  <data name="Dash_Col_Status" xml:space="preserve">
+    <value>Trạng Thái</value>
+  </data>
+  <data name="Dash_Col_Actions" xml:space="preserve">
+    <value>Hành Động</value>
+  </data>
+  <data name="Dash_Status_Approved" xml:space="preserve">
+    <value>Đã Duyệt</value>
+  </data>
+  <data name="Dash_Action_View" xml:space="preserve">
+    <value>Xem Hồ Sơ</value>
+  </data>
+  <data name="Dash_Action_Edit" xml:space="preserve">
+    <value>Sửa VTuber</value>
+  </data>
+  <data name="Dash_Action_Approve" xml:space="preserve">
+    <value>Phê Duyệt</value>
+  </data>
+  <data name="Dash_Action_Delete" xml:space="preserve">
+    <value>Xóa VTuber</value>
+  </data>
+  <data name="Dash_Confirm_Delete" xml:space="preserve">
+    <value>Bạn có chắc chắn muốn xóa {0}? Hành động này không thể hoàn tác.</value>
+  </data>
+  <data name="Dash_Empty_Title" xml:space="preserve">
+    <value>Không tìm thấy VTuber nào trong cơ sở dữ liệu.</value>
+  </data>
+  <data name="Dash_Empty_Desc" xml:space="preserve">
+    <value>Bắt đầu bằng cách thêm một hồ sơ VTuber mới bằng nút bên trên.</value>
+  </data>
+  <data name="Dash_Empty_Btn" xml:space="preserve">
+    <value>Thêm VTuber Đầu Tiên</value>
+  </data>
+  <data name="Dash_No_History" xml:space="preserve">
+    <value>Chưa có thông tin tiểu sử.</value>
+  </data>
+  <data name="Dash_Debuted" xml:space="preserve">
+    <value>Ngày ra mắt:</value>
+  </data>
+  <data name="Dash_Unknown" xml:space="preserve">
+    <value>Không xác định</value>
+  </data>
+  <data name="Dash_Independent" xml:space="preserve">
+    <value>Tự Do</value>
+  </data>
+  <data name="Dash_Success" xml:space="preserve">
+    <value>Thành Công!</value>
+  </data>
+  <data name="Page_AboutUs" xml:space="preserve">
+    <value>Về VTuber Wiki</value>
+  </data>
+  <data name="Page_Guidelines" xml:space="preserve">
+    <value>Hướng Dẫn Cộng Đồng</value>
+  </data>
+  <data name="Page_HelpCenter" xml:space="preserve">
+    <value>Hỗ Trợ &amp; Giúp Đỡ</value>
+  </data>
+  <data name="Page_Forum" xml:space="preserve">
+    <value>Diễn Đàn Thảo Luận Wiki</value>
+  </data>
+  <data name="Page_Translation" xml:space="preserve">
+    <value>Trung Tâm Hợp Tác Dịch Thuật</value>
+  </data>
+  <data name="Page_RecentChanges" xml:space="preserve">
+    <value>Thay Đổi &amp; Tin Tức Gần Đây</value>
+  </data>
+  <data name="Page_Independent" xml:space="preserve">
+    <value>Danh Mục VTuber Tự Do</value>
+  </data>
+  <data name="Page_VirtualEvents" xml:space="preserve">
+    <value>Sự Kiện Ảo Sắp Tới</value>
+  </data>
+  <data name="Page_FanTools" xml:space="preserve">
+    <value>Công Cụ Cho Nhà Sáng Tạo &amp; Fan</value>
+  </data>
+  <data name="Page_TopTalents" xml:space="preserve">
+    <value>Tài Năng Đang Thịnh Hành</value>
+  </data>
+  <data name="Page_Donate" xml:space="preserve">
+    <value>Ủng Hộ Wiki</value>
+  </data>
+  <data name="Page_Discord" xml:space="preserve">
+    <value>Tham gia Discord của chúng tôi</value>
+  </data>
+  <data name="Indie_Title" xml:space="preserve">
+    <value>VTuber Tự Do</value>
+  </data>
+  <data name="Indie_Desc" xml:space="preserve">
+    <value>Khám phá những tài năng tuyệt vời đang tự mình tạo dựng con đường riêng. Từ những ngôi sao mới nổi đến những cái tên kỳ cựu, hãy cùng khám phá thế giới đa dạng của VTuber độc lập.</value>
+  </data>
+  <data name="Indie_Btn_Learn" xml:space="preserve">
+    <value>Tìm Hiểu Thêm</value>
+  </data>
+  <data name="Indie_Btn_HowTo" xml:space="preserve">
+    <value>Cách Bắt Đầu</value>
+  </data>
+  <data name="Indie_Search_Placeholder" xml:space="preserve">
+    <value>Tìm kiếm VTuber tự do...</value>
+  </data>
+  <data name="Indie_Filter_Region" xml:space="preserve">
+    <value>Khu Vực</value>
+  </data>
+  <data name="Indie_Filter_Language" xml:space="preserve">
+    <value>Ngôn Ngữ</value>
+  </data>
+  <data name="Indie_Filter_Debut" xml:space="preserve">
+    <value>Năm Ra Mắt</value>
+  </data>
+  <data name="Indie_Filter_Apply" xml:space="preserve">
+    <value>Áp Dụng Bộ Lọc</value>
+  </data>
+  <data name="Indie_PopularTags" xml:space="preserve">
+    <value>Thẻ Phổ Biến:</value>
+  </data>
+  <data name="Indie_Btn_LoadMore" xml:space="preserve">
+    <value>Xem Thêm Tài Năng</value>
+  </data>
+  <data name="Indie_Card_Debut" xml:space="preserve">
+    <value>RA MẮT: {0}</value>
+  </data>
+  <data name="Trans_Title" xml:space="preserve">
+    <value>Dự Án Dịch Thuật</value>
+  </data>
+  <data name="Trans_Subtitle" xml:space="preserve">
+    <value>Dự Án Cộng Đồng</value>
+  </data>
+  <data name="Trans_Desc" xml:space="preserve">
+    <value>Tham gia vào các nỗ lực do cộng đồng dẫn dắt để thu hẹp khoảng cách ngôn ngữ. Giúp chúng tôi dịch các buổi live, thông tin cốt truyện và lịch sử VTuber cho người hâm mộ trên toàn thế giới. Mỗi từ ngữ đều đưa chúng ta đến gần nhau hơn.</value>
+  </data>
+  <data name="Trans_Btn_Guidelines" xml:space="preserve">
+    <value>Xem Hướng Dẫn</value>
+  </data>
+  <data name="Trans_Btn_Discord" xml:space="preserve">
+    <value>Discord Nhóm Dịch Thuật</value>
+  </data>
+  <data name="Trans_Section_Current" xml:space="preserve">
+    <value>Dự Án Hiện Tại</value>
+  </data>
+  <data name="Trans_Filter_All" xml:space="preserve">
+    <value>Tất Cả</value>
+  </data>
+  <data name="Trans_Filter_InProgress" xml:space="preserve">
+    <value>Đang Thực Hiện</value>
+  </data>
+  <data name="Trans_Filter_Completed" xml:space="preserve">
+    <value>Đã Hoàn Thành</value>
+  </data>
+  <data name="Trans_Label_SourceTarget" xml:space="preserve">
+    <value>Nguồn/Đích</value>
+  </data>
+  <data name="Trans_Btn_Join" xml:space="preserve">
+    <value>Tham Gia Dự Án</value>
+  </data>
+  <data name="Trans_Btn_Review" xml:space="preserve">
+    <value>Hỗ Trợ Kiểm Duyệt</value>
+  </data>
+  <data name="Trans_Label_Archived" xml:space="preserve">
+    <value>Lưu trữ vào {0}</value>
+  </data>
+  <data name="Trans_Btn_Results" xml:space="preserve">
+    <value>Xem Kết Quả</value>
+  </data>
+  <data name="Trans_Section_Request" xml:space="preserve">
+    <value>Gửi Yêu Cầu Dịch Thuật</value>
+  </data>
+  <data name="Trans_Request_Title" xml:space="preserve">
+    <value>Tiêu Đề Nội Dung</value>
+  </data>
+  <data name="Trans_Request_Link" xml:space="preserve">
+    <value>Liên Kết Nguồn/Video</value>
+  </data>
+  <data name="Trans_Request_Langs" xml:space="preserve">
+    <value>Yêu Cầu Ngôn Ngữ</value>
+  </data>
+  <data name="Trans_Request_From" xml:space="preserve">
+    <value>Từ (vd: JP)</value>
+  </data>
+  <data name="Trans_Request_To" xml:space="preserve">
+    <value>Sang (vd: VI)</value>
+  </data>
+  <data name="Trans_Btn_Submit" xml:space="preserve">
+    <value>Gửi Yêu Cầu</value>
+  </data>
+  <data name="Trans_Sidebar_Resources" xml:space="preserve">
+    <value>Tài Nguyên Dịch Thuật</value>
+  </data>
+  <data name="Trans_Sidebar_Leaderboard" xml:space="preserve">
+    <value>Bảng Xếp Hạng Dịch Giả</value>
+  </data>
+  <data name="Trans_Btn_Leaderboard" xml:space="preserve">
+    <value>Xem Toàn Bộ Bảng Xếp Hạng</value>
+  </data>
+  <data name="Trans_Donate_Title" xml:space="preserve">
+    <value>Hỗ Trợ Máy Chủ</value>
+  </data>
+  <data name="Trans_Donate_Desc" xml:space="preserve">
+    <value>Wiki được tài trợ bởi cộng đồng. Hãy giúp chúng tôi duy trì hoạt động.</value>
+  </data>
+  <data name="Trans_Btn_Donate" xml:space="preserve">
+    <value>Ủng Hộ Ngay</value>
+  </data>
+  <data name="About_Hero_Title" xml:space="preserve">
+    <value>VTuber Wiki</value>
+  </data>
+  <data name="About_Hero_Desc" xml:space="preserve">
+    <value>Bách khoa toàn thư cuối cùng do cộng đồng dẫn dắt dành cho các Virtual YouTuber. Chúng tôi tận tâm ghi lại lịch sử, cốt truyện và các cột mốc quan trọng của vũ trụ VTubing không ngừng mở rộng.</value>
+  </data>
+  <data name="About_Btn_Explore" xml:space="preserve">
+    <value>Bắt Đầu Khám Phá</value>
+  </data>
+  <data name="About_Btn_Join" xml:space="preserve">
+    <value>Tham Gia Cộng Đồng</value>
+  </data>
+  <data name="About_Section_Story" xml:space="preserve">
+    <value>Câu Chuyện Của Chúng Tôi</value>
+  </data>
+  <data name="About_Story_P1" xml:space="preserve">
+    <value>Được thành lập vào cuối năm 2018, VTuber Wiki bắt đầu như một dự án fan hâm mộ nhỏ bé trên một bảng tính chung để theo dõi các tài năng ảo mới nổi tại Nhật Bản. Những gì bắt đầu chỉ với vài chục mục nhập cho những người tiên phong như Kizuna AI và các làn sóng Nijisanji đầu tiên đã nhanh chóng chuyển mình thành một phong trào toàn cầu.</value>
+  </data>
+  <data name="About_Story_P2" xml:space="preserve">
+    <value>Khi VTubing bùng nổ trên thế giới vào năm 2020, cộng đồng của chúng tôi đã phát triển từ một vài người đóng góp lên hàng ngàn biên tập viên tận tụy. Ngày nay, chúng tôi tự hào là kho lưu trữ kỹ thuật số toàn diện nhất về văn hóa ảo, bao gồm các nhà sáng tạo độc lập, các công ty quản lý, những đổi mới kỹ thuật và tác động văn hóa của phương tiện độc đáo này.</value>
+  </data>
+  <data name="About_Section_Mission" xml:space="preserve">
+    <value>Sứ Mệnh Của Chúng Tôi</value>
+  </data>
+  <data name="About_Mission_Acc_Title" xml:space="preserve">
+    <value>Sự Chính Xác</value>
+  </data>
+  <data name="About_Mission_Acc_Desc" xml:space="preserve">
+    <value>Chúng tôi ưu tiên thông tin thực tế, có nguồn gốc rõ ràng để đảm bảo lịch sử của các nhà sáng tạo được bảo tồn một cách chính trực.</value>
+  </data>
+  <data name="About_Mission_Comm_Title" xml:space="preserve">
+    <value>Cộng Đồng</value>
+  </data>
+  <data name="About_Mission_Comm_Desc" xml:space="preserve">
+    <value>Một nền tảng được xây dựng bởi fan, dành cho fan. Chúng tôi thúc đẩy một môi trường hợp tác nơi mọi người đều có thể đóng góp.</value>
+  </data>
+  <data name="About_Mission_Inc_Title" xml:space="preserve">
+    <value>Sự Hòa Nhập</value>
+  </data>
+  <data name="About_Mission_Inc_Desc" xml:space="preserve">
+    <value>Từ những ngôi sao lớn nhất của các công ty đến những cá nhân độc lập nhỏ nhất, chúng tôi tôn trọng sự đa dạng trong không gian ảo.</value>
+  </data>
+  <data name="About_Section_Team" xml:space="preserve">
+    <value>Đội Ngũ Quản Trị</value>
+  </data>
+  <data name="About_Team_Admin" xml:space="preserve">
+    <value>Quản Trị Viên Trưởng</value>
+  </data>
+  <data name="About_Team_Mod" xml:space="preserve">
+    <value>Điều Phối Viên Cấp Cao</value>
+  </data>
+  <data name="About_Team_Editor" xml:space="preserve">
+    <value>Trưởng Nhóm Nội Dung</value>
+  </data>
+  <data name="About_Team_Tech" xml:space="preserve">
+    <value>Trưởng Nhóm Kỹ Thuật</value>
+  </data>
+  <data name="About_Sidebar_Links" xml:space="preserve">
+    <value>Tài Nguyên Nhanh</value>
+  </data>
+  <data name="About_Stats_Title" xml:space="preserve">
+    <value>Thống Kê Wiki</value>
+  </data>
+  <data name="About_Stats_Articles" xml:space="preserve">
+    <value>Bài Viết</value>
+  </data>
+  <data name="About_Stats_Contributors" xml:space="preserve">
+    <value>Người Đóng Góp</value>
+  </data>
+  <data name="RC_Title" xml:space="preserve">
+    <value>Thay Đổi Gần Đây</value>
+  </data>
+  <data name="RC_Desc" xml:space="preserve">
+    <value>Theo dõi tất cả các cập nhật trực tiếp cho cơ sở dữ liệu VTuber.</value>
+  </data>
+  <data name="RC_Filter_All" xml:space="preserve">
+    <value>Tất Cả Thay Đổi</value>
+  </data>
+  <data name="RC_Filter_Articles" xml:space="preserve">
+    <value>Bài Viết</value>
+  </data>
+  <data name="RC_Filter_Media" xml:space="preserve">
+    <value>Phương Tiện</value>
+  </data>
+  <data name="RC_Filter_Users" xml:space="preserve">
+    <value>Người Dùng</value>
+  </data>
+  <data name="RC_Filter_Community" xml:space="preserve">
+    <value>Cộng Đồng</value>
+  </data>
+  <data name="RC_Today" xml:space="preserve">
+    <value>Hôm Nay</value>
+  </data>
+  <data name="RC_Yesterday" xml:space="preserve">
+    <value>Hôm Qua</value>
+  </data>
+  <data name="RC_Btn_LoadMore" xml:space="preserve">
+    <value>Xem Thêm Thay Đổi</value>
+  </data>
+  <data name="RC_Stat_Last24h" xml:space="preserve">
+    <value>Chỉnh Sửa Trong 24h Qua</value>
+  </data>
+  <data name="RC_Section_Contributors" xml:space="preserve">
+    <value>Người Đóng Góp Hàng Đầu</value>
+  </data>
+  <data name="RC_Edit_AddedChars" xml:space="preserve">
+    <value>+{0} ký tự</value>
+  </data>
+  <data name="RC_Edit_RemovedChars" xml:space="preserve">
+    <value>-{0} ký tự</value>
+  </data>
+  <data name="RC_Label_NewComment" xml:space="preserve">
+    <value>Bình Luận Mới</value>
+  </data>
+  <data name="Discord_Hero_Title" xml:space="preserve">
+    <value>Kết nối với Cộng đồng {0}</value>
+  </data>
+  <data name="Discord_Hero_Desc" xml:space="preserve">
+    <value>Tham gia máy chủ Discord chính thức của VTuber Wiki để cập nhật thông tin về các buổi ra mắt, tham gia các sự kiện cộng đồng độc quyền và cộng tác với các biên tập viên trong thời gian thực.</value>
+  </data>
+  <data name="Discord_Btn_Join" xml:space="preserve">
+    <value>Tham gia Discord của chúng tôi</value>
+  </data>
+  <data name="Discord_Btn_Rules" xml:space="preserve">
+    <value>Xem Nội Quy Máy Chủ</value>
+  </data>
+  <data name="Discord_Stat_Members" xml:space="preserve">
+    <value>Tổng Thành Viên</value>
+  </data>
+  <data name="Discord_Stat_Online" xml:space="preserve">
+    <value>Đang Trực Tuyến</value>
+  </data>
+  <data name="Discord_Label_Online" xml:space="preserve">
+    <value>{0} Trực Tuyến</value>
+  </data>
+  <data name="Discord_Section_Why" xml:space="preserve">
+    <value>Tại Sao Nên Tham Gia?</value>
+  </data>
+  <data name="Discord_Why_Desc" xml:space="preserve">
+    <value>Trải nghiệm cộng đồng VTuber Wiki tốt nhất với các tính năng độc quyền và sự hợp tác trong thời gian thực.</value>
+  </data>
+  <data name="Discord_Feature_Updates_Title" xml:space="preserve">
+    <value>Cập Nhật Thời Gian Thực</value>
+  </data>
+  <data name="Discord_Feature_Updates_Desc" xml:space="preserve">
+    <value>Nhận thông báo tức thì về các buổi ra mắt mới, cập nhật cốt truyện và các bản sửa đổi wiki quan trọng trước bất kỳ ai khác.</value>
+  </data>
+  <data name="Discord_Feature_Events_Title" xml:space="preserve">
+    <value>Sự Kiện Cộng Đồng</value>
+  </data>
+  <data name="Discord_Feature_Events_Desc" xml:space="preserve">
+    <value>Tham gia các buổi xem chung, đêm chơi game và các cuộc thi nghệ thuật cộng đồng. Kết nối với những fan có cùng oshi với bạn.</value>
+  </data>
+  <data name="Discord_Feature_EditorHelp_Title" xml:space="preserve">
+    <value>Hỗ Trợ Biên Tập Viên</value>
+  </data>
+  <data name="Discord_Feature_EditorHelp_Desc" xml:space="preserve">
+    <value>Tiếp cận trực tiếp với các biên tập viên kỳ cựu. Nhận hỗ trợ thời gian thực về định dạng, nguồn và tối ưu hóa hình ảnh cho các trang wiki yêu thích của bạn.</value>
+  </data>
+  <data name="Discord_Feature_Roles_Title" xml:space="preserve">
+    <value>Danh Hiệu Độc Quyền</value>
+  </data>
+  <data name="Discord_Feature_Roles_Desc" xml:space="preserve">
+    <value>Nhận huy hiệu và các vai trò đặc biệt dựa trên đóng góp của bạn. Thể hiện kiến thức chuyên sâu của bạn về các công ty hoặc giới indie.</value>
+  </data>
+  <data name="Discord_Feature_Hubs_Title" xml:space="preserve">
+    <value>Trung Tâm Công Ty</value>
+  </data>
+  <data name="Discord_Feature_Hubs_Desc" xml:space="preserve">
+    <value>Các kênh dành riêng cho Hololive, Nijisanji, VShojo, Phase Connect và giới VTuber độc lập.</value>
+  </data>
+  <data name="Discord_Feature_Indie_Title" xml:space="preserve">
+    <value>Quảng Bá Indie</value>
+  </data>
+  <data name="Discord_Feature_Indie_Desc" xml:space="preserve">
+    <value>Nền tảng cho các ngôi sao đang lên. Chia sẻ về các VTuber sắp ra mắt yêu thích của bạn và giúp họ xây dựng sự hiện diện trên wiki.</value>
+  </data>
+  <data name="Discord_CTA_Title" xml:space="preserve">
+    <value>Sẵn sàng gia nhập "tổ đội"?</value>
+  </data>
+  <data name="Discord_CTA_Desc" xml:space="preserve">
+    <value>Tham gia cùng hơn 25.000 thành viên trong cộng đồng VTuber năng động nhất trên Discord.</value>
+  </data>
+  <data name="Discord_CTA_Btn" xml:space="preserve">
+    <value>Tham Gia Discord Chính Thức</value>
+  </data>
+  <data name="Discord_CTA_Note" xml:space="preserve">
+    <value>Bằng cách tham gia, bạn đồng ý tuân thủ các nguyên tắc cộng đồng và tiêu chuẩn wiki.</value>
+  </data>
+  <data name="Explore_Title" xml:space="preserve">
+    <value>Khám Phá Tài Năng</value>
+  </data>
+  <data name="Explore_Search_Placeholder" xml:space="preserve">
+    <value>Tìm kiếm VTuber, công ty hoặc tin tức...</value>
+  </data>
+  <data name="Explore_Popular" xml:space="preserve">
+    <value>Phổ biến:</value>
+  </data>
+  <data name="Explore_Label_Indie" xml:space="preserve">
+    <value>Độc lập</value>
+  </data>
+  <data name="Explore_Label_3D" xml:space="preserve">
+    <value>Mô hình 3D</value>
+  </data>
+  <data name="Explore_Label_ASMR" xml:space="preserve">
+    <value>ASMR</value>
+  </data>
+  <data name="Explore_Label_Karaoke" xml:space="preserve">
+    <value>Karaoke</value>
+  </data>
+  <data name="Explore_Label_Debut" xml:space="preserve">
+    <value>Ra mắt</value>
+  </data>
+  <data name="Explore_Filter_SortBy" xml:space="preserve">
+    <value>Sắp xếp theo</value>
+  </data>
+  <data name="Explore_Sort_Newest" xml:space="preserve">
+    <value>Mới ra mắt</value>
+  </data>
+  <data name="Explore_Sort_Followers" xml:space="preserve">
+    <value>Nhiều người theo dõi nhất</value>
+  </data>
+  <data name="Explore_Sort_AZ" xml:space="preserve">
+    <value>Tên A-Z</value>
+  </data>
+  <data name="Explore_Sort_ZA" xml:space="preserve">
+    <value>Tên Z-A</value>
+  </data>
+  <data name="Explore_Filter_ContentType" xml:space="preserve">
+    <value>Loại nội dung</value>
+  </data>
+  <data name="Explore_Type_All" xml:space="preserve">
+    <value>Tất cả các loại</value>
+  </data>
+  <data name="Explore_Type_Gaming" xml:space="preserve">
+    <value>Chơi game</value>
+  </data>
+  <data name="Explore_Type_Music" xml:space="preserve">
+    <value>Âm nhạc</value>
+  </data>
+  <data name="Explore_Type_Variety" xml:space="preserve">
+    <value>Đa dạng</value>
+  </data>
+  <data name="Explore_Type_Education" xml:space="preserve">
+    <value>Giáo dục</value>
+  </data>
+  <data name="Explore_Filter_Status" xml:space="preserve">
+    <value>Trạng thái</value>
+  </data>
+  <data name="Explore_Stat_Active" xml:space="preserve">
+    <value>Đang hoạt động</value>
+  </data>
+  <data name="Explore_Stat_Graduated" xml:space="preserve">
+    <value>Đã tốt nghiệp</value>
+  </data>
+  <data name="Explore_Stat_Hiatus" xml:space="preserve">
+    <value>Tạm nghỉ</value>
+  </data>
+  <data name="Explore_Btn_Reset" xml:space="preserve">
+    <value>Đặt lại</value>
+  </data>
+  <data name="Explore_Tab_All" xml:space="preserve">
+    <value>Tất cả VTuber</value>
+  </data>
+  <data name="Explore_Tab_Agencies" xml:space="preserve">
+    <value>Công ty</value>
+  </data>
+  <data name="Explore_Tab_Gens" xml:space="preserve">
+    <value>Thế hệ</value>
+  </data>
+  <data name="Explore_Tab_Langs" xml:space="preserve">
+    <value>Ngôn ngữ</value>
+  </data>
+  <data name="Explore_Showing_Results" xml:space="preserve">
+    <value>Hiển thị {0} kết quả</value>
+  </data>
+  <data name="Explore_Trending" xml:space="preserve">
+    <value>Xu hướng hiện nay</value>
+  </data>
+  <data name="Explore_Recommended" xml:space="preserve">
+    <value>Tài năng đề xuất</value>
+  </data>
+  <data name="Explore_News_Major" xml:space="preserve">
+    <value>Tin quan trọng</value>
+  </data>
+  <data name="Explore_News_Outfit" xml:space="preserve">
+    <value>Trang phục mới</value>
+  </data>
+  <data name="Explore_Label_Debuted" xml:space="preserve">
+    <value>Ngày ra mắt:</value>
+  </data>
+  <data name="Explore_Btn_LoadMore" xml:space="preserve">
+    <value>Xem thêm kết quả</value>
+  </data>
+  <data name="Explore_Sidebar_Stats" xml:space="preserve">
+    <value>Thống kê Wiki</value>
+  </data>
+  <data name="Explore_Sidebar_Contributors" xml:space="preserve">
+    <value>Người đóng góp hàng đầu</value>
+  </data>
+  <data name="Explore_Btn_Contribute" xml:space="preserve">
+    <value>Đóng góp ngay</value>
+  </data>
+  <data name="Explore_Label_EditsMonth" xml:space="preserve">
+    <value>{0} chỉnh sửa trong tháng này</value>
+  </data>
+  <data name="Explore_Btn_Profiles" xml:space="preserve">
+    <value>Xem hồ sơ</value>
+  </data>
+  <data name="Home_Agency_Holo" xml:space="preserve">
+    <value>Hololive Production</value>
+  </data>
+  <data name="Home_Agency_Niji" xml:space="preserve">
+    <value>Nijisanji</value>
+  </data>
+  <data name="Home_Agency_VShojo" xml:space="preserve">
+    <value>VShojo</value>
+  </data>
+  <data name="Home_Agency_Phase" xml:space="preserve">
+    <value>Phase Connect</value>
+  </data>
+  <data name="Home_Agency_Idol" xml:space="preserve">
+    <value>Idol Corp</value>
+  </data>
+  <data name="Home_Agency_Indie" xml:space="preserve">
+    <value>VTuber Tự Do</value>
+  </data>
+  <data name="Home_Hero_Gen0" xml:space="preserve">
+    <value>Thế hệ 0</value>
+  </data>
+  <data name="Home_Hero_FanName_Value" xml:space="preserve">
+    <value>Hoshiyomis</value>
+  </data>
+  <data name="Home_Category_News" xml:space="preserve">
+    <value>Tin tức</value>
+  </data>
+  <data name="Home_Category_Debut" xml:space="preserve">
+    <value>Ra mắt</value>
+  </data>
+  <data name="Home_Category_Music" xml:space="preserve">
+    <value>Âm nhạc</value>
+  </data>
+  <data name="Home_Category_Event" xml:space="preserve">
+    <value>Sự kiện</value>
+  </data>
+  <data name="Home_Label_Time_Hours" xml:space="preserve">
+    <value>{0} giờ trước</value>
+  </data>
+  <data name="Home_Label_Time_Minutes" xml:space="preserve">
+    <value>{0} phút trước</value>
+  </data>
+  <data name="Home_Label_Time_Days" xml:space="preserve">
+    <value>{0} ngày trước</value>
+  </data>
+  <data name="Home_Label_By" xml:space="preserve">
+    <value>Bởi {0}</value>
+  </data>
+  <data name="Home_Label_Updated" xml:space="preserve">
+    <value>đã cập nhật {0}</value>
+  </data>
+  <data name="Home_Label_Commented" xml:space="preserve">
+    <value>đã bình luận về {0}</value>
+  </data>
+  <data name="Home_Label_Created" xml:space="preserve">
+    <value>đã tạo trang {0}</value>
+  </data>
+  <data name="Home_Label_Pinned" xml:space="preserve">
+    <value>đã ghim {0}</value>
+  </data>
+  <data name="Dash_Status_Approved" xml:space="preserve">
+    <value>Đã phê duyệt</value>
+  </data>
+  <data name="Dash_Status_Pending" xml:space="preserve">
+    <value>Chờ duyệt</value>
+  </data>
+  <data name="Dash_Independent" xml:space="preserve">
+    <value>Tự do</value>
+  </data>
+  <data name="Dash_Unknown" xml:space="preserve">
+    <value>Không rõ</value>
+  </data>
+  <data name="Dash_No_History" xml:space="preserve">
+    <value>Không có thông tin tiểu sử.</value>
+  </data>
+  <data name="Nav_Logout" xml:space="preserve">
+    <value>Đăng xuất</value>
+  </data>
+  <data name="Footer_Desc" xml:space="preserve">
+    <value>Cuốn bách khoa toàn thư tối ưu do cộng đồng xây dựng dành cho các YouTuber ảo. Khám phá, học hỏi và đóng góp vào thế giới ảo đang ngày càng mở rộng.</value>
+  </data>
+  <data name="Footer_Wiki" xml:space="preserve">
+    <value>Wiki</value>
+  </data>
+  <data name="Footer_Explore" xml:space="preserve">
+    <value>Khám phá</value>
+  </data>
+  <data name="Footer_Subscribe" xml:space="preserve">
+    <value>Đăng ký</value>
+  </data>
+  <data name="Footer_Subscribe_Desc" xml:space="preserve">
+    <value>Nhận tin tức VTuber mới nhất trực tiếp trong hộp thư của bạn.</value>
+  </data>
+  <data name="Footer_Email_Placeholder" xml:space="preserve">
+    <value>Địa chỉ email</value>
+  </data>
+  <data name="Footer_Go" xml:space="preserve">
+    <value>Gửi</value>
+  </data>
+  <data name="Footer_Rights" xml:space="preserve">
+    <value>© 2024 VTWiki. Bảo lưu mọi quyền. Không liên kết với bất kỳ công ty nào.</value>
+  </data>
+  <data name="Footer_Privacy" xml:space="preserve">
+    <value>Chính sách bảo mật</value>
+  </data>
+  <data name="Footer_Terms" xml:space="preserve">
+    <value>Điều khoản dịch vụ</value>
+  </data>
+  <data name="Home_Agency_Holo_EN" xml:space="preserve">
+    <value>Hololive Tiếng Anh</value>
+  </data>
+  <data name="Home_Agency_Holo_JP" xml:space="preserve">
+    <value>Hololive Nhật Bản</value>
+  </data>
+  <data name="Region_NA" xml:space="preserve">
+    <value>Bắc Mỹ</value>
+  </data>
+  <data name="Region_EU" xml:space="preserve">
+    <value>Châu Âu</value>
+  </data>
+  <data name="Region_Asia" xml:space="preserve">
+    <value>Châu Á</value>
+  </data>
+  <data name="Region_SA" xml:space="preserve">
+    <value>Nam Mỹ</value>
+  </data>
+  <data name="Region_Oceania" xml:space="preserve">
+    <value>Châu Đại Dương</value>
+  </data>
+  <data name="Lang_EN" xml:space="preserve">
+    <value>Tiếng Anh</value>
+  </data>
+  <data name="Lang_JP" xml:space="preserve">
+    <value>Tiếng Nhật</value>
+  </data>
+  <data name="Lang_ES" xml:space="preserve">
+    <value>Tiếng Tây Ban Nha</value>
+  </data>
+  <data name="Lang_KR" xml:space="preserve">
+    <value>Tiếng Hàn</value>
+  </data>
+  <data name="Lang_FR" xml:space="preserve">
+    <value>Tiếng Pháp</value>
+  </data>
+  <data name="Time_Jan" xml:space="preserve">
+    <value>Tháng 1</value>
+  </data>
+  <data name="Time_Feb" xml:space="preserve">
+    <value>Tháng 2</value>
+  </data>
+  <data name="Time_Mar" xml:space="preserve">
+    <value>Tháng 3</value>
+  </data>
+  <data name="Time_Apr" xml:space="preserve">
+    <value>Tháng 4</value>
+  </data>
+  <data name="Time_May" xml:space="preserve">
+    <value>Tháng 5</value>
+  </data>
+  <data name="Time_Jun" xml:space="preserve">
+    <value>Tháng 6</value>
+  </data>
+  <data name="Time_Jul" xml:space="preserve">
+    <value>Tháng 7</value>
+  </data>
+  <data name="Time_Aug" xml:space="preserve">
+    <value>Tháng 8</value>
+  </data>
+  <data name="Time_Sep" xml:space="preserve">
+    <value>Tháng 9</value>
+  </data>
+  <data name="Time_Oct" xml:space="preserve">
+    <value>Tháng 10</value>
+  </data>
+  <data name="Time_Nov" xml:space="preserve">
+    <value>Tháng 11</value>
+  </data>
+  <data name="Time_Dec" xml:space="preserve">
+    <value>Tháng 12</value>
+  </data>
+  <data name="RC_Stat_Articles" xml:space="preserve">
+    <value>Bài viết</value>
+  </data>
+  <data name="RC_Stat_Editors" xml:space="preserve">
+    <value>Biên tập viên</value>
+  </data>
+  <data name="RC_Stat_Media" xml:space="preserve">
+    <value>Tệp phương tiện</value>
+  </data>
+  <data name="Wiki_TalentsTracked" xml:space="preserve">
+    <value>Thành viên theo dõi</value>
+  </data>
+  <data name="Explore_News_Major" xml:space="preserve">
+    <value>Tin chính</value>
+  </data>
+  <data name="Explore_News_Outfit" xml:space="preserve">
+    <value>Trang phục mới</value>
+  </data>
+  <data name="Explore_Tab_Gens" xml:space="preserve">
+    <value>Thế hệ</value>
+  </data>
+  <data name="Explore_Tab_Langs" xml:space="preserve">
+    <value>Ngôn ngữ</value>
+  </data>
+  <data name="Explore_No_Results" xml:space="preserve">
+    <value>Không tìm thấy VTuber nào khớp với bộ lọc của bạn.</value>
+  </data>
+  <data name="Status_Active" xml:space="preserve">
+    <value>Đang hoạt động</value>
+  </data>
+  <data name="Status_Graduated" xml:space="preserve">
+    <value>Đã tốt nghiệp</value>
+  </data>
+  <data name="Status_Hiatus" xml:space="preserve">
+    <value>Tạm nghỉ</value>
+  </data>
+  <data name="Status_Pending" xml:space="preserve">
+    <value>Chờ duyệt</value>
+  </data>
+  <data name="Nav_Search_Suggested" xml:space="preserve">
+    <value>Gợi ý</value>
+  </data>
+  <data name="Nav_Search_NoResults" xml:space="preserve">
+    <value>Không tìm thấy kết quả</value>
+  </data>
+  <data name="RC_Label_Edits" xml:space="preserve">
+    <value>{0} Chỉnh Sửa</value>
+  </data>
+  <data name="RC_Older" xml:space="preserve">
+    <value>Cũ Hơn</value>
+  </data>
+  <data name="RC_NoActivities" xml:space="preserve">
+    <value>Không tìm thấy hoạt động gần đây.</value>
+  </data>
   <data name="Forum_Subheader" xml:space="preserve">
     <value>Kết nối với những fan hâm mộ khác, thảo luận về VTuber yêu thích của bạn, và đóng góp vào những câu chuyện truyền thuyết.</value>
   </data>
@@ -383,4 +1113,987 @@
   <data name="Forum_Category_General" xml:space="preserve">
     <value>Thảo luận Chung</value>
   </data>
-</root>
+  <data name="Account_AccessDenied_Code" xml:space="preserve">
+    <value>403 · Access Denied</value>
+  </data>
+  <data name="Account_AccessDenied_Title" xml:space="preserve">
+    <value>Bạn không có quyền truy cập</value>
+  </data>
+  <data name="Account_AccessDenied_Desc1" xml:space="preserve">
+    <value>Tính năng này chỉ dành cho</value>
+  </data>
+  <data name="Account_AccessDenied_Desc2" xml:space="preserve">
+    <value>Nếu bạn cần quyền truy cập, vui lòng liên hệ quản trị viên.</value>
+  </data>
+  <data name="Account_AccessDenied_Back" xml:space="preserve">
+    <value>OK, Quay lại</value>
+  </data>
+  <data name="Account_AccessDenied_Home" xml:space="preserve">
+    <value>Về trang chủ</value>
+  </data>
+  <data name="Account_ForgotPass_Title" xml:space="preserve">
+    <value>Quên mật khẩu?</value>
+  </data>
+  <data name="Account_ForgotPass_Desc" xml:space="preserve">
+    <value>Nhập tên đăng nhập hoặc email và chúng tôi sẽ giúp bạn đặt lại mật khẩu.</value>
+  </data>
+  <data name="Account_ForgotPass_Label" xml:space="preserve">
+    <value>Tên đăng nhập hoặc Email</value>
+  </data>
+  <data name="Account_ForgotPass_Placeholder" xml:space="preserve">
+    <value>Nhập thông tin tài khoản của bạn</value>
+  </data>
+  <data name="Account_ForgotPass_Btn" xml:space="preserve">
+    <value>Bước tiếp theo</value>
+  </data>
+  <data name="Account_ForgotPass_Back" xml:space="preserve">
+    <value>Quay lại Đăng nhập</value>
+  </data>
+  <data name="Account_Profile_MemberSince" xml:space="preserve">
+    <value>Thành viên từ</value>
+  </data>
+  <data name="Account_Profile_Stats" xml:space="preserve">
+    <value>Thống kê tài khoản</value>
+  </data>
+  <data name="Account_Profile_Role" xml:space="preserve">
+    <value>Vai trò</value>
+  </data>
+  <data name="Account_Profile_Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Account_Profile_BioTitle" xml:space="preserve">
+    <value>Tiểu sử</value>
+  </data>
+  <data name="Account_Profile_NoBio" xml:space="preserve">
+    <value>Chưa có tiểu sử nào được chia sẻ. Nhấp vào "Chỉnh sửa" để giới thiệu bản thân với cộng đồng.</value>
+  </data>
+  <data name="Account_Profile_EditTitle" xml:space="preserve">
+    <value>Chỉnh sửa Hồ sơ</value>
+  </data>
+  <data name="Account_Profile_ChangeAvatar" xml:space="preserve">
+    <value>Thay đổi Ảnh đại diện</value>
+  </data>
+  <data name="Account_Profile_UploadMsg" xml:space="preserve">
+    <value>Nhấp để tải lên hoặc kéo thả vào đây</value>
+  </data>
+  <data name="Account_Profile_UploadDesc" xml:space="preserve">
+    <value>PNG, JPG hoặc WEBP (TỐI ĐA 2MB)</value>
+  </data>
+  <data name="Account_Profile_NewPreview" xml:space="preserve">
+    <value>Xem trước Mới</value>
+  </data>
+  <data name="Account_Profile_AboutMe" xml:space="preserve">
+    <value>Giới thiệu về tôi</value>
+  </data>
+  <data name="Account_Profile_AboutMePH" xml:space="preserve">
+    <value>Hãy chia sẻ về bản thân, VTuber yêu thích của bạn, hoặc bất cứ điều gì bạn thích...</value>
+  </data>
+  <data name="Account_Profile_Save" xml:space="preserve">
+    <value>Lưu Thay đổi</value>
+  </data>
+  <data name="Account_Profile_Cancel" xml:space="preserve">
+    <value>Hủy</value>
+  </data>
+  <data name="Account_ResetPass_Title" xml:space="preserve">
+    <value>Mật khẩu mới</value>
+  </data>
+  <data name="Account_ResetPass_Desc" xml:space="preserve">
+    <value>Xác thực PIN thành công! Vui lòng nhập mật khẩu bảo mật mới dưới đây.</value>
+  </data>
+  <data name="Account_ResetPass_NewPass" xml:space="preserve">
+    <value>Mật khẩu mới</value>
+  </data>
+  <data name="Account_ResetPass_ConfirmPass" xml:space="preserve">
+    <value>Xác nhận mật khẩu mới</value>
+  </data>
+  <data name="Account_ResetPass_Btn" xml:space="preserve">
+    <value>Cập nhật mật khẩu</value>
+  </data>
+  <data name="Account_SetupPin_Title" xml:space="preserve">
+    <value>Bảo mật tài khoản</value>
+  </data>
+  <data name="Account_SetupPin_Desc" xml:space="preserve">
+    <value>Vui lòng thiết lập mã PIN bảo mật 6 chữ số để tiếp tục. Mã này sẽ được dùng khi bạn quên mật khẩu.</value>
+  </data>
+  <data name="Account_SetupPin_Label" xml:space="preserve">
+    <value>Mã PIN 6 chữ số mới</value>
+  </data>
+  <data name="Account_SetupPin_Btn" xml:space="preserve">
+    <value>Lưu mã PIN</value>
+  </data>
+  <data name="Account_SetupPin_Logout" xml:space="preserve">
+    <value>Đăng xuất và thiết lập sau</value>
+  </data>
+  <data name="Account_VerifyPin_Title" xml:space="preserve">
+    <value>Xác thực danh tính</value>
+  </data>
+  <data name="Account_VerifyPin_Desc" xml:space="preserve">
+    <value>Nhập mã PIN bảo mật 6 chữ số để tiếp tục đặt lại mật khẩu.</value>
+  </data>
+  <data name="Account_VerifyPin_Label" xml:space="preserve">
+    <value>Mã PIN bảo mật 6 chữ số</value>
+  </data>
+  <data name="Account_VerifyPin_Btn" xml:space="preserve">
+    <value>Xác thực PIN</value>
+  </data>
+  <data name="Account_VerifyPin_Forgot" xml:space="preserve">
+    <value>Quên mã PIN?</value>
+  </data>
+  <data name="Account_VerifyPin_Contact" xml:space="preserve">
+    <value>Liên hệ Hỗ trợ</value>
+  </data>
+  <data name="Forum_Community_Title" xml:space="preserve">
+    <value>Thảo luận Cộng đồng</value>
+  </data>
+  <data name="Forum_Community_Description" xml:space="preserve">
+    <value>Kết nối với những người hâm mộ khác, thảo luận về các VTuber yêu thích của bạn, chia sẻ fan art và đóng góp vào kho tàng kiến thức đa vũ trụ đang phát triển.</value>
+  </data>
+  <data name="Forum_Community_StartTopic" xml:space="preserve">
+    <value>Bắt đầu một Chủ đề</value>
+  </data>
+  <data name="Forum_Community_AllCategories" xml:space="preserve">
+    <value>Tất cả Danh mục</value>
+  </data>
+  <data name="Forum_Community_Recent" xml:space="preserve">
+    <value>Gần đây</value>
+  </data>
+  <data name="Forum_Community_Trending" xml:space="preserve">
+    <value>Xu hướng</value>
+  </data>
+  <data name="Forum_Community_Replies" xml:space="preserve">
+    <value>Phản hồi</value>
+  </data>
+  <data name="Forum_Community_LastActivity" xml:space="preserve">
+    <value>Hoạt động cuối</value>
+  </data>
+  <data name="Forum_Community_Topics" xml:space="preserve">
+    <value>Chủ đề</value>
+  </data>
+  <data name="Forum_Community_Active" xml:space="preserve">
+    <value>Hoạt động</value>
+  </data>
+  <data name="Forum_Community_LastPost" xml:space="preserve">
+    <value>Bài đăng cuối</value>
+  </data>
+  <data name="Forum_Community_NoActivity" xml:space="preserve">
+    <value>Chưa có hoạt động nào</value>
+  </data>
+  <data name="Forum_Community_TrendingTopics" xml:space="preserve">
+    <value>Chủ đề Xu hướng</value>
+  </data>
+  <data name="Forum_Community_ActiveMembers" xml:space="preserve">
+    <value>Thành viên Hoạt động</value>
+  </data>
+  <data name="Forum_Community_ContributorTitle" xml:space="preserve">
+    <value>Người đóng góp Wiki?</value>
+  </data>
+  <data name="Forum_Community_ContributorDesc" xml:space="preserve">
+    <value>Giúp chúng tôi giữ cho kho tàng kiến thức chính xác. Đóng góp của bạn làm cho cộng đồng tốt hơn!</value>
+  </data>
+  <data name="Forum_Community_ApplyMod" xml:space="preserve">
+    <value>Ứng tuyển Kiểm duyệt viên</value>
+  </data>
+  <data name="Forum_Hub_Welcome" xml:space="preserve">
+    <value>Chào mừng đến với
+
+Trung tâm Cộng đồng</value>
+  </data>
+  <data name="Forum_Hub_Description" xml:space="preserve">
+    <value>Bảng điều khiển trung tâm cho tất cả các sự kiện mới nhất trong đa vũ trụ. Kiểm tra các thảo luận, tin tức và sự kiện sắp tới.</value>
+  </data>
+  <data name="Forum_Hub_EnterForum" xml:space="preserve">
+    <value>Vào Diễn đàn</value>
+  </data>
+  <data name="Forum_Hub_JoinDiscord" xml:space="preserve">
+    <value>Tham gia Discord</value>
+  </data>
+  <data name="Forum_Hub_RecentConvo" xml:space="preserve">
+    <value>Các cuộc trò chuyện gần đây</value>
+  </data>
+  <data name="Forum_Hub_ViewAll" xml:space="preserve">
+    <value>Xem tất cả</value>
+  </data>
+  <data name="Forum_Hub_by" xml:space="preserve">
+    <value>bởi</value>
+  </data>
+  <data name="Forum_Hub_NewsTitle" xml:space="preserve">
+    <value>Tin tức &amp; Sự kiện mới nhất</value>
+  </data>
+  <data name="Forum_Hub_ViewCalendar" xml:space="preserve">
+    <value>Xem Lịch</value>
+  </data>
+  <data name="Forum_Hub_ReadMore" xml:space="preserve">
+    <value>Đọc thêm</value>
+  </data>
+  <data name="Forum_Hub_QuickNav" xml:space="preserve">
+    <value>Điều hướng nhanh</value>
+  </data>
+  <data name="Forum_Hub_Wiki" xml:space="preserve">
+    <value>Wiki</value>
+  </data>
+  <data name="Forum_Hub_Events" xml:space="preserve">
+    <value>Sự kiện</value>
+  </data>
+  <data name="Forum_Hub_Rules" xml:space="preserve">
+    <value>Nội quy</value>
+  </data>
+  <data name="Forum_Hub_Agencies" xml:space="preserve">
+    <value>Công ty</value>
+  </data>
+  <data name="Forum_Hub_TrendingNow" xml:space="preserve">
+    <value>Đang Xu hướng</value>
+  </data>
+  <data name="Forum_Hub_FanArtTitle" xml:space="preserve">
+    <value>Trưng bày Fan Art</value>
+  </data>
+  <data name="Forum_Hub_FanArtDesc" xml:space="preserve">
+    <value>Chia sẻ sự sáng tạo của bạn với hàng ngàn người hâm mộ khác.</value>
+  </data>
+  <data name="Forum_Hub_UploadArt" xml:space="preserve">
+    <value>Tải lên Tác phẩm</value>
+  </data>
+  <data name="Forum_Topic_EditTitle" xml:space="preserve">
+    <value>Chỉnh sửa Thảo luận</value>
+  </data>
+  <data name="Forum_Topic_EditDesc" xml:space="preserve">
+    <value>Cập nhật chi tiết chủ đề của bạn.</value>
+  </data>
+  <data name="Forum_Topic_NewTitle" xml:space="preserve">
+    <value>Thảo luận mới</value>
+  </data>
+  <data name="Forum_Topic_NewDesc" xml:space="preserve">
+    <value>Chia sẻ suy nghĩ của bạn với cộng đồng.</value>
+  </data>
+  <data name="Forum_Topic_LabelTitle" xml:space="preserve">
+    <value>Tiêu đề</value>
+  </data>
+  <data name="Forum_Topic_PlaceholderTitle" xml:space="preserve">
+    <value>Bạn đang nghĩ gì?</value>
+  </data>
+  <data name="Forum_Topic_LabelCategory" xml:space="preserve">
+    <value>Danh mục</value>
+  </data>
+  <data name="Forum_Topic_CatGeneral" xml:space="preserve">
+    <value>Thảo luận chung</value>
+  </data>
+  <data name="Forum_Topic_CatNews" xml:space="preserve">
+    <value>Tin tức &amp; Cập nhật</value>
+  </data>
+  <data name="Forum_Topic_CatFanArt" xml:space="preserve">
+    <value>Fan Art</value>
+  </data>
+  <data name="Forum_Topic_CatLore" xml:space="preserve">
+    <value>Cốt truyện &amp; Giả thuyết</value>
+  </data>
+  <data name="Forum_Topic_LabelContent" xml:space="preserve">
+    <value>Nội dung</value>
+  </data>
+  <data name="Forum_Topic_PlaceholderContent" xml:space="preserve">
+    <value>Viết nội dung của bạn tại đây...</value>
+  </data>
+  <data name="Forum_Topic_BtnSave" xml:space="preserve">
+    <value>Lưu Thay đổi</value>
+  </data>
+  <data name="Forum_Topic_BtnPost" xml:space="preserve">
+    <value>Đăng Thảo luận</value>
+  </data>
+  <data name="Forum_Topic_BtnCancel" xml:space="preserve">
+    <value>Hủy</value>
+  </data>
+  <data name="Forum_Topic_PostedOn" xml:space="preserve">
+    <value>Đã đăng vào</value>
+  </data>
+  <data name="Forum_Topic_ConfirmDeleteTitle" xml:space="preserve">
+    <value>Bạn có chắc chắn muốn xóa thảo luận này không?</value>
+  </data>
+  <data name="Forum_Topic_Views" xml:space="preserve">
+    <value>Lượt xem</value>
+  </data>
+  <data name="Forum_Topic_Likes" xml:space="preserve">
+    <value>Lượt thích</value>
+  </data>
+  <data name="Forum_Topic_Reply" xml:space="preserve">
+    <value>Phản hồi</value>
+  </data>
+  <data name="Forum_Topic_Share" xml:space="preserve">
+    <value>Chia sẻ</value>
+  </data>
+  <data name="Forum_Topic_RepliesTitle" xml:space="preserve">
+    <value>Phản hồi</value>
+  </data>
+  <data name="Forum_Topic_DeleteConfirmReply" xml:space="preserve">
+    <value>Xóa phản hồi này?</value>
+  </data>
+  <data name="Forum_Topic_NoReplies" xml:space="preserve">
+    <value>Chưa có phản hồi nào. Hãy là người đầu tiên bắt đầu cuộc trò chuyện!</value>
+  </data>
+  <data name="Forum_Topic_PostReplyTitle" xml:space="preserve">
+    <value>Gửi phản hồi</value>
+  </data>
+  <data name="Forum_Topic_PlaceholderReply" xml:space="preserve">
+    <value>Viết phản hồi của bạn...</value>
+  </data>
+  <data name="Forum_Topic_BtnPostReply" xml:space="preserve">
+    <value>Gửi phản hồi</value>
+  </data>
+  <data name="Forum_Topic_LoginToReply" xml:space="preserve">
+    <value>Bạn cần đăng nhập để gửi phản hồi.</value>
+  </data>
+  <data name="Forum_Topic_LogIn" xml:space="preserve">
+    <value>Đăng nhập</value>
+  </data>
+  <data name="Forum_Wiki_Breadcrumb" xml:space="preserve">
+    <value>Diễn đàn Cộng đồng</value>
+  </data>
+  <data name="Forum_Wiki_Title" xml:space="preserve">
+    <value>V-Space Thảo luận</value>
+  </data>
+  <data name="Forum_Wiki_Desc" xml:space="preserve">
+    <value>Trung tâm cho tất cả mọi thứ về Virtual YouTuber—tin tức, ra mắt và fan art.</value>
+  </data>
+  <data name="Forum_Wiki_TabCategories" xml:space="preserve">
+    <value>Danh mục</value>
+  </data>
+  <data name="Forum_Wiki_TabRecent" xml:space="preserve">
+    <value>Gần đây</value>
+  </data>
+  <data name="Forum_Wiki_TabTrending" xml:space="preserve">
+    <value>Xu hướng</value>
+  </data>
+  <data name="Forum_Wiki_ThCategory" xml:space="preserve">
+    <value>Danh mục</value>
+  </data>
+  <data name="Forum_Wiki_ThTopics" xml:space="preserve">
+    <value>Chủ đề</value>
+  </data>
+  <data name="Forum_Wiki_ThRecentPost" xml:space="preserve">
+    <value>Bài đăng gần đây</value>
+  </data>
+  <data name="Forum_Wiki_TopContributors" xml:space="preserve">
+    <value>Người đóng góp hàng đầu</value>
+  </data>
+  <data name="Forum_Wiki_MembersOnline" xml:space="preserve">
+    <value>Thành viên trực tuyến</value>
+  </data>
+  <data name="Forum_Wiki_JoinMsg" xml:space="preserve">
+    <value>Tham gia cùng hơn 120,000 thành viên khác và đóng góp vào bách khoa toàn thư về VTubing.</value>
+  </data>
+  <data name="Forum_Wiki_CatGeneral" xml:space="preserve">
+    <value>Thảo luận chung</value>
+  </data>
+  <data name="Forum_Wiki_CatGeneralDesc" xml:space="preserve">
+    <value>Chủ đề ngoài lề và trò chuyện tổng hợp</value>
+  </data>
+  <data name="Forum_Wiki_CatNews" xml:space="preserve">
+    <value>Tin tức Công ty</value>
+  </data>
+  <data name="Forum_Wiki_CatNewsDesc" xml:space="preserve">
+    <value>Cập nhật từ Hololive, Nijisanji và nhiều hơn nữa</value>
+  </data>
+  <data name="Forum_Wiki_CatDebut" xml:space="preserve">
+    <value>Thông báo Ra mắt</value>
+  </data>
+  <data name="Forum_Wiki_CatDebutDesc" xml:space="preserve">
+    <value>Chào mừng những ngôi sao mới nhất trên bầu trời</value>
+  </data>
+  <data name="Forum_Wiki_CatFan" xml:space="preserve">
+    <value>Sáng tạo của Fan</value>
+  </data>
+  <data name="Forum_Wiki_CatFanDesc" xml:space="preserve">
+    <value>Nghệ thuật, âm nhạc và các dự án cộng đồng</value>
+  </data>
+  <data name="Forum_Wiki_RecentDiscussions" xml:space="preserve">
+    <value>Thảo luận gần đây</value>
+  </data>
+  <data name="Wiki_Profile_Type" xml:space="preserve">
+    <value>Hồ sơ Công ty</value>
+  </data>
+  <data name="Wiki_Talents_Count" xml:space="preserve">
+    <value>{0} Tài năng</value>
+  </data>
+  <data name="Wiki_Label_About" xml:space="preserve">
+    <value>Giới thiệu về {0}</value>
+  </data>
+  <data name="Wiki_No_Desc" xml:space="preserve">
+    <value>Không có mô tả cho công ty này.</value>
+  </data>
+  <data name="Wiki_Community_Links" xml:space="preserve">
+    <value>Liên kết Cộng đồng</value>
+  </data>
+  <data name="Wiki_Official_Website" xml:space="preserve">
+    <value>Trang web Chính thức</value>
+  </data>
+  <data name="Wiki_Youtube_Channel" xml:space="preserve">
+    <value>Kênh YouTube</value>
+  </data>
+  <data name="Wiki_Social_Twitter" xml:space="preserve">
+    <value>Twitter / X</value>
+  </data>
+  <data name="Wiki_Current_Talents" xml:space="preserve">
+    <value>Tài năng Hiện tại</value>
+  </data>
+  <data name="Wiki_Recently_Active" xml:space="preserve">
+    <value>Hoạt động gần đây</value>
+  </data>
+  <data name="Wiki_No_Talents" xml:space="preserve">
+    <value>Chưa có tài năng nào được liên kết với công ty này.</value>
+  </data>
+  <data name="Events_Title_Virtual" xml:space="preserve">
+    <value>Sự kiện</value>
+  </data>
+  <data name="Events_Title_Events" xml:space="preserve">
+    <value>Ảo</value>
+  </data>
+  <data name="Events_Hero_Desc" xml:space="preserve">
+    <value>Cập nhật tin tức, màn ra mắt, phát hành âm nhạc và sự kiện chơi game mới nhất từ khắp Đa vũ trụ VTuber.</value>
+  </data>
+  <data name="Events_Filter_All" xml:space="preserve">
+    <value>Tất cả</value>
+  </data>
+  <data name="Events_Filter_Events" xml:space="preserve">
+    <value>Sự kiện</value>
+  </data>
+  <data name="Events_Filter_Debuts" xml:space="preserve">
+    <value>Ra mắt</value>
+  </data>
+  <data name="Events_Filter_Music" xml:space="preserve">
+    <value>Âm nhạc</value>
+  </data>
+  <data name="Events_Filter_ASMR" xml:space="preserve">
+    <value>ASMR</value>
+  </data>
+  <data name="Events_Filter_Gaming" xml:space="preserve">
+    <value>Chơi game</value>
+  </data>
+  <data name="Events_Btn_Add" xml:space="preserve">
+    <value>Thêm Sự kiện</value>
+  </data>
+  <data name="Events_By_Author" xml:space="preserve">
+    <value>Bởi {0}</value>
+  </data>
+  <data name="Events_No_Events" xml:space="preserve">
+    <value>Không tìm thấy sự kiện nào trong danh mục này.</value>
+  </data>
+  <data name="Events_No_Events_Desc" xml:space="preserve">
+    <value>Thử thay đổi bộ lọc hoặc quay lại sau!</value>
+  </data>
+  <data name="Events_Delete_Title" xml:space="preserve">
+    <value>Xóa sự kiện?</value>
+  </data>
+  <data name="Events_Delete_Confirm" xml:space="preserve">
+    <value>Bạn có chắc chắn muốn xóa "{0}"? Hành động này không thể hoàn tác.</value>
+  </data>
+  <data name="Wiki_Label_Youtube" xml:space="preserve">
+    <value>URL Kênh YouTube</value>
+  </data>
+  <data name="Wiki_Label_Age_Label" xml:space="preserve">
+    <value>Tuổi (Tùy chọn)</value>
+  </data>
+  <data name="Wiki_Label_Region" xml:space="preserve">
+    <value>Khu vực</value>
+  </data>
+  <data name="Wiki_Label_Language" xml:space="preserve">
+    <value>Ngôn ngữ</value>
+  </data>
+  <data name="Wiki_Label_Tags" xml:space="preserve">
+    <value>Tags (phân cách bằng dấu phẩy)</value>
+  </data>
+  <data name="Wiki_Upload_PNG" xml:space="preserve">
+    <value>PNG, JPG, GIF tối đa 5MB</value>
+  </data>
+  <data name="Wiki_Upload_Select" xml:space="preserve">
+    <value>Đã chọn: {0}</value>
+  </data>
+  <data name="Wiki_Upload_File" xml:space="preserve">
+    <value>Tải lên một tệp</value>
+  </data>
+  <data name="Wiki_Upload_Drop" xml:space="preserve">
+    <value>hoặc kéo và thả</value>
+  </data>
+  <data name="Wiki_Avatar_Current" xml:space="preserve">
+    <value>Ảnh đại diện hiện tại</value>
+  </data>
+  <data name="Wiki_Avatar_Keep" xml:space="preserve">
+    <value>Để trống để giữ nguyên ảnh hiện tại</value>
+  </data>
+  <data name="Wiki_Logo_Upload" xml:space="preserve">
+    <value>Tải Logo lên</value>
+  </data>
+  <data name="Wiki_Logo_Select" xml:space="preserve">
+    <value>Chọn hình ảnh</value>
+  </data>
+  <data name="Wiki_Logo_Change" xml:space="preserve">
+    <value>Thay đổi Logo</value>
+  </data>
+  <data name="Wiki_Logo_None" xml:space="preserve">
+    <value>Không có Logo</value>
+  </data>
+  <data name="Wiki_Logo_Recommended" xml:space="preserve">
+    <value>Khuyên dùng: PNG/WEBP/JPG vuông</value>
+  </data>
+  <data name="Wiki_Placeholder_Name" xml:space="preserve">
+    <value>vd: Hoshimachi Suisei</value>
+  </data>
+  <data name="Wiki_Placeholder_Youtube" xml:space="preserve">
+    <value>https://youtube.com/@@channel</value>
+  </data>
+  <data name="Wiki_Placeholder_Age" xml:space="preserve">
+    <value>vd: 18</value>
+  </data>
+  <data name="Wiki_Placeholder_Birthday" xml:space="preserve">
+    <value>vd: 22 tháng 3</value>
+  </data>
+  <data name="Wiki_Placeholder_Language" xml:space="preserve">
+    <value>vd: Tiếng Anh / Tiếng Nhật</value>
+  </data>
+  <data name="Wiki_Placeholder_Tags" xml:space="preserve">
+    <value>vd: Chơi game, Nghệ thuật, ASMR</value>
+  </data>
+  <data name="Wiki_Placeholder_Lore" xml:space="preserve">
+    <value>Viết một tiểu sử ngắn cho VTuber này...</value>
+  </data>
+  <data name="Wiki_Create_Agency_Title" xml:space="preserve">
+    <value>Thêm Công ty Mới</value>
+  </data>
+  <data name="Wiki_Create_Agency_Subtitle" xml:space="preserve">
+    <value>Đưa một Công ty hoặc Nhóm VTuber mới vào cơ sở dữ liệu.</value>
+  </data>
+  <data name="Wiki_Edit_Agency_Title" xml:space="preserve">
+    <value>Chỉnh sửa Công ty</value>
+  </data>
+  <data name="Wiki_Edit_Agency_Subtitle" xml:space="preserve">
+    <value>Cập nhật thông tin cho {0}</value>
+  </data>
+  <data name="Wiki_Label_Logo" xml:space="preserve">
+    <value>Logo / Thương hiệu</value>
+  </data>
+  <data name="Wiki_Label_Focus" xml:space="preserve">
+    <value>Lĩnh vực Chính</value>
+  </data>
+  <data name="Wiki_Label_TalentsCount" xml:space="preserve">
+    <value>Số lượng Tài năng ước tính</value>
+  </data>
+  <data name="Wiki_Label_Description" xml:space="preserve">
+    <value>Tiểu sử Công ty</value>
+  </data>
+  <data name="Wiki_Label_Links" xml:space="preserve">
+    <value>Liên kết Cộng đồng (Tùy chọn)</value>
+  </data>
+  <data name="Wiki_Btn_CreateAgency" xml:space="preserve">
+    <value>TẠO CÔNG TY</value>
+  </data>
+  <data name="Wiki_Btn_SaveAgency" xml:space="preserve">
+    <value>LƯU THAY ĐỔI</value>
+  </data>
+  <data name="Wiki_Create_Event_Title" xml:space="preserve">
+    <value>Thêm Sự kiện Mới</value>
+  </data>
+  <data name="Wiki_Create_Event_Subtitle" xml:space="preserve">
+    <value>Chia sẻ tin tức, màn ra mắt hoặc điểm nhấn cộng đồng mới nhất</value>
+  </data>
+  <data name="Wiki_Label_CoverImage" xml:space="preserve">
+    <value>Ảnh bìa</value>
+  </data>
+  <data name="Wiki_Label_EventTitle" xml:space="preserve">
+    <value>Tiêu đề Sự kiện</value>
+  </data>
+  <data name="Wiki_Label_EventType" xml:space="preserve">
+    <value>Loại Sự kiện</value>
+  </data>
+  <data name="Wiki_Label_AuthorName" xml:space="preserve">
+    <value>Tên Tác giả</value>
+  </data>
+  <data name="Wiki_Label_RichDesc" xml:space="preserve">
+    <value>Mô tả chi tiết</value>
+  </data>
+  <data name="Wiki_Label_Featured" xml:space="preserve">
+    <value>Hiển thị trên Trang chủ</value>
+  </data>
+  <data name="Wiki_Btn_PublishEvent" xml:space="preserve">
+    <value>Đăng Sự kiện</value>
+  </data>
+  <data name="Trans_Project_Advent" xml:space="preserve">
+    <value>Stream Ra mắt Hololive Advent [JP -&gt; EN]</value>
+  </data>
+  <data name="Trans_Project_Kuzuha" xml:space="preserve">
+    <value>Video Cốt truyện Kuzuha [JP -&gt; ID]</value>
+  </data>
+  <data name="Trans_Project_Shylily" xml:space="preserve">
+    <value>Cốt truyện Shylily: Đại dương sâu thẳm [EN -&gt; KR]</value>
+  </data>
+  <data name="Trans_Lang_JPEN" xml:space="preserve">
+    <value>Tiếng Nhật → Tiếng Anh</value>
+  </data>
+  <data name="Trans_Lang_JPID" xml:space="preserve">
+    <value>Tiếng Nhật → Tiếng Indonesia</value>
+  </data>
+  <data name="Trans_Lang_ENKR" xml:space="preserve">
+    <value>Tiếng Anh → Tiếng Hàn</value>
+  </data>
+  <data name="Trans_Label_Proofreaders" xml:space="preserve">
+    <value>Đang tìm người soát lỗi</value>
+  </data>
+  <data name="Trans_Section_Request_Desc" xml:space="preserve">
+    <value>Có video hoặc stream nào cần dịch không? Hãy cho cộng đồng biết!</value>
+  </data>
+  <data name="Trans_Placeholder_RequestTitle" xml:space="preserve">
+    <value>vd: Pekora BGM 10-hour loop Lore</value>
+  </data>
+  <data name="Trans_Sidebar_WikiGlossary" xml:space="preserve">
+    <value>Bản thuật ngữ Wiki chính thức</value>
+  </data>
+  <data name="Trans_Sidebar_Subtitling" xml:space="preserve">
+    <value>Hướng dẫn làm phụ đề</value>
+  </data>
+  <data name="Trans_Sidebar_Naming" xml:space="preserve">
+    <value>Công cụ quy ước đặt tên</value>
+  </data>
+  <data name="Trans_Sidebar_HelpChannel" xml:space="preserve">
+    <value>Kênh trợ giúp dịch thuật</value>
+  </data>
+  <data name="Trans_Label_Leaderboard_Projects" xml:space="preserve">
+    <value>{0} Dự án</value>
+  </data>
+  <data name="Trans_Label_Leaderboard_Level" xml:space="preserve">
+    <value>Cấp độ {0}</value>
+  </data>
+  <data name="Wiki_Agency_Add_Title" xml:space="preserve">
+    <value>Thêm Công ty Mới</value>
+  </data>
+  <data name="Wiki_Agency_Add_Subtitle" xml:space="preserve">
+    <value>Giới thiệu một Công ty hoặc Nhóm VTuber mới vào cơ sở dữ liệu.</value>
+  </data>
+  <data name="Wiki_Label_estimated_talents" xml:space="preserve">
+    <value>Số lượng Tài năng ước tính</value>
+  </data>
+  <data name="Wiki_Label_agency_bio" xml:space="preserve">
+    <value>Tiểu sử Công ty</value>
+  </data>
+  <data name="Wiki_Placeholder_bio" xml:space="preserve">
+    <value>Nhập lịch sử tóm tắt hoặc tuyên bố sứ mệnh...</value>
+  </data>
+  <data name="Wiki_Btn_Create_Agency" xml:space="preserve">
+    <value>TẠO CÔNG TY</value>
+  </data>
+  <data name="Wiki_Btn_Save_Agency" xml:space="preserve">
+    <value>LƯU THAY ĐỔI</value>
+  </data>
+  <data name="Wiki_Placeholder_Agency_Name" xml:space="preserve">
+    <value>vd: Hololive Production</value>
+  </data>
+  <data name="Wiki_Placeholder_Agency_Focus" xml:space="preserve">
+    <value>vd: Thần tượng, Chơi game, Công nghệ</value>
+  </data>
+  <data name="Wiki_Event_Add_Subtitle_News" xml:space="preserve">
+    <value>Chia sẻ tin tức, màn ra mắt hoặc điểm nhấn cộng đồng mới nhất</value>
+  </data>
+  <data name="Wiki_Label_Upload_Cover" xml:space="preserve">
+    <value>Tải lên Ảnh bìa</value>
+  </data>
+  <data name="Wiki_Label_Update_Cover" xml:space="preserve">
+    <value>Cập nhật Ảnh bìa</value>
+  </data>
+  <data name="Wiki_Placeholder_EventTitle_News" xml:space="preserve">
+    <value>vd: Thông tin chi tiết về Hololive 5th Fes.</value>
+  </data>
+  <data name="Wiki_Event_Type_Event" xml:space="preserve">
+    <value>Sự kiện</value>
+  </data>
+  <data name="Wiki_Event_Type_Debut" xml:space="preserve">
+    <value>Ra mắt</value>
+  </data>
+  <data name="Wiki_Event_Type_Music" xml:space="preserve">
+    <value>Âm nhạc</value>
+  </data>
+  <data name="Wiki_Event_Type_ASMR" xml:space="preserve">
+    <value>ASMR</value>
+  </data>
+  <data name="Wiki_Event_Type_Gaming" xml:space="preserve">
+    <value>Chơi game</value>
+  </data>
+  <data name="Wiki_Placeholder_EventContent" xml:space="preserve">
+    <value>Kể cho chúng tôi biết thêm về sự kiện...</value>
+  </data>
+  <data name="Wiki_Btn_PublishEvent_News" xml:space="preserve">
+    <value>Đăng Sự kiện</value>
+  </data>
+  <data name="Wiki_Event_Edit_Subtitle_News" xml:space="preserve">
+    <value>Cập nhật thông tin cho mẩu tin hoặc điểm nhấn này</value>
+  </data>
+  <data name="Editor_Welcome" xml:space="preserve">
+    <value>Chào mừng đến với Trung tâm Biên tập</value>
+  </data>
+  <data name="Editor_Subtitle" xml:space="preserve">
+    <value>Tham gia cộng đồng những người đóng góp và giúp VTuber Wiki phát triển bằng cách chia sẻ kiến thức và chuyên môn của bạn.</value>
+  </data>
+  <data name="Editor_Btn_Start" xml:space="preserve">
+    <value>Bắt đầu Chỉnh sửa</value>
+  </data>
+  <data name="Editor_Btn_Documentation" xml:space="preserve">
+    <value>Tài liệu</value>
+  </data>
+  <data name="Editor_Section_Tasks" xml:space="preserve">
+    <value>Nhiệm vụ &amp; Dự án</value>
+  </data>
+  <data name="Editor_Task_Cleanup_Title" xml:space="preserve">
+    <value>Dọn dẹp Bài sơ khai</value>
+  </data>
+  <data name="Editor_Task_Cleanup_Desc" xml:space="preserve">
+    <value>Mở rộng các bài viết ngắn với nhiều chi tiết, truyền thuyết và nguồn đã xác minh hơn.</value>
+  </data>
+  <data name="Editor_Task_Agency_Title" xml:space="preserve">
+    <value>Các trang Công ty còn thiếu</value>
+  </data>
+  <data name="Editor_Task_Agency_Desc" xml:space="preserve">
+    <value>Tạo hồ sơ cho các nhóm độc lập mới và các công ty tài năng đang lên.</value>
+  </data>
+  <data name="Editor_Task_Media_Title" xml:space="preserve">
+    <value>Chiến dịch Tải lên Phương tiện</value>
+  </data>
+  <data name="Editor_Task_Media_Desc" xml:space="preserve">
+    <value>Giúp cập nhật logo trong suốt và các tác phẩm nghệ thuật quảng bá độ phân giải cao.</value>
+  </data>
+  <data name="Editor_Btn_Join" xml:space="preserve">
+    <value>Tham gia</value>
+  </data>
+  <data name="Editor_Section_Resources" xml:space="preserve">
+    <value>Tài nguyên cho Người đóng góp</value>
+  </data>
+  <data name="Editor_Res_Guide_Title" xml:space="preserve">
+    <value>Hướng dẫn Biên tập</value>
+  </data>
+  <data name="Editor_Res_Guide_Desc" xml:space="preserve">
+    <value>Nắm vững các kiến thức cơ bản về cú pháp wiki và định dạng.</value>
+  </data>
+  <data name="Editor_Res_Guide_Link" xml:space="preserve">
+    <value>Đọc Hướng dẫn</value>
+  </data>
+  <data name="Editor_Res_Template_Title" xml:space="preserve">
+    <value>Thư viện Biểu mẫu</value>
+  </data>
+  <data name="Editor_Res_Template_Desc" xml:space="preserve">
+    <value>Các bảng thông tin chuẩn hóa để đảm bảo tính nhất quán.</value>
+  </data>
+  <data name="Editor_Res_Template_Link" xml:space="preserve">
+    <value>Duyệt Biểu mẫu</value>
+  </data>
+  <data name="Editor_Res_Policy_Title" xml:space="preserve">
+    <value>Chính sách Hình ảnh</value>
+  </data>
+  <data name="Editor_Res_Policy_Desc" xml:space="preserve">
+    <value>Hướng dẫn về quy tắc sử dụng và ghi công.</value>
+  </data>
+  <data name="Editor_Res_Policy_Link" xml:space="preserve">
+    <value>Xem Chính sách</value>
+  </data>
+  <data name="Editor_Section_Requested" xml:space="preserve">
+    <value>Bài viết được Yêu cầu</value>
+  </data>
+  <data name="Editor_Btn_RequestNew" xml:space="preserve">
+    <value>Yêu cầu Mới</value>
+  </data>
+  <data name="Editor_Sidebar_Stats" xml:space="preserve">
+    <value>Thống kê Biên tập</value>
+  </data>
+  <data name="Editor_Stat_Target" xml:space="preserve">
+    <value>Mục tiêu Hàng tháng</value>
+  </data>
+  <data name="Editor_Stat_Active" xml:space="preserve">
+    <value>Biên tập viên Hoạt động</value>
+  </data>
+  <data name="Editor_Stat_Today" xml:space="preserve">
+    <value>Lượt sửa Hôm nay</value>
+  </data>
+  <data name="Editor_Sidebar_QuickLinks" xml:space="preserve">
+    <value>Liên kết Nhanh</value>
+  </data>
+  <data name="Editor_Sidebar_Announcements" xml:space="preserve">
+    <value>Thông báo từ Quản trị viên</value>
+  </data>
+  <data name="Tools_Title" xml:space="preserve">
+    <value>Công cụ Người hâm mộ</value>
+  </data>
+  <data name="Tools_Subtitle" xml:space="preserve">
+    <value>Khám phá các tài nguyên do cộng đồng tạo ra để nâng cao trải nghiệm VTubing của bạn. Từ gắn xương avatar đến lớp phủ luồng.</value>
+  </data>
+  <data name="Tools_Btn_Submit" xml:space="preserve">
+    <value>Gửi một Công cụ</value>
+  </data>
+  <data name="Tools_Search_Placeholder" xml:space="preserve">
+    <value>Tìm kiếm công cụ...</value>
+  </data>
+  <data name="Tools_Tab_All" xml:space="preserve">
+    <value>Tất cả Công cụ</value>
+  </data>
+  <data name="Tools_Tab_Avatar" xml:space="preserve">
+    <value>Tạo Avatar</value>
+  </data>
+  <data name="Tools_Tab_Streaming" xml:space="preserve">
+    <value>Tài nguyên Livestream</value>
+  </data>
+  <data name="Tools_Tab_Wiki" xml:space="preserve">
+    <value>Hỗ trợ Wiki</value>
+  </data>
+  <data name="Tools_Category_Avatar" xml:space="preserve">
+    <value>Tạo Avatar</value>
+  </data>
+  <data name="Tools_Category_Streaming" xml:space="preserve">
+    <value>Tài nguyên Livestream</value>
+  </data>
+  <data name="Home_Category_General" xml:space="preserve">
+    <value>Chung</value>
+  </data>
+  <data name="Home_Label_Tracked" xml:space="preserve">
+    <value>Tài năng được Theo dõi</value>
+  </data>
+  <data name="Donate_Hero_Badge" xml:space="preserve">
+    <value>Hỗ trợ Wiki</value>
+  </data>
+  <data name="Donate_Hero_Title" xml:space="preserve">
+    <value>Hỗ trợ VTuber Wiki</value>
+  </data>
+  <data name="Donate_Hero_Desc" xml:space="preserve">
+    <value>Chúng tôi là một dự án hướng tới cộng đồng chuyên về việc ghi lại lịch sử thế giới VTuber đang phát triển. Sự đóng góp của bạn trực tiếp tài trợ cho hạ tầng máy chủ và các sự kiện cộng đồng.</value>
+  </data>
+  <data name="Donate_Goal_Monthly" xml:space="preserve">
+    <value>Mục tiêu Hàng tháng</value>
+  </data>
+  <data name="Donate_Goal_Reached" xml:space="preserve">
+    <value>Đã đạt {0}%</value>
+  </data>
+  <data name="Donate_Goal_Remaining" xml:space="preserve">
+    <value>{0} — Còn {1} ngày</value>
+  </data>
+  <data name="Donate_Tiers_Title" xml:space="preserve">
+    <value>Chọn Gói Hỗ trợ</value>
+  </data>
+  <data name="Donate_Tiers_Desc" xml:space="preserve">
+    <value>Mọi đóng góp đều giúp chúng tôi phát triển và cải thiện</value>
+  </data>
+  <data name="Donate_Tier_Supporter_Title" xml:space="preserve">
+    <value>Người ủng hộ</value>
+  </data>
+  <data name="Donate_Tier_Supporter_Subtitle" xml:space="preserve">
+    <value>Gói Cơ bản</value>
+  </data>
+  <data name="Donate_Tier_Supporter_Benefit1" xml:space="preserve">
+    <value>Huy hiệu Người ủng hộ trên hồ sơ</value>
+  </data>
+  <data name="Donate_Tier_Supporter_Benefit2" xml:space="preserve">
+    <value>Tên trên trang danh dự</value>
+  </data>
+  <data name="Donate_Tier_Supporter_Benefit3" xml:space="preserve">
+    <value>Truy cập kênh Discord cho người ủng hộ</value>
+  </data>
+  <data name="Donate_Btn_Supporter" xml:space="preserve">
+    <value>Trở thành Người ủng hộ</value>
+  </data>
+  <data name="Donate_Tier_Patron_Title" xml:space="preserve">
+    <value>Hội viên</value>
+  </data>
+  <data name="Donate_Tier_Patron_Subtitle" xml:space="preserve">
+    <value>Gói Cao cấp</value>
+  </data>
+  <data name="Donate_Tier_Patron_Badge" xml:space="preserve">
+    <value>Phổ biến nhất</value>
+  </data>
+  <data name="Donate_Tier_Patron_Benefit1" xml:space="preserve">
+    <value>Tất cả quyền lợi của cấp Người ủng hộ</value>
+  </data>
+  <data name="Donate_Tier_Patron_Benefit2" xml:space="preserve">
+    <value>Huy hiệu Hội viên với màu tùy chỉnh</value>
+  </data>
+  <data name="Donate_Tier_Patron_Benefit3" xml:space="preserve">
+    <value>Truy cập sớm các tính năng mới</value>
+  </data>
+  <data name="Donate_Tier_Patron_Benefit4" xml:space="preserve">
+    <value>Bình chọn ưu tiên cho wiki</value>
+  </data>
+  <data name="Donate_Btn_Patron" xml:space="preserve">
+    <value>Trở thành Hội viên</value>
+  </data>
+  <data name="Donate_Tier_Legendary_Title" xml:space="preserve">
+    <value>Huyền thoại</value>
+  </data>
+  <data name="Donate_Tier_Legendary_Subtitle" xml:space="preserve">
+    <value>Gói Tối thượng</value>
+  </data>
+  <data name="Donate_Tier_Legendary_Benefit1" xml:space="preserve">
+    <value>Tất cả quyền lợi của cấp Hội viên</value>
+  </data>
+  <data name="Donate_Tier_Legendary_Benefit2" xml:space="preserve">
+    <value>Huy hiệu Huyền thoại động</value>
+  </data>
+  <data name="Donate_Tier_Legendary_Benefit3" xml:space="preserve">
+    <value>Vị trí nổi bật trên Sảnh Danh dự</value>
+  </data>
+  <data name="Donate_Tier_Legendary_Benefit4" xml:space="preserve">
+    <value>Liên lạc trực tiếp với đội ngũ quản trị</value>
+  </data>
+  <data name="Donate_Btn_Legendary" xml:space="preserve">
+    <value>Trở thành Huyền thoại</value>
+  </data>
+  <data name="Donate_Payments_Title" xml:space="preserve">
+    <value>Phương thức Thanh toán</value>
+  </data>
+  <data name="Donate_Payments_Secure" xml:space="preserve">
+    <value>Mọi thanh toán đều được mã hóa và xử lý an toàn.</value>
+  </data>
+  <data name="Donate_Hall_Title" xml:space="preserve">
+    <value>Sảnh Danh dự</value>
+  </data>
+  <data name="Donate_Donor_Legendary" xml:space="preserve">
+    <value>Hội viên Huyền thoại</value>
+  </data>
+  <data name="Donate_Donor_Supporter" xml:space="preserve">
+    <value>Người ủng hộ</value>
+  </data>
+  <data name="Donate_View_All" xml:space="preserve">
+    <value>Xem Tất cả Người đóng góp</value>
+  </data>
+  <data name="Donate_Card_About_Title" xml:space="preserve">
+    <value>Về Chúng tôi</value>
+  </data>
+  <data name="Donate_Card_About_Desc" xml:space="preserve">
+    <value>Tìm hiểu thêm về VTuber Wiki</value>
+  </data>
+  <data name="Donate_Card_Forum_Title" xml:space="preserve">
+    <value>Diễn đàn Cộng đồng</value>
+  </data>
+  <data name="Donate_Card_Forum_Desc" xml:space="preserve">
+    <value>Tham gia thảo luận</value>
+  </data>
+  <data name="Donate_Card_Help_Title" xml:space="preserve">
+    <value>Trung tâm Hỗ trợ</value>
+  </data>
+  <data name="Donate_Card_Help_Desc" xml:space="preserve">
+    <value>Nhận hỗ trợ và câu trả lời</value>
+  </data>
+  <data name="Region_Japan" xml:space="preserve">
+    <value>Nhật Bản</value>
+  </data>
+  <data name="Region_US" xml:space="preserve">
+    <value>Hoa Kỳ</value>
+  </data>
+  <data name="Region_Canada" xml:space="preserve">
+    <value>Canada</value>
+  </data>
+  <data name="Region_Europe" xml:space="preserve">
+    <value>Châu Âu</value>
+  </data>
+  <data name="Lang_English" xml:space="preserve">
+    <value>Tiếng Anh</value>
+  </data>
+  <data name="Lang_Japanese" xml:space="preserve">
+    <value>Tiếng Nhật</value>
+  </data>
+  <data name="Focus_Idol" xml:space="preserve">
+    <value>Idol</value>
+  </data>
+  <data name="Focus_Gaming" xml:space="preserve">
+    <value>Gaming</value>
+  </data>
+  <data name="Focus_Variety" xml:space="preserve">
+    <value>Đa dạng</value>
+  </data>
+<data name="Nav_Admin_Dashboard" xml:space="preserve"><value>Bảng điều khiển</value></data><data name="Nav_Discord_Link" xml:space="preserve"><value>Discord</value></data><data name="Nav_HelpCenter_Hub" xml:space="preserve"><value>Trung tâm trợ giúp</value></data><data name="Modal_Confirm_Title" xml:space="preserve"><value>Xác nhận hành động</value></data><data name="Modal_Confirm_Msg" xml:space="preserve"><value>Bạn có chắc chắn muốn tiếp tục không?</value></data><data name="Modal_Btn_Cancel" xml:space="preserve"><value>Hủy</value></data><data name="Modal_Btn_Confirm" xml:space="preserve"><value>Xác nhận</value></data><data name="Footer_Section_Wiki" xml:space="preserve"><value>Wiki</value></data><data name="Footer_Section_Explore" xml:space="preserve"><value>Khám phá</value></data><data name="Footer_Section_Subscribe" xml:space="preserve"><value>Đăng ký</value></data><data name="Forum_Item_By" xml:space="preserve"><value>bởi</value></data><data name="Forum_Item_Ago" xml:space="preserve"><value>trước</value></data><data name="Forum_Badge_OP" xml:space="preserve"><value>Chủ thớt</value></data><data name="Forum_Wiki_CatTech" xml:space="preserve"><value>Hỗ trợ kỹ thuật</value></data><data name="Forum_Wiki_CatGeneral_Sidebar" xml:space="preserve"><value>Chung</value></data><data name="Forum_Wiki_CatCreative" xml:space="preserve"><value>Sáng tạo</value></data><data name="Help_Hero_Title" xml:space="preserve"><value>Chúng tôi có thể giúp gì cho bạn?</value></data><data name="Help_Hero_Desc" xml:space="preserve"><value>Tìm kiếm trong cơ sở kiến thức của chúng tôi các hướng dẫn thiết lập VTuber, hướng dẫn đóng góp wiki và hỗ trợ cộng đồng.</value></data><data name="Help_Search_Placeholder" xml:space="preserve"><value>Tìm kiếm bài viết, hướng dẫn hoặc câu hỏi thường gặp...</value></data><data name="Help_Search_Btn" xml:space="preserve"><value>Tìm kiếm</value></data><data name="Help_Popular_Label" xml:space="preserve"><value>Phổ biến:</value></data><data name="Help_Popular_ModelSetup" xml:space="preserve"><value>Thiết lập mô hình</value></data><data name="Help_Popular_OBS" xml:space="preserve"><value>Cài đặt OBS</value></data><data name="Help_Popular_Naming" xml:space="preserve"><value>Quy ước đặt tên</value></data><data name="Help_Category_Browse" xml:space="preserve"><value>Duyệt theo danh mục</value></data><data name="Help_Cat_Account_Title" xml:space="preserve"><value>Quản lý tài khoản</value></data><data name="Help_Cat_Account_Desc" xml:space="preserve"><value>Cập nhật hồ sơ, cài đặt bảo mật và quyền hạn của bạn.</value></data><data name="Help_Cat_Editing_Title" xml:space="preserve"><value>Hướng dẫn chỉnh sửa</value></data><data name="Help_Cat_Editing_Desc" xml:space="preserve"><value>Tìm hiểu cú pháp, định dạng và quy tắc tải lên phương tiện.</value></data><data name="Help_Cat_Guidelines_Title" xml:space="preserve"><value>Hướng dẫn cộng đồng</value></data><data name="Help_Cat_Guidelines_Desc" xml:space="preserve"><value>Quy tắc ứng xử, chính sách nội dung và thông tin kiểm duyệt.</value></data><data name="Help_Cat_Tech_Title" xml:space="preserve"><value>Hỗ trợ kỹ thuật</value></data><data name="Help_Cat_Tech_Desc" xml:space="preserve"><value>Khắc phục lỗi API, sự cố đăng nhập và lỗi trang web.</value></data><data name="Help_Articles_Promoted" xml:space="preserve"><value>Bài viết nổi bật</value></data><data name="Help_Article_CreateProfile" xml:space="preserve"><value>Cách tạo trang hồ sơ VTuber mới</value></data><data name="Help_Article_ImgOpt" xml:space="preserve"><value>Tối ưu hóa hình ảnh cho thư viện wiki</value></data><data name="Help_Article_Tags" xml:space="preserve"><value>Hiểu về thẻ đại lý và thẻ độc lập</value></data><data name="Help_Article_TroubleVTS" xml:space="preserve"><value>Khắc phục sự cố tích hợp VTube Studio</value></data><data name="Help_Article_Copyright" xml:space="preserve"><value>Bản quyền và sử dụng hợp lý tài sản của streamer</value></data><data name="Help_Support_Title" xml:space="preserve"><value>Vẫn cần sự giúp đỡ?</value></data><data name="Help_Support_Desc" xml:space="preserve"><value>Nếu bạn không thể tìm thấy những gì mình đang tìm kiếm, cộng đồng và nhóm hỗ trợ của chúng tôi sẵn sàng trợ giúp.</value></data><data name="Help_Support_Contact" xml:space="preserve"><value>Mẫu liên hệ</value></data><data name="Help_Support_Discord" xml:space="preserve"><value>Tham gia Discord của chúng tôi</value></data><data name="Help_Stats_Title" xml:space="preserve"><value>Thống kê Wiki</value></data><data name="Help_Stats_Articles" xml:space="preserve"><value>Bài viết</value></data><data name="Help_Stats_Members" xml:space="preserve"><value>Thành viên</value></data><data name="Help_Stats_Editors" xml:space="preserve"><value>Biên tập viên tích cực</value></data><data name="Help_Stats_Response" xml:space="preserve"><value>Phản hồi TB</value></data><data name="Guide_Title" xml:space="preserve"><value>Nguyên tắc Wiki</value></data><data name="Guide_Intro" xml:space="preserve"><value>Chào mừng bạn đến với VTuber Wiki. Hãy giúp chúng tôi duy trì một bách khoa toàn thư tích cực, trung lập và chính xác cho cộng đồng Virtual YouTuber toàn cầu.</value></data><data name="Guide_Conduct_Title" xml:space="preserve"><value>Quy tắc ứng xử cộng đồng</value></data><data name="Guide_Respect_Title" xml:space="preserve"><value>Tôn trọng</value></data><data name="Guide_Respect_Desc" xml:space="preserve"><value>Đối xử với tất cả các thành viên cộng đồng, biên tập viên và VTuber với sự lịch thiệp chuyên nghiệp bất kể ý kiến cá nhân.</value></data><data name="Guide_Inclusivity_Title" xml:space="preserve"><value>Tính bao trùm</value></data><data name="Guide_Inclusivity_Desc" xml:space="preserve"><value>Nuôi dưỡng một môi trường chào đón người hâm mộ từ mọi khu vực, ngôn ngữ và loại hình VTubing.</value></data><data name="Guide_ZeroTolerance_Title" xml:space="preserve"><value>Không khoan nhượng</value></data><data name="Guide_ZeroTolerance_Desc" xml:space="preserve"><value>Quấy rối, ngôn từ kích động thù địch, doxxing hoặc quấy rối có mục tiêu đối với VTuber sẽ dẫn đến lệnh cấm vĩnh viễn ngay lập tức.</value></data><data name="Guide_Standards_Title" xml:space="preserve"><value>Tiêu chuẩn chỉnh sửa</value></data><data name="Guide_Standards_Sourcing_Title" xml:space="preserve"><value>Nguồn tham khảo</value></data><data name="Guide_Standards_Sourcing_Desc" xml:space="preserve"><value>Tất cả thông tin phải được hỗ trợ bởi các nguồn chính thức, clip livestream hoặc thông báo trên mạng xã hội đã được xác minh. Tránh các tin đồn và trang web rò rỉ.</value></data><data name="Guide_Standards_Neutral_Title" xml:space="preserve"><value>Góc nhìn trung lập</value></data><data name="Guide_Standards_Neutral_Desc" xml:space="preserve"><value>Bài viết nên được viết bằng giọng văn trung lập, mang tính bách khoa. Tránh các tiếng lóng của cộng đồng người hâm mộ trừ khi định nghĩa các meme cụ thể.</value></data><data name="Guide_Standards_Format_Title" xml:space="preserve"><value>Định dạng</value></data><data name="Guide_Standards_Format_Desc" xml:space="preserve"><value>Sử dụng các mẫu tiêu chuẩn cho hộp thông tin. Đảm bảo chất lượng hình ảnh đáp ứng yêu cầu chiều rộng tối thiểu 800px cho các bản render trong suốt.</value></data><data name="Guide_Standards_Loc_Title" xml:space="preserve"><value>Bản địa hóa</value></data><data name="Guide_Standards_Loc_Desc" xml:space="preserve"><value>Khi dịch tên hoặc truyền thuyết, hãy ưu tiên cách viết tiếng Anh ưa thích của VTuber nếu có.</value></data><data name="Guide_Policy_Title" xml:space="preserve"><value>Chính sách nội dung</value></data><data name="Guide_Policy_Intro" xml:space="preserve"><value>Chúng tôi hướng đến sự toàn diện nhưng duy trì ngưỡng liên quan đến bách khoa toàn thư:</value></data><data name="Guide_Policy_Agencies" xml:space="preserve"><value>Đại lý chính thức: Tất cả các VTuber thuộc các đại lý đã thành lập (Hololive, Nijisanji, VShojo, v.v.) đều đủ điều kiện.</value></data><data name="Guide_Policy_Independents" xml:space="preserve"><value>Độc lập: Các VTuber độc lập phải đáp ứng ngưỡng người theo dõi tối thiểu (ví dụ: 10.000+) hoặc có tác động văn hóa đáng kể.</value></data><data name="Guide_Policy_Privacy" xml:space="preserve"><value>Quyền riêng tư: Nghiêm cấm mọi thông tin liên quan đến danh tính "hậu trường" hoặc cuộc sống cá nhân của VTuber (dữ liệu IRL).</value></data><data name="Guide_Mod_Title" xml:space="preserve"><value>Kiểm duyệt</value></data><data name="Guide_Mod_Intro" xml:space="preserve"><value>Nhóm quản trị viên tình nguyện của chúng tôi giám sát mọi thay đổi. Vi phạm các hướng dẫn sẽ dẫn đến:</value></data><data name="Guide_Mod_Step1_Title" xml:space="preserve"><value>1. Cảnh cáo</value></data><data name="Guide_Mod_Step1_Desc" xml:space="preserve"><value>Đối với các vấn đề định dạng nhỏ</value></data><data name="Guide_Mod_Step2_Title" xml:space="preserve"><value>2. Cấm chỉnh sửa</value></data><data name="Guide_Mod_Step2_Desc" xml:space="preserve"><value>Khóa 7 ngày đối với các lỗi lặp lại</value></data><data name="Guide_Mod_Step3_Title" xml:space="preserve"><value>3. Cấm hoàn toàn</value></data><data name="Guide_Mod_Step3_Desc" xml:space="preserve"><value>Đối với các vi phạm quy tắc ứng xử</value></data><data name="Guide_Links_Title" xml:space="preserve"><value>Liên kết nhanh</value></data><data name="Guide_Links_Recent" xml:space="preserve"><value>Thay đổi gần đây</value></data><data name="Guide_Links_Forum" xml:space="preserve"><value>Diễn đàn cộng đồng</value></data><data name="Guide_Links_Contact" xml:space="preserve"><value>Liên hệ với chúng tôi</value></data><data name="Guide_Links_FAQ" xml:space="preserve"><value>FAQ dành cho biên tập viên</value></data><data name="Guide_Contribute_Title" xml:space="preserve"><value>Trở thành người đóng góp</value></data><data name="Guide_Contribute_Desc" xml:space="preserve"><value>Tham gia cùng hơn 2.000 biên tập viên tích cực đang ghi lại lịch sử VTuber.</value></data><data name="Guide_Contribute_Btn" xml:space="preserve"><value>Đăng ký để chỉnh sửa</value></data><data name="RC_Btn_View" xml:space="preserve"><value>xem</value></data><data name="Nav_CommunityHub" xml:space="preserve"><value>Trung Tâm Cộng Đồng</value></data><data name="Nav_Forum" xml:space="preserve"><value>Diễn Đàn</value></data></root>

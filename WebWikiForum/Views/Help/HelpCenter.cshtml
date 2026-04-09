@@ -12,25 +12,25 @@
 <div class="max-w-[800px] mx-auto text-center flex flex-col items-center gap-8">
 <div class="flex flex-col gap-3">
 <h1 class="text-slate-900 dark:text-slate-100 text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight">
-                                How can we help?
+                                @Localizer["Help_Hero_Title"]
                             </h1>
 <p class="text-slate-600 dark:text-slate-400 text-base md:text-lg max-w-xl mx-auto">
-                                Search our knowledge base for VTuber setup guides, wiki contribution tutorials, and community support.
+                                @Localizer["Help_Hero_Desc"]
                             </p>
 </div>
 <div class="w-full max-w-2xl relative">
 <div class="flex items-center bg-white dark:bg-slate-800 rounded-xl shadow-xl shadow-primary/5 border border-primary/20 p-2 group focus-within:ring-2 focus-within:ring-primary/30 transition-all">
 <span class="material-symbols-outlined text-primary ml-3">search</span>
-<input class="flex-1 bg-transparent border-none focus:ring-0 text-lg px-3 placeholder:text-slate-400" placeholder="Search for articles, guides, or FAQs..." type="text"/>
+<input class="flex-1 bg-transparent border-none focus:ring-0 text-lg px-3 placeholder:text-slate-400" placeholder="@Localizer["Help_Search_Placeholder"]" type="text"/>
 <button class="bg-primary text-white px-6 py-3 rounded-lg font-bold hover:brightness-110 transition-all">
-                                    Search
+                                    @Localizer["Help_Search_Btn"]
                                 </button>
 </div>
 <div class="mt-4 flex flex-wrap justify-center gap-2 text-sm">
-<span class="text-slate-500">Popular:</span>
-<a class="text-primary hover:underline" href="#">Model setup</a>
-<a class="text-primary hover:underline" href="#">OBS settings</a>
-<a class="text-primary hover:underline" href="#">Naming conventions</a>
+<span class="text-slate-500">@Localizer["Help_Popular_Label"]</span>
+<a class="text-primary hover:underline" href="#">@Localizer["Help_Popular_ModelSetup"]</a>
+<a class="text-primary hover:underline" href="#">@Localizer["Help_Popular_OBS"]</a>
+<a class="text-primary hover:underline" href="#">@Localizer["Help_Popular_Naming"]</a>
 </div>
 </div>
 </div>
@@ -38,7 +38,7 @@
 <section class="max-w-[1200px] mx-auto px-6 py-12">
 <h2 class="text-2xl font-bold mb-8 flex items-center gap-2">
 <span class="material-symbols-outlined text-primary">category</span>
-                        Browse by Category
+                        @Localizer["Help_Category_Browse"]
                     </h2>
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 <div class="flex flex-col gap-4 rounded-xl border border-primary/10 bg-white dark:bg-slate-900 p-6 hover:border-primary/40 hover:shadow-lg transition-all group cursor-pointer">
@@ -46,8 +46,8 @@
 <span class="material-symbols-outlined text-3xl">manage_accounts</span>
 </div>
 <div class="flex flex-col gap-1">
-<h3 class="text-lg font-bold">Account Management</h3>
-<p class="text-slate-500 dark:text-slate-400 text-sm">Update your profile, security settings, and permissions.</p>
+<h3 class="text-lg font-bold">@Localizer["Help_Cat_Account_Title"]</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm">@Localizer["Help_Cat_Account_Desc"]</p>
 </div>
 </div>
 <div class="flex flex-col gap-4 rounded-xl border border-primary/10 bg-white dark:bg-slate-900 p-6 hover:border-primary/40 hover:shadow-lg transition-all group cursor-pointer">
@@ -55,8 +55,8 @@
 <span class="material-symbols-outlined text-3xl">edit_note</span>
 </div>
 <div class="flex flex-col gap-1">
-<h3 class="text-lg font-bold">Editing Guide</h3>
-<p class="text-slate-500 dark:text-slate-400 text-sm">Learn the syntax, formatting, and media upload rules.</p>
+<h3 class="text-lg font-bold">@Localizer["Help_Cat_Editing_Title"]</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm">@Localizer["Help_Cat_Editing_Desc"]</p>
 </div>
 </div>
 <div class="flex flex-col gap-4 rounded-xl border border-primary/10 bg-white dark:bg-slate-900 p-6 hover:border-primary/40 hover:shadow-lg transition-all group cursor-pointer">
@@ -64,8 +64,8 @@
 <span class="material-symbols-outlined text-3xl">gavel</span>
 </div>
 <div class="flex flex-col gap-1">
-<h3 class="text-lg font-bold">Community Guidelines</h3>
-<p class="text-slate-500 dark:text-slate-400 text-sm">Code of conduct, content policy, and moderation info.</p>
+<h3 class="text-lg font-bold">@Localizer["Help_Cat_Guidelines_Title"]</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm">@Localizer["Help_Cat_Guidelines_Desc"]</p>
 </div>
 </div>
 <div class="flex flex-col gap-4 rounded-xl border border-primary/10 bg-white dark:bg-slate-900 p-6 hover:border-primary/40 hover:shadow-lg transition-all group cursor-pointer">
@@ -73,8 +73,8 @@
 <span class="material-symbols-outlined text-3xl">construction</span>
 </div>
 <div class="flex flex-col gap-1">
-<h3 class="text-lg font-bold">Technical Support</h3>
-<p class="text-slate-500 dark:text-slate-400 text-sm">Troubleshoot API errors, login issues, and site bugs.</p>
+<h3 class="text-lg font-bold">@Localizer["Help_Cat_Tech_Title"]</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm">@Localizer["Help_Cat_Tech_Desc"]</p>
 </div>
 </div>
 </div>
@@ -83,41 +83,41 @@
 <div class="lg:col-span-2">
 <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
 <span class="material-symbols-outlined text-primary">trending_up</span>
-                            Promoted Articles
+                            @Localizer["Help_Articles_Promoted"]
                         </h2>
 <div class="flex flex-col border border-primary/10 bg-white dark:bg-slate-900 rounded-xl overflow-hidden divide-y divide-primary/10">
 <a class="p-5 flex items-center justify-between hover:bg-primary/5 transition-colors group" href="#">
 <div class="flex items-center gap-4">
 <span class="material-symbols-outlined text-primary">article</span>
-<span class="font-medium group-hover:text-primary transition-colors">How to create a new VTuber profile page</span>
+<span class="font-medium group-hover:text-primary transition-colors">@Localizer["Help_Article_CreateProfile"]</span>
 </div>
 <span class="material-symbols-outlined text-slate-300 group-hover:text-primary">chevron_right</span>
 </a>
 <a class="p-5 flex items-center justify-between hover:bg-primary/5 transition-colors group" href="#">
 <div class="flex items-center gap-4">
 <span class="material-symbols-outlined text-primary">article</span>
-<span class="font-medium group-hover:text-primary transition-colors">Image optimization for wiki galleries</span>
+<span class="font-medium group-hover:text-primary transition-colors">@Localizer["Help_Article_ImgOpt"]</span>
 </div>
 <span class="material-symbols-outlined text-slate-300 group-hover:text-primary">chevron_right</span>
 </a>
 <a class="p-5 flex items-center justify-between hover:bg-primary/5 transition-colors group" href="#">
 <div class="flex items-center gap-4">
 <span class="material-symbols-outlined text-primary">article</span>
-<span class="font-medium group-hover:text-primary transition-colors">Understanding agency vs. independent tags</span>
+<span class="font-medium group-hover:text-primary transition-colors">@Localizer["Help_Article_Tags"]</span>
 </div>
 <span class="material-symbols-outlined text-slate-300 group-hover:text-primary">chevron_right</span>
 </a>
 <a class="p-5 flex items-center justify-between hover:bg-primary/5 transition-colors group" href="#">
 <div class="flex items-center gap-4">
 <span class="material-symbols-outlined text-primary">article</span>
-<span class="font-medium group-hover:text-primary transition-colors">Troubleshooting VTube Studio integration</span>
+<span class="font-medium group-hover:text-primary transition-colors">@Localizer["Help_Article_TroubleVTS"]</span>
 </div>
 <span class="material-symbols-outlined text-slate-300 group-hover:text-primary">chevron_right</span>
 </a>
 <a class="p-5 flex items-center justify-between hover:bg-primary/5 transition-colors group" href="#">
 <div class="flex items-center gap-4">
 <span class="material-symbols-outlined text-primary">article</span>
-<span class="font-medium group-hover:text-primary transition-colors">Copyright and fair use of streamer assets</span>
+<span class="font-medium group-hover:text-primary transition-colors">@Localizer["Help_Article_Copyright"]</span>
 </div>
 <span class="material-symbols-outlined text-slate-300 group-hover:text-primary">chevron_right</span>
 </a>
@@ -128,40 +128,40 @@
 <div class="absolute -top-4 -right-4 size-24 bg-primary/20 rounded-full blur-2xl"></div>
 <h3 class="text-xl font-bold flex items-center gap-2">
 <span class="material-symbols-outlined text-primary">contact_support</span>
-                                Still need help?
+                                @Localizer["Help_Support_Title"]
                             </h3>
 <p class="text-slate-600 dark:text-slate-400 text-sm">
-                                If you can't find what you're looking for, our community and support team are here to assist.
+                                @Localizer["Help_Support_Desc"]
                             </p>
 <div class="flex flex-col gap-3">
 <a class="flex items-center justify-center gap-2 bg-primary text-white font-bold py-3 rounded-lg hover:brightness-110 transition-all" href="#">
 <span class="material-symbols-outlined text-sm">mail</span>
-                                    Contact Form
+                                    @Localizer["Help_Support_Contact"]
                                 </a>
 <a class="flex items-center justify-center gap-2 bg-[#5865F2] text-white font-bold py-3 rounded-lg hover:brightness-110 transition-all" href="#">
 <span class="material-symbols-outlined text-sm">forum</span>
-                                    Join our Discord
+                                    @Localizer["Help_Support_Discord"]
                                 </a>
 </div>
 </div>
 <div class="bg-white dark:bg-slate-900 border border-primary/10 rounded-xl p-6">
-<h3 class="font-bold mb-4">Wiki Stats</h3>
+<h3 class="font-bold mb-4">@Localizer["Help_Stats_Title"]</h3>
 <div class="grid grid-cols-2 gap-4">
 <div class="flex flex-col">
 <span class="text-2xl font-black text-primary">12k+</span>
-<span class="text-xs text-slate-500 uppercase font-bold tracking-wider">Articles</span>
+<span class="text-xs text-slate-500 uppercase font-bold tracking-wider">@Localizer["Help_Stats_Articles"]</span>
 </div>
 <div class="flex flex-col">
 <span class="text-2xl font-black text-primary">45k+</span>
-<span class="text-xs text-slate-500 uppercase font-bold tracking-wider">Members</span>
+<span class="text-xs text-slate-500 uppercase font-bold tracking-wider">@Localizer["Help_Stats_Members"]</span>
 </div>
 <div class="flex flex-col">
 <span class="text-2xl font-black text-primary">800+</span>
-<span class="text-xs text-slate-500 uppercase font-bold tracking-wider">Active Editors</span>
+<span class="text-xs text-slate-500 uppercase font-bold tracking-wider">@Localizer["Help_Stats_Editors"]</span>
 </div>
 <div class="flex flex-col">
 <span class="text-2xl font-black text-primary">5min</span>
-<span class="text-xs text-slate-500 uppercase font-bold tracking-wider">Avg Response</span>
+<span class="text-xs text-slate-500 uppercase font-bold tracking-wider">@Localizer["Help_Stats_Response"]</span>
 </div>
 </div>
 </div>

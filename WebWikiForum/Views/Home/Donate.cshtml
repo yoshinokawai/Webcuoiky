@@ -1,5 +1,6 @@
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResource> Localizer
 @{
-    ViewData["Title"] = "Support VTuber Wiki";
+    ViewData["Title"] = Localizer["Page_Donate"];
 }
 
 @section Styles {
@@ -14,12 +15,11 @@
         <div class="max-w-7xl mx-auto px-4 md:px-10 text-center">
             <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
                 <span class="material-symbols-outlined text-lg">volunteer_activism</span>
-                <span class="text-sm font-bold uppercase tracking-wider">Support the Wiki</span>
+                <span class="text-sm font-bold uppercase tracking-wider">@Localizer["Donate_Hero_Badge"]</span>
             </div>
-            <h1 class="text-4xl md:text-6xl font-black mb-6 tracking-tight">Support VTuber Wiki</h1>
+            <h1 class="text-4xl md:text-6xl font-black mb-6 tracking-tight">@Localizer["Donate_Hero_Title"]</h1>
             <p class="text-lg md:text-xl text-white/85 max-w-3xl mx-auto leading-relaxed mb-10">
-                We are a community-driven project dedicated to documenting the ever-expanding world of virtual talent.
-                Your contributions directly fund our server infrastructure and community-led events.
+                @Localizer["Donate_Hero_Desc"]
             </p>
 
             <!-- Progress Section -->
@@ -27,14 +27,14 @@
                 <div class="flex items-center justify-between mb-3">
                     <div class="flex items-center gap-2">
                         <span class="material-symbols-outlined text-lg">schedule</span>
-                        <span class="text-sm font-bold">Monthly Goal</span>
+                        <span class="text-sm font-bold">@Localizer["Donate_Goal_Monthly"]</span>
                     </div>
-                    <span class="text-sm font-bold">65% reached</span>
+                    <span class="text-sm font-bold">@string.Format(Localizer["Donate_Goal_Reached"].Value, "65")</span>
                 </div>
                 <div class="w-full bg-white/20 rounded-full h-3 mb-2">
                     <div class="progress-bar-fill bg-white h-3 rounded-full" style="width: 65%"></div>
                 </div>
-                <p class="text-xs text-white/70 text-right">October — 12 days remaining</p>
+                <p class="text-xs text-white/70 text-right">@string.Format(Localizer["Donate_Goal_Remaining"].Value, "October", "12")</p>
             </div>
         </div>
     </section>
@@ -42,8 +42,8 @@
     <!-- Donation Tiers -->
     <section class="max-w-7xl mx-auto px-4 md:px-10 py-16">
         <div class="text-center mb-12">
-            <h2 class="text-3xl font-black text-slate-900 dark:text-white mb-3">Choose Your Support Tier</h2>
-            <p class="text-slate-500 dark:text-slate-400">Every contribution helps us grow and improve</p>
+            <h2 class="text-3xl font-black text-slate-900 dark:text-white mb-3">@Localizer["Donate_Tiers_Title"]</h2>
+            <p class="text-slate-500 dark:text-slate-400">@Localizer["Donate_Tiers_Desc"]</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <!-- Tier 1: Supporter -->
@@ -53,8 +53,8 @@
                         <span class="material-symbols-outlined text-primary text-2xl">favorite</span>
                     </div>
                     <div>
-                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">Supporter</h3>
-                        <p class="text-xs text-slate-500">Basic tier</p>
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">@Localizer["Donate_Tier_Supporter_Title"]</h3>
+                        <p class="text-xs text-slate-500">@Localizer["Donate_Tier_Supporter_Subtitle"]</p>
                     </div>
                 </div>
                 <div class="mb-6">
@@ -64,34 +64,34 @@
                 <ul class="space-y-3 flex-1 mb-8">
                     <li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
                         <span class="material-symbols-outlined text-primary text-lg">check_circle</span>
-                        Supporter badge on profile
+                        @Localizer["Donate_Tier_Supporter_Benefit1"]
                     </li>
                     <li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
                         <span class="material-symbols-outlined text-primary text-lg">check_circle</span>
-                        Name in credits page
+                        @Localizer["Donate_Tier_Supporter_Benefit2"]
                     </li>
                     <li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
                         <span class="material-symbols-outlined text-primary text-lg">check_circle</span>
-                        Access to supporter Discord channel
+                        @Localizer["Donate_Tier_Supporter_Benefit3"]
                     </li>
                 </ul>
                 <button class="w-full py-3 bg-primary/10 text-primary font-bold rounded-xl hover:bg-primary hover:text-white transition-all">
-                    Become a Supporter
+                    @Localizer["Donate_Btn_Supporter"]
                 </button>
             </div>
 
             <!-- Tier 2: Patron (Featured) -->
             <div class="tier-card bg-white dark:bg-slate-800/50 rounded-2xl border-2 border-primary p-8 flex flex-col relative shadow-lg shadow-primary/10">
                 <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider">
-                    Most Popular
+                    @Localizer["Donate_Tier_Patron_Badge"]
                 </div>
                 <div class="flex items-center gap-3 mb-4">
                     <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
                         <span class="material-symbols-outlined text-primary text-2xl">star</span>
                     </div>
                     <div>
-                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">Patron</h3>
-                        <p class="text-xs text-slate-500">Premium tier</p>
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">@Localizer["Donate_Tier_Patron_Title"]</h3>
+                        <p class="text-xs text-slate-500">@Localizer["Donate_Tier_Patron_Subtitle"]</p>
                     </div>
                 </div>
                 <div class="mb-6">
@@ -101,23 +101,23 @@
                 <ul class="space-y-3 flex-1 mb-8">
                     <li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
                         <span class="material-symbols-outlined text-primary text-lg">check_circle</span>
-                        All Supporter benefits
+                        @Localizer["Donate_Tier_Patron_Benefit1"]
                     </li>
                     <li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
                         <span class="material-symbols-outlined text-primary text-lg">check_circle</span>
-                        Patron badge with custom color
+                        @Localizer["Donate_Tier_Patron_Benefit2"]
                     </li>
                     <li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
                         <span class="material-symbols-outlined text-primary text-lg">check_circle</span>
-                        Early access to new features
+                        @Localizer["Donate_Tier_Patron_Benefit3"]
                     </li>
                     <li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
                         <span class="material-symbols-outlined text-primary text-lg">check_circle</span>
-                        Vote on wiki priorities
+                        @Localizer["Donate_Tier_Patron_Benefit4"]
                     </li>
                 </ul>
                 <button class="w-full py-3 bg-primary text-white font-bold rounded-xl hover:bg-primary-dark transition-all shadow-md shadow-primary/20">
-                    Become a Patron
+                    @Localizer["Donate_Btn_Patron"]
                 </button>
             </div>
 
@@ -128,8 +128,8 @@
                         <span class="material-symbols-outlined text-primary text-2xl">trophy</span>
                     </div>
                     <div>
-                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">Legendary</h3>
-                        <p class="text-xs text-slate-500">Ultimate tier</p>
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">@Localizer["Donate_Tier_Legendary_Title"]</h3>
+                        <p class="text-xs text-slate-500">@Localizer["Donate_Tier_Legendary_Subtitle"]</p>
                     </div>
                 </div>
                 <div class="mb-6">
@@ -139,23 +139,23 @@
                 <ul class="space-y-3 flex-1 mb-8">
                     <li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
                         <span class="material-symbols-outlined text-primary text-lg">check_circle</span>
-                        All Patron benefits
+                        @Localizer["Donate_Tier_Legendary_Benefit1"]
                     </li>
                     <li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
                         <span class="material-symbols-outlined text-primary text-lg">check_circle</span>
-                        Legendary animated badge
+                        @Localizer["Donate_Tier_Legendary_Benefit2"]
                     </li>
                     <li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
                         <span class="material-symbols-outlined text-primary text-lg">check_circle</span>
-                        Hall of Fame featured slot
+                        @Localizer["Donate_Tier_Legendary_Benefit3"]
                     </li>
                     <li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
                         <span class="material-symbols-outlined text-primary text-lg">check_circle</span>
-                        Direct line to admin team
+                        @Localizer["Donate_Tier_Legendary_Benefit4"]
                     </li>
                 </ul>
                 <button class="w-full py-3 bg-primary/10 text-primary font-bold rounded-xl hover:bg-primary hover:text-white transition-all">
-                    Become Legendary
+                    @Localizer["Donate_Btn_Legendary"]
                 </button>
             </div>
         </div>
@@ -168,10 +168,10 @@
                 <div class="flex items-center gap-4">
                     <span class="material-symbols-outlined text-primary text-3xl">payments</span>
                     <div>
-                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">Payment Methods</h3>
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">@Localizer["Donate_Payments_Title"]</h3>
                         <p class="text-sm text-slate-500 dark:text-slate-400 flex items-center gap-1">
                             <span class="material-symbols-outlined text-sm text-green-500">lock</span>
-                            All payments are encrypted and processed securely.
+                            @Localizer["Donate_Payments_Secure"]
                         </p>
                     </div>
                 </div>
@@ -189,7 +189,7 @@
     <section class="max-w-7xl mx-auto px-4 md:px-10 py-16">
         <div class="flex items-center gap-3 mb-8">
             <span class="material-symbols-outlined text-primary text-3xl">trophy</span>
-            <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Hall of Fame</h2>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white">@Localizer["Donate_Hall_Title"]</h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <!-- Donor 1 -->
@@ -199,7 +199,7 @@
                     <p class="font-bold text-slate-900 dark:text-white truncate">HololiveEnthusiast</p>
                     <div class="flex items-center gap-1">
                         <span class="material-symbols-outlined text-yellow-500 text-sm">star</span>
-                        <span class="text-xs font-bold text-yellow-600 dark:text-yellow-400">Legendary Patron</span>
+                        <span class="text-xs font-bold text-yellow-600 dark:text-yellow-400">@Localizer["Donate_Donor_Legendary"]</span>
                     </div>
                 </div>
             </div>
@@ -210,7 +210,7 @@
                     <p class="font-bold text-slate-900 dark:text-white truncate">V-Simp-99</p>
                     <div class="flex items-center gap-1">
                         <span class="material-symbols-outlined text-yellow-500 text-sm">star</span>
-                        <span class="text-xs font-bold text-yellow-600 dark:text-yellow-400">Legendary Patron</span>
+                        <span class="text-xs font-bold text-yellow-600 dark:text-yellow-400">@Localizer["Donate_Donor_Legendary"]</span>
                     </div>
                 </div>
             </div>
@@ -221,14 +221,14 @@
                     <p class="font-bold text-slate-900 dark:text-white truncate">NijisanjiEnjoyer</p>
                     <div class="flex items-center gap-1">
                         <span class="material-symbols-outlined text-primary text-sm">favorite</span>
-                        <span class="text-xs font-bold text-primary">Supporter</span>
+                        <span class="text-xs font-bold text-primary">@Localizer["Donate_Donor_Supporter"]</span>
                     </div>
                 </div>
             </div>
         </div>
         <div class="text-center">
             <a asp-controller="Home" asp-action="Donate" class="inline-flex items-center gap-2 text-primary font-bold hover:underline">
-                View All Donors
+                @Localizer["Donate_View_All"]
                 <span class="material-symbols-outlined text-lg">arrow_forward</span>
             </a>
         </div>
@@ -241,22 +241,22 @@
                 <a asp-controller="Home" asp-action="AboutUs" class="flex items-center gap-4 bg-white dark:bg-slate-800/50 p-5 rounded-xl border border-primary/10 hover:border-primary/30 transition-all group">
                     <span class="material-symbols-outlined text-primary text-2xl group-hover:scale-110 transition-transform">info</span>
                     <div>
-                        <h4 class="font-bold text-slate-900 dark:text-white">About Us</h4>
-                        <p class="text-xs text-slate-500">Learn more about VTuber Wiki</p>
+                        <h4 class="font-bold text-slate-900 dark:text-white">@Localizer["Donate_Card_About_Title"]</h4>
+                        <p class="text-xs text-slate-500">@Localizer["Donate_Card_About_Desc"]</p>
                     </div>
                 </a>
                 <a asp-controller="Forum" asp-action="WikiForum" class="flex items-center gap-4 bg-white dark:bg-slate-800/50 p-5 rounded-xl border border-primary/10 hover:border-primary/30 transition-all group">
                     <span class="material-symbols-outlined text-primary text-2xl group-hover:scale-110 transition-transform">forum</span>
                     <div>
-                        <h4 class="font-bold text-slate-900 dark:text-white">Community Forum</h4>
-                        <p class="text-xs text-slate-500">Join the discussion</p>
+                        <h4 class="font-bold text-slate-900 dark:text-white">@Localizer["Donate_Card_Forum_Title"]</h4>
+                        <p class="text-xs text-slate-500">@Localizer["Donate_Card_Forum_Desc"]</p>
                     </div>
                 </a>
                 <a asp-controller="Help" asp-action="HelpCenter" class="flex items-center gap-4 bg-white dark:bg-slate-800/50 p-5 rounded-xl border border-primary/10 hover:border-primary/30 transition-all group">
                     <span class="material-symbols-outlined text-primary text-2xl group-hover:scale-110 transition-transform">help</span>
                     <div>
-                        <h4 class="font-bold text-slate-900 dark:text-white">Help Center</h4>
-                        <p class="text-xs text-slate-500">Get support and answers</p>
+                        <h4 class="font-bold text-slate-900 dark:text-white">@Localizer["Donate_Card_Help_Title"]</h4>
+                        <p class="text-xs text-slate-500">@Localizer["Donate_Card_Help_Desc"]</p>
                     </div>
                 </a>
             </div>

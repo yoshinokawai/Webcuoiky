@@ -23,11 +23,11 @@
                     <div class="space-y-1 text-center">
                         <span class="material-symbols-outlined text-slate-400 text-4xl mb-2">cloud_upload</span>
                         <div class="text-sm text-slate-600 dark:text-slate-400 flex justify-center items-center gap-1">
-                            <span class="font-medium text-primary hover:text-primary-dark">Upload a file</span>
-                            <span>or drag and drop</span>
-                            <input id="avatarFile" name="avatarFile" type="file" class="sr-only" accept="image/*" onchange="document.getElementById('fileNameDisplay').textContent = this.files[0] ? 'Selected: ' + this.files[0].name : 'PNG, JPG, GIF up to 5MB'; document.getElementById('fileNameDisplay').className = this.files[0] ? 'text-xs font-bold text-primary mt-2' : 'text-xs text-slate-500 dark:text-slate-500 mt-2';">
+                            <span class="font-medium text-primary hover:text-primary-dark">@Localizer["Wiki_Upload_File"]</span>
+                            <span>@Localizer["Wiki_Upload_Drop"]</span>
+                            <input id="avatarFile" name="avatarFile" type="file" class="sr-only" accept="image/*" onchange="document.getElementById('fileNameDisplay').textContent = this.files[0] ? '@Localizer["Wiki_Upload_Select"].Value.Replace("{0}", "")' + this.files[0].name : '@Localizer["Wiki_Upload_PNG"]'; document.getElementById('fileNameDisplay').className = this.files[0] ? 'text-xs font-bold text-primary mt-2' : 'text-xs text-slate-500 dark:text-slate-500 mt-2';">
                         </div>
-                        <p id="fileNameDisplay" class="text-xs text-slate-500 dark:text-slate-500 mt-2">PNG, JPG, GIF up to 5MB</p>
+                        <p id="fileNameDisplay" class="text-xs text-slate-500 dark:text-slate-500 mt-2">@Localizer["Wiki_Upload_PNG"]</p>
                     </div>
                 </div>
             </div>
@@ -35,42 +35,42 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Name -->
                 <div>
-                    <label asp-for="Name" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">VTuber Name</label>
-                    <input asp-for="Name" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white dark:focus:bg-surface-dark transition-colors" placeholder="e.g. Hoshimachi Suisei" />
+                    <label asp-for="Name" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">@Localizer["Wiki_Label_Name"]</label>
+                    <input asp-for="Name" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white dark:focus:bg-surface-dark transition-colors" placeholder="@Localizer["Wiki_Placeholder_Name"]" />
                     <span asp-validation-for="Name" class="text-red-500 text-xs mt-1 block"></span>
                 </div>
 
                 <!-- YouTube URL -->
                 <div>
-                    <label asp-for="YoutubeUrl" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">YouTube Channel URL</label>
-                    <input asp-for="YoutubeUrl" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white dark:focus:bg-surface-dark transition-colors" placeholder="https://youtube.com/@@channel" />
+                    <label asp-for="YoutubeUrl" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">@Localizer["Wiki_Label_Youtube"]</label>
+                    <input asp-for="YoutubeUrl" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white dark:focus:bg-surface-dark transition-colors" placeholder="@Localizer["Wiki_Placeholder_Youtube"]" />
                     <span asp-validation-for="YoutubeUrl" class="text-red-500 text-xs mt-1 block"></span>
                 </div>
 
                 <!-- Age -->
                 <div>
-                    <label asp-for="Age" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Age (Optional)</label>
-                    <input asp-for="Age" type="number" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white dark:focus:bg-surface-dark transition-colors" placeholder="e.g. 18" />
+                    <label asp-for="Age" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">@Localizer["Wiki_Label_Age_Label"]</label>
+                    <input asp-for="Age" type="number" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white dark:focus:bg-surface-dark transition-colors" placeholder="@Localizer["Wiki_Placeholder_Age"]" />
                 </div>
 
                 <!-- Birthday -->
                 <div>
-                    <label asp-for="Birthday" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Birthday</label>
-                    <input asp-for="Birthday" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white dark:focus:bg-surface-dark transition-colors" placeholder="e.g. March 22" />
+                    <label asp-for="Birthday" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">@Localizer["Wiki_Label_Birthday"]</label>
+                    <input asp-for="Birthday" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white dark:focus:bg-surface-dark transition-colors" placeholder="@Localizer["Wiki_Placeholder_Birthday"]" />
                 </div>
 
                 <!-- Debut Date -->
                 <div>
-                    <label asp-for="DebutDate" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Debut Date</label>
+                    <label asp-for="DebutDate" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">@Localizer["Wiki_Label_Debut"]</label>
                     <input asp-for="DebutDate" type="date" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white dark:focus:bg-surface-dark transition-colors text-slate-700 dark:text-slate-300" />
                 </div>
 
                 <!-- AgencyId -->
                 <div>
-                    <label asp-for="AgencyId" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Agency</label>
+                    <label asp-for="AgencyId" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">@Localizer["Wiki_Label_Agency"]</label>
                     <div class="flex gap-2">
                         <select asp-for="AgencyId" id="agencySelect" class="flex-1 px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white dark:focus:bg-surface-dark transition-colors text-slate-700 dark:text-slate-300">
-                            <option value="">-- Independent VTuber --</option>
+                            <option value="">-- @Localizer["Details_Independent"] --</option>
                             @if (ViewBag.Agencies != null)
                             {
                                 foreach (var agency in ViewBag.Agencies)
@@ -87,36 +87,36 @@
 
                 <!-- Region -->
                 <div>
-                    <label asp-for="Region" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Region</label>
+                    <label asp-for="Region" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">@Localizer["Wiki_Label_Region"]</label>
                     <select asp-for="Region" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white dark:focus:bg-surface-dark transition-colors text-slate-700 dark:text-slate-300">
-                        <option value="Japan">Japan</option>
-                        <option value="NA">North America</option>
-                        <option value="Europe">Europe</option>
-                        <option value="SEA">Southeast Asia</option>
-                        <option value="Vietnam">Vietnam</option>
+                        <option value="Japan">@Localizer["Region_Japan"]</option>
+                        <option value="NA">@Localizer["Region_NA"]</option>
+                        <option value="Europe">@Localizer["Region_Europe"]</option>
+                        <option value="SEA">@Localizer["Region_SEA"]</option>
+                        <option value="Vietnam">@Localizer["Region_Vietnam"]</option>
                     </select>
                     <span asp-validation-for="Region" class="text-red-500 text-xs mt-1 block"></span>
                 </div>
 
                 <!-- Language -->
                 <div>
-                    <label asp-for="Language" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Language</label>
-                    <input asp-for="Language" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white dark:focus:bg-surface-dark transition-colors" placeholder="e.g. English / Japanese" />
+                    <label asp-for="Language" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">@Localizer["Wiki_Label_Language"]</label>
+                    <input asp-for="Language" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white dark:focus:bg-surface-dark transition-colors" placeholder="@Localizer["Wiki_Placeholder_Language"]" />
                     <span asp-validation-for="Language" class="text-red-500 text-xs mt-1 block"></span>
                 </div>
 
                 <!-- Tags -->
                 <div>
-                    <label asp-for="Tags" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Tags (Comma-separated)</label>
-                    <input asp-for="Tags" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white dark:focus:bg-surface-dark transition-colors" placeholder="e.g. Gaming, Art, ASMR" />
+                    <label asp-for="Tags" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">@Localizer["Wiki_Label_Tags"]</label>
+                    <input asp-for="Tags" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white dark:focus:bg-surface-dark transition-colors" placeholder="@Localizer["Wiki_Placeholder_Tags"]" />
                     <span asp-validation-for="Tags" class="text-red-500 text-xs mt-1 block"></span>
                 </div>
             </div>
 
             <!-- Lore -->
             <div>
-                <label asp-for="Lore" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Lore & Backstory (MD)</label>
-                <textarea asp-for="Lore" rows="5" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white dark:focus:bg-surface-dark transition-colors resize-none" placeholder="Write a short background story or biography section for this VTuber..."></textarea>
+                <label asp-for="Lore" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">@Localizer["Wiki_Label_Lore"]</label>
+                <textarea asp-for="Lore" rows="5" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white dark:focus:bg-surface-dark transition-colors resize-none" placeholder="@Localizer["Wiki_Placeholder_Lore"]"></textarea>
             </div>
 
             <div class="pt-4 flex justify-end gap-3">
@@ -134,32 +134,32 @@
     <div class="flex items-center justify-center min-h-screen p-4">
         <div class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm" onclick="closeAgencyModal()"></div>
         <div class="relative bg-white dark:bg-surface-dark p-6 rounded-2xl shadow-2xl max-w-md w-full border border-slate-200 dark:border-slate-800">
-            <h3 class="text-xl font-black text-slate-900 dark:text-white mb-4">Quick Add Agency</h3>
+            <h3 class="text-xl font-black text-slate-900 dark:text-white mb-4">@Localizer["Wiki_Create_Agency_Title"]</h3>
             
             <div class="space-y-4">
                 <div>
-                    <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Agency Name</label>
-                    <input type="text" id="quickAgencyName" class="w-full px-4 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary/20" placeholder="e.g. Hololive English" />
+                    <label class="block text-xs font-bold text-slate-500 uppercase mb-1">@Localizer["Wiki_Label_Name"]</label>
+                    <input type="text" id="quickAgencyName" class="w-full px-4 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary/20" placeholder="@Localizer["Wiki_Placeholder_Name"]" />
                 </div>
                 <div>
-                    <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Region</label>
+                    <label class="block text-xs font-bold text-slate-500 uppercase mb-1">@Localizer["Wiki_Label_Region"]</label>
                     <select id="quickAgencyRegion" class="w-full px-4 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg">
-                        <option value="Japan">Japan</option>
-                        <option value="Global">Global</option>
-                        <option value="Vietnam">Vietnam</option>
-                        <option value="SEA">Southeast Asia</option>
+                        <option value="Japan">@Localizer["Region_Japan"]</option>
+                        <option value="Global">@Localizer["Region_Global"]</option>
+                        <option value="Vietnam">@Localizer["Region_Vietnam"]</option>
+                        <option value="SEA">@Localizer["Region_SEA"]</option>
                     </select>
                 </div>
                 <div>
-                    <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Focus</label>
-                    <input type="text" id="quickAgencyFocus" class="w-full px-4 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg" placeholder="e.g. Virtual Idols, Gaming" />
+                    <label class="block text-xs font-bold text-slate-500 uppercase mb-1">@Localizer["Wiki_Label_Focus"]</label>
+                    <input type="text" id="quickAgencyFocus" class="w-full px-4 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg" placeholder="@Localizer["Wiki_Label_Focus"]" />
                 </div>
             </div>
 
             <div class="flex justify-end gap-3 mt-8">
-                <button type="button" onclick="closeAgencyModal()" class="px-5 py-2 text-sm font-bold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">Cancel</button>
+                <button type="button" onclick="closeAgencyModal()" class="px-5 py-2 text-sm font-bold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">@Localizer["Wiki_Btn_Cancel"]</button>
                 <button type="button" id="quickAgencySaveBtn" onclick="saveQuickAgency()" class="px-6 py-2 text-sm font-bold bg-primary text-white rounded-full hover:bg-primary-dark shadow-sm transition-all flex items-center gap-2">
-                    <span>Save Agency</span>
+                    <span>@Localizer["Wiki_Btn_Submit"]</span>
                 </button>
             </div>
         </div>

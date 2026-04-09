@@ -42,17 +42,17 @@
 <div class="relative">
 <select name="region" onchange="this.form.submit()" class="h-full pl-4 pr-10 border border-primary/10 rounded-xl bg-white dark:bg-slate-900 text-sm font-semibold appearance-none cursor-pointer">
 <option value="all">@Localizer["Indie_Filter_Region"]</option>
-<option value="Japan" selected='@(ViewData["Region"]?.ToString() == "Japan")'>Japan</option>
-<option value="NA" selected='@(ViewData["Region"]?.ToString() == "NA")'>North America</option>
-<option value="Europe" selected='@(ViewData["Region"]?.ToString() == "Europe")'>Europe</option>
+<option value="Japan" selected='@(ViewData["Region"]?.ToString() == "Japan")'>@Localizer["Region_Japan"]</option>
+<option value="NA" selected='@(ViewData["Region"]?.ToString() == "NA")'>@Localizer["Region_NA"]</option>
+<option value="Europe" selected='@(ViewData["Region"]?.ToString() == "Europe")'>@Localizer["Region_Europe"]</option>
 </select>
 <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">expand_more</span>
 </div>
 <div class="relative">
 <select name="language" onchange="this.form.submit()" class="h-full pl-4 pr-10 border border-primary/10 rounded-xl bg-white dark:bg-slate-900 text-sm font-semibold appearance-none cursor-pointer">
 <option value="all">@Localizer["Indie_Filter_Language"]</option>
-<option value="English" selected='@(ViewData["Language"]?.ToString() == "English")'>English</option>
-<option value="Japanese" selected='@(ViewData["Language"]?.ToString() == "Japanese")'>Japanese</option>
+<option value="English" selected='@(ViewData["Language"]?.ToString() == "English")'>@Localizer["Lang_English"]</option>
+<option value="Japanese" selected='@(ViewData["Language"]?.ToString() == "Japanese")'>@Localizer["Lang_Japanese"]</option>
 </select>
 <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">expand_more</span>
 </div>
@@ -62,9 +62,9 @@
 
 <div class="flex flex-wrap gap-2">
 <span class="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full uppercase tracking-wider">@Localizer["Indie_PopularTags"]</span>
-<a class="px-3 py-1 bg-white dark:bg-slate-800 border border-primary/5 rounded-full text-xs hover:border-primary transition-colors cursor-pointer" asp-action="Independent" asp-route-tag="Gaming">Gaming</a>
-<a class="px-3 py-1 bg-white dark:bg-slate-800 border border-primary/5 rounded-full text-xs hover:border-primary transition-colors cursor-pointer" asp-action="Independent" asp-route-tag="Singing">Singing</a>
-<a class="px-3 py-1 bg-white dark:bg-slate-800 border border-primary/5 rounded-full text-xs hover:border-primary transition-colors cursor-pointer" asp-action="Independent" asp-route-tag="ASMR">ASMR</a>
+<a class="px-3 py-1 bg-white dark:bg-slate-800 border border-primary/5 rounded-full text-xs hover:border-primary transition-colors cursor-pointer" asp-action="Independent" asp-route-tag="Gaming">@Localizer["Events_Filter_Gaming"]</a>
+<a class="px-3 py-1 bg-white dark:bg-slate-800 border border-primary/5 rounded-full text-xs hover:border-primary transition-colors cursor-pointer" asp-action="Independent" asp-route-tag="Singing">@Localizer["Events_Filter_Music"]</a>
+<a class="px-3 py-1 bg-white dark:bg-slate-800 border border-primary/5 rounded-full text-xs hover:border-primary transition-colors cursor-pointer" asp-action="Independent" asp-route-tag="ASMR">@Localizer["Events_Filter_ASMR"]</a>
 </div>
 </section>
 

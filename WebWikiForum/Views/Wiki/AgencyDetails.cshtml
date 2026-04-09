@@ -32,7 +32,7 @@
                 <div class="text-center md:text-left text-white">
                     <div class="flex flex-wrap items-center justify-center md:justify-start gap-3 mb-2">
                         <span class="px-3 py-1 rounded-full bg-primary/20 backdrop-blur-md border border-primary/30 text-xs font-bold uppercase tracking-widest">
-                            Agency Profile
+                            @Localizer["Wiki_Profile_Type"]
                         </span>
                         <span class="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-bold uppercase tracking-widest flex items-center gap-1">
                             <span class="material-symbols-outlined text-[14px]">location_on</span>
@@ -43,7 +43,7 @@
                     <div class="flex items-center justify-center md:justify-start gap-6 opacity-80 font-bold overflow-x-auto no-scrollbar">
                         <div class="flex items-center gap-2 whitespace-nowrap">
                             <span class="material-symbols-outlined">groups</span>
-                            <span>@(Model.Vtubers?.Count ?? 0) Talents</span>
+                            <span>@string.Format(Localizer["Wiki_Talents_Count"].Value, Model.Vtubers?.Count ?? 0)</span>
                         </div>
                         <div class="flex items-center gap-2 whitespace-nowrap">
                             <span class="material-symbols-outlined">stars</span>
@@ -63,35 +63,35 @@
                 <div class="bg-white dark:bg-surface-dark rounded-3xl p-8 border border-slate-200 dark:border-slate-800 shadow-sm">
                     <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
                         <span class="material-symbols-outlined text-primary">info</span>
-                        About @Model.Name
+                        @string.Format(Localizer["Wiki_Label_About"].Value, Model.Name)
                     </h2>
                     <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
-                        @(string.IsNullOrEmpty(Model.Description) ? "No description available for this agency." : Model.Description)
+                        @(string.IsNullOrEmpty(Model.Description) ? Localizer["Wiki_No_Desc"].Value : Model.Description)
                     </p>
                 </div>
                 @if (!string.IsNullOrEmpty(Model.WebsiteUrl) || !string.IsNullOrEmpty(Model.YoutubeUrl) || !string.IsNullOrEmpty(Model.TwitterUrl))
                 {
                     <div class="bg-primary/5 rounded-3xl p-8 border border-primary/10">
-                        <h3 class="font-bold text-primary mb-3">Community Links</h3>
+                        <h3 class="font-bold text-primary mb-3">@Localizer["Wiki_Community_Links"]</h3>
                         <div class="space-y-3">
                             @if (!string.IsNullOrEmpty(Model.WebsiteUrl))
                             {
                                 <a href="@Model.WebsiteUrl" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:border-primary transition-all group">
-                                    <span class="text-sm font-bold text-slate-700 dark:text-slate-300">Official Website</span>
+                                    <span class="text-sm font-bold text-slate-700 dark:text-slate-300">@Localizer["Wiki_Official_Website"]</span>
                                     <span class="material-symbols-outlined text-slate-400 group-hover:text-primary">language</span>
                                 </a>
                             }
                             @if (!string.IsNullOrEmpty(Model.YoutubeUrl))
                             {
                                 <a href="@Model.YoutubeUrl" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:border-primary transition-all group">
-                                    <span class="text-sm font-bold text-slate-700 dark:text-slate-300">YouTube Channel</span>
+                                    <span class="text-sm font-bold text-slate-700 dark:text-slate-300">@Localizer["Wiki_Youtube_Channel"]</span>
                                     <span class="material-symbols-outlined text-slate-400 group-hover:text-primary">smart_display</span>
                                 </a>
                             }
                             @if (!string.IsNullOrEmpty(Model.TwitterUrl))
                             {
                                 <a href="@Model.TwitterUrl" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:border-primary transition-all group">
-                                    <span class="text-sm font-bold text-slate-700 dark:text-slate-300">Twitter / X</span>
+                                    <span class="text-sm font-bold text-slate-700 dark:text-slate-300">@Localizer["Wiki_Social_Twitter"]</span>
                                     <span class="material-symbols-outlined text-slate-400 group-hover:text-primary">open_in_new</span>
                                 </a>
                             }
@@ -103,10 +103,10 @@
             <!-- Right: Talents Grid -->
             <div class="lg:col-span-2 space-y-6">
                 <div class="flex items-center justify-between px-2">
-                    <h2 class="text-2xl font-black text-slate-900 dark:text-white tracking-tight">Current Talents</h2>
+                    <h2 class="text-2xl font-black text-slate-900 dark:text-white tracking-tight">@Localizer["Wiki_Current_Talents"]</h2>
                     <div class="flex items-center gap-2 text-xs font-bold text-slate-500">
                         <span class="material-symbols-outlined text-sm">sort</span>
-                        Recently Active
+                        @Localizer["Wiki_Recently_Active"]
                     </div>
                 </div>
 
@@ -134,7 +134,7 @@
                     {
                         <div class="col-span-full p-12 bg-slate-50 dark:bg-slate-800/50 rounded-3xl border-2 border-dashed border-slate-200 dark:border-slate-700 text-center">
                             <span class="material-symbols-outlined text-4xl text-slate-300 mb-2">person_search</span>
-                            <p class="font-bold text-slate-500">No talents linked to this agency yet.</p>
+                            <p class="font-bold text-slate-500">@Localizer["Wiki_No_Talents"]</p>
                         </div>
                     }
                 </div>

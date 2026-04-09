@@ -1,37 +1,37 @@
 @model WebWikiForum.Models.Discussion
 @{
-    ViewData["Title"] = "Start a Topic";
+    ViewData["Title"] = Localizer["Forum_Community_StartTopic"];
 }
 
 <div class="max-w-4xl mx-auto px-4 py-12">
     <div class="bg-white dark:bg-surface-dark p-8 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-800">
-        <h2 class="text-3xl font-black text-slate-900 dark:text-white mb-2">New Discussion</h2>
-        <p class="text-slate-500 mb-8">Share your thoughts with the community.</p>
+        <h2 class="text-3xl font-black text-slate-900 dark:text-white mb-2">@Localizer["Forum_Topic_NewTitle"]</h2>
+        <p class="text-slate-500 mb-8">@Localizer["Forum_Topic_NewDesc"]</p>
 
         <form asp-action="StartTopic" method="post" class="space-y-6">
             <div>
-                <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Title</label>
-                <input asp-for="Title" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-primary/20 outline-none transition-all" placeholder="What's on your mind?" required />
+                <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">@Localizer["Forum_Topic_LabelTitle"]</label>
+                <input asp-for="Title" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-primary/20 outline-none transition-all" placeholder="@Localizer["Forum_Topic_PlaceholderTitle"]" required />
             </div>
 
             <div>
-                <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Category</label>
+                <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">@Localizer["Forum_Topic_LabelCategory"]</label>
                 <select asp-for="Category" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-primary/20 outline-none transition-all">
-                    <option value="General">General Discussion</option>
-                    <option value="News">News & Updates</option>
-                    <option value="FanArt">Fan Art</option>
-                    <option value="Lore">Lore & Theories</option>
+                    <option value="General">@Localizer["Forum_Topic_CatGeneral"]</option>
+                    <option value="News">@Localizer["Forum_Topic_CatNews"]</option>
+                    <option value="FanArt">@Localizer["Forum_Topic_CatFanArt"]</option>
+                    <option value="Lore">@Localizer["Forum_Topic_CatLore"]</option>
                 </select>
             </div>
 
             <div>
-                <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Content</label>
-                <textarea asp-for="Content" rows="8" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-primary/20 outline-none transition-all" placeholder="Write your content here..." required></textarea>
+                <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">@Localizer["Forum_Topic_LabelContent"]</label>
+                <textarea asp-for="Content" rows="8" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-primary/20 outline-none transition-all" placeholder="@Localizer["Forum_Topic_PlaceholderContent"]" required></textarea>
             </div>
 
             <div class="flex items-center gap-4 pt-4">
-                <button type="submit" class="flex-1 py-3 bg-primary text-white font-bold rounded-xl hover:bg-primary-dark shadow-lg shadow-primary/20 transition-all active:scale-95">Post Discussion</button>
-                <a href="@Url.Action("Community")" class="px-6 py-3 text-slate-500 font-bold hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-all">Cancel</a>
+                <button type="submit" class="flex-1 py-3 bg-primary text-white font-bold rounded-xl hover:bg-primary-dark shadow-lg shadow-primary/20 transition-all active:scale-95">@Localizer["Forum_Topic_BtnPost"]</button>
+                <a href="@Url.Action("Community")" class="px-6 py-3 text-slate-500 font-bold hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-all">@Localizer["Forum_Topic_BtnCancel"]</a>
             </div>
         </form>
     </div>

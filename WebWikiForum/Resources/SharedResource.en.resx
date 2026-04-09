@@ -1,376 +1,2102 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <root>
-  <!-- simplified but valid for .NET core string localizer unless using resx editors extensively -->
-  <data name="Nav_Home" xml:space="preserve"><value>Home</value></data>
-  <data name="Nav_Explore" xml:space="preserve"><value>Explore</value></data>
-  <data name="Nav_Community" xml:space="preserve"><value>Community</value></data>
-  <data name="Nav_Wiki" xml:space="preserve"><value>Wiki</value></data>
-  <data name="Nav_Search" xml:space="preserve"><value>Search talents, agencies...</value></data>
-  <data name="Nav_Login" xml:space="preserve"><value>Log In</value></data>
-  <data name="Nav_Signup" xml:space="preserve"><value>Sign Up</value></data>
-  <data name="Nav_Dashboard" xml:space="preserve"><value>Dashboard</value></data>
-  <data name="Nav_Agencies" xml:space="preserve"><value>Agencies</value></data>
-  <data name="Nav_Independent" xml:space="preserve"><value>Independent</value></data>
-  <data name="Nav_VirtualEvents" xml:space="preserve"><value>Virtual Events</value></data>
-  <data name="Nav_FanTools" xml:space="preserve"><value>Fan Tools</value></data>
-  <data name="Nav_TopTalents" xml:space="preserve"><value>Top Talents</value></data>
-  <data name="Nav_RecentChanges" xml:space="preserve"><value>Recent Changes</value></data>
-  <data name="Nav_Guidelines" xml:space="preserve"><value>Guidelines</value></data>
-  <data name="Nav_EditorHub" xml:space="preserve"><value>Editors Hub</value></data>
-  <data name="Nav_WikiForum" xml:space="preserve"><value>Wiki Forum</value></data>
-  <data name="Nav_Discord" xml:space="preserve"><value>Discord Link</value></data>
-  <data name="Nav_AboutUs" xml:space="preserve"><value>About Us</value></data>
-  <data name="Nav_Translation" xml:space="preserve"><value>Translation Project</value></data>
-  <data name="Nav_HelpCenter" xml:space="preserve"><value>Help Center</value></data>
-  <data name="Nav_Donate" xml:space="preserve"><value>Donate</value></data>
-  <data name="Home_Spotlight" xml:space="preserve"><value>Spotlight</value></data>
-  <data name="Home_Choice" xml:space="preserve"><value>Week 42 • Editor's Choice</value></data>
-  <data name="Home_Hero_Desc" xml:space="preserve"><value>The virtual idol who defied the odds. Known for her powerhouse vocals, tetris mastery, and blue-haired charisma. From humble indie beginnings to shining on the biggest stages.</value></data>
-  <data name="Home_ReadWiki" xml:space="preserve"><value>Read Full Wiki</value></data>
-  <data name="Home_LatestStream" xml:space="preserve"><value>Latest Stream</value></data>
-  <data name="Home_Subscribers" xml:space="preserve"><value>Subscribers</value></data>
-  <data name="Home_FanName" xml:space="preserve"><value>Fan Name</value></data>
-  <data name="Home_OshiMark" xml:space="preserve"><value>Oshi Mark</value></data>
-  <data name="Home_BrowseAgency" xml:space="preserve"><value>Browse by Agency</value></data>
-  <data name="Home_ViewAllAgencies" xml:space="preserve"><value>View All Agencies</value></data>
-  <data name="Home_RecentNews" xml:space="preserve"><value>Recent News</value></data>
-  <data name="Home_ViewAll" xml:space="preserve"><value>View All</value></data>
-  <data name="Home_Trending" xml:space="preserve"><value>Trending</value></data>
-  <data name="Home_Activity" xml:space="preserve"><value>Activity</value></data>
-  <data name="Home_ViewMoreActivity" xml:space="preserve"><value>View More Activity</value></data>
-  <data name="Agencies_Title" xml:space="preserve"><value>VTuber Agencies</value></data>
-  <data name="Agencies_Hero_Desc" xml:space="preserve"><value>Discover the powerhouses behind the virtual stars. From industry giants to emerging labels, explore the organizations providing management, technical innovation, and global branding for VTubers.</value></data>
-  <data name="Agencies_Btn_Explore" xml:space="preserve"><value>Explore All</value></data>
-  <data name="Agencies_Btn_FAQ" xml:space="preserve"><value>Agency FAQ</value></data>
-  <data name="Agencies_Search_Placeholder" xml:space="preserve"><value>Search agencies by name, talent, or keyword...</value></data>
-  <data name="Agencies_Label_Region" xml:space="preserve"><value>Region: All</value></data>
-  <data name="Agencies_Label_Focus" xml:space="preserve"><value>Focus: All</value></data>
-  <data name="Agencies_Label_Filters" xml:space="preserve"><value>Filters</value></data>
-  <data name="Agencies_Major_Agencies" xml:space="preserve"><value>Major Agencies</value></data>
-  <data name="Agencies_Count" xml:space="preserve"><value>View All (42)</value></data>
-  <data name="Agencies_Label_Talents" xml:space="preserve"><value>Talents</value></data>
-  <data name="Agencies_Label_Focus_Card" xml:space="preserve"><value>Focus</value></data>
-  <data name="Agencies_Btn_ViewDirectory" xml:space="preserve"><value>View Directory</value></data>
-  <data name="Agencies_Submit_Title" xml:space="preserve"><value>Submit Agency</value></data>
-  <data name="Agencies_Submit_Desc" xml:space="preserve"><value>Help us grow our database by submitting a missing agency.</value></data>
-  <data name="Agencies_Submit_Btn" xml:space="preserve"><value>Contribution Portal</value></data>
-  <data name="Agencies_Why_Title" xml:space="preserve"><value>Why do agencies matter?</value></data>
-  <data name="Agencies_Why_Desc" xml:space="preserve"><value>Agencies provide the infrastructure that allows VTubers to reach global audiences. This includes everything from providing the 3D/2D models, motion capture studios, legal support, marketing campaigns, and merchandise production.</value></data>
-  <data name="Agencies_Support_Title" xml:space="preserve"><value>Professional Support</value></data>
-  <data name="Agencies_Support_Desc" xml:space="preserve"><value>Tech, legal, and scheduling help.</value></data>
-  <data name="Agencies_Collab_Title" xml:space="preserve"><value>Community &amp; Collaboration</value></data>
-  <data name="Agencies_Collab_Desc" xml:space="preserve"><value>Easier collabs with gen-mates.</value></data>
-  <data name="Wiki_Create_Profile" xml:space="preserve"><value>Create VTuber Profile</value></data>
-  <data name="Wiki_Edit_Profile" xml:space="preserve"><value>Edit VTuber Profile</value></data>
-  <data name="Wiki_Edit_Subtitle" xml:space="preserve"><value>Update the information and backstory for this talent.</value></data>
-  <data name="Wiki_Btn_Update" xml:space="preserve"><value>Update Profile</value></data>
-  <data name="Wiki_Create_Subtitle" xml:space="preserve"><value>Add a new Virtual YouTuber to our community-driven encyclopedia. Submissions will be reviewed by administrators.</value></data>
-  <data name="Wiki_Label_Avatar" xml:space="preserve"><value>Profile Avatar</value></data>
-  <data name="Wiki_Label_Name" xml:space="preserve"><value>VTuber Name</value></data>
-  <data name="Wiki_Label_Age" xml:space="preserve"><value>Age (Optional)</value></data>
-  <data name="Wiki_Label_Birthday" xml:space="preserve"><value>Birthday</value></data>
-  <data name="Wiki_Label_Debut" xml:space="preserve"><value>Debut Date</value></data>
-  <data name="Wiki_Label_Agency" xml:space="preserve"><value>Agency</value></data>
-  <data name="Wiki_Label_Lore" xml:space="preserve"><value>Lore &amp; Backstory (MD)</value></data>
-  <data name="Wiki_Btn_Submit" xml:space="preserve"><value>Submit Profile</value></data>
-  <data name="Wiki_Btn_Cancel" xml:space="preserve"><value>Cancel</value></data>
-  <data name="Wiki_Required_Name" xml:space="preserve"><value>Name is required.</value></data>
-  <data name="Details_Btn_Edit" xml:space="preserve"><value>Edit Profile</value></data>
-  <data name="Details_Independent" xml:space="preserve"><value>Independent VTuber</value></data>
-  <data name="Details_Label_Age" xml:space="preserve"><value>Age</value></data>
-  <data name="Details_Lore_Title" xml:space="preserve"><value>Background Lore</value></data>
-  <data name="Details_Lore_Empty" xml:space="preserve"><value>This VTuber's mysterious past has not been documented yet...</value></data>
-  <data name="Account_Login_Welcome" xml:space="preserve"><value>Login to VTuber Wiki</value></data>
-  <data name="Account_Login_Subtitle" xml:space="preserve"><value>Welcome back! Please enter your details.</value></data>
-  <data name="Account_Login_Hero_Title" xml:space="preserve"><value>Dive back into the Virtual World</value></data>
-  <data name="Account_Login_Hero_Desc" xml:space="preserve"><value>Your number one source for everything VTuber. Edit articles, discover new talents, and discuss with the community.</value></data>
-  <data name="Account_Login_Back" xml:space="preserve"><value>Back to Wiki</value></data>
-  <data name="Account_Login_Label_User" xml:space="preserve"><value>Username or Email</value></data>
-  <data name="Account_Login_Label_Pass" xml:space="preserve"><value>Password</value></data>
-  <data name="Account_Login_Label_Remember" xml:space="preserve"><value>Remember me</value></data>
-  <data name="Account_Login_Forgot" xml:space="preserve"><value>Forgot password?</value></data>
-  <data name="Account_Login_Btn" xml:space="preserve"><value>Log In</value></data>
-  <data name="Account_Login_NoAccount" xml:space="preserve"><value>Don't have an account?</value></data>
-  <data name="Account_Signup_Title" xml:space="preserve"><value>Create your account</value></data>
-  <data name="Account_Signup_Subtitle" xml:space="preserve"><value>Enter your details to get started</value></data>
-  <data name="Account_Signup_Hero_Title" xml:space="preserve"><value>Join the Community</value></data>
-  <data name="Account_Signup_Hero_Desc" xml:space="preserve"><value>Be part of the world's largest collaborative encyclopedia dedicated to virtual YouTubers.</value></data>
-  <data name="Account_Signup_Stats_Articles" xml:space="preserve"><value>Articles</value></data>
-  <data name="Account_Signup_Stats_Groups" xml:space="preserve"><value>Fan Groups</value></data>
-  <data name="Account_Signup_Stats_Active" xml:space="preserve"><value>Active</value></data>
-  <data name="Account_Signup_Label_User" xml:space="preserve"><value>Username</value></data>
-  <data name="Account_Signup_Label_Email" xml:space="preserve"><value>Email Address</value></data>
-  <data name="Account_Signup_Label_Pass" xml:space="preserve"><value>Password</value></data>
-  <data name="Account_Signup_Label_Confirm" xml:space="preserve"><value>Confirm</value></data>
-  <data name="Account_Signup_Terms" xml:space="preserve"><value>By creating an account, you agree to our {0} and {1}.</value></data>
-  <data name="Account_Signup_Terms_Link" xml:space="preserve"><value>Terms of Service</value></data>
-  <data name="Account_Signup_Privacy_Link" xml:space="preserve"><value>Privacy Policy</value></data>
-  <data name="Account_Signup_Btn" xml:space="preserve"><value>Create Account</value></data>
-  <data name="Account_Signup_HasAccount" xml:space="preserve"><value>Already have an account?</value></data>
-  <data name="Account_Signup_BackToLogin" xml:space="preserve"><value>Back to Login</value></data>
-  <data name="Account_OrContinue" xml:space="preserve"><value>Or continue with</value></data>
-  <data name="Dash_Title" xml:space="preserve"><value>Admin Dashboard</value></data>
-  <data name="Dash_Desc" xml:space="preserve"><value>Manage all registered VTubers, approve edits, and maintain the wiki quality.</value></data>
-  <data name="Dash_Search_Placeholder" xml:space="preserve"><value>Search VTuber...</value></data>
-  <data name="Dash_Btn_Add" xml:space="preserve"><value>Add VTuber</value></data>
-  <data name="Dash_Stat_Total" xml:space="preserve"><value>Total VTubers</value></data>
-  <data name="Dash_Stat_Approved" xml:space="preserve"><value>Approved</value></data>
-  <data name="Dash_Stat_Pending" xml:space="preserve"><value>Pending</value></data>
-  <data name="Dash_Col_Talent" xml:space="preserve"><value>Talent (Avatar &amp; Name)</value></data>
-  <data name="Dash_Col_Info" xml:space="preserve"><value>Information</value></data>
-  <data name="Dash_Col_Status" xml:space="preserve"><value>Status</value></data>
-  <data name="Dash_Col_Actions" xml:space="preserve"><value>Actions</value></data>
-  <data name="Dash_Status_Approved" xml:space="preserve"><value>Approved</value></data>
-  <data name="Status_Active" xml:space="preserve"><value>Active</value></data>
-  <data name="Status_Graduated" xml:space="preserve"><value>Graduated</value></data>
-  <data name="Status_Hiatus" xml:space="preserve"><value>Hiatus</value></data>
-  <data name="Status_Pending" xml:space="preserve"><value>Pending</value></data>
-  <data name="Dash_Action_View" xml:space="preserve"><value>View Profile</value></data>
-  <data name="Dash_Action_Edit" xml:space="preserve"><value>Edit VTuber</value></data>
-  <data name="Dash_Action_Approve" xml:space="preserve"><value>Approve VTuber</value></data>
-  <data name="Dash_Action_Delete" xml:space="preserve"><value>Delete VTuber</value></data>
-  <data name="Dash_Confirm_Delete" xml:space="preserve"><value>Are you sure you want to delete {0}? This action is irreversible.</value></data>
-  <data name="Dash_Empty_Title" xml:space="preserve"><value>No VTubers found in the database.</value></data>
-  <data name="Dash_Empty_Desc" xml:space="preserve"><value>Start by adding a new VTuber profile using the button above.</value></data>
-  <data name="Dash_Empty_Btn" xml:space="preserve"><value>Add Your First VTuber</value></data>
-  <data name="Dash_No_History" xml:space="preserve"><value>No history provided.</value></data>
-  <data name="Dash_Debuted" xml:space="preserve"><value>Debuted:</value></data>
-  <data name="Dash_Unknown" xml:space="preserve"><value>Unknown</value></data>
-  <data name="Dash_Independent" xml:space="preserve"><value>Independent</value></data>
-  <data name="Dash_Success" xml:space="preserve"><value>Success!</value></data>
-  <data name="Page_AboutUs" xml:space="preserve"><value>About VTuber Wiki</value></data>
-  <data name="Page_Guidelines" xml:space="preserve"><value>Community Guidelines</value></data>
-  <data name="Page_HelpCenter" xml:space="preserve"><value>Help &amp; Support</value></data>
-  <data name="Page_Forum" xml:space="preserve"><value>Wiki Discussion Forum</value></data>
-  <data name="Page_Translation" xml:space="preserve"><value>Translation Project Hub</value></data>
-  <data name="Page_RecentChanges" xml:space="preserve"><value>Recent Changes &amp; News</value></data>
-  <data name="Page_Independent" xml:space="preserve"><value>Independent VTuber Directory</value></data>
-  <data name="Page_VirtualEvents" xml:space="preserve"><value>Upcoming Virtual Events</value></data>
-  <data name="Page_FanTools" xml:space="preserve"><value>Creator &amp; Fan Tools</value></data>
-  <data name="Page_TopTalents" xml:space="preserve"><value>Top Trending Talents</value></data>
-  <data name="Page_Donate" xml:space="preserve"><value>Support the Wiki</value></data>
-  <data name="Page_Discord" xml:space="preserve"><value>Join our Discord</value></data>
-  <data name="Indie_Title" xml:space="preserve"><value>Independent VTubers</value></data>
-  <data name="Indie_Desc" xml:space="preserve"><value>Discover the incredible talents carving their own paths. From rising stars to industry veterans, explore the diverse world of indie VTubing.</value></data>
-  <data name="Indie_Btn_Learn" xml:space="preserve"><value>Learn More</value></data>
-  <data name="Indie_Btn_HowTo" xml:space="preserve"><value>How to Start</value></data>
-  <data name="Indie_Search_Placeholder" xml:space="preserve"><value>Search independent VTubers...</value></data>
-  <data name="Indie_Filter_Region" xml:space="preserve"><value>Region</value></data>
-  <data name="Indie_Filter_Language" xml:space="preserve"><value>Language</value></data>
-  <data name="Indie_Filter_Debut" xml:space="preserve"><value>Debut Year</value></data>
-  <data name="Indie_Filter_Apply" xml:space="preserve"><value>Apply Filter</value></data>
-  <data name="Indie_PopularTags" xml:space="preserve"><value>Popular Tags:</value></data>
-  <data name="Indie_Btn_LoadMore" xml:space="preserve"><value>Load More Talents</value></data>
-  <data name="Indie_Card_Debut" xml:space="preserve"><value>DEBUT: {0}</value></data>
-  <data name="Trans_Title" xml:space="preserve"><value>Translation Projects</value></data>
-  <data name="Trans_Subtitle" xml:space="preserve"><value>Community Project</value></data>
-  <data name="Trans_Desc" xml:space="preserve"><value>Join our community-driven efforts to bridge the language gap. Help us translate streams, lore, and VTuber history for fans worldwide. Every word brings us closer.</value></data>
-  <data name="Trans_Btn_Guidelines" xml:space="preserve"><value>View Guidelines</value></data>
-  <data name="Trans_Btn_Discord" xml:space="preserve"><value>Active Translators Discord</value></data>
-  <data name="Trans_Section_Current" xml:space="preserve"><value>Current Projects</value></data>
-  <data name="Trans_Filter_All" xml:space="preserve"><value>All</value></data>
-  <data name="Trans_Filter_InProgress" xml:space="preserve"><value>In Progress</value></data>
-  <data name="Trans_Filter_Completed" xml:space="preserve"><value>Completed</value></data>
-  <data name="Trans_Label_SourceTarget" xml:space="preserve"><value>Source/Target</value></data>
-  <data name="Trans_Btn_Join" xml:space="preserve"><value>Join Project</value></data>
-  <data name="Trans_Btn_Review" xml:space="preserve"><value>Help Review</value></data>
-  <data name="Trans_Label_Archived" xml:space="preserve"><value>Archived on {0}</value></data>
-  <data name="Trans_Btn_Results" xml:space="preserve"><value>View Results</value></data>
-  <data name="Trans_Section_Request" xml:space="preserve"><value>Submit a Translation Request</value></data>
-  <data name="Trans_Request_Title" xml:space="preserve"><value>Content Title</value></data>
-  <data name="Trans_Request_Link" xml:space="preserve"><value>Video/Source Link</value></data>
-  <data name="Trans_Request_Langs" xml:space="preserve"><value>Language Requirements</value></data>
-  <data name="Trans_Request_From" xml:space="preserve"><value>From (e.g. JP)</value></data>
-  <data name="Trans_Request_To" xml:space="preserve"><value>To (e.g. EN)</value></data>
-  <data name="Trans_Btn_Submit" xml:space="preserve"><value>Submit Request</value></data>
-  <data name="Trans_Sidebar_Resources" xml:space="preserve"><value>Translation Resources</value></data>
-  <data name="Trans_Sidebar_Leaderboard" xml:space="preserve"><value>Top Translators</value></data>
-  <data name="Trans_Btn_Leaderboard" xml:space="preserve"><value>View Full Leaderboard</value></data>
-  <data name="Trans_Donate_Title" xml:space="preserve"><value>Support our Servers</value></data>
-  <data name="Trans_Donate_Desc" xml:space="preserve"><value>The Wiki is community funded. Help us keep the lights on.</value></data>
-  <data name="Trans_Btn_Donate" xml:space="preserve"><value>Donate Now</value></data>
-  <data name="About_Hero_Title" xml:space="preserve"><value>VTuber Wiki</value></data>
-  <data name="About_Hero_Desc" xml:space="preserve"><value>The ultimate community-driven encyclopedia for Virtual YouTubers. We are dedicated to documenting the history, lore, and milestones of the ever-expanding VTubing universe.</value></data>
-  <data name="About_Btn_Explore" xml:space="preserve"><value>Start Exploring</value></data>
-  <data name="About_Btn_Join" xml:space="preserve"><value>Join Community</value></data>
-  <data name="About_Section_Story" xml:space="preserve"><value>Our Story</value></data>
-  <data name="About_Story_P1" xml:space="preserve"><value>Founded in late 2018, the VTuber Wiki started as a humble fan project on a shared spreadsheet to track the rapidly emerging virtual talent in Japan. What began with just a few dozen entries for pioneers like Kizuna AI and the early Nijisanji waves quickly transformed into a global movement.</value></data>
-  <data name="About_Story_P2" xml:space="preserve"><value>As VTubing exploded internationally in 2020, our community grew from a handful of contributors to thousands of dedicated editors. Today, we stand as the most comprehensive digital archive of virtual culture, covering independent creators, corporate agencies, technical innovations, and the cultural impact of this unique medium.</value></data>
-  <data name="About_Section_Mission" xml:space="preserve"><value>Our Mission</value></data>
-  <data name="About_Mission_Acc_Title" xml:space="preserve"><value>Accuracy</value></data>
-  <data name="About_Mission_Acc_Desc" xml:space="preserve"><value>We prioritize factual, sourced information to ensure the history of creators is preserved with integrity.</value></data>
-  <data name="About_Mission_Comm_Title" xml:space="preserve"><value>Community</value></data>
-  <data name="About_Mission_Comm_Desc" xml:space="preserve"><value>A platform built by fans, for fans. We foster a collaborative environment where everyone can contribute.</value></data>
-  <data name="About_Mission_Inc_Title" xml:space="preserve"><value>Inclusivity</value></data>
-  <data name="About_Mission_Inc_Desc" xml:space="preserve"><value>From the biggest agency stars to the smallest indies, we celebrate diversity in the virtual space.</value></data>
-  <data name="About_Section_Team" xml:space="preserve"><value>Meet the Team</value></data>
-  <data name="About_Team_Admin" xml:space="preserve"><value>Head Administrator</value></data>
-  <data name="About_Team_Mod" xml:space="preserve"><value>Senior Moderator</value></data>
-  <data name="About_Team_Editor" xml:space="preserve"><value>Content Lead</value></data>
-  <data name="About_Team_Tech" xml:space="preserve"><value>Technical Lead</value></data>
-  <data name="About_Sidebar_Links" xml:space="preserve"><value>Quick Resources</value></data>
-  <data name="About_Stats_Title" xml:space="preserve"><value>Wiki Stats</value></data>
-  <data name="About_Stats_Articles" xml:space="preserve"><value>Articles</value></data>
-  <data name="About_Stats_Contributors" xml:space="preserve"><value>Contributors</value></data>
-  <data name="RC_Title" xml:space="preserve"><value>Recent Changes</value></data>
-  <data name="RC_Desc" xml:space="preserve"><value>Monitoring all live updates to the VTuber database.</value></data>
-  <data name="RC_Filter_All" xml:space="preserve"><value>All Changes</value></data>
-  <data name="RC_Filter_Articles" xml:space="preserve"><value>Articles</value></data>
-  <data name="RC_Filter_Media" xml:space="preserve"><value>Media</value></data>
-  <data name="RC_Filter_Users" xml:space="preserve"><value>Users</value></data>
-  <data name="RC_Filter_Community" xml:space="preserve"><value>Community</value></data>
-  <data name="RC_Today" xml:space="preserve"><value>Today</value></data>
-  <data name="RC_Yesterday" xml:space="preserve"><value>Yesterday</value></data>
-  <data name="RC_Btn_LoadMore" xml:space="preserve"><value>Load More Changes</value></data>
-  <data name="RC_Stat_Last24h" xml:space="preserve"><value>Last 24h Edits</value></data>
-  <data name="RC_Section_Contributors" xml:space="preserve"><value>Top Contributors</value></data>
-  <data name="RC_Edit_AddedChars" xml:space="preserve"><value>+{0} chars</value></data>
-  <data name="RC_Edit_RemovedChars" xml:space="preserve"><value>-{0} chars</value></data>
-  <data name="RC_Label_NewComment" xml:space="preserve"><value>New Comment</value></data>
-  <data name="Discord_Hero_Title" xml:space="preserve"><value>Connect with the {0} Community</value></data>
-  <data name="Discord_Hero_Desc" xml:space="preserve"><value>Join the official VTuber Wiki Discord server to stay updated on debuts, participate in exclusive community events, and collaborate with editors in real-time.</value></data>
-  <data name="Discord_Btn_Join" xml:space="preserve"><value>Join our Discord</value></data>
-  <data name="Discord_Btn_Rules" xml:space="preserve"><value>View Server Rules</value></data>
-  <data name="Discord_Stat_Members" xml:space="preserve"><value>Total Members</value></data>
-  <data name="Discord_Stat_Online" xml:space="preserve"><value>Online Now</value></data>
-  <data name="Discord_Label_Online" xml:space="preserve"><value>{0} Online</value></data>
-  <data name="Discord_Section_Why" xml:space="preserve"><value>Why Join the Server?</value></data>
-  <data name="Discord_Why_Desc" xml:space="preserve"><value>Experience the best of the VTuber Wiki community with exclusive features and real-time collaboration.</value></data>
-  <data name="Discord_Feature_Updates_Title" xml:space="preserve"><value>Real-time Updates</value></data>
-  <data name="Discord_Feature_Updates_Desc" xml:space="preserve"><value>Never miss a beat. Get instant notifications about new VTuber debuts, lore updates, and major wiki revisions before anyone else.</value></data>
-  <data name="Discord_Feature_Events_Title" xml:space="preserve"><value>Community Events</value></data>
-  <data name="Discord_Feature_Events_Desc" xml:space="preserve"><value>Participate in organized watch parties, gaming nights, and community art contests. Connect with fans who share your oshi.</value></data>
-  <data name="Discord_Feature_EditorHelp_Title" xml:space="preserve"><value>Help for Editors</value></data>
-  <data name="Discord_Feature_EditorHelp_Desc" xml:space="preserve"><value>Direct access to veteran editors. Get real-time help with formatting, sourcing, and image optimization for your favorite wiki pages.</value></data>
-  <data name="Discord_Feature_Roles_Title" xml:space="preserve"><value>Exclusive Roles</value></data>
-  <data name="Discord_Feature_Roles_Desc" xml:space="preserve"><value>Earn badges and special roles based on your contributions. Show off your expertise in specific agencies or indie niches.</value></data>
-  <data name="Discord_Feature_Hubs_Title" xml:space="preserve"><value>Agency Hubs</value></data>
-  <data name="Discord_Feature_Hubs_Desc" xml:space="preserve"><value>Dedicated channels for Hololive, Nijisanji, VShojo, Phase Connect, and the independent VTuber scene.</value></data>
-  <data name="Discord_Feature_Indie_Title" xml:space="preserve"><value>Indie Promotion</value></data>
-  <data name="Discord_Feature_Indie_Desc" xml:space="preserve"><value>A platform for rising stars. Share your favorite upcoming VTubers and help them build their wiki presence from day one.</value></data>
-  <data name="Discord_CTA_Title" xml:space="preserve"><value>Ready to join the nest?</value></data>
-  <data name="Discord_CTA_Desc" xml:space="preserve"><value>Join over 25,000 members in the most active VTuber community on Discord.</value></data>
-  <data name="Discord_CTA_Btn" xml:space="preserve"><value>Join the Official Discord</value></data>
-  <data name="Discord_CTA_Note" xml:space="preserve"><value>By joining, you agree to follow the community guidelines and wiki standards.</value></data>
-  <data name="Explore_Title" xml:space="preserve"><value>Discover Talents</value></data>
-  <data name="Explore_Search_Placeholder" xml:space="preserve"><value>Search VTubers, agencies, or news...</value></data>
-  <data name="Explore_Popular" xml:space="preserve"><value>Popular:</value></data>
-  <data name="Explore_Label_Indie" xml:space="preserve"><value>Indie</value></data>
-  <data name="Explore_Label_3D" xml:space="preserve"><value>3D Model</value></data>
-  <data name="Explore_Label_ASMR" xml:space="preserve"><value>ASMR</value></data>
-  <data name="Explore_Label_Karaoke" xml:space="preserve"><value>Karaoke</value></data>
-  <data name="Explore_Label_Debut" xml:space="preserve"><value>Debut</value></data>
-  <data name="Explore_Filter_SortBy" xml:space="preserve"><value>Sort By</value></data>
-  <data name="Explore_Sort_Newest" xml:space="preserve"><value>Newest Debut</value></data>
-  <data name="Explore_Sort_Followers" xml:space="preserve"><value>Most Followers</value></data>
-  <data name="Explore_Sort_AZ" xml:space="preserve"><value>Name A-Z</value></data>
-  <data name="Explore_Sort_ZA" xml:space="preserve"><value>Name Z-A</value></data>
-  <data name="Explore_Filter_ContentType" xml:space="preserve"><value>Content Type</value></data>
-  <data name="Explore_Type_All" xml:space="preserve"><value>All Types</value></data>
-  <data name="Explore_Type_Gaming" xml:space="preserve"><value>Gaming</value></data>
-  <data name="Explore_Type_Music" xml:space="preserve"><value>Music</value></data>
-  <data name="Explore_Type_Variety" xml:space="preserve"><value>Variety</value></data>
-  <data name="Explore_Type_Education" xml:space="preserve"><value>Education</value></data>
-  <data name="Explore_Filter_Status" xml:space="preserve"><value>Status</value></data>
-  <data name="Explore_Stat_Active" xml:space="preserve"><value>Active</value></data>
-  <data name="Explore_Stat_Graduated" xml:space="preserve"><value>Graduated</value></data>
-  <data name="Explore_Stat_Hiatus" xml:space="preserve"><value>Hiatus</value></data>
-  <data name="Explore_Btn_Reset" xml:space="preserve"><value>Reset</value></data>
-  <data name="Explore_Tab_All" xml:space="preserve"><value>All VTubers</value></data>
-  <data name="Explore_Tab_Agencies" xml:space="preserve"><value>Agencies</value></data>
-  <data name="Explore_Tab_Gens" xml:space="preserve"><value>Generations</value></data>
-  <data name="Explore_Tab_Langs" xml:space="preserve"><value>Languages</value></data>
-  <data name="Explore_Showing_Results" xml:space="preserve"><value>Showing {0} Results</value></data>
-  <data name="Explore_Trending" xml:space="preserve"><value>Trending Now</value></data>
-  <data name="Explore_Recommended" xml:space="preserve"><value>Recommended Talents</value></data>
-  <data name="Explore_News_Major" xml:space="preserve"><value>Major News</value></data>
-  <data name="Explore_News_Outfit" xml:space="preserve"><value>New Outfit</value></data>
-  <data name="Explore_Label_Debuted" xml:space="preserve"><value>Debuted:</value></data>
-  <data name="Explore_Btn_LoadMore" xml:space="preserve"><value>Load More Results</value></data>
-  <data name="Explore_Sidebar_Stats" xml:space="preserve"><value>Wiki Statistics</value></data>
-  <data name="Explore_Sidebar_Contributors" xml:space="preserve"><value>Top Contributors</value></data>
-  <data name="Explore_Btn_Contribute" xml:space="preserve"><value>Contribute Now</value></data>
-  <data name="Explore_Label_EditsMonth" xml:space="preserve"><value>{0} edits this month</value></data>
-  <data name="Explore_Btn_Profiles" xml:space="preserve"><value>View Profiles</value></data>
-  <data name="Home_Agency_Holo" xml:space="preserve"><value>Hololive Production</value></data>
-  <data name="Home_Agency_Niji" xml:space="preserve"><value>Nijisanji</value></data>
-  <data name="Home_Agency_VShojo" xml:space="preserve"><value>VShojo</value></data>
-  <data name="Home_Agency_Phase" xml:space="preserve"><value>Phase Connect</value></data>
-  <data name="Home_Agency_Idol" xml:space="preserve"><value>Idol Corp</value></data>
-  <data name="Home_Agency_Indie" xml:space="preserve"><value>Indies</value></data>
-  <data name="Home_Hero_Gen0" xml:space="preserve"><value>Generation 0</value></data>
-  <data name="Home_Hero_FanName_Value" xml:space="preserve"><value>Hoshiyomis</value></data>
-  <data name="Home_Category_News" xml:space="preserve"><value>News</value></data>
-  <data name="Home_Category_Debut" xml:space="preserve"><value>Debut</value></data>
-  <data name="Home_Category_Music" xml:space="preserve"><value>Music</value></data>
-  <data name="Home_Category_Event" xml:space="preserve"><value>Event</value></data>
-  <data name="Home_Label_Time_Hours" xml:space="preserve"><value>{0}h ago</value></data>
-  <data name="Home_Label_Time_Minutes" xml:space="preserve"><value>{0}m ago</value></data>
-  <data name="Home_Label_Time_Days" xml:space="preserve"><value>{0}d ago</value></data>
-  <data name="Home_Label_By" xml:space="preserve"><value>By {0}</value></data>
-  <data name="Home_Label_Updated" xml:space="preserve"><value>updated {0}</value></data>
-  <data name="Home_Label_Commented" xml:space="preserve"><value>commented on {0}</value></data>
-  <data name="Home_Label_Created" xml:space="preserve"><value>created page {0}</value></data>
-  <data name="Home_Label_Pinned" xml:space="preserve"><value>pinned {0}</value></data>
-  <data name="Dash_Status_Approved" xml:space="preserve"><value>Approved</value></data>
-  <data name="Dash_Status_Pending" xml:space="preserve"><value>Pending</value></data>
-  <data name="Dash_Independent" xml:space="preserve"><value>Independent</value></data>
-  <data name="Dash_Unknown" xml:space="preserve"><value>Unknown</value></data>
-  <data name="Dash_No_History" xml:space="preserve"><value>No history available.</value></data>
-  <data name="Nav_Logout" xml:space="preserve"><value>Logout</value></data>
-  <data name="Footer_Desc" xml:space="preserve"><value>The ultimate community-driven encyclopedia for Virtual YouTubers. Discover, learn, and contribute to the expanding virtual world.</value></data>
-  <data name="Footer_Wiki" xml:space="preserve"><value>Wiki</value></data>
-  <data name="Footer_Explore" xml:space="preserve"><value>Explore</value></data>
-  <data name="Footer_Subscribe" xml:space="preserve"><value>Subscribe</value></data>
-  <data name="Footer_Subscribe_Desc" xml:space="preserve"><value>Get the latest VTuber news delivered to your inbox.</value></data>
-  <data name="Footer_Email_Placeholder" xml:space="preserve"><value>Email address</value></data>
-  <data name="Footer_Go" xml:space="preserve"><value>Go</value></data>
-  <data name="Footer_Rights" xml:space="preserve"><value>© 2024 VTWiki. All rights reserved. Not affiliated with any agency.</value></data>
-  <data name="Footer_Privacy" xml:space="preserve"><value>Privacy Policy</value></data>
-  <data name="Footer_Terms" xml:space="preserve"><value>Terms of Service</value></data>
-  <data name="Home_Agency_Holo_EN" xml:space="preserve"><value>Hololive English</value></data>
-  <data name="Home_Agency_Holo_JP" xml:space="preserve"><value>Hololive JP</value></data>
-  <data name="Region_NA" xml:space="preserve"><value>North America</value></data>
-  <data name="Region_EU" xml:space="preserve"><value>Europe</value></data>
-  <data name="Region_Asia" xml:space="preserve"><value>Asia</value></data>
-  <data name="Region_SA" xml:space="preserve"><value>South America</value></data>
-  <data name="Region_Oceania" xml:space="preserve"><value>Oceania</value></data>
-  <data name="Lang_EN" xml:space="preserve"><value>English</value></data>
-  <data name="Lang_JP" xml:space="preserve"><value>Japanese</value></data>
-  <data name="Lang_ES" xml:space="preserve"><value>Spanish</value></data>
-  <data name="Lang_KR" xml:space="preserve"><value>Korean</value></data>
-  <data name="Lang_FR" xml:space="preserve"><value>French</value></data>
-  <data name="Time_Jan" xml:space="preserve"><value>Jan</value></data>
-  <data name="Time_Feb" xml:space="preserve"><value>Feb</value></data>
-  <data name="Time_Mar" xml:space="preserve"><value>Mar</value></data>
-  <data name="Time_Apr" xml:space="preserve"><value>Apr</value></data>
-  <data name="Time_May" xml:space="preserve"><value>May</value></data>
-  <data name="Time_Jun" xml:space="preserve"><value>Jun</value></data>
-  <data name="Time_Jul" xml:space="preserve"><value>Jul</value></data>
-  <data name="Time_Aug" xml:space="preserve"><value>Aug</value></data>
-  <data name="Time_Sep" xml:space="preserve"><value>Sep</value></data>
-  <data name="Time_Oct" xml:space="preserve"><value>Oct</value></data>
-  <data name="Time_Nov" xml:space="preserve"><value>Nov</value></data>
-  <data name="Time_Dec" xml:space="preserve"><value>Dec</value></data>
-  <data name="RC_Stat_Articles" xml:space="preserve"><value>Articles</value></data>
-  <data name="RC_Stat_Editors" xml:space="preserve"><value>Editors</value></data>
-  <data name="RC_Stat_Media" xml:space="preserve"><value>Media Files</value></data>
-  <data name="Wiki_TalentsTracked" xml:space="preserve"><value>Talents Tracked</value></data>
-  <data name="Explore_News_Major" xml:space="preserve"><value>Major News</value></data>
-  <data name="Explore_News_Outfit" xml:space="preserve"><value>New Outfit</value></data>
-  <data name="Explore_Tab_Gens" xml:space="preserve"><value>Generations</value></data>
-  <data name="Explore_Tab_Langs" xml:space="preserve"><value>Languages</value></data>
-  <data name="Explore_Showing_Results" xml:space="preserve"><value>Showing {0} Results</value></data>
-  <data name="Explore_No_Results" xml:space="preserve"><value>No VTubers found matching your filters.</value></data>
-  <data name="Nav_Search_Suggested" xml:space="preserve"><value>Suggested</value></data>
-  <data name="Nav_Search_NoResults" xml:space="preserve"><value>No results found</value></data>
-  <data name="Forum_Header" xml:space="preserve"><value>Community Discussions</value></data>
-  <data name="Forum_Subheader" xml:space="preserve"><value>Connect with fellow fans, discuss your favorite VTubers, and contribute to the growing lore.</value></data>
-  <data name="Forum_Category_General" xml:space="preserve"><value>General Discussion</value></data>
-  <data name="Forum_Category_News" xml:space="preserve"><value>News &amp; Updates</value></data>
-  <data name="Forum_Category_FanArt" xml:space="preserve"><value>Fan Art</value></data>
-  <data name="Forum_Category_Lore" xml:space="preserve"><value>Lore &amp; Theories</value></data>
-  <data name="RC_Label_Edits" xml:space="preserve"><value>{0} Edits</value></data>
-  <data name="RC_Older" xml:space="preserve"><value>Older</value></data>
-  <data name="RC_NoActivities" xml:space="preserve"><value>No recent activities found.</value></data>
-</root>
+  <data name="Nav_Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Nav_Explore" xml:space="preserve">
+    <value>Explore</value>
+  </data>
+  <data name="Nav_Community" xml:space="preserve">
+    <value>Community</value>
+  </data>
+  <data name="Nav_Wiki" xml:space="preserve">
+    <value>Wiki</value>
+  </data>
+  <data name="Nav_Search" xml:space="preserve">
+    <value>Search talents, agencies...</value>
+  </data>
+  <data name="Nav_Login" xml:space="preserve">
+    <value>Log In</value>
+  </data>
+  <data name="Nav_Signup" xml:space="preserve">
+    <value>Sign Up</value>
+  </data>
+  <data name="Nav_Dashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="Nav_Agencies" xml:space="preserve">
+    <value>Agencies</value>
+  </data>
+  <data name="Nav_Independent" xml:space="preserve">
+    <value>Independent</value>
+  </data>
+  <data name="Nav_VirtualEvents" xml:space="preserve">
+    <value>Virtual Events</value>
+  </data>
+  <data name="Nav_FanTools" xml:space="preserve">
+    <value>Fan Tools</value>
+  </data>
+  <data name="Nav_TopTalents" xml:space="preserve">
+    <value>Top Talents</value>
+  </data>
+  <data name="Nav_RecentChanges" xml:space="preserve">
+    <value>Recent Changes</value>
+  </data>
+  <data name="Nav_Guidelines" xml:space="preserve">
+    <value>Guidelines</value>
+  </data>
+  <data name="Nav_EditorHub" xml:space="preserve">
+    <value>Editors Hub</value>
+  </data>
+  <data name="Nav_WikiForum" xml:space="preserve">
+    <value>Wiki Forum</value>
+  </data>
+  <data name="Nav_Discord" xml:space="preserve">
+    <value>Discord Link</value>
+  </data>
+  <data name="Nav_AboutUs" xml:space="preserve">
+    <value>About Us</value>
+  </data>
+  <data name="Nav_Translation" xml:space="preserve">
+    <value>Translation Project</value>
+  </data>
+  <data name="Nav_HelpCenter" xml:space="preserve">
+    <value>Help Center</value>
+  </data>
+  <data name="Nav_Donate" xml:space="preserve">
+    <value>Donate</value>
+  </data>
+  <data name="Home_Spotlight" xml:space="preserve">
+    <value>Spotlight</value>
+  </data>
+  <data name="Home_Choice" xml:space="preserve">
+    <value>Week 42 • Editor's Choice</value>
+  </data>
+  <data name="Home_Hero_Desc" xml:space="preserve">
+    <value>The virtual idol who defied the odds. Known for her powerhouse vocals, tetris mastery, and blue-haired charisma. From humble indie beginnings to shining on the biggest stages.</value>
+  </data>
+  <data name="Home_ReadWiki" xml:space="preserve">
+    <value>Read Full Wiki</value>
+  </data>
+  <data name="Home_LatestStream" xml:space="preserve">
+    <value>Latest Stream</value>
+  </data>
+  <data name="Home_Subscribers" xml:space="preserve">
+    <value>Subscribers</value>
+  </data>
+  <data name="Home_FanName" xml:space="preserve">
+    <value>Fan Name</value>
+  </data>
+  <data name="Home_OshiMark" xml:space="preserve">
+    <value>Oshi Mark</value>
+  </data>
+  <data name="Home_BrowseAgency" xml:space="preserve">
+    <value>Browse by Agency</value>
+  </data>
+  <data name="Home_ViewAllAgencies" xml:space="preserve">
+    <value>View All Agencies</value>
+  </data>
+  <data name="Home_RecentNews" xml:space="preserve">
+    <value>Recent News</value>
+  </data>
+  <data name="Home_ViewAll" xml:space="preserve">
+    <value>View All</value>
+  </data>
+  <data name="Home_Trending" xml:space="preserve">
+    <value>Trending</value>
+  </data>
+  <data name="Home_Activity" xml:space="preserve">
+    <value>Activity</value>
+  </data>
+  <data name="Home_ViewMoreActivity" xml:space="preserve">
+    <value>View More Activity</value>
+  </data>
+  <data name="Agencies_Title" xml:space="preserve">
+    <value>VTuber Agencies</value>
+  </data>
+  <data name="Agencies_Hero_Desc" xml:space="preserve">
+    <value>Discover the powerhouses behind the virtual stars. From industry giants to emerging labels, explore the organizations providing management, technical innovation, and global branding for VTubers.</value>
+  </data>
+  <data name="Agencies_Btn_Explore" xml:space="preserve">
+    <value>Explore All</value>
+  </data>
+  <data name="Agencies_Btn_FAQ" xml:space="preserve">
+    <value>Agency FAQ</value>
+  </data>
+  <data name="Agencies_Search_Placeholder" xml:space="preserve">
+    <value>Search agencies by name, talent, or keyword...</value>
+  </data>
+  <data name="Agencies_Label_Region" xml:space="preserve">
+    <value>Region: All</value>
+  </data>
+  <data name="Agencies_Label_Focus" xml:space="preserve">
+    <value>Focus: All</value>
+  </data>
+  <data name="Agencies_Label_Filters" xml:space="preserve">
+    <value>Filters</value>
+  </data>
+  <data name="Agencies_Major_Agencies" xml:space="preserve">
+    <value>Major Agencies</value>
+  </data>
+  <data name="Agencies_Count" xml:space="preserve">
+    <value>View All (42)</value>
+  </data>
+  <data name="Agencies_Label_Talents" xml:space="preserve">
+    <value>Talents</value>
+  </data>
+  <data name="Agencies_Label_Focus_Card" xml:space="preserve">
+    <value>Focus</value>
+  </data>
+  <data name="Agencies_Btn_ViewDirectory" xml:space="preserve">
+    <value>View Directory</value>
+  </data>
+  <data name="Agencies_Submit_Title" xml:space="preserve">
+    <value>Submit Agency</value>
+  </data>
+  <data name="Agencies_Submit_Desc" xml:space="preserve">
+    <value>Help us grow our database by submitting a missing agency.</value>
+  </data>
+  <data name="Agencies_Submit_Btn" xml:space="preserve">
+    <value>Contribution Portal</value>
+  </data>
+  <data name="Agencies_Why_Title" xml:space="preserve">
+    <value>Why do agencies matter?</value>
+  </data>
+  <data name="Agencies_Why_Desc" xml:space="preserve">
+    <value>Agencies provide the infrastructure that allows VTubers to reach global audiences. This includes everything from providing the 3D/2D models, motion capture studios, legal support, marketing campaigns, and merchandise production.</value>
+  </data>
+  <data name="Agencies_Support_Title" xml:space="preserve">
+    <value>Professional Support</value>
+  </data>
+  <data name="Agencies_Support_Desc" xml:space="preserve">
+    <value>Tech, legal, and scheduling help.</value>
+  </data>
+  <data name="Agencies_Collab_Title" xml:space="preserve">
+    <value>Community &amp; Collaboration</value>
+  </data>
+  <data name="Agencies_Collab_Desc" xml:space="preserve">
+    <value>Easier collabs with gen-mates.</value>
+  </data>
+  <data name="Wiki_Create_Profile" xml:space="preserve">
+    <value>Create VTuber Profile</value>
+  </data>
+  <data name="Wiki_Edit_Profile" xml:space="preserve">
+    <value>Edit VTuber Profile</value>
+  </data>
+  <data name="Wiki_Edit_Subtitle" xml:space="preserve">
+    <value>Update the information and backstory for this talent.</value>
+  </data>
+  <data name="Wiki_Btn_Update" xml:space="preserve">
+    <value>Update Profile</value>
+  </data>
+  <data name="Wiki_Create_Subtitle" xml:space="preserve">
+    <value>Add a new Virtual YouTuber to our community-driven encyclopedia. Submissions will be reviewed by administrators.</value>
+  </data>
+  <data name="Wiki_Label_Avatar" xml:space="preserve">
+    <value>Profile Avatar</value>
+  </data>
+  <data name="Wiki_Label_Name" xml:space="preserve">
+    <value>VTuber Name</value>
+  </data>
+  <data name="Wiki_Label_Age" xml:space="preserve">
+    <value>Age (Optional)</value>
+  </data>
+  <data name="Wiki_Label_Birthday" xml:space="preserve">
+    <value>Birthday</value>
+  </data>
+  <data name="Wiki_Label_Debut" xml:space="preserve">
+    <value>Debut Date</value>
+  </data>
+  <data name="Wiki_Label_Agency" xml:space="preserve">
+    <value>Agency</value>
+  </data>
+  <data name="Wiki_Label_Lore" xml:space="preserve">
+    <value>Lore &amp; Backstory (MD)</value>
+  </data>
+  <data name="Wiki_Btn_Submit" xml:space="preserve">
+    <value>Submit Profile</value>
+  </data>
+  <data name="Wiki_Btn_Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Wiki_Required_Name" xml:space="preserve">
+    <value>Name is required.</value>
+  </data>
+  <data name="Details_Btn_Edit" xml:space="preserve">
+    <value>Edit Profile</value>
+  </data>
+  <data name="Details_Independent" xml:space="preserve">
+    <value>Independent VTuber</value>
+  </data>
+  <data name="Details_Label_Age" xml:space="preserve">
+    <value>Age</value>
+  </data>
+  <data name="Details_Lore_Title" xml:space="preserve">
+    <value>Background Lore</value>
+  </data>
+  <data name="Details_Lore_Empty" xml:space="preserve">
+    <value>This VTuber's mysterious past has not been documented yet...</value>
+  </data>
+  <data name="Account_Login_Welcome" xml:space="preserve">
+    <value>Login to VTuber Wiki</value>
+  </data>
+  <data name="Account_Login_Subtitle" xml:space="preserve">
+    <value>Welcome back! Please enter your details.</value>
+  </data>
+  <data name="Account_Login_Hero_Title" xml:space="preserve">
+    <value>Dive back into the Virtual World</value>
+  </data>
+  <data name="Account_Login_Hero_Desc" xml:space="preserve">
+    <value>Your number one source for everything VTuber. Edit articles, discover new talents, and discuss with the community.</value>
+  </data>
+  <data name="Account_Login_Back" xml:space="preserve">
+    <value>Back to Wiki</value>
+  </data>
+  <data name="Account_Login_Label_User" xml:space="preserve">
+    <value>Username or Email</value>
+  </data>
+  <data name="Account_Login_Label_Pass" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Account_Login_Label_Remember" xml:space="preserve">
+    <value>Remember me</value>
+  </data>
+  <data name="Account_Login_Forgot" xml:space="preserve">
+    <value>Forgot password?</value>
+  </data>
+  <data name="Account_Login_Btn" xml:space="preserve">
+    <value>Log In</value>
+  </data>
+  <data name="Account_Login_NoAccount" xml:space="preserve">
+    <value>Don't have an account?</value>
+  </data>
+  <data name="Account_Signup_Title" xml:space="preserve">
+    <value>Create your account</value>
+  </data>
+  <data name="Account_Signup_Subtitle" xml:space="preserve">
+    <value>Enter your details to get started</value>
+  </data>
+  <data name="Account_Signup_Hero_Title" xml:space="preserve">
+    <value>Join the Community</value>
+  </data>
+  <data name="Account_Signup_Hero_Desc" xml:space="preserve">
+    <value>Be part of the world's largest collaborative encyclopedia dedicated to virtual YouTubers.</value>
+  </data>
+  <data name="Account_Signup_Stats_Articles" xml:space="preserve">
+    <value>Articles</value>
+  </data>
+  <data name="Account_Signup_Stats_Groups" xml:space="preserve">
+    <value>Fan Groups</value>
+  </data>
+  <data name="Account_Signup_Stats_Active" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="Account_Signup_Label_User" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="Account_Signup_Label_Email" xml:space="preserve">
+    <value>Email Address</value>
+  </data>
+  <data name="Account_Signup_Label_Pass" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Account_Signup_Label_Confirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="Account_Signup_Terms" xml:space="preserve">
+    <value>By creating an account, you agree to our {0} and {1}.</value>
+  </data>
+  <data name="Account_Signup_Terms_Link" xml:space="preserve">
+    <value>Terms of Service</value>
+  </data>
+  <data name="Account_Signup_Privacy_Link" xml:space="preserve">
+    <value>Privacy Policy</value>
+  </data>
+  <data name="Account_Signup_Btn" xml:space="preserve">
+    <value>Create Account</value>
+  </data>
+  <data name="Account_Signup_HasAccount" xml:space="preserve">
+    <value>Already have an account?</value>
+  </data>
+  <data name="Account_Signup_BackToLogin" xml:space="preserve">
+    <value>Back to Login</value>
+  </data>
+  <data name="Account_OrContinue" xml:space="preserve">
+    <value>Or continue with</value>
+  </data>
+  <data name="Dash_Title" xml:space="preserve">
+    <value>Admin Dashboard</value>
+  </data>
+  <data name="Dash_Desc" xml:space="preserve">
+    <value>Manage all registered VTubers, approve edits, and maintain the wiki quality.</value>
+  </data>
+  <data name="Dash_Search_Placeholder" xml:space="preserve">
+    <value>Search VTuber...</value>
+  </data>
+  <data name="Dash_Btn_Add" xml:space="preserve">
+    <value>Add VTuber</value>
+  </data>
+  <data name="Dash_Stat_Total" xml:space="preserve">
+    <value>Total VTubers</value>
+  </data>
+  <data name="Dash_Stat_Approved" xml:space="preserve">
+    <value>Approved</value>
+  </data>
+  <data name="Dash_Stat_Pending" xml:space="preserve">
+    <value>Pending</value>
+  </data>
+  <data name="Dash_Col_Talent" xml:space="preserve">
+    <value>Talent (Avatar &amp; Name)</value>
+  </data>
+  <data name="Dash_Col_Info" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="Dash_Col_Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Dash_Col_Actions" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+  <data name="Dash_Status_Approved" xml:space="preserve">
+    <value>Approved</value>
+  </data>
+  <data name="Status_Active" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="Status_Graduated" xml:space="preserve">
+    <value>Graduated</value>
+  </data>
+  <data name="Status_Hiatus" xml:space="preserve">
+    <value>Hiatus</value>
+  </data>
+  <data name="Status_Pending" xml:space="preserve">
+    <value>Pending</value>
+  </data>
+  <data name="Dash_Action_View" xml:space="preserve">
+    <value>View Profile</value>
+  </data>
+  <data name="Dash_Action_Edit" xml:space="preserve">
+    <value>Edit VTuber</value>
+  </data>
+  <data name="Dash_Action_Approve" xml:space="preserve">
+    <value>Approve VTuber</value>
+  </data>
+  <data name="Dash_Action_Delete" xml:space="preserve">
+    <value>Delete VTuber</value>
+  </data>
+  <data name="Dash_Confirm_Delete" xml:space="preserve">
+    <value>Are you sure you want to delete {0}? This action is irreversible.</value>
+  </data>
+  <data name="Dash_Empty_Title" xml:space="preserve">
+    <value>No VTubers found in the database.</value>
+  </data>
+  <data name="Dash_Empty_Desc" xml:space="preserve">
+    <value>Start by adding a new VTuber profile using the button above.</value>
+  </data>
+  <data name="Dash_Empty_Btn" xml:space="preserve">
+    <value>Add Your First VTuber</value>
+  </data>
+  <data name="Dash_No_History" xml:space="preserve">
+    <value>No history provided.</value>
+  </data>
+  <data name="Dash_Debuted" xml:space="preserve">
+    <value>Debuted:</value>
+  </data>
+  <data name="Dash_Unknown" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="Dash_Independent" xml:space="preserve">
+    <value>Independent</value>
+  </data>
+  <data name="Dash_Success" xml:space="preserve">
+    <value>Success!</value>
+  </data>
+  <data name="Page_AboutUs" xml:space="preserve">
+    <value>About VTuber Wiki</value>
+  </data>
+  <data name="Page_Guidelines" xml:space="preserve">
+    <value>Community Guidelines</value>
+  </data>
+  <data name="Page_HelpCenter" xml:space="preserve">
+    <value>Help &amp; Support</value>
+  </data>
+  <data name="Page_Forum" xml:space="preserve">
+    <value>Wiki Discussion Forum</value>
+  </data>
+  <data name="Page_Translation" xml:space="preserve">
+    <value>Translation Project Hub</value>
+  </data>
+  <data name="Page_RecentChanges" xml:space="preserve">
+    <value>Recent Changes &amp; News</value>
+  </data>
+  <data name="Page_Independent" xml:space="preserve">
+    <value>Independent VTuber Directory</value>
+  </data>
+  <data name="Page_VirtualEvents" xml:space="preserve">
+    <value>Upcoming Virtual Events</value>
+  </data>
+  <data name="Page_FanTools" xml:space="preserve">
+    <value>Creator &amp; Fan Tools</value>
+  </data>
+  <data name="Page_TopTalents" xml:space="preserve">
+    <value>Top Trending Talents</value>
+  </data>
+  <data name="Page_Donate" xml:space="preserve">
+    <value>Support the Wiki</value>
+  </data>
+  <data name="Page_Discord" xml:space="preserve">
+    <value>Join our Discord</value>
+  </data>
+  <data name="Indie_Title" xml:space="preserve">
+    <value>Independent VTubers</value>
+  </data>
+  <data name="Indie_Desc" xml:space="preserve">
+    <value>Discover the incredible talents carving their own paths. From rising stars to industry veterans, explore the diverse world of indie VTubing.</value>
+  </data>
+  <data name="Indie_Btn_Learn" xml:space="preserve">
+    <value>Learn More</value>
+  </data>
+  <data name="Indie_Btn_HowTo" xml:space="preserve">
+    <value>How to Start</value>
+  </data>
+  <data name="Indie_Search_Placeholder" xml:space="preserve">
+    <value>Search independent VTubers...</value>
+  </data>
+  <data name="Indie_Filter_Region" xml:space="preserve">
+    <value>Region</value>
+  </data>
+  <data name="Indie_Filter_Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="Indie_Filter_Debut" xml:space="preserve">
+    <value>Debut Year</value>
+  </data>
+  <data name="Indie_Filter_Apply" xml:space="preserve">
+    <value>Apply Filter</value>
+  </data>
+  <data name="Indie_PopularTags" xml:space="preserve">
+    <value>Popular Tags:</value>
+  </data>
+  <data name="Indie_Btn_LoadMore" xml:space="preserve">
+    <value>Load More Talents</value>
+  </data>
+  <data name="Indie_Card_Debut" xml:space="preserve">
+    <value>DEBUT: {0}</value>
+  </data>
+  <data name="Trans_Title" xml:space="preserve">
+    <value>Translation Projects</value>
+  </data>
+  <data name="Trans_Subtitle" xml:space="preserve">
+    <value>Community Project</value>
+  </data>
+  <data name="Trans_Desc" xml:space="preserve">
+    <value>Join our community-driven efforts to bridge the language gap. Help us translate streams, lore, and VTuber history for fans worldwide. Every word brings us closer.</value>
+  </data>
+  <data name="Trans_Btn_Guidelines" xml:space="preserve">
+    <value>View Guidelines</value>
+  </data>
+  <data name="Trans_Btn_Discord" xml:space="preserve">
+    <value>Active Translators Discord</value>
+  </data>
+  <data name="Trans_Section_Current" xml:space="preserve">
+    <value>Current Projects</value>
+  </data>
+  <data name="Trans_Filter_All" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="Trans_Filter_InProgress" xml:space="preserve">
+    <value>In Progress</value>
+  </data>
+  <data name="Trans_Filter_Completed" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="Trans_Label_SourceTarget" xml:space="preserve">
+    <value>Source/Target</value>
+  </data>
+  <data name="Trans_Btn_Join" xml:space="preserve">
+    <value>Join Project</value>
+  </data>
+  <data name="Trans_Btn_Review" xml:space="preserve">
+    <value>Help Review</value>
+  </data>
+  <data name="Trans_Label_Archived" xml:space="preserve">
+    <value>Archived on {0}</value>
+  </data>
+  <data name="Trans_Btn_Results" xml:space="preserve">
+    <value>View Results</value>
+  </data>
+  <data name="Trans_Section_Request" xml:space="preserve">
+    <value>Submit a Translation Request</value>
+  </data>
+  <data name="Trans_Request_Title" xml:space="preserve">
+    <value>Content Title</value>
+  </data>
+  <data name="Trans_Request_Link" xml:space="preserve">
+    <value>Video/Source Link</value>
+  </data>
+  <data name="Trans_Request_Langs" xml:space="preserve">
+    <value>Language Requirements</value>
+  </data>
+  <data name="Trans_Request_From" xml:space="preserve">
+    <value>From (e.g. JP)</value>
+  </data>
+  <data name="Trans_Request_To" xml:space="preserve">
+    <value>To (e.g. EN)</value>
+  </data>
+  <data name="Trans_Btn_Submit" xml:space="preserve">
+    <value>Submit Request</value>
+  </data>
+  <data name="Trans_Sidebar_Resources" xml:space="preserve">
+    <value>Translation Resources</value>
+  </data>
+  <data name="Trans_Sidebar_Leaderboard" xml:space="preserve">
+    <value>Top Translators</value>
+  </data>
+  <data name="Trans_Btn_Leaderboard" xml:space="preserve">
+    <value>View Full Leaderboard</value>
+  </data>
+  <data name="Trans_Donate_Title" xml:space="preserve">
+    <value>Support our Servers</value>
+  </data>
+  <data name="Trans_Donate_Desc" xml:space="preserve">
+    <value>The Wiki is community funded. Help us keep the lights on.</value>
+  </data>
+  <data name="Trans_Btn_Donate" xml:space="preserve">
+    <value>Donate Now</value>
+  </data>
+  <data name="About_Hero_Title" xml:space="preserve">
+    <value>VTuber Wiki</value>
+  </data>
+  <data name="About_Hero_Desc" xml:space="preserve">
+    <value>The ultimate community-driven encyclopedia for Virtual YouTubers. We are dedicated to documenting the history, lore, and milestones of the ever-expanding VTubing universe.</value>
+  </data>
+  <data name="About_Btn_Explore" xml:space="preserve">
+    <value>Start Exploring</value>
+  </data>
+  <data name="About_Btn_Join" xml:space="preserve">
+    <value>Join Community</value>
+  </data>
+  <data name="About_Section_Story" xml:space="preserve">
+    <value>Our Story</value>
+  </data>
+  <data name="About_Story_P1" xml:space="preserve">
+    <value>Founded in late 2018, the VTuber Wiki started as a humble fan project on a shared spreadsheet to track the rapidly emerging virtual talent in Japan. What began with just a few dozen entries for pioneers like Kizuna AI and the early Nijisanji waves quickly transformed into a global movement.</value>
+  </data>
+  <data name="About_Story_P2" xml:space="preserve">
+    <value>As VTubing exploded internationally in 2020, our community grew from a handful of contributors to thousands of dedicated editors. Today, we stand as the most comprehensive digital archive of virtual culture, covering independent creators, corporate agencies, technical innovations, and the cultural impact of this unique medium.</value>
+  </data>
+  <data name="About_Section_Mission" xml:space="preserve">
+    <value>Our Mission</value>
+  </data>
+  <data name="About_Mission_Acc_Title" xml:space="preserve">
+    <value>Accuracy</value>
+  </data>
+  <data name="About_Mission_Acc_Desc" xml:space="preserve">
+    <value>We prioritize factual, sourced information to ensure the history of creators is preserved with integrity.</value>
+  </data>
+  <data name="About_Mission_Comm_Title" xml:space="preserve">
+    <value>Community</value>
+  </data>
+  <data name="About_Mission_Comm_Desc" xml:space="preserve">
+    <value>A platform built by fans, for fans. We foster a collaborative environment where everyone can contribute.</value>
+  </data>
+  <data name="About_Mission_Inc_Title" xml:space="preserve">
+    <value>Inclusivity</value>
+  </data>
+  <data name="About_Mission_Inc_Desc" xml:space="preserve">
+    <value>From the biggest agency stars to the smallest indies, we celebrate diversity in the virtual space.</value>
+  </data>
+  <data name="About_Section_Team" xml:space="preserve">
+    <value>Meet the Team</value>
+  </data>
+  <data name="About_Team_Admin" xml:space="preserve">
+    <value>Head Administrator</value>
+  </data>
+  <data name="About_Team_Mod" xml:space="preserve">
+    <value>Senior Moderator</value>
+  </data>
+  <data name="About_Team_Editor" xml:space="preserve">
+    <value>Content Lead</value>
+  </data>
+  <data name="About_Team_Tech" xml:space="preserve">
+    <value>Technical Lead</value>
+  </data>
+  <data name="About_Sidebar_Links" xml:space="preserve">
+    <value>Quick Resources</value>
+  </data>
+  <data name="About_Stats_Title" xml:space="preserve">
+    <value>Wiki Stats</value>
+  </data>
+  <data name="About_Stats_Articles" xml:space="preserve">
+    <value>Articles</value>
+  </data>
+  <data name="About_Stats_Contributors" xml:space="preserve">
+    <value>Contributors</value>
+  </data>
+  <data name="RC_Title" xml:space="preserve">
+    <value>Recent Changes</value>
+  </data>
+  <data name="RC_Desc" xml:space="preserve">
+    <value>Monitoring all live updates to the VTuber database.</value>
+  </data>
+  <data name="RC_Filter_All" xml:space="preserve">
+    <value>All Changes</value>
+  </data>
+  <data name="RC_Filter_Articles" xml:space="preserve">
+    <value>Articles</value>
+  </data>
+  <data name="RC_Filter_Media" xml:space="preserve">
+    <value>Media</value>
+  </data>
+  <data name="RC_Filter_Users" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="RC_Filter_Community" xml:space="preserve">
+    <value>Community</value>
+  </data>
+  <data name="RC_Today" xml:space="preserve">
+    <value>Today</value>
+  </data>
+  <data name="RC_Yesterday" xml:space="preserve">
+    <value>Yesterday</value>
+  </data>
+  <data name="RC_Btn_LoadMore" xml:space="preserve">
+    <value>Load More Changes</value>
+  </data>
+  <data name="RC_Stat_Last24h" xml:space="preserve">
+    <value>Last 24h Edits</value>
+  </data>
+  <data name="RC_Section_Contributors" xml:space="preserve">
+    <value>Top Contributors</value>
+  </data>
+  <data name="RC_Edit_AddedChars" xml:space="preserve">
+    <value>+{0} chars</value>
+  </data>
+  <data name="RC_Edit_RemovedChars" xml:space="preserve">
+    <value>-{0} chars</value>
+  </data>
+  <data name="RC_Label_NewComment" xml:space="preserve">
+    <value>New Comment</value>
+  </data>
+  <data name="Discord_Hero_Title" xml:space="preserve">
+    <value>Connect with the {0} Community</value>
+  </data>
+  <data name="Discord_Hero_Desc" xml:space="preserve">
+    <value>Join the official VTuber Wiki Discord server to stay updated on debuts, participate in exclusive community events, and collaborate with editors in real-time.</value>
+  </data>
+  <data name="Discord_Btn_Join" xml:space="preserve">
+    <value>Join our Discord</value>
+  </data>
+  <data name="Discord_Btn_Rules" xml:space="preserve">
+    <value>View Server Rules</value>
+  </data>
+  <data name="Discord_Stat_Members" xml:space="preserve">
+    <value>Total Members</value>
+  </data>
+  <data name="Discord_Stat_Online" xml:space="preserve">
+    <value>Online Now</value>
+  </data>
+  <data name="Discord_Label_Online" xml:space="preserve">
+    <value>{0} Online</value>
+  </data>
+  <data name="Discord_Section_Why" xml:space="preserve">
+    <value>Why Join the Server?</value>
+  </data>
+  <data name="Discord_Why_Desc" xml:space="preserve">
+    <value>Experience the best of the VTuber Wiki community with exclusive features and real-time collaboration.</value>
+  </data>
+  <data name="Discord_Feature_Updates_Title" xml:space="preserve">
+    <value>Real-time Updates</value>
+  </data>
+  <data name="Discord_Feature_Updates_Desc" xml:space="preserve">
+    <value>Never miss a beat. Get instant notifications about new VTuber debuts, lore updates, and major wiki revisions before anyone else.</value>
+  </data>
+  <data name="Discord_Feature_Events_Title" xml:space="preserve">
+    <value>Community Events</value>
+  </data>
+  <data name="Discord_Feature_Events_Desc" xml:space="preserve">
+    <value>Participate in organized watch parties, gaming nights, and community art contests. Connect with fans who share your oshi.</value>
+  </data>
+  <data name="Discord_Feature_EditorHelp_Title" xml:space="preserve">
+    <value>Help for Editors</value>
+  </data>
+  <data name="Discord_Feature_EditorHelp_Desc" xml:space="preserve">
+    <value>Direct access to veteran editors. Get real-time help with formatting, sourcing, and image optimization for your favorite wiki pages.</value>
+  </data>
+  <data name="Discord_Feature_Roles_Title" xml:space="preserve">
+    <value>Exclusive Roles</value>
+  </data>
+  <data name="Discord_Feature_Roles_Desc" xml:space="preserve">
+    <value>Earn badges and special roles based on your contributions. Show off your expertise in specific agencies or indie niches.</value>
+  </data>
+  <data name="Discord_Feature_Hubs_Title" xml:space="preserve">
+    <value>Agency Hubs</value>
+  </data>
+  <data name="Discord_Feature_Hubs_Desc" xml:space="preserve">
+    <value>Dedicated channels for Hololive, Nijisanji, VShojo, Phase Connect, and the independent VTuber scene.</value>
+  </data>
+  <data name="Discord_Feature_Indie_Title" xml:space="preserve">
+    <value>Indie Promotion</value>
+  </data>
+  <data name="Discord_Feature_Indie_Desc" xml:space="preserve">
+    <value>A platform for rising stars. Share your favorite upcoming VTubers and help them build their wiki presence from day one.</value>
+  </data>
+  <data name="Discord_CTA_Title" xml:space="preserve">
+    <value>Ready to join the nest?</value>
+  </data>
+  <data name="Discord_CTA_Desc" xml:space="preserve">
+    <value>Join over 25,000 members in the most active VTuber community on Discord.</value>
+  </data>
+  <data name="Discord_CTA_Btn" xml:space="preserve">
+    <value>Join the Official Discord</value>
+  </data>
+  <data name="Discord_CTA_Note" xml:space="preserve">
+    <value>By joining, you agree to follow the community guidelines and wiki standards.</value>
+  </data>
+  <data name="Explore_Title" xml:space="preserve">
+    <value>Discover Talents</value>
+  </data>
+  <data name="Explore_Search_Placeholder" xml:space="preserve">
+    <value>Search VTubers, agencies, or news...</value>
+  </data>
+  <data name="Explore_Popular" xml:space="preserve">
+    <value>Popular:</value>
+  </data>
+  <data name="Explore_Label_Indie" xml:space="preserve">
+    <value>Indie</value>
+  </data>
+  <data name="Explore_Label_3D" xml:space="preserve">
+    <value>3D Model</value>
+  </data>
+  <data name="Explore_Label_ASMR" xml:space="preserve">
+    <value>ASMR</value>
+  </data>
+  <data name="Explore_Label_Karaoke" xml:space="preserve">
+    <value>Karaoke</value>
+  </data>
+  <data name="Explore_Label_Debut" xml:space="preserve">
+    <value>Debut</value>
+  </data>
+  <data name="Explore_Filter_SortBy" xml:space="preserve">
+    <value>Sort By</value>
+  </data>
+  <data name="Explore_Sort_Newest" xml:space="preserve">
+    <value>Newest Debut</value>
+  </data>
+  <data name="Explore_Sort_Followers" xml:space="preserve">
+    <value>Most Followers</value>
+  </data>
+  <data name="Explore_Sort_AZ" xml:space="preserve">
+    <value>Name A-Z</value>
+  </data>
+  <data name="Explore_Sort_ZA" xml:space="preserve">
+    <value>Name Z-A</value>
+  </data>
+  <data name="Explore_Filter_ContentType" xml:space="preserve">
+    <value>Content Type</value>
+  </data>
+  <data name="Explore_Type_All" xml:space="preserve">
+    <value>All Types</value>
+  </data>
+  <data name="Explore_Type_Gaming" xml:space="preserve">
+    <value>Gaming</value>
+  </data>
+  <data name="Explore_Type_Music" xml:space="preserve">
+    <value>Music</value>
+  </data>
+  <data name="Explore_Type_Variety" xml:space="preserve">
+    <value>Variety</value>
+  </data>
+  <data name="Explore_Type_Education" xml:space="preserve">
+    <value>Education</value>
+  </data>
+  <data name="Explore_Filter_Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Explore_Stat_Active" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="Explore_Stat_Graduated" xml:space="preserve">
+    <value>Graduated</value>
+  </data>
+  <data name="Explore_Stat_Hiatus" xml:space="preserve">
+    <value>Hiatus</value>
+  </data>
+  <data name="Explore_Btn_Reset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="Explore_Tab_All" xml:space="preserve">
+    <value>All VTubers</value>
+  </data>
+  <data name="Explore_Tab_Agencies" xml:space="preserve">
+    <value>Agencies</value>
+  </data>
+  <data name="Explore_Tab_Gens" xml:space="preserve">
+    <value>Generations</value>
+  </data>
+  <data name="Explore_Tab_Langs" xml:space="preserve">
+    <value>Languages</value>
+  </data>
+  <data name="Explore_Showing_Results" xml:space="preserve">
+    <value>Showing {0} Results</value>
+  </data>
+  <data name="Explore_Trending" xml:space="preserve">
+    <value>Trending Now</value>
+  </data>
+  <data name="Explore_Recommended" xml:space="preserve">
+    <value>Recommended Talents</value>
+  </data>
+  <data name="Explore_News_Major" xml:space="preserve">
+    <value>Major News</value>
+  </data>
+  <data name="Explore_News_Outfit" xml:space="preserve">
+    <value>New Outfit</value>
+  </data>
+  <data name="Explore_Label_Debuted" xml:space="preserve">
+    <value>Debuted:</value>
+  </data>
+  <data name="Explore_Btn_LoadMore" xml:space="preserve">
+    <value>Load More Results</value>
+  </data>
+  <data name="Explore_Sidebar_Stats" xml:space="preserve">
+    <value>Wiki Statistics</value>
+  </data>
+  <data name="Explore_Sidebar_Contributors" xml:space="preserve">
+    <value>Top Contributors</value>
+  </data>
+  <data name="Explore_Btn_Contribute" xml:space="preserve">
+    <value>Contribute Now</value>
+  </data>
+  <data name="Explore_Label_EditsMonth" xml:space="preserve">
+    <value>{0} edits this month</value>
+  </data>
+  <data name="Explore_Btn_Profiles" xml:space="preserve">
+    <value>View Profiles</value>
+  </data>
+  <data name="Home_Agency_Holo" xml:space="preserve">
+    <value>Hololive Production</value>
+  </data>
+  <data name="Home_Agency_Niji" xml:space="preserve">
+    <value>Nijisanji</value>
+  </data>
+  <data name="Home_Agency_VShojo" xml:space="preserve">
+    <value>VShojo</value>
+  </data>
+  <data name="Home_Agency_Phase" xml:space="preserve">
+    <value>Phase Connect</value>
+  </data>
+  <data name="Home_Agency_Idol" xml:space="preserve">
+    <value>Idol Corp</value>
+  </data>
+  <data name="Home_Agency_Indie" xml:space="preserve">
+    <value>Indies</value>
+  </data>
+  <data name="Home_Hero_Gen0" xml:space="preserve">
+    <value>Generation 0</value>
+  </data>
+  <data name="Home_Hero_FanName_Value" xml:space="preserve">
+    <value>Hoshiyomis</value>
+  </data>
+  <data name="Home_Category_News" xml:space="preserve">
+    <value>News</value>
+  </data>
+  <data name="Home_Category_Debut" xml:space="preserve">
+    <value>Debut</value>
+  </data>
+  <data name="Home_Category_Music" xml:space="preserve">
+    <value>Music</value>
+  </data>
+  <data name="Home_Category_Event" xml:space="preserve">
+    <value>Event</value>
+  </data>
+  <data name="Home_Label_Time_Hours" xml:space="preserve">
+    <value>{0}h ago</value>
+  </data>
+  <data name="Home_Label_Time_Minutes" xml:space="preserve">
+    <value>{0}m ago</value>
+  </data>
+  <data name="Home_Label_Time_Days" xml:space="preserve">
+    <value>{0}d ago</value>
+  </data>
+  <data name="Home_Label_By" xml:space="preserve">
+    <value>By {0}</value>
+  </data>
+  <data name="Home_Label_Updated" xml:space="preserve">
+    <value>updated {0}</value>
+  </data>
+  <data name="Home_Label_Commented" xml:space="preserve">
+    <value>commented on {0}</value>
+  </data>
+  <data name="Home_Label_Created" xml:space="preserve">
+    <value>created page {0}</value>
+  </data>
+  <data name="Home_Label_Pinned" xml:space="preserve">
+    <value>pinned {0}</value>
+  </data>
+  <data name="Dash_Status_Approved" xml:space="preserve">
+    <value>Approved</value>
+  </data>
+  <data name="Dash_Status_Pending" xml:space="preserve">
+    <value>Pending</value>
+  </data>
+  <data name="Dash_Independent" xml:space="preserve">
+    <value>Independent</value>
+  </data>
+  <data name="Dash_Unknown" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="Dash_No_History" xml:space="preserve">
+    <value>No history available.</value>
+  </data>
+  <data name="Nav_Logout" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="Footer_Desc" xml:space="preserve">
+    <value>The ultimate community-driven encyclopedia for Virtual YouTubers. Discover, learn, and contribute to the expanding virtual world.</value>
+  </data>
+  <data name="Footer_Wiki" xml:space="preserve">
+    <value>Wiki</value>
+  </data>
+  <data name="Footer_Explore" xml:space="preserve">
+    <value>Explore</value>
+  </data>
+  <data name="Footer_Subscribe" xml:space="preserve">
+    <value>Subscribe</value>
+  </data>
+  <data name="Footer_Subscribe_Desc" xml:space="preserve">
+    <value>Get the latest VTuber news delivered to your inbox.</value>
+  </data>
+  <data name="Footer_Email_Placeholder" xml:space="preserve">
+    <value>Email address</value>
+  </data>
+  <data name="Footer_Go" xml:space="preserve">
+    <value>Go</value>
+  </data>
+  <data name="Footer_Rights" xml:space="preserve">
+    <value>© 2024 VTWiki. All rights reserved. Not affiliated with any agency.</value>
+  </data>
+  <data name="Footer_Privacy" xml:space="preserve">
+    <value>Privacy Policy</value>
+  </data>
+  <data name="Footer_Terms" xml:space="preserve">
+    <value>Terms of Service</value>
+  </data>
+  <data name="Home_Agency_Holo_EN" xml:space="preserve">
+    <value>Hololive English</value>
+  </data>
+  <data name="Home_Agency_Holo_JP" xml:space="preserve">
+    <value>Hololive JP</value>
+  </data>
+  <data name="Region_NA" xml:space="preserve">
+    <value>North America</value>
+  </data>
+  <data name="Region_EU" xml:space="preserve">
+    <value>Europe</value>
+  </data>
+  <data name="Region_Asia" xml:space="preserve">
+    <value>Asia</value>
+  </data>
+  <data name="Region_SA" xml:space="preserve">
+    <value>South America</value>
+  </data>
+  <data name="Region_Oceania" xml:space="preserve">
+    <value>Oceania</value>
+  </data>
+  <data name="Lang_EN" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="Lang_JP" xml:space="preserve">
+    <value>Japanese</value>
+  </data>
+  <data name="Lang_ES" xml:space="preserve">
+    <value>Spanish</value>
+  </data>
+  <data name="Lang_KR" xml:space="preserve">
+    <value>Korean</value>
+  </data>
+  <data name="Lang_FR" xml:space="preserve">
+    <value>French</value>
+  </data>
+  <data name="Time_Jan" xml:space="preserve">
+    <value>Jan</value>
+  </data>
+  <data name="Time_Feb" xml:space="preserve">
+    <value>Feb</value>
+  </data>
+  <data name="Time_Mar" xml:space="preserve">
+    <value>Mar</value>
+  </data>
+  <data name="Time_Apr" xml:space="preserve">
+    <value>Apr</value>
+  </data>
+  <data name="Time_May" xml:space="preserve">
+    <value>May</value>
+  </data>
+  <data name="Time_Jun" xml:space="preserve">
+    <value>Jun</value>
+  </data>
+  <data name="Time_Jul" xml:space="preserve">
+    <value>Jul</value>
+  </data>
+  <data name="Time_Aug" xml:space="preserve">
+    <value>Aug</value>
+  </data>
+  <data name="Time_Sep" xml:space="preserve">
+    <value>Sep</value>
+  </data>
+  <data name="Time_Oct" xml:space="preserve">
+    <value>Oct</value>
+  </data>
+  <data name="Time_Nov" xml:space="preserve">
+    <value>Nov</value>
+  </data>
+  <data name="Time_Dec" xml:space="preserve">
+    <value>Dec</value>
+  </data>
+  <data name="RC_Stat_Articles" xml:space="preserve">
+    <value>Articles</value>
+  </data>
+  <data name="RC_Stat_Editors" xml:space="preserve">
+    <value>Editors</value>
+  </data>
+  <data name="RC_Stat_Media" xml:space="preserve">
+    <value>Media Files</value>
+  </data>
+  <data name="Wiki_TalentsTracked" xml:space="preserve">
+    <value>Talents Tracked</value>
+  </data>
+  <data name="Explore_News_Major" xml:space="preserve">
+    <value>Major News</value>
+  </data>
+  <data name="Explore_News_Outfit" xml:space="preserve">
+    <value>New Outfit</value>
+  </data>
+  <data name="Explore_Tab_Gens" xml:space="preserve">
+    <value>Generations</value>
+  </data>
+  <data name="Explore_Tab_Langs" xml:space="preserve">
+    <value>Languages</value>
+  </data>
+  <data name="Explore_Showing_Results" xml:space="preserve">
+    <value>Showing {0} Results</value>
+  </data>
+  <data name="Explore_No_Results" xml:space="preserve">
+    <value>No VTubers found matching your filters.</value>
+  </data>
+  <data name="Nav_Search_Suggested" xml:space="preserve">
+    <value>Suggested</value>
+  </data>
+  <data name="Nav_Search_NoResults" xml:space="preserve">
+    <value>No results found</value>
+  </data>
+  <data name="Forum_Header" xml:space="preserve">
+    <value>Community Discussions</value>
+  </data>
+  <data name="Forum_Subheader" xml:space="preserve">
+    <value>Connect with fellow fans, discuss your favorite VTubers, and contribute to the growing lore.</value>
+  </data>
+  <data name="Forum_Category_General" xml:space="preserve">
+    <value>General Discussion</value>
+  </data>
+  <data name="Forum_Category_News" xml:space="preserve">
+    <value>News &amp; Updates</value>
+  </data>
+  <data name="Forum_Category_FanArt" xml:space="preserve">
+    <value>Fan Art</value>
+  </data>
+  <data name="Forum_Category_Lore" xml:space="preserve">
+    <value>Lore &amp; Theories</value>
+  </data>
+  <data name="RC_Label_Edits" xml:space="preserve">
+    <value>{0} Edits</value>
+  </data>
+  <data name="RC_Older" xml:space="preserve">
+    <value>Older</value>
+  </data>
+  <data name="RC_NoActivities" xml:space="preserve">
+    <value>No recent activities found.</value>
+  </data>
+  <data name="Account_AccessDenied_Code" xml:space="preserve">
+    <value>403 · Access Denied</value>
+  </data>
+  <data name="Account_AccessDenied_Title" xml:space="preserve">
+    <value>You don''t have permission</value>
+  </data>
+  <data name="Account_AccessDenied_Desc1" xml:space="preserve">
+    <value>This feature is restricted to</value>
+  </data>
+  <data name="Account_AccessDenied_Desc2" xml:space="preserve">
+    <value>If you need access, please contact an administrator.</value>
+  </data>
+  <data name="Account_AccessDenied_Back" xml:space="preserve">
+    <value>OK, Go Back</value>
+  </data>
+  <data name="Account_AccessDenied_Home" xml:space="preserve">
+    <value>Return Home</value>
+  </data>
+  <data name="Account_ForgotPass_Title" xml:space="preserve">
+    <value>Forgot Password?</value>
+  </data>
+  <data name="Account_ForgotPass_Desc" xml:space="preserve">
+    <value>Enter your username or email address and we'll help you reset your password.</value>
+  </data>
+  <data name="Account_ForgotPass_Label" xml:space="preserve">
+    <value>Username or Email</value>
+  </data>
+  <data name="Account_ForgotPass_Placeholder" xml:space="preserve">
+    <value>Enter your account info</value>
+  </data>
+  <data name="Account_ForgotPass_Btn" xml:space="preserve">
+    <value>Next Step</value>
+  </data>
+  <data name="Account_ForgotPass_Back" xml:space="preserve">
+    <value>Back to Login</value>
+  </data>
+  <data name="Account_Profile_MemberSince" xml:space="preserve">
+    <value>Member since</value>
+  </data>
+  <data name="Account_Profile_Stats" xml:space="preserve">
+    <value>Account Stats</value>
+  </data>
+  <data name="Account_Profile_Role" xml:space="preserve">
+    <value>Role</value>
+  </data>
+  <data name="Account_Profile_Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Account_Profile_BioTitle" xml:space="preserve">
+    <value>Biography</value>
+  </data>
+  <data name="Account_Profile_NoBio" xml:space="preserve">
+    <value>No biography shared yet. Click "Edit" to tell the community about yourself.</value>
+  </data>
+  <data name="Account_Profile_EditTitle" xml:space="preserve">
+    <value>Edit Profile</value>
+  </data>
+  <data name="Account_Profile_ChangeAvatar" xml:space="preserve">
+    <value>Change Avatar Image</value>
+  </data>
+  <data name="Account_Profile_UploadMsg" xml:space="preserve">
+    <value>Click to upload or drag and drop</value>
+  </data>
+  <data name="Account_Profile_UploadDesc" xml:space="preserve">
+    <value>PNG, JPG or WEBP (MAX. 2MB)</value>
+  </data>
+  <data name="Account_Profile_NewPreview" xml:space="preserve">
+    <value>New Preview</value>
+  </data>
+  <data name="Account_Profile_AboutMe" xml:space="preserve">
+    <value>About Me</value>
+  </data>
+  <data name="Account_Profile_AboutMePH" xml:space="preserve">
+    <value>Tell us about yourself, your favorite VTubers, or whatever you like...</value>
+  </data>
+  <data name="Account_Profile_Save" xml:space="preserve">
+    <value>Save Changes</value>
+  </data>
+  <data name="Account_Profile_Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Account_ResetPass_Title" xml:space="preserve">
+    <value>New Password</value>
+  </data>
+  <data name="Account_ResetPass_Desc" xml:space="preserve">
+    <value>PIN Verified! Please enter your new secure password below.</value>
+  </data>
+  <data name="Account_ResetPass_NewPass" xml:space="preserve">
+    <value>New Password</value>
+  </data>
+  <data name="Account_ResetPass_ConfirmPass" xml:space="preserve">
+    <value>Confirm New Password</value>
+  </data>
+  <data name="Account_ResetPass_Btn" xml:space="preserve">
+    <value>Update Password</value>
+  </data>
+  <data name="Account_SetupPin_Title" xml:space="preserve">
+    <value>Secure Your Account</value>
+  </data>
+  <data name="Account_SetupPin_Desc" xml:space="preserve">
+    <value>Please set up a 6-digit Security PIN to continue. This will be used if you forget your password.</value>
+  </data>
+  <data name="Account_SetupPin_Label" xml:space="preserve">
+    <value>New 6-Digit PIN</value>
+  </data>
+  <data name="Account_SetupPin_Btn" xml:space="preserve">
+    <value>Save Security PIN</value>
+  </data>
+  <data name="Account_SetupPin_Logout" xml:space="preserve">
+    <value>Logout and set up later</value>
+  </data>
+  <data name="Account_VerifyPin_Title" xml:space="preserve">
+    <value>Verify Identity</value>
+  </data>
+  <data name="Account_VerifyPin_Desc" xml:space="preserve">
+    <value>Enter your 6-digit Security PIN to proceed with password reset.</value>
+  </data>
+  <data name="Account_VerifyPin_Label" xml:space="preserve">
+    <value>6-Digit Security PIN</value>
+  </data>
+  <data name="Account_VerifyPin_Btn" xml:space="preserve">
+    <value>Verify PIN</value>
+  </data>
+  <data name="Account_VerifyPin_Forgot" xml:space="preserve">
+    <value>Forgot your PIN?</value>
+  </data>
+  <data name="Account_VerifyPin_Contact" xml:space="preserve">
+    <value>Contact Support</value>
+  </data>
+  <data name="Forum_Community_Title" xml:space="preserve">
+    <value>Community Discussions</value>
+  </data>
+  <data name="Forum_Community_Description" xml:space="preserve">
+    <value>Connect with fellow fans, discuss your favorite VTubers, share fan art, and contribute to the growing lore of the multiverse.</value>
+  </data>
+  <data name="Forum_Community_StartTopic" xml:space="preserve">
+    <value>Start a Topic</value>
+  </data>
+  <data name="Forum_Community_AllCategories" xml:space="preserve">
+    <value>All Categories</value>
+  </data>
+  <data name="Forum_Community_Recent" xml:space="preserve">
+    <value>Recent</value>
+  </data>
+  <data name="Forum_Community_Trending" xml:space="preserve">
+    <value>Trending</value>
+  </data>
+  <data name="Forum_Community_Replies" xml:space="preserve">
+    <value>Replies</value>
+  </data>
+  <data name="Forum_Community_LastActivity" xml:space="preserve">
+    <value>Last Activity</value>
+  </data>
+  <data name="Forum_Community_Topics" xml:space="preserve">
+    <value>Topics</value>
+  </data>
+  <data name="Forum_Community_Active" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="Forum_Community_LastPost" xml:space="preserve">
+    <value>Last Post</value>
+  </data>
+  <data name="Forum_Community_NoActivity" xml:space="preserve">
+    <value>No activity yet</value>
+  </data>
+  <data name="Forum_Community_TrendingTopics" xml:space="preserve">
+    <value>Trending Topics</value>
+  </data>
+  <data name="Forum_Community_ActiveMembers" xml:space="preserve">
+    <value>Active Members</value>
+  </data>
+  <data name="Forum_Community_ContributorTitle" xml:space="preserve">
+    <value>Wiki Contributor?</value>
+  </data>
+  <data name="Forum_Community_ContributorDesc" xml:space="preserve">
+    <value>Help us keep the lore accurate. Your contributions make the community better!</value>
+  </data>
+  <data name="Forum_Community_ApplyMod" xml:space="preserve">
+    <value>Apply for Moderator</value>
+  </data>
+  <data name="Forum_Hub_Welcome" xml:space="preserve">
+    <value>Welcome to the
+
+Community Hub</value>
+  </data>
+  <data name="Forum_Hub_Description" xml:space="preserve">
+    <value>Your central dashboard for all the latest happenings within the multiverse. Check discussions, news, and upcoming events.</value>
+  </data>
+  <data name="Forum_Hub_EnterForum" xml:space="preserve">
+    <value>Enter Forum</value>
+  </data>
+  <data name="Forum_Hub_JoinDiscord" xml:space="preserve">
+    <value>Join Discord</value>
+  </data>
+  <data name="Forum_Hub_RecentConvo" xml:space="preserve">
+    <value>Recent Conversations</value>
+  </data>
+  <data name="Forum_Hub_ViewAll" xml:space="preserve">
+    <value>View All</value>
+  </data>
+  <data name="Forum_Hub_by" xml:space="preserve">
+    <value>by</value>
+  </data>
+  <data name="Forum_Hub_NewsTitle" xml:space="preserve">
+    <value>Latest News &amp; Events</value>
+  </data>
+  <data name="Forum_Hub_ViewCalendar" xml:space="preserve">
+    <value>View Calendar</value>
+  </data>
+  <data name="Forum_Hub_ReadMore" xml:space="preserve">
+    <value>Read More</value>
+  </data>
+  <data name="Forum_Hub_QuickNav" xml:space="preserve">
+    <value>Quick Navigation</value>
+  </data>
+  <data name="Forum_Hub_Wiki" xml:space="preserve">
+    <value>Wiki</value>
+  </data>
+  <data name="Forum_Hub_Events" xml:space="preserve">
+    <value>Events</value>
+  </data>
+  <data name="Forum_Hub_Rules" xml:space="preserve">
+    <value>Rules</value>
+  </data>
+  <data name="Forum_Hub_Agencies" xml:space="preserve">
+    <value>Agencies</value>
+  </data>
+  <data name="Forum_Hub_TrendingNow" xml:space="preserve">
+    <value>Trending Now</value>
+  </data>
+  <data name="Forum_Hub_FanArtTitle" xml:space="preserve">
+    <value>Fan Art Showcase</value>
+  </data>
+  <data name="Forum_Hub_FanArtDesc" xml:space="preserve">
+    <value>Share your creativity with thousands of other fans.</value>
+  </data>
+  <data name="Forum_Hub_UploadArt" xml:space="preserve">
+    <value>Upload Artwork</value>
+  </data>
+  <data name="Forum_Topic_EditTitle" xml:space="preserve">
+    <value>Edit Discussion</value>
+  </data>
+  <data name="Forum_Topic_EditDesc" xml:space="preserve">
+    <value>Update your topic details.</value>
+  </data>
+  <data name="Forum_Topic_NewTitle" xml:space="preserve">
+    <value>New Discussion</value>
+  </data>
+  <data name="Forum_Topic_NewDesc" xml:space="preserve">
+    <value>Share your thoughts with the community.</value>
+  </data>
+  <data name="Forum_Topic_LabelTitle" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="Forum_Topic_PlaceholderTitle" xml:space="preserve">
+    <value>What's on your mind?</value>
+  </data>
+  <data name="Forum_Topic_LabelCategory" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="Forum_Topic_CatGeneral" xml:space="preserve">
+    <value>General Discussion</value>
+  </data>
+  <data name="Forum_Topic_CatNews" xml:space="preserve">
+    <value>News &amp; Updates</value>
+  </data>
+  <data name="Forum_Topic_CatFanArt" xml:space="preserve">
+    <value>Fan Art</value>
+  </data>
+  <data name="Forum_Topic_CatLore" xml:space="preserve">
+    <value>Lore &amp; Theories</value>
+  </data>
+  <data name="Forum_Topic_LabelContent" xml:space="preserve">
+    <value>Content</value>
+  </data>
+  <data name="Forum_Topic_PlaceholderContent" xml:space="preserve">
+    <value>Write your content here...</value>
+  </data>
+  <data name="Forum_Topic_BtnSave" xml:space="preserve">
+    <value>Save Changes</value>
+  </data>
+  <data name="Forum_Topic_BtnPost" xml:space="preserve">
+    <value>Post Discussion</value>
+  </data>
+  <data name="Forum_Topic_BtnCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Forum_Topic_PostedOn" xml:space="preserve">
+    <value>Posted on</value>
+  </data>
+  <data name="Forum_Topic_ConfirmDeleteTitle" xml:space="preserve">
+    <value>Are you sure you want to delete this discussion?</value>
+  </data>
+  <data name="Forum_Topic_Views" xml:space="preserve">
+    <value>Views</value>
+  </data>
+  <data name="Forum_Topic_Likes" xml:space="preserve">
+    <value>Likes</value>
+  </data>
+  <data name="Forum_Topic_Reply" xml:space="preserve">
+    <value>Reply</value>
+  </data>
+  <data name="Forum_Topic_Share" xml:space="preserve">
+    <value>Share</value>
+  </data>
+  <data name="Forum_Topic_RepliesTitle" xml:space="preserve">
+    <value>Replies</value>
+  </data>
+  <data name="Forum_Topic_DeleteConfirmReply" xml:space="preserve">
+    <value>Delete this reply?</value>
+  </data>
+  <data name="Forum_Topic_NoReplies" xml:space="preserve">
+    <value>No replies yet. Be the first to start the conversation!</value>
+  </data>
+  <data name="Forum_Topic_PostReplyTitle" xml:space="preserve">
+    <value>Post a Reply</value>
+  </data>
+  <data name="Forum_Topic_PlaceholderReply" xml:space="preserve">
+    <value>Write your reply...</value>
+  </data>
+  <data name="Forum_Topic_BtnPostReply" xml:space="preserve">
+    <value>Post Reply</value>
+  </data>
+  <data name="Forum_Topic_LoginToReply" xml:space="preserve">
+    <value>You need to log in to post a reply.</value>
+  </data>
+  <data name="Forum_Topic_LogIn" xml:space="preserve">
+    <value>Log In</value>
+  </data>
+  <data name="Forum_Wiki_Breadcrumb" xml:space="preserve">
+    <value>Community Forum</value>
+  </data>
+  <data name="Forum_Wiki_Title" xml:space="preserve">
+    <value>V-Space Discussions</value>
+  </data>
+  <data name="Forum_Wiki_Desc" xml:space="preserve">
+    <value>Your central hub for all things Virtual YouTuber—news, debuts, and fan art.</value>
+  </data>
+  <data name="Forum_Wiki_TabCategories" xml:space="preserve">
+    <value>Categories</value>
+  </data>
+  <data name="Forum_Wiki_TabRecent" xml:space="preserve">
+    <value>Recent</value>
+  </data>
+  <data name="Forum_Wiki_TabTrending" xml:space="preserve">
+    <value>Trending</value>
+  </data>
+  <data name="Forum_Wiki_ThCategory" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="Forum_Wiki_ThTopics" xml:space="preserve">
+    <value>Topics</value>
+  </data>
+  <data name="Forum_Wiki_ThRecentPost" xml:space="preserve">
+    <value>Recent Post</value>
+  </data>
+  <data name="Forum_Wiki_TopContributors" xml:space="preserve">
+    <value>Top Contributors</value>
+  </data>
+  <data name="Forum_Wiki_MembersOnline" xml:space="preserve">
+    <value>Members Online</value>
+  </data>
+  <data name="Forum_Wiki_JoinMsg" xml:space="preserve">
+    <value>Join 120,000+ other members and contribute to the encyclopedia of VTubing.</value>
+  </data>
+  <data name="Forum_Wiki_CatGeneral" xml:space="preserve">
+    <value>General Discussion</value>
+  </data>
+  <data name="Forum_Wiki_CatGeneralDesc" xml:space="preserve">
+    <value>Off-topic and general chatter</value>
+  </data>
+  <data name="Forum_Wiki_CatNews" xml:space="preserve">
+    <value>Agency News</value>
+  </data>
+  <data name="Forum_Wiki_CatNewsDesc" xml:space="preserve">
+    <value>Updates from Hololive, Nijisanji, and more</value>
+  </data>
+  <data name="Forum_Wiki_CatDebut" xml:space="preserve">
+    <value>Debut Announcements</value>
+  </data>
+  <data name="Forum_Wiki_CatDebutDesc" xml:space="preserve">
+    <value>Welcome the newest stars to the sky</value>
+  </data>
+  <data name="Forum_Wiki_CatFan" xml:space="preserve">
+    <value>Fan Creations</value>
+  </data>
+  <data name="Forum_Wiki_CatFanDesc" xml:space="preserve">
+    <value>Art, music, and community projects</value>
+  </data>
+  <data name="Forum_Wiki_RecentDiscussions" xml:space="preserve">
+    <value>Recent Discussions</value>
+  </data>
+  <data name="Wiki_Profile_Type" xml:space="preserve">
+    <value>Agency Profile</value>
+  </data>
+  <data name="Wiki_Talents_Count" xml:space="preserve">
+    <value>{0} Talents</value>
+  </data>
+  <data name="Wiki_Label_About" xml:space="preserve">
+    <value>About {0}</value>
+  </data>
+  <data name="Wiki_No_Desc" xml:space="preserve">
+    <value>No description available for this agency.</value>
+  </data>
+  <data name="Wiki_Community_Links" xml:space="preserve">
+    <value>Community Links</value>
+  </data>
+  <data name="Wiki_Official_Website" xml:space="preserve">
+    <value>Official Website</value>
+  </data>
+  <data name="Wiki_Youtube_Channel" xml:space="preserve">
+    <value>YouTube Channel</value>
+  </data>
+  <data name="Wiki_Social_Twitter" xml:space="preserve">
+    <value>Twitter / X</value>
+  </data>
+  <data name="Wiki_Current_Talents" xml:space="preserve">
+    <value>Current Talents</value>
+  </data>
+  <data name="Wiki_Recently_Active" xml:space="preserve">
+    <value>Recently Active</value>
+  </data>
+  <data name="Wiki_No_Talents" xml:space="preserve">
+    <value>No talents linked to this agency yet.</value>
+  </data>
+  <data name="Events_Title_Virtual" xml:space="preserve">
+    <value>Virtual</value>
+  </data>
+  <data name="Events_Title_Events" xml:space="preserve">
+    <value>Events</value>
+  </data>
+  <data name="Events_Hero_Desc" xml:space="preserve">
+    <value>Stay updated with the latest news, debuts, music releases, and gaming events from across the VTuber Multiverse.</value>
+  </data>
+  <data name="Events_Filter_All" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="Events_Filter_Events" xml:space="preserve">
+    <value>Events</value>
+  </data>
+  <data name="Events_Filter_Debuts" xml:space="preserve">
+    <value>Debuts</value>
+  </data>
+  <data name="Events_Filter_Music" xml:space="preserve">
+    <value>Music</value>
+  </data>
+  <data name="Events_Filter_ASMR" xml:space="preserve">
+    <value>ASMR</value>
+  </data>
+  <data name="Events_Filter_Gaming" xml:space="preserve">
+    <value>Gaming</value>
+  </data>
+  <data name="Events_Btn_Add" xml:space="preserve">
+    <value>Add Event</value>
+  </data>
+  <data name="Events_By_Author" xml:space="preserve">
+    <value>By {0}</value>
+  </data>
+  <data name="Events_No_Events" xml:space="preserve">
+    <value>No events found in this category.</value>
+  </data>
+  <data name="Events_No_Events_Desc" xml:space="preserve">
+    <value>Try changing your filters or check back later!</value>
+  </data>
+  <data name="Events_Delete_Title" xml:space="preserve">
+    <value>Delete Event?</value>
+  </data>
+  <data name="Events_Delete_Confirm" xml:space="preserve">
+    <value>Are you sure you want to delete "{0}"? This action cannot be undone.</value>
+  </data>
+  <data name="Wiki_Label_Youtube" xml:space="preserve">
+    <value>YouTube Channel URL</value>
+  </data>
+  <data name="Wiki_Label_Age_Label" xml:space="preserve">
+    <value>Age (Optional)</value>
+  </data>
+  <data name="Wiki_Label_Region" xml:space="preserve">
+    <value>Region</value>
+  </data>
+  <data name="Wiki_Label_Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="Wiki_Label_Tags" xml:space="preserve">
+    <value>Tags (Comma-separated)</value>
+  </data>
+  <data name="Wiki_Upload_PNG" xml:space="preserve">
+    <value>PNG, JPG, GIF up to 5MB</value>
+  </data>
+  <data name="Wiki_Upload_Select" xml:space="preserve">
+    <value>Selected: {0}</value>
+  </data>
+  <data name="Wiki_Upload_File" xml:space="preserve">
+    <value>Upload a file</value>
+  </data>
+  <data name="Wiki_Upload_Drop" xml:space="preserve">
+    <value>or drag and drop</value>
+  </data>
+  <data name="Wiki_Avatar_Current" xml:space="preserve">
+    <value>Current Avatar</value>
+  </data>
+  <data name="Wiki_Avatar_Keep" xml:space="preserve">
+    <value>Leave empty to keep current image</value>
+  </data>
+  <data name="Wiki_Logo_Upload" xml:space="preserve">
+    <value>Upload Logo</value>
+  </data>
+  <data name="Wiki_Logo_Select" xml:space="preserve">
+    <value>Select Image</value>
+  </data>
+  <data name="Wiki_Logo_Change" xml:space="preserve">
+    <value>Change Logo</value>
+  </data>
+  <data name="Wiki_Logo_None" xml:space="preserve">
+    <value>No Logo</value>
+  </data>
+  <data name="Wiki_Logo_Recommended" xml:space="preserve">
+    <value>Recommended: Square PNG/WEBP/JPG</value>
+  </data>
+  <data name="Wiki_Placeholder_Name" xml:space="preserve">
+    <value>e.g. Hoshimachi Suisei</value>
+  </data>
+  <data name="Wiki_Placeholder_Youtube" xml:space="preserve">
+    <value>https://youtube.com/@@channel</value>
+  </data>
+  <data name="Wiki_Placeholder_Age" xml:space="preserve">
+    <value>e.g. 18</value>
+  </data>
+  <data name="Wiki_Placeholder_Birthday" xml:space="preserve">
+    <value>e.g. March 22</value>
+  </data>
+  <data name="Wiki_Placeholder_Language" xml:space="preserve">
+    <value>e.g. English / Japanese</value>
+  </data>
+  <data name="Wiki_Placeholder_Tags" xml:space="preserve">
+    <value>e.g. Gaming, Art, ASMR</value>
+  </data>
+  <data name="Wiki_Placeholder_Lore" xml:space="preserve">
+    <value>Write a short background story or biography section for this VTuber...</value>
+  </data>
+  <data name="Wiki_Create_Agency_Title" xml:space="preserve">
+    <value>Add New Agency</value>
+  </data>
+  <data name="Wiki_Create_Agency_Subtitle" xml:space="preserve">
+    <value>Introduce a new VTuber Agency or Group to the database.</value>
+  </data>
+  <data name="Wiki_Edit_Agency_Title" xml:space="preserve">
+    <value>Edit Agency</value>
+  </data>
+  <data name="Wiki_Edit_Agency_Subtitle" xml:space="preserve">
+    <value>Update information for {0}</value>
+  </data>
+  <data name="Wiki_Label_Logo" xml:space="preserve">
+    <value>Logo / Branding</value>
+  </data>
+  <data name="Wiki_Label_Focus" xml:space="preserve">
+    <value>Core Focus</value>
+  </data>
+  <data name="Wiki_Label_TalentsCount" xml:space="preserve">
+    <value>Estimated Talents</value>
+  </data>
+  <data name="Wiki_Label_Description" xml:space="preserve">
+    <value>Agency Bio</value>
+  </data>
+  <data name="Wiki_Label_Links" xml:space="preserve">
+    <value>Community Links (Optional)</value>
+  </data>
+  <data name="Wiki_Btn_CreateAgency" xml:space="preserve">
+    <value>CREATE AGENCY</value>
+  </data>
+  <data name="Wiki_Btn_SaveAgency" xml:space="preserve">
+    <value>SAVE CHANGES</value>
+  </data>
+  <data name="Wiki_Create_Event_Title" xml:space="preserve">
+    <value>Add New Event</value>
+  </data>
+  <data name="Wiki_Create_Event_Subtitle" xml:space="preserve">
+    <value>Share the latest news, debuts, or community highlights</value>
+  </data>
+  <data name="Wiki_Label_CoverImage" xml:space="preserve">
+    <value>Cover Image</value>
+  </data>
+  <data name="Wiki_Label_EventTitle" xml:space="preserve">
+    <value>Event Title</value>
+  </data>
+  <data name="Wiki_Label_EventType" xml:space="preserve">
+    <value>Event Type</value>
+  </data>
+  <data name="Wiki_Label_AuthorName" xml:space="preserve">
+    <value>Author Name</value>
+  </data>
+  <data name="Wiki_Label_RichDesc" xml:space="preserve">
+    <value>Rich Description</value>
+  </data>
+  <data name="Wiki_Label_Featured" xml:space="preserve">
+    <value>Feature on Front Page</value>
+  </data>
+  <data name="Wiki_Btn_PublishEvent" xml:space="preserve">
+    <value>Publish Event</value>
+  </data>
+  <data name="Trans_Project_Advent" xml:space="preserve">
+    <value>Hololive Advent Debut Stream [JP -&gt; EN]</value>
+  </data>
+  <data name="Trans_Project_Kuzuha" xml:space="preserve">
+    <value>Kuzuha Lore Video [JP -&gt; ID]</value>
+  </data>
+  <data name="Trans_Project_Shylily" xml:space="preserve">
+    <value>Shylily Lore: The Deep Sea [EN -&gt; KR]</value>
+  </data>
+  <data name="Trans_Lang_JPEN" xml:space="preserve">
+    <value>Japanese → English</value>
+  </data>
+  <data name="Trans_Lang_JPID" xml:space="preserve">
+    <value>Japanese → Indonesian</value>
+  </data>
+  <data name="Trans_Lang_ENKR" xml:space="preserve">
+    <value>English → Korean</value>
+  </data>
+  <data name="Trans_Label_Proofreaders" xml:space="preserve">
+    <value>Seeking Proofreaders</value>
+  </data>
+  <data name="Trans_Section_Request_Desc" xml:space="preserve">
+    <value>Is there a video or stream that needs a translation? Let the community know!</value>
+  </data>
+  <data name="Trans_Placeholder_RequestTitle" xml:space="preserve">
+    <value>e.g. Pekora BGM 10-hour loop Lore</value>
+  </data>
+  <data name="Trans_Sidebar_WikiGlossary" xml:space="preserve">
+    <value>Official Wiki Glossary</value>
+  </data>
+  <data name="Trans_Sidebar_Subtitling" xml:space="preserve">
+    <value>Subtitling Guidelines</value>
+  </data>
+  <data name="Trans_Sidebar_Naming" xml:space="preserve">
+    <value>Naming Conventions Tool</value>
+  </data>
+  <data name="Trans_Sidebar_HelpChannel" xml:space="preserve">
+    <value>Translation Help Channel</value>
+  </data>
+  <data name="Trans_Label_Leaderboard_Projects" xml:space="preserve">
+    <value>{0} Projects</value>
+  </data>
+  <data name="Trans_Label_Leaderboard_Level" xml:space="preserve">
+    <value>Level {0}</value>
+  </data>
+  <data name="Wiki_Agency_Add_Title" xml:space="preserve">
+    <value>Add New Agency</value>
+  </data>
+  <data name="Wiki_Agency_Add_Subtitle" xml:space="preserve">
+    <value>Introduce a new VTuber Agency or Group to the database.</value>
+  </data>
+  <data name="Wiki_Label_estimated_talents" xml:space="preserve">
+    <value>Estimated Talents</value>
+  </data>
+  <data name="Wiki_Label_agency_bio" xml:space="preserve">
+    <value>Agency Bio</value>
+  </data>
+  <data name="Wiki_Placeholder_bio" xml:space="preserve">
+    <value>Enter a brief history or mission statement...</value>
+  </data>
+  <data name="Wiki_Btn_Create_Agency" xml:space="preserve">
+    <value>CREATE AGENCY</value>
+  </data>
+  <data name="Wiki_Btn_Save_Agency" xml:space="preserve">
+    <value>SAVE CHANGES</value>
+  </data>
+  <data name="Wiki_Placeholder_Agency_Name" xml:space="preserve">
+    <value>e.g. Hololive Production</value>
+  </data>
+  <data name="Wiki_Placeholder_Agency_Focus" xml:space="preserve">
+    <value>e.g. Idol, Gaming, Tech</value>
+  </data>
+  <data name="Wiki_Event_Add_Subtitle_News" xml:space="preserve">
+    <value>Share the latest news, debuts, or community highlights</value>
+  </data>
+  <data name="Wiki_Label_Upload_Cover" xml:space="preserve">
+    <value>Upload Cover Image</value>
+  </data>
+  <data name="Wiki_Label_Update_Cover" xml:space="preserve">
+    <value>Update Cover Image</value>
+  </data>
+  <data name="Wiki_Placeholder_EventTitle_News" xml:space="preserve">
+    <value>e.g. Hololive 5th Fes. Details Announced</value>
+  </data>
+  <data name="Wiki_Event_Type_Event" xml:space="preserve">
+    <value>Event</value>
+  </data>
+  <data name="Wiki_Event_Type_Debut" xml:space="preserve">
+    <value>Debut</value>
+  </data>
+  <data name="Wiki_Event_Type_Music" xml:space="preserve">
+    <value>Music</value>
+  </data>
+  <data name="Wiki_Event_Type_ASMR" xml:space="preserve">
+    <value>ASMR</value>
+  </data>
+  <data name="Wiki_Event_Type_Gaming" xml:space="preserve">
+    <value>Gaming</value>
+  </data>
+  <data name="Wiki_Placeholder_EventContent" xml:space="preserve">
+    <value>Tell us more about the event...</value>
+  </data>
+  <data name="Wiki_Btn_PublishEvent_News" xml:space="preserve">
+    <value>Publish Event</value>
+  </data>
+  <data name="Wiki_Event_Edit_Subtitle_News" xml:space="preserve">
+    <value>Update the information for this news piece or highlight</value>
+  </data>
+  <data name="Editor_Welcome" xml:space="preserve">
+    <value>Welcome to the Editor Hub</value>
+  </data>
+  <data name="Editor_Subtitle" xml:space="preserve">
+    <value>Join our community of contributors and help the VTuber Wiki grow by sharing your knowledge and expertise.</value>
+  </data>
+  <data name="Editor_Btn_Start" xml:space="preserve">
+    <value>Start Editing</value>
+  </data>
+  <data name="Editor_Btn_Documentation" xml:space="preserve">
+    <value>Documentation</value>
+  </data>
+  <data name="Editor_Section_Tasks" xml:space="preserve">
+    <value>Tasks &amp; Projects</value>
+  </data>
+  <data name="Editor_Task_Cleanup_Title" xml:space="preserve">
+    <value>Stub Cleanup</value>
+  </data>
+  <data name="Editor_Task_Cleanup_Desc" xml:space="preserve">
+    <value>Expand short articles with more details, lore, and verified sources.</value>
+  </data>
+  <data name="Editor_Task_Agency_Title" xml:space="preserve">
+    <value>Missing Agency Pages</value>
+  </data>
+  <data name="Editor_Task_Agency_Desc" xml:space="preserve">
+    <value>Create profiles for new independent groups and rising talent agencies.</value>
+  </data>
+  <data name="Editor_Task_Media_Title" xml:space="preserve">
+    <value>Media Upload Drive</value>
+  </data>
+  <data name="Editor_Task_Media_Desc" xml:space="preserve">
+    <value>Help update transparent logos and high-res promotional artwork.</value>
+  </data>
+  <data name="Editor_Btn_Join" xml:space="preserve">
+    <value>Join</value>
+  </data>
+  <data name="Editor_Section_Resources" xml:space="preserve">
+    <value>Contributor Resources</value>
+  </data>
+  <data name="Editor_Res_Guide_Title" xml:space="preserve">
+    <value>Editor Guide</value>
+  </data>
+  <data name="Editor_Res_Guide_Desc" xml:space="preserve">
+    <value>Master the basics of wiki syntax and formatting.</value>
+  </data>
+  <data name="Editor_Res_Guide_Link" xml:space="preserve">
+    <value>Read Guide</value>
+  </data>
+  <data name="Editor_Res_Template_Title" xml:space="preserve">
+    <value>Template Library</value>
+  </data>
+  <data name="Editor_Res_Template_Desc" xml:space="preserve">
+    <value>Standardized info-boxes for consistency.</value>
+  </data>
+  <data name="Editor_Res_Template_Link" xml:space="preserve">
+    <value>Browse Templates</value>
+  </data>
+  <data name="Editor_Res_Policy_Title" xml:space="preserve">
+    <value>Image Policy</value>
+  </data>
+  <data name="Editor_Res_Policy_Desc" xml:space="preserve">
+    <value>Guidelines on usage and attribution rules.</value>
+  </data>
+  <data name="Editor_Res_Policy_Link" xml:space="preserve">
+    <value>View Policy</value>
+  </data>
+  <data name="Editor_Section_Requested" xml:space="preserve">
+    <value>Requested Articles</value>
+  </data>
+  <data name="Editor_Btn_RequestNew" xml:space="preserve">
+    <value>Request New</value>
+  </data>
+  <data name="Editor_Sidebar_Stats" xml:space="preserve">
+    <value>Editor Stats</value>
+  </data>
+  <data name="Editor_Stat_Target" xml:space="preserve">
+    <value>Monthly Target</value>
+  </data>
+  <data name="Editor_Stat_Active" xml:space="preserve">
+    <value>Active Editors</value>
+  </data>
+  <data name="Editor_Stat_Today" xml:space="preserve">
+    <value>Edits Today</value>
+  </data>
+  <data name="Editor_Sidebar_QuickLinks" xml:space="preserve">
+    <value>Quick Links</value>
+  </data>
+  <data name="Editor_Sidebar_Announcements" xml:space="preserve">
+    <value>Admin Announcements</value>
+  </data>
+  <data name="Tools_Title" xml:space="preserve">
+    <value>Fan Tools</value>
+  </data>
+  <data name="Tools_Subtitle" xml:space="preserve">
+    <value>Discover community-created resources to empower your VTubing experience. From avatar rigging to stream overlays.</value>
+  </data>
+  <data name="Tools_Btn_Submit" xml:space="preserve">
+    <value>Submit a Tool</value>
+  </data>
+  <data name="Tools_Search_Placeholder" xml:space="preserve">
+    <value>Search fan tools...</value>
+  </data>
+  <data name="Tools_Tab_All" xml:space="preserve">
+    <value>All Tools</value>
+  </data>
+  <data name="Tools_Tab_Avatar" xml:space="preserve">
+    <value>Avatar Creation</value>
+  </data>
+  <data name="Tools_Tab_Streaming" xml:space="preserve">
+    <value>Streaming Assets</value>
+  </data>
+  <data name="Tools_Tab_Wiki" xml:space="preserve">
+    <value>Wiki Helpers</value>
+  </data>
+  <data name="Tools_Category_Avatar" xml:space="preserve">
+    <value>Avatar Creation</value>
+  </data>
+  <data name="Tools_Category_Streaming" xml:space="preserve">
+    <value>Streaming Assets</value>
+  </data>
+  <data name="Home_Category_General" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="Home_Label_Tracked" xml:space="preserve">
+    <value>Talents Tracked</value>
+  </data>
+  <data name="Donate_Hero_Badge" xml:space="preserve">
+    <value>Support the Wiki</value>
+  </data>
+  <data name="Donate_Hero_Title" xml:space="preserve">
+    <value>Support VTuber Wiki</value>
+  </data>
+  <data name="Donate_Hero_Desc" xml:space="preserve">
+    <value>We are a community-driven project dedicated to documenting the ever-expanding world of virtual talent. Your contributions directly fund our server infrastructure and community-led events.</value>
+  </data>
+  <data name="Donate_Goal_Monthly" xml:space="preserve">
+    <value>Monthly Goal</value>
+  </data>
+  <data name="Donate_Goal_Reached" xml:space="preserve">
+    <value>{0}% reached</value>
+  </data>
+  <data name="Donate_Goal_Remaining" xml:space="preserve">
+    <value>{0} — {1} days remaining</value>
+  </data>
+  <data name="Donate_Tiers_Title" xml:space="preserve">
+    <value>Choose Your Support Tier</value>
+  </data>
+  <data name="Donate_Tiers_Desc" xml:space="preserve">
+    <value>Every contribution helps us grow and improve</value>
+  </data>
+  <data name="Donate_Tier_Supporter_Title" xml:space="preserve">
+    <value>Supporter</value>
+  </data>
+  <data name="Donate_Tier_Supporter_Subtitle" xml:space="preserve">
+    <value>Basic tier</value>
+  </data>
+  <data name="Donate_Tier_Supporter_Benefit1" xml:space="preserve">
+    <value>Supporter badge on profile</value>
+  </data>
+  <data name="Donate_Tier_Supporter_Benefit2" xml:space="preserve">
+    <value>Name in credits page</value>
+  </data>
+  <data name="Donate_Tier_Supporter_Benefit3" xml:space="preserve">
+    <value>Access to supporter Discord channel</value>
+  </data>
+  <data name="Donate_Btn_Supporter" xml:space="preserve">
+    <value>Become a Supporter</value>
+  </data>
+  <data name="Donate_Tier_Patron_Title" xml:space="preserve">
+    <value>Patron</value>
+  </data>
+  <data name="Donate_Tier_Patron_Subtitle" xml:space="preserve">
+    <value>Premium tier</value>
+  </data>
+  <data name="Donate_Tier_Patron_Badge" xml:space="preserve">
+    <value>Most Popular</value>
+  </data>
+  <data name="Donate_Tier_Patron_Benefit1" xml:space="preserve">
+    <value>All Supporter benefits</value>
+  </data>
+  <data name="Donate_Tier_Patron_Benefit2" xml:space="preserve">
+    <value>Patron badge with custom color</value>
+  </data>
+  <data name="Donate_Tier_Patron_Benefit3" xml:space="preserve">
+    <value>Early access to new features</value>
+  </data>
+  <data name="Donate_Tier_Patron_Benefit4" xml:space="preserve">
+    <value>Vote on wiki priorities</value>
+  </data>
+  <data name="Donate_Btn_Patron" xml:space="preserve">
+    <value>Become a Patron</value>
+  </data>
+  <data name="Donate_Tier_Legendary_Title" xml:space="preserve">
+    <value>Legendary</value>
+  </data>
+  <data name="Donate_Tier_Legendary_Subtitle" xml:space="preserve">
+    <value>Ultimate tier</value>
+  </data>
+  <data name="Donate_Tier_Legendary_Benefit1" xml:space="preserve">
+    <value>All Patron benefits</value>
+  </data>
+  <data name="Donate_Tier_Legendary_Benefit2" xml:space="preserve">
+    <value>Legendary animated badge</value>
+  </data>
+  <data name="Donate_Tier_Legendary_Benefit3" xml:space="preserve">
+    <value>Hall of Fame featured slot</value>
+  </data>
+  <data name="Donate_Tier_Legendary_Benefit4" xml:space="preserve">
+    <value>Direct line to admin team</value>
+  </data>
+  <data name="Donate_Btn_Legendary" xml:space="preserve">
+    <value>Become Legendary</value>
+  </data>
+  <data name="Donate_Payments_Title" xml:space="preserve">
+    <value>Payment Methods</value>
+  </data>
+  <data name="Donate_Payments_Secure" xml:space="preserve">
+    <value>All payments are encrypted and processed securely.</value>
+  </data>
+  <data name="Donate_Hall_Title" xml:space="preserve">
+    <value>Hall of Fame</value>
+  </data>
+  <data name="Donate_Donor_Legendary" xml:space="preserve">
+    <value>Legendary Patron</value>
+  </data>
+  <data name="Donate_Donor_Supporter" xml:space="preserve">
+    <value>Supporter</value>
+  </data>
+  <data name="Donate_View_All" xml:space="preserve">
+    <value>View All Donors</value>
+  </data>
+  <data name="Donate_Card_About_Title" xml:space="preserve">
+    <value>About Us</value>
+  </data>
+  <data name="Donate_Card_About_Desc" xml:space="preserve">
+    <value>Learn more about VTuber Wiki</value>
+  </data>
+  <data name="Donate_Card_Forum_Title" xml:space="preserve">
+    <value>Community Forum</value>
+  </data>
+  <data name="Donate_Card_Forum_Desc" xml:space="preserve">
+    <value>Join the discussion</value>
+  </data>
+  <data name="Donate_Card_Help_Title" xml:space="preserve">
+    <value>Help Center</value>
+  </data>
+  <data name="Donate_Card_Help_Desc" xml:space="preserve">
+    <value>Get support and answers</value>
+  </data>
+  <data name="Region_Japan" xml:space="preserve">
+    <value>Japan</value>
+  </data>
+  <data name="Region_US" xml:space="preserve">
+    <value>United States</value>
+  </data>
+  <data name="Region_Canada" xml:space="preserve">
+    <value>Canada</value>
+  </data>
+  <data name="Region_Europe" xml:space="preserve">
+    <value>Europe</value>
+  </data>
+  <data name="Lang_English" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="Lang_Japanese" xml:space="preserve">
+    <value>Japanese</value>
+  </data>
+  <data name="Focus_Idol" xml:space="preserve">
+    <value>Idol</value>
+  </data>
+  <data name="Focus_Gaming" xml:space="preserve">
+    <value>Gaming</value>
+  </data>
+  <data name="Focus_Variety" xml:space="preserve">
+    <value>Variety</value>
+  </data>
+<data name="Nav_Admin_Dashboard" xml:space="preserve"><value>Dashboard</value></data><data name="Nav_Discord_Link" xml:space="preserve"><value>Discord</value></data><data name="Nav_HelpCenter_Hub" xml:space="preserve"><value>Help Center</value></data><data name="Modal_Confirm_Title" xml:space="preserve"><value>Confirm Action</value></data><data name="Modal_Confirm_Msg" xml:space="preserve"><value>Are you sure you want to proceed?</value></data><data name="Modal_Btn_Cancel" xml:space="preserve"><value>Cancel</value></data><data name="Modal_Btn_Confirm" xml:space="preserve"><value>Confirm</value></data><data name="Footer_Section_Wiki" xml:space="preserve"><value>Wiki</value></data><data name="Footer_Section_Explore" xml:space="preserve"><value>Explore</value></data><data name="Footer_Section_Subscribe" xml:space="preserve"><value>Subscribe</value></data><data name="Forum_Item_By" xml:space="preserve"><value>by</value></data><data name="Forum_Item_Ago" xml:space="preserve"><value>ago</value></data><data name="Forum_Badge_OP" xml:space="preserve"><value>OP</value></data><data name="Forum_Wiki_CatTech" xml:space="preserve"><value>Tech Support</value></data><data name="Forum_Wiki_CatGeneral_Sidebar" xml:space="preserve"><value>General</value></data><data name="Forum_Wiki_CatCreative" xml:space="preserve"><value>Creative</value></data><data name="Help_Hero_Title" xml:space="preserve"><value>How can we help?</value></data><data name="Help_Hero_Desc" xml:space="preserve"><value>Search our knowledge base for VTuber setup guides, wiki contribution tutorials, and community support.</value></data><data name="Help_Search_Placeholder" xml:space="preserve"><value>Search for articles, guides, or FAQs...</value></data><data name="Help_Search_Btn" xml:space="preserve"><value>Search</value></data><data name="Help_Popular_Label" xml:space="preserve"><value>Popular:</value></data><data name="Help_Popular_ModelSetup" xml:space="preserve"><value>Model setup</value></data><data name="Help_Popular_OBS" xml:space="preserve"><value>OBS settings</value></data><data name="Help_Popular_Naming" xml:space="preserve"><value>Naming conventions</value></data><data name="Help_Category_Browse" xml:space="preserve"><value>Browse by Category</value></data><data name="Help_Cat_Account_Title" xml:space="preserve"><value>Account Management</value></data><data name="Help_Cat_Account_Desc" xml:space="preserve"><value>Update your profile, security settings, and permissions.</value></data><data name="Help_Cat_Editing_Title" xml:space="preserve"><value>Editing Guide</value></data><data name="Help_Cat_Editing_Desc" xml:space="preserve"><value>Learn the syntax, formatting, and media upload rules.</value></data><data name="Help_Cat_Guidelines_Title" xml:space="preserve"><value>Community Guidelines</value></data><data name="Help_Cat_Guidelines_Desc" xml:space="preserve"><value>Code of conduct, content policy, and moderation info.</value></data><data name="Help_Cat_Tech_Title" xml:space="preserve"><value>Technical Support</value></data><data name="Help_Cat_Tech_Desc" xml:space="preserve"><value>Troubleshoot API errors, login issues, and site bugs.</value></data><data name="Help_Articles_Promoted" xml:space="preserve"><value>Promoted Articles</value></data><data name="Help_Article_CreateProfile" xml:space="preserve"><value>How to create a new VTuber profile page</value></data><data name="Help_Article_ImgOpt" xml:space="preserve"><value>Image optimization for wiki galleries</value></data><data name="Help_Article_Tags" xml:space="preserve"><value>Understanding agency vs. independent tags</value></data><data name="Help_Article_TroubleVTS" xml:space="preserve"><value>Troubleshooting VTube Studio integration</value></data><data name="Help_Article_Copyright" xml:space="preserve"><value>Copyright and fair use of streamer assets</value></data><data name="Help_Support_Title" xml:space="preserve"><value>Still need help?</value></data><data name="Help_Support_Desc" xml:space="preserve"><value>If you can't find what you're looking for, our community and support team are here to assist.</value></data><data name="Help_Support_Contact" xml:space="preserve"><value>Contact Form</value></data><data name="Help_Support_Discord" xml:space="preserve"><value>Join our Discord</value></data><data name="Help_Stats_Title" xml:space="preserve"><value>Wiki Stats</value></data><data name="Help_Stats_Articles" xml:space="preserve"><value>Articles</value></data><data name="Help_Stats_Members" xml:space="preserve"><value>Members</value></data><data name="Help_Stats_Editors" xml:space="preserve"><value>Active Editors</value></data><data name="Help_Stats_Response" xml:space="preserve"><value>Avg Response</value></data><data name="Guide_Title" xml:space="preserve"><value>Wiki Guidelines</value></data><data name="Guide_Intro" xml:space="preserve"><value>Welcome to the VTuber Wiki. Help us maintain a positive, neutral, and accurate encyclopedia for the global Virtual YouTuber community.</value></data><data name="Guide_Conduct_Title" xml:space="preserve"><value>Community Code of Conduct</value></data><data name="Guide_Respect_Title" xml:space="preserve"><value>Respect</value></data><data name="Guide_Respect_Desc" xml:space="preserve"><value>Treat all community members, editors, and VTubers with professional courtesy regardless of personal opinions.</value></data><data name="Guide_Inclusivity_Title" xml:space="preserve"><value>Inclusivity</value></data><data name="Guide_Inclusivity_Desc" xml:space="preserve"><value>Foster a welcoming environment for fans of all regions, languages, and types of VTubing.</value></data><data name="Guide_ZeroTolerance_Title" xml:space="preserve"><value>Zero Tolerance</value></data><data name="Guide_ZeroTolerance_Desc" xml:space="preserve"><value>Harassment, hate speech, doxxing, or targeted harassment of VTubers will result in an immediate permanent ban.</value></data><data name="Guide_Standards_Title" xml:space="preserve"><value>Editing Standards</value></data><data name="Guide_Standards_Sourcing_Title" xml:space="preserve"><value>Sourcing</value></data><data name="Guide_Standards_Sourcing_Desc" xml:space="preserve"><value>All information must be backed by official sources, stream clips, or verified social media announcements. Avoid rumors and "leak" sites.</value></data><data name="Guide_Standards_Neutral_Title" xml:space="preserve"><value>Neutral POV</value></data><data name="Guide_Standards_Neutral_Desc" xml:space="preserve"><value>Articles should be written from a neutral, encyclopedic tone. Avoid fan-culture slang unless defining specific memes.</value></data><data name="Guide_Standards_Format_Title" xml:space="preserve"><value>Formatting</value></data><data name="Guide_Standards_Format_Desc" xml:space="preserve"><value>Use the standard templates for infoboxes. Ensure image quality meets the minimum 800px width requirement for transparency renders.</value></data><data name="Guide_Standards_Loc_Title" xml:space="preserve"><value>Localization</value></data><data name="Guide_Standards_Loc_Desc" xml:space="preserve"><value>When translating names or lore, prioritize the VTuber's preferred English spelling if available.</value></data><data name="Guide_Policy_Title" xml:space="preserve"><value>Content Policy</value></data><data name="Guide_Policy_Intro" xml:space="preserve"><value>We aim to be comprehensive but maintain a threshold for encyclopedic relevance:</value></data><data name="Guide_Policy_Agencies" xml:space="preserve"><value>Official Agencies: All VTubers belonging to established agencies (Hololive, Nijisanji, VShojo, etc.) are eligible.</value></data><data name="Guide_Policy_Independents" xml:space="preserve"><value>Independents: Independent VTubers must meet a minimum follower threshold (e.g., 10,000+ total) or have significant cultural impact.</value></data><data name="Guide_Policy_Privacy" xml:space="preserve"><value>Privacy: Strictly no information regarding a VTuber's "behind the scenes" identity or personal life (IRL data).</value></data><data name="Guide_Mod_Title" xml:space="preserve"><value>Moderation</value></data><data name="Guide_Mod_Intro" xml:space="preserve"><value>Our volunteer moderator team monitors all changes. Violations of guidelines will result in:</value></data><data name="Guide_Mod_Step1_Title" xml:space="preserve"><value>1. Warning</value></data><data name="Guide_Mod_Step1_Desc" xml:space="preserve"><value>For minor formatting issues</value></data><data name="Guide_Mod_Step2_Title" xml:space="preserve"><value>2. Edit Ban</value></data><data name="Guide_Mod_Step2_Desc" xml:space="preserve"><value>7-day lock for repeat errors</value></data><data name="Guide_Mod_Step3_Title" xml:space="preserve"><value>3. Full Ban</value></data><data name="Guide_Mod_Step3_Desc" xml:space="preserve"><value>For conduct violations</value></data><data name="Guide_Links_Title" xml:space="preserve"><value>Quick Links</value></data><data name="Guide_Links_Recent" xml:space="preserve"><value>Recent Changes</value></data><data name="Guide_Links_Forum" xml:space="preserve"><value>Community Forum</value></data><data name="Guide_Links_Contact" xml:space="preserve"><value>Contact Us</value></data><data name="Guide_Links_FAQ" xml:space="preserve"><value>Editor FAQ</value></data><data name="Guide_Contribute_Title" xml:space="preserve"><value>Become a Contributor</value></data><data name="Guide_Contribute_Desc" xml:space="preserve"><value>Join over 2,000 active editors documenting VTuber history.</value></data><data name="Guide_Contribute_Btn" xml:space="preserve"><value>Sign Up to Edit</value></data><data name="RC_Btn_View" xml:space="preserve"><value>view</value></data><data name="Nav_CommunityHub" xml:space="preserve"><value>Community Hub</value></data><data name="Nav_Forum" xml:space="preserve"><value>Forum</value></data></root>

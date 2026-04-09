@@ -39,7 +39,7 @@
                 </h1>
                 <p class="text-slate-500 font-medium flex items-center gap-2 mt-1">
                     <span class="material-symbols-outlined text-[18px]">verified_user</span>
-                    Member since @Model.CreatedAt.ToString("MMMM yyyy")
+                    @Localizer["Account_Profile_MemberSince"] @Model.CreatedAt.ToString("MMMM yyyy")
                 </p>
             </div>
         </div>
@@ -48,17 +48,16 @@
     <!-- Content Grid -->
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-24">
         
-        <!-- Sidebar -->
         <div class="lg:col-span-1 space-y-6">
             <div class="bg-white dark:bg-surface-dark rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
-                <h3 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-4">Account Stats</h3>
+                <h3 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-4">@Localizer["Account_Profile_Stats"]</h3>
                 <div class="space-y-4">
                     <div class="flex items-center justify-between">
-                        <span class="text-slate-500 text-sm">Role</span>
+                        <span class="text-slate-500 text-sm">@Localizer["Account_Profile_Role"]</span>
                         <span class="font-bold text-slate-900 dark:text-white">@Model.Role</span>
                     </div>
                     <div class="flex items-center justify-between">
-                        <span class="text-slate-500 text-sm">Email</span>
+                        <span class="text-slate-500 text-sm">@Localizer["Account_Profile_Email"]</span>
                         <span class="font-bold text-slate-900 dark:text-white truncate max-w-[120px]">@Model.Email</span>
                     </div>
                 </div>
@@ -73,13 +72,13 @@
                 <div class="flex items-center justify-between mb-6">
                     <h2 class="text-2xl font-bold flex items-center gap-2">
                         <span class="material-symbols-outlined text-primary">description</span>
-                        Biography
+                        @Localizer["Account_Profile_BioTitle"]
                     </h2>
                 </div>
                 
                 @if (string.IsNullOrEmpty(Model.Bio))
                 {
-                    <p class="text-slate-400 italic">No biography shared yet. Click "Edit" to tell the community about yourself.</p>
+                    <p class="text-slate-400 italic">@Localizer["Account_Profile_NoBio"]</p>
                 }
                 else
                 {
@@ -92,7 +91,7 @@
                 <div class="flex items-center justify-between mb-8">
                     <h2 class="text-2xl font-bold flex items-center gap-2 text-primary">
                         <span class="material-symbols-outlined">edit_square</span>
-                        Edit Profile
+                        @Localizer["Account_Profile_EditTitle"]
                     </h2>
                     <button onclick="toggleEdit()" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full text-slate-400">
                         <span class="material-symbols-outlined">close</span>
@@ -101,14 +100,14 @@
 
                 <form asp-action="UpdateProfile" method="post" enctype="multipart/form-data" class="space-y-6">
                     <div>
-                        <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Change Avatar Image</label>
+                        <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">@Localizer["Account_Profile_ChangeAvatar"]</label>
                         <div class="flex items-center gap-4">
                             <div class="relative flex-1">
                                 <label class="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-2xl cursor-pointer hover:bg-primary/5 hover:border-primary/50 transition-all group">
                                     <div class="flex flex-col items-center justify-center pt-5 pb-6">
                                         <span class="material-symbols-outlined text-3xl text-slate-400 group-hover:text-primary mb-2">cloud_upload</span>
-                                        <p class="mb-1 text-sm text-slate-500 dark:text-slate-400 font-semibold">Click to upload or drag and drop</p>
-                                        <p class="text-xs text-slate-400">PNG, JPG or WEBP (MAX. 2MB)</p>
+                                        <p class="mb-1 text-sm text-slate-500 dark:text-slate-400 font-semibold">@Localizer["Account_Profile_UploadMsg"]</p>
+                                        <p class="text-xs text-slate-400">@Localizer["Account_Profile_UploadDesc"]</p>
                                     </div>
                                     <input asp-for="AvatarFile" class="hidden" type="file" onchange="previewImage(this)" accept="image/*" />
                                 </label>
@@ -117,7 +116,7 @@
                             <div id="image-preview-container" class="hidden w-32 h-32 rounded-2xl overflow-hidden border-2 border-primary shadow-lg relative group">
                                 <img id="image-preview" src="#" class="w-full h-full object-cover" />
                                 <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
-                                    <span class="text-[10px] text-white font-bold uppercase">New Preview</span>
+                                    <span class="text-[10px] text-white font-bold uppercase">@Localizer["Account_Profile_NewPreview"]</span>
                                 </div>
                             </div>
                         </div>
@@ -125,17 +124,17 @@
                     </div>
 
                     <div>
-                        <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">About Me</label>
-                        <textarea asp-for="Bio" rows="6" class="w-full p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 focus:ring-2 focus:ring-primary outline-none transition-all resize-none" placeholder="Tell us about yourself, your favorite VTubers, or whatever you like..."></textarea>
+                        <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">@Localizer["Account_Profile_AboutMe"]</label>
+                        <textarea asp-for="Bio" rows="6" class="w-full p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 focus:ring-2 focus:ring-primary outline-none transition-all resize-none" placeholder="@Localizer["Account_Profile_AboutMePH"]"></textarea>
                     </div>
 
                     <div class="flex gap-4 pt-4">
                         <button type="submit" class="flex-1 bg-primary hover:bg-primary-dark text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/20 transition-all flex items-center justify-center gap-2">
                              <span class="material-symbols-outlined uppercase text-sm">save</span>
-                             Save Changes
+                             @Localizer["Account_Profile_Save"]
                         </button>
                         <button type="button" onclick="toggleEdit()" class="px-8 py-4 border border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 font-bold rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
-                            Cancel
+                            @Localizer["Account_Profile_Cancel"]
                         </button>
                     </div>
                 </form>

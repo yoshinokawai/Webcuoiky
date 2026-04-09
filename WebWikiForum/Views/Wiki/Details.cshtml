@@ -1,6 +1,6 @@
 @model WebWikiForum.Models.Vtuber
 @{
-    ViewData["Title"] = Model.Name + " - VTuber Profile";
+    ViewData["Title"] = Model.Name + " - " + Localizer["Wiki_Profile_Type"].Value;
 }
 
 <div class="max-w-4xl mx-auto px-4 py-8 sm:px-6 lg:px-8 mt-12 mb-20">
@@ -58,7 +58,7 @@
                 
                 <div class="flex flex-wrap items-center gap-4 text-slate-600 dark:text-slate-400 font-medium">
                     <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">
-                        @(Model.Agency != null ? Model.Agency.Name : Localizer["Details_Independent"])
+                        @(Model.Agency != null ? Model.Agency.Name : Localizer["Details_Independent"].Value)
                     </span>
                     @if (Model.Age.HasValue)
                     {

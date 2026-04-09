@@ -1,12 +1,12 @@
 @model WebWikiForum.ViewModels.NewsViewModel
 @{
-    ViewData["Title"] = "Edit Event";
+    ViewData["Title"] = Localizer["Wiki_Event_Edit_Title"];
 }
 
 <div class="max-w-4xl mx-auto px-4 py-12">
     <div class="mb-10 text-center">
-        <h1 class="text-4xl font-black text-slate-900 dark:text-white mb-2">Edit <span class="text-primary italic">Event</span></h1>
-        <p class="text-slate-500 dark:text-slate-400">Update the information for this news piece or highlight</p>
+        <h1 class="text-4xl font-black text-slate-900 dark:text-white mb-2">@Localizer["Wiki_Event_Edit_Title"]</h1>
+        <p class="text-slate-500 dark:text-slate-400">@Localizer["Wiki_Event_Edit_Subtitle_News"]</p>
     </div>
 
     <form asp-action="EditEvent" asp-route-id="@ViewBag.Id" method="post" enctype="multipart/form-data" class="space-y-8 bg-white dark:bg-surface-dark p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl">
@@ -23,7 +23,7 @@
                 }
             </div>
             <label class="cursor-pointer bg-primary hover:bg-primary-dark text-white px-6 py-2.5 rounded-full font-bold transition-all shadow-md active:scale-95">
-                Update Cover Image
+                @Localizer["Wiki_Label_Update_Cover"]
                 <input type="file" name="imageFile" class="hidden" onchange="previewFile(this)" accept="image/*" />
             </label>
         </div>
@@ -31,27 +31,27 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <!-- Title -->
             <div class="md:col-span-2 space-y-1.5">
-                <label asp-for="Title" class="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1">Event Title</label>
+                <label asp-for="Title" class="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1">@Localizer["Wiki_Label_Title"]</label>
                 <input asp-for="Title" class="w-full px-5 py-3.5 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" />
                 <span asp-validation-for="Title" class="text-red-500 text-xs"></span>
             </div>
 
             <!-- Type Selector -->
             <div class="space-y-1.5">
-                <label asp-for="Type" class="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1">Event Type</label>
+                <label asp-for="Type" class="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1">@Localizer["Wiki_Label_EventType"]</label>
                 <select asp-for="Type" class="w-full px-5 py-3.5 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all appearance-none cursor-pointer">
-                    <option value="Event">Event</option>
-                    <option value="Debut">Debut</option>
-                    <option value="Music">Music</option>
-                    <option value="ASMR">ASMR</option>
-                    <option value="Gaming">Gaming</option>
+                    <option value="Event">@Localizer["Wiki_Event_Type_Event"]</option>
+                    <option value="Debut">@Localizer["Wiki_Event_Type_Debut"]</option>
+                    <option value="Music">@Localizer["Wiki_Event_Type_Music"]</option>
+                    <option value="ASMR">@Localizer["Wiki_Event_Type_ASMR"]</option>
+                    <option value="Gaming">@Localizer["Wiki_Event_Type_Gaming"]</option>
                 </select>
                 <span asp-validation-for="Type" class="text-red-500 text-xs"></span>
             </div>
 
             <!-- Author -->
             <div class="space-y-1.5">
-                <label asp-for="Author" class="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1">Author Name</label>
+                <label asp-for="Author" class="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1">@Localizer["Wiki_Label_Author"]</label>
                 <input asp-for="Author" class="w-full px-5 py-3.5 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" />
                 <span asp-validation-for="Author" class="text-red-500 text-xs"></span>
             </div>
@@ -59,21 +59,21 @@
 
         <!-- Description/Content -->
         <div class="space-y-1.5">
-            <label asp-for="Content" class="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1">Rich Description</label>
+            <label asp-for="Content" class="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1">@Localizer["Wiki_Label_RichDescription"]</label>
             <textarea asp-for="Content" rows="6" class="w-full px-5 py-3.5 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"></textarea>
         </div>
 
         <div class="flex items-center gap-6 pt-4 border-t border-slate-100 dark:border-slate-800/50">
             <label class="flex items-center gap-2 cursor-pointer group">
                 <input asp-for="IsFeatured" type="checkbox" class="w-5 h-5 rounded border-slate-300 text-primary accent-primary" />
-                <span class="text-sm font-bold text-slate-600 dark:text-slate-400 group-hover:text-primary transition-colors">Feature on Front Page</span>
+                <span class="text-sm font-bold text-slate-600 dark:text-slate-400 group-hover:text-primary transition-colors">@Localizer["Wiki_Label_Featured"]</span>
             </label>
         </div>
 
         <div class="flex items-center justify-end gap-3 pt-6">
-            <a href="/Wiki/VirtualEvents" class="px-8 py-3 rounded-full font-bold text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">Cancel</a>
+            <a href="/Wiki/VirtualEvents" class="px-8 py-3 rounded-full font-bold text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">@Localizer["Wiki_Btn_Cancel"]</a>
             <button type="submit" class="px-10 py-3 bg-primary hover:bg-primary-dark text-white rounded-full font-bold shadow-lg shadow-primary/25 transition-all active:scale-95">
-                Save Changes
+                @Localizer["Wiki_Btn_Update"]
             </button>
         </div>
     </form>

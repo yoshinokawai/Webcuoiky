@@ -11,8 +11,8 @@
             <div class="size-16 bg-primary/10 rounded-2xl flex items-center justify-center text-primary mx-auto mb-4">
                 <span class="material-symbols-outlined text-4xl">dialpad</span>
             </div>
-            <h2 class="text-3xl font-bold text-slate-900 dark:text-white">Verify Identity</h2>
-            <p class="text-slate-500 dark:text-slate-400 mt-2">Enter your 6-digit Security PIN to proceed with password reset.</p>
+            <h2 class="text-3xl font-bold text-slate-900 dark:text-white">@Localizer["Account_VerifyPin_Title"]</h2>
+            <p class="text-slate-500 dark:text-slate-400 mt-2">@Localizer["Account_VerifyPin_Desc"]</p>
         </div>
 
         <div asp-validation-summary="All" class="text-red-500 text-sm mb-4"></div>
@@ -20,7 +20,7 @@
         <form asp-action="VerifyPin" method="post" class="space-y-6">
             @Html.AntiForgeryToken()
             <div>
-                <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">6-Digit Security PIN</label>
+                <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">@Localizer["Account_VerifyPin_Label"]</label>
                 <div class="relative">
                     <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">security</span>
                     <input name="pin" class="w-full pl-12 pr-4 py-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all font-mono tracking-[0.5em] text-center text-2xl" 
@@ -29,13 +29,13 @@
             </div>
 
             <button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/25 transition-all transform active:scale-[0.98] flex items-center justify-center gap-2" type="submit">
-                <span>Verify PIN</span>
+                <span>@Localizer["Account_VerifyPin_Btn"]</span>
                 <span class="material-symbols-outlined">verified</span>
             </button>
         </form>
 
         <div class="mt-8 text-center text-sm text-slate-500">
-            Forgot your PIN? <a href="#" class="text-primary hover:underline">Contact Support</a>
+            @Localizer["Account_VerifyPin_Forgot"] <a href="#" class="text-primary hover:underline">@Localizer["Account_VerifyPin_Contact"]</a>
         </div>
     </div>
 </div>
