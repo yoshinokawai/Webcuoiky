@@ -51,9 +51,21 @@
                             {
                                 <a href="@Url.Action("Topic", "Forum", new { id = topic.Id })" class="group bg-white dark:bg-slate-800/40 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-primary/30 transition-all shadow-sm">
                                     <div class="flex gap-4 items-start">
-                                        <div class="size-10 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-400 group-hover:bg-primary/10 group-hover:text-primary transition-colors">
-                                            <span class="material-symbols-outlined">forum</span>
-                                        </div>
+                                        @{
+                                            var authorAvatarsHub = ViewBag.AuthorAvatars as Dictionary<string, string?> ?? new Dictionary<string, string?>();
+                                            string? hubAvatar = null;
+                                            authorAvatarsHub.TryGetValue(topic.Author, out hubAvatar);
+                                        }
+                                        @if (!string.IsNullOrEmpty(hubAvatar))
+                                        {
+                                            <img src="@hubAvatar" class="size-10 rounded-lg object-cover border border-primary/10" alt="@topic.Author's avatar" />
+                                        }
+                                        else
+                                        {
+                                            <div class="size-10 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-400 group-hover:bg-primary/10 group-hover:text-primary transition-colors">
+                                                <span class="material-symbols-outlined">forum</span>
+                                            </div>
+                                        }
                                         <div class="flex-1 min-w-0">
                                             <h3 class="font-bold text-slate-800 dark:text-slate-100 group-hover:text-primary transition-colors truncate">@topic.Title</h3>
                                             <div class="flex items-center gap-3 mt-1 text-xs text-slate-500">

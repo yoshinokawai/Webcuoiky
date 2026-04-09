@@ -1,0 +1,49 @@
+@{
+    Layout = "_Layout_Blank";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/Login.css" />
+}
+
+<div class="min-h-screen w-full flex items-center justify-center p-6 bg-slate-50 dark:bg-slate-900">
+    <div class="w-full max-w-md bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-700">
+        <div class="text-center mb-8">
+            <div class="size-16 bg-primary/10 rounded-2xl flex items-center justify-center text-primary mx-auto mb-4">
+                <span class="material-symbols-outlined text-4xl">security</span>
+            </div>
+            <h2 class="text-3xl font-bold text-slate-900 dark:text-white">Secure Your Account</h2>
+            <p class="text-slate-500 dark:text-slate-400 mt-2">Please set up a 6-digit Security PIN to continue. This will be used if you forget your password.</p>
+        </div>
+
+        @if (TempData["WarningMessage"] != null)
+        {
+            <div class="bg-amber-50 border border-amber-200 text-amber-700 px-4 py-3 rounded-xl mb-6 text-sm flex items-center gap-2">
+                <span class="material-symbols-outlined">warning</span>
+                @TempData["WarningMessage"]
+            </div>
+        }
+
+        <div asp-validation-summary="All" class="text-red-500 text-sm mb-4"></div>
+
+        <form asp-action="SetupPin" method="post" class="space-y-6">
+            @Html.AntiForgeryToken()
+            <div>
+                <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">New 6-Digit PIN</label>
+                <div class="relative">
+                    <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">dialpad</span>
+                    <input name="pin" class="w-full pl-12 pr-4 py-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all font-mono tracking-[0.5em] text-center text-2xl" 
+                           maxlength="6" placeholder="000000" type="text" inputmode="numeric" required oninput="this.value = this.value.replace(/[^0-9]/g, '');"/>
+                </div>
+            </div>
+
+            <button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/25 transition-all transform active:scale-[0.98] flex items-center justify-center gap-2" type="submit">
+                <span>Save Security PIN</span>
+                <span class="material-symbols-outlined">arrow_forward</span>
+            </button>
+        </form>
+
+        <div class="mt-6 text-center">
+            <a href="/Account/Logout" class="text-slate-500 hover:text-primary text-sm font-medium transition-colors">Logout and set up later</a>
+        </div>
+    </div>
+</div>

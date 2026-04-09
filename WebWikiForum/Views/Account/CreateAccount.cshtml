@@ -141,6 +141,22 @@
         </div>
     </div>
 
+    @* Security PIN Section *@
+    <div class="bg-primary/5 dark:bg-primary/10 p-5 rounded-2xl border border-primary/20 mb-6">
+        <label class="block text-sm font-bold text-slate-800 dark:text-slate-200 mb-2" asp-for="SecurityPin">
+            <span class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">security</span>
+                6-Digit Security PIN
+            </span>
+        </label>
+        <p class="text-xs text-slate-500 mb-3">Used for account recovery if you forget your password.</p>
+        <div class="relative">
+            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">dialpad</span>
+            <input asp-for="SecurityPin" class="w-full pl-12 pr-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all font-mono tracking-[0.5em] text-center text-xl" maxlength="6" placeholder="000000" type="text" inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9]/g, '');"/>
+        </div>
+        <span asp-validation-for="SecurityPin" class="text-red-500 text-xs mt-1 block"></span>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const roleSelect = document.getElementById('role-select');

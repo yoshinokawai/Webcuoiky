@@ -7,9 +7,21 @@
     <!-- Main Discussion Post -->
     <div class="bg-white dark:bg-surface-dark p-8 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-800 mb-8 overflow-hidden relative">
         <div class="flex items-center gap-4 mb-6">
-            <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
-                <span class="material-symbols-outlined text-3xl">person</span>
-            </div>
+            @{
+                var authorAvatars = ViewBag.AuthorAvatars as Dictionary<string, string?> ?? new Dictionary<string, string?>();
+                string? authorAvatar = null;
+                authorAvatars.TryGetValue(Model.Author, out authorAvatar);
+            }
+            @if (!string.IsNullOrEmpty(authorAvatar))
+            {
+                <img src="@authorAvatar" class="w-12 h-12 rounded-2xl object-cover border-2 border-primary/20" alt="@Model.Author's avatar" />
+            }
+            else
+            {
+                <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+                    <span class="material-symbols-outlined text-3xl">person</span>
+                </div>
+            }
             <div class="flex-1 min-w-0">
                 <div class="flex items-center gap-2 mb-1">
                     <span class="text-sm font-black text-slate-900 dark:text-white">@Model.Author</span>
@@ -46,7 +58,7 @@
 
         <div class="flex items-center gap-6 pt-6 border-t border-slate-100 dark:border-slate-800/50">
             @{
-                bool isPostLiked = ViewBag.LikedDiscussionIds.Contains(Model.Id);
+                bool isPostLiked = (ViewBag.LikedDiscussionIds as List<int>)?.Contains(Model.Id) ?? false;
             }
             <button onclick="toggleLike(@Model.Id, true, this)" 
                     class="flex items-center gap-2 text-sm font-bold transition-all @(isPostLiked ? "text-primary scale-110" : "text-slate-500 hover:text-primary")">
@@ -78,9 +90,20 @@
             {
                 <div class="bg-white dark:bg-surface-dark p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 group" id="reply-container-@reply.Id">
                     <div class="flex items-center gap-4 mb-4">
-                        <div class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-400">
-                            <span class="material-symbols-outlined text-2xl">person</span>
-                        </div>
+                        @{
+                            string? replyAvatar = null;
+                            authorAvatars.TryGetValue(reply.Author, out replyAvatar);
+                        }
+                        @if (!string.IsNullOrEmpty(replyAvatar))
+                        {
+                            <img src="@replyAvatar" class="w-10 h-10 rounded-xl object-cover border border-slate-200 dark:border-slate-700" alt="@reply.Author's avatar" />
+                        }
+                        else
+                        {
+                            <div class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-400">
+                                <span class="material-symbols-outlined text-2xl">person</span>
+                            </div>
+                        }
                         <div class="flex-1 min-w-0">
                             <div class="text-sm font-black text-slate-900 dark:text-white mb-0.5">@reply.Author</div>
                             <div class="text-[10px] text-slate-400 font-medium">@reply.CreatedAt.ToString("MMM dd, yyyy HH:mm")</div>
@@ -115,7 +138,7 @@
 
                     <div class="flex items-center gap-4 border-t border-slate-50 dark:border-slate-800/50 pt-3">
                         @{
-                            bool isReplyLiked = ViewBag.LikedReplyIds.Contains(reply.Id);
+                            bool isReplyLiked = (ViewBag.LikedReplyIds as List<int>)?.Contains(reply.Id) ?? false;
                         }
                         <button onclick="toggleLike(@reply.Id, false, this)" 
                                 class="flex items-center gap-2 text-xs font-bold transition-all @(isReplyLiked ? "text-primary" : "text-slate-400 hover:text-primary")">

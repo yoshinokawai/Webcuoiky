@@ -21,6 +21,15 @@ namespace WebWikiForum.Controllers
             _activityService = activityService;
         }
 
+        private async Task<Dictionary<string, string?>> _GetAuthorAvatars(IEnumerable<string> usernames)
+        {
+            var distinctUsernames = usernames.Where(u => !string.IsNullOrEmpty(u)).Distinct().ToList();
+            return await _context.Users
+                .AsNoTracking()
+                .Where(u => distinctUsernames.Contains(u.Username))
+                .ToDictionaryAsync(u => u.Username, u => u.AvatarUrl);
+        }
+
         // Community Hub / All Discussions
         public async Task<IActionResult> CommunityHub()
         {
@@ -37,6 +46,12 @@ namespace WebWikiForum.Controllers
             // Mock/Fetch some basic events if we had a dedicated table.
             // Since we added News/Events, I'll fetch recent News too.
             var news = await _context.News.OrderByDescending(n => n.PublishDate).Take(3).ToListAsync();
+
+            // Sync Avatars
+            var authors = recent.Select(d => d.Author)
+                .Concat(trending.Select(d => d.Author))
+                .ToList();
+            ViewBag.AuthorAvatars = await _GetAuthorAvatars(authors);
 
             ViewBag.Trending = trending;
             ViewBag.News = news;
@@ -105,6 +120,17 @@ namespace WebWikiForum.Controllers
                 .ToListAsync();
 
             var results = await query.ToListAsync();
+
+            // Sync Avatars
+            var authors = results.Select(d => d.Author).ToList();
+            if (ViewBag.CategoryStats != null)
+            {
+                var stats = (IEnumerable<CategorySummary>)ViewBag.CategoryStats;
+                authors.AddRange(stats.Where(s => !string.IsNullOrEmpty(s.LastPostAuthor)).Select(s => s.LastPostAuthor!));
+            }
+            authors.AddRange(((List<Discussion>)ViewBag.Trending).Select(d => d.Author));
+            ViewBag.AuthorAvatars = await _GetAuthorAvatars(authors);
+
             return View(results);
         }
 
@@ -137,6 +163,11 @@ namespace WebWikiForum.Controllers
 
             ViewBag.LikedDiscussionIds = likedDiscussionIds;
             ViewBag.LikedReplyIds = likedReplyIds;
+
+            // Sync Avatars
+            var authors = new List<string> { discussion.Author };
+            authors.AddRange(discussion.Replies.Select(r => r.Author));
+            ViewBag.AuthorAvatars = await _GetAuthorAvatars(authors);
 
             return View(discussion);
         }

@@ -46,9 +46,21 @@
         <!-- Show topic list for filtered category -->
         @foreach (var topic in Model) {
             <div class="bg-white dark:bg-slate-800/50 p-6 rounded-xl border border-primary/5 hover:border-primary/20 transition-all flex flex-col md:flex-row gap-6 items-start md:items-center">
-                <div class="size-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0">
-                    <span class="material-symbols-outlined text-3xl">forum</span>
-                </div>
+                @{
+                    var authorAvatarsHub = ViewBag.AuthorAvatars as Dictionary<string, string?> ?? new Dictionary<string, string?>();
+                    string? hubAvatar = null;
+                    authorAvatarsHub.TryGetValue(topic.Author, out hubAvatar);
+                }
+                @if (!string.IsNullOrEmpty(hubAvatar))
+                {
+                    <img src="@hubAvatar" class="size-12 rounded-lg object-cover border border-primary/10" alt="@topic.Author's avatar" />
+                }
+                else
+                {
+                    <div class="size-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                        <span class="material-symbols-outlined text-3xl">forum</span>
+                    </div>
+                }
                 <div class="flex-1">
                     <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-1 hover:text-primary cursor-pointer transition-colors">
                         <a href="@Url.Action("Topic", "Forum", new { id = topic.Id })">@topic.Title</a>
@@ -92,7 +104,18 @@
                     <span class="text-[10px] uppercase font-bold text-slate-400 mb-1">Last Post</span>
                     @if (cat.LastPostDate != null) {
                         <p class="text-sm font-medium text-slate-700 dark:text-slate-300 truncate w-full">@cat.LastPostTitle</p>
-                        <span class="text-xs text-primary">By @cat.LastPostAuthor | @cat.LastPostDate?.ToString("MMM dd")</span>
+                        <div class="flex items-center gap-2 justify-end">
+                            <span class="text-xs text-primary">By @cat.LastPostAuthor | @cat.LastPostDate?.ToString("MMM dd")</span>
+                            @{
+                                var authorAvatarsCard = ViewBag.AuthorAvatars as Dictionary<string, string?> ?? new Dictionary<string, string?>();
+                                string? lastAuthorAvatar = null;
+                                authorAvatarsCard.TryGetValue(cat.LastPostAuthor ?? "", out lastAuthorAvatar);
+                            }
+                            @if (!string.IsNullOrEmpty(lastAuthorAvatar))
+                            {
+                                <img src="@lastAuthorAvatar" class="size-6 rounded-full object-cover border border-primary/20" alt="@cat.LastPostAuthor's avatar" />
+                            }
+                        </div>
                     } else {
                         <p class="text-xs text-slate-400 italic">No activity yet</p>
                     }

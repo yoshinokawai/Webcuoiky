@@ -23,5 +23,11 @@ namespace WebWikiForum.Models
 
         /// <summary>Role: "Admin" or "User"</summary>
         public string Role { get; set; } = "User";
+
+        [StringLength(6)]
+        public string? SecurityPin { get; set; }
+
+        public string? Bio { get; set; }
+        public string? AvatarUrl { get; set; }
     }
 }

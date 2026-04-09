@@ -10,16 +10,19 @@ using System.Threading.Tasks;
 using WebWikiForum.Data;
 using WebWikiForum.Models;
 using WebWikiForum.ViewModels;
+using WebWikiForum.Services;
 
 namespace WebWikiForum.Controllers
 {
     public class AccountController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IFileService _fileService;
 
-        public AccountController(ApplicationDbContext context)
+        public AccountController(ApplicationDbContext context, IFileService fileService)
         {
             _context = context;
+            _fileService = fileService;
         }
 
         // ==================== LOGIN ====================
@@ -76,6 +79,13 @@ namespace WebWikiForum.Controllers
                 CookieAuthenticationDefaults.AuthenticationScheme,
                 new ClaimsPrincipal(claimsIdentity),
                 authProperties);
+
+            // CHECK: If user has no Security PIN, redirect to Setup
+            if (string.IsNullOrEmpty(user.SecurityPin))
+            {
+                TempData["WarningMessage"] = "Please set up a 6-digit Security PIN for account recovery.";
+                return RedirectToAction("SetupPin");
+            }
 
             TempData["SuccessMessage"] = $"Welcome back, {user.Username}!";
             return LocalRedirect(model.ReturnUrl ?? "/");
@@ -136,7 +146,8 @@ namespace WebWikiForum.Controllers
                 Email = model.Email,
                 PasswordHash = HashPassword(model.Password),
                 Role = model.Role ?? "User",
-                CreatedAt = DateTime.UtcNow
+                CreatedAt = DateTime.UtcNow,
+                SecurityPin = model.SecurityPin // Save the PIN
             };
 
             _context.Users.Add(user);
@@ -182,6 +193,185 @@ namespace WebWikiForum.Controllers
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Index", "Home");
+        }
+
+        // ==================== SECURITY PIN & FORGOT PASSWORD ====================
+
+        [HttpGet]
+        public IActionResult SetupPin()
+        {
+            if (!User.Identity.IsAuthenticated) return RedirectToAction("Login");
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SetupPin(string pin)
+        {
+            if (string.IsNullOrEmpty(pin) || pin.Length != 6 || !long.TryParse(pin, out _))
+            {
+                ModelState.AddModelError("", "Please enter a valid 6-digit number.");
+                return View();
+            }
+
+            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            var user = await _context.Users.FindAsync(userId);
+
+            if (user != null)
+            {
+                user.SecurityPin = pin;
+                await _context.SaveChangesAsync();
+                TempData["SuccessMessage"] = "Security PIN has been set up successfully.";
+                return RedirectToAction("Index", "Home");
+            }
+
+            return RedirectToAction("Login");
+        }
+
+        [HttpGet]
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ForgotPassword(string identifier)
+        {
+            var user = await _context.Users
+                .FirstOrDefaultAsync(u => u.Email == identifier || u.Username == identifier);
+
+            if (user == null)
+            {
+                ModelState.AddModelError("", "User not found.");
+                return View();
+            }
+
+            // Store user ID in session or pass via TempData for the next step
+            TempData["ResetUserId"] = user.Id;
+            return RedirectToAction("VerifyPin");
+        }
+
+        [HttpGet]
+        public IActionResult VerifyPin()
+        {
+            if (TempData["ResetUserId"] == null) return RedirectToAction("ForgotPassword");
+            TempData.Keep("ResetUserId");
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> VerifyPin(string pin)
+        {
+            if (TempData["ResetUserId"] == null) return RedirectToAction("ForgotPassword");
+            int userId = (int)TempData["ResetUserId"];
+            TempData.Keep("ResetUserId");
+
+            var user = await _context.Users.FindAsync(userId);
+            if (user != null && user.SecurityPin == pin)
+            {
+                TempData["PinVerified"] = true;
+                return RedirectToAction("ResetPassword");
+            }
+
+            ModelState.AddModelError("", "Invalid Security PIN.");
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult ResetPassword()
+        {
+            if (TempData["ResetUserId"] == null || TempData["PinVerified"] == null) 
+                return RedirectToAction("ForgotPassword");
+            
+            TempData.Keep("ResetUserId");
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ResetPassword(string newPassword, string confirmPassword)
+        {
+            if (TempData["ResetUserId"] == null) return RedirectToAction("ForgotPassword");
+            int userId = (int)TempData["ResetUserId"];
+
+            if (newPassword != confirmPassword)
+            {
+                ModelState.AddModelError("", "Passwords do not match.");
+                TempData.Keep("ResetUserId");
+                return View();
+            }
+
+            var user = await _context.Users.FindAsync(userId);
+            if (user != null)
+            {
+                user.PasswordHash = HashPassword(newPassword);
+                await _context.SaveChangesAsync();
+                TempData["SuccessMessage"] = "Password has been reset successfully. Please login.";
+                return RedirectToAction("Login");
+            }
+
+            return RedirectToAction("ForgotPassword");
+        }
+
+        // ==================== USER PROFILE ====================
+
+        [HttpGet]
+        public async Task<IActionResult> Profile()
+        {
+            if (!User.Identity.IsAuthenticated) return RedirectToAction("Login");
+
+            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            var user = await _context.Users.FindAsync(userId);
+
+            if (user == null) return RedirectToAction("Logout");
+
+            var model = new ProfileViewModel
+            {
+                Username = user.Username,
+                Email = user.Email,
+                CreatedAt = user.CreatedAt,
+                Role = user.Role,
+                Bio = user.Bio,
+                AvatarUrl = user.AvatarUrl
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateProfile(ProfileViewModel model)
+        {
+            if (!User.Identity.IsAuthenticated) return RedirectToAction("Login");
+
+            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            var user = await _context.Users.FindAsync(userId);
+
+            if (user == null) return RedirectToAction("Logout");
+
+            // Handle Avatar Upload
+            if (model.AvatarFile != null && model.AvatarFile.Length > 0)
+            {
+                try 
+                {
+                    var avatarUrl = await _fileService.UploadImageAsync(model.AvatarFile, "avatars");
+                    if (!string.IsNullOrEmpty(avatarUrl))
+                    {
+                        user.AvatarUrl = avatarUrl;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", "Failed to upload image: " + ex.Message);
+                    return View("Profile", model);
+                }
+            }
+
+            user.Bio = model.Bio;
+            // No longer updating AvatarUrl directly from text input to prevent overriding upload
+            // user.AvatarUrl = model.AvatarUrl; 
+
+            await _context.SaveChangesAsync();
+            TempData["SuccessMessage"] = "Your profile has been updated successfully.";
+
+            return RedirectToAction("Profile");
         }
 
         // ==================== PASSWORD HELPERS ====================

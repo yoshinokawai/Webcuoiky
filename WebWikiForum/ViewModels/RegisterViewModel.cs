@@ -25,5 +25,11 @@ namespace WebWikiForum.ViewModels
         public string Role { get; set; } = "User";
 
         public string? AdminKey { get; set; }
+
+        [Required(ErrorMessage = "6-digit Security PIN is required.")]
+        [StringLength(6, MinimumLength = 6, ErrorMessage = "PIN must be exactly 6 digits.")]
+        [RegularExpression(@"^\d{6}$", ErrorMessage = "PIN must contain only numbers.")]
+        [Display(Name = "Security PIN (6 digits)")]
+        public string SecurityPin { get; set; }
     }
 }

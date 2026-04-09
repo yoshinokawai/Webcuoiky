@@ -37,6 +37,9 @@ CREATE TABLE [Users] (
     [Email] nvarchar(100) NOT NULL,
     [PasswordHash] nvarchar(max) NOT NULL,
     [Role] nvarchar(20) NOT NULL DEFAULT 'User', -- Admin, User
+    [SecurityPin] nvarchar(6) NULL,
+    [Bio] nvarchar(max) NULL,
+    [AvatarUrl] nvarchar(max) NULL,
     [CreatedAt] datetime2 NOT NULL DEFAULT GETDATE(),
     CONSTRAINT [PK_Users] PRIMARY KEY ([Id])
 );
