@@ -160,8 +160,8 @@
                                         <a href="/Wiki/Edit/@item.Id" class="p-2 hover:bg-primary/10 text-slate-600 hover:text-primary rounded-lg transition-colors">
                                             <span class="material-symbols-outlined text-[20px]">edit</span>
                                         </a>
-                                        <form asp-controller="Admin" asp-action="Delete" asp-route-id="@item.Id" method="post" onsubmit="return confirm('Delete @item.Name?')">
-                                            <button type="submit" class="p-2 hover:bg-red-50 text-slate-600 hover:text-red-600 rounded-lg transition-colors">
+                                        <form id="delete-vtuber-@item.Id" asp-controller="Admin" asp-action="Delete" asp-route-id="@item.Id" method="post">
+                                            <button type="button" onclick="confirmDelete('vtuber-@item.Id', '@Html.Raw(item.Name.Replace("'", "\\'"))')" class="p-2 hover:bg-red-50 text-slate-600 hover:text-red-600 rounded-lg transition-colors">
                                                 <span class="material-symbols-outlined text-[20px]">delete</span>
                                             </button>
                                         </form>
@@ -256,8 +256,8 @@
                                             <a href="/Wiki/EditAgency/@agency.Id" class="w-9 h-9 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-indigo-600 hover:bg-indigo-50 transition-colors">
                                                 <span class="material-symbols-outlined text-[18px]">edit</span>
                                             </a>
-                                            <form asp-controller="Wiki" asp-action="DeleteAgency" asp-route-id="@agency.Id" method="post" onsubmit="return confirm('Delete agency @agency.Name?')">
-                                                <button type="submit" class="w-9 h-9 flex items-center justify-center rounded-xl bg-red-50 text-red-600 hover:text-white hover:bg-red-500 transition-colors shadow-sm">
+                                            <form id="delete-agency-@agency.Id" asp-controller="Wiki" asp-action="DeleteAgency" asp-route-id="@agency.Id" method="post">
+                                                <button type="button" onclick="confirmDelete('agency-@agency.Id', '@Html.Raw(agency.Name.Replace("'", "\\'"))')" class="w-9 h-9 flex items-center justify-center rounded-xl bg-red-50 text-red-600 hover:text-white hover:bg-red-500 transition-colors shadow-sm">
                                                     <span class="material-symbols-outlined text-[18px]">delete</span>
                                                 </button>
                                             </form>
@@ -337,8 +337,8 @@
                                             <a href="/Wiki/EditEvent/@item.Id" class="w-9 h-9 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-amber-500 hover:bg-amber-50 transition-colors">
                                                 <span class="material-symbols-outlined text-[18px]">edit</span>
                                             </a>
-                                            <form asp-controller="Wiki" asp-action="DeleteEvent" asp-route-id="@item.Id" method="post" onsubmit="return confirm('Delete @item.Title?')">
-                                                <button type="submit" class="w-9 h-9 flex items-center justify-center rounded-xl bg-red-50 text-red-600 hover:text-white hover:bg-red-500 transition-colors shadow-sm">
+                                            <form id="delete-news-@item.Id" asp-controller="Wiki" asp-action="DeleteEvent" asp-route-id="@item.Id" method="post">
+                                                <button type="button" onclick="confirmDelete('news-@item.Id', '@Html.Raw(item.Title.Replace("'", "\\'"))')" class="w-9 h-9 flex items-center justify-center rounded-xl bg-red-50 text-red-600 hover:text-white hover:bg-red-500 transition-colors shadow-sm">
                                                     <span class="material-symbols-outlined text-[18px]">delete</span>
                                                 </button>
                                             </form>
@@ -362,4 +362,16 @@
 
 @section Scripts {
     <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script>
+        function confirmDelete(formId, itemName) {
+            window.showConfirmModal({
+                title: '@Localizer["Modal_Delete_Title"]',
+                message: `@Localizer["Modal_Delete_Msg"] "${itemName}"?`,
+                confirmText: '@Localizer["Modal_Btn_Delete"]',
+                onConfirm: () => {
+                    document.getElementById('delete-' + formId).submit();
+                }
+            });
+        }
+    </script>
 }

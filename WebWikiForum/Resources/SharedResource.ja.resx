@@ -2084,4 +2084,424 @@
   <data name="Focus_Variety" xml:space="preserve">
     <value>バラエティ</value>
   </data>
-<data name="Nav_Admin_Dashboard" xml:space="preserve"><value>ダッシュボード</value></data><data name="Nav_Discord_Link" xml:space="preserve"><value>Discord</value></data><data name="Nav_HelpCenter_Hub" xml:space="preserve"><value>ヘルプセンター</value></data><data name="Modal_Confirm_Title" xml:space="preserve"><value>アクションの確認</value></data><data name="Modal_Confirm_Msg" xml:space="preserve"><value>続行してもよろしいですか？</value></data><data name="Modal_Btn_Cancel" xml:space="preserve"><value>キャンセル</value></data><data name="Modal_Btn_Confirm" xml:space="preserve"><value>確認</value></data><data name="Footer_Section_Wiki" xml:space="preserve"><value>Wiki</value></data><data name="Footer_Section_Explore" xml:space="preserve"><value>探索</value></data><data name="Footer_Section_Subscribe" xml:space="preserve"><value>購読</value></data><data name="Forum_Item_By" xml:space="preserve"><value>投稿者:</value></data><data name="Forum_Item_Ago" xml:space="preserve"><value>前</value></data><data name="Forum_Badge_OP" xml:space="preserve"><value>投稿者</value></data><data name="Forum_Wiki_CatTech" xml:space="preserve"><value>テクニカルサポート</value></data><data name="Forum_Wiki_CatGeneral_Sidebar" xml:space="preserve"><value>一般</value></data><data name="Forum_Wiki_CatCreative" xml:space="preserve"><value>クリエイティブ</value></data><data name="Help_Hero_Title" xml:space="preserve"><value>何かお困りですか？</value></data><data name="Help_Hero_Desc" xml:space="preserve"><value>VTuberのセットアップガイド、Wikiへの貢献チュートリアル、コミュニティサポートについては、当社のナレッジベースを検索してください。</value></data><data name="Help_Search_Placeholder" xml:space="preserve"><value>記事、ガイド、またはFAQを検索...</value></data><data name="Help_Search_Btn" xml:space="preserve"><value>検索</value></data><data name="Help_Popular_Label" xml:space="preserve"><value>人気:</value></data><data name="Help_Popular_ModelSetup" xml:space="preserve"><value>モデルのセットアップ</value></data><data name="Help_Popular_OBS" xml:space="preserve"><value>OBS設定</value></data><data name="Help_Popular_Naming" xml:space="preserve"><value>命名規則</value></data><data name="Help_Category_Browse" xml:space="preserve"><value>カテゴリーから探す</value></data><data name="Help_Cat_Account_Title" xml:space="preserve"><value>アカウント管理</value></data><data name="Help_Cat_Account_Desc" xml:space="preserve"><value>プロフィール、セキュリティ設定、および権限を更新します。</value></data><data name="Help_Cat_Editing_Title" xml:space="preserve"><value>編集ガイド</value></data><data name="Help_Cat_Editing_Desc" xml:space="preserve"><value>構文、書式設定、およびメディアのアップロードに関するルールを学びます。</value></data><data name="Help_Cat_Guidelines_Title" xml:space="preserve"><value>コミュニティガイドライン</value></data><data name="Help_Cat_Guidelines_Desc" xml:space="preserve"><value>行動規範、コンテンツポリシー、およびモデレーション情報。</value></data><data name="Help_Cat_Tech_Title" xml:space="preserve"><value>テクニカルサポート</value></data><data name="Help_Cat_Tech_Desc" xml:space="preserve"><value>APIエラー、ログインの問題、およびサイトのバグをトラブルシューティングします。</value></data><data name="Help_Articles_Promoted" xml:space="preserve"><value>おすすめの記事</value></data><data name="Help_Article_CreateProfile" xml:space="preserve"><value>新しいVTuberプロフィールページの作成方法</value></data><data name="Help_Article_ImgOpt" xml:space="preserve"><value>Wikiギャラリー用の画像最適化</value></data><data name="Help_Article_Tags" xml:space="preserve"><value>事務所と個人のタグの違いについて</value></data><data name="Help_Article_TroubleVTS" xml:space="preserve"><value>VTube Studioの統合に関するトラブルシューティング</value></data><data name="Help_Article_Copyright" xml:space="preserve"><value>ストリーマーアセットの著作権とフェアユースについて</value></data><data name="Help_Support_Title" xml:space="preserve"><value>まだ助けが必要ですか？</value></data><data name="Help_Support_Desc" xml:space="preserve"><value>お探しのものが見つからない場合は、当社のコミュニティとサポートチームがお手伝いします。</value></data><data name="Help_Support_Contact" xml:space="preserve"><value>お問い合わせフォーム</value></data><data name="Help_Support_Discord" xml:space="preserve"><value>Discordに参加する</value></data><data name="Help_Stats_Title" xml:space="preserve"><value>Wikiの統計</value></data><data name="Help_Stats_Articles" xml:space="preserve"><value>記事数</value></data><data name="Help_Stats_Members" xml:space="preserve"><value>メンバー数</value></data><data name="Help_Stats_Editors" xml:space="preserve"><value>アクティブ編集者</value></data><data name="Help_Stats_Response" xml:space="preserve"><value>平均応答</value></data><data name="Guide_Title" xml:space="preserve"><value>Wikiガイドライン</value></data><data name="Guide_Intro" xml:space="preserve"><value>VTuber Wikiへようこそ。世界のVirtual YouTuberコミュニティのために、肯定的で中立的、かつ正確な百科事典を維持するためにご協力ください。</value></data><data name="Guide_Conduct_Title" xml:space="preserve"><value>コミュニティ行動規範</value></data><data name="Guide_Respect_Title" xml:space="preserve"><value>尊重</value></data><data name="Guide_Respect_Desc" xml:space="preserve"><value>個人的な意見にかかわらず、すべてのコミュニティメンバー、編集者、およびVTuberに対して専門的な礼儀を持って接してください。</value></data><data name="Guide_Inclusivity_Title" xml:space="preserve"><value>包括性</value></data><data name="Guide_Inclusivity_Desc" xml:space="preserve"><value>あらゆる地域、言語、形態のVTubingのファンのための、歓迎的な環境を育んでください。</value></data><data name="Guide_ZeroTolerance_Title" xml:space="preserve"><value>ゼロ・トレランス（不寛容）</value></data><data name="Guide_ZeroTolerance_Desc" xml:space="preserve"><value>VTuberに対する嫌がらせ、ヘイトスピーチ、晒し（doxxing）、または標的を絞った嫌がらせは、直ちに永久追放の対象となります。</value></data><data name="Guide_Standards_Title" xml:space="preserve"><value>編集基準</value></data><data name="Guide_Standards_Sourcing_Title" xml:space="preserve"><value>出典</value></data><data name="Guide_Standards_Sourcing_Desc" xml:space="preserve"><value>すべての情報は、公式ソース、配信クリップ、または確認済みのソーシャルメディアの発表に裏付けられている必要があります。噂や「リーク」サイトは避けてください。</value></data><data name="Guide_Standards_Neutral_Title" xml:space="preserve"><value>中立的な視点</value></data><data name="Guide_Standards_Neutral_Desc" xml:space="preserve"><value>記事は中立的で百科事典的なトーンで書かれるべきです。特定のミームを定義する場合を除き、ファン文化のスラングは避けてください。</value></data><data name="Guide_Standards_Format_Title" xml:space="preserve"><value>書式設定</value></data><data name="Guide_Standards_Format_Desc" xml:space="preserve"><value>インフォボックスには標準テンプレートを使用してください。透過レンダリングの場合、画像品質が最小800px幅の要件を満たしていることを確認してください。</value></data><data name="Guide_Standards_Loc_Title" xml:space="preserve"><value>ローカライズ</value></data><data name="Guide_Standards_Loc_Desc" xml:space="preserve"><value>名前や設定を翻訳する際は、VTuberが希望する英語の綴りがある場合はそれを優先してください。</value></data><data name="Guide_Policy_Title" xml:space="preserve"><value>コンテンツポリシー</value></data><data name="Guide_Policy_Intro" xml:space="preserve"><value>網羅的であることを目指していますが、百科事典的な関連性の基準を維持しています：</value></data><data name="Guide_Policy_Agencies" xml:space="preserve"><value>公式事務所： 確立された事務所（ホロライブ、にじさんじ、VShojoなど）に所属するすべてのVTuberが対象です。</value></data><data name="Guide_Policy_Independents" xml:space="preserve"><value>個人勢： 個人勢のVTuberは、最低フォロワー数（例：10,000人以上）を満たしているか、大きな文化的影響を与えている必要があります。</value></data><data name="Guide_Policy_Privacy" xml:space="preserve"><value>プライバシー： VTuberの「舞台裏」の正体や私生活に関する情報（現実のデータ）は、厳格に禁止されています。</value></data><data name="Guide_Mod_Title" xml:space="preserve"><value>モデレーション</value></data><data name="Guide_Mod_Intro" xml:space="preserve"><value>当社のボランティアモデレーターチームがすべての変更を監視しています。ガイドラインへの違反は以下の結果を招きます：</value></data><data name="Guide_Mod_Step1_Title" xml:space="preserve"><value>1. 警告</value></data><data name="Guide_Mod_Step1_Desc" xml:space="preserve"><value>軽微な書式設定の問題に対して</value></data><data name="Guide_Mod_Step2_Title" xml:space="preserve"><value>2. 編集禁止</value></data><data name="Guide_Mod_Step2_Desc" xml:space="preserve"><value>度重なるエラーに対する7日間のロック</value></data><data name="Guide_Mod_Step3_Title" xml:space="preserve"><value>3. 完全追放</value></data><data name="Guide_Mod_Step3_Desc" xml:space="preserve"><value>行動規範違反に対して</value></data><data name="Guide_Links_Title" xml:space="preserve"><value>クイックリンク</value></data><data name="Guide_Links_Recent" xml:space="preserve"><value>最近の更新</value></data><data name="Guide_Links_Forum" xml:space="preserve"><value>コミュニティフォーラム</value></data><data name="Guide_Links_Contact" xml:space="preserve"><value>お問い合わせ</value></data><data name="Guide_Links_FAQ" xml:space="preserve"><value>編集者FAQ</value></data><data name="Guide_Contribute_Title" xml:space="preserve"><value>コントリビューターになる</value></data><data name="Guide_Contribute_Desc" xml:space="preserve"><value>VTuberの歴史を記録する2,000人以上のアクティブな編集者に加わりましょう。</value></data><data name="Guide_Contribute_Btn" xml:space="preserve"><value>登録して編集する</value></data><data name="RC_Btn_View" xml:space="preserve"><value>表示</value></data><data name="Nav_CommunityHub" xml:space="preserve"><value>コミュニティハブ</value></data><data name="Nav_Forum" xml:space="preserve"><value>フォーラム</value></data><data name="Tools_Btn_ViewDetails" xml:space="preserve"><value>詳細を見る</value></data></root>
+  <data name="Nav_Admin_Dashboard" xml:space="preserve">
+    <value>ダッシュボード</value>
+  </data>
+  <data name="Nav_Discord_Link" xml:space="preserve">
+    <value>Discord</value>
+  </data>
+  <data name="Nav_HelpCenter_Hub" xml:space="preserve">
+    <value>ヘルプセンター</value>
+  </data>
+  <data name="Modal_Confirm_Title" xml:space="preserve">
+    <value>アクションの確認</value>
+  </data>
+  <data name="Modal_Confirm_Msg" xml:space="preserve">
+    <value>続行してもよろしいですか？</value>
+  </data>
+  <data name="Modal_Btn_Cancel" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="Modal_Btn_Confirm" xml:space="preserve">
+    <value>確認</value>
+  </data>
+  <data name="Footer_Section_Wiki" xml:space="preserve">
+    <value>Wiki</value>
+  </data>
+  <data name="Footer_Section_Explore" xml:space="preserve">
+    <value>探索</value>
+  </data>
+  <data name="Footer_Section_Subscribe" xml:space="preserve">
+    <value>購読</value>
+  </data>
+  <data name="Forum_Item_By" xml:space="preserve">
+    <value>投稿者:</value>
+  </data>
+  <data name="Forum_Item_Ago" xml:space="preserve">
+    <value>前</value>
+  </data>
+  <data name="Forum_Badge_OP" xml:space="preserve">
+    <value>投稿者</value>
+  </data>
+  <data name="Forum_Wiki_CatTech" xml:space="preserve">
+    <value>テクニカルサポート</value>
+  </data>
+  <data name="Forum_Wiki_CatGeneral_Sidebar" xml:space="preserve">
+    <value>一般</value>
+  </data>
+  <data name="Forum_Wiki_CatCreative" xml:space="preserve">
+    <value>クリエイティブ</value>
+  </data>
+  <data name="Help_Hero_Title" xml:space="preserve">
+    <value>何かお困りですか？</value>
+  </data>
+  <data name="Help_Hero_Desc" xml:space="preserve">
+    <value>VTuberのセットアップガイド、Wikiへの貢献チュートリアル、コミュニティサポートについては、当社のナレッジベースを検索してください。</value>
+  </data>
+  <data name="Help_Search_Placeholder" xml:space="preserve">
+    <value>記事、ガイド、またはFAQを検索...</value>
+  </data>
+  <data name="Help_Search_Btn" xml:space="preserve">
+    <value>検索</value>
+  </data>
+  <data name="Help_Popular_Label" xml:space="preserve">
+    <value>人気:</value>
+  </data>
+  <data name="Help_Popular_ModelSetup" xml:space="preserve">
+    <value>モデルのセットアップ</value>
+  </data>
+  <data name="Help_Popular_OBS" xml:space="preserve">
+    <value>OBS設定</value>
+  </data>
+  <data name="Help_Popular_Naming" xml:space="preserve">
+    <value>命名規則</value>
+  </data>
+  <data name="Help_Category_Browse" xml:space="preserve">
+    <value>カテゴリーから探す</value>
+  </data>
+  <data name="Help_Cat_Account_Title" xml:space="preserve">
+    <value>アカウント管理</value>
+  </data>
+  <data name="Help_Cat_Account_Desc" xml:space="preserve">
+    <value>プロフィール、セキュリティ設定、および権限を更新します。</value>
+  </data>
+  <data name="Help_Cat_Editing_Title" xml:space="preserve">
+    <value>編集ガイド</value>
+  </data>
+  <data name="Help_Cat_Editing_Desc" xml:space="preserve">
+    <value>構文、書式設定、およびメディアのアップロードに関するルールを学びます。</value>
+  </data>
+  <data name="Help_Cat_Guidelines_Title" xml:space="preserve">
+    <value>コミュニティガイドライン</value>
+  </data>
+  <data name="Help_Cat_Guidelines_Desc" xml:space="preserve">
+    <value>行動規範、コンテンツポリシー、およびモデレーション情報。</value>
+  </data>
+  <data name="Help_Cat_Tech_Title" xml:space="preserve">
+    <value>テクニカルサポート</value>
+  </data>
+  <data name="Help_Cat_Tech_Desc" xml:space="preserve">
+    <value>APIエラー、ログインの問題、およびサイトのバグをトラブルシューティングします。</value>
+  </data>
+  <data name="Help_Articles_Promoted" xml:space="preserve">
+    <value>おすすめの記事</value>
+  </data>
+  <data name="Help_Article_CreateProfile" xml:space="preserve">
+    <value>新しいVTuberプロフィールページの作成方法</value>
+  </data>
+  <data name="Help_Article_ImgOpt" xml:space="preserve">
+    <value>Wikiギャラリー用の画像最適化</value>
+  </data>
+  <data name="Help_Article_Tags" xml:space="preserve">
+    <value>事務所と個人のタグの違いについて</value>
+  </data>
+  <data name="Help_Article_TroubleVTS" xml:space="preserve">
+    <value>VTube Studioの統合に関するトラブルシューティング</value>
+  </data>
+  <data name="Help_Article_Copyright" xml:space="preserve">
+    <value>ストリーマーアセットの著作権とフェアユースについて</value>
+  </data>
+  <data name="Help_Support_Title" xml:space="preserve">
+    <value>まだ助けが必要ですか？</value>
+  </data>
+  <data name="Help_Support_Desc" xml:space="preserve">
+    <value>お探しのものが見つからない場合は、当社のコミュニティとサポートチームがお手伝いします。</value>
+  </data>
+  <data name="Help_Support_Contact" xml:space="preserve">
+    <value>お問い合わせフォーム</value>
+  </data>
+  <data name="Help_Support_Discord" xml:space="preserve">
+    <value>Discordに参加する</value>
+  </data>
+  <data name="Help_Stats_Title" xml:space="preserve">
+    <value>Wikiの統計</value>
+  </data>
+  <data name="Help_Stats_Articles" xml:space="preserve">
+    <value>記事数</value>
+  </data>
+  <data name="Help_Stats_Members" xml:space="preserve">
+    <value>メンバー数</value>
+  </data>
+  <data name="Help_Stats_Editors" xml:space="preserve">
+    <value>アクティブ編集者</value>
+  </data>
+  <data name="Help_Stats_Response" xml:space="preserve">
+    <value>平均応答</value>
+  </data>
+  <data name="Guide_Title" xml:space="preserve">
+    <value>Wikiガイドライン</value>
+  </data>
+  <data name="Guide_Intro" xml:space="preserve">
+    <value>VTuber Wikiへようこそ。世界のVirtual YouTuberコミュニティのために、肯定的で中立的、かつ正確な百科事典を維持するためにご協力ください。</value>
+  </data>
+  <data name="Guide_Conduct_Title" xml:space="preserve">
+    <value>コミュニティ行動規範</value>
+  </data>
+  <data name="Guide_Respect_Title" xml:space="preserve">
+    <value>尊重</value>
+  </data>
+  <data name="Guide_Respect_Desc" xml:space="preserve">
+    <value>個人的な意見にかかわらず、すべてのコミュニティメンバー、編集者、およびVTuberに対して専門的な礼儀を持って接してください。</value>
+  </data>
+  <data name="Guide_Inclusivity_Title" xml:space="preserve">
+    <value>包括性</value>
+  </data>
+  <data name="Guide_Inclusivity_Desc" xml:space="preserve">
+    <value>あらゆる地域、言語、形態のVTubingのファンのための、歓迎的な環境を育んでください。</value>
+  </data>
+  <data name="Guide_ZeroTolerance_Title" xml:space="preserve">
+    <value>ゼロ・トレランス（不寛容）</value>
+  </data>
+  <data name="Guide_ZeroTolerance_Desc" xml:space="preserve">
+    <value>VTuberに対する嫌がらせ、ヘイトスピーチ、晒し（doxxing）、または標的を絞った嫌がらせは、直ちに永久追放の対象となります。</value>
+  </data>
+  <data name="Guide_Standards_Title" xml:space="preserve">
+    <value>編集基準</value>
+  </data>
+  <data name="Guide_Standards_Sourcing_Title" xml:space="preserve">
+    <value>出典</value>
+  </data>
+  <data name="Guide_Standards_Sourcing_Desc" xml:space="preserve">
+    <value>すべての情報は、公式ソース、配信クリップ、または確認済みのソーシャルメディアの発表に裏付けられている必要があります。噂や「リーク」サイトは避けてください。</value>
+  </data>
+  <data name="Guide_Standards_Neutral_Title" xml:space="preserve">
+    <value>中立的な視点</value>
+  </data>
+  <data name="Guide_Standards_Neutral_Desc" xml:space="preserve">
+    <value>記事は中立的で百科事典的なトーンで書かれるべきです。特定のミームを定義する場合を除き、ファン文化のスラングは避けてください。</value>
+  </data>
+  <data name="Guide_Standards_Format_Title" xml:space="preserve">
+    <value>書式設定</value>
+  </data>
+  <data name="Guide_Standards_Format_Desc" xml:space="preserve">
+    <value>インフォボックスには標準テンプレートを使用してください。透過レンダリングの場合、画像品質が最小800px幅の要件を満たしていることを確認してください。</value>
+  </data>
+  <data name="Guide_Standards_Loc_Title" xml:space="preserve">
+    <value>ローカライズ</value>
+  </data>
+  <data name="Guide_Standards_Loc_Desc" xml:space="preserve">
+    <value>名前や設定を翻訳する際は、VTuberが希望する英語の綴りがある場合はそれを優先してください。</value>
+  </data>
+  <data name="Guide_Policy_Title" xml:space="preserve">
+    <value>コンテンツポリシー</value>
+  </data>
+  <data name="Guide_Policy_Intro" xml:space="preserve">
+    <value>網羅的であることを目指していますが、百科事典的な関連性の基準を維持しています：</value>
+  </data>
+  <data name="Guide_Policy_Agencies" xml:space="preserve">
+    <value>公式事務所： 確立された事務所（ホロライブ、にじさんじ、VShojoなど）に所属するすべてのVTuberが対象です。</value>
+  </data>
+  <data name="Guide_Policy_Independents" xml:space="preserve">
+    <value>個人勢： 個人勢のVTuberは、最低フォロワー数（例：10,000人以上）を満たしているか、大きな文化的影響を与えている必要があります。</value>
+  </data>
+  <data name="Guide_Policy_Privacy" xml:space="preserve">
+    <value>プライバシー： VTuberの「舞台裏」の正体や私生活に関する情報（現実のデータ）は、厳格に禁止されています。</value>
+  </data>
+  <data name="Guide_Mod_Title" xml:space="preserve">
+    <value>モデレーション</value>
+  </data>
+  <data name="Guide_Mod_Intro" xml:space="preserve">
+    <value>当社のボランティアモデレーターチームがすべての変更を監視しています。ガイドラインへの違反は以下の結果を招きます：</value>
+  </data>
+  <data name="Guide_Mod_Step1_Title" xml:space="preserve">
+    <value>1. 警告</value>
+  </data>
+  <data name="Guide_Mod_Step1_Desc" xml:space="preserve">
+    <value>軽微な書式設定の問題に対して</value>
+  </data>
+  <data name="Guide_Mod_Step2_Title" xml:space="preserve">
+    <value>2. 編集禁止</value>
+  </data>
+  <data name="Guide_Mod_Step2_Desc" xml:space="preserve">
+    <value>度重なるエラーに対する7日間のロック</value>
+  </data>
+  <data name="Guide_Mod_Step3_Title" xml:space="preserve">
+    <value>3. 完全追放</value>
+  </data>
+  <data name="Guide_Mod_Step3_Desc" xml:space="preserve">
+    <value>行動規範違反に対して</value>
+  </data>
+  <data name="Guide_Links_Title" xml:space="preserve">
+    <value>クイックリンク</value>
+  </data>
+  <data name="Guide_Links_Recent" xml:space="preserve">
+    <value>最近の更新</value>
+  </data>
+  <data name="Guide_Links_Forum" xml:space="preserve">
+    <value>コミュニティフォーラム</value>
+  </data>
+  <data name="Guide_Links_Contact" xml:space="preserve">
+    <value>お問い合わせ</value>
+  </data>
+  <data name="Guide_Links_FAQ" xml:space="preserve">
+    <value>編集者FAQ</value>
+  </data>
+  <data name="Guide_Contribute_Title" xml:space="preserve">
+    <value>コントリビューターになる</value>
+  </data>
+  <data name="Guide_Contribute_Desc" xml:space="preserve">
+    <value>VTuberの歴史を記録する2,000人以上のアクティブな編集者に加わりましょう。</value>
+  </data>
+  <data name="Guide_Contribute_Btn" xml:space="preserve">
+    <value>登録して編集する</value>
+  </data>
+  <data name="RC_Btn_View" xml:space="preserve">
+    <value>表示</value>
+  </data>
+  <data name="Nav_CommunityHub" xml:space="preserve">
+    <value>コミュニティハブ</value>
+  </data>
+  <data name="Nav_Forum" xml:space="preserve">
+    <value>フォーラム</value>
+  </data>
+  <data name="Tools_Btn_ViewDetails" xml:space="preserve">
+    <value>詳細を見る</value>
+  </data>
+  <data name="Wiki_Btn_Cancel" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="Wiki_Event_Add_Title" xml:space="preserve">
+    <value>新しいイベントを追加</value>
+  </data>
+  <data name="Wiki_Event_Add_Subtitle_News" xml:space="preserve">
+    <value>最新のニュース、デビュー、またはコミュニティのハイライトを共有</value>
+  </data>
+  <data name="Wiki_Label_Title" xml:space="preserve">
+    <value>タイトル</value>
+  </data>
+  <data name="Wiki_Label_Author" xml:space="preserve">
+    <value>著者</value>
+  </data>
+  <data name="Wiki_Label_RichDescription" xml:space="preserve">
+    <value>詳細説明</value>
+  </data>
+  <data name="Wiki_Label_EventType" xml:space="preserve">
+    <value>イベントの種類</value>
+  </data>
+  <data name="Wiki_Label_Upload_Cover" xml:space="preserve">
+    <value>カバー画像をアップロード</value>
+  </data>
+  <data name="Wiki_Placeholder_EventTitle_News" xml:space="preserve">
+    <value>例：ホロライブ 5th Fes. 詳細発表</value>
+  </data>
+  <data name="Wiki_Placeholder_EventContent" xml:space="preserve">
+    <value>イベントについて詳しく教えてください...</value>
+  </data>
+  <data name="Wiki_Event_Type_Event" xml:space="preserve">
+    <value>イベント</value>
+  </data>
+  <data name="Wiki_Event_Type_Debut" xml:space="preserve">
+    <value>デビュー</value>
+  </data>
+  <data name="Wiki_Event_Type_Music" xml:space="preserve">
+    <value>音楽</value>
+  </data>
+  <data name="Wiki_Event_Type_ASMR" xml:space="preserve">
+    <value>ASMR</value>
+  </data>
+  <data name="Wiki_Event_Type_Gaming" xml:space="preserve">
+    <value>ゲーム</value>
+  </data>
+  <data name="Wiki_Label_Featured" xml:space="preserve">
+    <value>注目</value>
+  </data>
+  <data name="Wiki_Btn_PublishEvent_News" xml:space="preserve">
+    <value>イベントを公開</value>
+  </data>
+  <data name="AboutUs" xml:space="preserve">
+    <value>私たちについて</value>
+  </data>
+  <data name="Btn_ViewProfile" xml:space="preserve">
+    <value>プロフィールを見る</value>
+  </data>
+  <data name="Forum_Topic_DeleteReply" xml:space="preserve">
+    <value>返信を削除</value>
+  </data>
+  <data name="Forum_Topic_EditReply" xml:space="preserve">
+    <value>返信を編集</value>
+  </data>
+  <data name="Layout_Admin" xml:space="preserve">
+    <value>管理</value>
+  </data>
+  <data name="Layout_Forum" xml:space="preserve">
+    <value>フォーラム</value>
+  </data>
+  <data name="Layout_Help" xml:space="preserve">
+    <value>ヘルプ</value>
+  </data>
+  <data name="Layout_RecentChanges" xml:space="preserve">
+    <value>最近の変更</value>
+  </data>
+  <data name="Nav_Events" xml:space="preserve">
+    <value>イベント</value>
+  </data>
+  <data name="Region_Global" xml:space="preserve">
+    <value>グローバル</value>
+  </data>
+  <data name="Region_Indonesia" xml:space="preserve">
+    <value>インドネシア</value>
+  </data>
+  <data name="Region_Korea" xml:space="preserve">
+    <value>韓国</value>
+  </data>
+  <data name="Region_SEA" xml:space="preserve">
+    <value>東南アジア</value>
+  </data>
+  <data name="Region_Vietnam" xml:space="preserve">
+    <value>ベトナム</value>
+  </data>
+  <data name="Wiki_Agency_Edit_Subtitle" xml:space="preserve">
+    <value>この事務所の情報を更新</value>
+  </data>
+  <data name="Wiki_Agency_Edit_Title" xml:space="preserve">
+    <value>事務所を編集</value>
+  </data>
+  <data name="Wiki_Agency_Edit_Title_Short" xml:space="preserve">
+    <value>編集</value>
+  </data>
+  <data name="Wiki_Btn_Back" xml:space="preserve">
+    <value>戻る</value>
+  </data>
+  <data name="Wiki_Event_Edit_Title" xml:space="preserve">
+    <value>イベントを編集</value>
+  </data>
+  <data name="Wiki_Label_Twitter" xml:space="preserve">
+    <value>Twitter (X)</value>
+  </data>
+  <data name="Wiki_Label_Website" xml:space="preserve">
+    <value>ウェブサイト</value>
+  </data>
+  <data name="Wiki_Logo_Change_Text" xml:space="preserve">
+    <value>画像を変更</value>
+  </data>
+  <data name="Wiki_Logo_Recommended_Text" xml:space="preserve">
+    <value>推奨：正方形のPNG/JPG</value>
+  </data>
+  <data name="Wiki_Logo_Select_Text" xml:space="preserve">
+    <value>画像を選択</value>
+  </data>
+  <data name="Wiki_Logo_Upload_Text" xml:space="preserve">
+    <value>画像をアップロード</value>
+  </data>
+  <data name="Wiki_NewAgency" xml:space="preserve">
+    <value>新規事務所</value>
+  </data>
+  <data name="Wiki_Section_Links" xml:space="preserve">
+    <value>リンク</value>
+  </data>
+  <data name="Wiki_TranslationHeader" xml:space="preserve">
+    <value>翻訳プロジェクト</value>
+  </data>
+  <data name="Home_Label_Time_JustNow" xml:space="preserve">
+    <value>今さっき</value>
+  </data>
+  <data name="Modal_Btn_Delete" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="Modal_Delete_Msg" xml:space="preserve">
+    <value>削除してもよろしいですか：</value>
+  </data>
+  <data name="Modal_Delete_Title" xml:space="preserve">
+    <value>削除の確認</value>
+  </data>
+</root>

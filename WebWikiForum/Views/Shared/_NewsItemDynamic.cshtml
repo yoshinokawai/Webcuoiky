@@ -1,0 +1,71 @@
+@model WebWikiForum.Models.News
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResource> Localizer
+
+@{
+    string category = Model.Type;
+    string categoryColor = Model.Type switch {
+        "Event" => "primary",
+        "Debut" => "blue",
+        "Music" => "green",
+        "ASMR" => "pink",
+        "Gaming" => "orange",
+        _ => "primary"
+    };
+
+    // Calculate relative time
+    var timeDiff = DateTime.Now - Model.PublishDate;
+    string timeDisplay;
+    if (timeDiff.TotalDays >= 1)
+    {
+        timeDisplay = string.Format(Localizer["Home_Label_Time_Days"].Value, (int)timeDiff.TotalDays);
+    }
+    else if (timeDiff.TotalHours >= 1)
+    {
+        timeDisplay = string.Format(Localizer["Home_Label_Time_Hours"].Value, (int)timeDiff.TotalHours);
+    }
+    else
+    {
+        timeDisplay = Localizer["Home_Label_Time_JustNow"] ?? "Just now";
+    }
+}
+
+<article class="group flex gap-4 p-4 rounded-2xl bg-white dark:bg-surface-dark border border-slate-100 dark:border-slate-800 hover:border-primary/30 hover:shadow-soft transition-all cursor-pointer" onclick="location.href='/Wiki/VirtualEvents?id=@Model.Id'">
+    <div class="w-28 h-28 shrink-0 rounded-xl bg-slate-200 dark:bg-slate-700 overflow-hidden relative">
+        <img alt="@Model.Title" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="@Model.ImageUrl"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+    </div>
+    <div class="flex flex-col justify-between flex-1 py-1">
+        <div>
+            @if (categoryColor == "primary")
+            {
+                <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-0.5 rounded-full mb-2">@category</span>
+            }
+            else if (categoryColor == "blue")
+            {
+                <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-blue-600 bg-blue-100 dark:bg-blue-900/30 px-2 py-0.5 rounded-full mb-2">@category</span>
+            }
+            else if (categoryColor == "green")
+            {
+                <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-green-600 bg-green-100 dark:bg-green-900/30 px-2 py-0.5 rounded-full mb-2">@category</span>
+            }
+            else if (categoryColor == "pink")
+            {
+                <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-pink-600 bg-pink-100 dark:bg-pink-900/30 px-2 py-0.5 rounded-full mb-2">@category</span>
+            }
+            else if (categoryColor == "orange")
+            {
+                <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-orange-600 bg-orange-100 dark:bg-orange-900/30 px-2 py-0.5 rounded-full mb-2">@category</span>
+            }
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white leading-tight group-hover:text-primary transition-colors line-clamp-2">
+                @Model.Title
+            </h3>
+        </div>
+        <div class="flex items-center gap-3 mt-2 text-xs text-slate-500 dark:text-slate-400 font-medium">
+            <span class="flex items-center gap-1">
+                <span class="material-symbols-outlined text-[14px]">schedule</span> @timeDisplay
+            </span>
+            <span>•</span>
+            <span>@string.Format(Localizer["Home_Label_By"].Value, Model.Author)</span>
+        </div>
+    </div>
+</article>

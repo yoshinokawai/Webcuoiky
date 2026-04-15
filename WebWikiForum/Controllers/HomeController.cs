@@ -45,6 +45,12 @@ namespace WebWikiForum.Controllers
                 .OrderByDescending(a => a.Timestamp)
                 .Take(4)
                 .ToListAsync();
+
+            // Fetch top 3 news for the Home page
+            ViewBag.RecentNews = await _context.News
+                .OrderByDescending(n => n.PublishDate)
+                .Take(3)
+                .ToListAsync();
                 
             return View();
         }

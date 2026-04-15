@@ -111,31 +111,16 @@
 
     <script>
         function confirmDeleteEvent(id, title) {
-            const modal = document.getElementById('confirmModal');
-            const titleEl = document.getElementById('modal-title');
-            const msgEl = document.getElementById('modal-message');
-            const confirmBtn = document.getElementById('modalConfirmBtn');
-            const cancelBtn = document.getElementById('modalCancelBtn');
-
-            titleEl.textContent = '@Localizer["Events_Delete_Title"]';
-            msgEl.textContent = `@string.Format(Localizer["Events_Delete_Confirm"].Value, "${title}")`;
-            
-            modal.classList.remove('hidden');
-
-            const doDelete = () => {
-                const form = document.getElementById('deleteEventForm');
-                form.action = `/Wiki/DeleteEvent/${id}`;
-                form.submit();
-            };
-
-            const doCancel = () => {
-                modal.classList.add('hidden');
-                confirmBtn.removeEventListener('click', doDelete);
-                cancelBtn.removeEventListener('click', doCancel);
-            };
-
-            confirmBtn.addEventListener('click', doDelete);
-            cancelBtn.addEventListener('click', doCancel);
+            window.showConfirmModal({
+                title: '@Localizer["Events_Delete_Title"]',
+                message: `@Localizer["Events_Delete_Confirm"].Value`.replace('{0}', title),
+                confirmText: '@Localizer["Modal_Btn_Delete"]',
+                onConfirm: () => {
+                    const form = document.getElementById('deleteEventForm');
+                    form.action = `/Wiki/DeleteEvent/${id}`;
+                    form.submit();
+                }
+            });
         }
     </script>
 }

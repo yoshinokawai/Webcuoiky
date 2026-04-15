@@ -74,35 +74,20 @@
 <a class="text-sm font-bold text-primary hover:text-primary/80" href="/Wiki/VirtualEvents">@Localizer["Home_ViewAll"]</a>
 </div>
 <div class="space-y-4">
-    <partial name="_NewsItem" view-data='new ViewDataDictionary(ViewData) { 
-        { "Category", Localizer["Home_Category_Event"].Value }, 
-        { "CategoryColor", "primary" },
-        { "Title", "Hololive Production Announces \"Hololive Super Expo 2024\" Details" },
-        { "Time", string.Format(Localizer["Home_Label_Time_Hours"].Value, "2") },
-        { "Author", "Admin" },
-        { "ImageUrl", "https://lh3.googleusercontent.com/aida-public/AB6AXuC9GV3pMOtHNuxKOCKwzrAnvFc-NW4p-hJwBAQWu5MZL6S_Nf8HxLnUa2Iy__U1IEkpHFAY7p9TH3x_eI5rbMBUd4heQxUo3xa30LhafkUnzR-zBx7_C7ez0YwK4uKslcxneAXqwTQhrWJM7OmEZS3RfRjVAs7HPfIefQRF-HZ50hs65jn8gKDlLHHyxqH-TEHElThK2oI_oBH5o_CumxufJeBgII_91hMjBhJp0QCqzM-F1XObFJYwluJqUFokjdkWxCQRruMwbH8" },
-        { "AltText", "Concert stage lighting" }
-    }' />
-    
-    <partial name="_NewsItem" view-data='new ViewDataDictionary(ViewData) { 
-        { "Category", Localizer["Home_Category_Debut"].Value }, 
-        { "CategoryColor", "blue" },
-        { "Title", "New Indie VTuber Agency \"Prism Project\" Teases Generation 5" },
-        { "Time", string.Format(Localizer["Home_Label_Time_Hours"].Value, "5") },
-        { "Author", "Staff" },
-        { "ImageUrl", "https://lh3.googleusercontent.com/aida-public/AB6AXuAt9U1O6yJyAlBfbmpU6C5wLbS1Gn3oe8Al2kBZpLQeYW4ooe2CiUgHbOK_SyuDxL_i9snitI69UZtNZvu94MC9spbRYR80wLWVICKIaK_RnPOxd44ewSclO7B_byQuuAD1Do3USujsFkpBmBljlsioPNa3Q1hEsDDO5xqUlOqLT5KyiVvvFbLwNHkLzuNY3aNXPOxsFVZDElyyy9sIPlcMj0FiJ8syHm4Z0UIC0CPoC4OmmmRWw_w7sJKx88SDv15-qXSBZEcRil0" },
-        { "AltText", "Digital art setup" }
-    }' />
-
-    <partial name="_NewsItem" view-data='new ViewDataDictionary(ViewData) { 
-        { "Category", Localizer["Home_Category_Music"].Value }, 
-        { "CategoryColor", "green" },
-        { "Title", "Mori Calliope releases new EP \"JIGOKU 6\" featuring diverse artists" },
-        { "Time", string.Format(Localizer["Home_Label_Time_Days"].Value, "1") },
-        { "Author", "MusicTeam" },
-        { "ImageUrl", "https://lh3.googleusercontent.com/aida-public/AB6AXuBfdYboe5AY4vdzCg3MUnI-8nBCE_LUfYrqcKGr6fSXv55jKJFsGIvoDQPu7TRg7O-dH0ZBQCBEm9Wc3cA0CAM1Dq1CxOjCbdfJoNSP1Mp_vroUIf5W5WEA15R7rrraqc0xXU4nUmt_4xpC9Wk3qld7LM-a5JPimDPdUK1xCoHP7K2X6sENFl318hPeyYjOezzNX6gr7sol8PoZQV_AMo78mKpsqQOjwB6UWcpjOidkkS0BlZHRwCxSPA9Y3tkTO0dmTUpky_Jva7M" },
-        { "AltText", "Music studio recording" }
-    }' />
+@if (ViewBag.RecentNews != null && ((List<WebWikiForum.Models.News>)ViewBag.RecentNews).Any())
+{
+    foreach (var news in (List<WebWikiForum.Models.News>)ViewBag.RecentNews)
+    {
+        <partial name="_NewsItemDynamic" model="news" />
+    }
+}
+else
+{
+    <div class="text-center py-10 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border-2 border-dashed border-slate-200 dark:border-slate-700">
+        <span class="material-symbols-outlined text-4xl text-slate-300 dark:text-slate-600 mb-2">newspaper</span>
+        <p class="text-sm text-slate-500">No recent news available.</p>
+    </div>
+}
 </div>
 </div>
 <div class="lg:col-span-3 space-y-6">
