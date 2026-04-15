@@ -303,36 +303,51 @@
 
     <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-surface-dark">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
                 <div class="col-span-1">
                     <a href="/Home/Index" class="flex items-center gap-2 mb-4">
-                        <span class="material-symbols-outlined text-primary text-[24px]">smart_display</span>
-                        <span class="text-lg font-bold text-slate-900 dark:text-white"><span class="text-primary">VT</span>Wiki</span>
+                        <div class="w-8 h-8 flex items-center justify-center rounded-full bg-primary text-white shadow-sm ring-4 ring-primary/10">
+                            <span class="material-symbols-outlined text-[16px]">smart_display</span>
+                        </div>
+                        <span class="text-lg font-black tracking-tight text-slate-900 dark:text-white ml-1"><span class="text-primary">VT</span>Wiki</span>
                     </a>
-                    <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">@Localizer["Footer_Desc"]</p>
-                </div>
-                <div>
-                    <h3 class="text-sm font-bold text-slate-900 dark:text-white uppercase mb-4">@Localizer["Footer_Section_Wiki"]</h3>
-                    <ul class="space-y-2">
-                        <li><a class="text-sm text-slate-500 hover:text-primary transition-colors" href="/Home/AboutUs">@Localizer["Nav_AboutUs"]</a></li>
-                        <li><a class="text-sm text-slate-500 hover:text-primary transition-colors" href="/Help/Guidelines">@Localizer["Nav_Guidelines"]</a></li>
-                        <li><a class="text-sm text-slate-500 hover:text-primary transition-colors" href="/Editor/EditorHub">@Localizer["Nav_EditorHub"]</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-sm font-bold text-slate-900 dark:text-white uppercase mb-4">@Localizer["Footer_Section_Explore"]</h3>
-                    <ul class="space-y-2">
-                        <li><a class="text-sm text-slate-500 hover:text-primary transition-colors" href="/Wiki/Agencies">@Localizer["Nav_Agencies"]</a></li>
-                        <li><a class="text-sm text-slate-500 hover:text-primary transition-colors" href="/Wiki/Independent">@Localizer["Nav_Independent"]</a></li>
-                        <li><a class="text-sm text-slate-500 hover:text-primary transition-colors" href="/Wiki/VirtualEvents">@Localizer["Nav_VirtualEvents"]</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-sm font-bold text-slate-900 dark:text-white uppercase mb-4">@Localizer["Footer_Section_Subscribe"]</h3>
-                    <div class="flex gap-2">
-                        <input class="w-full px-4 py-2 text-sm border border-slate-200 dark:border-slate-700/50 rounded-full bg-slate-50 dark:bg-slate-800 text-white focus:outline-none focus:ring-2 focus:ring-primary/50" placeholder="Email" type="email"/>
-                        <button class="px-4 py-2 bg-primary text-white text-sm font-bold rounded-full hover:bg-primary-dark">Go</button>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-6">@Localizer["Footer_Desc"]</p>
+                    <div class="relative group">
+                        <div class="flex gap-2">
+                            <input class="w-full pl-4 pr-3 py-2 text-xs border border-slate-200 dark:border-slate-700/50 rounded-full bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all" placeholder="Email" type="email"/>
+                            <button class="px-5 py-2 bg-primary text-white text-xs font-bold rounded-full hover:bg-primary-dark transition-all transform hover:scale-105 active:scale-95 shadow-lg shadow-primary/20">Go</button>
+                        </div>
                     </div>
+                </div>
+                <div>
+                    <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-6">@Localizer["Nav_Explore"]</h3>
+                    <ul class="space-y-3">
+                        <li><a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors flex items-center gap-2" href="/Wiki/Agencies"><span class="material-symbols-outlined text-[18px] opacity-70">business</span> @Localizer["Nav_Agencies"]</a></li>
+                        <li><a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors flex items-center gap-2" href="/Wiki/Independent"><span class="material-symbols-outlined text-[18px] opacity-70">person</span> @Localizer["Nav_Independent"]</a></li>
+                        <li><a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors flex items-center gap-2" href="/Home/TopTalent"><span class="material-symbols-outlined text-[18px] opacity-70">star</span> @Localizer["Nav_TopTalents"]</a></li>
+                        <li><a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors flex items-center gap-2" href="/Wiki/VirtualEvents"><span class="material-symbols-outlined text-[18px] opacity-70">event</span> @Localizer["Nav_VirtualEvents"]</a></li>
+                        <li><a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors flex items-center gap-2" href="/Editor/FanTools"><span class="material-symbols-outlined text-[18px] opacity-70">build</span> @Localizer["Nav_FanTools"]</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-6">@Localizer["Nav_Community"]</h3>
+                    <ul class="space-y-3">
+                        <li><a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors flex items-center gap-2" href="/Forum/CommunityHub"><span class="material-symbols-outlined text-[18px] opacity-70">groups</span> @Localizer["Nav_CommunityHub"]</a></li>
+                        <li><a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors flex items-center gap-2" href="/Forum/Community"><span class="material-symbols-outlined text-[18px] opacity-70">forum</span> @Localizer["Nav_Forum"]</a></li>
+                        <li><a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors flex items-center gap-2" href="/Home/RecentChanges"><span class="material-symbols-outlined text-[18px] opacity-70">history</span> @Localizer["Nav_RecentChanges"]</a></li>
+                        <li><a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-[#5865F2] transition-colors flex items-center gap-2" href="/Home/JoinDiscord">
+                            <svg class="w-4 h-4 fill-current opacity-70" viewBox="0 0 24 24"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152a.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515a.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.1028 1.543 4.1335 2.4812 6.126 3.1047a.077.077 0 00.0828-.0272c.4654-.6363.876-1.3142 1.226-2.0304a.0759.0759 0 00-.0416-.1057 13.1163 13.1163 0 01-1.9213-.9148a.0772.0772 0 01-.0066-.1269c.13-.0974.26-.198.3846-.3012a.0741.0741 0 01.0774-.0102c4.0125 1.8341 8.3562 1.8341 12.33 0a.0721.0721 0 01.0774.0102c.1246.1032.2546.2038.3846.3012a.0772.0772 0 01-.0066.1269 12.2991 12.2991 0 01-1.9213.9148a.0759.0759 0 00-.0416.1057c.35.7162.7606 1.3941 1.226 2.0304a.077.077 0 00.0828.0272c1.9925-.6235 4.0232-1.5617 6.126-3.1047a.078.078 0 00.0312-.0561c.5002-5.1772-.8382-9.6739-3.5485-13.6604a.0688.0688 0 00-.0312-.0281zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189z"></path></svg>
+                            @Localizer["Nav_Discord_Link"]</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-6">@Localizer["Nav_Wiki"]</h3>
+                    <ul class="space-y-3">
+                        <li><a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors flex items-center gap-2" href="/Home/AboutUs"><span class="material-symbols-outlined text-[18px] opacity-70">info</span> @Localizer["Nav_AboutUs"]</a></li>
+                        <li><a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors flex items-center gap-2" href="/Help/Guidelines"><span class="material-symbols-outlined text-[18px] opacity-70">gavel</span> @Localizer["Nav_Guidelines"]</a></li>
+                        <li><a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors flex items-center gap-2" href="/Help/HelpCenter"><span class="material-symbols-outlined text-[18px] opacity-70">help</span> @Localizer["Nav_HelpCenter"]</a></li>
+                        <li><a class="text-sm font-medium text-amber-600 hover:text-amber-700 transition-colors flex items-center gap-2" href="/Home/Donate"><span class="material-symbols-outlined text-[18px] opacity-70">volunteer_activism</span> @Localizer["Nav_Donate"]</a></li>
+                    </ul>
                 </div>
             </div>
             <div class="mt-8 pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center text-xs text-slate-400">
