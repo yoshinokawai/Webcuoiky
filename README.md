@@ -100,8 +100,8 @@ Webcuoiky/
 │   │   ├── SharedResource.vi.resx
 │   │   └── SharedResource.ja.resx
 │   ├── Data/                 # ApplicationDbContext
-│   ├── Migrations/           # EF Core migrations
-│   ├── ViewModels/           # ViewModel cho các View
+│   ├── Migrations/          # EF Core migrations
+│   ├── ViewModels/          # ViewModel cho các View
 │   ├── Program.cs            # Cấu hình ứng dụng & seed data
 │   └── appsettings.json      # Chuỗi kết nối & config
 └── Webcuoiky.sln
@@ -151,7 +151,7 @@ dotnet ef database update
 dotnet run
 ```
 
-Truy cập: `https://localhost:5001`
+ Truy cập: `https://localhost:5001`
 
 > **Lưu ý:** Ứng dụng sẽ tự động seed dữ liệu mẫu (agencies, VTubers, tin tức) và tạo tài khoản Admin khi chạy lần đầu.
 
