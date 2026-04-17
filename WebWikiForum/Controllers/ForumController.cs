@@ -51,7 +51,8 @@ namespace WebWikiForum.Controllers
             var authors = recent.Select(d => d.Author)
                 .Concat(trending.Select(d => d.Author))
                 .ToList();
-            ViewBag.AuthorAvatars = await _GetAuthorAvatars(authors);
+            var avatars = await _GetAuthorAvatars(authors);
+            ViewBag.AuthorAvatars = avatars;
 
             ViewBag.Trending = trending;
             ViewBag.News = news;
@@ -126,9 +127,12 @@ namespace WebWikiForum.Controllers
             if (ViewBag.CategoryStats != null)
             {
                 var stats = (IEnumerable<CategorySummary>)ViewBag.CategoryStats;
-                authors.AddRange(stats.Where(s => !string.IsNullOrEmpty(s.LastPostAuthor)).Select(s => s.LastPostAuthor!));
+                authors.AddRange(stats.Where(s => !string.IsNullOrEmpty(s.LastPostAuthor)).Select(s => s.LastPostAuthor ?? "Anonymous"));
             }
-            authors.AddRange(((List<Discussion>)ViewBag.Trending).Select(d => d.Author));
+            if (ViewBag.Trending != null)
+            {
+                authors.AddRange(((List<Discussion>)ViewBag.Trending).Select(d => d.Author));
+            }
             ViewBag.AuthorAvatars = await _GetAuthorAvatars(authors);
 
             return View(results);
@@ -147,17 +151,17 @@ namespace WebWikiForum.Controllers
             var likedDiscussionIds = new List<int>();
             var likedReplyIds = new List<int>();
 
-            if (User.Identity.IsAuthenticated)
+            if (User.Identity?.IsAuthenticated == true)
             {
-                var username = User.Identity.Name;
+                var username = User.Identity.Name ?? "Anonymous";
                 likedDiscussionIds = await _context.DiscussionLikes
                     .Where(l => l.Username == username && l.DiscussionId != null)
-                    .Select(l => l.DiscussionId.Value)
+                    .Select(l => l.DiscussionId ?? 0)
                     .ToListAsync();
                 
                 likedReplyIds = await _context.DiscussionLikes
                     .Where(l => l.Username == username && l.ReplyId != null)
-                    .Select(l => l.ReplyId.Value)
+                    .Select(l => l.ReplyId ?? 0)
                     .ToListAsync();
             }
 
@@ -176,7 +180,7 @@ namespace WebWikiForum.Controllers
         [HttpGet]
         public IActionResult StartTopic()
         {
-            if (!User.Identity.IsAuthenticated) return RedirectToAction("Login", "Account");
+            if (User.Identity?.IsAuthenticated != true) return RedirectToAction("Login", "Account");
             return View();
         }
 
@@ -186,7 +190,7 @@ namespace WebWikiForum.Controllers
             if (ModelState.IsValid)
             {
                 model.CreatedAt = DateTime.Now;
-                model.Author = User.Identity.Name ?? "Anonymous";
+                model.Author = User.Identity?.Name ?? "Anonymous";
                 model.LastReplyDate = DateTime.Now;
                 
                 _context.Discussions.Add(model);
@@ -203,7 +207,7 @@ namespace WebWikiForum.Controllers
         [HttpPost]
         public async Task<IActionResult> PostReply(int discussionId, string content)
         {
-            if (!User.Identity.IsAuthenticated) return RedirectToAction("Login", "Account");
+            if (User.Identity?.IsAuthenticated != true) return RedirectToAction("Login", "Account");
             if (string.IsNullOrEmpty(content)) return BadRequest();
 
             var discussion = await _context.Discussions.FindAsync(discussionId);
@@ -213,19 +217,19 @@ namespace WebWikiForum.Controllers
             {
                 DiscussionId = discussionId,
                 Content = content,
-                Author = User.Identity.Name,
+                Author = User.Identity?.Name ?? "Anonymous",
                 CreatedAt = DateTime.Now
             };
 
             discussion.ReplyCount++;
-            discussion.LastReplier = User.Identity.Name;
+            discussion.LastReplier = User.Identity?.Name;
             discussion.LastReplyDate = DateTime.Now;
 
             _context.DiscussionReplies.Add(reply);
             _context.Update(discussion);
             await _context.SaveChangesAsync();
 
-            await _activityService.LogActivityAsync($"Reply to: {discussion.Title}", content, "Community", "Commented", User.Identity.Name, $"/Forum/Topic/{discussionId}", "New Comment");
+            await _activityService.LogActivityAsync($"Reply to: {discussion.Title}", content, "Community", "Commented", User.Identity?.Name ?? "Anonymous", $"/Forum/Topic/{discussionId}", "New Comment");
 
             return RedirectToAction("Topic", new { id = discussionId });
         }
@@ -235,9 +239,9 @@ namespace WebWikiForum.Controllers
         [HttpPost]
         public async Task<IActionResult> ToggleLikeDiscussion(int id)
         {
-            if (!User.Identity.IsAuthenticated) return Unauthorized();
-
-            var username = User.Identity.Name;
+            if (User.Identity?.IsAuthenticated != true) return Unauthorized();
+ 
+            var username = User.Identity?.Name ?? "Anonymous";
             var like = await _context.DiscussionLikes
                 .FirstOrDefaultAsync(l => l.DiscussionId == id && l.Username == username);
 
@@ -269,9 +273,9 @@ namespace WebWikiForum.Controllers
         [HttpPost]
         public async Task<IActionResult> ToggleLikeReply(int id)
         {
-            if (!User.Identity.IsAuthenticated) return Unauthorized();
-
-            var username = User.Identity.Name;
+            if (User.Identity?.IsAuthenticated != true) return Unauthorized();
+ 
+            var username = User.Identity?.Name ?? "Anonymous";
             var like = await _context.DiscussionLikes
                 .FirstOrDefaultAsync(l => l.ReplyId == id && l.Username == username);
 
@@ -309,7 +313,7 @@ namespace WebWikiForum.Controllers
             if (discussion == null) return NotFound();
 
             // Auth Check
-            if (discussion.Author != User.Identity.Name && !User.IsInRole("Admin"))
+            if (discussion.Author != (User.Identity?.Name ?? "") && !User.IsInRole("Admin"))
             {
                 return Forbid();
             }
@@ -324,7 +328,7 @@ namespace WebWikiForum.Controllers
             if (discussion == null) return NotFound();
 
             // Auth Check
-            if (discussion.Author != User.Identity.Name && !User.IsInRole("Admin"))
+            if (discussion.Author != (User.Identity?.Name ?? "") && !User.IsInRole("Admin"))
             {
                 return Forbid();
             }
@@ -350,7 +354,7 @@ namespace WebWikiForum.Controllers
             if (discussion == null) return NotFound();
 
             // Auth Check
-            if (discussion.Author != User.Identity.Name && !User.IsInRole("Admin"))
+            if (discussion.Author != (User.Identity?.Name ?? "") && !User.IsInRole("Admin"))
             {
                 return Forbid();
             }
@@ -369,7 +373,7 @@ namespace WebWikiForum.Controllers
             if (reply == null) return NotFound();
 
             // Auth Check
-            if (reply.Author != User.Identity.Name && !User.IsInRole("Admin"))
+            if (reply.Author != (User.Identity?.Name ?? "") && !User.IsInRole("Admin"))
             {
                 return Forbid();
             }
@@ -390,7 +394,7 @@ namespace WebWikiForum.Controllers
             if (reply == null) return NotFound();
 
             // Auth Check
-            if (reply.Author != User.Identity.Name && !User.IsInRole("Admin"))
+            if (reply.Author != (User.Identity?.Name ?? "") && !User.IsInRole("Admin"))
             {
                 return Forbid();
             }

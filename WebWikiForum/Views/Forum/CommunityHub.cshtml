@@ -98,27 +98,31 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         @if (ViewBag.News != null)
                         {
-                            @foreach (var article in (IEnumerable<WebWikiForum.Models.News>)ViewBag.News)
+                            var newsHub = ViewBag.News as IEnumerable<WebWikiForum.Models.News>;
+                            if (newsHub != null)
                             {
-                                <div class="bg-white dark:bg-slate-800/40 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden shadow-sm flex flex-col h-full">
-                                    <div class="h-32 bg-slate-200 dark:bg-slate-700 relative">
-                                        @if (!string.IsNullOrEmpty(article.ImageUrl)) {
-                                            <img src="@article.ImageUrl" class="w-full h-full object-cover" />
-                                        } else {
-                                            <div class="w-full h-full flex items-center justify-center text-slate-100 dark:text-slate-100/10">
-                                                <span class="material-symbols-outlined text-4xl">image</span>
+                                foreach (var article in newsHub)
+                                {
+                                    <div class="bg-white dark:bg-slate-800/40 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden shadow-sm flex flex-col h-full">
+                                        <div class="h-32 bg-slate-200 dark:bg-slate-700 relative">
+                                            @if (!string.IsNullOrEmpty(article.ImageUrl)) {
+                                                <img src="@article.ImageUrl" class="w-full h-full object-cover" />
+                                            } else {
+                                                <div class="w-full h-full flex items-center justify-center text-slate-100 dark:text-slate-100/10">
+                                                    <span class="material-symbols-outlined text-4xl">image</span>
+                                                </div>
+                                            }
+                                            <span class="absolute top-3 left-3 bg-primary text-white text-[10px] font-black uppercase px-2 py-1 rounded">@article.Type</span>
+                                        </div>
+                                        <div class="p-5 flex flex-col grow">
+                                            <h3 class="font-bold text-slate-800 dark:text-slate-100 mb-2 line-clamp-2">@article.Title</h3>
+                                            <div class="mt-auto flex items-center justify-between text-xs text-slate-500">
+                                                <span>@article.PublishDate.ToString("MMM dd, yyyy")</span>
+                                                <button class="text-primary font-bold">@Localizer["Forum_Hub_ReadMore"]</button>
                                             </div>
-                                        }
-                                        <span class="absolute top-3 left-3 bg-primary text-white text-[10px] font-black uppercase px-2 py-1 rounded">@article.Type</span>
-                                    </div>
-                                    <div class="p-5 flex flex-col grow">
-                                        <h3 class="font-bold text-slate-800 dark:text-slate-100 mb-2 line-clamp-2">@article.Title</h3>
-                                        <div class="mt-auto flex items-center justify-between text-xs text-slate-500">
-                                            <span>@article.PublishDate.ToString("MMM dd, yyyy")</span>
-                                            <button class="text-primary font-bold">@Localizer["Forum_Hub_ReadMore"]</button>
                                         </div>
                                     </div>
-                                </div>
+                                }
                             }
                         }
                     </div>
@@ -160,16 +164,20 @@
                     <div class="space-y-4">
                         @if (ViewBag.Trending != null)
                         {
-                            @foreach (var t in (IEnumerable<WebWikiForum.Models.Discussion>)ViewBag.Trending)
+                            var trendingHub = ViewBag.Trending as IEnumerable<WebWikiForum.Models.Discussion>;
+                            if (trendingHub != null)
                             {
-                                <div class="flex flex-col gap-1 border-b border-slate-100 dark:border-slate-700 pb-3 last:border-0 last:pb-0">
-                                    <a href="/Forum/Topic/@t.Id" class="text-sm font-bold text-slate-800 dark:text-slate-100 hover:text-primary transition-colors line-clamp-1">@t.Title</a>
-                                    <div class="flex items-center gap-2 text-[10px] text-slate-400 font-bold uppercase">
-                                        <span>@t.Category</span>
-                                        <span>•</span>
-                                        <span>@t.ReplyCount @Localizer["Forum_Community_Replies"].ToString().ToUpper()</span>
+                                foreach (var t in trendingHub)
+                                {
+                                    <div class="flex flex-col gap-1 border-b border-slate-100 dark:border-slate-700 pb-3 last:border-0 last:pb-0">
+                                        <a href="/Forum/Topic/@t.Id" class="text-sm font-bold text-slate-800 dark:text-slate-100 hover:text-primary transition-colors line-clamp-1">@t.Title</a>
+                                        <div class="flex items-center gap-2 text-[10px] text-slate-400 font-bold uppercase">
+                                            <span>@t.Category</span>
+                                            <span>•</span>
+                                            <span>@t.ReplyCount @(Localizer["Forum_Community_Replies"]?.ToString().ToUpper())</span>
+                                        </div>
                                     </div>
-                                </div>
+                                }
                             }
                         }
                     </div>

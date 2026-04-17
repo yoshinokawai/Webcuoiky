@@ -1,10 +1,6 @@
 @{
     ViewData["Title"] = "Access Denied";
     string returnUrl = ViewData["ReturnUrl"]?.ToString() ?? "/";
-    // Go back to the section root, not the specific action URL
-    string backUrl = "/";
-    if (returnUrl.Contains("/Wiki/")) backUrl = "/";
-    if (returnUrl.Contains("/Admin/")) backUrl = "/";
 }
 
 @section Styles {

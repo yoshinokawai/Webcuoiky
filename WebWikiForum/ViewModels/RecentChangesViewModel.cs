@@ -20,7 +20,7 @@ namespace WebWikiForum.ViewModels
 
     public class ContributorViewModel
     {
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
         public int EditCount { get; set; }
         public string? AvatarUrl { get; set; }
         public int Rank { get; set; }

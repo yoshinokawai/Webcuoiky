@@ -100,8 +100,10 @@
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
-                        @foreach (var item in Model.Vtubers)
+                        @if (Model.Vtubers != null)
                         {
+                            foreach (var item in Model.Vtubers)
+                            {
                             <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/20 transition-colors group">
                                 <td class="p-5">
                                     <div class="flex items-center gap-4">
@@ -112,7 +114,7 @@
                                             }
                                             else
                                             {
-                                                <div class="w-full h-full flex items-center justify-center text-primary font-bold">@item.Name.Substring(0, 1)</div>
+                                                <div class="w-full h-full flex items-center justify-center text-primary font-bold">@(!string.IsNullOrEmpty(item.Name) ? item.Name.Substring(0, 1) : "?")</div>
                                             }
                                         </div>
                                         <div>
@@ -168,6 +170,8 @@
                                     </div>
                                 </td>
                             </tr>
+                                }
+                            }
                         }
                     </tbody>
                 </table>

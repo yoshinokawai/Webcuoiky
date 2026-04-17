@@ -15,9 +15,11 @@ namespace WebWikiForum.ViewComponents
             _context = context;
         }
 
+
+
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            if (!UserClaimsPrincipal.Identity.IsAuthenticated)
+            if (UserClaimsPrincipal.Identity?.IsAuthenticated != true)
             {
                 return View("Default", (User?)null);
             }

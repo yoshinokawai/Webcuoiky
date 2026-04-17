@@ -24,7 +24,7 @@ namespace WebWikiForum.Services
             _cloudinary = new Cloudinary(acc);
         }
 
-        public async Task<string> UploadImageAsync(IFormFile file, string folderName)
+        public async Task<string?> UploadImageAsync(IFormFile file, string folderName)
         {
             if (file == null || file.Length == 0)
                 return null;
@@ -50,7 +50,7 @@ namespace WebWikiForum.Services
             }
 
             // Return the full secure URL
-            return uploadResult.SecureUrl.ToString();
+            return uploadResult.SecureUrl?.ToString();
         }
 
         public void DeleteFile(string fileName, string folderName)

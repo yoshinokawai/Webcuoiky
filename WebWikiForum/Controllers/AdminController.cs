@@ -102,8 +102,11 @@ namespace WebWikiForum.Controllers
                 // Delete image file if exists
                 if (!string.IsNullOrEmpty(vtuber.AvatarUrl))
                 {
-                    string fileName = Path.GetFileName(vtuber.AvatarUrl);
-                    _fileService.DeleteFile(fileName, "vtubers");
+                    var fileName = Path.GetFileName(vtuber.AvatarUrl);
+                    if (!string.IsNullOrEmpty(fileName))
+                    {
+                        _fileService.DeleteFile(fileName, "vtubers");
+                    }
                 }
 
                 _context.Vtubers.Remove(vtuber);

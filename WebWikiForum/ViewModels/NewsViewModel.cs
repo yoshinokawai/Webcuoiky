@@ -8,10 +8,10 @@ namespace WebWikiForum.ViewModels
     {
         [Required(ErrorMessage = "Title is required")]
         [StringLength(200)]
-        public string Title { get; set; }
+        public string Title { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Type is required")]
-        public string Type { get; set; } // Event, Debut, Music, ASMR, Gaming
+        public string Type { get; set; } = string.Empty; // Event, Debut, Music, ASMR, Gaming
 
         public string? Content { get; set; }
 

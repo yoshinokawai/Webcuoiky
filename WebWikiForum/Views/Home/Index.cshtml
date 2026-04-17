@@ -11,9 +11,12 @@
             @if (ViewBag.Spotlight != null)
             {
                 var spotlightList = ViewBag.Spotlight as List<WebWikiForum.Models.Vtuber>;
-                for (int i = 0; i < spotlightList.Count; i++)
+                if (spotlightList != null)
                 {
-                    <partial name="_VtuberSpotlight" model="@spotlightList[i]" view-data='new ViewDataDictionary(ViewData) { { "Index", i }, { "IsActive", i == 0 } }' />
+                    for (int i = 0; i < spotlightList.Count; i++)
+                    {
+                        <partial name="_VtuberSpotlight" model="@spotlightList[i]" view-data='new ViewDataDictionary(ViewData) { { "Index", i }, { "IsActive", i == 0 } }' />
+                    }
                 }
             }
         </div>
@@ -31,9 +34,12 @@
             @if (ViewBag.Spotlight != null)
             {
                 var spotlightList = ViewBag.Spotlight as List<WebWikiForum.Models.Vtuber>;
-                for (int i = 0; i < spotlightList.Count; i++)
+                if (spotlightList != null)
                 {
-                    <button class="slider-dot w-2 h-2 rounded-full bg-slate-300 dark:bg-slate-700 transition-all @(i == 0 ? "active" : "")" data-index="@i"></button>
+                    for (int i = 0; i < spotlightList.Count; i++)
+                    {
+                        <button class="slider-dot w-2 h-2 rounded-full bg-slate-300 dark:bg-slate-700 transition-all @(i == 0 ? "active" : "")" data-index="@i"></button>
+                    }
                 }
             }
         </div>
@@ -50,10 +56,14 @@
             @if (ViewBag.Agencies != null)
             {
                 int index = 0;
-                foreach (var agency in ViewBag.Agencies as List<WebWikiForum.Models.Agency>)
+                var agenciesList = ViewBag.Agencies as List<WebWikiForum.Models.Agency>;
+                if (agenciesList != null)
                 {
-                    <partial name="_AgencyCard" model="@agency" view-data='new ViewDataDictionary(ViewData) { { "Index", index } }' />
-                    index++;
+                    foreach (var agency in agenciesList)
+                    {
+                        <partial name="_AgencyCard" model="@agency" view-data='new ViewDataDictionary(ViewData) { { "Index", index } }' />
+                        index++;
+                    }
                 }
             }
             <a class="group flex flex-col items-center justify-center p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition-all duration-300" href="/Home/Explore?tab=Independent">
@@ -74,19 +84,23 @@
 <a class="text-sm font-bold text-primary hover:text-primary/80" href="/Wiki/VirtualEvents">@Localizer["Home_ViewAll"]</a>
 </div>
 <div class="space-y-4">
-@if (ViewBag.RecentNews != null && ((List<WebWikiForum.Models.News>)ViewBag.RecentNews).Any())
+@if (ViewBag.RecentNews != null)
 {
-    foreach (var news in (List<WebWikiForum.Models.News>)ViewBag.RecentNews)
+    var newsList = ViewBag.RecentNews as List<WebWikiForum.Models.News>;
+    if (newsList != null && newsList.Any())
     {
-        <partial name="_NewsItemDynamic" model="news" />
+        foreach (var news in newsList)
+        {
+            <partial name="_NewsItemDynamic" model="news" />
+        }
     }
-}
-else
-{
-    <div class="text-center py-10 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border-2 border-dashed border-slate-200 dark:border-slate-700">
-        <span class="material-symbols-outlined text-4xl text-slate-300 dark:text-slate-600 mb-2">newspaper</span>
-        <p class="text-sm text-slate-500">No recent news available.</p>
-    </div>
+    else
+    {
+        <div class="text-center py-10 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border-2 border-dashed border-slate-200 dark:border-slate-700">
+            <span class="material-symbols-outlined text-4xl text-slate-300 dark:text-slate-600 mb-2">newspaper</span>
+            <p class="text-sm text-slate-500">No recent news available.</p>
+        </div>
+    }
 }
 </div>
 </div>
@@ -101,10 +115,14 @@ else
                     @if (ViewBag.Trending != null)
                     {
                         int rank = 1;
-                        foreach (var vtuber in ViewBag.Trending as List<WebWikiForum.Models.Vtuber>)
+                        var trendingList = ViewBag.Trending as List<WebWikiForum.Models.Vtuber>;
+                        if (trendingList != null)
                         {
-                            <partial name="_TrendingVtuberItem" model="@vtuber" view-data='new ViewDataDictionary(ViewData){ { "Rank", rank } }' />
-                            rank++;
+                            foreach (var vtuber in trendingList)
+                            {
+                                <partial name="_TrendingVtuberItem" model="@vtuber" view-data='new ViewDataDictionary(ViewData){ { "Rank", rank } }' />
+                                rank++;
+                            }
                         }
                     }
                 </div>
@@ -119,9 +137,13 @@ else
 <div class="space-y-3 overflow-hidden">
     @if (ViewBag.RecentActivities != null)
     {
-        foreach (var activity in (List<WebWikiForum.Models.Activity>)ViewBag.RecentActivities)
+        var activitiesList = ViewBag.RecentActivities as List<WebWikiForum.Models.Activity>;
+        if (activitiesList != null)
         {
-            <partial name="_ActivityItem" model="@activity" />
+            foreach (var activity in activitiesList)
+            {
+                <partial name="_ActivityItem" model="@activity" />
+            }
         }
     }
 </div>

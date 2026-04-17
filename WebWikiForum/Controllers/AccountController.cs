@@ -30,7 +30,7 @@ namespace WebWikiForum.Controllers
         [HttpGet]
         public IActionResult Login(string returnUrl = "/")
         {
-            if (User.Identity.IsAuthenticated)
+            if (User.Identity?.IsAuthenticated == true)
             {
                 return LocalRedirect(returnUrl);
             }
@@ -96,7 +96,7 @@ namespace WebWikiForum.Controllers
         [HttpGet]
         public IActionResult CreateAccount()
         {
-            if (User.Identity.IsAuthenticated)
+            if (User.Identity?.IsAuthenticated == true)
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -200,7 +200,7 @@ namespace WebWikiForum.Controllers
         [HttpGet]
         public IActionResult SetupPin()
         {
-            if (!User.Identity.IsAuthenticated) return RedirectToAction("Login");
+            if (User.Identity?.IsAuthenticated != true) return RedirectToAction("Login");
             return View();
         }
 
@@ -213,7 +213,10 @@ namespace WebWikiForum.Controllers
                 return View();
             }
 
-            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userIdStr)) return RedirectToAction("Login");
+            
+            var userId = int.Parse(userIdStr);
             var user = await _context.Users.FindAsync(userId);
 
             if (user != null)
@@ -262,7 +265,7 @@ namespace WebWikiForum.Controllers
         public async Task<IActionResult> VerifyPin(string pin)
         {
             if (TempData["ResetUserId"] == null) return RedirectToAction("ForgotPassword");
-            int userId = (int)TempData["ResetUserId"];
+            int userId = TempData["ResetUserId"] as int? ?? 0;
             TempData.Keep("ResetUserId");
 
             var user = await _context.Users.FindAsync(userId);
@@ -290,7 +293,7 @@ namespace WebWikiForum.Controllers
         public async Task<IActionResult> ResetPassword(string newPassword, string confirmPassword)
         {
             if (TempData["ResetUserId"] == null) return RedirectToAction("ForgotPassword");
-            int userId = (int)TempData["ResetUserId"];
+            int userId = TempData["ResetUserId"] as int? ?? 0;
 
             if (newPassword != confirmPassword)
             {
@@ -316,11 +319,14 @@ namespace WebWikiForum.Controllers
         [HttpGet]
         public async Task<IActionResult> Profile()
         {
-            if (!User.Identity.IsAuthenticated) return RedirectToAction("Login");
+            if (User.Identity?.IsAuthenticated != true) return RedirectToAction("Login");
+ 
+            var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userIdStr)) return RedirectToAction("Logout");
 
-            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            var userId = int.Parse(userIdStr);
             var user = await _context.Users.FindAsync(userId);
-
+ 
             if (user == null) return RedirectToAction("Logout");
 
             var model = new ProfileViewModel
@@ -339,11 +345,14 @@ namespace WebWikiForum.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdateProfile(ProfileViewModel model)
         {
-            if (!User.Identity.IsAuthenticated) return RedirectToAction("Login");
+            if (User.Identity?.IsAuthenticated != true) return RedirectToAction("Login");
+ 
+            var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userIdStr)) return RedirectToAction("Logout");
 
-            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            var userId = int.Parse(userIdStr);
             var user = await _context.Users.FindAsync(userId);
-
+ 
             if (user == null) return RedirectToAction("Logout");
 
             // Handle Avatar Upload

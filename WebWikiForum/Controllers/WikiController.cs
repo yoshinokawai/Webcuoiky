@@ -55,10 +55,14 @@ namespace WebWikiForum.Controllers
             {
                 try
                 {
-                    string imageUrl = "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=800&auto=format&fit=crop"; // Default
+                    string? imageUrl = null;
                     if (imageFile != null && imageFile.Length > 0)
                     {
                         imageUrl = await _fileService.UploadImageAsync(imageFile, "news");
+                    }
+
+                    if (string.IsNullOrEmpty(imageUrl)) {
+                        imageUrl = "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=800&auto=format&fit=crop"; // Default
                     }
 
                     var news = new News
@@ -125,7 +129,11 @@ namespace WebWikiForum.Controllers
                         // Delete old image if it's on Cloudinary (not a generic unsplash link)
                         if (!string.IsNullOrEmpty(news.ImageUrl) && news.ImageUrl.Contains("res.cloudinary.com"))
                         {
-                            _fileService.DeleteFile(Path.GetFileName(news.ImageUrl), "news");
+                            var fileName = Path.GetFileName(news.ImageUrl);
+                            if (!string.IsNullOrEmpty(fileName))
+                            {
+                                _fileService.DeleteFile(fileName, "news");
+                            }
                         }
                         news.ImageUrl = await _fileService.UploadImageAsync(imageFile, "news");
                     }
@@ -164,7 +172,11 @@ namespace WebWikiForum.Controllers
             {
                 if (!string.IsNullOrEmpty(news.ImageUrl) && news.ImageUrl.Contains("res.cloudinary.com"))
                 {
-                    _fileService.DeleteFile(Path.GetFileName(news.ImageUrl), "news");
+                    var fileName = Path.GetFileName(news.ImageUrl);
+                    if (!string.IsNullOrEmpty(fileName))
+                    {
+                        _fileService.DeleteFile(fileName, "news");
+                    }
                 }
                 _context.News.Remove(news);
                 await _context.SaveChangesAsync();
@@ -249,13 +261,21 @@ namespace WebWikiForum.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public async Task<IActionResult> Create(VtuberViewModel model, IFormFile avatarFile)
+        public async Task<IActionResult> Create(VtuberViewModel model, IFormFile? avatarFile)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    string fileName = await _fileService.UploadImageAsync(avatarFile, "vtubers");
+                    string? fileName = null;
+                    if (avatarFile != null && avatarFile.Length > 0)
+                    {
+                        fileName = await _fileService.UploadImageAsync(avatarFile, "vtubers");
+                    }
+                    
+                    if (string.IsNullOrEmpty(fileName)) {
+                        fileName = "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=800&auto=format&fit=crop"; // Default
+                    }
 
                     var vtuber = new Vtuber
                     {
@@ -331,13 +351,19 @@ namespace WebWikiForum.Controllers
                         // Delete old logo if exists
                         if (!string.IsNullOrEmpty(agency.LogoUrl))
                         {
-                            string oldFileName = Path.GetFileName(agency.LogoUrl);
-                            _fileService.DeleteFile(oldFileName, "agencies");
+                            var oldFileName = Path.GetFileName(agency.LogoUrl);
+                            if (!string.IsNullOrEmpty(oldFileName))
+                            {
+                                _fileService.DeleteFile(oldFileName, "agencies");
+                            }
                         }
 
                         // Upload new logo
-                        string fileName = await _fileService.UploadImageAsync(logoFile, "agencies");
-                        agency.LogoUrl = fileName;
+                        string? fileName = await _fileService.UploadImageAsync(logoFile, "agencies");
+                        if (!string.IsNullOrEmpty(fileName))
+                        {
+                            agency.LogoUrl = fileName;
+                        }
                     }
 
                     agency.Name = model.Name;
@@ -381,7 +407,15 @@ namespace WebWikiForum.Controllers
             {
                 try
                 {
-                    string fileName = await _fileService.UploadImageAsync(logoFile, "agencies");
+                    string? fileName = null;
+                    if (logoFile != null && logoFile.Length > 0)
+                    {
+                        fileName = await _fileService.UploadImageAsync(logoFile, "agencies");
+                    }
+                    
+                    if (string.IsNullOrEmpty(fileName)) {
+                        fileName = "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=800&auto=format&fit=crop"; // Default logo
+                    }
 
                     var agency = new Agency
                     {
@@ -427,8 +461,11 @@ namespace WebWikiForum.Controllers
                 }
                 
                 if (!string.IsNullOrEmpty(agency.LogoUrl)) {
-                    string fileName = Path.GetFileName(agency.LogoUrl);
-                    _fileService.DeleteFile(fileName, "agencies");
+                    var fileName = Path.GetFileName(agency.LogoUrl);
+                    if (!string.IsNullOrEmpty(fileName))
+                    {
+                        _fileService.DeleteFile(fileName, "agencies");
+                    }
                 }
 
                 _context.Agencies.Remove(agency);
@@ -454,8 +491,11 @@ namespace WebWikiForum.Controllers
                 // Delete image file if exists
                 if (!string.IsNullOrEmpty(vtuber.AvatarUrl))
                 {
-                    string fileName = Path.GetFileName(vtuber.AvatarUrl);
-                    _fileService.DeleteFile(fileName, "vtubers");
+                    var fileName = Path.GetFileName(vtuber.AvatarUrl);
+                    if (!string.IsNullOrEmpty(fileName))
+                    {
+                        _fileService.DeleteFile(fileName, "vtubers");
+                    }
                 }
 
                 _context.Vtubers.Remove(vtuber);
@@ -513,13 +553,19 @@ namespace WebWikiForum.Controllers
                         // Delete old image if exists
                         if (!string.IsNullOrEmpty(vtuber.AvatarUrl))
                         {
-                            string oldFileName = Path.GetFileName(vtuber.AvatarUrl);
-                            _fileService.DeleteFile(oldFileName, "vtubers");
+                            var oldFileName = Path.GetFileName(vtuber.AvatarUrl);
+                            if (!string.IsNullOrEmpty(oldFileName))
+                            {
+                                _fileService.DeleteFile(oldFileName, "vtubers");
+                            }
                         }
 
                         // Upload new image
-                        string fileName = await _fileService.UploadImageAsync(avatarFile, "vtubers");
-                        vtuber.AvatarUrl = fileName;
+                        string? fileName = await _fileService.UploadImageAsync(avatarFile, "vtubers");
+                        if (!string.IsNullOrEmpty(fileName))
+                        {
+                            vtuber.AvatarUrl = fileName;
+                        }
                     }
 
                     vtuber.Name = model.Name;
