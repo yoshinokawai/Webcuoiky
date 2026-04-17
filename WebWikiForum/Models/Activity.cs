@@ -10,21 +10,21 @@ namespace WebWikiForum.Models
 
         [Required]
         [StringLength(200)]
-        public string Title { get; set; }
+        public string Title { get; set; } = string.Empty;
 
         public string? Description { get; set; }
 
         [Required]
         [StringLength(50)]
-        public string ActivityType { get; set; } // "Article", "Media", "User", "Community"
+        public string ActivityType { get; set; } = string.Empty; // "Article", "Media", "User", "Community"
 
         [Required]
         [StringLength(50)]
-        public string Action { get; set; } // "Created", "Updated", "Deleted", "Commented"
+        public string Action { get; set; } = string.Empty; // "Created", "Updated", "Deleted", "Commented"
 
         [Required]
         [StringLength(100)]
-        public string Author { get; set; }
+        public string Author { get; set; } = string.Empty;
 
         public DateTime Timestamp { get; set; } = DateTime.Now;
 

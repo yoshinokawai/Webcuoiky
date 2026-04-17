@@ -2090,6 +2090,15 @@ Community Hub</value>
   <data name="Lang_Japanese" xml:space="preserve">
     <value>Japanese</value>
   </data>
+  <data name="Lang_Chinese" xml:space="preserve">
+    <value>Chinese</value>
+  </data>
+  <data name="Lang_Vietnamese" xml:space="preserve">
+    <value>Vietnamese</value>
+  </data>
+  <data name="Lang_Indonesian" xml:space="preserve">
+    <value>Indonesian</value>
+  </data>
   <data name="Focus_Idol" xml:space="preserve">
     <value>Idol</value>
   </data>

@@ -7,7 +7,7 @@ namespace WebWikiForum.Models
         public int Id { get; set; }
         
         // The user who liked
-        public string Username { get; set; }
+        public string Username { get; set; } = string.Empty;
         
         // Link to either a Discussion or a Reply
         public int? DiscussionId { get; set; }

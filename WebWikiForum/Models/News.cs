@@ -10,11 +10,11 @@ namespace WebWikiForum.Models
 
         [Required]
         [StringLength(200)]
-        public string Title { get; set; }
+        public string Title { get; set; } = string.Empty;
 
         [Required]
         [StringLength(50)]
-        public string Type { get; set; } // Event, Debut, Music, ASMR, Gaming
+        public string Type { get; set; } = string.Empty; // Event, Debut, Music, ASMR, Gaming
 
         public string? Content { get; set; }
 

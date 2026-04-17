@@ -60,3 +60,15 @@ html, body {
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(153, 76, 230, 0.4);
 }
+
+/* Custom Select Arrow Fix */
+select {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    background-image: none !important;
+}
+
+select::-ms-expand {
+    display: none;
+}

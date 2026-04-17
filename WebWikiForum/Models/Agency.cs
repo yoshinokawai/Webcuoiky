@@ -10,17 +10,17 @@ namespace WebWikiForum.Models
 
         [Required]
         [StringLength(100)]
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
-        public string LogoUrl { get; set; }
-
-        [StringLength(50)]
-        public string Region { get; set; }
+        public string LogoUrl { get; set; } = string.Empty;
 
         [StringLength(50)]
-        public string Focus { get; set; }
+        public string Region { get; set; } = string.Empty;
 
-        public string Description { get; set; }
+        [StringLength(50)]
+        public string Focus { get; set; } = string.Empty;
+
+        public string Description { get; set; } = string.Empty;
 
         public int TalentCount { get; set; }
         
@@ -31,6 +31,6 @@ namespace WebWikiForum.Models
         public string? YoutubeUrl { get; set; }
         public string? TwitterUrl { get; set; }
 
-        public virtual ICollection<Vtuber> Vtubers { get; set; }
+        public virtual ICollection<Vtuber> Vtubers { get; set; } = new List<Vtuber>();
     }
 }

@@ -2075,6 +2075,15 @@
   <data name="Lang_Japanese" xml:space="preserve">
     <value>日本語</value>
   </data>
+  <data name="Lang_Chinese" xml:space="preserve">
+    <value>中国語</value>
+  </data>
+  <data name="Lang_Vietnamese" xml:space="preserve">
+    <value>ベトナム語</value>
+  </data>
+  <data name="Lang_Indonesian" xml:space="preserve">
+    <value>インドネシア語</value>
+  </data>
   <data name="Focus_Idol" xml:space="preserve">
     <value>アイドル</value>
   </data>

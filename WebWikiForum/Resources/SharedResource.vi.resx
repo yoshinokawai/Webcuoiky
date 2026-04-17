@@ -2087,6 +2087,15 @@ Trung tâm Cộng đồng</value>
   <data name="Lang_Japanese" xml:space="preserve">
     <value>Tiếng Nhật</value>
   </data>
+  <data name="Lang_Chinese" xml:space="preserve">
+    <value>Tiếng Trung</value>
+  </data>
+  <data name="Lang_Vietnamese" xml:space="preserve">
+    <value>Tiếng Việt</value>
+  </data>
+  <data name="Lang_Indonesian" xml:space="preserve">
+    <value>Tiếng Indonesia</value>
+  </data>
   <data name="Focus_Idol" xml:space="preserve">
     <value>Idol</value>
   </data>

@@ -10,10 +10,10 @@ namespace WebWikiForum.Models
 
         [Required]
         [StringLength(200)]
-        public string Title { get; set; }
+        public string Title { get; set; } = string.Empty;
 
         [Required]
-        public string Content { get; set; }
+        public string Content { get; set; } = string.Empty;
 
         public string Author { get; set; } = "Anonymous";
 
@@ -43,14 +43,14 @@ namespace WebWikiForum.Models
         public int Id { get; set; }
 
         [Required]
-        public string Content { get; set; }
+        public string Content { get; set; } = string.Empty;
 
         public string Author { get; set; } = "Anonymous";
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;
 
         public int DiscussionId { get; set; }
-        public Discussion Discussion { get; set; }
+        public Discussion Discussion { get; set; } = default!;
         public int LikeCount { get; set; } = 0;
     }
 }

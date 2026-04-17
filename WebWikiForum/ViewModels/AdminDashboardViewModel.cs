@@ -5,8 +5,8 @@ namespace WebWikiForum.ViewModels
 {
     public class AdminDashboardViewModel
     {
-        public IEnumerable<Vtuber> Vtubers { get; set; }
-        public IEnumerable<Agency> Agencies { get; set; }
-        public IEnumerable<News> News { get; set; }
+        public IEnumerable<Vtuber> Vtubers { get; set; } = new List<Vtuber>();
+        public IEnumerable<Agency> Agencies { get; set; } = new List<Agency>();
+        public IEnumerable<News> News { get; set; } = new List<News>();
     }
 }

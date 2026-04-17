@@ -11,29 +11,29 @@ namespace WebWikiForum.Models
 
         [Required]
         [StringLength(100)]
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         public int? Age { get; set; }
 
         public DateTime? DebutDate { get; set; }
 
         [StringLength(50)]
-        public string Birthday { get; set; }
+        public string Birthday { get; set; } = string.Empty;
 
-        public string Lore { get; set; }
+        public string Lore { get; set; } = string.Empty;
 
-        public string AvatarUrl { get; set; }
+        public string AvatarUrl { get; set; } = string.Empty;
 
         [StringLength(50)]
         public string Status { get; set; } = "Pending";
 
         [StringLength(50)]
-        public string Language { get; set; }
+        public string Language { get; set; } = string.Empty;
 
         [StringLength(50)]
-        public string Region { get; set; }
+        public string Region { get; set; } = string.Empty;
 
-        public string Tags { get; set; } // Comma-separated list
+        public string Tags { get; set; } = string.Empty; // Comma-separated list
 
         public bool IsIndependent { get; set; } = true;
         

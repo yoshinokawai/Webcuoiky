@@ -101,6 +101,10 @@ namespace WebWikiForum.Controllers
                 {
                     query = query.Where(v => v.Language.Contains("KR") || v.Language.Contains("kr") || v.Language.Contains("Korean") || v.Language.Contains("korean"));
                 }
+                else if (l == "CN")
+                {
+                    query = query.Where(v => v.Language.Contains("CN") || v.Language.Contains("cn") || v.Language.Contains("Chinese") || v.Language.Contains("chinese"));
+                }
                 else if (l == "ID")
                 {
                     query = query.Where(v => v.Language.Contains("ID") || v.Language.Contains("id") || v.Language.Contains("Indonesian") || v.Language.Contains("indonesian") || v.Language.Contains("Indo"));
