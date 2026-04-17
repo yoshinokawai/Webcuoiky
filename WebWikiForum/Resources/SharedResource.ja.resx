@@ -139,7 +139,7 @@
     <value>主要な事務所</value>
   </data>
   <data name="Agencies_Count" xml:space="preserve">
-    <value>すべて表示 (42)</value>
+    <value>すべて表示 ({0})</value>
   </data>
   <data name="Agencies_Label_Talents" xml:space="preserve">
     <value>所属タレント</value>
@@ -2449,6 +2449,9 @@
   </data>
   <data name="Region_Vietnam" xml:space="preserve">
     <value>ベトナム</value>
+  </data>
+  <data name="Region_CN" xml:space="preserve">
+    <value>中国</value>
   </data>
   <data name="Wiki_Agency_Edit_Subtitle" xml:space="preserve">
     <value>この事務所の情報を更新</value>

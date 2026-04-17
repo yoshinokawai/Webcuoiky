@@ -139,7 +139,7 @@
     <value>Các Công Ty Chính</value>
   </data>
   <data name="Agencies_Count" xml:space="preserve">
-    <value>Xem Tất Cả (42)</value>
+    <value>Xem Tất Cả ({0})</value>
   </data>
   <data name="Agencies_Label_Talents" xml:space="preserve">
     <value>Thành Viên</value>
@@ -2461,6 +2461,9 @@ Trung tâm Cộng đồng</value>
   </data>
   <data name="Region_Vietnam" xml:space="preserve">
     <value>Việt Nam</value>
+  </data>
+  <data name="Region_CN" xml:space="preserve">
+    <value>Trung Quốc</value>
   </data>
   <data name="Wiki_Agency_Edit_Subtitle" xml:space="preserve">
     <value>Cập nhật thông tin cho công ty này</value>

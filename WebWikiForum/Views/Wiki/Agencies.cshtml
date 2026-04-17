@@ -49,7 +49,10 @@
 <option value="all">@Localizer["Agencies_Label_Region"]</option>
 <option value="Japan" selected='@(ViewData["Region"]?.ToString() == "Japan")'>@Localizer["Region_Japan"]</option>
 <option value="US" selected='@(ViewData["Region"]?.ToString() == "US")'>@Localizer["Region_US"]</option>
-<option value="Canada" selected='@(ViewData["Region"]?.ToString() == "Canada")'>@Localizer["Region_Canada"]</option>
+<option value="China" selected='@(ViewData["Region"]?.ToString() == "China")'>@Localizer["Region_CN"]</option>
+<option value="Vietnam" selected='@(ViewData["Region"]?.ToString() == "Vietnam")'>@Localizer["Region_Vietnam"]</option>
+<option value="Indonesia" selected='@(ViewData["Region"]?.ToString() == "Indonesia")'>@Localizer["Region_Indonesia"]</option>
+<option value="Global" selected='@(ViewData["Region"]?.ToString() == "Global")'>@Localizer["Region_Global"]</option>
 </select>
 <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">expand_more</span>
 </div>
@@ -71,7 +74,7 @@
 </form><div class="flex flex-col gap-6 pt-4">
 <div class="flex items-center justify-between">
 <h2 class="text-slate-900 dark:text-slate-100 text-2xl font-bold tracking-tight">@Localizer["Agencies_Major_Agencies"]</h2>
-<span class="text-primary text-sm font-semibold cursor-pointer hover:underline">@Localizer["Agencies_Count"]</span>
+<span class="text-primary text-sm font-semibold cursor-pointer hover:underline">@string.Format(Localizer["Agencies_Count"], Model.Count())</span>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         @foreach (var agency in Model)
