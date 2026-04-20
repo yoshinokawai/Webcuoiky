@@ -1,5 +1,6 @@
+@using System.Security.Claims
 <!DOCTYPE html>
-<html lang="en">
+<html lang="@System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName">
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -30,9 +31,13 @@
         }
     </script>
     <link href="~/css/site.css" rel="stylesheet" />
+    <link href="~/css/chat-widget.css" rel="stylesheet" />
     @await RenderSectionAsync("Styles", required: false)
 </head>
-<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased min-h-screen flex flex-col">
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased min-h-screen flex flex-col"
+    data-user-name="@(User.Identity?.IsAuthenticated == true ? (User.Identity.Name ?? "") : "")"
+    data-user-id="@(User.Identity?.IsAuthenticated == true ? (User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "") : "")">
+
     <header class="sticky top-0 z-50 w-full border-b border-slate-200/60 dark:border-slate-800/60 bg-surface-light/80 dark:bg-surface-dark/80 backdrop-blur-xl supports-[backdrop-filter]:bg-surface-light/60">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16 gap-4">
@@ -388,6 +393,7 @@
 
     <script src="~/js/site.js"></script>
     <script src="~/js/filters.js"></script>
+    <script src="~/js/chat-widget.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const si = document.getElementById('searchInput'), sd = document.getElementById('searchDropdown'), sr = document.getElementById('searchResults');

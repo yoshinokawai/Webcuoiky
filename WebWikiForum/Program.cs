@@ -24,6 +24,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("Cloudinary"));
 builder.Services.AddScoped<IFileService, FileService>();
 builder.Services.AddScoped<IActivityService, ActivityService>();
+builder.Services.AddHttpClient(); // For AI Chat proxy
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
@@ -52,15 +53,16 @@ using (var scope = app.Services.CreateScope())
             db.SaveChanges();
         }
 
-        if (!db.Vtubers.Any(v => v.IsIndependent))
+        // Nạp thêm VTubers mẫu nếu chưa có (Đảm bảo có Miko và Gura để test)
+        if (!db.Vtubers.Any(v => v.Name.Contains("Sakura Miko")))
         {
-            db.Vtubers.AddRange(
-                new Vtuber { Name = "Shylily", Age = 24, DebutDate = new DateTime(2022, 1, 11), Birthday = "January 11", AvatarUrl = "https://lh3.googleusercontent.com/aida-public/AB6AXuBcwqJmvI6QRhBoLIvALsqquG49TuN0g7UBVPkcoSNKKy9vCM6dN1_VrD4lpd7U7We5VcrAh0xyQ_pF7ZRJWi9xRe8pGEIncoMe78B52USIo5eq2dLHcBLuwQnGtyHU8D72b_9E38dspsL3CjHGaANusFkBvfszldyi6RRlEtSikuNm-3uo1iLiB8rsBRVu4OLrXFtBNSTOLkpM5nOLYuI9Gy3NJhrtjwM8Y0D1FbZ8Ql6_6Tu4OtbFSTWFM7Wrl_dk-1yA5gTxYzE", Status = "Approved", Language = "English / German", Region = "Europe", Tags = "Gaming, Variety", IsIndependent = true, Lore = "Orca VTuber based in Europe. Known for her high-energy variety streams and unique design.", YoutubeUrl = "https://www.youtube.com/@Shylily" },
-                new Vtuber { Name = "Filian", DebutDate = new DateTime(2021, 4, 24), Birthday = "April 24", AvatarUrl = "https://lh3.googleusercontent.com/aida-public/AB6AXuBLcFhjHtjvzfH9HT0uyxEO4mplc9JkEGXfi1MnszXpPgz-H-1CS4K9FZax9I9083Zckab7YXk20adSR7Q_5LfKmPviKvXCVeYL9RtOKNnz8fI3XXho5RWpEodVI02yigAjGlCjh342VeCiWWpylsw-uU5pCvPgUIplbQUCvgPpQj6fuctbDVW5_6exvXAzN-mts65aHDeZbcBazd057xYaMteCOujQcZKiWf2qaw-0Anezonht6bnpCJJIk1SjqXciVc3Am2Srpus", Status = "Approved", Language = "English", Region = "NA", Tags = "Gaming, Comedy", IsIndependent = true, Lore = "Chaotic variety streamer known for VR games and parkour. Member of the 'Mint' group.", YoutubeUrl = "https://www.youtube.com/@filian" },
-                new Vtuber { Name = "Saruei", DebutDate = new DateTime(2021, 9, 17), Birthday = "September 17", AvatarUrl = "https://lh3.googleusercontent.com/aida-public/AB6AXuBnDVC6BsqkBhuyYJ2kxvNRzMuz2BoVcrDDRYoZ-XDrUcuUCjUjIwKH_IrTPr-vvyhbapDPqoxn9oNy8WNPEhGV17Ky7l8VWAtiGzmyNQ6bxxiZdjpnCnhASG4JFBD2WNOvlNMW6kXEzSXaimOBfa3fNBfZfLWGS5fqYGvXJMweu829GGAZFVMOSbgs1pHVeUmsL3N7yr1WISZiQKBToiJ_oX9PjaZu7-b2YweBF_BrHnQm8GmRK7_pK8yT1g9tNKSdhCqyhQpGib8", Status = "Approved", Language = "English / French", Region = "Europe", Tags = "Art, ASMR", IsIndependent = true, Lore = "French illustrator and VTuber. Known for her art streams and unique dark aesthetic.", YoutubeUrl = "https://www.youtube.com/@saruei_art" }
-            );
-            db.SaveChanges();
+            db.Vtubers.Add(new Vtuber { Name = "Sakura Miko", DebutDate = new DateTime(2018, 8, 1), Birthday = "August 1", AvatarUrl = "https://yt3.googleusercontent.com/ytc/AIdro_nNf1N1qE-S7mXvK-jZ6b1z9Z2_r7nZ9mZ0zZ0_3A=s176-c-k-c0x00ffffff-no-rj", Status = "Approved", Language = "Japanese", Region = "Japan", Tags = "Gaming, Elite", IsIndependent = false, AgencyId = 1, Lore = "Elite Miko of Hololive Generation 0. Known for her unique way of speaking and chaotic gaming sessions.", YoutubeUrl = "https://www.youtube.com/@SakuraMiko" });
         }
+        if (!db.Vtubers.Any(v => v.Name.Contains("Gawr Gura")))
+        {
+            db.Vtubers.Add(new Vtuber { Name = "Gawr Gura", DebutDate = new DateTime(2020, 9, 13), Birthday = "June 20", AvatarUrl = "https://yt3.googleusercontent.com/ytc/AIdro_l-T-T3_n-U_v-F_B_P_a_J_f_x_G_i_J_f_x_G_i=s176-c-k-c0x00ffffff-no-rj", Status = "Approved", Language = "English", Region = "EN", Tags = "Gaming, Shark", IsIndependent = false, AgencyId = 1, Lore = "A shark VTuber from Hololive English -Myth-. The most subscribed VTuber globally.", YoutubeUrl = "https://www.youtube.com/@GawrGura" });
+        }
+        db.SaveChanges();
 
         if (!db.News.Any())
         {

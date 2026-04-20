@@ -20,5 +20,7 @@ namespace WebWikiForum.ViewModels
         public bool IsFeatured { get; set; } = false;
 
         public string? CurrentImageUrl { get; set; }
+        
+        public string? SourceUrl { get; set; }
     }
 }

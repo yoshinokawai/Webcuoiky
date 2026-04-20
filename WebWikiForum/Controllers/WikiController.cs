@@ -73,7 +73,8 @@ namespace WebWikiForum.Controllers
                         Author = model.Author,
                         IsFeatured = model.IsFeatured,
                         ImageUrl = imageUrl,
-                        PublishDate = DateTime.Now
+                        PublishDate = DateTime.Now,
+                        SourceUrl = model.SourceUrl
                     };
 
                     _context.News.Add(news);
@@ -106,7 +107,8 @@ namespace WebWikiForum.Controllers
                 Content = news.Content,
                 Author = news.Author,
                 IsFeatured = news.IsFeatured,
-                CurrentImageUrl = news.ImageUrl
+                CurrentImageUrl = news.ImageUrl,
+                SourceUrl = news.SourceUrl
             };
 
             ViewBag.Id = id;
@@ -143,6 +145,7 @@ namespace WebWikiForum.Controllers
                     news.Content = model.Content;
                     news.Author = model.Author;
                     news.IsFeatured = model.IsFeatured;
+                    news.SourceUrl = model.SourceUrl;
 
                     _context.Update(news);
                     await _context.SaveChangesAsync();

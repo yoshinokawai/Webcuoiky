@@ -25,5 +25,7 @@ namespace WebWikiForum.Models
         public DateTime PublishDate { get; set; } = DateTime.Now;
 
         public bool IsFeatured { get; set; } = false;
+        
+        public string? SourceUrl { get; set; }
     }
 }
