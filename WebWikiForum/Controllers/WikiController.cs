@@ -631,6 +631,14 @@ namespace WebWikiForum.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> NewsDetails(int id)
+        {
+            var news = await _context.News.FindAsync(id);
+            if (news == null) return NotFound();
+            return View(news);
+        }
+
+        [HttpGet]
         public async Task<IActionResult> SearchSuggest(string query)
         {
             if (string.IsNullOrEmpty(query)) return Json(new List<object>());

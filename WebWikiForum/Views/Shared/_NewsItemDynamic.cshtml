@@ -29,7 +29,7 @@
     }
 }
 
-<article class="group flex gap-4 p-4 rounded-2xl bg-white dark:bg-surface-dark border border-slate-100 dark:border-slate-800 hover:border-primary/30 hover:shadow-soft transition-all cursor-pointer" onclick="location.href='/Wiki/VirtualEvents?id=@Model.Id'">
+<article class="group flex gap-4 p-4 rounded-2xl bg-white dark:bg-surface-dark border border-slate-100 dark:border-slate-800 hover:border-primary/30 hover:shadow-soft transition-all cursor-pointer" onclick="location.href='/Wiki/NewsDetails/@Model.Id'">
     <div class="w-28 h-28 shrink-0 rounded-xl bg-slate-200 dark:bg-slate-700 overflow-hidden relative">
         <img alt="@Model.Title" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="@Model.ImageUrl"/>
         <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>

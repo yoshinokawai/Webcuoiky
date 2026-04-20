@@ -209,6 +209,9 @@ public class ChatController : Controller
                         var linkText = isVi ? "Xem nguồn tin" : "Source Link";
                         sb.AppendLine($"  [ <a href='{n.SourceUrl}' target='_blank' style='color:#994ce6;font-weight:700;'>{linkText}</a> ]");
                     }
+
+                    var localLinkText = isVi ? "Xem chi tiết" : "Read more";
+                    sb.AppendLine($"  [ <a href='/Wiki/NewsDetails/{n.Id}' target='_blank' style='color:#994ce6;font-weight:700;'>{localLinkText}</a> ]");
                 }
                 sb.AppendLine();
             }

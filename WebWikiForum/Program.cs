@@ -5,6 +5,7 @@ using WebWikiForum.Models;
 using WebWikiForum.Services;
 using Microsoft.Extensions.Options;
 using WebWikiForum;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,7 +20,11 @@ builder.Services.AddControllersWithViews()
     });
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+    // Tắt cảnh báo Model thay đổi để tránh lỗi khi chạy trên Somee sau khi đã update SQL thủ công
+    options.ConfigureWarnings(w => w.Ignore(RelationalEventId.PendingModelChangesWarning));
+});
 
 builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("Cloudinary"));
 builder.Services.AddScoped<IFileService, FileService>();

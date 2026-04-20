@@ -1,0 +1,96 @@
+@model WebWikiForum.Models.News
+@{
+    ViewData["Title"] = Model.Title + " - News & Events";
+}
+
+<div class="max-w-4xl mx-auto px-4 py-12 sm:px-6 lg:px-8 mt-4 mb-20">
+    <div class="bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-800 rounded-[2.5rem] overflow-hidden shadow-2xl transition-all duration-500">
+        
+        <!-- Hero Section with Feature Image -->
+        <div class="relative h-64 sm:h-96 w-full overflow-hidden">
+            @if (!string.IsNullOrEmpty(Model.ImageUrl))
+            {
+                <img src="@Model.ImageUrl" alt="@Model.Title" class="w-full h-full object-cover" />
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent"></div>
+            }
+            else
+            {
+                <div class="w-full h-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-8xl text-slate-300 dark:text-slate-700">newspaper</span>
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+            }
+
+            <!-- Category Badge -->
+            <div class="absolute bottom-10 left-8 sm:left-12">
+                <span class="px-4 py-1.5 rounded-full bg-primary text-white text-xs font-black uppercase tracking-widest shadow-lg shadow-primary/40">
+                    @Model.Type
+                </span>
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="relative px-8 sm:px-12 py-10">
+            
+            <!-- Admin Controls -->
+            @if (User.IsInRole("Admin"))
+            {
+                <div class="absolute top-8 right-8 flex gap-2">
+                    <a href="/Wiki/EditEvent/@Model.Id" class="w-12 h-12 rounded-full bg-slate-100 dark:bg-slate-800 text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-all shadow-sm">
+                        <span class="material-symbols-outlined">edit</span>
+                    </a>
+                </div>
+            }
+
+            <!-- Header Info -->
+            <div class="mb-10 text-center sm:text-left">
+                <div class="flex flex-wrap items-center justify-center sm:justify-start gap-4 text-slate-500 dark:text-slate-400 text-sm font-bold mb-4 uppercase tracking-wider">
+                    <span class="flex items-center gap-1.5">
+                        <span class="material-symbols-outlined text-lg">calendar_today</span>
+                        @Model.PublishDate.ToString("MMMM dd, yyyy")
+                    </span>
+                    <span class="hidden sm:inline">•</span>
+                    <span class="flex items-center gap-1.5">
+                        <span class="material-symbols-outlined text-lg">person</span>
+                        @Model.Author
+                    </span>
+                </div>
+                <h1 class="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white leading-tight tracking-tight">
+                    @Model.Title
+                </h1>
+            </div>
+
+            <!-- Content Body -->
+            <div class="prose prose-lg dark:prose-invert max-w-none mb-12">
+                <div class="text-slate-600 dark:text-slate-400 leading-relaxed space-y-4">
+                    @if (!string.IsNullOrEmpty(Model.Content))
+                    {
+                        @Html.Raw(Model.Content.Replace("\n", "<br/>"))
+                    }
+                    else
+                    {
+                        <p class="italic text-slate-400">No additional content provided.</p>
+                    }
+                </div>
+            </div>
+
+            <!-- Enhanced Footer Actions -->
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-6 pt-10 border-t border-slate-100 dark:border-slate-800/50">
+                
+                <a href="/Wiki/VirtualEvents" class="group flex items-center gap-2 text-slate-500 hover:text-primary transition-colors font-bold">
+                    <span class="material-symbols-outlined group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                    Back to News & Events
+                </a>
+
+                @if (!string.IsNullOrEmpty(Model.SourceUrl))
+                {
+                    <a href="@Model.SourceUrl" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 px-8 py-4 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-black hover:scale-105 active:scale-95 transition-all shadow-xl shadow-slate-900/20 dark:shadow-white/10">
+                        <span class="material-symbols-outlined">link</span>
+                        Visit Source Website
+                    </a>
+                }
+            </div>
+            
+        </div>
+    </div>
+</div>
