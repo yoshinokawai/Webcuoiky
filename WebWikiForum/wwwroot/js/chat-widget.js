@@ -19,9 +19,9 @@
     const currentLang = document.documentElement.lang || 'en';
     const translations = {
         vi: {
-            title: 'Trợ lý VTWiki',
-            welcome: '👋 Chào mừng bạn đến với **VTWiki**!\n\nTôi có thể giúp bạn:\n• Tìm hiểu về VTubers và các agency\n• Hướng dẫn sử dụng VTWiki\n• Giải thích thuật ngữ cộng đồng VTuber\n\nBạn muốn hỏi gì? 😊',
-            placeholder: 'Hỏi về VTubers, wiki, ...',
+            title: 'Trợ lý Yoshi',
+            welcome: '👋 Chào mừng bạn đến với **VTWiki**! Mình là **Yoshi** ✨\n\nTôi có thể giúp bạn:\n• Tìm hiểu về VTubers và các agency\n• Hướng dẫn sử dụng VTWiki\n• Giải thích thuật ngữ cộng đồng VTuber\n\nBạn muốn hỏi gì? 😊',
+            placeholder: 'Hỏi Yoshi về VTubers, wiki, ...',
             error: 'Lỗi kết nối. Vui lòng thử lại.',
             busy: 'Đang tìm kiếm...',
             suggestions: [
@@ -33,9 +33,9 @@
             ]
         },
         en: {
-            title: 'VTWiki Assistant',
-            welcome: '👋 Welcome to **VTWiki**!\n\nI can help you with:\n• Finding VTubers and Agencies\n• How to use VTWiki\n• Explaining VTuber community terms\n\nWhat would you like to know? 😊',
-            placeholder: 'Ask about VTubers, wiki, ...',
+            title: 'Yoshi Assistant',
+            welcome: '👋 Welcome to **VTWiki**! I am **Yoshi** ✨\n\nI can help you with:\n• Finding VTubers and Agencies\n• How to use VTWiki\n• Explaining VTuber community terms\n\nWhat would you like to know? 😊',
+            placeholder: 'Ask Yoshi about VTubers, wiki, ...',
             error: 'Connection error. Please try again.',
             busy: 'Searching...',
             suggestions: [
@@ -177,14 +177,18 @@
             const res = await fetch('/Chat/Ask', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ message: msg })
+                body: JSON.stringify({ 
+                    message: msg,
+                    lang: currentLang 
+                })
             });
 
             hideTyping();
             const data = await res.json();
 
-            if (res.ok && data.reply) {
-                appendMessage('ai', data.reply);
+            // Nhận diện 'response' từ Backend và hiển thị
+            if (res.ok && data.response) {
+                appendMessage('ai', data.response);
             } else {
                 appendMessage('ai', `⚠️ ${data.error || t.error}`);
             }
@@ -235,9 +239,9 @@
         // Toggle button
         toggleBtn = document.createElement('button');
         toggleBtn.id = 'chat-toggle-btn';
-        toggleBtn.setAttribute('aria-label', 'Toggle AI chat');
+        toggleBtn.setAttribute('aria-label', 'Toggle Yoshi chat');
         toggleBtn.innerHTML = `
-            <img src="/images/chat-avatar.png" class="chat-icon" style="width:42px;height:42px;border-radius:999px;object-fit:cover;border:2px solid rgba(255,255,255,0.4);" alt="VTWiki AI" />
+            <img src="/images/chat-avatar.png" class="chat-icon" style="width:42px;height:42px;border-radius:999px;object-fit:cover;border:2px solid rgba(255,255,255,0.4);" alt="Yoshi AI" />
             <span class="material-symbols-outlined close-icon">close</span>
             <span id="chat-unread-badge">1</span>
         `;
@@ -246,10 +250,10 @@
         panel = document.createElement('div');
         panel.id = 'chat-panel';
         panel.setAttribute('role', 'dialog');
-        panel.setAttribute('aria-label', 'VTWiki AI Chat');
+        panel.setAttribute('aria-label', 'Yoshi AI Chat');
         panel.innerHTML = `
             <div id="chat-header">
-                <div id="chat-header-avatar" style="padding:0;overflow:hidden;"><img src="/images/chat-avatar.png" style="width:100%;height:100%;object-fit:cover;border-radius:999px;" alt="VTWiki AI" /></div>
+                <div id="chat-header-avatar" style="padding:0;overflow:hidden;"><img src="/images/chat-avatar.png" style="width:100%;height:100%;object-fit:cover;border-radius:999px;" alt="Yoshi AI" /></div>
                 <div id="chat-header-info">
                     <div id="chat-header-name">${t.title}</div>
                     <div id="chat-header-status">${currentLang === 'vi' ? 'Trực tuyến' : 'Online'}</div>
