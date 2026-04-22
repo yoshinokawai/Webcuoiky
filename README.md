@@ -34,12 +34,16 @@
 - Bảng tin VTuber mới nhất với ảnh thumbnail
 - Phân loại theo: Event, Debut, Music, ASMR, Gaming
 
-### 👤 Tài khoản người dùng
+### 👤 Tài khoản & Quản trị
 - Đăng ký, đăng nhập, đăng xuất với xác thực Cookie
 - Mật khẩu mã hóa bằng **SHA-256 + salt**
 - Upload và cập nhật ảnh đại diện qua **Cloudinary**
 - Phân quyền **Admin / Editor / User**
-- Trang quản trị dành riêng cho Admin
+- **Admin Dashboard Cao Cấp**:
+    - Giao diện hiện đại, tối giản, hỗ trợ Dark Mode
+    - Quản lý VTubers, Agencies, News và User Sessions
+    - Thống kê hoạt động theo thời gian thực
+    - Xác nhận xóa bảo mật với SweetAlert2
 
 ### 🌍 Đa ngôn ngữ (i18n)
 - Hỗ trợ 3 ngôn ngữ: **Tiếng Anh (en)**, **Tiếng Việt (vi)**, **Tiếng Nhật (ja)**
@@ -49,6 +53,12 @@
 ### 📊 Activity Feed
 - Theo dõi hoạt động cộng đồng trong thời gian thực (tạo bài, chỉnh sửa, bình luận)
 
+### 🤖 Yoshi AI Assistant
+- Trợ lý ảo thông minh được tích hợp sẵn trên toàn trang web
+- Hỗ trợ tra cứu nhanh thông tin VTuber, Agency và Tin tức
+- Giải đáp thắc mắc về văn hóa VTuber và cách sử dụng hệ thống
+- Phản hồi đa ngôn ngữ (Anh, Việt, Nhật) dựa trên ngữ cảnh người dùng
+
 ---
 
 ## 🛠️ Công nghệ sử dụng
@@ -56,13 +66,14 @@
 | Thành phần | Công nghệ |
 |---|---|
 | **Framework** | ASP.NET Core MVC (.NET 10) |
-| **Database** | Microsoft SQL Server + Entity Framework Core 10 |
+| **Database** | Microsoft SQL Server (Hosted on Somee.com) |
 | **ORM / Migration** | EF Core Code-First Migrations |
 | **Lưu trữ ảnh** | Cloudinary (CDN) |
-| **Xác thực** | Cookie Authentication (ASP.NET Core Identity-style) |
-| **Đa ngôn ngữ** | ASP.NET Core Localization (`.resx` resource files) |
-| **Frontend** | Razor Views (`.cshtml`), HTML/CSS/JavaScript |
-| **Hosting DB** | Somee.com (SQL Server) |
+| **Xác thực** | Cookie Authentication (Identity-style) |
+| **Đa ngôn ngữ** | ASP.NET Core Localization (`.resx`) |
+| **AI Assistant** | **Yoshi AI** (Local FAQ + Real-time DB Search) |
+| **Frontend UI** | **Tailwind CSS**, **Alpine.js**, Razor Views |
+| **Hiệu ứng** | Framer Motion (concept), SweetAlert2, Google Fonts |
 
 ---
 
@@ -151,9 +162,9 @@ dotnet ef database update
 dotnet run
 ```
 
- Truy cập: `https://localhost:5001`
+ Truy cập: `https://localhost:5001` (hoặc port được cấu hình trong `launchSettings.json`)
 
-> **Lưu ý:** Ứng dụng sẽ tự động seed dữ liệu mẫu (agencies, VTubers, tin tức) và tạo tài khoản Admin khi chạy lần đầu.
+> **Lưu ý:** Để đảm bảo tính toàn vẹn của dữ liệu thực tế, tính năng tự động seed dữ liệu mẫu đã được tắt. Vui lòng sử dụng tài khoản Admin để quản lý dữ liệu thông qua Dashboard.
 
 ---
 ## 🗃️ Database Schema
