@@ -648,6 +648,7 @@ namespace WebWikiForum.Controllers
             var vtubers = await _context.Vtubers
                 .Include(v => v.Agency)
                 .Where(v => v.Name.Contains(queryLower) || (v.Agency != null && v.Agency.Name.Contains(queryLower)))
+                .OrderBy(v => v.Name)
                 .Take(5)
                 .Select(v => new {
                     id = v.Id,
@@ -660,6 +661,7 @@ namespace WebWikiForum.Controllers
 
             var agencies = await _context.Agencies
                 .Where(a => a.Name.Contains(queryLower))
+                .OrderBy(a => a.Name)
                 .Take(3)
                 .Select(a => new {
                     id = a.Id,

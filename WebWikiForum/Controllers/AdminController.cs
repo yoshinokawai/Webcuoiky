@@ -219,6 +219,7 @@ namespace WebWikiForum.Controllers
             // Tìm UserId gắn với session này để lấy avatar
             var userId = await _context.ChatMessages
                 .Where(m => m.SessionId == sessionId && m.UserId != null)
+                .OrderByDescending(m => m.Id)
                 .Select(m => (int?)m.UserId)
                 .FirstOrDefaultAsync();
 

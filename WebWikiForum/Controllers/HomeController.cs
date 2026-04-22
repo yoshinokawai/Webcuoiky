@@ -25,6 +25,7 @@ namespace WebWikiForum.Controllers
             ViewBag.Spotlight = await _context.Vtubers
                 .Include(v => v.Agency)
                 .OrderByDescending(v => v.ViewCount)
+                .ThenBy(v => v.Id)
                 .Take(5)
                 .ToListAsync();
 
@@ -32,11 +33,13 @@ namespace WebWikiForum.Controllers
             ViewBag.Trending = await _context.Vtubers
                 .Include(v => v.Agency)
                 .OrderByDescending(v => v.ViewCount)
+                .ThenBy(v => v.Id)
                 .Take(5)
                 .ToListAsync();
 
             // Top 5 Agencies for the Browse section
             ViewBag.Agencies = await _context.Agencies
+                .OrderBy(a => a.Name)
                 .Take(5)
                 .ToListAsync();
 
