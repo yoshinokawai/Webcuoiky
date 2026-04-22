@@ -1,4 +1,6 @@
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
+using WebWikiForum.Models;
 
 namespace WebWikiForum.ViewModels
 {
@@ -16,5 +18,12 @@ namespace WebWikiForum.ViewModels
         public string? AvatarUrl { get; set; }
 
         public IFormFile? AvatarFile { get; set; }
+
+        public string? DiscordUrl { get; set; }
+        public string? TwitterUrl { get; set; }
+        public string? YoutubeUrl { get; set; }
+        public string? WebsiteUrl { get; set; }
+
+        public List<Activity> RecentActivities { get; set; } = new();
     }
 }

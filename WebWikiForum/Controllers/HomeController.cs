@@ -47,10 +47,19 @@ namespace WebWikiForum.Controllers
                 .ToListAsync();
 
             // Recent Activities for the sidebar/feed
-            ViewBag.RecentActivities = await _context.Activities
+            var recentActivities = await _context.Activities
                 .OrderByDescending(a => a.Timestamp)
                 .Take(4)
                 .ToListAsync();
+            ViewBag.RecentActivities = recentActivities;
+
+            // Fetch avatars for these authors
+            var authors = recentActivities.Select(a => a.Author).Distinct().ToList();
+            var userAvatars = await _context.Users
+                .Where(u => authors.Contains(u.Username))
+                .Select(u => new { u.Username, u.AvatarUrl })
+                .ToDictionaryAsync(u => u.Username, u => u.AvatarUrl);
+            ViewBag.UserAvatars = userAvatars;
 
             // Fetch top 3 news for the Home page
             ViewBag.RecentNews = await _context.News
@@ -175,9 +184,13 @@ namespace WebWikiForum.Controllers
             return View(vtubers);
         }
 
-        public IActionResult AboutUs()
+        public async Task<IActionResult> AboutUs()
         {
-            return View();
+            var admins = await _context.Users
+                .Where(u => u.Role == "Admin")
+                .OrderBy(u => u.Id)
+                .ToListAsync();
+            return View(admins);
         }
 
         public async Task<IActionResult> RecentChanges()

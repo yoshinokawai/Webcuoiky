@@ -1,3 +1,4 @@
+@model IEnumerable<WebWikiForum.Models.User>
 @section Styles {
     <link rel="stylesheet" href="~/css/AboutUs.css" />
 }
@@ -81,44 +82,35 @@
 <span class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg">shield_person</span>
 <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100">@Localizer["About_Section_Team"]</h2>
 </div>
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-<div class="flex items-center gap-4 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-100 dark:border-slate-800">
-<div class="w-12 h-12 rounded-full bg-slate-300 overflow-hidden" data-alt="Profile avatar of Administrator">
-<img alt="Admin" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBctwBiLdL-tdleL_EZsGtKC8-IKwLr-PNzD_I1Xy6IRhW-4_6KwzYzd9CyaSyIXCVxhmExNKZzDnNH6k9duagwjM9Fk91m4sGEWvOcrzrySDvk9gl2aKpcEUjvvQHMhxecYEmsqb97jiJqqmYe2cflnBDLqcvCKnC_UBD5Sl7M_c2esLGPjNjQ-sIwzNIDnP2LT4-GkSrmlRvkQynGhHw8ZeEvRHkRShkmM0m01ZKcIZVhPIEnlNZ6zNXqwSpDAbyjZoC4tH64WU0"/>
-</div>
-<div>
-<div class="font-bold">WikiAdmin_Zero</div>
-<div class="text-xs text-primary font-medium">@Localizer["About_Team_Admin"]</div>
-</div>
-</div>
-<div class="flex items-center gap-4 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-100 dark:border-slate-800">
-<div class="w-12 h-12 rounded-full bg-slate-300 overflow-hidden" data-alt="Profile avatar of Senior Moderator">
-<img alt="Mod" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABPF_uhr9Hsfx9Uq0Jzd3ZJwK1SsSDok1iXUG8-DkidHaUkBlubnhm40s3nuy5GUFBHuEiTy5ILmuZegOOhllG4Yn7F49l9jvKSLICHbe9VX748GRrCXGSac0lrXiJqXCmx3jL0KtSAl1oC-2-Q4MdFEHC4MSddt7NMGNTHQgUHTnxJDinirgzjDA4VZha692LlgFEuOx2r_DhwfME23dMoDfDl6r7cBg7rqkWxgOiGDvSjq6bIDQWWfMJYalMmrLWH45y3gSa_sY"/>
-</div>
-<div>
-<div class="font-bold">Lumina_Archivist</div>
-<div class="text-xs text-primary font-medium">@Localizer["About_Team_Mod"]</div>
-</div>
-</div>
-<div class="flex items-center gap-4 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-100 dark:border-slate-800">
-<div class="w-12 h-12 rounded-full bg-slate-300 overflow-hidden" data-alt="Profile avatar of Lead Editor">
-<img alt="Editor" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeKjH4jOXtoy1p2HWgODJqtZYJFwZq-UkpzpscFpGMqSMUwVxTRux3cVjrShhQndCIJEJIAfzBYCp49vZG0rr8J4gMb1mXq9njfbueY9vBqTa5xr3FSWIKVtwtKHlr0p-OSkNQpmMf2k5VBdZCMgY_0DYlyJPHgj6AypM9tR_VwhzCoEoA2G-3Pif64aEvQqzBVTN-LDTldT0XZ8Pfc0CKuGMCDVlGrRZc8cWZzQS_3MDMutKr3GEMOnEtnlCS68R2UlDiRTAYibU"/>
-</div>
-<div>
-<div class="font-bold">PixelScribe</div>
-<div class="text-xs text-primary font-medium">@Localizer["About_Team_Editor"]</div>
-</div>
-</div>
-<div class="flex items-center gap-4 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-100 dark:border-slate-800">
-<div class="w-12 h-12 rounded-full bg-slate-300 overflow-hidden" data-alt="Profile avatar of Tech Lead">
-<img alt="Tech" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyG4Jvntoc6uyALKqnLsN0X3H41YCGJ5kSN_dzZRMlWv5zT6L0b6ybCEPpecoctStjTtLjps9jdsQLSk3XM4MwwB8hVDrzs7HPay6i6Lf1VBMmZgnGY7Y9dyPs0H0sbnA1i7UqRLvBibc6kolYW9Xcqm7g1gR3-zV_zSHBjSYzm0858PI3jiXyNaTMTf-qyw61gC4bAljqSYF5G6EwayhYiaWh4rgw86XPWxd1yFAhRC6u2iScmdG0KIIvtom7fnOz3Rvw_5Dbi5E"/>
-</div>
-<div>
-<div class="font-bold">NullPointer</div>
-<div class="text-xs text-primary font-medium">@Localizer["About_Team_Tech"]</div>
-</div>
-</div>
-</div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        @if (Model != null)
+        {
+            foreach (var admin in Model)
+            {
+                var roleTitle = admin.Username switch
+                {
+                    "Yoshino" => "Head Administrator",
+                    "Loc123" => "Technical Lead",
+                    "QuocAnh" => "Content & Community Lead",
+                    _ => "Administrator"
+                };
+
+                var avatarUrl = !string.IsNullOrEmpty(admin.AvatarUrl) 
+                    ? admin.AvatarUrl 
+                    : $"https://ui-avatars.com/api/?name={admin.Username}&background=random&color=fff";
+
+                <a asp-controller="Account" asp-action="Member" asp-route-username="@admin.Username" class="flex items-center gap-4 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-100 dark:border-slate-800 hover:border-primary/30 hover:bg-primary/5 transition-all group">
+                    <div class="w-12 h-12 rounded-full bg-slate-300 overflow-hidden shadow-sm border border-primary/10 group-hover:scale-110 transition-transform">
+                        <img alt="@admin.Username" class="w-full h-full object-cover" src="@avatarUrl" />
+                    </div>
+                    <div>
+                        <div class="font-bold text-slate-800 dark:text-slate-100 group-hover:text-primary transition-colors">@admin.Username</div>
+                        <div class="text-xs text-primary font-medium">@roleTitle</div>
+                    </div>
+                </a>
+            }
+        }
+    </div>
 </section>
 </div>
 <!-- Sidebar / Quick Links -->

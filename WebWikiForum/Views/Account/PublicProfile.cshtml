@@ -1,0 +1,194 @@
+@model WebWikiForum.ViewModels.ProfileViewModel
+@{
+    ViewData["Title"] = Model.Username + "'s Profile";
+}
+
+<div class="relative min-h-screen py-12 px-6">
+    <div class="fixed inset-0 wiki-pattern pointer-events-none opacity-40"></div>
+    
+    <div class="max-w-4xl mx-auto relative z-10">
+        <!-- Back Button -->
+        <a href="javascript:history.back()" class="inline-flex items-center gap-2 text-slate-500 hover:text-primary transition-colors mb-8 font-bold text-sm">
+            <span class="material-symbols-outlined text-base">arrow_back</span>
+            @Localizer["Profile_Back"]
+        </a>
+
+        <div class="bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden">
+            <!-- Header/Banner -->
+            <div class="h-48 bg-gradient-to-r from-primary via-indigo-600 to-purple-700 relative">
+                <div class="absolute inset-0 opacity-20 wiki-pattern"></div>
+            </div>
+
+            <div class="px-8 pb-12 -mt-24 relative">
+                <div class="flex flex-col md:flex-row items-end gap-6 mb-8">
+                    <!-- Avatar -->
+                    <div class="relative group">
+                        <div class="absolute -inset-1 bg-white dark:bg-slate-900 rounded-full"></div>
+                        @{
+                            var avatarUrl = !string.IsNullOrEmpty(Model.AvatarUrl) 
+                                ? Model.AvatarUrl 
+                                : $"https://ui-avatars.com/api/?name={Model.Username}&background=random&size=200&color=fff";
+                        }
+                        <img src="@avatarUrl" alt="@Model.Username" class="relative size-40 rounded-full border-4 border-white dark:border-slate-900 object-cover shadow-xl" />
+                        
+                        @if (Model.Role == "Admin")
+                        {
+                            <div class="absolute bottom-2 right-2 bg-primary text-white p-2 rounded-full border-4 border-white dark:border-slate-900 shadow-lg" title="Verified Administrator">
+                                <span class="material-symbols-outlined text-base leading-none">verified</span>
+                            </div>
+                        }
+                    </div>
+
+                    <div class="flex-1 pb-4">
+                        <div class="flex items-center gap-3">
+                            <h1 class="text-4xl font-black text-slate-900 dark:text-white">@Model.Username</h1>
+                            @if (Model.Role == "Admin")
+                            {
+                                <span class="px-3 py-1 bg-primary/10 text-primary text-[10px] font-black uppercase tracking-wider rounded-full border border-primary/20">@Localizer["Layout_Admin"]</span>
+                            }
+                        </div>
+                        <p class="text-slate-500 dark:text-slate-400 font-medium mt-1">@Model.Email</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Sidebar info -->
+                    <div class="space-y-6">
+                        <div class="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-slate-100 dark:border-slate-800">
+                            <h3 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4">@Localizer["Profile_AccountStats"]</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="size-8 rounded-lg bg-indigo-500/10 text-indigo-500 flex items-center justify-center">
+                                        <span class="material-symbols-outlined text-sm">calendar_today</span>
+                                    </div>
+                                    <div>
+                                        <div class="text-[10px] text-slate-400 font-bold uppercase">@Localizer["Profile_MemberSince"]</div>
+                                        <div class="text-sm font-bold text-slate-700 dark:text-slate-200">@Model.CreatedAt.ToString("MMMM yyyy")</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <div class="size-8 rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center">
+                                        <span class="material-symbols-outlined text-sm">military_tech</span>
+                                    </div>
+                                    <div>
+                                        <div class="text-[10px] text-slate-400 font-bold uppercase">@Localizer["Profile_CommunityRank"]</div>
+                                        <div class="text-sm font-bold text-slate-700 dark:text-slate-200">@(Model.Role == "Admin" ? Localizer["Profile_CoreTeam"].Value : Localizer["Profile_Contributor"].Value)</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-primary/5 p-6 rounded-2xl border border-primary/10">
+                            <h3 class="text-sm font-bold text-primary mb-2">@Localizer["Profile_SocialHub"]</h3>
+                            <p class="text-xs text-slate-500 mb-4">@string.Format(Localizer["Profile_SocialHub_Desc"].Value, Model.Username)</p>
+                            <div class="flex gap-2">
+                                @if (!string.IsNullOrEmpty(Model.DiscordUrl))
+                                {
+                                    <a href="@Model.DiscordUrl" target="_blank" class="size-10 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 hover:text-[#5865F2] hover:border-[#5865F2] transition-all">
+                                        <i class="fa-brands fa-discord"></i>
+                                    </a>
+                                }
+                                @if (!string.IsNullOrEmpty(Model.TwitterUrl))
+                                {
+                                    <a href="@Model.TwitterUrl" target="_blank" class="size-10 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 hover:text-[#1DA1F2] hover:border-[#1DA1F2] transition-all">
+                                        <i class="fa-brands fa-twitter"></i>
+                                    </a>
+                                }
+                                @if (!string.IsNullOrEmpty(Model.YoutubeUrl))
+                                {
+                                    <a href="@Model.YoutubeUrl" target="_blank" class="size-10 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 hover:text-[#FF0000] hover:border-[#FF0000] transition-all">
+                                        <i class="fa-brands fa-youtube"></i>
+                                    </a>
+                                }
+                                @if (!string.IsNullOrEmpty(Model.WebsiteUrl))
+                                {
+                                    <a href="@Model.WebsiteUrl" target="_blank" class="size-10 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 hover:text-primary hover:border-primary transition-all">
+                                        <span class="material-symbols-outlined text-sm">language</span>
+                                    </a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Main Bio area -->
+                    <div class="lg:col-span-2 space-y-8">
+                        <section>
+                            <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-primary">person</span>
+                                @Localizer["Profile_About"]
+                            </h2>
+                            <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 rounded-2xl min-h-[200px]">
+                                @if (!string.IsNullOrEmpty(Model.Bio))
+                                {
+                                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed italic">"@Model.Bio"</p>
+                                }
+                                else
+                                {
+                                    <div class="flex flex-col items-center justify-center h-full text-slate-400 opacity-50 py-8">
+                                        <span class="material-symbols-outlined text-4xl mb-2">notes</span>
+                                        <p class="text-sm italic">@Localizer["Profile_NoBio"]</p>
+                                    </div>
+                                }
+                            </div>
+                        </section>
+
+                        <section>
+                            <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-primary">history</span>
+                                @Localizer["Profile_RecentActivity"]
+                            </h2>
+                            <div class="space-y-3">
+                                @if (Model.RecentActivities != null && Model.RecentActivities.Any())
+                                {
+                                    foreach (var activity in Model.RecentActivities)
+                                    {
+                                        <div class="p-4 bg-slate-50 dark:bg-slate-800/30 rounded-xl border border-slate-100 dark:border-slate-800 transition-all hover:border-primary/30 group">
+                                            <div class="flex items-start justify-between gap-4">
+                                                <div class="flex items-start gap-3">
+                                                    <div class="size-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0 mt-0.5">
+                                                        <span class="material-symbols-outlined text-sm">
+                                                            @(activity.ActivityType switch {
+                                                                "Article" => "article",
+                                                                "Media" => "image",
+                                                                "User" => "person",
+                                                                "Community" => "groups",
+                                                                _ => "star"
+                                                            })
+                                                        </span>
+                                                    </div>
+                                                    <div>
+                                                        <div class="font-bold text-slate-800 dark:text-slate-200 group-hover:text-primary transition-colors">
+                                                            @if (!string.IsNullOrEmpty(activity.LinkUrl))
+                                                            {
+                                                                <a href="@activity.LinkUrl">@activity.Title</a>
+                                                            }
+                                                            else
+                                                            {
+                                                                @activity.Title
+                                                            }
+                                                        </div>
+                                                        <p class="text-xs text-slate-500 line-clamp-1 mt-0.5">@activity.Description</p>
+                                                    </div>
+                                                </div>
+                                                <div class="text-right shrink-0">
+                                                    <div class="text-[10px] font-black text-primary uppercase tracking-tighter">@activity.Action</div>
+                                                    <div class="text-[10px] text-slate-400 font-medium">@activity.Timestamp.ToString("MMM dd, yyyy")</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                                else
+                                {
+                                    <div class="p-4 bg-slate-50 dark:bg-slate-800/30 rounded-xl border border-slate-100 dark:border-slate-800 text-sm text-slate-500 italic">
+                                        @Localizer["Profile_NoActivity"]
+                                    </div>
+                                }
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

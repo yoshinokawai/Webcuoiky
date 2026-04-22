@@ -43,8 +43,19 @@
         <div class="flex flex-wrap items-center gap-1.5 mb-1">
             <span class="text-[11px] text-slate-400 font-medium">@Model.Timestamp.ToString("HH:mm")</span>
             <div class="h-4 w-4 rounded-full overflow-hidden shrink-0">
+                @{
+                    var avatars = ViewContext.ViewData["UserAvatars"] as Dictionary<string, string?>;
+                    string? userAvatar = null;
+                    if (avatars != null && avatars.TryGetValue(Model.Author, out var av))
+                    {
+                        userAvatar = av;
+                    }
+                    var displayAvatar = !string.IsNullOrEmpty(userAvatar) 
+                        ? userAvatar 
+                        : $"https://ui-avatars.com/api/?name={Model.Author}&background=random";
+                }
                 <img alt="@Model.Author" class="w-full h-full object-cover" 
-                     src="https://ui-avatars.com/api/?name=@Model.Author&background=random"/>
+                     src="@displayAvatar"/>
             </div>
             <span class="text-xs font-medium text-slate-700 dark:text-slate-300 truncate max-w-[80px]">@Model.Author</span>
             @if (!string.IsNullOrEmpty(Model.Detail))

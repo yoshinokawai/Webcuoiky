@@ -2435,12 +2435,6 @@ Trung tâm Cộng đồng</value>
   <data name="Nav_Events" xml:space="preserve">
     <value>Sự kiện</value>
   </data>
-  <data name="Region_Global" xml:space="preserve">
-    <value>Toàn cầu</value>
-  </data>
-  <data name="Region_Indonesia" xml:space="preserve">
-    <value>Indonesia</value>
-  </data>
   <data name="Region_Korea" xml:space="preserve">
     <value>Hàn Quốc</value>
   </data>
@@ -2609,4 +2603,43 @@ Trung tâm Cộng đồng</value>
   <data name="Chat_Session_History_Title" xml:space="preserve">
     <value>Lịch sử phiên chat - {0}</value>
   </data>
-</root>
+  <data name="Profile_Back" xml:space="preserve">
+    <value>Quay lại</value>
+  </data>
+  <data name="Profile_AccountStats" xml:space="preserve">
+    <value>Thống kê tài khoản</value>
+  </data>
+  <data name="Profile_SocialHub" xml:space="preserve">
+    <value>Mạng xã hội</value>
+  </data>
+  <data name="Profile_SocialHub_Desc" xml:space="preserve">
+    <value>Kết nối với {0} trên các nền tảng khác.</value>
+  </data>
+  <data name="Profile_SocialHub_MyDesc" xml:space="preserve">
+    <value>Kết nối với cộng đồng của bạn trên các nền tảng khác.</value>
+  </data>
+  <data name="Profile_MemberSince" xml:space="preserve">
+    <value>Thành viên từ</value>
+  </data>
+  <data name="Profile_CommunityRank" xml:space="preserve">
+    <value>Thứ hạng cộng đồng</value>
+  </data>
+  <data name="Profile_CoreTeam" xml:space="preserve">
+    <value>Đội ngũ nòng cốt</value>
+  </data>
+  <data name="Profile_Contributor" xml:space="preserve">
+    <value>Người đóng góp Wiki</value>
+  </data>
+  <data name="Profile_About" xml:space="preserve">
+    <value>Giới thiệu</value>
+  </data>
+  <data name="Profile_RecentActivity" xml:space="preserve">
+    <value>Hoạt động gần đây</value>
+  </data>
+  <data name="Profile_NoActivity" xml:space="preserve">
+    <value>Các chỉnh sửa và bài viết gần đây sẽ xuất hiện tại đây...</value>
+  </data>
+  <data name="Profile_NoBio" xml:space="preserve">
+    <value>Người dùng này chưa chia sẻ tiểu sử.</value>
+  </data>
+</root>

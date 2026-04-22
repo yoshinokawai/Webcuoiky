@@ -2435,12 +2435,6 @@ Community Hub</value>
   <data name="Nav_Events" xml:space="preserve">
     <value>Events</value>
   </data>
-  <data name="Region_Global" xml:space="preserve">
-    <value>Global</value>
-  </data>
-  <data name="Region_Indonesia" xml:space="preserve">
-    <value>Indonesia</value>
-  </data>
   <data name="Region_Korea" xml:space="preserve">
     <value>Korea</value>
   </data>
@@ -2609,4 +2603,43 @@ Community Hub</value>
   <data name="Chat_Session_History_Title" xml:space="preserve">
     <value>History Sessions - {0}</value>
   </data>
-</root>
+  <data name="Profile_Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="Profile_AccountStats" xml:space="preserve">
+    <value>Account Stats</value>
+  </data>
+  <data name="Profile_SocialHub" xml:space="preserve">
+    <value>Social Hub</value>
+  </data>
+  <data name="Profile_SocialHub_Desc" xml:space="preserve">
+    <value>Connect with {0} on other platforms.</value>
+  </data>
+  <data name="Profile_SocialHub_MyDesc" xml:space="preserve">
+    <value>Connect with your community on other platforms.</value>
+  </data>
+  <data name="Profile_MemberSince" xml:space="preserve">
+    <value>Member Since</value>
+  </data>
+  <data name="Profile_CommunityRank" xml:space="preserve">
+    <value>Community Rank</value>
+  </data>
+  <data name="Profile_CoreTeam" xml:space="preserve">
+    <value>Core Team</value>
+  </data>
+  <data name="Profile_Contributor" xml:space="preserve">
+    <value>Wiki Contributor</value>
+  </data>
+  <data name="Profile_About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Profile_RecentActivity" xml:space="preserve">
+    <value>Recent Activity</value>
+  </data>
+  <data name="Profile_NoActivity" xml:space="preserve">
+    <value>Recent edits and forum posts will appear here...</value>
+  </data>
+  <data name="Profile_NoBio" xml:space="preserve">
+    <value>This user hasn't shared a bio yet.</value>
+  </data>
+</root>

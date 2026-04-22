@@ -62,6 +62,40 @@
                     </div>
                 </div>
             </div>
+
+            <div class="bg-primary/5 p-6 rounded-3xl border border-primary/10">
+                <h3 class="text-sm font-bold text-primary mb-2">@Localizer["Profile_SocialHub"]</h3>
+                <p class="text-xs text-slate-500 mb-4">@Localizer["Profile_SocialHub_MyDesc"]</p>
+                <div class="flex gap-2">
+                    @if (!string.IsNullOrEmpty(Model.DiscordUrl))
+                    {
+                        <a href="@Model.DiscordUrl" target="_blank" class="size-10 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 hover:text-[#5865F2] hover:border-[#5865F2] transition-all">
+                            <i class="fa-brands fa-discord"></i>
+                        </a>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.TwitterUrl))
+                    {
+                        <a href="@Model.TwitterUrl" target="_blank" class="size-10 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 hover:text-[#1DA1F2] hover:border-[#1DA1F2] transition-all">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.YoutubeUrl))
+                    {
+                        <a href="@Model.YoutubeUrl" target="_blank" class="size-10 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 hover:text-[#FF0000] hover:border-[#FF0000] transition-all">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.WebsiteUrl))
+                    {
+                        <a href="@Model.WebsiteUrl" target="_blank" class="size-10 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 hover:text-primary hover:border-primary transition-all">
+                            <span class="material-symbols-outlined text-sm">language</span>
+                        </a>
+                    }
+                    <button onclick="toggleEdit()" class="size-10 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-400 border-dashed hover:text-primary hover:border-primary transition-all">
+                        <span class="material-symbols-outlined text-sm">add</span>
+                    </button>
+                </div>
+            </div>
         </div>
 
         <!-- Main Content -->
@@ -84,6 +118,66 @@
                 {
                     <div class="prose dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 leading-relaxed whitespace-pre-wrap">@Model.Bio</div>
                 }
+            </div>
+            
+            <!-- Recent Activity Section -->
+            <div class="bg-white dark:bg-surface-dark rounded-3xl p-8 border border-slate-200 dark:border-slate-800 shadow-sm">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-2xl font-bold flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary">history</span>
+                        @Localizer["Profile_RecentActivity"]
+                    </h2>
+                </div>
+                
+                <div class="space-y-4">
+                    @if (Model.RecentActivities != null && Model.RecentActivities.Any())
+                    {
+                        foreach (var activity in Model.RecentActivities)
+                        {
+                            <div class="p-4 bg-slate-50 dark:bg-slate-800/30 rounded-2xl border border-slate-100 dark:border-slate-800 transition-all hover:border-primary/30 group">
+                                <div class="flex items-start justify-between gap-4">
+                                    <div class="flex items-start gap-4">
+                                        <div class="size-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                                            <span class="material-symbols-outlined text-lg">
+                                                @(activity.ActivityType switch {
+                                                    "Article" => "article",
+                                                    "Media" => "image",
+                                                    "User" => "person",
+                                                    "Community" => "groups",
+                                                    _ => "star"
+                                                })
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <div class="font-bold text-slate-800 dark:text-slate-200 group-hover:text-primary transition-colors text-base">
+                                                @if (!string.IsNullOrEmpty(activity.LinkUrl))
+                                                {
+                                                    <a href="@activity.LinkUrl">@activity.Title</a>
+                                                }
+                                                else
+                                                {
+                                                    @activity.Title
+                                                }
+                                            </div>
+                                            <p class="text-sm text-slate-500 mt-1 line-clamp-2">@activity.Description</p>
+                                        </div>
+                                    </div>
+                                    <div class="text-right shrink-0">
+                                        <div class="text-[10px] font-black text-primary uppercase tracking-wider bg-primary/5 px-2 py-0.5 rounded-full border border-primary/10 mb-1">@activity.Action</div>
+                                        <div class="text-[10px] text-slate-400 font-bold">@activity.Timestamp.ToString("MMM dd, yyyy")</div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="bg-slate-50 dark:bg-slate-800/50 p-8 rounded-2xl border border-dashed border-slate-200 dark:border-slate-800 text-center">
+                            <span class="material-symbols-outlined text-4xl text-slate-300 mb-2">history</span>
+                            <p class="text-slate-400 italic text-sm">@Localizer["Profile_NoActivity"]</p>
+                        </div>
+                    }
+                </div>
             </div>
 
             <!-- Edit Form (Hidden by default) -->
@@ -126,6 +220,33 @@
                     <div>
                         <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">@Localizer["Account_Profile_AboutMe"]</label>
                         <textarea asp-for="Bio" rows="6" class="w-full p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 focus:ring-2 focus:ring-primary outline-none transition-all resize-none" placeholder="@Localizer["Account_Profile_AboutMePH"]"></textarea>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-slate-100 dark:border-slate-800 pt-6">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2 flex items-center gap-2">
+                                <i class="fa-brands fa-discord"></i> Discord URL
+                            </label>
+                            <input asp-for="DiscordUrl" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 focus:ring-2 focus:ring-primary outline-none transition-all" placeholder="https://discord.gg/..." />
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2 flex items-center gap-2">
+                                <i class="fa-brands fa-twitter"></i> Twitter URL
+                            </label>
+                            <input asp-for="TwitterUrl" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 focus:ring-2 focus:ring-primary outline-none transition-all" placeholder="https://twitter.com/..." />
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2 flex items-center gap-2">
+                                <i class="fa-brands fa-youtube"></i> Youtube URL
+                            </label>
+                            <input asp-for="YoutubeUrl" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 focus:ring-2 focus:ring-primary outline-none transition-all" placeholder="https://youtube.com/..." />
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-xs">language</span> Website URL
+                            </label>
+                            <input asp-for="WebsiteUrl" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 focus:ring-2 focus:ring-primary outline-none transition-all" placeholder="https://..." />
+                        </div>
                     </div>
 
                     <div class="flex gap-4 pt-4">

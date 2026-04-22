@@ -336,7 +336,16 @@ namespace WebWikiForum.Controllers
                 CreatedAt = user.CreatedAt,
                 Role = user.Role,
                 Bio = user.Bio,
-                AvatarUrl = user.AvatarUrl
+                AvatarUrl = user.AvatarUrl,
+                DiscordUrl = user.DiscordUrl,
+                TwitterUrl = user.TwitterUrl,
+                YoutubeUrl = user.YoutubeUrl,
+                WebsiteUrl = user.WebsiteUrl,
+                RecentActivities = await _context.Activities
+                    .Where(a => a.Author == user.Username)
+                    .OrderByDescending(a => a.Timestamp)
+                    .Take(5)
+                    .ToListAsync()
             };
 
             return View(model);
@@ -374,13 +383,48 @@ namespace WebWikiForum.Controllers
             }
 
             user.Bio = model.Bio;
-            // No longer updating AvatarUrl directly from text input to prevent overriding upload
-            // user.AvatarUrl = model.AvatarUrl; 
+            user.DiscordUrl = model.DiscordUrl;
+            user.TwitterUrl = model.TwitterUrl;
+            user.YoutubeUrl = model.YoutubeUrl;
+            user.WebsiteUrl = model.WebsiteUrl;
 
             await _context.SaveChangesAsync();
             TempData["SuccessMessage"] = "Your profile has been updated successfully.";
 
             return RedirectToAction("Profile");
+        }
+
+        [HttpGet("Account/Member/{username}")]
+        public async Task<IActionResult> Member(string username)
+        {
+            var user = await _context.Users
+                .FirstOrDefaultAsync(u => u.Username == username);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var model = new ProfileViewModel
+            {
+                Username = user.Username,
+                Email = user.Email,
+                CreatedAt = user.CreatedAt,
+                Role = user.Role,
+                Bio = user.Bio,
+                AvatarUrl = user.AvatarUrl,
+                DiscordUrl = user.DiscordUrl,
+                TwitterUrl = user.TwitterUrl,
+                YoutubeUrl = user.YoutubeUrl,
+                WebsiteUrl = user.WebsiteUrl,
+                RecentActivities = await _context.Activities
+                    .Where(a => a.Author == user.Username)
+                    .OrderByDescending(a => a.Timestamp)
+                    .Take(5)
+                    .ToListAsync()
+            };
+
+            return View("PublicProfile", model);
         }
 
         // ==================== PASSWORD HELPERS ====================
