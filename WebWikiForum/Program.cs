@@ -53,7 +53,7 @@ using (var scope = app.Services.CreateScope())
             db.Agencies.AddRange(
                 new Agency { Name = "Hololive Production", LogoUrl = "https://upload.wikimedia.org/wikipedia/commons/e/e6/Hololive_Production_logo.png", Region = "Japan", Focus = "Idol, Gaming", Description = "Pioneers of the idol-centric VTuber model.", TalentCount = 80 },
                 new Agency { Name = "NIJISANJI", LogoUrl = "https://upload.wikimedia.org/wikipedia/commons/e/e3/ANYCOLOR_Inc_logo.png", Region = "Japan", Focus = "Variety, Chat", Description = "Known for its massive roster and variety of streamers.", TalentCount = 200 },
-                new Agency { Name = "VShojo", LogoUrl = "https://upload.wikimedia.org/wikipedia/en/thumb/0/07/VShojo_logo.png/250px-VShojo_logo.png", Region = "US", Focus = "Streamer-led", Description = "A talent-first agency focusing on creator freedom and IP ownership.", TalentCount = 14 }
+                new Agency { Name = "VShojo", LogoUrl = "https://upload.wikimedia.org/wikipedia/en/thumb/0/07/VShojo_logo.png/250px-VShojo_logo.png", Region = "United States", Focus = "Streamer-led", Description = "A talent-first agency focusing on creator freedom and IP ownership.", TalentCount = 14 }
             );
             db.SaveChanges();
         }
@@ -91,6 +91,48 @@ using (var scope = app.Services.CreateScope())
             }
         }
         db.SaveChanges();
+
+        // ===== ONE-TIME REGION STANDARDIZATION =====
+        var allAgencies = await db.Agencies.ToListAsync();
+        foreach (var agency in allAgencies)
+        {
+            if (agency.Region == "US" || agency.Region == "NA" || agency.Region == "North America")
+            {
+                agency.Region = "United States";
+            }
+            else if (agency.Region == "CN")
+            {
+                agency.Region = "China";
+            }
+            else if (agency.Region == "SEA" || agency.Region == "Europe" || agency.Region == "Other" || agency.Region == "World" || string.IsNullOrEmpty(agency.Region))
+            {
+                if (agency.Region != "Japan" && agency.Region != "Vietnam" && agency.Region != "Indonesia" && agency.Region != "China" && agency.Region != "United States")
+                {
+                    agency.Region = "Global";
+                }
+            }
+        }
+
+        var allVtubers = await db.Vtubers.ToListAsync();
+        foreach (var vtuber in allVtubers)
+        {
+            if (vtuber.Region == "US" || vtuber.Region == "NA" || vtuber.Region == "North America")
+            {
+                vtuber.Region = "United States";
+            }
+            else if (vtuber.Region == "CN")
+            {
+                vtuber.Region = "China";
+            }
+            else if (vtuber.Region == "SEA" || vtuber.Region == "Europe" || vtuber.Region == "Other" || vtuber.Region == "World" || string.IsNullOrEmpty(vtuber.Region))
+            {
+                if (vtuber.Region != "Japan" && vtuber.Region != "Vietnam" && vtuber.Region != "Indonesia" && vtuber.Region != "China" && vtuber.Region != "United States")
+                {
+                    vtuber.Region = "Global";
+                }
+            }
+        }
+        await db.SaveChangesAsync();
     }
     catch (Exception ex)
     {

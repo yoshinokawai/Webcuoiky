@@ -36,9 +36,6 @@
   <data name="Region_Japan" xml:space="preserve">
     <value>Japan</value>
   </data>
-  <data name="Region_Vietnam" xml:space="preserve">
-    <value>Vietnam</value>
-  </data>
   <data name="Dash_No_VTubers" xml:space="preserve">
     <value>No VTubers found</value>
   </data>
@@ -51,11 +48,20 @@
   <data name="Dash_Col_Event" xml:space="preserve">
     <value>Event</value>
   </data>
-  <data name="Region_North America" xml:space="preserve">
-    <value>North America</value>
+  <data name="Region_United States" xml:space="preserve">
+    <value>United States</value>
   </data>
-  <data name="Region_Other" xml:space="preserve">
-    <value>Other</value>
+  <data name="Region_China" xml:space="preserve">
+    <value>China</value>
+  </data>
+  <data name="Region_Vietnam" xml:space="preserve">
+    <value>Vietnam</value>
+  </data>
+  <data name="Region_Indonesia" xml:space="preserve">
+    <value>Indonesia</value>
+  </data>
+  <data name="Region_Global" xml:space="preserve">
+    <value>Global</value>
   </data>
   <data name="Nav_Home" xml:space="preserve">
     <value>Home</value>

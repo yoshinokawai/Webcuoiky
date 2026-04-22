@@ -36,9 +36,6 @@
   <data name="Region_Japan" xml:space="preserve">
     <value>Nhật Bản</value>
   </data>
-  <data name="Region_Vietnam" xml:space="preserve">
-    <value>Việt Nam</value>
-  </data>
   <data name="Dash_No_VTubers" xml:space="preserve">
     <value>Không tìm thấy VTuber nào</value>
   </data>
@@ -51,11 +48,20 @@
   <data name="Dash_Col_Event" xml:space="preserve">
     <value>Sự kiện</value>
   </data>
-  <data name="Region_North America" xml:space="preserve">
-    <value>Bắc Mỹ</value>
+  <data name="Region_United States" xml:space="preserve">
+    <value>Hoa Kỳ</value>
   </data>
-  <data name="Region_Other" xml:space="preserve">
-    <value>Khác</value>
+  <data name="Region_China" xml:space="preserve">
+    <value>Trung Quốc</value>
+  </data>
+  <data name="Region_Vietnam" xml:space="preserve">
+    <value>Việt Nam</value>
+  </data>
+  <data name="Region_Indonesia" xml:space="preserve">
+    <value>Indonesia</value>
+  </data>
+  <data name="Region_Global" xml:space="preserve">
+    <value>Toàn cầu</value>
   </data>
   <data name="Nav_Home" xml:space="preserve">
     <value>Trang Chủ</value>

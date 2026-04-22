@@ -103,10 +103,11 @@
                     <label asp-for="Region" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">@Localizer["Wiki_Label_Region"]</label>
                     <select asp-for="Region" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white dark:focus:bg-surface-dark transition-colors text-slate-700 dark:text-slate-300">
                         <option value="Japan">@Localizer["Region_Japan"]</option>
-                        <option value="NA">@Localizer["Region_NA"]</option>
-                        <option value="Europe">@Localizer["Region_Europe"]</option>
-                        <option value="SEA">@Localizer["Region_SEA"]</option>
+                        <option value="United States">@Localizer["Region_United States"]</option>
+                        <option value="China">@Localizer["Region_China"]</option>
                         <option value="Vietnam">@Localizer["Region_Vietnam"]</option>
+                        <option value="Indonesia">@Localizer["Region_Indonesia"]</option>
+                        <option value="Global">@Localizer["Region_Global"]</option>
                     </select>
                     <span asp-validation-for="Region" class="text-red-500 text-xs mt-1 block"></span>
                 </div>
@@ -158,9 +159,11 @@
                     <label class="block text-xs font-bold text-slate-500 uppercase mb-1">@Localizer["Wiki_Label_Region"]</label>
                     <select id="quickAgencyRegion" class="w-full px-4 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg">
                         <option value="Japan">@Localizer["Region_Japan"]</option>
-                        <option value="Global">@Localizer["Region_Global"]</option>
+                        <option value="United States">@Localizer["Region_United States"]</option>
+                        <option value="China">@Localizer["Region_China"]</option>
                         <option value="Vietnam">@Localizer["Region_Vietnam"]</option>
-                        <option value="SEA">@Localizer["Region_SEA"]</option>
+                        <option value="Indonesia">@Localizer["Region_Indonesia"]</option>
+                        <option value="Global">@Localizer["Region_Global"]</option>
                     </select>
                 </div>
                 <div>
