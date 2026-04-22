@@ -63,7 +63,7 @@
                 <div class="aspect-video rounded-2xl overflow-hidden relative mb-4">
                     <img src="@item.ImageUrl" alt="@item.Title" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                     <div class="absolute top-4 left-4">
-                        <span class="tag-badge tag-@(item.Type.ToLower())">@item.Type</span>
+                        <span class="tag-badge tag-@(item.Type.ToLower())">@Localizer["Wiki_Event_Type_" + item.Type]</span>
                     </div>
 
                     @if (User.IsInRole("Admin"))
@@ -111,9 +111,9 @@
     <script>
         function confirmDeleteEvent(id, title) {
             window.showConfirmModal({
-                title: '@Localizer["Events_Delete_Title"]',
-                message: `@Localizer["Events_Delete_Confirm"].Value`.replace('{0}', title),
-                confirmText: '@Localizer["Modal_Btn_Delete"]',
+                title: '@Html.Raw(Localizer["Events_Delete_Title"].Value.Replace("'", "\\'"))',
+                message: '@Html.Raw(Localizer["Events_Delete_Confirm"].Value.Replace("'", "\\'"))'.replace('{0}', title),
+                confirmText: '@Html.Raw(Localizer["Modal_Btn_Delete"].Value.Replace("'", "\\'"))',
                 onConfirm: () => {
                     const form = document.getElementById('deleteEventForm');
                     form.action = `/Wiki/DeleteEvent/${id}`;

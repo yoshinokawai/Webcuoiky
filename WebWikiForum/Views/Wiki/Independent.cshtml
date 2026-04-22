@@ -88,9 +88,9 @@
 <div class="p-6">
 <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">@vtuber.Name</h3>
 <div class="flex items-center gap-2 mt-1 mb-4">
-<span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-[10px] font-bold rounded uppercase tracking-wider">@vtuber.Language</span>
+<span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-[10px] font-bold rounded uppercase tracking-wider">@Localizer["Lang_" + vtuber.Language]</span>
 <span class="text-slate-400 text-xs">•</span>
-<span class="text-slate-500 dark:text-slate-400 text-[10px] font-bold uppercase tracking-wider">@vtuber.Region</span>
+                        <span class="text-slate-500 dark:text-slate-400 text-[10px] font-bold uppercase tracking-wider">@Localizer["Region_" + vtuber.Region]</span>
 </div>
 <button class="w-full py-3 bg-primary text-white rounded-xl font-bold hover:brightness-110 transition-all shadow-lg shadow-primary/20">
                             @Localizer["Btn_ViewProfile"]

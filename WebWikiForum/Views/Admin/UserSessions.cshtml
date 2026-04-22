@@ -1,0 +1,119 @@
+@model IEnumerable<ChatSessionSummary>
+@{
+    ViewData["Title"] = Localizer["Chat_Session_History_Title"].Value.Replace("{0}", ViewBag.TargetUser as string ?? "User");
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="max-w-5xl mx-auto px-4 sm:px-6 py-10">
+    <!-- Header -->
+    <div class="flex items-center justify-between mb-8">
+        <div class="flex items-center gap-3">
+            <a href="/Admin/ChatSessions" class="w-10 h-10 flex items-center justify-center rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all">
+                <span class="material-symbols-outlined">arrow_back</span>
+            </a>
+            <div>
+                <h1 class="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary">history</span>
+                    @Localizer["Chat_Session_History"]: @ViewBag.TargetUser
+                </h1>
+                <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">@string.Format(Localizer["Chat_Session_Desc"].Value, ViewBag.TargetUser)</p>
+            </div>
+        </div>
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="text-center py-24 rounded-2xl border-2 border-dashed border-slate-200 dark:border-slate-700">
+            <p class="text-slate-500 font-medium">@Localizer["Chat_No_Users"]</p>
+        </div>
+    }
+    else
+    {
+        <div class="space-y-3">
+            @foreach (var session in Model)
+            {
+                <a href="/Admin/ChatDetail?sessionId=@session.SessionId"
+                   class="flex items-center gap-4 bg-white dark:bg-surface-dark rounded-2xl border border-slate-200 dark:border-slate-700 p-4 hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition-all duration-200 group">
+
+                    <!-- Session Icon / Avatar -->
+                    <div class="w-12 h-12 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/10 transition-all overflow-hidden border border-transparent group-hover:border-primary/20">
+                        @if (!string.IsNullOrEmpty(session.AvatarUrl))
+                        {
+                            <img src="@session.AvatarUrl" class="w-full h-full object-cover" />
+                        }
+                        else
+                        {
+                            <span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-all">chat</span>
+                        }
+                    </div>
+
+                    <!-- Session Info -->
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center justify-between mb-0.5">
+                            <h3 class="font-bold text-slate-900 dark:text-white truncate">
+                                @string.Format(Localizer["Chat_Session_Support"].Value, (session.SessionId.Length >= 8 ? session.SessionId.Substring(0, 8) : session.SessionId))
+                            </h3>
+                            <span class="text-[11px] text-slate-400">@session.LastMessageAt.ToLocalTime().ToString("HH:mm dd/MM")</span>
+                        </div>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 truncate pr-4">
+                            @session.LastMessage
+                        </p>
+                    </div>
+
+                    <!-- Meta -->
+                    <div class="flex flex-col items-end gap-1 flex-shrink-0">
+                        <span class="text-[10px] text-slate-400 font-medium">
+                            @session.LastMessageAt.ToLocalTime().ToString("HH:mm dd/MM/yyyy")
+                        </span>
+                        <span class="text-[10px] text-slate-400">
+                            @string.Format(Localizer["Chat_Label_Messages"].Value, session.TotalMessages)
+                        </span>
+                    </div>
+
+                    <button onclick="deleteSession(event, '@session.SessionId')" 
+                            class="p-2 text-slate-300 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-all z-10"
+                            title="@Localizer["Chat_Title_DeleteSession"]">
+                        <span class="material-symbols-outlined text-sm">delete</span>
+                    </button>
+
+                    <span class="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">chevron_right</span>
+                </a>
+            }
+        </div>
+    }
+</div>
+
+@section Scripts {
+<script>
+    async function deleteSession(event, sessionId) {
+        event.preventDefault();
+        event.stopPropagation();
+        
+        window.showConfirmModal({
+            title: '@Html.Raw(Localizer["Modal_Delete_Title"].Value.Replace("'", "\\'"))',
+            message: '@Html.Raw(Localizer["Modal_Delete_Msg"].Value.Replace("'", "\\'"))'.replace('{0}', sessionId.substring(0, 8)),
+            confirmText: '@Html.Raw(Localizer["Modal_Btn_Delete"].Value.Replace("'", "\\'"))',
+            onConfirm: async () => {
+                try {
+                    const formData = new FormData();
+                    formData.append('sessionId', sessionId);
+
+                    const res = await fetch('/Admin/DeleteChatSession', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    const data = await res.json();
+                    if (data.success) {
+                        location.reload();
+                    } else {
+                        alert('@Localizer["Chat_Status_Error"]');
+                    }
+                } catch (e) {
+                    console.error(e);
+                    alert('@Localizer["Chat_Status_Error"]');
+                }
+            }
+        });
+    }
+</script>
+}

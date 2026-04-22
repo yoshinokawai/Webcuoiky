@@ -196,12 +196,12 @@
             const btn = document.getElementById('quickAgencySaveBtn');
 
             if (!name) {
-                alert('Please enter an agency name');
+                alert('@Localizer["Msg_EnterAgencyName"]');
                 return;
             }
 
             btn.disabled = true;
-            btn.innerHTML = '<span class="animate-spin material-symbols-outlined text-sm">progress_activity</span> saving...';
+            btn.innerHTML = '<span class="animate-spin material-symbols-outlined text-sm">progress_activity</span> @Localizer["Msg_Saving"]';
 
             try {
                 const response = await fetch('/Wiki/ApiCreateAgency', {
@@ -225,13 +225,13 @@
                     document.getElementById('quickAgencyName').value = '';
                     document.getElementById('quickAgencyFocus').value = '';
                 } else {
-                    alert('Error: ' + result.message);
+                    alert('@Localizer["Msg_ErrorPrefix"]' + result.message);
                 }
             } catch (error) {
-                alert('Connection error');
+                alert('@Localizer["Msg_ConnectionError"]');
             } finally {
                 btn.disabled = false;
-                btn.innerHTML = '<span>Save Agency</span>';
+                btn.innerHTML = '<span>@Localizer["Wiki_Btn_Submit"]</span>';
             }
         }
     </script>

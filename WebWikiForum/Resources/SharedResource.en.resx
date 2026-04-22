@@ -933,20 +933,8 @@
   <data name="Home_Label_Pinned" xml:space="preserve">
     <value>pinned {0}</value>
   </data>
-  <data name="Dash_Status_Approved" xml:space="preserve">
-    <value>Approved</value>
-  </data>
   <data name="Dash_Status_Pending" xml:space="preserve">
     <value>Pending</value>
-  </data>
-  <data name="Dash_Independent" xml:space="preserve">
-    <value>Independent</value>
-  </data>
-  <data name="Dash_Unknown" xml:space="preserve">
-    <value>Unknown</value>
-  </data>
-  <data name="Dash_No_History" xml:space="preserve">
-    <value>No history available.</value>
   </data>
   <data name="Nav_Logout" xml:space="preserve">
     <value>Logout</value>
@@ -1064,21 +1052,6 @@
   </data>
   <data name="Wiki_TalentsTracked" xml:space="preserve">
     <value>Talents Tracked</value>
-  </data>
-  <data name="Explore_News_Major" xml:space="preserve">
-    <value>Major News</value>
-  </data>
-  <data name="Explore_News_Outfit" xml:space="preserve">
-    <value>New Outfit</value>
-  </data>
-  <data name="Explore_Tab_Gens" xml:space="preserve">
-    <value>Generations</value>
-  </data>
-  <data name="Explore_Tab_Langs" xml:space="preserve">
-    <value>Languages</value>
-  </data>
-  <data name="Explore_Showing_Results" xml:space="preserve">
-    <value>Showing {0} Results</value>
   </data>
   <data name="Explore_No_Results" xml:space="preserve">
     <value>No VTubers found matching your filters.</value>
@@ -2384,9 +2357,6 @@ Community Hub</value>
   <data name="Wiki_Event_Add_Title" xml:space="preserve">
     <value>Add New Event</value>
   </data>
-  <data name="Wiki_Event_Add_Subtitle_News" xml:space="preserve">
-    <value>Share the latest news, debuts, or community highlights</value>
-  </data>
   <data name="Wiki_Label_Title" xml:space="preserve">
     <value>Title</value>
   </data>
@@ -2395,39 +2365,6 @@ Community Hub</value>
   </data>
   <data name="Wiki_Label_RichDescription" xml:space="preserve">
     <value>Detailed Description</value>
-  </data>
-  <data name="Wiki_Label_EventType" xml:space="preserve">
-    <value>Event Type</value>
-  </data>
-  <data name="Wiki_Label_Upload_Cover" xml:space="preserve">
-    <value>Upload Cover Image</value>
-  </data>
-  <data name="Wiki_Placeholder_EventTitle_News" xml:space="preserve">
-    <value>e.g., Hololive 5th Fes. Details Announced</value>
-  </data>
-  <data name="Wiki_Placeholder_EventContent" xml:space="preserve">
-    <value>Tell us more about the event...</value>
-  </data>
-  <data name="Wiki_Event_Type_Event" xml:space="preserve">
-    <value>Event</value>
-  </data>
-  <data name="Wiki_Event_Type_Debut" xml:space="preserve">
-    <value>Debut</value>
-  </data>
-  <data name="Wiki_Event_Type_Music" xml:space="preserve">
-    <value>Music</value>
-  </data>
-  <data name="Wiki_Event_Type_ASMR" xml:space="preserve">
-    <value>ASMR</value>
-  </data>
-  <data name="Wiki_Event_Type_Gaming" xml:space="preserve">
-    <value>Gaming</value>
-  </data>
-  <data name="Wiki_Label_Featured" xml:space="preserve">
-    <value>Featured</value>
-  </data>
-  <data name="Wiki_Btn_PublishEvent_News" xml:space="preserve">
-    <value>Publish Event</value>
   </data>
   <data name="AboutUs" xml:space="preserve">
     <value>About Us</value>
@@ -2527,5 +2464,125 @@ Community Hub</value>
   </data>
   <data name="Modal_Delete_Title" xml:space="preserve">
     <value>Confirm Delete</value>
+  </data>
+  <data name="Chat_Users_Title" xml:space="preserve">
+    <value>Chat Users</value>
+  </data>
+  <data name="Chat_Users_Desc" xml:space="preserve">
+    <value>List of users who chatted with Yoshi</value>
+  </data>
+  <data name="Chat_No_Users" xml:space="preserve">
+    <value>No users found chatting yet.</value>
+  </data>
+  <data name="Chat_Label_History" xml:space="preserve">
+    <value>{0} chat history</value>
+  </data>
+  <data name="Chat_Label_Active" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="Chat_Label_New" xml:space="preserve">
+    <value>NEW</value>
+  </data>
+  <data name="Chat_Session_History" xml:space="preserve">
+    <value>Session History</value>
+  </data>
+  <data name="Chat_Session_Desc" xml:space="preserve">
+    <value>Conversation sessions of {0}</value>
+  </data>
+  <data name="Chat_Session_Support" xml:space="preserve">
+    <value>Support session #{0}</value>
+  </data>
+  <data name="Chat_Reply_Label" xml:space="preserve">
+    <value>Reply instead of Yoshi</value>
+  </data>
+  <data name="Chat_Reply_Placeholder" xml:space="preserve">
+    <value>Type your reply here...</value>
+  </data>
+  <data name="Chat_Btn_Send" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="Chat_Status_Success" xml:space="preserve">
+    <value>Reply sent successfully!</value>
+  </data>
+  <data name="Chat_Status_Error" xml:space="preserve">
+    <value>Error sending reply</value>
+  </data>
+  <data name="Dash_Btn_Chat" xml:space="preserve">
+    <value>Chat Sessions</value>
+  </data>
+  <data name="Dash_Btn_AddAgency" xml:space="preserve">
+    <value>Add Agency</value>
+  </data>
+  <data name="Dash_Btn_AddEvent" xml:space="preserve">
+    <value>Add Event</value>
+  </data>
+  <data name="Chat_Label_Messages" xml:space="preserve">
+    <value>{0} messages</value>
+  </data>
+  <data name="Dash_Col_Agency" xml:space="preserve">
+    <value>Agency</value>
+  </data>
+  <data name="Dash_Col_RegionFocus" xml:space="preserve">
+    <value>Region &amp; Focus</value>
+  </data>
+  <data name="Dash_Col_Talents" xml:space="preserve">
+    <value>Talents</value>
+  </data>
+  <data name="Dash_Col_EventTitle" xml:space="preserve">
+    <value>Event / Title</value>
+  </data>
+  <data name="Dash_Col_Category" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="Dash_Col_Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="Dash_Col_Featured" xml:space="preserve">
+    <value>Featured</value>
+  </data>
+  <data name="Dash_No_Agencies" xml:space="preserve">
+    <value>No agencies found.</value>
+  </data>
+  <data name="Dash_No_Events" xml:space="preserve">
+    <value>No events found.</value>
+  </data>
+  <data name="Dash_Tab_VTubers" xml:space="preserve">
+    <value>VTubers</value>
+  </data>
+  <data name="Dash_Tab_Agencies" xml:space="preserve">
+    <value>Agencies</value>
+  </data>
+  <data name="Dash_Tab_Events" xml:space="preserve">
+    <value>Events &amp; News</value>
+  </data>
+  <data name="Msg_Saving" xml:space="preserve">
+    <value>Saving...</value>
+  </data>
+  <data name="Msg_EnterAgencyName" xml:space="preserve">
+    <value>Please enter an agency name</value>
+  </data>
+  <data name="Msg_ConnectionError" xml:space="preserve">
+    <value>Connection error</value>
+  </data>
+  <data name="Msg_ErrorPrefix" xml:space="preserve">
+    <value>Error: </value>
+  </data>
+  <data name="Focus_Music" xml:space="preserve">
+    <value>Music &amp; Singing</value>
+  </data>
+  <data name="Chat_Detail_Title" xml:space="preserve">
+    <value>Chat Detail</value>
+  </data>
+  <data name="Chat_Bot_Name" xml:space="preserve">
+    <value>Yoshi</value>
+  </data>
+  <data name="Chat_Title_DeleteHistory" xml:space="preserve">
+    <value>Delete all history</value>
+  </data>
+  <data name="Chat_Title_DeleteSession" xml:space="preserve">
+    <value>Delete chat session</value>
+  </data>
+  <data name="Chat_Session_History_Title" xml:space="preserve">
+    <value>History Sessions - {0}</value>
   </data>
 </root>

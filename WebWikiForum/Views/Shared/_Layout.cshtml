@@ -416,7 +416,7 @@
                                const a = document.createElement('a');
                                a.className = 'dynamic-result flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-all';
                                a.href = i.type === 'vtuber' ? `/Wiki/Details/${i.id}` : `/Wiki/AgencyDetails/${i.id}`;
-                               const typeBadge = i.type === 'agency' ? '<span class="text-[9px] font-black bg-indigo-100 text-indigo-700 px-1.5 py-0.5 rounded-md uppercase ml-1.5">Agency</span>' : '';
+                               const typeBadge = i.type === 'agency' ? `<span class="text-[9px] font-black bg-indigo-100 text-indigo-700 px-1.5 py-0.5 rounded-md uppercase ml-1.5">${i.type === 'agency' ? '@Localizer["Nav_Agencies"].Value' : ''}</span>` : '';
                                a.innerHTML = `
                                    <div class="w-9 h-9 rounded-xl ${i.type === 'agency' ? 'bg-indigo-50 text-indigo-500' : 'bg-slate-100 text-slate-400'} overflow-hidden flex items-center justify-center border border-slate-200 dark:border-slate-700 flex-shrink-0">
                                        ${i.avatarUrl ? `<img src="${i.avatarUrl}" class="w-full h-full object-cover">` : `<span class="material-symbols-outlined text-lg">${i.type === 'agency' ? 'domain' : 'person'}</span>`}

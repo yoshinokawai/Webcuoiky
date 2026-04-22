@@ -921,20 +921,8 @@
   <data name="Home_Label_Pinned" xml:space="preserve">
     <value>đã ghim {0}</value>
   </data>
-  <data name="Dash_Status_Approved" xml:space="preserve">
-    <value>Đã phê duyệt</value>
-  </data>
   <data name="Dash_Status_Pending" xml:space="preserve">
     <value>Chờ duyệt</value>
-  </data>
-  <data name="Dash_Independent" xml:space="preserve">
-    <value>Tự do</value>
-  </data>
-  <data name="Dash_Unknown" xml:space="preserve">
-    <value>Không rõ</value>
-  </data>
-  <data name="Dash_No_History" xml:space="preserve">
-    <value>Không có thông tin tiểu sử.</value>
   </data>
   <data name="Nav_Logout" xml:space="preserve">
     <value>Đăng xuất</value>
@@ -1052,18 +1040,6 @@
   </data>
   <data name="Wiki_TalentsTracked" xml:space="preserve">
     <value>Thành viên theo dõi</value>
-  </data>
-  <data name="Explore_News_Major" xml:space="preserve">
-    <value>Tin chính</value>
-  </data>
-  <data name="Explore_News_Outfit" xml:space="preserve">
-    <value>Trang phục mới</value>
-  </data>
-  <data name="Explore_Tab_Gens" xml:space="preserve">
-    <value>Thế hệ</value>
-  </data>
-  <data name="Explore_Tab_Langs" xml:space="preserve">
-    <value>Ngôn ngữ</value>
   </data>
   <data name="Explore_No_Results" xml:space="preserve">
     <value>Không tìm thấy VTuber nào khớp với bộ lọc của bạn.</value>
@@ -2381,9 +2357,6 @@ Trung tâm Cộng đồng</value>
   <data name="Wiki_Event_Add_Title" xml:space="preserve">
     <value>Thêm Sự Kiện Mới</value>
   </data>
-  <data name="Wiki_Event_Add_Subtitle_News" xml:space="preserve">
-    <value>Chia sẻ tin tức, buổi ra mắt hoặc điểm nhấn cộng đồng mới nhất</value>
-  </data>
   <data name="Wiki_Label_Title" xml:space="preserve">
     <value>Tiêu đề</value>
   </data>
@@ -2392,42 +2365,6 @@ Trung tâm Cộng đồng</value>
   </data>
   <data name="Wiki_Label_RichDescription" xml:space="preserve">
     <value>Mô tả chi tiết</value>
-  </data>
-  <data name="Wiki_Label_EventType" xml:space="preserve">
-    <value>Loại Sự Kiện</value>
-  </data>
-  <data name="Wiki_Label_Upload_Cover" xml:space="preserve">
-    <value>Tải ảnh bìa</value>
-  </data>
-  <data name="Wiki_Placeholder_EventTitle_News" xml:space="preserve">
-    <value>Ví dụ: Hololive 5th Fes. Thông báo chi tiết</value>
-  </data>
-  <data name="Wiki_Placeholder_EventContent" xml:space="preserve">
-    <value>Kể cho chúng tôi nghe thêm về sự kiện...</value>
-  </data>
-  <data name="Wiki_Event_Type_Event" xml:space="preserve">
-    <value>Sự kiện</value>
-  </data>
-  <data name="Wiki_Event_Type_Debut" xml:space="preserve">
-    <value>Debut</value>
-  </data>
-  <data name="Wiki_Event_Type_Music" xml:space="preserve">
-    <value>Âm nhạc</value>
-  </data>
-  <data name="Wiki_Event_Type_ASMR" xml:space="preserve">
-    <value>ASMR</value>
-  </data>
-  <data name="Wiki_Event_Type_Gaming" xml:space="preserve">
-    <value>Chơi game</value>
-  </data>
-  <data name="Wiki_Label_Featured" xml:space="preserve">
-    <value>Nổi bật</value>
-  </data>
-  <data name="Wiki_Btn_PublishEvent_News" xml:space="preserve">
-    <value>Đăng Sự Kiện</value>
-  </data>
-  <data name="Wiki_Btn_Cancel" xml:space="preserve">
-    <value>Hủy</value>
   </data>
   <data name="AboutUs" xml:space="preserve">
     <value>Về chúng tôi</value>
@@ -2527,5 +2464,125 @@ Trung tâm Cộng đồng</value>
   </data>
   <data name="Modal_Delete_Title" xml:space="preserve">
     <value>Xác nhận xóa</value>
+  </data>
+  <data name="Chat_Users_Title" xml:space="preserve">
+    <value>Người Dùng Chat</value>
+  </data>
+  <data name="Chat_Users_Desc" xml:space="preserve">
+    <value>Danh sách người dùng đã trò chuyện với Yoshi</value>
+  </data>
+  <data name="Chat_No_Users" xml:space="preserve">
+    <value>Chưa có người dùng nào chat.</value>
+  </data>
+  <data name="Chat_Label_History" xml:space="preserve">
+    <value>{0} lịch sử chat</value>
+  </data>
+  <data name="Chat_Label_Active" xml:space="preserve">
+    <value>Hoạt động</value>
+  </data>
+  <data name="Chat_Label_New" xml:space="preserve">
+    <value>MỚI</value>
+  </data>
+  <data name="Chat_Session_History" xml:space="preserve">
+    <value>Lịch Sử Phiên Chat</value>
+  </data>
+  <data name="Chat_Session_Desc" xml:space="preserve">
+    <value>Các phiên hội thoại của {0}</value>
+  </data>
+  <data name="Chat_Session_Support" xml:space="preserve">
+    <value>Phiên hỗ trợ #{0}</value>
+  </data>
+  <data name="Chat_Reply_Label" xml:space="preserve">
+    <value>Trả lời thay Yoshi</value>
+  </data>
+  <data name="Chat_Reply_Placeholder" xml:space="preserve">
+    <value>Nhập câu trả lời cho user...</value>
+  </data>
+  <data name="Chat_Btn_Send" xml:space="preserve">
+    <value>Gửi</value>
+  </data>
+  <data name="Chat_Status_Success" xml:space="preserve">
+    <value>Đã gửi reply thành công!</value>
+  </data>
+  <data name="Chat_Status_Error" xml:space="preserve">
+    <value>Lỗi khi gửi reply</value>
+  </data>
+  <data name="Dash_Btn_Chat" xml:space="preserve">
+    <value>Quản lý Chat</value>
+  </data>
+  <data name="Dash_Btn_AddAgency" xml:space="preserve">
+    <value>Thêm Công ty</value>
+  </data>
+  <data name="Dash_Btn_AddEvent" xml:space="preserve">
+    <value>Thêm Sự kiện</value>
+  </data>
+  <data name="Chat_Label_Messages" xml:space="preserve">
+    <value>{0} tin nhắn</value>
+  </data>
+  <data name="Dash_Col_Agency" xml:space="preserve">
+    <value>Công ty</value>
+  </data>
+  <data name="Dash_Col_RegionFocus" xml:space="preserve">
+    <value>Khu vực &amp; Trọng tâm</value>
+  </data>
+  <data name="Dash_Col_Talents" xml:space="preserve">
+    <value>Thành viên</value>
+  </data>
+  <data name="Dash_Col_EventTitle" xml:space="preserve">
+    <value>Sự kiện / Tiêu đề</value>
+  </data>
+  <data name="Dash_Col_Category" xml:space="preserve">
+    <value>Danh mục</value>
+  </data>
+  <data name="Dash_Col_Date" xml:space="preserve">
+    <value>Ngày</value>
+  </data>
+  <data name="Dash_Col_Featured" xml:space="preserve">
+    <value>Nổi bật</value>
+  </data>
+  <data name="Dash_No_Agencies" xml:space="preserve">
+    <value>Không tìm thấy công ty nào.</value>
+  </data>
+  <data name="Dash_No_Events" xml:space="preserve">
+    <value>Không tìm thấy sự kiện nào.</value>
+  </data>
+  <data name="Dash_Tab_VTubers" xml:space="preserve">
+    <value>VTubers</value>
+  </data>
+  <data name="Dash_Tab_Agencies" xml:space="preserve">
+    <value>Công ty</value>
+  </data>
+  <data name="Dash_Tab_Events" xml:space="preserve">
+    <value>Sự kiện &amp; Tin tức</value>
+  </data>
+  <data name="Msg_Saving" xml:space="preserve">
+    <value>Đang lưu...</value>
+  </data>
+  <data name="Msg_EnterAgencyName" xml:space="preserve">
+    <value>Vui lòng nhập tên công ty</value>
+  </data>
+  <data name="Msg_ConnectionError" xml:space="preserve">
+    <value>Lỗi kết nối</value>
+  </data>
+  <data name="Msg_ErrorPrefix" xml:space="preserve">
+    <value>Lỗi: </value>
+  </data>
+  <data name="Focus_Music" xml:space="preserve">
+    <value>Âm nhạc &amp; Ca hát</value>
+  </data>
+  <data name="Chat_Detail_Title" xml:space="preserve">
+    <value>Chi tiết đoạn chat</value>
+  </data>
+  <data name="Chat_Bot_Name" xml:space="preserve">
+    <value>Yoshi</value>
+  </data>
+  <data name="Chat_Title_DeleteHistory" xml:space="preserve">
+    <value>Xóa tất cả lịch sử</value>
+  </data>
+  <data name="Chat_Title_DeleteSession" xml:space="preserve">
+    <value>Xóa phiên chat</value>
+  </data>
+  <data name="Chat_Session_History_Title" xml:space="preserve">
+    <value>Lịch sử phiên chat - {0}</value>
   </data>
 </root>

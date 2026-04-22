@@ -58,41 +58,6 @@ using (var scope = app.Services.CreateScope())
             db.SaveChanges();
         }
 
-        // Nạp thêm VTubers mẫu nếu chưa có (Đảm bảo có Miko và Gura để test)
-        if (!db.Vtubers.Any(v => v.Name.Contains("Sakura Miko")))
-        {
-            db.Vtubers.Add(new Vtuber { Name = "Sakura Miko", DebutDate = new DateTime(2018, 8, 1), Birthday = "August 1", AvatarUrl = "https://yt3.googleusercontent.com/ytc/AIdro_nNf1N1qE-S7mXvK-jZ6b1z9Z2_r7nZ9mZ0zZ0_3A=s176-c-k-c0x00ffffff-no-rj", Status = "Approved", Language = "Japanese", Region = "Japan", Tags = "Gaming, Elite", IsIndependent = false, AgencyId = 1, Lore = "Elite Miko of Hololive Generation 0. Known for her unique way of speaking and chaotic gaming sessions.", YoutubeUrl = "https://www.youtube.com/@SakuraMiko" });
-        }
-        if (!db.Vtubers.Any(v => v.Name.Contains("Gawr Gura")))
-        {
-            db.Vtubers.Add(new Vtuber { Name = "Gawr Gura", DebutDate = new DateTime(2020, 9, 13), Birthday = "June 20", AvatarUrl = "https://yt3.googleusercontent.com/ytc/AIdro_l-T-T3_n-U_v-F_B_P_a_J_f_x_G_i_J_f_x_G_i=s176-c-k-c0x00ffffff-no-rj", Status = "Approved", Language = "English", Region = "EN", Tags = "Gaming, Shark", IsIndependent = false, AgencyId = 1, Lore = "A shark VTuber from Hololive English -Myth-. The most subscribed VTuber globally.", YoutubeUrl = "https://www.youtube.com/@GawrGura" });
-        }
-        db.SaveChanges();
-
-        if (!db.News.Any())
-        {
-            db.News.AddRange(
-                new News { Title = "Hololive Production Announces 'Hololive Super Expo 2024' Details", Type = "Event", Author = "Admin", IsFeatured = true, PublishDate = DateTime.Now.AddHours(-2), ImageUrl = "https://lh3.googleusercontent.com/aida-public/AB6AXuC9GV3pMOtHNuxKOCKwzrAnvFc-NW4p-hJwBAQWu5MZL6S_Nf8HxLnUa2Iy__U1IEkpHFAY7p9TH3x_eI5rbMBUd4heQxUo3xa30LhafkUnzR-zBx7_C7ez0YwK4uKslcxneAXqwTQhrWJM7OmEZS3RfRjVAs7HPfIefQRF-HZ50hs65jn8gKDlLHHyxqH-TEHElThK2oI_oBH5o_CumxufJeBgII_91hMjBhJp0QCqzM-F1XObFJYwluJqUFokjdkWxCQRruMwbH8" },
-                new News { Title = "New Indie VTuber Agency 'Prism Project' Teases Generation 5", Type = "Debut", Author = "Staff", PublishDate = DateTime.Now.AddHours(-5), ImageUrl = "https://lh3.googleusercontent.com/aida-public/AB6AXuAGvY6T_M_u2W9v9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8W9g7R_X_L8" },
-                new News { Title = "Mori Calliope releases new EP 'JIGOKU 6' featuring diverse artists", Type = "Music", Author = "MusicTeam", PublishDate = DateTime.Now.AddDays(-1), ImageUrl = "https://i.ytimg.com/vi/6u2OyeL6h7I/maxresdefault.jpg" },
-                new News { Title = "ASMR Masters: Top 10 VTubers for your Night Comfort", Type = "ASMR", Author = "Editorial", PublishDate = DateTime.Now.AddDays(-2), ImageUrl = "https://i.ytimg.com/vi/6fR0eSIn2zI/maxresdefault.jpg" },
-                new News { Title = "CR Cup Overwatch 2: VTuber teams confirmed for the finals", Type = "Gaming", Author = "GamingDaily", PublishDate = DateTime.Now.AddDays(-3), ImageUrl = "https://i.ytimg.com/vi/4T_L_7L-e08/maxresdefault.jpg" }
-            );
-            db.SaveChanges();
-        }
-
-        if (!db.Activities.Any())
-        {
-            db.Activities.AddRange(
-                new Activity { Title = "Gawr Gura: 2024 Concert Tour", ActivityType = "Article", Action = "Updated", Author = "SharkBite24", Timestamp = DateTime.Now.AddMinutes(-38), Description = "Added full setlist and international ticketing info.", Detail = "+1,420 chars" },
-                new Activity { Title = "Hololive Gen 3: Records", ActivityType = "Article", Action = "Updated", Author = "Pekora_Fan_99", Timestamp = DateTime.Now.AddHours(-1), Description = "Corrected date for Usada Pekora's anniversary stream.", Detail = "-12 chars" },
-                new Activity { Title = "Talk: Nijisanji EN Graduation", ActivityType = "Community", Action = "Commented", Author = "Mod_Sora", Timestamp = DateTime.Now.AddHours(-3), Description = "Reminder to keep discussion civil and cite official sources.", Detail = "New Comment" },
-                new Activity { Title = "Kobo Kanaeru", ActivityType = "Article", Action = "Created", Author = "Raindrops_01", Timestamp = DateTime.Now.AddHours(-5), Description = "Initial page creation for Kobo Kanaeru.", Detail = "New Page" },
-                new Activity { Title = "Houshou Marine 1st Album", ActivityType = "Media", Action = "Created", Author = "Ahoy_Captain", Timestamp = DateTime.Now.AddDays(-1), Description = "Uploaded high-resolution cover art.", Detail = "New Image" }
-            );
-            db.SaveChanges();
-        }
-
         // ===== SEED ADMIN ACCOUNTS =====
         var adminAccounts = new[]
         {

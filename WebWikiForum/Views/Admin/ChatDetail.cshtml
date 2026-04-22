@@ -1,0 +1,152 @@
+@model IEnumerable<WebWikiForum.Models.ChatMessage>
+@{
+    ViewData["Title"] = Localizer["Chat_Detail_Title"];
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var sessionId = ViewBag.SessionId as string;
+    var firstUser = Model.FirstOrDefault(m => m.Role == "user")?.Username ?? "Guest";
+}
+
+<div class="max-w-3xl mx-auto px-4 sm:px-6 py-10">
+    <!-- Header -->
+    @{
+        var firstMsg = Model.FirstOrDefault();
+    }
+    <div class="flex items-center gap-3 mb-6">
+        <a href="/Admin/UserSessions?username=@(firstMsg?.Username)&userId=@(firstMsg?.UserId)" class="w-9 h-9 flex items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+            <span class="material-symbols-outlined text-[22px]">arrow_back</span>
+        </a>
+        <div class="flex items-center gap-3">
+            @if (!string.IsNullOrEmpty(ViewBag.UserAvatar))
+            {
+                <img src="@ViewBag.UserAvatar" class="w-10 h-10 rounded-full object-cover border-2 border-primary/10" alt="@firstUser" />
+            }
+            <div>
+                <h1 class="text-xl font-black text-slate-900 dark:text-white">@firstUser</h1>
+                <p class="text-[10px] text-slate-400 font-mono mt-0.5">@sessionId</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat bubble area -->
+    <div id="chat-detail-box" class="flex flex-col gap-3 bg-white dark:bg-surface-dark rounded-2xl border border-slate-200 dark:border-slate-700 p-5 max-h-[520px] overflow-y-auto mb-5 shadow-sm">
+        @foreach (var msg in Model)
+        {
+            bool isUser  = msg.Role == "user";
+            bool isAdmin = msg.Role == "admin";
+            bool isBot   = msg.Role == "bot";
+
+            <div class="flex flex-col @(isUser ? "items-start" : "items-end")">
+                <span class="text-[10px] font-semibold mb-1 px-1 flex items-center gap-1
+                    @(isUser ? "text-slate-400" : isAdmin ? "text-amber-500" : "text-primary")">
+                    @if (isUser)
+                    {
+                        if (!string.IsNullOrEmpty(ViewBag.UserAvatar))
+                        {
+                            <img src="@ViewBag.UserAvatar" class="w-4 h-4 rounded-full object-cover" />
+                        }
+                        else
+                        {
+                            <text>👤</text>
+                        }
+                        @msg.Username
+                    }
+                    else if (isAdmin)
+                    {
+                        <text>👑 @msg.Username</text>
+                    }
+                    else
+                    {
+                        <text>🤖 @Localizer["Chat_Bot_Name"]</text>
+                    }
+                </span>
+                <div class="max-w-[80%] px-4 py-2.5 rounded-2xl text-sm leading-relaxed
+                    @(isUser
+                        ? "bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 rounded-tl-none"
+                        : isAdmin
+                            ? "bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700 text-amber-900 dark:text-amber-100 rounded-tr-none"
+                            : "bg-primary/10 text-primary-dark dark:text-primary rounded-tr-none")">
+                    @msg.Message
+                </div>
+                <span class="text-[9px] text-slate-300 mt-0.5 px-1">
+                    @msg.CreatedAt.ToLocalTime().ToString("HH:mm dd/MM/yyyy")
+                </span>
+            </div>
+        }
+    </div>
+
+    <!-- Admin Reply Box -->
+    <div class="bg-white dark:bg-surface-dark rounded-2xl border border-slate-200 dark:border-slate-700 p-4 shadow-sm">
+        <p class="text-xs font-bold text-slate-500 dark:text-slate-400 mb-3 uppercase tracking-wider">
+            👑 @Localizer["Chat_Reply_Label"]
+        </p>
+        <div class="flex gap-3">
+            <textarea id="admin-reply-input"
+                      rows="2"
+                      placeholder="@Localizer["Chat_Reply_Placeholder"]"
+                      class="flex-1 px-4 py-2.5 text-sm rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white resize-none focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all"></textarea>
+            <button id="admin-reply-btn"
+                    onclick="sendAdminReply('@sessionId')"
+                    class="px-5 py-2 bg-primary text-white font-bold text-sm rounded-xl hover:bg-primary-dark active:scale-95 transition-all shadow-lg shadow-primary/20 flex items-center gap-2 self-end">
+                <span class="material-symbols-outlined text-[18px]">send</span>
+                @Localizer["Chat_Btn_Send"]
+            </button>
+        </div>
+        <p id="reply-status" class="text-xs mt-2 text-green-500 hidden">✅ @Localizer["Chat_Status_Success"]</p>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+async function sendAdminReply(sessionId) {
+    const input   = document.getElementById('admin-reply-input');
+    const btn     = document.getElementById('admin-reply-btn');
+    const status  = document.getElementById('reply-status');
+    const message = input.value.trim();
+    if (!message) return;
+
+    btn.disabled  = true;
+    btn.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-spin">progress_activity</span>';
+
+    try {
+        const resp = await fetch('/Admin/AdminReply', {
+            method:  'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body:    JSON.stringify({ sessionId, message })
+        });
+
+        if (resp.ok) {
+            // Thêm bubble reply vào UI
+            const box = document.getElementById('chat-detail-box');
+            const now = new Date();
+            const timeStr = `${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')} ${now.getDate().toString().padStart(2,'0')}/${(now.getMonth()+1).toString().padStart(2,'0')}/${now.getFullYear()}`;
+            const adminName = '@(User.Identity?.Name ?? "Admin")';
+
+            box.insertAdjacentHTML('beforeend', `
+                <div class="flex flex-col items-end">
+                    <span class="text-[10px] font-semibold mb-1 px-1 text-amber-500">👑 ${adminName}</span>
+                    <div class="max-w-[80%] px-4 py-2.5 rounded-2xl text-sm leading-relaxed bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700 text-amber-900 dark:text-amber-100 rounded-tr-none">
+                        ${message.replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+                    </div>
+                    <span class="text-[9px] text-slate-300 mt-0.5 px-1">${timeStr}</span>
+                </div>`);
+
+            box.scrollTop = box.scrollHeight;
+            input.value   = '';
+            status.classList.remove('hidden');
+            setTimeout(() => status.classList.add('hidden'), 3000);
+        }
+    } catch(e) {
+        alert('@Localizer["Chat_Status_Error"]: ' + e.message);
+    }
+
+    btn.disabled  = false;
+    btn.innerHTML = '<span class="material-symbols-outlined text-[18px]">send</span> @Localizer["Chat_Btn_Send"]';
+}
+
+// Auto scroll to bottom on load
+window.addEventListener('DOMContentLoaded', () => {
+    const box = document.getElementById('chat-detail-box');
+    box.scrollTop = box.scrollHeight;
+});
+</script>
+}

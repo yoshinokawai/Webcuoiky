@@ -14,6 +14,11 @@
             <p class="text-slate-600 dark:text-slate-400 mt-2">@Localizer["Dash_Desc"]</p>
         </div>
         <div class="flex items-center gap-3 w-full md:w-auto">
+            <!-- Chat Sessions shortcut -->
+            <a href="/Admin/ChatSessions" class="flex items-center gap-2 px-4 py-2.5 bg-amber-500 text-white font-bold rounded-xl shadow-lg shadow-amber-500/25 hover:bg-amber-600 transition-all duration-300 whitespace-nowrap text-sm">
+                <span class="material-symbols-outlined text-[18px]">chat</span>
+                @Localizer["Dash_Btn_Chat"]
+            </a>
             <template x-if="activeTab === 'vtubers'">
                 <a href="/Wiki/Create" class="flex items-center gap-2 px-5 py-3 bg-primary text-white font-bold rounded-xl shadow-lg shadow-primary/25 hover:bg-primary-dark hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 whitespace-nowrap group">
                     <span class="material-symbols-outlined text-xl group-hover:rotate-90 transition-transform duration-300">add</span>
@@ -23,17 +28,18 @@
             <template x-if="activeTab === 'agencies'">
                 <a href="/Wiki/CreateAgency" class="flex items-center gap-2 px-5 py-3 bg-indigo-600 text-white font-bold rounded-xl shadow-lg shadow-indigo-600/25 hover:bg-indigo-700 hover:shadow-xl hover:shadow-indigo-600/30 transition-all duration-300 whitespace-nowrap group">
                     <span class="material-symbols-outlined text-xl group-hover:rotate-90 transition-transform duration-300">domain_add</span>
-                    Add Agency
+                    @Localizer["Dash_Btn_AddAgency"]
                 </a>
             </template>
             <template x-if="activeTab === 'events'">
                 <a href="/Wiki/CreateEvent" class="flex items-center gap-2 px-5 py-3 bg-amber-500 text-white font-bold rounded-xl shadow-lg shadow-amber-500/25 hover:bg-amber-600 hover:shadow-xl hover:shadow-amber-500/30 transition-all duration-300 whitespace-nowrap group">
                     <span class="material-symbols-outlined text-xl group-hover:rotate-90 transition-transform duration-300">add_circle</span>
-                    Add Event
+                    @Localizer["Dash_Btn_AddEvent"]
                 </a>
             </template>
         </div>
     </div>
+
 
     <!-- Tabs Navigation -->
     <div class="flex p-1 bg-slate-100 dark:bg-slate-800/50 rounded-2xl mb-8 w-full md:w-fit">
@@ -42,7 +48,7 @@
             :class="activeTab === 'vtubers' ? 'bg-white dark:bg-slate-700 text-primary shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:text-slate-400'"
             class="flex items-center gap-2 px-8 py-2.5 rounded-xl font-bold text-sm transition-all duration-200">
             <span class="material-symbols-outlined text-[18px]">groups</span>
-            VTubers
+            @Localizer["Dash_Tab_VTubers"]
             <span class="ml-1.5 px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-[10px]" :class="activeTab === 'vtubers' ? 'bg-primary/10 text-primary' : ''">@(Model.Vtubers?.Count() ?? 0)</span>
         </button>
         <button 
@@ -50,7 +56,7 @@
             :class="activeTab === 'agencies' ? 'bg-white dark:bg-slate-700 text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:text-slate-400'"
             class="flex items-center gap-2 px-8 py-2.5 rounded-xl font-bold text-sm transition-all duration-200">
             <span class="material-symbols-outlined text-[18px]">domain</span>
-            Agencies
+            @Localizer["Dash_Tab_Agencies"]
             <span class="ml-1.5 px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-[10px]" :class="activeTab === 'agencies' ? 'bg-indigo-600/10 text-indigo-600' : ''">@(Model.Agencies?.Count() ?? 0)</span>
         </button>
         <button 
@@ -58,7 +64,7 @@
             :class="activeTab === 'events' ? 'bg-white dark:bg-slate-700 text-amber-500 shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:text-slate-400'"
             class="flex items-center gap-2 px-8 py-2.5 rounded-xl font-bold text-sm transition-all duration-200">
             <span class="material-symbols-outlined text-[18px]">newspaper</span>
-            Events & News
+            @Localizer["Dash_Tab_Events"]
             <span class="ml-1.5 px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-[10px]" :class="activeTab === 'events' ? 'bg-amber-500/10 text-amber-500' : ''">@(Model.News?.Count() ?? 0)</span>
         </button>
     </div>
@@ -130,7 +136,7 @@
                                     <div class="flex flex-col gap-1">
                                         <div class="flex items-center gap-1.5 text-slate-700 dark:text-slate-300 font-medium whitespace-nowrap">
                                             <span class="material-symbols-outlined text-[16px] text-slate-400">public</span>
-                                            @item.Region
+                                            @Localizer["Region_" + item.Region]
                                         </div>
                                         <div class="flex items-center gap-1.5 text-slate-500 dark:text-slate-400 text-xs whitespace-nowrap">
                                             <span class="material-symbols-outlined text-[16px]">calendar_month</span>
@@ -141,7 +147,7 @@
                                 <td class="p-5 text-center">
                                     <div x-data="{ open: false }" class="relative flex justify-center">
                                         <button @@click="open = !open" type="button" class="px-3 py-1 rounded-full text-xs font-black transition-all hover:scale-105 @(item.Status == "Active" ? "bg-green-100 text-green-700" : item.Status == "Graduated" ? "bg-slate-100 text-slate-700" : "bg-orange-100 text-orange-700") flex items-center gap-1">
-                                            @item.Status
+                                            @Localizer["Status_" + item.Status]
                                             <span class="material-symbols-outlined text-[14px]">arrow_drop_down</span>
                                         </button>
                                         <div x-show="open" @@click.away="open = false" x-cloak class="absolute top-full mt-2 w-32 bg-white dark:bg-slate-800 rounded-xl shadow-xl border border-slate-100 dark:border-slate-700 z-50 overflow-hidden py-1">
@@ -186,11 +192,11 @@
                 <table class="w-full text-left border-collapse">
                     <thead>
                         <tr class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-700 text-sm uppercase text-slate-500 font-bold tracking-wider">
-                            <th class="p-5 font-semibold">Agency</th>
-                            <th class="p-5 font-semibold">Region & Focus</th>
-                            <th class="p-5 font-semibold text-center">Status</th>
-                            <th class="p-5 font-semibold text-center">Talents</th>
-                            <th class="p-5 font-semibold text-right">Actions</th>
+                            <th class="p-5 font-semibold">@Localizer["Dash_Col_Agency"]</th>
+                            <th class="p-5 font-semibold">@Localizer["Dash_Col_RegionFocus"]</th>
+                            <th class="p-5 font-semibold text-center">@Localizer["Dash_Col_Status"]</th>
+                            <th class="p-5 font-semibold text-center">@Localizer["Dash_Col_Talents"]</th>
+                            <th class="p-5 font-semibold text-right">@Localizer["Dash_Col_Actions"]</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
@@ -223,7 +229,7 @@
                                         <div class="flex flex-col gap-1">
                                             <span class="inline-flex items-center gap-1.5 text-slate-700 dark:text-slate-300 font-medium">
                                                 <span class="material-symbols-outlined text-[16px] text-slate-400">location_on</span>
-                                                @agency.Region
+                                                @Localizer["Region_" + agency.Region]
                                             </span>
                                             <span class="inline-flex items-center gap-1.5 text-slate-500 dark:text-slate-400">
                                                 <span class="material-symbols-outlined text-[16px]">stars</span>
@@ -234,7 +240,7 @@
                                     <td class="p-5 text-center">
                                         <div x-data="{ open: false }" class="relative flex justify-center">
                                             <button @@click="open = !open" type="button" class="px-3 py-1 rounded-full text-xs font-black transition-all hover:scale-105 @(agency.Status == "Active" ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700") flex items-center gap-1">
-                                                @(agency.Status ?? "Active")
+                                                @Localizer["Status_" + (agency.Status ?? "Active")]
                                                 <span class="material-symbols-outlined text-[14px]">arrow_drop_down</span>
                                             </button>
                                             <div x-show="open" @@click.away="open = false" x-cloak class="absolute top-full mt-2 w-32 bg-white dark:bg-slate-800 rounded-xl shadow-xl border border-slate-100 dark:border-slate-700 z-50 overflow-hidden py-1">
@@ -249,7 +255,7 @@
                                     <td class="p-5 text-center">
                                         <div class="inline-flex flex-col items-center">
                                             <span class="text-xl font-black text-slate-900 dark:text-white">@agency.TalentCount</span>
-                                            <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Profiles</span>
+                                            <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">@Localizer["Dash_Col_Talents"]</span>
                                         </div>
                                     </td>
                                     <td class="p-5 text-right whitespace-nowrap">
@@ -273,7 +279,7 @@
                         else
                         {
                             <tr>
-                                <td colspan="4" class="p-10 text-center text-slate-500 italic">No agencies found.</td>
+                                <td colspan="5" class="p-10 text-center text-slate-500 italic">@Localizer["Dash_No_Agencies"]</td>
                             </tr>
                         }
                     </tbody>
@@ -289,11 +295,11 @@
                 <table class="w-full text-left border-collapse">
                     <thead>
                         <tr class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-700 text-sm uppercase text-slate-500 font-bold tracking-wider">
-                            <th class="p-5 font-semibold">Event / Title</th>
-                            <th class="p-5 font-semibold">Category</th>
-                            <th class="p-5 font-semibold">Date</th>
-                            <th class="p-5 font-semibold">Featured</th>
-                            <th class="p-5 font-semibold text-right">Actions</th>
+                            <th class="p-5 font-semibold">@Localizer["Dash_Col_EventTitle"]</th>
+                            <th class="p-5 font-semibold">@Localizer["Dash_Col_Category"]</th>
+                            <th class="p-5 font-semibold">@Localizer["Dash_Col_Date"]</th>
+                            <th class="p-5 font-semibold text-center">@Localizer["Dash_Col_Featured"]</th>
+                            <th class="p-5 font-semibold text-right">@Localizer["Dash_Col_Actions"]</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
@@ -321,7 +327,7 @@
                                                 _ => "bg-slate-100 text-slate-700"
                                             };
                                         }
-                                        <span class="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider @badgeColor">@item.Type</span>
+                                        <span class="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider @badgeColor">@Localizer["Wiki_Event_Type_" + item.Type]</span>
                                     </td>
                                     <td class="p-5 text-sm text-slate-500 dark:text-slate-400 font-medium">
                                         @item.PublishDate.ToString("MMM dd, yyyy")
@@ -354,7 +360,7 @@
                         else
                         {
                             <tr>
-                                <td colspan="5" class="p-10 text-center text-slate-500 italic">No news items found.</td>
+                                <td colspan="5" class="p-10 text-center text-slate-500 italic">@Localizer["Dash_No_Events"]</td>
                             </tr>
                         }
                     </tbody>
@@ -369,9 +375,9 @@
     <script>
         function confirmDelete(formId, itemName) {
             window.showConfirmModal({
-                title: '@Localizer["Modal_Delete_Title"]',
-                message: `@Localizer["Modal_Delete_Msg"] "${itemName}"?`,
-                confirmText: '@Localizer["Modal_Btn_Delete"]',
+                title: '@Html.Raw(Localizer["Modal_Delete_Title"].Value.Replace("'", "\\'"))',
+                message: '@Html.Raw(Localizer["Modal_Delete_Msg"].Value.Replace("'", "\\'"))'.replace('{0}', itemName),
+                confirmText: '@Html.Raw(Localizer["Modal_Btn_Delete"].Value.Replace("'", "\\'"))',
                 onConfirm: () => {
                     document.getElementById('delete-' + formId).submit();
                 }

@@ -13,10 +13,16 @@
     const STORAGE_KEY = 'vtwiki_chat_history';
     const MAX_HISTORY = 30;
 
+    // ── Session ID (persisted in localStorage per browser)
+    const SESSION_KEY = 'vtwiki_chat_session';
+    let chatSessionId = localStorage.getItem(SESSION_KEY) || '';
+    let lastPolledId = 0;    // ID của tin nhắn admin cuối cùng đã nhận
+    let pollTimer = null;
+
     // ── DOM references (populated after DOMContentLoaded)
     let toggleBtn, panel, messagesEl, input, sendBtn, suggestionsEl, unreadBadge;
 
-    const currentLang = document.documentElement.lang || 'en';
+    const currentLang = (document.documentElement.lang || 'en').substring(0, 2).toLowerCase();
     const translations = {
         vi: {
             title: 'Trợ lý Yoshi',
@@ -179,12 +185,20 @@
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ 
                     message: msg,
-                    lang: currentLang 
+                    lang: currentLang,
+                    sessionId: chatSessionId || null
                 })
             });
 
             hideTyping();
             const data = await res.json();
+
+            // Lưu sessionId do server trả về (lần đầu sẽ được tạo mới)
+            if (data.sessionId && !chatSessionId) {
+                chatSessionId = data.sessionId;
+                localStorage.setItem(SESSION_KEY, chatSessionId);
+                startPolling(); // Bắt đầu polling sau lần chat đầu tiên
+            }
 
             // Nhận diện 'response' từ Backend và hiển thị
             if (res.ok && data.response) {
@@ -202,8 +216,89 @@
         }
     }
 
+    // ── Admin reply polling (mỗi 5 giây)
+    function startPolling() {
+        if (pollTimer) return;
+        pollTimer = setInterval(async () => {
+            try {
+                // Nếu chưa có sessionId thì chưa poll (hoặc poll theo user nếu đã load avatar/info)
+                const url = `/Chat/Poll?sessionId=${encodeURIComponent(chatSessionId || '')}&after=${lastPolledId}`;
+                const res = await fetch(url);
+                if (!res.ok) return;
+                const data = await res.json();
+                if (data.messages && data.messages.length > 0) {
+                    data.messages.forEach(m => {
+                        lastPolledId = Math.max(lastPolledId, m.id);
+                        appendAdminMessage(m.username, m.message);
+                    });
+                    // Hiện badge nếu panel đang đóng
+                    if (!isOpen) {
+                        unreadBadge.textContent = '!';
+                        unreadBadge.classList.add('show');
+                    }
+                }
+            } catch { /* ignore network errors */ }
+        }, 5000);
+    }
+
+    // ── Append admin reply bubble
+    function appendAdminMessage(adminName, text) {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'chat-msg ai'; // same side as bot
+        wrapper.style.cssText = '--bubble-bg: #fef3c7; --bubble-color: #92400e;';
+
+        const avatar = document.createElement('div');
+        avatar.className = 'chat-msg-avatar';
+        avatar.textContent = '👑';
+        avatar.style.cssText = 'background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;font-size:14px;';
+
+        const bubble = document.createElement('div');
+        bubble.className = 'chat-bubble';
+        bubble.style.cssText = 'background:#fef3c7;color:#78350f;border:1px solid #fcd34d;';
+
+        const label = document.createElement('div');
+        label.style.cssText = 'font-size:10px;font-weight:800;color:#d97706;margin-bottom:4px;';
+        label.textContent = adminName || '👑 Admin';
+
+        bubble.appendChild(label);
+        bubble.appendChild(document.createTextNode(text));
+
+        wrapper.appendChild(avatar);
+        wrapper.appendChild(bubble);
+        messagesEl.appendChild(wrapper);
+        scrollToBottom();
+    }
+
+    // ── Load history from server
+    async function loadHistory() {
+        try {
+            const res = await fetch(`/Chat/History?sessionId=${encodeURIComponent(chatSessionId)}`);
+            if (!res.ok) return;
+            const data = await res.json();
+            if (data.messages && data.messages.length > 0) {
+                messagesEl.innerHTML = ''; // Clear welcome or old state
+                data.messages.forEach(m => {
+                    if (m.role === 'admin') {
+                        appendAdminMessage(m.username, m.message);
+                        lastPolledId = Math.max(lastPolledId, m.id);
+                    } else {
+                        // role 'user', 'bot' (ai)
+                        appendMessage(m.role === 'user' ? 'user' : 'ai', m.message);
+                    }
+                });
+                scrollToBottom();
+                firstOpen = false;
+            } else {
+                showWelcome();
+            }
+        } catch {
+            showWelcome();
+        }
+    }
+
     // ── Welcome greeting
     function showWelcome() {
+        if (messagesEl && messagesEl.children.length > 0) return;
         appendMessage('ai', t.welcome);
     }
 
@@ -218,7 +313,10 @@
             unreadBadge.classList.remove('show');
 
             if (firstOpen) {
-                showWelcome();
+                // Chỉ hiện welcome nếu sau khi load history (nếu có) mà vẫn trống
+                if (messagesEl.children.length === 0) {
+                    showWelcome();
+                }
                 firstOpen = false;
             }
 
@@ -226,17 +324,47 @@
         }
     }
 
-    // ── Clear history
-    function clearHistory() {
-        messagesEl.innerHTML = '';
-        showWelcome();
-        showSuggestions(true);
+    // ── Clear history (Xóa vĩnh viễn)
+    async function clearHistory() {
+        const title = currentLang === 'vi' ? 'Xóa lịch sử chat' : 'Delete history';
+        const msg = currentLang === 'vi' ? 'Bạn có chắc chắn muốn xóa toàn bộ lịch sử chat không?' : 'Are you sure you want to delete all chat history?';
+        const confirmTxt = currentLang === 'vi' ? 'Xóa' : 'Delete';
+        const cancelTxt = currentLang === 'vi' ? 'Hủy' : 'Cancel';
+
+        const performDelete = async () => {
+            try {
+                await fetch(`/Chat/DeleteHistory?sessionId=${encodeURIComponent(chatSessionId)}`, { method: 'POST' });
+            } catch (e) {
+                console.error('Delete history failed', e);
+            }
+
+            messagesEl.innerHTML = '';
+            chatSessionId = '';
+            localStorage.removeItem(SESSION_KEY);
+            lastPolledId = 0;
+            showWelcome();
+            showSuggestions(true);
+        };
+
+        if (window.showConfirmModal) {
+            window.showConfirmModal({
+                title: title,
+                message: msg,
+                confirmText: confirmTxt,
+                cancelText: cancelTxt,
+                onConfirm: performDelete
+            });
+        } else {
+            if (confirm(msg)) {
+                await performDelete();
+            }
+        }
     }
 
 
     // ── Build the widget HTML dynamically to avoid Razor conflicts
     function buildWidget() {
-        // Toggle button
+        // ... (toggleBtn part remains same)
         toggleBtn = document.createElement('button');
         toggleBtn.id = 'chat-toggle-btn';
         toggleBtn.setAttribute('aria-label', 'Toggle Yoshi chat');
@@ -258,9 +386,9 @@
                     <div id="chat-header-name">${t.title}</div>
                     <div id="chat-header-status">${currentLang === 'vi' ? 'Trực tuyến' : 'Online'}</div>
                 </div>
-                <button id="chat-clear-btn" title="${currentLang === 'vi' ? 'Xóa lịch sử chat' : 'Clear history'}">
-                    <span class="material-symbols-outlined" style="font-size:14px;">refresh</span>
-                    ${currentLang === 'vi' ? 'Làm mới' : 'Refresh'}
+                <button id="chat-clear-btn" title="${currentLang === 'vi' ? 'Xóa lịch sử chat' : 'Delete history'}">
+                    <span class="material-symbols-outlined" style="font-size:14px;">delete</span>
+                    ${currentLang === 'vi' ? 'Xóa' : 'Clear'}
                 </button>
             </div>
             <div id="chat-messages"></div>
@@ -356,6 +484,14 @@
     async function init() {
         await loadUserAvatar();
         buildWidget();
+        
+        // Luôn thử tải lịch sử nếu có sessionId hoặc user đã login
+        if (chatSessionId) {
+            await loadHistory();
+            startPolling();
+        } else {
+            showWelcome();
+        }
     }
 
     if (document.readyState === 'loading') {

@@ -4,6 +4,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Globalization;
 using WebWikiForum.Data;
+using WebWikiForum.Models;
 
 namespace WebWikiForum.Controllers;
 
@@ -41,6 +42,15 @@ public class ChatController : Controller
         )}
     };
 
+    // ── Helpers ───────────────────────────────────────────────────────
+    private (int? userId, string? username) GetCurrentUser()
+    {
+        if (User.Identity?.IsAuthenticated != true) return (null, null);
+        var idStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        return (string.IsNullOrEmpty(idStr) ? null : int.Parse(idStr), User.Identity.Name);
+    }
+
+    // ── POST /Chat/Ask ────────────────────────────────────────────────
     [HttpPost]
     public async Task<IActionResult> Ask([FromBody] ChatRequest request)
     {
@@ -49,46 +59,177 @@ public class ChatController : Controller
         string message = request.Message.Trim();
         string lang = request.Lang?.ToLower() ?? "en";
         bool isVi = lang == "vi" || lang.StartsWith("vi");
+        string sessionId = request.SessionId ?? Guid.NewGuid().ToString("N");
 
-        // 1. Xử lý câu hỏi xã giao (Social Greetings) dựa trên Persona
+        var (userId, username) = GetCurrentUser();
+
+        // 1. Lưu tin nhắn user vào DB
+        _db.ChatMessages.Add(new ChatMessage
+        {
+            SessionId = sessionId,
+            UserId    = userId,
+            Username  = username ?? "Guest",
+            Role      = "user",
+            Message   = message,
+            CreatedAt = DateTime.UtcNow,
+            IsRead    = false
+        });
+        await _db.SaveChangesAsync();
+
+        // 2. Xử lý câu hỏi xã giao
         var socialResponse = HandleSocialGreetings(message, lang);
         if (socialResponse != null)
         {
-            return Json(new { response = socialResponse });
+            await SaveBotReplyAsync(sessionId, userId, username, socialResponse);
+            return Json(new { response = socialResponse, sessionId });
         }
 
         StringBuilder responseSb = new StringBuilder();
         string msgLower = message.ToLowerInvariant();
 
-        // 2. Kiểm tra FAQ địa phương (Keyword matching)
+        // 3. Kiểm tra FAQ địa phương
         foreach (var entry in _faq)
         {
             if (msgLower.Contains(entry.Key))
             {
                 responseSb.AppendLine(isVi ? entry.Value.Vi : entry.Value.En);
                 responseSb.AppendLine();
-                break; 
+                break;
             }
         }
 
-        // 3. Tìm kiếm trong Database (VTubers, Agencies, News)
+        // 4. Tìm kiếm trong Database
         string dbContext = await BuildDbContextForLangAsync(message, isVi);
         if (!string.IsNullOrEmpty(dbContext))
         {
             responseSb.AppendLine(dbContext);
         }
-        
+
         if (responseSb.Length == 0)
         {
             if (isVi)
-                responseSb.Append("Xin lỗi, mình chưa tìm thấy thông tin cụ thể về câu hỏi này trên VT-Wiki. ✨ Bạn hãy thử các từ khóa như 'Hololive', 'VTuber' hoặc xem menu Wiki nhé! 🌸");
+                responseSb.Append("Xin lỗi, mình chưa tìm thấy thông tin cụ thể về câu hỏi này trên VT-Wiki. ✨ Bạn hãy thử các từ khóa như 'Hololive', 'VTuber' hoặc xem menu Wiki nhé! 🌸\n\nCâu hỏi của bạn đã được ghi nhận – admin có thể hỗ trợ thêm nếu cần! 📝");
             else
-                responseSb.Append("Sorry, I couldn't find specific information for your question on VT-Wiki. ✨ Please try keywords like 'Hololive', 'VTuber' or check our Wiki menu! 🌸");
+                responseSb.Append("Sorry, I couldn't find specific information for your question on VT-Wiki. ✨ Please try keywords like 'Hololive', 'VTuber' or check our Wiki menu! 🌸\n\nYour question has been noted – an admin may follow up if needed! 📝");
         }
 
-        return Json(new { response = responseSb.ToString() });
+        string botReply = responseSb.ToString();
+        await SaveBotReplyAsync(sessionId, userId, username, botReply);
+
+        return Json(new { response = botReply, sessionId });
     }
 
+    private async Task SaveBotReplyAsync(string sessionId, int? userId, string? username, string reply)
+    {
+        _db.ChatMessages.Add(new ChatMessage
+        {
+            SessionId = sessionId,
+            UserId    = userId,
+            Username  = "Yoshi (Bot)",
+            Role      = "bot",
+            Message   = reply,
+            CreatedAt = DateTime.UtcNow,
+            IsRead    = true
+        });
+        await _db.SaveChangesAsync();
+    }
+
+    // ── GET /Chat/Poll?sessionId=...&after=... ────────────────────────
+    [HttpGet]
+    public async Task<IActionResult> Poll(string? sessionId, int after = 0)
+    {
+        var (userId, _) = GetCurrentUser();
+        IQueryable<ChatMessage> query = _db.ChatMessages.AsNoTracking();
+
+        if (userId.HasValue)
+        {
+            query = query.Where(m => m.SessionId == sessionId || (m.UserId == userId.Value && m.Role != "admin"));
+        }
+        else if (!string.IsNullOrEmpty(sessionId))
+        {
+            query = query.Where(m => m.SessionId == sessionId);
+        }
+        else return BadRequest();
+
+        var newMessages = await query
+            .Where(m => m.Role == "admin" && m.Id > after)
+            .OrderBy(m => m.Id)
+            .Select(m => new { m.Id, m.Message, m.CreatedAt, m.Username })
+            .ToListAsync();
+
+        return Json(new { messages = newMessages });
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> DeleteHistory(string? sessionId)
+    {
+        var (userId, _) = GetCurrentUser();
+        IQueryable<ChatMessage> query = _db.ChatMessages;
+
+        if (userId.HasValue)
+        {
+            query = query.Where(m => m.UserId == userId.Value && m.Role != "admin");
+        }
+        else if (!string.IsNullOrEmpty(sessionId))
+        {
+            query = query.Where(m => m.SessionId == sessionId);
+        }
+        else return BadRequest();
+
+        var toDelete = await query.ToListAsync();
+        if (toDelete.Any())
+        {
+            _db.ChatMessages.RemoveRange(toDelete);
+            await _db.SaveChangesAsync();
+        }
+
+        return Json(new { success = true });
+    }
+
+    // ── GET /Chat/History?sessionId=... ──────────────────────────────
+    [HttpGet]
+    public async Task<IActionResult> History(string? sessionId)
+    {
+        var (userId, _) = GetCurrentUser();
+        
+        // Nếu user đã đăng nhập, thực hiện liên kết SessionId hiện tại với UserId (nếu chưa liên kết)
+        if (userId.HasValue && !string.IsNullOrEmpty(sessionId))
+        {
+            var unlinkedMessages = await _db.ChatMessages
+                .Where(m => m.SessionId == sessionId && m.UserId == null)
+                .ToListAsync();
+            if (unlinkedMessages.Any())
+            {
+                foreach (var m in unlinkedMessages) m.UserId = userId;
+                await _db.SaveChangesAsync();
+            }
+        }
+
+        IQueryable<ChatMessage> query = _db.ChatMessages.AsNoTracking();
+
+        if (userId.HasValue)
+        {
+            // Quan trọng: Chỉ lấy tin nhắn của session hiện tại 
+            // HOẶC tin nhắn cũ của chính User này nhưng phải trong các session mà họ đóng vai trò là 'user'
+            // Để tránh việc Admin thấy lại các tin nhắn mình đã đi reply cho người khác.
+            query = query.Where(m => m.SessionId == sessionId || (m.UserId == userId.Value && m.Role != "admin"));
+        }
+        else if (!string.IsNullOrEmpty(sessionId))
+        {
+            query = query.Where(m => m.SessionId == sessionId);
+        }
+        else return Ok(new { messages = new List<object>() });
+
+        var history = await query
+            .OrderBy(m => m.Id)
+            .Take(50)
+            .Select(m => new { m.Id, m.Role, m.Message, m.Username, m.CreatedAt })
+            .ToListAsync();
+
+        return Json(new { messages = history });
+    }
+
+    // ── Persona handlers ──────────────────────────────────────────────
     private string? HandleSocialGreetings(string msg, string lang)
     {
         string lowMsg = msg.ToLower();
@@ -96,7 +237,6 @@ public class ChatController : Controller
         bool isEn = lang.StartsWith("en");
         bool isJa = lang.StartsWith("ja");
 
-        // Nhận diện lời chào
         string[] hiKeys = { "hi", "hello", "chào", "xin chào", "helo", "konnichiwa", "ohayou", "chao" };
         if (hiKeys.Any(k => lowMsg == k || lowMsg.StartsWith(k + " ")))
         {
@@ -105,7 +245,6 @@ public class ChatController : Controller
             return "Hello there! ✨ Welcome to VT-Wiki. Which Oshi are you looking for today? 🌸\n\nHow can I help you? Searching or finding information? ✨🌸";
         }
 
-        // Nhận diện câu hỏi danh tính (Bạn là ai)
         string[] whoKeys = { "bạn là ai", "who are you", "anata wa", "giới thiệu", "introduce", "ban la ai" };
         if (whoKeys.Any(k => lowMsg.Contains(k)))
         {
@@ -114,7 +253,6 @@ public class ChatController : Controller
             return "I am Yoshi, the smart and friendly AI assistant of VT-Wiki! 🤖 My mission is to help you explore the colorful world of VTubers. ✨\n\nHow can I help you? Searching or finding information? ✨🌸";
         }
 
-        // Nhận diện câu hỏi thăm sức khỏe
         string[] healthKeys = { "khỏe không", "how are you", "genki", "khỏe ko", "khoe khong" };
         if (healthKeys.Any(k => lowMsg.Contains(k)))
         {
@@ -123,7 +261,6 @@ public class ChatController : Controller
             return "As an AI, Yoshi is always full of energy to assist you! 🌸 Have a wonderful day! ✨\n\nHow can I help you? Searching or finding information? ✨🌸";
         }
 
-        // Nhận diện câu hỏi về nhiệm vụ
         string[] missionKeys = { "nhiệm vụ", "nhiem vu", "mission", "nhiệm vụ của bạn", "phi vụ" };
         if (missionKeys.Any(k => lowMsg.Contains(k)))
         {
@@ -141,21 +278,17 @@ public class ChatController : Controller
         {
             var sb = new StringBuilder();
             var msgLower = message.ToLowerInvariant();
-            
-            // Labels theo ngôn ngữ
+
             var lVtuber = isVi ? "VTUBERS KHỚP VỚI YÊU CẦU" : "MATCHING VTUBERS";
             var lAgency = isVi ? "AGENCIES LIÊN QUAN" : "RELATED AGENCIES";
             var lNews   = isVi ? "TIN TỨC MỚI NHẤT" : "LATEST NEWS";
-            var lName   = isVi ? "Tên" : "Name";
             var lRegion = isVi ? "Khu vực" : "Region";
-            var lAgencyLabel = isVi ? "Công ty" : "Agency";
-            var lDesc   = isVi ? "Mô tả" : "Description";
             var lWiki   = isVi ? "Chi tiết" : "Details";
 
             var stopWords = new HashSet<string> { "là", "gì", "thế", "nào", "có", "không", "và", "của", "the", "is", "are", "what", "how", "who" };
             var keywords = msgLower
                 .Split(new[] { ' ', ',', '?', '!', '.', '\n' }, StringSplitOptions.RemoveEmptyEntries)
-                .Where(w => w.Length >= 2 && !stopWords.Contains(w)) // Giảm xuống 2 để bắt được các từ ngắn
+                .Where(w => w.Length >= 2 && !stopWords.Contains(w))
                 .Distinct()
                 .ToList();
 
@@ -175,8 +308,8 @@ public class ChatController : Controller
                 string vTags = (v.Tags ?? "").ToLower();
                 string vLore = (v.Lore ?? "").ToLower();
 
-                if (vName.Contains(msgLower)) score += 150; // Tăng điểm phrase match
-                
+                if (vName.Contains(msgLower)) score += 150;
+
                 int matchedCount = 0;
                 foreach (var k in keywords) {
                     bool matchInName = vName.Contains(k);
@@ -204,7 +337,6 @@ public class ChatController : Controller
                     if (details.Any()) sbV.AppendLine($"  _{string.Join(" | ", details)}_");
                     if (!string.IsNullOrEmpty(v.Lore)) sbV.AppendLine($"  _{ (v.Lore.Length > 120 ? v.Lore[..120] + "..." : v.Lore) }_");
                     sbV.AppendLine($"  [ <a href='/Wiki/Details/{v.Id}' target='_blank' style='color:#994ce6;font-weight:700;'>{(isVi ? "Xem Wiki" : "View Wiki")}</a> • <a href='{v.YoutubeUrl}' target='_blank' style='color:#ff0000;font-weight:700;'>YouTube</a> ]");
-                    
                     results.Add(("VTUBER", sbV.ToString(), score));
                 }
             }
@@ -233,6 +365,7 @@ public class ChatController : Controller
                     }
                 }
 
+                // Logic Chặt Chẽ: Yêu cầu khớp tất cả (nếu <= 3 từ) hoặc 75% (nếu > 3)
                 bool isStrictMatch = keywords.Count <= 3 ? matchedCount == keywords.Count : matchedCount >= (int)(keywords.Count * 0.75);
                 if (!isStrictMatch) score = 0;
 
@@ -243,7 +376,6 @@ public class ChatController : Controller
                     if (!string.IsNullOrEmpty(a.Focus)) sbA.AppendLine($"  🎯 {(isVi ? "Tập trung" : "Focus")}: {a.Focus}");
                     if (!string.IsNullOrEmpty(a.Description)) sbA.AppendLine($"  _{ (a.Description.Length > 120 ? a.Description[..120] + "..." : a.Description) }_");
                     sbA.AppendLine($"  [ {lWiki} → <a href='/Wiki/AgencyDetails/{a.Id}' target='_blank' style='color:#994ce6;font-weight:700;'>{a.Name}</a> ]");
-                    
                     results.Add(("AGENCY", sbA.ToString(), score));
                 }
             }
@@ -260,7 +392,7 @@ public class ChatController : Controller
                 string nType = (n.Type ?? "").ToLower();
                 string nContent = (n.Content ?? "").ToLower();
 
-                if (nTitle.Contains(msgLower)) score += 180; // News phrase match đặc biệt cao
+                if (nTitle.Contains(msgLower)) score += 180;
                 int matchedCount = 0;
                 foreach (var k in keywords) {
                     bool matchInTitle = nTitle.Contains(k);
@@ -272,6 +404,7 @@ public class ChatController : Controller
                     }
                 }
 
+                // Logic Chặt Chẽ: Yêu cầu khớp tất cả (nếu <= 3 từ) hoặc 75% (nếu > 3)
                 bool isStrictMatch = keywords.Count <= 3 ? matchedCount == keywords.Count : matchedCount >= (int)(keywords.Count * 0.75);
                 if (!isStrictMatch) score = 0;
 
@@ -282,37 +415,33 @@ public class ChatController : Controller
                     sbN.AppendLine($"  📰 {(isVi ? "Loại" : "Type")}: {n.Type}");
                     if (!string.IsNullOrEmpty(n.SourceUrl)) sbN.AppendLine($"  [ <a href='{n.SourceUrl}' target='_blank' style='color:#994ce6;font-weight:700;'>{(isVi ? "Xem nguồn" : "Source")}</a> ]");
                     sbN.AppendLine($"  [ <a href='/Wiki/NewsDetails/{n.Id}' target='_blank' style='color:#994ce6;font-weight:700;'>{(isVi ? "Chi tiết" : "Read more")}</a> ]");
-                    
                     results.Add(("NEWS", sbN.ToString(), score));
                 }
             }
 
             if (!results.Any()) return string.Empty;
 
-            // ── GLOBAL FILTERING ──
             int maxScore = results.Max(r => r.Score);
-            // Nếu có kết quả rất mạnh (ví dụ >100), loại bỏ các kết quả quá yếu (< 40% so với leader)
             double threshold = maxScore > 100 ? 0.4 : 0.0;
             var finalResults = results.Where(r => r.Score >= maxScore * threshold).ToList();
 
-            // Sắp xếp và Nhóm lại để in ra
             var outputSb = new StringBuilder();
 
-            var vMatch = finalResults.Where(r => r.Category == "VTUBER" ).OrderByDescending(r => r.Score).Take(3).ToList();
+            var vMatch = finalResults.Where(r => r.Category == "VTUBER").OrderByDescending(r => r.Score).Take(3).ToList();
             if (vMatch.Any()) {
                 outputSb.AppendLine($"### {lVtuber}");
                 foreach (var r in vMatch) outputSb.AppendLine(r.Content);
                 outputSb.AppendLine();
             }
 
-            var aMatch = finalResults.Where(r => r.Category == "AGENCY" ).OrderByDescending(r => r.Score).Take(2).ToList();
+            var aMatch = finalResults.Where(r => r.Category == "AGENCY").OrderByDescending(r => r.Score).Take(2).ToList();
             if (aMatch.Any()) {
                 outputSb.AppendLine($"### {lAgency}");
                 foreach (var r in aMatch) outputSb.AppendLine(r.Content);
                 outputSb.AppendLine();
             }
 
-            var nMatch = finalResults.Where(r => r.Category == "NEWS" ).OrderByDescending(r => r.Score).Take(3).ToList();
+            var nMatch = finalResults.Where(r => r.Category == "NEWS").OrderByDescending(r => r.Score).Take(3).ToList();
             if (nMatch.Any()) {
                 outputSb.AppendLine($"### {lNews}");
                 foreach (var r in nMatch) outputSb.AppendLine(r.Content);
@@ -337,8 +466,9 @@ public class ChatController : Controller
     }
 }
 
-public class ChatRequest 
-{ 
-    public string? Message { get; set; } 
-    public string? Lang { get; set; } 
+public class ChatRequest
+{
+    public string? Message   { get; set; }
+    public string? Lang      { get; set; }
+    public string? SessionId { get; set; }  // GUID từ localStorage
 }
