@@ -23,10 +23,10 @@
                     @Localizer["Discord_Hero_Desc"]
                 </p>
 <div class="flex flex-wrap gap-4">
-<button class="bg-primary text-white px-8 py-4 rounded-xl text-lg font-bold hover:shadow-lg hover:shadow-primary/25 transition-all flex items-center gap-3">
+<a href="@ViewBag.DiscordInviteLink" target="_blank" class="bg-primary text-white px-8 py-4 rounded-xl text-lg font-bold hover:shadow-lg hover:shadow-primary/25 transition-all flex items-center gap-3 w-fit">
 <span class="material-symbols-outlined">bolt</span>
                         @Localizer["Discord_Btn_Join"]
-                    </button>
+                    </a>
 <button class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 px-8 py-4 rounded-xl text-lg font-bold hover:bg-slate-50 dark:hover:bg-slate-700 transition-all">
                         @Localizer["Discord_Btn_Rules"]
                     </button>
@@ -35,14 +35,14 @@
 <div class="relative group">
 <div class="absolute -inset-4 bg-primary/10 rounded-[2rem] blur-2xl group-hover:bg-primary/20 transition-all duration-500"></div>
 <div class="relative bg-white dark:bg-slate-800 p-4 rounded-3xl shadow-2xl border border-primary/10 overflow-hidden" data-alt="Discord community interface screenshot showing chat rooms">
-<img alt="Discord Community" class="rounded-2xl w-full h-[400px] object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACYjQiNP276Zz_8Ffr-BbN8qHrRe6ETFl8XgJI2FQCJGFam8lVpGKdpT-WDLJALlJJcWEwoKkuE2c1SUTZRx8SqlxDe8yWXZ3KYW8g8oAyKKqY5gbEu6orn5n5R4FL8GBG31DXDgfgtqKt7EPidRqklL7ZPet2U045ojX12f3V-e0U4AJzlki-5Knuq_cHwvxzVjTPCSFAhCnWD-QonJFlUpnazrL3kBwvhZYIa-dbIROHEPp2zVCIUuiZv9zOEATe64IIsi3Nh_I"/>
+                    <img src="/images/discord/banner.png" alt="Discord Community" class="rounded-2xl w-full h-[400px] object-cover" />
 <div class="absolute bottom-8 left-8 right-8 bg-black/60 backdrop-blur-md p-4 rounded-xl border border-white/10 flex items-center justify-between">
-<div class="flex -space-x-3">
-<img alt="Member 1" class="size-10 rounded-full border-2 border-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdfNtj-SHYHJv7UVW4Y2LyQRlNpHF6dh_Gci1qtEfQQ_owEXjr26dRBr7lU2HCmo7PhwYdcp7p5zbwBqdu7ByYIl_qnfhFUr7rhBOSUblOwQmbEf_XFI6ClvIR8St7pBHqdxdGz-ZmfwypvY2iUPMvDaGyP09R8L0gFvewHeL37GXjVElYvWFY75K8g7M9i20JR4NVnmPrL0dBU6sHICVgOA6c69e0c07zxvveo1l2NvmUWGesIxFp9kgWxW6cwHT8rv6u8bltdjw"/>
-<img alt="Member 2" class="size-10 rounded-full border-2 border-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpq63yIAYQqixtZctyZlWHYEFZnfG7bdDiBEtH7NgTrP-c1bJ1AVEiEnqyyiEAzhmb7pEx8tN6QiTpVNnmFsyWKvbd-r3bsE2per0_xRh_sAWQx6vaN1pfZ7VywCMiOyJnBLYdv4T4-KIelKzpcBk993GG_v2AIpzuBpwZOWFevq8R4CG2HfyW8XTOLDnhlleuaPyeA30DWwiv6OsWWt9TGYvZNH_rRdZ5MVz-rAjt-31_mTzHMtM3lxU3wodmol1l7Xb1rEOMh6I"/>
-<img alt="Member 3" class="size-10 rounded-full border-2 border-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvM2OVnFnOdWqjkSn9Hch14j-HWLw__czGgUj-5jOYr5BlSVmaVgX3SlLZkh82cNWfI_PJAdXUXY4MHoagAXmbFICdCEIGMl0tYgARyQcKyPTqVMvd-iRBnKDmXS01qdYmc_vmZRyi3gHb9CU2hlL_b-W1YRV6WbpT4BuU8mqmm-KT3qIAqsIn1Ju0FNADz5XuH81tmpgOjH6s18M-RHQOCihEo45yEwxHrgp1IMKdqwLmmMKing6aSHan8xNM8Tdie-Ha2itrZE0"/>
-<div class="size-10 rounded-full bg-primary border-2 border-white flex items-center justify-center text-xs font-bold text-white">+4k</div>
-</div>
+                        <div class="flex -space-x-3">
+                            <img src="/images/discord/avatar1.png" class="size-10 rounded-full border-2 border-white object-cover" alt="Member 1" />
+                            <img src="/images/discord/avatar2.png" class="size-10 rounded-full border-2 border-white object-cover" alt="Member 2" />
+                            <img src="/images/discord/avatar3.png" class="size-10 rounded-full border-2 border-white object-cover" alt="Member 3" />
+                            <div class="size-10 rounded-full bg-primary border-2 border-white flex items-center justify-center text-xs font-bold text-white">+4k</div>
+                        </div>
 <div class="text-white text-right">
 <div class="text-sm font-bold">@string.Format(Localizer["Discord_Label_Online"].Value, "4,102")</div>
 <div class="text-[10px] opacity-70">Talking about Hololive</div>
@@ -138,9 +138,9 @@
 <div class="relative z-10 flex flex-col items-center gap-6 max-w-3xl mx-auto">
 <h2 class="text-4xl md:text-5xl font-black">@Localizer["Discord_CTA_Title"]</h2>
 <p class="text-xl text-white/80">@Localizer["Discord_CTA_Desc"]</p>
-<button class="bg-white text-primary px-10 py-5 rounded-2xl text-xl font-black hover:scale-105 transition-transform shadow-xl shadow-black/10">
+<a href="@ViewBag.DiscordInviteLink" target="_blank" class="bg-white text-primary px-10 py-5 rounded-2xl text-xl font-black hover:scale-105 transition-transform shadow-xl shadow-black/10">
                     @Localizer["Discord_CTA_Btn"]
-                </button>
+                </a>
 <p class="text-sm opacity-60">@Localizer["Discord_CTA_Note"]</p>
 </div>
 </section>

@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using WebWikiForum.Data;
 using System.Threading.Tasks;
@@ -13,10 +14,12 @@ namespace WebWikiForum.Controllers
     public class HomeController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IConfiguration _configuration;
 
-        public HomeController(ApplicationDbContext context)
+        public HomeController(ApplicationDbContext context, IConfiguration configuration)
         {
             _context = context;
+            _configuration = configuration;
         }
 
         public async Task<IActionResult> Index()
@@ -236,6 +239,7 @@ namespace WebWikiForum.Controllers
 
         public IActionResult JoinDiscord()
         {
+            ViewBag.DiscordInviteLink = _configuration["Discord:InviteLink"] ?? "https://discord.gg/";
             return View();
         }
 

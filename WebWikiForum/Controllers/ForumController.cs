@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using WebWikiForum.Data;
 using WebWikiForum.Models;
@@ -14,11 +15,13 @@ namespace WebWikiForum.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly IActivityService _activityService;
+        private readonly IConfiguration _configuration;
 
-        public ForumController(ApplicationDbContext context, IActivityService activityService)
+        public ForumController(ApplicationDbContext context, IActivityService activityService, IConfiguration configuration)
         {
             _context = context;
             _activityService = activityService;
+            _configuration = configuration;
         }
 
         private async Task<Dictionary<string, string?>> _GetAuthorAvatars(IEnumerable<string> usernames)
@@ -56,6 +59,7 @@ namespace WebWikiForum.Controllers
 
             ViewBag.Trending = trending;
             ViewBag.News = news;
+            ViewBag.DiscordInviteLink = _configuration["Discord:InviteLink"] ?? "https://discord.gg/";
             
             return View(recent);
         }
