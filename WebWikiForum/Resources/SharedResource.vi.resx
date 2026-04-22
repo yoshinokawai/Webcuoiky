@@ -1,5 +1,62 @@
 <?xml version='1.0' encoding='utf-8'?>
 <root>
+  <data name="Status_Active" xml:space="preserve">
+    <value>Đang hoạt động</value>
+  </data>
+  <data name="Status_Graduated" xml:space="preserve">
+    <value>Đã tốt nghiệp</value>
+  </data>
+  <data name="Status_Hiatus" xml:space="preserve">
+    <value>Tạm nghỉ</value>
+  </data>
+  <data name="Status_Approved" xml:space="preserve">
+    <value>Đã duyệt</value>
+  </data>
+  <data name="Status_Pending" xml:space="preserve">
+    <value>Chờ duyệt</value>
+  </data>
+  <data name="Status_Rejected" xml:space="preserve">
+    <value>Đã từ chối</value>
+  </data>
+  <data name="Modal_Delete_Title" xml:space="preserve">
+    <value>Xác nhận xóa</value>
+  </data>
+  <data name="Modal_Delete_Msg" xml:space="preserve">
+    <value>Bạn có chắc chắn muốn xóa {0}? Hành động này không thể hoàn tác.</value>
+  </data>
+  <data name="Modal_Btn_Delete" xml:space="preserve">
+    <value>Xóa</value>
+  </data>
+  <data name="Modal_Btn_Cancel" xml:space="preserve">
+    <value>Hủy</value>
+  </data>
+  <data name="Dash_Independent" xml:space="preserve">
+    <value>Độc lập</value>
+  </data>
+  <data name="Region_Japan" xml:space="preserve">
+    <value>Nhật Bản</value>
+  </data>
+  <data name="Region_Vietnam" xml:space="preserve">
+    <value>Việt Nam</value>
+  </data>
+  <data name="Dash_No_VTubers" xml:space="preserve">
+    <value>Không tìm thấy VTuber nào</value>
+  </data>
+  <data name="Dash_No_Agencies" xml:space="preserve">
+    <value>Không tìm thấy công ty nào</value>
+  </data>
+  <data name="Dash_No_Events" xml:space="preserve">
+    <value>Không tìm thấy sự kiện nào</value>
+  </data>
+  <data name="Dash_Col_Event" xml:space="preserve">
+    <value>Sự kiện</value>
+  </data>
+  <data name="Region_North America" xml:space="preserve">
+    <value>Bắc Mỹ</value>
+  </data>
+  <data name="Region_Other" xml:space="preserve">
+    <value>Khác</value>
+  </data>
   <data name="Nav_Home" xml:space="preserve">
     <value>Trang Chủ</value>
   </data>
@@ -392,9 +449,6 @@
   </data>
   <data name="Dash_Unknown" xml:space="preserve">
     <value>Không xác định</value>
-  </data>
-  <data name="Dash_Independent" xml:space="preserve">
-    <value>Tự Do</value>
   </data>
   <data name="Dash_Success" xml:space="preserve">
     <value>Thành Công!</value>
@@ -1043,18 +1097,6 @@
   </data>
   <data name="Explore_No_Results" xml:space="preserve">
     <value>Không tìm thấy VTuber nào khớp với bộ lọc của bạn.</value>
-  </data>
-  <data name="Status_Active" xml:space="preserve">
-    <value>Đang hoạt động</value>
-  </data>
-  <data name="Status_Graduated" xml:space="preserve">
-    <value>Đã tốt nghiệp</value>
-  </data>
-  <data name="Status_Hiatus" xml:space="preserve">
-    <value>Tạm nghỉ</value>
-  </data>
-  <data name="Status_Pending" xml:space="preserve">
-    <value>Chờ duyệt</value>
   </data>
   <data name="Nav_Search_Suggested" xml:space="preserve">
     <value>Gợi ý</value>
@@ -2045,9 +2087,6 @@ Trung tâm Cộng đồng</value>
   <data name="Donate_Card_Help_Desc" xml:space="preserve">
     <value>Nhận hỗ trợ và câu trả lời</value>
   </data>
-  <data name="Region_Japan" xml:space="preserve">
-    <value>Nhật Bản</value>
-  </data>
   <data name="Region_US" xml:space="preserve">
     <value>Hoa Kỳ</value>
   </data>
@@ -2095,9 +2134,6 @@ Trung tâm Cộng đồng</value>
   </data>
   <data name="Modal_Confirm_Msg" xml:space="preserve">
     <value>Bạn có chắc chắn muốn tiếp tục không?</value>
-  </data>
-  <data name="Modal_Btn_Cancel" xml:space="preserve">
-    <value>Hủy</value>
   </data>
   <data name="Modal_Btn_Confirm" xml:space="preserve">
     <value>Xác nhận</value>
@@ -2405,9 +2441,6 @@ Trung tâm Cộng đồng</value>
   <data name="Region_SEA" xml:space="preserve">
     <value>Đông Nam Á</value>
   </data>
-  <data name="Region_Vietnam" xml:space="preserve">
-    <value>Việt Nam</value>
-  </data>
   <data name="Region_CN" xml:space="preserve">
     <value>Trung Quốc</value>
   </data>
@@ -2455,15 +2488,6 @@ Trung tâm Cộng đồng</value>
   </data>
   <data name="Home_Label_Time_JustNow" xml:space="preserve">
     <value>Vừa xong</value>
-  </data>
-  <data name="Modal_Btn_Delete" xml:space="preserve">
-    <value>Xóa</value>
-  </data>
-  <data name="Modal_Delete_Msg" xml:space="preserve">
-    <value>Bạn có chắc muốn xóa</value>
-  </data>
-  <data name="Modal_Delete_Title" xml:space="preserve">
-    <value>Xác nhận xóa</value>
   </data>
   <data name="Chat_Users_Title" xml:space="preserve">
     <value>Người Dùng Chat</value>
@@ -2539,12 +2563,6 @@ Trung tâm Cộng đồng</value>
   </data>
   <data name="Dash_Col_Featured" xml:space="preserve">
     <value>Nổi bật</value>
-  </data>
-  <data name="Dash_No_Agencies" xml:space="preserve">
-    <value>Không tìm thấy công ty nào.</value>
-  </data>
-  <data name="Dash_No_Events" xml:space="preserve">
-    <value>Không tìm thấy sự kiện nào.</value>
   </data>
   <data name="Dash_Tab_VTubers" xml:space="preserve">
     <value>VTubers</value>

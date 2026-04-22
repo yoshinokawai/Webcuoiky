@@ -1,5 +1,62 @@
 <?xml version='1.0' encoding='utf-8'?>
 <root>
+  <data name="Status_Active" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="Status_Graduated" xml:space="preserve">
+    <value>Graduated</value>
+  </data>
+  <data name="Status_Hiatus" xml:space="preserve">
+    <value>Hiatus</value>
+  </data>
+  <data name="Status_Approved" xml:space="preserve">
+    <value>Approved</value>
+  </data>
+  <data name="Status_Pending" xml:space="preserve">
+    <value>Pending</value>
+  </data>
+  <data name="Status_Rejected" xml:space="preserve">
+    <value>Rejected</value>
+  </data>
+  <data name="Modal_Delete_Title" xml:space="preserve">
+    <value>Confirm Delete</value>
+  </data>
+  <data name="Modal_Delete_Msg" xml:space="preserve">
+    <value>Are you sure you want to delete {0}? This action cannot be undone.</value>
+  </data>
+  <data name="Modal_Btn_Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Modal_Btn_Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Dash_Independent" xml:space="preserve">
+    <value>Independent</value>
+  </data>
+  <data name="Region_Japan" xml:space="preserve">
+    <value>Japan</value>
+  </data>
+  <data name="Region_Vietnam" xml:space="preserve">
+    <value>Vietnam</value>
+  </data>
+  <data name="Dash_No_VTubers" xml:space="preserve">
+    <value>No VTubers found</value>
+  </data>
+  <data name="Dash_No_Agencies" xml:space="preserve">
+    <value>No agencies found</value>
+  </data>
+  <data name="Dash_No_Events" xml:space="preserve">
+    <value>No events found</value>
+  </data>
+  <data name="Dash_Col_Event" xml:space="preserve">
+    <value>Event</value>
+  </data>
+  <data name="Region_North America" xml:space="preserve">
+    <value>North America</value>
+  </data>
+  <data name="Region_Other" xml:space="preserve">
+    <value>Other</value>
+  </data>
   <data name="Nav_Home" xml:space="preserve">
     <value>Home</value>
   </data>
@@ -360,18 +417,6 @@
   <data name="Dash_Status_Approved" xml:space="preserve">
     <value>Approved</value>
   </data>
-  <data name="Status_Active" xml:space="preserve">
-    <value>Active</value>
-  </data>
-  <data name="Status_Graduated" xml:space="preserve">
-    <value>Graduated</value>
-  </data>
-  <data name="Status_Hiatus" xml:space="preserve">
-    <value>Hiatus</value>
-  </data>
-  <data name="Status_Pending" xml:space="preserve">
-    <value>Pending</value>
-  </data>
   <data name="Dash_Action_View" xml:space="preserve">
     <value>View Profile</value>
   </data>
@@ -404,9 +449,6 @@
   </data>
   <data name="Dash_Unknown" xml:space="preserve">
     <value>Unknown</value>
-  </data>
-  <data name="Dash_Independent" xml:space="preserve">
-    <value>Independent</value>
   </data>
   <data name="Dash_Success" xml:space="preserve">
     <value>Success!</value>
@@ -2045,9 +2087,6 @@ Community Hub</value>
   <data name="Donate_Card_Help_Desc" xml:space="preserve">
     <value>Get support and answers</value>
   </data>
-  <data name="Region_Japan" xml:space="preserve">
-    <value>Japan</value>
-  </data>
   <data name="Region_US" xml:space="preserve">
     <value>United States</value>
   </data>
@@ -2095,9 +2134,6 @@ Community Hub</value>
   </data>
   <data name="Modal_Confirm_Msg" xml:space="preserve">
     <value>Are you sure you want to proceed?</value>
-  </data>
-  <data name="Modal_Btn_Cancel" xml:space="preserve">
-    <value>Cancel</value>
   </data>
   <data name="Modal_Btn_Confirm" xml:space="preserve">
     <value>Confirm</value>
@@ -2405,9 +2441,6 @@ Community Hub</value>
   <data name="Region_SEA" xml:space="preserve">
     <value>SEA</value>
   </data>
-  <data name="Region_Vietnam" xml:space="preserve">
-    <value>Vietnam</value>
-  </data>
   <data name="Region_CN" xml:space="preserve">
     <value>China</value>
   </data>
@@ -2455,15 +2488,6 @@ Community Hub</value>
   </data>
   <data name="Home_Label_Time_JustNow" xml:space="preserve">
     <value>Just now</value>
-  </data>
-  <data name="Modal_Btn_Delete" xml:space="preserve">
-    <value>Delete</value>
-  </data>
-  <data name="Modal_Delete_Msg" xml:space="preserve">
-    <value>Are you sure you want to delete</value>
-  </data>
-  <data name="Modal_Delete_Title" xml:space="preserve">
-    <value>Confirm Delete</value>
   </data>
   <data name="Chat_Users_Title" xml:space="preserve">
     <value>Chat Users</value>
@@ -2539,12 +2563,6 @@ Community Hub</value>
   </data>
   <data name="Dash_Col_Featured" xml:space="preserve">
     <value>Featured</value>
-  </data>
-  <data name="Dash_No_Agencies" xml:space="preserve">
-    <value>No agencies found.</value>
-  </data>
-  <data name="Dash_No_Events" xml:space="preserve">
-    <value>No events found.</value>
   </data>
   <data name="Dash_Tab_VTubers" xml:space="preserve">
     <value>VTubers</value>

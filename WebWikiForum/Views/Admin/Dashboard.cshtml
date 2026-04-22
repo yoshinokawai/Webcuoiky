@@ -108,7 +108,7 @@
                     <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
                         @if (Model.Vtubers != null)
                         {
-                            foreach (var item in Model.Vtubers)
+                            @foreach (var item in Model.Vtubers)
                             {
                             <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/20 transition-colors group">
                                 <td class="p-5">
@@ -176,8 +176,13 @@
                                     </div>
                                 </td>
                             </tr>
-                                }
                             }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="4" class="p-10 text-center text-slate-500 italic">@Localizer["Dash_No_VTubers"]</td>
+                            </tr>
                         }
                     </tbody>
                 </table>
@@ -202,7 +207,7 @@
                     <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
                         @if (Model.Agencies != null && Model.Agencies.Any())
                         {
-                            foreach (var agency in Model.Agencies)
+                            @foreach (var agency in Model.Agencies)
                             {
                                 <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/20 transition-colors group">
                                     <td class="p-5">
@@ -305,7 +310,7 @@
                     <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
                         @if (Model.News != null && Model.News.Any())
                         {
-                            foreach (var item in Model.News)
+                            @foreach (var item in Model.News)
                             {
                                 <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/20 transition-colors group">
                                     <td class="p-5">
