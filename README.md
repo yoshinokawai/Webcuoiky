@@ -88,14 +88,16 @@ Webcuoiky/
 │   │   ├── ForumController.cs
 │   │   ├── WikiController.cs
 │   │   ├── HomeController.cs
-│   │   └── LanguageController.cs
+│   │   ├── LanguageController.cs
+│   │   └── ChatController.cs     # Xử lý Yoshi AI Chat
 │   ├── Models/               # Entity models (EF Core)
 │   │   ├── Vtuber.cs
 │   │   ├── Agency.cs
 │   │   ├── Discussion.cs
 │   │   ├── User.cs
 │   │   ├── News.cs
-│   │   └── Activity.cs
+│   │   ├── Activity.cs
+│   │   └── ChatMessage.cs        # Lưu trữ lịch sử chat
 │   ├── Views/                # Razor Views (UI)
 │   │   ├── Wiki/             # Trang wiki VTuber & agency
 │   │   ├── Forum/            # Diễn đàn cộng đồng
@@ -181,6 +183,7 @@ Các bảng chính trong cơ sở dữ liệu:
 | `DiscussionLikes` | Lượt thích bài đăng |
 | `News` | Tin tức VTuber |
 | `Activities` | Nhật ký hoạt động cộng đồng |
+| `ChatMessages` | Lưu trữ lịch sử trò chuyện với Yoshi AI |
 
 ---
 
