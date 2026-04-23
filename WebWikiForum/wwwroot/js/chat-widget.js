@@ -261,8 +261,9 @@
         label.textContent = adminName || '👑 Admin';
 
         bubble.appendChild(label);
-        bubble.appendChild(document.createTextNode(text));
-
+        const contentDiv = document.createElement('div');
+        contentDiv.innerHTML = renderMarkdown(text);
+        bubble.appendChild(contentDiv);
         wrapper.appendChild(avatar);
         wrapper.appendChild(bubble);
         messagesEl.appendChild(wrapper);
@@ -324,20 +325,14 @@
         }
     }
 
-    // ── Clear history (Xóa vĩnh viễn)
-    async function clearHistory() {
-        const title = currentLang === 'vi' ? 'Xóa lịch sử chat' : 'Delete history';
-        const msg = currentLang === 'vi' ? 'Bạn có chắc chắn muốn xóa toàn bộ lịch sử chat không?' : 'Are you sure you want to delete all chat history?';
-        const confirmTxt = currentLang === 'vi' ? 'Xóa' : 'Delete';
+    // ── Reset chat (Start a new session without deleting DB history)
+    async function resetChat() {
+        const title = currentLang === 'vi' ? 'Làm mới đoạn chat' : 'Reset chat';
+        const msg = currentLang === 'vi' ? 'Bạn có muốn bắt đầu một cuộc trò chuyện mới không? (Lịch sử cũ vẫn được lưu lại)' : 'Do you want to start a new chat? (Previous history will be saved)';
+        const confirmTxt = currentLang === 'vi' ? 'Làm mới' : 'Reset';
         const cancelTxt = currentLang === 'vi' ? 'Hủy' : 'Cancel';
 
-        const performDelete = async () => {
-            try {
-                await fetch(`/Chat/DeleteHistory?sessionId=${encodeURIComponent(chatSessionId)}`, { method: 'POST' });
-            } catch (e) {
-                console.error('Delete history failed', e);
-            }
-
+        const performReset = () => {
             messagesEl.innerHTML = '';
             chatSessionId = '';
             localStorage.removeItem(SESSION_KEY);
@@ -352,11 +347,11 @@
                 message: msg,
                 confirmText: confirmTxt,
                 cancelText: cancelTxt,
-                onConfirm: performDelete
+                onConfirm: performReset
             });
         } else {
             if (confirm(msg)) {
-                await performDelete();
+                performReset();
             }
         }
     }
@@ -386,9 +381,9 @@
                     <div id="chat-header-name">${t.title}</div>
                     <div id="chat-header-status">${currentLang === 'vi' ? 'Trực tuyến' : 'Online'}</div>
                 </div>
-                <button id="chat-clear-btn" title="${currentLang === 'vi' ? 'Xóa lịch sử chat' : 'Delete history'}">
-                    <span class="material-symbols-outlined" style="font-size:14px;">delete</span>
-                    ${currentLang === 'vi' ? 'Xóa' : 'Clear'}
+                <button id="chat-reset-btn" title="${currentLang === 'vi' ? 'Làm mới cuộc trò chuyện' : 'Reset chat'}">
+                    <span class="material-symbols-outlined" style="font-size:14px;">restart_alt</span>
+                    ${currentLang === 'vi' ? 'Làm mới' : 'Reset'}
                 </button>
             </div>
             <div id="chat-messages"></div>
@@ -435,9 +430,9 @@
         // ── Event listeners
         toggleBtn.addEventListener('click', togglePanel);
 
-        document.getElementById('chat-clear-btn').addEventListener('click', (e) => {
+        document.getElementById('chat-reset-btn').addEventListener('click', (e) => {
             e.stopPropagation();
-            clearHistory();
+            resetChat();
         });
 
         sendBtn.addEventListener('click', () => sendMessage());
