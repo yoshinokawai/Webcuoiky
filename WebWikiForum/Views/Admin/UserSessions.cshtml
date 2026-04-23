@@ -55,7 +55,7 @@
                             </h3>
                             <span class="text-[11px] text-slate-400">@session.LastMessageAt.ToLocalTime().ToString("HH:mm dd/MM")</span>
                         </div>
-                        <p class="text-sm text-slate-500 dark:text-slate-400 truncate pr-4">
+                        <p class="chat-message-preview text-sm text-slate-500 dark:text-slate-400 truncate pr-4">
                             @session.LastMessage
                         </p>
                     </div>
@@ -85,6 +85,34 @@
 
 @section Scripts {
 <script>
+    function renderMarkdown(text) {
+        if (!text) return '';
+        return text
+            .replace(/&/g, '&amp;')
+            .replace(/<(?!\/?a(?=>|\s.*>))/g, '&lt;')
+            .replace(/(?<!<a.*)>(?<!<\/a>)/g, '&gt;')
+            .replace(/```[\s\S]*?```/g, m => `<code>${m.slice(3, -3).trim()}</code>`)
+            .replace(/`([^`]+)`/g, '<code>$1</code>')
+            .replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>')
+            .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+            .replace(/\*(.+?)\*/g, '<em>$1</em>')
+            .replace(/^[\*\-] (.+)$/gm, '<li>$1</li>')
+            .replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>')
+            .replace(/^\d+\. (.+)$/gm, '<li>$1</li>')
+            .replace(/\n{2,}/g, '</p><p>')
+            .replace(/\n/g, ' ')
+            .replace(/^(.*)$/, '<p>$1</p>')
+            .replace(/<p><\/p>/g, '');
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.chat-message-preview').forEach(el => {
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = renderMarkdown(el.textContent.trim());
+            el.textContent = tempDiv.textContent || tempDiv.innerText || '';
+        });
+    });
+
     async function deleteSession(event, sessionId) {
         event.preventDefault();
         event.stopPropagation();

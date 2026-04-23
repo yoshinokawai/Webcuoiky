@@ -166,7 +166,7 @@ async function sendAdminReply(sessionId) {
 // Auto scroll to bottom on load and render markdown
 window.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.chat-message-text').forEach(el => {
-        el.innerHTML = renderMarkdown(el.textContent);
+        el.innerHTML = renderMarkdown(el.textContent.trim());
     });
     
     const box = document.getElementById('chat-detail-box');
