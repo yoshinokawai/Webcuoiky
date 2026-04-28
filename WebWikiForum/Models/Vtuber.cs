@@ -23,6 +23,9 @@ namespace WebWikiForum.Models
         public string Lore { get; set; } = string.Empty;
 
         public string AvatarUrl { get; set; } = string.Empty;
+        
+        public string? CoverImageUrl { get; set; }
+        public string? IntroVideoUrl { get; set; }
 
         [StringLength(50)]
         public string Status { get; set; } = "Pending";

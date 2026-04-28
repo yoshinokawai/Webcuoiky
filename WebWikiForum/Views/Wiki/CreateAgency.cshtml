@@ -17,9 +17,10 @@
 
     <form asp-action="CreateAgency" method="post" enctype="multipart/form-data" class="space-y-8">
         <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
-            <!-- Left: Logo Upload -->
+            <!-- Left: Logo & Cover Upload -->
             <div class="md:col-span-4 space-y-4">
                 <div class="relative group">
+                    <label class="block text-xs font-black text-slate-400 uppercase tracking-widest mb-2 text-center">@Localizer["Wiki_Label_Avatar"]</label>
                     <div class="aspect-square rounded-3xl bg-slate-100 dark:bg-slate-800 border-2 border-dashed border-slate-200 dark:border-slate-700 flex flex-col items-center justify-center overflow-hidden relative">
                         <div id="placeholder" class="flex flex-col items-center">
                             <span class="material-symbols-outlined text-4xl text-slate-300">add_photo_alternate</span>
@@ -33,6 +34,22 @@
                         <input type="file" name="logoFile" id="logoInput" class="absolute inset-0 opacity-0 cursor-pointer" accept="image/*" onchange="previewImage(this)" />
                     </div>
                     <p class="text-[10px] text-center text-slate-400 mt-3 font-bold uppercase tracking-widest">@Localizer["Wiki_Logo_Recommended_Text"]</p>
+                </div>
+
+                <div class="relative group mt-6">
+                    <label class="block text-xs font-black text-slate-400 uppercase tracking-widest mb-2 text-center">@Localizer["Wiki_Label_CoverImage"]</label>
+                    <div class="aspect-video rounded-3xl bg-slate-100 dark:bg-slate-800 border-2 border-dashed border-slate-200 dark:border-slate-700 flex flex-col items-center justify-center overflow-hidden relative">
+                        <div id="coverPlaceholder" class="flex flex-col items-center">
+                            <span class="material-symbols-outlined text-4xl text-slate-300">wallpaper</span>
+                            <p class="text-[10px] uppercase font-bold text-slate-400 mt-2">@Localizer["Wiki_Logo_Upload_Text"]</p>
+                        </div>
+                        <img id="coverPreview" class="w-full h-full object-cover hidden" />
+                        
+                        <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer">
+                            <span class="text-white font-bold text-sm">@Localizer["Wiki_Logo_Select_Text"]</span>
+                        </div>
+                        <input type="file" name="coverImageFile" id="coverImageInput" class="absolute inset-0 opacity-0 cursor-pointer" accept="image/*" onchange="previewCoverImage(this)" />
+                    </div>
                 </div>
             </div>
 
@@ -90,6 +107,10 @@
                                 <label asp-for="TwitterUrl" class="block text-xs font-bold text-slate-500 mb-1">@Localizer["Wiki_Label_Twitter"]</label>
                                 <input asp-for="TwitterUrl" type="url" class="w-full px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all text-sm" placeholder="https://twitter.com/..." />
                             </div>
+                            <div>
+                                <label asp-for="IntroVideoUrl" class="block text-xs font-bold text-slate-500 mb-1">@Localizer["Wiki_Label_IntroVideo"]</label>
+                                <input asp-for="IntroVideoUrl" type="url" class="w-full px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all text-sm" placeholder="https://youtube.com/watch?v=..." />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -115,6 +136,17 @@
                 document.getElementById('logoPreview').src = e.target.result;
                 document.getElementById('logoPreview').classList.remove('hidden');
                 if(document.getElementById('placeholder')) document.getElementById('placeholder').classList.add('hidden');
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    function previewCoverImage(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                document.getElementById('coverPreview').src = e.target.result;
+                document.getElementById('coverPreview').classList.remove('hidden');
+                if(document.getElementById('coverPlaceholder')) document.getElementById('coverPlaceholder').classList.add('hidden');
             }
             reader.readAsDataURL(input.files[0]);
         }

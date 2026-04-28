@@ -41,5 +41,9 @@ namespace WebWikiForum.ViewModels
         [Url(ErrorMessage = "Please enter a valid URL")]
         [Display(Name = "YouTube Channel URL")]
         public string? YoutubeUrl { get; set; }
+
+        [Url(ErrorMessage = "Please enter a valid URL")]
+        [Display(Name = "Wiki_Label_IntroVideo")]
+        public string? IntroVideoUrl { get; set; }
     }
 }

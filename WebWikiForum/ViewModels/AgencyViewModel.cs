@@ -34,5 +34,9 @@ namespace WebWikiForum.ViewModels
         [Url]
         [Display(Name = "Twitter / X")]
         public string? TwitterUrl { get; set; }
+
+        [Url]
+        [Display(Name = "Wiki_Label_IntroVideo")]
+        public string? IntroVideoUrl { get; set; }
     }
 }

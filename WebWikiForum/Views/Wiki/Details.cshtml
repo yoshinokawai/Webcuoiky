@@ -1,14 +1,33 @@
 @model WebWikiForum.Models.Vtuber
 @{
     ViewData["Title"] = Model.Name + " - " + Localizer["Wiki_Profile_Type"].Value;
+
+    string GetYoutubeId(string? url) {
+        if (string.IsNullOrEmpty(url)) return "";
+        try {
+            var uri = new Uri(url);
+            if (uri.Host.Contains("youtu.be")) return uri.AbsolutePath.Trim('/');
+            if (uri.Query.Contains("v=")) {
+                var q = uri.Query.TrimStart('?').Split('&').FirstOrDefault(x => x.StartsWith("v="));
+                if (q != null) return q.Substring(2);
+            }
+        } catch {}
+        return "";
+    }
+    
+    string introVideoId = GetYoutubeId(Model.IntroVideoUrl);
 }
 
 <div class="max-w-4xl mx-auto px-4 py-8 sm:px-6 lg:px-8 mt-12 mb-20">
     <div class="bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-800 rounded-3xl overflow-hidden shadow-xl">
         
-        <!-- Header Banner (Blurred Avatar) -->
+        <!-- Header Banner -->
         <div class="h-64 sm:h-80 relative overflow-hidden bg-primary/10">
-            @if (!string.IsNullOrEmpty(Model.AvatarUrl))
+            @if (!string.IsNullOrEmpty(Model.CoverImageUrl))
+            {
+                <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('@Model.CoverImageUrl')"></div>
+            }
+            else if (!string.IsNullOrEmpty(Model.AvatarUrl))
             {
                 <div class="absolute inset-0 bg-cover bg-center blur-2xl opacity-50 scale-110" style="background-image: url('@Model.AvatarUrl')"></div>
             }
@@ -96,6 +115,25 @@
                     }
                 </div>
             </div>
+            
+            <!-- Intro Video Section -->
+            @if (!string.IsNullOrEmpty(Model.IntroVideoUrl) && !string.IsNullOrEmpty(introVideoId))
+            {
+                <div class="mt-12">
+                    <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-200 mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-red-500">play_circle</span>
+                        @Localizer["Wiki_Label_IntroVideo"]
+                    </h2>
+                    <a href="@Model.IntroVideoUrl" target="_blank" rel="noopener noreferrer" class="block group relative rounded-2xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-900 aspect-video max-w-3xl">
+                        <img src="https://img.youtube.com/vi/@introVideoId/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/@introVideoId/hqdefault.jpg'" alt="Intro Video Thumbnail" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                        <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+                            <div class="w-20 h-20 bg-red-600/90 text-white rounded-full flex items-center justify-center shadow-xl transform transition-transform duration-300 group-hover:scale-110 group-hover:bg-red-600">
+                                <span class="material-symbols-outlined text-4xl ml-1">play_arrow</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
             
         </div>
     </div>

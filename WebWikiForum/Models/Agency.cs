@@ -13,6 +13,9 @@ namespace WebWikiForum.Models
         public string Name { get; set; } = string.Empty;
 
         public string LogoUrl { get; set; } = string.Empty;
+        
+        public string? CoverImageUrl { get; set; }
+        public string? IntroVideoUrl { get; set; }
 
         [StringLength(50)]
         public string Region { get; set; } = string.Empty;

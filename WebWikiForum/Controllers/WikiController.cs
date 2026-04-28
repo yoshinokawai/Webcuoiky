@@ -264,7 +264,7 @@ namespace WebWikiForum.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public async Task<IActionResult> Create(VtuberViewModel model, IFormFile? avatarFile)
+        public async Task<IActionResult> Create(VtuberViewModel model, IFormFile? avatarFile, IFormFile? coverImageFile)
         {
             if (ModelState.IsValid)
             {
@@ -280,20 +280,28 @@ namespace WebWikiForum.Controllers
                         fileName = "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=800&auto=format&fit=crop"; // Default
                     }
 
-                    var vtuber = new Vtuber
-                    {
-                        Name = model.Name,
-                        Age = model.Age,
-                        DebutDate = model.DebutDate,
-                        Birthday = model.Birthday,
-                        Lore = model.Lore,
-                        AvatarUrl = fileName,
-                        AgencyId = model.AgencyId,
-                        IsIndependent = model.AgencyId == null,
-                        Region = model.Region,
-                        Language = model.Language,
-                        Tags = model.Tags,
-                        YoutubeUrl = model.YoutubeUrl,
+                        string? coverFileName = null;
+                        if (coverImageFile != null && coverImageFile.Length > 0)
+                        {
+                            coverFileName = await _fileService.UploadImageAsync(coverImageFile, "vtubers");
+                        }
+
+                        var vtuber = new Vtuber
+                        {
+                            Name = model.Name,
+                            Age = model.Age,
+                            DebutDate = model.DebutDate,
+                            Birthday = model.Birthday,
+                            Lore = model.Lore,
+                            AvatarUrl = fileName,
+                            CoverImageUrl = coverFileName,
+                            AgencyId = model.AgencyId,
+                            IsIndependent = model.AgencyId == null,
+                            Region = model.Region,
+                            Language = model.Language,
+                            Tags = model.Tags,
+                            YoutubeUrl = model.YoutubeUrl,
+                            IntroVideoUrl = model.IntroVideoUrl,
                         Status = "Approved" // Auto-approve for demo
                     };
 
@@ -330,17 +338,19 @@ namespace WebWikiForum.Controllers
                 TalentCount = agency.TalentCount,
                 WebsiteUrl = agency.WebsiteUrl,
                 YoutubeUrl = agency.YoutubeUrl,
-                TwitterUrl = agency.TwitterUrl
+                TwitterUrl = agency.TwitterUrl,
+                IntroVideoUrl = agency.IntroVideoUrl
             };
 
             ViewBag.CurrentLogo = agency.LogoUrl;
+            ViewBag.CurrentCover = agency.CoverImageUrl;
             ViewBag.Id = agency.Id;
             return View(model);
         }
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public async Task<IActionResult> EditAgency(int id, AgencyViewModel model, IFormFile? logoFile)
+        public async Task<IActionResult> EditAgency(int id, AgencyViewModel model, IFormFile? logoFile, IFormFile? coverImageFile)
         {
             if (ModelState.IsValid)
             {
@@ -369,6 +379,17 @@ namespace WebWikiForum.Controllers
                         }
                     }
 
+                    if (coverImageFile != null && coverImageFile.Length > 0)
+                    {
+                        if (!string.IsNullOrEmpty(agency.CoverImageUrl))
+                        {
+                            var oldCoverName = Path.GetFileName(agency.CoverImageUrl);
+                            if (!string.IsNullOrEmpty(oldCoverName)) _fileService.DeleteFile(oldCoverName, "agencies");
+                        }
+                        string? coverFileName = await _fileService.UploadImageAsync(coverImageFile, "agencies");
+                        if (!string.IsNullOrEmpty(coverFileName)) agency.CoverImageUrl = coverFileName;
+                    }
+
                     agency.Name = model.Name;
                     agency.Region = model.Region;
                     agency.Focus = model.Focus;
@@ -377,6 +398,7 @@ namespace WebWikiForum.Controllers
                     agency.WebsiteUrl = model.WebsiteUrl;
                     agency.YoutubeUrl = model.YoutubeUrl;
                     agency.TwitterUrl = model.TwitterUrl;
+                    agency.IntroVideoUrl = model.IntroVideoUrl;
 
                     _context.Update(agency);
                     await _context.SaveChangesAsync();
@@ -404,7 +426,7 @@ namespace WebWikiForum.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public async Task<IActionResult> CreateAgency(AgencyViewModel model, IFormFile logoFile)
+        public async Task<IActionResult> CreateAgency(AgencyViewModel model, IFormFile logoFile, IFormFile? coverImageFile)
         {
             if (ModelState.IsValid)
             {
@@ -420,6 +442,12 @@ namespace WebWikiForum.Controllers
                         fileName = "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=800&auto=format&fit=crop"; // Default logo
                     }
 
+                    string? coverFileName = null;
+                    if (coverImageFile != null && coverImageFile.Length > 0)
+                    {
+                        coverFileName = await _fileService.UploadImageAsync(coverImageFile, "agencies");
+                    }
+
                     var agency = new Agency
                     {
                         Name = model.Name,
@@ -430,7 +458,9 @@ namespace WebWikiForum.Controllers
                         WebsiteUrl = model.WebsiteUrl,
                         YoutubeUrl = model.YoutubeUrl,
                         TwitterUrl = model.TwitterUrl,
-                        LogoUrl = fileName
+                        LogoUrl = fileName,
+                        CoverImageUrl = coverFileName,
+                        IntroVideoUrl = model.IntroVideoUrl
                     };
 
                     _context.Add(agency);
@@ -531,18 +561,20 @@ namespace WebWikiForum.Controllers
                 Region = vtuber.Region,
                 Language = vtuber.Language,
                 Tags = vtuber.Tags,
-                YoutubeUrl = vtuber.YoutubeUrl
+                YoutubeUrl = vtuber.YoutubeUrl,
+                IntroVideoUrl = vtuber.IntroVideoUrl
             };
 
             ViewBag.Agencies = await _context.Agencies.ToListAsync();
             ViewBag.CurrentAvatar = vtuber.AvatarUrl;
+            ViewBag.CurrentCover = vtuber.CoverImageUrl;
             ViewBag.Id = vtuber.Id;
             return View(model);
         }
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, VtuberViewModel model, IFormFile? avatarFile)
+        public async Task<IActionResult> Edit(int id, VtuberViewModel model, IFormFile? avatarFile, IFormFile? coverImageFile)
         {
             if (ModelState.IsValid)
             {
@@ -571,6 +603,17 @@ namespace WebWikiForum.Controllers
                         }
                     }
 
+                    if (coverImageFile != null && coverImageFile.Length > 0)
+                    {
+                        if (!string.IsNullOrEmpty(vtuber.CoverImageUrl))
+                        {
+                            var oldCoverName = Path.GetFileName(vtuber.CoverImageUrl);
+                            if (!string.IsNullOrEmpty(oldCoverName)) _fileService.DeleteFile(oldCoverName, "vtubers");
+                        }
+                        string? coverFileName = await _fileService.UploadImageAsync(coverImageFile, "vtubers");
+                        if (!string.IsNullOrEmpty(coverFileName)) vtuber.CoverImageUrl = coverFileName;
+                    }
+
                     vtuber.Name = model.Name;
                     vtuber.Age = model.Age;
                     vtuber.DebutDate = model.DebutDate;
@@ -582,6 +625,7 @@ namespace WebWikiForum.Controllers
                     vtuber.Language = model.Language;
                     vtuber.Tags = model.Tags;
                     vtuber.YoutubeUrl = model.YoutubeUrl;
+                    vtuber.IntroVideoUrl = model.IntroVideoUrl;
 
                     _context.Update(vtuber);
                     await _context.SaveChangesAsync();

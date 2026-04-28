@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <data name="Status_Active" xml:space="preserve">
     <value>Active</value>
@@ -1715,9 +1715,6 @@ Community Hub</value>
   <data name="Wiki_Create_Event_Subtitle" xml:space="preserve">
     <value>Share the latest news, debuts, or community highlights</value>
   </data>
-  <data name="Wiki_Label_CoverImage" xml:space="preserve">
-    <value>Cover Image</value>
-  </data>
   <data name="Wiki_Label_EventTitle" xml:space="preserve">
     <value>Event Title</value>
   </data>
@@ -2642,4 +2639,10 @@ Community Hub</value>
   <data name="Profile_NoBio" xml:space="preserve">
     <value>This user hasn't shared a bio yet.</value>
   </data>
-</root>
+  <data name="Wiki_Label_IntroVideo" xml:space="preserve">
+    <value>Intro Video Link (YouTube)</value>
+  </data>
+  <data name="Wiki_Label_CoverImage" xml:space="preserve">
+    <value>Cover Image</value>
+  </data>
+</root>

@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <data name="Nav_Home" xml:space="preserve">
     <value>ホーム</value>
@@ -207,9 +207,6 @@
   <data name="Wiki_Btn_Submit" xml:space="preserve">
     <value>プロフィールを送信</value>
   </data>
-  <data name="Wiki_Btn_Cancel" xml:space="preserve">
-    <value>キャンセル</value>
-  </data>
   <data name="Wiki_Required_Name" xml:space="preserve">
     <value>名前を入力してください。</value>
   </data>
@@ -348,9 +345,6 @@
   <data name="Dash_Col_Actions" xml:space="preserve">
     <value>アクション</value>
   </data>
-  <data name="Dash_Status_Approved" xml:space="preserve">
-    <value>承認済み</value>
-  </data>
   <data name="Dash_Action_View" xml:space="preserve">
     <value>プロフィールを表示</value>
   </data>
@@ -372,17 +366,8 @@
   <data name="Dash_Empty_Btn" xml:space="preserve">
     <value>最初のVTuberを追加</value>
   </data>
-  <data name="Dash_No_History" xml:space="preserve">
-    <value>履歴が提供されていません。</value>
-  </data>
   <data name="Dash_Debuted" xml:space="preserve">
     <value>デビュー日:</value>
-  </data>
-  <data name="Dash_Unknown" xml:space="preserve">
-    <value>不明</value>
-  </data>
-  <data name="Dash_Independent" xml:space="preserve">
-    <value>個人勢</value>
   </data>
   <data name="Dash_Success" xml:space="preserve">
     <value>成功！</value>
@@ -1679,23 +1664,14 @@
   <data name="Wiki_Create_Event_Subtitle" xml:space="preserve">
     <value>最新ニュース、デビュー、またはコミュニティのハイライトを共有</value>
   </data>
-  <data name="Wiki_Label_CoverImage" xml:space="preserve">
-    <value>カバー画像</value>
-  </data>
   <data name="Wiki_Label_EventTitle" xml:space="preserve">
     <value>イベント名</value>
-  </data>
-  <data name="Wiki_Label_EventType" xml:space="preserve">
-    <value>イベント種別</value>
   </data>
   <data name="Wiki_Label_AuthorName" xml:space="preserve">
     <value>投稿者名</value>
   </data>
   <data name="Wiki_Label_RichDesc" xml:space="preserve">
     <value>詳細説明</value>
-  </data>
-  <data name="Wiki_Label_Featured" xml:space="preserve">
-    <value>トップページに掲載</value>
   </data>
   <data name="Wiki_Btn_PublishEvent" xml:space="preserve">
     <value>イベントを公開</value>
@@ -1772,38 +1748,8 @@
   <data name="Wiki_Placeholder_Agency_Focus" xml:space="preserve">
     <value>例：アイドル、ゲーム、技術</value>
   </data>
-  <data name="Wiki_Event_Add_Subtitle_News" xml:space="preserve">
-    <value>最新のニュース、デビュー、またはコミュニティのハイライトを共有しましょう</value>
-  </data>
-  <data name="Wiki_Label_Upload_Cover" xml:space="preserve">
-    <value>カバー画像をアップロード</value>
-  </data>
   <data name="Wiki_Label_Update_Cover" xml:space="preserve">
     <value>カバー画像を更新</value>
-  </data>
-  <data name="Wiki_Placeholder_EventTitle_News" xml:space="preserve">
-    <value>例：ホロライブ 5th Fes. 詳細発表</value>
-  </data>
-  <data name="Wiki_Event_Type_Event" xml:space="preserve">
-    <value>イベント</value>
-  </data>
-  <data name="Wiki_Event_Type_Debut" xml:space="preserve">
-    <value>デビュー</value>
-  </data>
-  <data name="Wiki_Event_Type_Music" xml:space="preserve">
-    <value>音楽</value>
-  </data>
-  <data name="Wiki_Event_Type_ASMR" xml:space="preserve">
-    <value>ASMR</value>
-  </data>
-  <data name="Wiki_Event_Type_Gaming" xml:space="preserve">
-    <value>ゲーム</value>
-  </data>
-  <data name="Wiki_Placeholder_EventContent" xml:space="preserve">
-    <value>イベントの詳細を教えてください...</value>
-  </data>
-  <data name="Wiki_Btn_PublishEvent_News" xml:space="preserve">
-    <value>イベントを公開</value>
   </data>
   <data name="Wiki_Event_Edit_Subtitle_News" xml:space="preserve">
     <value>このニュースまたはハイライトの情報を更新します</value>
@@ -2515,5 +2461,11 @@
   </data>
   <data name="Modal_Delete_Title" xml:space="preserve">
     <value>削除の確認</value>
+  </data>
+  <data name="Wiki_Label_IntroVideo" xml:space="preserve">
+    <value>紹介動画のリンク (YouTube)</value>
+  </data>
+  <data name="Wiki_Label_CoverImage" xml:space="preserve">
+    <value>カバー画像</value>
   </data>
 </root>
