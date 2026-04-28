@@ -1,4 +1,4 @@
-@model WebWikiForum.Models.Agency
+﻿@model WebWikiForum.Models.Agency
 @{
     ViewData["Title"] = Model.Name + " - VTuber Agency Profile";
 
@@ -24,7 +24,7 @@
     <div class="relative h-64 md:h-80 w-full overflow-hidden">
         @if (!string.IsNullOrEmpty(Model.CoverImageUrl))
         {
-            <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('@Model.CoverImageUrl')"></div>
+            <div class="absolute inset-0 bg-cover bg-center cursor-pointer pointer-events-auto" data-lightbox="@Model.CoverImageUrl" style="background-image: url('@Model.CoverImageUrl')"></div>
         }
         else if (!string.IsNullOrEmpty(Model.LogoUrl))
         {
@@ -34,13 +34,13 @@
         {
             <div class="absolute inset-0 bg-cover bg-center" style="background-image: linear-gradient(to bottom, rgba(15, 12, 41, 0.6), rgba(48, 43, 99, 0.9));"></div>
         }
-        <div class="absolute inset-0 flex items-center justify-center">
-            <div class="max-w-7xl mx-auto px-4 w-full flex flex-col md:flex-row items-center gap-8 translate-y-12 md:translate-y-16">
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div class="max-w-7xl mx-auto px-4 w-full flex flex-col md:flex-row items-center gap-8 translate-y-12 md:translate-y-16 pointer-events-auto">
                 <!-- Agency Logo Large -->
                 <div class="w-32 h-32 md:w-48 md:h-48 rounded-3xl bg-white dark:bg-slate-800 shadow-2xl shadow-primary/20 border-4 border-white dark:border-slate-800 flex items-center justify-center overflow-hidden shrink-0">
                     @if (!string.IsNullOrEmpty(Model.LogoUrl))
                     {
-                        <img src="@Model.LogoUrl" alt="@Model.Name" class="w-full h-full object-cover" />
+                        <img src="@Model.LogoUrl" alt="@Model.Name" class="w-full h-full object-cover cursor-pointer hover:opacity-90 transition-opacity lightbox-img" data-lightbox="@Model.LogoUrl" />
                     }
                     else
                     {

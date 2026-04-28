@@ -40,7 +40,7 @@
                         <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer">
                             <span class="text-white font-bold text-sm">@Localizer["Wiki_Logo_Change_Text"]</span>
                         </div>
-                        <input type="file" name="logoFile" id="logoInput" class="absolute inset-0 opacity-0 cursor-pointer" accept="image/*" onchange="previewImage(this)" />
+                        <input type="file" name="logoFile" id="logoInput" class="absolute inset-0 opacity-0 cursor-pointer" accept="image/*" onchange="openCropper(this, 'logo')" />
                     </div>
                     <p class="text-[10px] text-center text-slate-400 mt-3 font-bold uppercase tracking-widest">@Localizer["Wiki_Logo_Recommended_Text"]</p>
                 </div>
@@ -64,7 +64,7 @@
                         <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer">
                             <span class="text-white font-bold text-sm">@Localizer["Wiki_Logo_Change_Text"]</span>
                         </div>
-                        <input type="file" name="coverImageFile" id="coverImageInput" class="absolute inset-0 opacity-0 cursor-pointer" accept="image/*" onchange="previewCoverImage(this)" />
+                        <input type="file" name="coverImageFile" id="coverImageInput" class="absolute inset-0 opacity-0 cursor-pointer" accept="image/*" onchange="openCropper(this, 'cover')" />
                     </div>
                 </div>
             </div>
@@ -144,27 +144,152 @@
     </form>
 </div>
 
+<!-- Image Cropper Modal -->
+<div id="cropperModal" class="fixed inset-0 z-[200] hidden">
+    <div class="flex items-center justify-center min-h-screen p-4">
+        <div class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm"></div>
+        <div class="relative bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-2xl w-full max-w-2xl border border-slate-200 dark:border-slate-700">
+            <div class="flex items-center justify-between mb-4">
+                <div>
+                    <h3 id="cropperTitle" class="text-lg font-black text-slate-900 dark:text-white">Điều chỉnh ảnh</h3>
+                    <p id="cropperSubtitle" class="text-xs text-slate-500 mt-0.5">Kéo để chọn vùng ảnh phù hợp</p>
+                </div>
+                <button type="button" onclick="closeCropper()" class="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 transition-colors">
+                    <span class="material-symbols-outlined text-[18px]">close</span>
+                </button>
+            </div>
+
+            <div class="flex gap-2 mb-3">
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 bg-primary/10 text-primary text-xs font-bold rounded-full">
+                    <span class="material-symbols-outlined text-[14px]">crop</span>
+                    <span id="cropRatioText">1:1</span>
+                </span>
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-500 text-xs rounded-full">
+                    <span class="material-symbols-outlined text-[14px]">pan_zoom</span>
+                    Scroll để zoom
+                </span>
+            </div>
+
+            <div class="relative bg-slate-950 rounded-xl overflow-hidden" style="max-height:400px">
+                <img id="cropperImage" class="max-w-full block" />
+            </div>
+
+            <div class="flex items-center gap-2 mt-4">
+                <button type="button" onclick="cropperInstance && cropperInstance.rotate(-90)" class="flex-1 py-2 text-sm font-bold bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 rounded-xl transition-colors flex items-center justify-center gap-1">
+                    <span class="material-symbols-outlined text-[18px]">rotate_left</span> -90°
+                </button>
+                <button type="button" onclick="cropperInstance && cropperInstance.rotate(90)" class="flex-1 py-2 text-sm font-bold bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 rounded-xl transition-colors flex items-center justify-center gap-1">
+                    <span class="material-symbols-outlined text-[18px]">rotate_right</span> +90°
+                </button>
+                <button type="button" onclick="cropperInstance && cropperInstance.scaleX(cropperInstance.getData().scaleX === -1 ? 1 : -1)" class="flex-1 py-2 text-sm font-bold bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 rounded-xl transition-colors flex items-center justify-center gap-1">
+                    <span class="material-symbols-outlined text-[18px]">flip</span> Lật ngang
+                </button>
+                <button type="button" onclick="cropperInstance && cropperInstance.reset()" class="flex-1 py-2 text-sm font-bold bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 rounded-xl transition-colors flex items-center justify-center gap-1">
+                    <span class="material-symbols-outlined text-[18px]">refresh</span> Reset
+                </button>
+            </div>
+
+            <div class="flex gap-3 mt-4">
+                <button type="button" onclick="closeCropper()" class="flex-1 py-3 text-sm font-bold border border-slate-200 dark:border-slate-700 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">Huỷ</button>
+                <button type="button" onclick="applyCrop()" class="flex-2 px-8 py-3 text-sm font-bold bg-primary text-white rounded-xl shadow-sm hover:bg-primary-dark transition-colors flex items-center justify-center gap-2">
+                    <span class="material-symbols-outlined text-[18px]">check_circle</span>
+                    Áp dụng & Xem trước
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"></script>
 <script>
-    function previewImage(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                document.getElementById('logoPreview').src = e.target.result;
-                document.getElementById('logoPreview').classList.remove('hidden');
-                if(document.getElementById('placeholder')) document.getElementById('placeholder').classList.add('hidden');
+    let cropperInstance = null;
+    let currentCropTarget = null;
+    let currentFileInput = null;
+
+    function openCropper(input, target) {
+        if (!input.files || !input.files[0]) return;
+        currentCropTarget = target;
+        currentFileInput = input;
+
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const img = document.getElementById('cropperImage');
+            img.src = e.target.result;
+
+            if (target === 'logo') {
+                document.getElementById('cropperTitle').textContent = 'Điều chỉnh Logo';
+                document.getElementById('cropperSubtitle').textContent = 'Chọn vùng vuông (1:1) cho logo';
+                document.getElementById('cropRatioText').textContent = '1 : 1';
+            } else {
+                document.getElementById('cropperTitle').textContent = 'Điều chỉnh ảnh bìa';
+                document.getElementById('cropperSubtitle').textContent = 'Chọn vùng banner ngang (3:1) cho cover';
+                document.getElementById('cropRatioText').textContent = '3 : 1';
             }
-            reader.readAsDataURL(input.files[0]);
-        }
+
+            document.getElementById('cropperModal').classList.remove('hidden');
+
+            if (cropperInstance) { cropperInstance.destroy(); cropperInstance = null; }
+
+            img.onload = () => {
+                cropperInstance = new Cropper(img, {
+                    aspectRatio: target === 'logo' ? 1 : 3 / 1,
+                    viewMode: 1,
+                    autoCropArea: 0.85,
+                    movable: true,
+                    zoomable: true,
+                    rotatable: true,
+                    scalable: true,
+                    guides: true,
+                    center: true,
+                    highlight: true,
+                    background: true,
+                });
+            };
+            if (img.complete) img.onload();
+        };
+        reader.readAsDataURL(input.files[0]);
     }
-    function previewCoverImage(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                document.getElementById('coverPreview').src = e.target.result;
-                document.getElementById('coverPreview').classList.remove('hidden');
-                if(document.getElementById('coverPlaceholder')) document.getElementById('coverPlaceholder').classList.add('hidden');
+
+    function closeCropper() {
+        document.getElementById('cropperModal').classList.add('hidden');
+        if (cropperInstance) { cropperInstance.destroy(); cropperInstance = null; }
+        if (currentFileInput) currentFileInput.value = '';
+    }
+
+    function applyCrop() {
+        if (!cropperInstance) return;
+        const canvas = cropperInstance.getCroppedCanvas(
+            currentCropTarget === 'logo'
+                ? { width: 512, height: 512 }
+                : { width: 1500, height: 500 }
+        );
+
+        canvas.toBlob((blob) => {
+            const fileName = currentCropTarget === 'logo' ? 'logo_cropped.jpg' : 'cover_cropped.jpg';
+            const croppedFile = new File([blob], fileName, { type: 'image/jpeg' });
+
+            const dt = new DataTransfer();
+            dt.items.add(croppedFile);
+            currentFileInput.files = dt.files;
+
+            const url = canvas.toDataURL('image/jpeg', 0.9);
+            if (currentCropTarget === 'logo') {
+                const preview = document.getElementById('logoPreview');
+                preview.src = url;
+                preview.classList.remove('hidden');
+                const ph = document.getElementById('placeholder');
+                if (ph) ph.classList.add('hidden');
+            } else {
+                const preview = document.getElementById('coverPreview');
+                preview.src = url;
+                preview.classList.remove('hidden');
+                const ph = document.getElementById('coverPlaceholder');
+                if (ph) ph.classList.add('hidden');
             }
-            reader.readAsDataURL(input.files[0]);
-        }
+
+            document.getElementById('cropperModal').classList.add('hidden');
+            if (cropperInstance) { cropperInstance.destroy(); cropperInstance = null; }
+        }, 'image/jpeg', 0.9);
     }
 </script>

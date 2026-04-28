@@ -29,6 +29,7 @@ namespace WebWikiForum.Models
 
         public string? Bio { get; set; }
         public string? AvatarUrl { get; set; }
+        public string? CoverImageUrl { get; set; }
 
         public string? DiscordUrl { get; set; }
         public string? TwitterUrl { get; set; }

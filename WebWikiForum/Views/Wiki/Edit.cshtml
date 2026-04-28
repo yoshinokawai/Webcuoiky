@@ -39,10 +39,14 @@
                             <div class="text-sm text-slate-600 dark:text-slate-400 flex justify-center items-center gap-1">
                                 <span class="font-medium text-primary hover:text-primary-dark">@Localizer["Wiki_Upload_File"]</span>
                                 <span>@Localizer["Wiki_Upload_Drop"]</span>
-                                <input id="avatarFile" name="avatarFile" type="file" class="sr-only" accept="image/*" onchange="document.getElementById('fileNameDisplay').textContent = this.files[0] ? '@Localizer["Wiki_Upload_Select"].Value.Replace("{0}", "")' + this.files[0].name : '@Localizer["Wiki_Upload_PNG"]'; document.getElementById('fileNameDisplay').className = this.files[0] ? 'text-xs font-bold text-primary mt-2' : 'text-xs text-slate-500 dark:text-slate-500 mt-2';">
+                                <input id="avatarFile" name="avatarFile" type="file" class="sr-only" accept="image/*" onchange="openCropper(this, 'avatar')">
                             </div>
                             <p id="fileNameDisplay" class="text-xs text-slate-500 dark:text-slate-500 mt-2">@Localizer["Wiki_Upload_PNG"]</p>
                         </div>
+                    </div>
+                    <div id="avatarCropPreview" class="hidden mt-3 relative">
+                        <img id="avatarCropPreviewImg" class="w-16 h-16 rounded-full object-cover border-2 border-primary mx-auto" />
+                        <p class="text-xs text-center text-emerald-500 font-bold mt-1">✓ Cropped &amp; Ready</p>
                     </div>
                 </div>
 
@@ -67,10 +71,14 @@
                             <div class="text-sm text-slate-600 dark:text-slate-400 flex justify-center items-center gap-1">
                                 <span class="font-medium text-primary hover:text-primary-dark">@Localizer["Wiki_Upload_File"]</span>
                                 <span>@Localizer["Wiki_Upload_Drop"]</span>
-                                <input id="coverImageFile" name="coverImageFile" type="file" class="sr-only" accept="image/*" onchange="document.getElementById('coverFileNameDisplay').textContent = this.files[0] ? '@Localizer["Wiki_Upload_Select"].Value.Replace("{0}", "")' + this.files[0].name : '@Localizer["Wiki_Upload_PNG"]'; document.getElementById('coverFileNameDisplay').className = this.files[0] ? 'text-xs font-bold text-primary mt-2' : 'text-xs text-slate-500 dark:text-slate-500 mt-2';">
+                                <input id="coverImageFile" name="coverImageFile" type="file" class="sr-only" accept="image/*" onchange="openCropper(this, 'cover')">
                             </div>
                             <p id="coverFileNameDisplay" class="text-xs text-slate-500 dark:text-slate-500 mt-2">@Localizer["Wiki_Upload_PNG"]</p>
                         </div>
+                    </div>
+                    <div id="coverCropPreview" class="hidden mt-3 relative">
+                        <img id="coverCropPreviewImg" class="w-full h-20 rounded-xl object-cover border-2 border-primary" />
+                        <p class="text-xs text-center text-emerald-500 font-bold mt-1">✓ Cropped &amp; Ready</p>
                     </div>
                 </div>
             </div>
@@ -180,6 +188,64 @@
     </div>
 </div>
 
+<!-- Image Cropper Modal -->
+<div id="cropperModal" class="fixed inset-0 z-[200] hidden">
+    <div class="flex items-center justify-center min-h-screen p-4">
+        <div class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm"></div>
+        <div class="relative bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-2xl w-full max-w-2xl border border-slate-200 dark:border-slate-700">
+            <div class="flex items-center justify-between mb-4">
+                <div>
+                    <h3 id="cropperTitle" class="text-lg font-black text-slate-900 dark:text-white">Điều chỉnh ảnh</h3>
+                    <p id="cropperSubtitle" class="text-xs text-slate-500 mt-0.5">Kéo để chọn vùng ảnh phù hợp</p>
+                </div>
+                <button type="button" onclick="closeCropper()" class="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 transition-colors">
+                    <span class="material-symbols-outlined text-[18px]">close</span>
+                </button>
+            </div>
+
+            <!-- Cropper hint badges -->
+            <div class="flex gap-2 mb-3">
+                <span id="cropRatioLabel" class="inline-flex items-center gap-1 px-2 py-0.5 bg-primary/10 text-primary text-xs font-bold rounded-full">
+                    <span class="material-symbols-outlined text-[14px]">crop</span>
+                    <span id="cropRatioText">1:1</span>
+                </span>
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-500 text-xs rounded-full">
+                    <span class="material-symbols-outlined text-[14px]">pan_zoom</span>
+                    Scroll để zoom
+                </span>
+            </div>
+
+            <div class="relative bg-slate-950 rounded-xl overflow-hidden" style="max-height:400px">
+                <img id="cropperImage" class="max-w-full block" />
+            </div>
+
+            <!-- Controls -->
+            <div class="flex items-center gap-2 mt-4">
+                <button type="button" onclick="cropperInstance && cropperInstance.rotate(-90)" class="flex-1 py-2 text-sm font-bold bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 rounded-xl transition-colors flex items-center justify-center gap-1">
+                    <span class="material-symbols-outlined text-[18px]">rotate_left</span> -90°
+                </button>
+                <button type="button" onclick="cropperInstance && cropperInstance.rotate(90)" class="flex-1 py-2 text-sm font-bold bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 rounded-xl transition-colors flex items-center justify-center gap-1">
+                    <span class="material-symbols-outlined text-[18px]">rotate_right</span> +90°
+                </button>
+                <button type="button" onclick="cropperInstance && cropperInstance.scaleX(cropperInstance.getData().scaleX === -1 ? 1 : -1)" class="flex-1 py-2 text-sm font-bold bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 rounded-xl transition-colors flex items-center justify-center gap-1">
+                    <span class="material-symbols-outlined text-[18px]">flip</span> Lật ngang
+                </button>
+                <button type="button" onclick="cropperInstance && cropperInstance.reset()" class="flex-1 py-2 text-sm font-bold bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 rounded-xl transition-colors flex items-center justify-center gap-1">
+                    <span class="material-symbols-outlined text-[18px]">refresh</span> Reset
+                </button>
+            </div>
+
+            <div class="flex gap-3 mt-4">
+                <button type="button" onclick="closeCropper()" class="flex-1 py-3 text-sm font-bold border border-slate-200 dark:border-slate-700 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">Huỷ</button>
+                <button type="button" onclick="applyCrop()" class="flex-2 px-8 py-3 text-sm font-bold bg-primary text-white rounded-xl shadow-sm hover:bg-primary-dark transition-colors flex items-center justify-center gap-2">
+                    <span class="material-symbols-outlined text-[18px]">check_circle</span>
+                    Áp dụng & Xem trước
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Quick Add Agency Modal -->
 <div id="quickAgencyModal" class="fixed inset-0 z-[100] hidden">
     <div class="flex items-center justify-center min-h-screen p-4">
@@ -220,7 +286,107 @@
 </div>
 
 @section Scripts {
+    <!-- Cropper.js CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"></script>
+
     <script>
+        let cropperInstance = null;
+        let currentCropTarget = null; // 'avatar' or 'cover'
+        let currentFileInput = null;
+
+        function openCropper(input, target) {
+            if (!input.files || !input.files[0]) return;
+            currentCropTarget = target;
+            currentFileInput = input;
+
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const img = document.getElementById('cropperImage');
+                img.src = e.target.result;
+
+                // Set modal title & ratio hint
+                if (target === 'avatar') {
+                    document.getElementById('cropperTitle').textContent = 'Điều chỉnh ảnh đại diện';
+                    document.getElementById('cropperSubtitle').textContent = 'Chọn vùng vuông (1:1) cho avatar';
+                    document.getElementById('cropRatioText').textContent = '1 : 1';
+                } else {
+                    document.getElementById('cropperTitle').textContent = 'Điều chỉnh ảnh bìa';
+                    document.getElementById('cropperSubtitle').textContent = 'Chọn vùng banner ngang (3:1) cho cover';
+                    document.getElementById('cropRatioText').textContent = '3 : 1';
+                }
+
+                document.getElementById('cropperModal').classList.remove('hidden');
+
+                // Destroy old instance
+                if (cropperInstance) { cropperInstance.destroy(); cropperInstance = null; }
+
+                // Init cropper after image loads
+                img.onload = () => {
+                    cropperInstance = new Cropper(img, {
+                        aspectRatio: target === 'avatar' ? 1 : 3 / 1,
+                        viewMode: 1,
+                        autoCropArea: 0.85,
+                        movable: true,
+                        zoomable: true,
+                        rotatable: true,
+                        scalable: true,
+                        guides: true,
+                        center: true,
+                        highlight: true,
+                        background: true,
+                    });
+                };
+                // If already loaded (same src won't fire onload again)
+                if (img.complete) img.onload();
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+
+        function closeCropper() {
+            document.getElementById('cropperModal').classList.add('hidden');
+            if (cropperInstance) { cropperInstance.destroy(); cropperInstance = null; }
+            // Reset the file input so user can re-select same file
+            if (currentFileInput) currentFileInput.value = '';
+        }
+
+        function applyCrop() {
+            if (!cropperInstance) return;
+            const canvas = cropperInstance.getCroppedCanvas(
+                currentCropTarget === 'avatar'
+                    ? { width: 512, height: 512 }
+                    : { width: 1500, height: 500 }
+            );
+
+            canvas.toBlob((blob) => {
+                const fileName = currentCropTarget === 'avatar' ? 'avatar_cropped.jpg' : 'cover_cropped.jpg';
+                const croppedFile = new File([blob], fileName, { type: 'image/jpeg' });
+
+                // Replace file input's files
+                const dt = new DataTransfer();
+                dt.items.add(croppedFile);
+                currentFileInput.files = dt.files;
+
+                // Update preview
+                const url = canvas.toDataURL('image/jpeg', 0.9);
+                if (currentCropTarget === 'avatar') {
+                    document.getElementById('avatarCropPreviewImg').src = url;
+                    document.getElementById('avatarCropPreview').classList.remove('hidden');
+                    document.getElementById('fileNameDisplay').textContent = '✓ ' + fileName;
+                    document.getElementById('fileNameDisplay').className = 'text-xs font-bold text-emerald-500 mt-2';
+                } else {
+                    document.getElementById('coverCropPreviewImg').src = url;
+                    document.getElementById('coverCropPreview').classList.remove('hidden');
+                    document.getElementById('coverFileNameDisplay').textContent = '✓ ' + fileName;
+                    document.getElementById('coverFileNameDisplay').className = 'text-xs font-bold text-emerald-500 mt-2';
+                }
+
+                document.getElementById('cropperModal').classList.add('hidden');
+                if (cropperInstance) { cropperInstance.destroy(); cropperInstance = null; }
+            }, 'image/jpeg', 0.9);
+        }
+
+        // --- Quick Agency Modal ---
         function openAgencyModal() {
             document.getElementById('quickAgencyModal').classList.remove('hidden');
         }
@@ -260,7 +426,6 @@
                     const option = new Option(result.name, result.id);
                     select.add(option);
                     select.value = result.id;
-                    
                     closeAgencyModal();
                     document.getElementById('quickAgencyName').value = '';
                     document.getElementById('quickAgencyFocus').value = '';

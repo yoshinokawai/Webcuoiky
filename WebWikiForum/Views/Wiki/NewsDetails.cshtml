@@ -10,8 +10,10 @@
         <div class="relative h-64 sm:h-96 w-full overflow-hidden">
             @if (!string.IsNullOrEmpty(Model.ImageUrl))
             {
-                <img src="@Model.ImageUrl" alt="@Model.Title" class="w-full h-full object-cover" />
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent"></div>
+                <img src="@Model.ImageUrl" alt="@Model.Title"
+                     class="w-full h-full object-cover cursor-zoom-in hover:scale-105 transition-transform duration-700 lightbox-img"
+                     data-lightbox="@Model.ImageUrl" />
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent pointer-events-none"></div>
             }
             else
             {

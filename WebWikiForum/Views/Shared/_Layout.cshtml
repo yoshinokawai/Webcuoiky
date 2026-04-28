@@ -434,5 +434,103 @@
         });
     </script>
     @await RenderSectionAsync("Scripts", required: false)
+
+    <!-- ===== GLOBAL LIGHTBOX ===== -->
+    <div id="globalLightbox" class="fixed inset-0 z-[9999] hidden items-center justify-center" style="background:rgba(0,0,0,0.92);backdrop-filter:blur(6px)" onclick="closeLightbox()">
+        <button class="absolute top-4 right-4 w-11 h-11 rounded-full bg-white/10 hover:bg-white/25 flex items-center justify-center text-white transition-all z-10" onclick="closeLightbox()">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <!-- Zoom controls -->
+        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+            <button class="px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/25 text-white text-sm font-bold transition-all" onclick="event.stopPropagation();lbZoom(-0.2)">
+                <span class="material-symbols-outlined text-base leading-none">zoom_out</span>
+            </button>
+            <button class="px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/25 text-white text-sm font-bold transition-all" onclick="event.stopPropagation();lbZoom(0.2)">
+                <span class="material-symbols-outlined text-base leading-none">zoom_in</span>
+            </button>
+            <button class="px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/25 text-white text-sm font-bold transition-all" onclick="event.stopPropagation();lbReset()">
+                <span class="material-symbols-outlined text-base leading-none">fit_screen</span>
+            </button>
+        </div>
+        <img id="globalLightboxImg" src="" alt="" class="max-w-[92vw] max-h-[88vh] rounded-2xl shadow-2xl object-contain transition-transform duration-150 select-none" onclick="event.stopPropagation()" style="transform-origin:center center" draggable="false" />
+    </div>
+
+    <script>
+        (function () {
+            let lbScale = 1;
+
+            function openLightbox(url) {
+                if (!url || url === '#' || url === '') return;
+                const lb = document.getElementById('globalLightbox');
+                const img = document.getElementById('globalLightboxImg');
+                img.src = url;
+                lbScale = 1;
+                img.style.transform = 'scale(1)';
+                lb.classList.remove('hidden');
+                lb.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeLightbox() {
+                const lb = document.getElementById('globalLightbox');
+                lb.classList.add('hidden');
+                lb.classList.remove('flex');
+                document.body.style.overflow = '';
+                document.getElementById('globalLightboxImg').src = '';
+            }
+
+            function lbZoom(delta) {
+                lbScale = Math.min(Math.max(lbScale + delta, 0.5), 4);
+                document.getElementById('globalLightboxImg').style.transform = `scale(${lbScale})`;
+            }
+
+            function lbReset() {
+                lbScale = 1;
+                document.getElementById('globalLightboxImg').style.transform = 'scale(1)';
+            }
+
+            // Expose globally
+            window.openLightbox = openLightbox;
+            window.closeLightbox = closeLightbox;
+            window.lbZoom = lbZoom;
+            window.lbReset = lbReset;
+
+            // Keyboard
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === '+') lbZoom(0.2);
+                if (e.key === '-') lbZoom(-0.2);
+            });
+
+            // Scroll to zoom
+            document.getElementById('globalLightboxImg').addEventListener('wheel', function (e) {
+                e.preventDefault();
+                lbZoom(e.deltaY < 0 ? 0.15 : -0.15);
+            }, { passive: false });
+
+            // ===== GLOBAL EVENT DELEGATION =====
+            // Clicks on: <img> tags, or any element with data-lightbox attribute
+            document.addEventListener('click', function (e) {
+                const lb = document.getElementById('globalLightbox');
+                if (lb && !lb.classList.contains('hidden')) return; // already open
+
+                // 1. Element with data-lightbox attribute
+                const dlEl = e.target.closest('[data-lightbox]');
+                if (dlEl) {
+                    const url = dlEl.getAttribute('data-lightbox') || dlEl.getAttribute('src') || dlEl.style.backgroundImage?.replace(/url\(['"]?|['"]?\)/g, '');
+                    if (url) { openLightbox(url); return; }
+                }
+
+                // 2. <img> tags with class "lightbox-img" OR cursor-pointer style and inside a known container
+                if (e.target.tagName === 'IMG') {
+                    const img = e.target;
+                    // Only trigger if img has data-lightbox, or has lightbox-img class
+                    if (img.classList.contains('lightbox-img') || img.hasAttribute('data-lightbox')) {
+                        openLightbox(img.src);
+                    }
+                }
+            });
+        })();
+    </script>
 </body>
 </html>

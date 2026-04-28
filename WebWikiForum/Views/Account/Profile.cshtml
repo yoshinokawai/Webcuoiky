@@ -6,13 +6,30 @@
 <div class="max-w-4xl mx-auto px-4 py-12">
     <!-- Profile Header -->
     <div class="relative mb-12">
-        <div class="h-48 w-full bg-gradient-to-r from-primary/20 to-primary-dark/40 rounded-3xl overflow-hidden relative">
-            <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-20"></div>
+        <!-- Cover Banner: click = lightbox; camera button = change cover -->
+        <div class="h-48 w-full rounded-3xl overflow-hidden relative group" id="coverBannerClick">
+            @if (!string.IsNullOrEmpty(Model.CoverImageUrl))
+            {
+                <img src="@Model.CoverImageUrl" class="w-full h-full object-cover cursor-pointer hover:brightness-90 transition-all lightbox-img" data-lightbox="@Model.CoverImageUrl" alt="Cover" />
+            }
+            else
+            {
+                <div class="h-full w-full bg-gradient-to-r from-primary/20 to-primary-dark/40 cursor-pointer" data-lightbox="">
+                    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-20 pointer-events-none"></div>
+                </div>
+            }
+            <!-- Small camera button (bottom-right corner) to change cover -->
+            <button type="button"
+                class="absolute bottom-3 right-3 w-10 h-10 rounded-full bg-black/50 hover:bg-black/70 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all shadow-lg z-10"
+                onclick="document.getElementById('coverUploadQuick').click()" title="Đổi ảnh bìa">
+                <span class="material-symbols-outlined text-[20px]">add_photo_alternate</span>
+            </button>
+            <input type="file" id="coverUploadQuick" class="sr-only" accept="image/*" onchange="openProfileCropper(this, 'cover')" />
         </div>
         
         <div class="absolute -bottom-16 left-8 flex items-end gap-6">
             <div class="relative group">
-                <div class="w-32 h-32 rounded-3xl bg-white dark:bg-surface-dark p-1.5 shadow-2xl ring-4 ring-white dark:ring-slate-900">
+                <div class="w-32 h-32 rounded-3xl bg-white dark:bg-surface-dark p-1.5 shadow-2xl ring-4 ring-white dark:ring-slate-900 cursor-pointer" onclick="openLightbox('@Model.AvatarUrl')">
                     <div class="w-full h-full rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-800 flex items-center justify-center border border-slate-200 dark:border-slate-700">
                         @if (!string.IsNullOrEmpty(Model.AvatarUrl))
                         {
@@ -203,7 +220,7 @@
                                         <p class="mb-1 text-sm text-slate-500 dark:text-slate-400 font-semibold">@Localizer["Account_Profile_UploadMsg"]</p>
                                         <p class="text-xs text-slate-400">@Localizer["Account_Profile_UploadDesc"]</p>
                                     </div>
-                                    <input asp-for="AvatarFile" class="hidden" type="file" onchange="previewImage(this)" accept="image/*" />
+                                    <input asp-for="AvatarFile" id="avatarFileProfile" class="hidden" type="file" onchange="openProfileCropper(this, 'avatar')" accept="image/*" />
                                 </label>
                             </div>
                             <!-- Live Preview Box -->
@@ -215,6 +232,26 @@
                             </div>
                         </div>
                         <span asp-validation-for="AvatarFile" class="text-red-500 text-xs mt-1 block"></span>
+                    </div>
+
+                    <!-- Cover Image Upload in Edit Form -->
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">@Localizer["Wiki_Label_CoverImage"]</label>
+                        @if (!string.IsNullOrEmpty(Model.CoverImageUrl))
+                        {
+                            <img src="@Model.CoverImageUrl" class="w-full h-16 object-cover rounded-xl mb-2 border border-slate-200 dark:border-slate-700 cursor-pointer" onclick="openLightbox('@Model.CoverImageUrl')" />
+                        }
+                        <label class="flex flex-col items-center justify-center w-full h-24 border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-2xl cursor-pointer hover:bg-primary/5 hover:border-primary/50 transition-all group">
+                            <div class="flex flex-col items-center justify-center">
+                                <span class="material-symbols-outlined text-2xl text-slate-400 group-hover:text-primary mb-1">add_photo_alternate</span>
+                                <p class="text-xs text-slate-500 font-semibold">Upload Cover / Background</p>
+                            </div>
+                            <input asp-for="CoverImageFile" id="coverFileProfile" class="hidden" type="file" onchange="openProfileCropper(this, 'cover')" accept="image/*" />
+                        </label>
+                        <div id="cover-preview-container" class="hidden mt-2">
+                            <img id="cover-preview" src="#" class="w-full h-20 object-cover rounded-xl border-2 border-primary" />
+                            <p class="text-xs text-emerald-500 font-bold mt-1">✓ Cropped &amp; Ready</p>
+                        </div>
                     </div>
 
                     <div>
@@ -265,8 +302,138 @@
     </div>
 </div>
 
+<!-- Lightbox Modal -->
+<div id="lightboxModal" class="fixed inset-0 z-[300] hidden" onclick="closeLightbox()">
+    <div class="absolute inset-0 bg-black/90 backdrop-blur-sm"></div>
+    <div class="relative flex items-center justify-center min-h-screen p-4">
+        <button class="absolute top-4 right-4 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors z-10" onclick="closeLightbox()">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+        <img id="lightboxImg" src="" class="max-w-full max-h-[90vh] rounded-2xl shadow-2xl object-contain" onclick="event.stopPropagation()" />
+    </div>
+</div>
+
+<!-- Profile Cropper Modal -->
+<div id="profileCropperModal" class="fixed inset-0 z-[200] hidden">
+    <div class="flex items-center justify-center min-h-screen p-4">
+        <div class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm"></div>
+        <div class="relative bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-2xl w-full max-w-2xl border border-slate-200 dark:border-slate-700">
+            <div class="flex items-center justify-between mb-4">
+                <div>
+                    <h3 id="profileCropperTitle" class="text-lg font-black text-slate-900 dark:text-white">Điều chỉnh ảnh</h3>
+                    <p class="text-xs text-slate-500 mt-0.5">Kéo để chọn vùng ảnh phù hợp</p>
+                </div>
+                <button type="button" onclick="closeProfileCropper()" class="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800">
+                    <span class="material-symbols-outlined text-[18px]">close</span>
+                </button>
+            </div>
+            <div class="flex gap-2 mb-3">
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 bg-primary/10 text-primary text-xs font-bold rounded-full">
+                    <span class="material-symbols-outlined text-[14px]">crop</span>
+                    <span id="profileCropRatio">1:1</span>
+                </span>
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-500 text-xs rounded-full">
+                    <span class="material-symbols-outlined text-[14px]">pan_zoom</span>
+                    Scroll để zoom
+                </span>
+            </div>
+            <div class="relative bg-slate-950 rounded-xl overflow-hidden" style="max-height:380px">
+                <img id="profileCropperImage" class="max-w-full block" />
+            </div>
+            <div class="flex items-center gap-2 mt-4">
+                <button type="button" onclick="cropperInstance && cropperInstance.rotate(-90)" class="flex-1 py-2 text-sm font-bold bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 rounded-xl transition-colors flex items-center justify-center gap-1">
+                    <span class="material-symbols-outlined text-[18px]">rotate_left</span> -90°
+                </button>
+                <button type="button" onclick="cropperInstance && cropperInstance.rotate(90)" class="flex-1 py-2 text-sm font-bold bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 rounded-xl transition-colors flex items-center justify-center gap-1">
+                    <span class="material-symbols-outlined text-[18px]">rotate_right</span> +90°
+                </button>
+                <button type="button" onclick="cropperInstance && cropperInstance.reset()" class="flex-1 py-2 text-sm font-bold bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 rounded-xl transition-colors flex items-center justify-center gap-1">
+                    <span class="material-symbols-outlined text-[18px]">refresh</span> Reset
+                </button>
+            </div>
+            <div class="flex gap-3 mt-4">
+                <button type="button" onclick="closeProfileCropper()" class="flex-1 py-3 text-sm font-bold border border-slate-200 dark:border-slate-700 rounded-xl hover:bg-slate-50 transition-colors">Huỷ</button>
+                <button type="button" onclick="applyProfileCrop()" class="flex-2 px-8 py-3 text-sm font-bold bg-primary text-white rounded-xl hover:bg-primary-dark transition-colors flex items-center justify-center gap-2">
+                    <span class="material-symbols-outlined text-[18px]">check_circle</span>
+                    Áp dụng & Xem trước
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
 @section Scripts {
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"></script>
     <script>
+
+        // ===== CROPPER =====
+        let cropperInstance = null;
+        let profileCropTarget = null;
+        let profileCropInput = null;
+
+        function openProfileCropper(input, target) {
+            if (!input.files || !input.files[0]) return;
+            profileCropTarget = target;
+            profileCropInput = input;
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const img = document.getElementById('profileCropperImage');
+                img.src = e.target.result;
+                document.getElementById('profileCropRatio').textContent = target === 'avatar' ? '1 : 1' : '3 : 1';
+                document.getElementById('profileCropperModal').classList.remove('hidden');
+                if (cropperInstance) { cropperInstance.destroy(); cropperInstance = null; }
+                img.onload = () => {
+                    cropperInstance = new Cropper(img, {
+                        aspectRatio: target === 'avatar' ? 1 : 3,
+                        viewMode: 1, autoCropArea: 0.85,
+                        movable: true, zoomable: true, rotatable: true, scalable: true,
+                    });
+                };
+                if (img.complete) img.onload();
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+
+        function closeProfileCropper() {
+            document.getElementById('profileCropperModal').classList.add('hidden');
+            if (cropperInstance) { cropperInstance.destroy(); cropperInstance = null; }
+            if (profileCropInput) profileCropInput.value = '';
+        }
+
+        function applyProfileCrop() {
+            if (!cropperInstance) return;
+            const canvas = cropperInstance.getCroppedCanvas(
+                profileCropTarget === 'avatar' ? { width: 512, height: 512 } : { width: 1500, height: 500 }
+            );
+            canvas.toBlob((blob) => {
+                const fileName = profileCropTarget === 'avatar' ? 'avatar_cropped.jpg' : 'cover_cropped.jpg';
+                const file = new File([blob], fileName, { type: 'image/jpeg' });
+                const dt = new DataTransfer();
+                dt.items.add(file);
+                profileCropInput.files = dt.files;
+                const url = canvas.toDataURL('image/jpeg', 0.9);
+                if (profileCropTarget === 'avatar') {
+                    document.getElementById('image-preview').src = url;
+                    document.getElementById('image-preview-container').classList.remove('hidden');
+                } else {
+                    document.getElementById('cover-preview').src = url;
+                    document.getElementById('cover-preview-container').classList.remove('hidden');
+                }
+                document.getElementById('profileCropperModal').classList.add('hidden');
+                if (cropperInstance) { cropperInstance.destroy(); cropperInstance = null; }
+            }, 'image/jpeg', 0.9);
+        }
+
+        // Quick cover upload (click on banner area)
+        function openCoverCropperQuick(input) {
+            openProfileCropper(input, 'cover');
+            // After apply, also submit a quick-save form or sync with the edit form
+            // For now, sync file to the edit form's cover input
+            const originalApply = applyProfileCrop;
+            // override to also copy to edit form
+        }
+
         function toggleEdit() {
             const view = document.getElementById('view-section');
             const edit = document.getElementById('edit-section');
@@ -277,22 +444,6 @@
             } else {
                 edit.classList.add('hidden');
                 view.classList.remove('opacity-40');
-            }
-        }
-
-        function previewImage(input) {
-            const container = document.getElementById('image-preview-container');
-            const preview = document.getElementById('image-preview');
-            
-            if (input.files && input.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    preview.src = e.target.result;
-                    container.classList.remove('hidden');
-                }
-                reader.readAsDataURL(input.files[0]);
-            } else {
-                container.classList.add('hidden');
             }
         }
     </script>

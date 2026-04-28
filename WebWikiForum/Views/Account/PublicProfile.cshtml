@@ -15,8 +15,17 @@
 
         <div class="bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden">
             <!-- Header/Banner -->
-            <div class="h-48 bg-gradient-to-r from-primary via-indigo-600 to-purple-700 relative">
-                <div class="absolute inset-0 opacity-20 wiki-pattern"></div>
+            <div class="h-48 relative overflow-hidden">
+                @if (!string.IsNullOrEmpty(Model.CoverImageUrl))
+                {
+                    <img src="@Model.CoverImageUrl" class="w-full h-full object-cover cursor-pointer hover:brightness-90 transition-all lightbox-img" data-lightbox="@Model.CoverImageUrl" alt="Cover" />
+                }
+                else
+                {
+                    <div class="h-full bg-gradient-to-r from-primary via-indigo-600 to-purple-700 relative">
+                        <div class="absolute inset-0 opacity-20 wiki-pattern"></div>
+                    </div>
+                }
             </div>
 
             <div class="px-8 pb-12 -mt-24 relative">
@@ -29,7 +38,7 @@
                                 ? Model.AvatarUrl 
                                 : $"https://ui-avatars.com/api/?name={Model.Username}&background=random&size=200&color=fff";
                         }
-                        <img src="@avatarUrl" alt="@Model.Username" class="relative size-40 rounded-full border-4 border-white dark:border-slate-900 object-cover shadow-xl" />
+                        <img src="@avatarUrl" alt="@Model.Username" class="relative size-40 rounded-full border-4 border-white dark:border-slate-900 object-cover shadow-xl cursor-pointer hover:opacity-90 transition-opacity lightbox-img" data-lightbox="@avatarUrl" />
                         
                         @if (Model.Role == "Admin")
                         {
@@ -192,3 +201,4 @@
         </div>
     </div>
 </div>
+

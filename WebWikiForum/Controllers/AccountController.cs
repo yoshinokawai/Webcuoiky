@@ -337,6 +337,7 @@ namespace WebWikiForum.Controllers
                 Role = user.Role,
                 Bio = user.Bio,
                 AvatarUrl = user.AvatarUrl,
+                CoverImageUrl = user.CoverImageUrl,
                 DiscordUrl = user.DiscordUrl,
                 TwitterUrl = user.TwitterUrl,
                 YoutubeUrl = user.YoutubeUrl,
@@ -382,6 +383,24 @@ namespace WebWikiForum.Controllers
                 }
             }
 
+            // Handle Cover Image Upload
+            if (model.CoverImageFile != null && model.CoverImageFile.Length > 0)
+            {
+                try
+                {
+                    var coverUrl = await _fileService.UploadImageAsync(model.CoverImageFile, "covers");
+                    if (!string.IsNullOrEmpty(coverUrl))
+                    {
+                        user.CoverImageUrl = coverUrl;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", "Failed to upload cover: " + ex.Message);
+                    return View("Profile", model);
+                }
+            }
+
             user.Bio = model.Bio;
             user.DiscordUrl = model.DiscordUrl;
             user.TwitterUrl = model.TwitterUrl;
@@ -413,6 +432,7 @@ namespace WebWikiForum.Controllers
                 Role = user.Role,
                 Bio = user.Bio,
                 AvatarUrl = user.AvatarUrl,
+                CoverImageUrl = user.CoverImageUrl,
                 DiscordUrl = user.DiscordUrl,
                 TwitterUrl = user.TwitterUrl,
                 YoutubeUrl = user.YoutubeUrl,
