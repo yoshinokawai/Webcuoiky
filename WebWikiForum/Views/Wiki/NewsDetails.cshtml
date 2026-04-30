@@ -1,4 +1,4 @@
-@model WebWikiForum.Models.News
+﻿@model WebWikiForum.Models.News
 @{
     ViewData["Title"] = Model.Title + " - News & Events";
 }
@@ -6,7 +6,7 @@
 <div class="max-w-4xl mx-auto px-4 py-12 sm:px-6 lg:px-8 mt-4 mb-20">
     <div class="bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-800 rounded-[2.5rem] overflow-hidden shadow-2xl transition-all duration-500">
         
-        <!-- Hero Section with Feature Image -->
+        <!-- Phần banner với ảnh nổi bật -->
         <div class="relative h-64 sm:h-96 w-full overflow-hidden">
             @if (!string.IsNullOrEmpty(Model.ImageUrl))
             {
@@ -23,7 +23,7 @@
                 <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
             }
 
-            <!-- Category Badge -->
+            <!-- Badge danh mục -->
             <div class="absolute bottom-10 left-8 sm:left-12">
                 <span class="px-4 py-1.5 rounded-full bg-primary text-white text-xs font-black uppercase tracking-widest shadow-lg shadow-primary/40">
                     @Model.Type
@@ -31,7 +31,7 @@
             </div>
         </div>
 
-        <!-- Content Area -->
+        <!-- Khu vực nội dung -->
         <div class="relative px-8 sm:px-12 py-10">
             
             <!-- Admin Controls -->

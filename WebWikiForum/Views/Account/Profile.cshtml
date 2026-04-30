@@ -1,12 +1,12 @@
-@model WebWikiForum.ViewModels.ProfileViewModel
+﻿@model WebWikiForum.ViewModels.ProfileViewModel
 @{
     ViewData["Title"] = "User Profile";
 }
 
 <div class="max-w-4xl mx-auto px-4 py-12">
-    <!-- Profile Header -->
+    <!-- Tiêu đề hồ sơ -->
     <div class="relative mb-12">
-        <!-- Cover Banner: click = lightbox; camera button = change cover -->
+        <!-- Ảnh bìa: click = xem ảnh; nút camera = đổi ảnh bìa -->
         <div class="h-48 w-full rounded-3xl overflow-hidden relative group" id="coverBannerClick">
             @if (!string.IsNullOrEmpty(Model.CoverImageUrl))
             {
@@ -18,7 +18,7 @@
                     <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-20 pointer-events-none"></div>
                 </div>
             }
-            <!-- Small camera button (bottom-right corner) to change cover -->
+            <!-- Nút camera nhỏ (góc dưới-phải) để đổi ảnh bìa -->
             <button type="button"
                 class="absolute bottom-3 right-3 w-10 h-10 rounded-full bg-black/50 hover:bg-black/70 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all shadow-lg z-10"
                 onclick="document.getElementById('coverUploadQuick').click()" title="Đổi ảnh bìa">
@@ -62,7 +62,7 @@
         </div>
     </div>
 
-    <!-- Content Grid -->
+    <!-- Lưới nội dung -->
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-24">
         
         <div class="lg:col-span-1 space-y-6">
@@ -115,10 +115,10 @@
             </div>
         </div>
 
-        <!-- Main Content -->
+        <!-- Nội dung chính -->
         <div class="lg:col-span-2 space-y-8">
             
-            <!-- Bio Section -->
+            <!-- Phần giới thiệu bản thân -->
             <div id="view-section" class="bg-white dark:bg-surface-dark rounded-3xl p-8 border border-slate-200 dark:border-slate-800 shadow-sm relative group">
                 <div class="flex items-center justify-between mb-6">
                     <h2 class="text-2xl font-bold flex items-center gap-2">
@@ -137,7 +137,7 @@
                 }
             </div>
             
-            <!-- Recent Activity Section -->
+            <!-- Phần hoạt động gần đây -->
             <div class="bg-white dark:bg-surface-dark rounded-3xl p-8 border border-slate-200 dark:border-slate-800 shadow-sm">
                 <div class="flex items-center justify-between mb-6">
                     <h2 class="text-2xl font-bold flex items-center gap-2">
@@ -197,7 +197,7 @@
                 </div>
             </div>
 
-            <!-- Edit Form (Hidden by default) -->
+            <!-- Form chỉnh sửa (ẩn mặc định) -->
             <div id="edit-section" class="hidden bg-white dark:bg-surface-dark rounded-3xl p-8 border-2 border-primary/30 shadow-2xl relative">
                 <div class="flex items-center justify-between mb-8">
                     <h2 class="text-2xl font-bold flex items-center gap-2 text-primary">
@@ -223,7 +223,7 @@
                                     <input asp-for="AvatarFile" id="avatarFileProfile" class="hidden" type="file" onchange="openProfileCropper(this, 'avatar')" accept="image/*" />
                                 </label>
                             </div>
-                            <!-- Live Preview Box -->
+                            <!-- Hộp xem trước trực tiếp -->
                             <div id="image-preview-container" class="hidden w-32 h-32 rounded-2xl overflow-hidden border-2 border-primary shadow-lg relative group">
                                 <img id="image-preview" src="#" class="w-full h-full object-cover" />
                                 <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
@@ -234,7 +234,7 @@
                         <span asp-validation-for="AvatarFile" class="text-red-500 text-xs mt-1 block"></span>
                     </div>
 
-                    <!-- Cover Image Upload in Edit Form -->
+                    <!-- Upload ảnh bìa trong Form chỉnh sửa -->
                     <div>
                         <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">@Localizer["Wiki_Label_CoverImage"]</label>
                         @if (!string.IsNullOrEmpty(Model.CoverImageUrl))

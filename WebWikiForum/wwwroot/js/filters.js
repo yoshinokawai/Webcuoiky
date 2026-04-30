@@ -1,10 +1,10 @@
 /**
- * VTuber Wiki - Client-side Filter System
- * Handles tab switching, search filtering, dropdown filters, and tag-based filtering.
+ * VTuber Wiki - Hệ thống lọc phía client
+ * Xử lý chuyển tab, lọc tìm kiếm, bộ lọc dropdown và lọc theo tag.
  */
 document.addEventListener('DOMContentLoaded', function () {
 
-    // ===== 1. Tab Filter (RecentChanges, WikiForum, FanTools) =====
+    // ===== 1. Lọc theo Tab (RecentChanges, WikiForum, FanTools) =====
     document.querySelectorAll('[data-filter-group]').forEach(function (group) {
         const buttons = group.querySelectorAll('[data-filter]');
         const targetId = group.dataset.filterGroup;
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // ===== 2. Search Filter =====
+    // ===== 2. Lọc theo tìm kiếm =====
     document.querySelectorAll('[data-search-input]').forEach(function (input) {
         const targetId = input.dataset.searchInput;
 
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // ===== 3. Dropdown Filter (Agencies, Independent) =====
+    // ===== 3. Lọc Dropdown (Agencies, Independent) =====
     document.querySelectorAll('[data-dropdown-toggle]').forEach(function (btn) {
         const dropdownId = btn.dataset.dropdownToggle;
         const dropdown = document.getElementById(dropdownId);
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         btn.addEventListener('click', function (e) {
             e.stopPropagation();
-            // Close all other dropdowns
+            // Đóng tất cả dropdown khác
             document.querySelectorAll('.filter-dropdown.is-open').forEach(function (d) {
                 if (d !== dropdown) {
                     d.classList.remove('is-open');
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     d.style.visibility = 'hidden';
                 }
             });
-            // Toggle this dropdown
+            // Bật/tắt dropdown này
             const isOpen = dropdown.classList.contains('is-open');
             if (isOpen) {
                 dropdown.classList.remove('is-open');
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
 
-        // Handle dropdown item selection
+        // Xử lý khi chọn mục trong dropdown
         dropdown.querySelectorAll('[data-filter-value]').forEach(function (item) {
             item.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -104,18 +104,18 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
                 btn.classList.add('border-primary', 'bg-primary/5');
 
-                // Close dropdown
+                // Đóng dropdown
                 dropdown.classList.remove('is-open');
                 dropdown.style.opacity = '0';
                 dropdown.style.visibility = 'hidden';
 
-                // Trigger filtering
+                // Kích hoạt bộ lọc
                 applyCardFilters();
             });
         });
     });
 
-    // Close dropdowns on outside click
+    // Đóng dropdown khi click ngoài
     document.addEventListener('click', function () {
         document.querySelectorAll('.filter-dropdown.is-open').forEach(function (d) {
             d.classList.remove('is-open');
@@ -124,12 +124,12 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // ===== 4. Tag Filter (Independent) =====
+    // ===== 4. Lọc theo Tag (Independent) =====
     document.querySelectorAll('[data-tag-filter]').forEach(function (tag) {
         tag.addEventListener('click', function (e) {
             e.preventDefault();
             const active = tag.classList.contains('bg-primary');
-            // Reset all tags
+            // Xóa hoạt động tất cả tag
             document.querySelectorAll('[data-tag-filter]').forEach(function (t) {
                 t.classList.remove('bg-primary', 'text-white', 'border-primary');
                 t.classList.add('bg-white', 'dark:bg-slate-800', 'border-primary/5');
@@ -143,22 +143,22 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     function applyCardFilters() {
-        // This is a placeholder for applying combined filters
-        // In a real app, this would filter cards based on dropdown + tag + search
+        // Đây là hàm giữ chỗ để áp dụng bộ lọc kết hợp
+        // Trong ứng dụng thực tế, sẽ lọc card dựa trên dropdown + tag + tìm kiếm
         const cards = document.querySelectorAll('[data-search-target]');
         cards.forEach(function (card) {
             card.style.display = '';
         });
     }
 
-    // ===== 5. Category Tab System (FanTools) =====
+    // ===== 5. Hệ thống Tab danh mục (FanTools) =====
     document.querySelectorAll('[data-category-tab]').forEach(function (btn) {
         btn.addEventListener('click', function () {
             const category = btn.dataset.categoryTab;
             const allBtns = document.querySelectorAll('[data-category-tab]');
             const allSections = document.querySelectorAll('[data-tool-section]');
 
-            // Update button states
+            // Cập nhật trạng thái nút
             allBtns.forEach(function (b) {
                 b.classList.remove('bg-primary', 'text-white');
                 b.classList.add('bg-white', 'dark:bg-slate-800', 'border-primary/20');
@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function () {
             btn.classList.add('bg-primary', 'text-white');
             btn.classList.remove('bg-white', 'dark:bg-slate-800', 'border-primary/20');
 
-            // Show/hide sections
+            // Hiển/ẩn các section
             allSections.forEach(function (section) {
                 if (category === 'all' || section.dataset.toolSection === category) {
                     section.style.display = '';
@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // ===== 6. Forum Tab System (WikiForum) =====
+    // ===== 6. Hệ thống Tab Forum (WikiForum) =====
     document.querySelectorAll('[data-forum-tab]').forEach(function (tab) {
         tab.addEventListener('click', function (e) {
             e.preventDefault();

@@ -33,7 +33,7 @@ namespace WebWikiForum.Controllers
                 .ToDictionaryAsync(u => u.Username, u => u.AvatarUrl);
         }
 
-        // Community Hub / All Discussions
+        // Trang chủ cộng đồng / Tất cả thảo luận
         public async Task<IActionResult> CommunityHub()
         {
             var trending = await _context.Discussions
@@ -46,11 +46,11 @@ namespace WebWikiForum.Controllers
                 .Take(4)
                 .ToListAsync();
 
-            // Mock/Fetch some basic events if we had a dedicated table.
-            // Since we added News/Events, I'll fetch recent News too.
+            // Giả lập/Lấy dữ liệu sự kiện nếu có bảng riêng.
+            // Vì đã thêm bảng News/Events, tôi lấy tin tức gần đây luôn.
             var news = await _context.News.OrderByDescending(n => n.PublishDate).Take(3).ToListAsync();
 
-            // Sync Avatars
+            // Đồng bộ avatar tác giả
             var authors = recent.Select(d => d.Author)
                 .Concat(trending.Select(d => d.Author))
                 .ToList();
@@ -69,7 +69,7 @@ namespace WebWikiForum.Controllers
             ViewBag.CurrentCategory = category;
             ViewBag.CurrentSort = sort;
 
-            // Stats for Home cards (only if visiting All and NO sort requested)
+            // Thống kê cho các thẻ danh mục (chỉ khi xem Tất cả và KHÔNG có bộ lọc)
             if (category == "All" && sort == "Default")
             {
                 var stats = new List<CategorySummary>();
@@ -118,7 +118,7 @@ namespace WebWikiForum.Controllers
                 query = query.OrderByDescending(d => d.IsPinned).ThenByDescending(d => d.LastReplyDate ?? d.CreatedAt);
             }
 
-            // Global trending for sidebar
+            // Danh sách trending toàn cục cho sidebar
             ViewBag.Trending = await _context.Discussions
                 .OrderByDescending(d => d.ViewCount + (d.ReplyCount * 5))
                 .Take(5)
@@ -126,7 +126,7 @@ namespace WebWikiForum.Controllers
 
             var results = await query.ToListAsync();
 
-            // Sync Avatars
+            // Đồng bộ avatar tác giả
             var authors = results.Select(d => d.Author).ToList();
             if (ViewBag.CategoryStats != null)
             {
@@ -142,7 +142,7 @@ namespace WebWikiForum.Controllers
             return View(results);
         }
 
-        // Discussion Thread Details
+        // Chi tiết luồng thảo luận
         public async Task<IActionResult> Topic(int id)
         {
             var discussion = await _context.Discussions
@@ -151,7 +151,7 @@ namespace WebWikiForum.Controllers
 
             if (discussion == null) return NotFound();
 
-            // Get Liked IDs for the current user
+            // Lấy danh sách ID đã thích của người dùng hiện tại
             var likedDiscussionIds = new List<int>();
             var likedReplyIds = new List<int>();
 
@@ -172,7 +172,7 @@ namespace WebWikiForum.Controllers
             ViewBag.LikedDiscussionIds = likedDiscussionIds;
             ViewBag.LikedReplyIds = likedReplyIds;
 
-            // Sync Avatars
+            // Đồng bộ avatar tác giả
             var authors = new List<string> { discussion.Author };
             authors.AddRange(discussion.Replies.Select(r => r.Author));
             ViewBag.AuthorAvatars = await _GetAuthorAvatars(authors);
@@ -180,7 +180,7 @@ namespace WebWikiForum.Controllers
             return View(discussion);
         }
 
-        // Create Topic
+        // Tạo chủ đề mới
         [HttpGet]
         public IActionResult StartTopic()
         {
@@ -207,7 +207,7 @@ namespace WebWikiForum.Controllers
             return View(model);
         }
 
-        // Post Reply
+        // Đăng trả lời
         [HttpPost]
         public async Task<IActionResult> PostReply(int discussionId, string content)
         {
@@ -238,7 +238,7 @@ namespace WebWikiForum.Controllers
             return RedirectToAction("Topic", new { id = discussionId });
         }
 
-        // --- Like System ---
+        // --- Hệ thống thích ---
 
         [HttpPost]
         public async Task<IActionResult> ToggleLikeDiscussion(int id)
@@ -266,7 +266,7 @@ namespace WebWikiForum.Controllers
 
             await _context.SaveChangesAsync();
             
-            // Sync LikeCount to be safe
+            // Đồng bộ LikeCount cho chắc chắn
             discussion.LikeCount = await _context.DiscussionLikes.CountAsync(l => l.DiscussionId == id);
             _context.Update(discussion);
             await _context.SaveChangesAsync();
@@ -300,7 +300,7 @@ namespace WebWikiForum.Controllers
 
             await _context.SaveChangesAsync();
 
-            // Sync LikeCount to be safe
+            // Đồng bộ LikeCount cho chắc chắn
             reply.LikeCount = await _context.DiscussionLikes.CountAsync(l => l.ReplyId == id);
             _context.Update(reply);
             await _context.SaveChangesAsync();
@@ -308,7 +308,7 @@ namespace WebWikiForum.Controllers
             return Json(new { success = true, likeCount = reply.LikeCount, isLiked = isLiked });
         }
 
-        // --- Topic Management ---
+        // --- Quản lý chủ đề ---
 
         [HttpGet]
         public async Task<IActionResult> EditTopic(int id)
@@ -316,7 +316,7 @@ namespace WebWikiForum.Controllers
             var discussion = await _context.Discussions.FindAsync(id);
             if (discussion == null) return NotFound();
 
-            // Auth Check
+            // Kiểm tra quyền truy cập
             if (discussion.Author != (User.Identity?.Name ?? "") && !User.IsInRole("Admin"))
             {
                 return Forbid();
@@ -331,7 +331,7 @@ namespace WebWikiForum.Controllers
             var discussion = await _context.Discussions.FindAsync(model.Id);
             if (discussion == null) return NotFound();
 
-            // Auth Check
+            // Kiểm tra quyền truy cập
             if (discussion.Author != (User.Identity?.Name ?? "") && !User.IsInRole("Admin"))
             {
                 return Forbid();
@@ -357,7 +357,7 @@ namespace WebWikiForum.Controllers
             var discussion = await _context.Discussions.FindAsync(id);
             if (discussion == null) return NotFound();
 
-            // Auth Check
+            // Kiểm tra quyền truy cập
             if (discussion.Author != (User.Identity?.Name ?? "") && !User.IsInRole("Admin"))
             {
                 return Forbid();
@@ -368,7 +368,7 @@ namespace WebWikiForum.Controllers
             return RedirectToAction("Community");
         }
 
-        // --- Reply Management ---
+        // --- Quản lý trả lời ---
 
         [HttpPost]
         public async Task<IActionResult> EditReply(int id, string content)
@@ -376,7 +376,7 @@ namespace WebWikiForum.Controllers
             var reply = await _context.DiscussionReplies.FindAsync(id);
             if (reply == null) return NotFound();
 
-            // Auth Check
+            // Kiểm tra quyền truy cập
             if (reply.Author != (User.Identity?.Name ?? "") && !User.IsInRole("Admin"))
             {
                 return Forbid();
@@ -397,7 +397,7 @@ namespace WebWikiForum.Controllers
             var reply = await _context.DiscussionReplies.FindAsync(id);
             if (reply == null) return NotFound();
 
-            // Auth Check
+            // Kiểm tra quyền truy cập
             if (reply.Author != (User.Identity?.Name ?? "") && !User.IsInRole("Admin"))
             {
                 return Forbid();

@@ -1,4 +1,4 @@
-@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResource> Localizer
+﻿@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResource> Localizer
 @{
     ViewData["Title"] = Localizer["Page_Donate"];
 }
@@ -10,7 +10,7 @@
 <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
 <main class="flex-1">
 
-    <!-- Hero Section -->
+    <!-- Phần banner chính -->
     <section class="donate-hero text-white py-16 md:py-24">
         <div class="max-w-7xl mx-auto px-4 md:px-10 text-center">
             <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
@@ -22,7 +22,7 @@
                 @Localizer["Donate_Hero_Desc"]
             </p>
 
-            <!-- Progress Section -->
+            <!-- Phần tiến độ -->
             <div class="max-w-xl mx-auto bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
                 <div class="flex items-center justify-between mb-3">
                     <div class="flex items-center gap-2">
@@ -39,7 +39,7 @@
         </div>
     </section>
 
-    <!-- Donation Tiers -->
+    <!-- Các mức đóng góp -->
     <section class="max-w-7xl mx-auto px-4 md:px-10 py-16">
         <div class="text-center mb-12">
             <h2 class="text-3xl font-black text-slate-900 dark:text-white mb-3">@Localizer["Donate_Tiers_Title"]</h2>

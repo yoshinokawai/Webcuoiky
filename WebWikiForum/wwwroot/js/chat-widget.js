@@ -4,7 +4,7 @@
 (function () {
     'use strict';
 
-    // ── State
+    // ── Trạng thái
     let isOpen = false;
     let isLoading = false;
     let firstOpen = true;
@@ -13,13 +13,13 @@
     const STORAGE_KEY = 'vtwiki_chat_history';
     const MAX_HISTORY = 30;
 
-    // ── Session ID (persisted in localStorage per browser)
+    // ── Session ID (lưu trong localStorage theo trình duyệt)
     const SESSION_KEY = 'vtwiki_chat_session';
     let chatSessionId = localStorage.getItem(SESSION_KEY) || '';
     let lastPolledId = 0;    // ID của tin nhắn admin cuối cùng đã nhận
     let pollTimer = null;
 
-    // ── DOM references (populated after DOMContentLoaded)
+    // ── Tham chiếu DOM (được gán sau DOMContentLoaded)
     let toggleBtn, panel, messagesEl, input, sendBtn, suggestionsEl, unreadBadge;
 
     const currentLang = (document.documentElement.lang || 'en').substring(0, 2).toLowerCase();
@@ -55,39 +55,39 @@
     };
     const t = translations[currentLang] || translations.en;
 
-    // ── Antiforgery token — not needed for this JSON API endpoint
+    // ── Antiforgery token — không cần cho endpoint JSON API này
 
-    // ── Simple markdown-like renderer (bold, italic, bullet, code, links)
+    // ── Bộ render markdown đơn giản (đậm, nghiêng, danh sách, code, link)
     function renderMarkdown(text) {
         if (!text) return '';
-        // First escape all, but we will allow <a> tags later
+        // Thoát tất cả ký tự trước, nhưng cho phép thẻ <a> sau
         return text
             .replace(/&/g, '&amp;')
-            .replace(/<(?!\/?a(?=>|\s.*>))/g, '&lt;') // Escape all < except <a> tags
-            .replace(/(?<!<a.*)>(?<!<\/a>)/g, '&gt;') // Escape all > except in <a> tags
-            // Code blocks / inline code
+            .replace(/<(?!\/?a(?=>|\s.*>))/g, '&lt;') // Thoát tất cả < trừ thẻ <a>
+            .replace(/(?<!<a.*)>(?<!<\/a>)/g, '&gt;') // Thoát tất cả > trừ trong thẻ <a>
+            // Khối code / code inline
             .replace(/```[\s\S]*?```/g, m => `<code>${m.slice(3, -3).trim()}</code>`)
             .replace(/`([^`]+)`/g, '<code>$1</code>')
-            // Bold & Italic
+            // Đậm & Nghiêng
             .replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>')
             .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
             .replace(/\*(.+?)\*/g, '<em>$1</em>')
-            // Bullet lists
+            // Danh sách dấu chấm
             .replace(/^[\*\-] (.+)$/gm, '<li>$1</li>')
             .replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>')
-            // Numbered lists
+            // Danh sách số
             .replace(/^\d+\. (.+)$/gm, '<li>$1</li>')
-            // Paragraphs (double newline)
+            // Đoạn văn (xuống dòng kép)
             .replace(/\n{2,}/g, '</p><p>')
-            // Single newline → <br>
+            // Xuống dòng đơn → <br>
             .replace(/\n/g, '<br>')
-            // Wrap in paragraph
+            // Bọc trong thẻ paragraph
             .replace(/^(.*)$/, '<p>$1</p>')
-            // Clean empty paragraphs
+            // Xóa paragraph rỗng
             .replace(/<p><\/p>/g, '');
     }
 
-    // ── Append a message bubble
+    // ── Thêm bong bóng tin nhắn
     function appendMessage(role, text) {
         const isAI = role === 'ai';
         const wrapper = document.createElement('div');
@@ -130,7 +130,7 @@
         return wrapper;
     }
 
-    // ── Typing indicator
+    // ── Hiệu ứng đang gõ
     function showTyping() {
         const wrapper = document.createElement('div');
         wrapper.className = 'chat-msg ai';
@@ -154,18 +154,18 @@
         document.getElementById('chat-typing-indicator')?.remove();
     }
 
-    // ── Scroll to bottom
+    // ── Cuộn xuống cuối
     function scrollToBottom() {
         messagesEl.scrollTop = messagesEl.scrollHeight;
     }
 
-    // ── Show suggestions
+    // ── Hiển thị gợi ý
     function showSuggestions(show) {
         if (!suggestionsEl) return;
         suggestionsEl.style.display = show ? 'flex' : 'none';
     }
 
-    // ── Send message
+    // ── Gửi tin nhắn
     async function sendMessage(text) {
         const msg = (text || input.value).trim();
         if (!msg || isLoading) return;
@@ -244,7 +244,7 @@
     // ── Append admin reply bubble
     function appendAdminMessage(adminName, text) {
         const wrapper = document.createElement('div');
-        wrapper.className = 'chat-msg ai'; // same side as bot
+        wrapper.className = 'chat-msg ai'; // cùng phía với bot
         wrapper.style.cssText = '--bubble-bg: #fef3c7; --bubble-color: #92400e;';
 
         const avatar = document.createElement('div');
@@ -270,14 +270,14 @@
         scrollToBottom();
     }
 
-    // ── Load history from server
+    // ── Tải lịch sử từ server
     async function loadHistory() {
         try {
             const res = await fetch(`/Chat/History?sessionId=${encodeURIComponent(chatSessionId)}`);
             if (!res.ok) return;
             const data = await res.json();
             if (data.messages && data.messages.length > 0) {
-                messagesEl.innerHTML = ''; // Clear welcome or old state
+                messagesEl.innerHTML = ''; // Xóa trạng thái chào mừng hoặc cũ
                 data.messages.forEach(m => {
                     if (m.role === 'admin') {
                         appendAdminMessage(m.username, m.message);
@@ -297,20 +297,20 @@
         }
     }
 
-    // ── Welcome greeting
+    // ── Lời chào mừng
     function showWelcome() {
         if (messagesEl && messagesEl.children.length > 0) return;
         appendMessage('ai', t.welcome);
     }
 
-    // ── Toggle panel
+    // ── Bật/tắt panel
     function togglePanel() {
         isOpen = !isOpen;
         toggleBtn.classList.toggle('open', isOpen);
         panel.classList.toggle('open', isOpen);
 
         if (isOpen) {
-            // Hide unread badge
+            // Ẩn badge chưa đọc
             unreadBadge.classList.remove('show');
 
             if (firstOpen) {
@@ -325,7 +325,7 @@
         }
     }
 
-    // ── Reset chat (Start a new session without deleting DB history)
+    // ── Đặt lại chat (Bắt đầu session mới mà không xóa lịch sử DB)
     async function resetChat() {
         const title = currentLang === 'vi' ? 'Làm mới đoạn chat' : 'Reset chat';
         const msg = currentLang === 'vi' ? 'Bạn có muốn bắt đầu một cuộc trò chuyện mới không? (Lịch sử cũ vẫn được lưu lại)' : 'Do you want to start a new chat? (Previous history will be saved)';
@@ -357,9 +357,9 @@
     }
 
 
-    // ── Build the widget HTML dynamically to avoid Razor conflicts
+    // ── Tạo HTML widget động để tránh xung đột với Razor
     function buildWidget() {
-        // ... (toggleBtn part remains same)
+        // ... (phần toggleBtn giữ nguyên)
         toggleBtn = document.createElement('button');
         toggleBtn.id = 'chat-toggle-btn';
         toggleBtn.setAttribute('aria-label', 'Toggle Yoshi chat');
@@ -369,7 +369,7 @@
             <span id="chat-unread-badge">1</span>
         `;
 
-        // Panel
+        // Panel chat
         panel = document.createElement('div');
         panel.id = 'chat-panel';
         panel.setAttribute('role', 'dialog');
@@ -405,29 +405,29 @@
         document.body.appendChild(toggleBtn);
         document.body.appendChild(panel);
 
-        // Resolve element refs
+        // Gán tham chiếu phần tử
         messagesEl    = panel.querySelector('#chat-messages');
         input         = panel.querySelector('#chat-input');
         sendBtn       = panel.querySelector('#chat-send-btn');
         suggestionsEl = panel.querySelector('#chat-suggestions');
         unreadBadge   = toggleBtn.querySelector('#chat-unread-badge');
 
-        // Build suggestion chips
+        // Tạo chip gợi ý
         t.suggestions.forEach(s => {
             const chip = document.createElement('button');
             chip.className = 'chat-chip';
             chip.textContent = s;
             chip.type = 'button';
-            // Extract the text part (after emoji)
+            // Lấy phần văn bản (sau emoji)
             const query = s.replace(/^[^\s]+\s/, '');
             chip.addEventListener('click', () => sendMessage(query));
             suggestionsEl.appendChild(chip);
         });
 
-        // Show unread badge after 3s to draw attention
+        // Hiện badge chưa đọc sau 3 giây để thu hút chú ý
         setTimeout(() => unreadBadge.classList.add('show'), 3000);
 
-        // ── Event listeners
+        // ── Lắng nghe sự kiện
         toggleBtn.addEventListener('click', togglePanel);
 
         document.getElementById('chat-reset-btn').addEventListener('click', (e) => {
@@ -444,18 +444,18 @@
             }
         });
 
-        // Auto-resize textarea
+        // Tự co giãn textarea
         input.addEventListener('input', () => {
             input.style.height = 'auto';
             input.style.height = Math.min(input.scrollHeight, 100) + 'px';
         });
 
-        // Close panel on Escape
+        // Đóng panel khi nhấn Escape
         document.addEventListener('keydown', e => {
             if (e.key === 'Escape' && isOpen) togglePanel();
         });
 
-        // Close when clicking outside
+        // Đóng khi click bên ngoài
         document.addEventListener('click', e => {
             if (isOpen && !panel.contains(e.target) && !toggleBtn.contains(e.target)) {
                 togglePanel();
@@ -463,7 +463,7 @@
         });
     }
 
-    // ── Load user avatar on init
+    // ── Tải avatar người dùng lúc khởi tạo
     async function loadUserAvatar() {
         try {
             const res = await fetch('/Chat/GetUserAvatar');
@@ -475,7 +475,7 @@
         } catch { /* Không ăng nhập hoặc lỗi mạng — dùng fallback */ }
     }
 
-    // ── Init
+    // ── Khởi tạo
     async function init() {
         await loadUserAvatar();
         buildWidget();

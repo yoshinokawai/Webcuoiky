@@ -1,8 +1,8 @@
 /* =============================================================
-   VTWiki Chat Widget — Glassmorphism Dark/Light
+   VTWiki Chat Widget — Glassmorphism Sáng/Tối
    ============================================================= */
 
-/* ── Floating Toggle Button ────────────────────────────────── */
+/* ── Nút Toggle Nổi ────────────────────────────────────────── */
 #chat-toggle-btn {
     position: fixed;
     bottom: 28px;
@@ -51,7 +51,7 @@
 #chat-toggle-btn.open img.chat-icon { opacity: 0; transform: rotate(90deg) scale(0.7); }
 #chat-toggle-btn.open .close-icon  { opacity: 1; transform: rotate(0deg) scale(1); }
 
-/* Pulse animation for first visit */
+/* Hiệu ứng pulse khi lần đầu truy cập */
 #chat-toggle-btn::after {
     content: '';
     position: absolute;
@@ -68,7 +68,7 @@
     100% { transform: scale(1.55); opacity: 0; }
 }
 
-/* Unread badge */
+/* Badge chưa đọc */
 #chat-unread-badge {
     position: absolute;
     top: -4px;
@@ -90,7 +90,7 @@
 }
 #chat-unread-badge.show { opacity: 1; transform: scale(1); }
 
-/* ── Chat Panel ─────────────────────────────────────────────── */
+/* ── Panel Chat ─────────────────────────────────────────────── */
 #chat-panel {
     position: fixed;
     bottom: 100px;
@@ -118,14 +118,14 @@
     pointer-events: auto;
 }
 
-/* Dark mode */
+/* Chế độ tối */
 .dark #chat-panel {
     background: rgba(31, 24, 38, 0.95);
     border-color: rgba(153,76,230,0.25);
     box-shadow: 0 24px 80px rgba(0,0,0,0.5), 0 4px 20px rgba(153,76,230,0.2);
 }
 
-/* ── Panel Header ───────────────────────────────────────────── */
+/* ── Tiêu đề Panel ──────────────────────────────────────────── */
 #chat-header {
     background: linear-gradient(135deg, #994ce6 0%, #7e37c3 100%);
     padding: 14px 18px;
@@ -189,7 +189,7 @@
 }
 #chat-clear-btn:hover { background: rgba(255,255,255,0.28); }
 
-/* ── Messages Area ──────────────────────────────────────────── */
+/* ── Khu vực tin nhắn ──────────────────────────────────────────── */
 #chat-messages {
     flex: 1;
     overflow-y: auto;
@@ -205,7 +205,7 @@
 #chat-messages::-webkit-scrollbar-track { background: transparent; }
 #chat-messages::-webkit-scrollbar-thumb { background: rgba(153,76,230,0.25); border-radius: 4px; }
 
-/* ── Suggested chips ────────────────────────────────────────── */
+/* ── Chip gợi ý ────────────────────────────────────────── */
 #chat-suggestions {
     padding: 4px 16px 12px;
     display: flex;
@@ -233,7 +233,7 @@
 }
 .dark .chat-chip:hover { background: rgba(153,76,230,0.25); color: #d8b4fe; }
 
-/* ── Message Bubbles ────────────────────────────────────────── */
+/* ── Bong bóng tin nhắn ────────────────────────────────────────── */
 .chat-msg {
     display: flex;
     gap: 8px;
@@ -288,7 +288,7 @@
     border: none;
 }
 
-/* Markdown-like formatting inside bubbles */
+/* Định dạng kiểu markdown bên trong bong bóng */
 .chat-bubble strong { font-weight: 700; }
 .chat-bubble em { font-style: italic; }
 .chat-bubble code {
@@ -304,7 +304,7 @@
 .chat-bubble ul, .chat-bubble ol { margin: 4px 0 6px 16px; }
 .chat-bubble li { margin-bottom: 2px; }
 
-/* Typing indicator */
+/* Hiệu ứng đang gõ */
 .chat-typing {
     display: flex;
     align-items: center;
@@ -325,7 +325,7 @@
     40%           { transform: scale(1);   opacity: 1; }
 }
 
-/* ── Input Area ─────────────────────────────────────────────── */
+/* ── Khu vực nhập liệu ─────────────────────────────────────────────── */
 #chat-input-area {
     padding: 12px 14px 14px;
     border-top: 1px solid rgba(153,76,230,0.1);

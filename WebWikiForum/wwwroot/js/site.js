@@ -1,6 +1,6 @@
 /**
- * Global Confirmation Modal
- * Usage: showConfirmModal({ title: 'Delete', message: 'Sure?', onConfirm: () => { ... } });
+ * Modal xác nhận toàn cục
+ * Cách dùng: showConfirmModal({ title: 'Xóa', message: 'Bạn có chắc không?', onConfirm: () => { ... } });
  */
 window.showConfirmModal = function (options) {
     const modal = document.getElementById('confirmModal');
@@ -13,16 +13,16 @@ window.showConfirmModal = function (options) {
 
     if (!modal) return;
 
-    // Set content
+    // Đặt nội dung
     title.textContent = options.title || 'Confirm Action';
     message.textContent = options.message || 'Are you sure you want to proceed?';
     confirmBtn.textContent = options.confirmText || 'Confirm';
     cancelBtn.textContent = options.cancelText || 'Cancel';
 
-    // Show modal
+    // Hiển thị modal
     modal.classList.remove('hidden');
 
-    // Animate in
+    // Hiệu ứng hiện modal
     setTimeout(() => {
         overlay.classList.replace('opacity-0', 'opacity-100');
         content.classList.replace('opacity-0', 'opacity-100');
@@ -38,7 +38,7 @@ window.showConfirmModal = function (options) {
 
         setTimeout(() => {
             modal.classList.add('hidden');
-            // Reset listeners
+            // Cập nhật trạng thái listener
             confirmBtn.onclick = null;
             cancelBtn.onclick = null;
             overlay.onclick = null;
@@ -54,7 +54,7 @@ window.showConfirmModal = function (options) {
     overlay.onclick = closeModal;
 };
 
-// Auto-hide global toast after 5 seconds
+// Tự ẩn toast toàn cục sau 5 giây
 document.addEventListener('DOMContentLoaded', () => {
     const toast = document.getElementById('global-toast');
     if (toast) {
@@ -62,12 +62,13 @@ document.addEventListener('DOMContentLoaded', () => {
             toast.style.opacity = '0';
             toast.style.transform = 'translateX(120%)';
             setTimeout(() => {
+                // Ẩn toast
                 toast.style.display = 'none';
             }, 500);
         }, 5000);
     }
 
-    // Mobile Dropdown Logic
+    // Logic menu dropdown trên mobile
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileDropdown = document.getElementById('mobileDropdown');
     const menuIcon = document.getElementById('menuIcon');
@@ -97,6 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     mobileDropdown.style.maxHeight = '0px';
                     menuIcon.innerText = 'menu';
                     setTimeout(() => {
+                        // Ẩn dropdown
                         mobileDropdown.classList.add('hidden');
                     }, 300);
                 }

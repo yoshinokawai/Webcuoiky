@@ -25,7 +25,8 @@ namespace WebWikiForum.Controllers
             _fileService = fileService;
         }
 
-        // ==================== LOGIN ====================
+        // ==================== ĐĂNG NHẬP ====================
+
 
         [HttpGet]
         public IActionResult Login(string returnUrl = "/")
@@ -48,7 +49,7 @@ namespace WebWikiForum.Controllers
                 return View(model);
             }
 
-            // Find user in database
+            // Tìm người dùng trong cơ sở dữ liệu
             var user = await _context.Users
                 .FirstOrDefaultAsync(u => u.Username == model.Username || u.Email == model.Username);
 
@@ -58,7 +59,7 @@ namespace WebWikiForum.Controllers
                 return View(model);
             }
 
-            // Create authentication cookie
+            // Tạo cookie xác thực
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, user.Username),
@@ -80,7 +81,7 @@ namespace WebWikiForum.Controllers
                 new ClaimsPrincipal(claimsIdentity),
                 authProperties);
 
-            // CHECK: If user has no Security PIN, redirect to Setup
+            // KIỂM TRA: Nếu người dùng chưa có mã PIN bảo mật, chuyển hướng đến trang thiết lập
             if (string.IsNullOrEmpty(user.SecurityPin))
             {
                 TempData["WarningMessage"] = "Please set up a 6-digit Security PIN for account recovery.";
@@ -91,7 +92,8 @@ namespace WebWikiForum.Controllers
             return LocalRedirect(model.ReturnUrl ?? "/");
         }
 
-        // ==================== REGISTER ====================
+        // ==================== ĐĂNG KÝ ====================
+
 
         [HttpGet]
         public IActionResult CreateAccount()
@@ -111,7 +113,7 @@ namespace WebWikiForum.Controllers
                 return View(model);
             }
 
-            // Check if username already exists
+            // Kiểm tra xem tên đăng nhập đã tồn tại chưa
             var existingUser = await _context.Users
                 .FirstOrDefaultAsync(u => u.Username == model.Username);
             if (existingUser != null)
@@ -120,7 +122,7 @@ namespace WebWikiForum.Controllers
                 return View(model);
             }
 
-            // Check if email already exists
+            // Kiểm tra xem email đã tồn tại chưa
             var existingEmail = await _context.Users
                 .FirstOrDefaultAsync(u => u.Email == model.Email);
             if (existingEmail != null)
@@ -129,7 +131,7 @@ namespace WebWikiForum.Controllers
                 return View(model);
             }
 
-            // Admin role validation
+            // Xác thực quyền Admin
             if (model.Role == "Admin")
             {
                 if (model.AdminKey != "Yoshino")
@@ -139,7 +141,7 @@ namespace WebWikiForum.Controllers
                 }
             }
 
-            // Create the user
+            // Tạo tài khoản người dùng
             var user = new User
             {
                 Username = model.Username,
@@ -147,13 +149,13 @@ namespace WebWikiForum.Controllers
                 PasswordHash = HashPassword(model.Password),
                 Role = model.Role ?? "User",
                 CreatedAt = DateTime.UtcNow,
-                SecurityPin = model.SecurityPin // Save the PIN
+                SecurityPin = model.SecurityPin // Lưu mã PIN
             };
 
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
-            // Auto-login after registration
+            // Tự động đăng nhập sau khi đăng ký
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, user.Username),
@@ -179,7 +181,8 @@ namespace WebWikiForum.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        // ==================== ACCESS DENIED ====================
+        // ==================== TỪ CHỐI TRUY CẬP ====================
+
 
         public IActionResult AccessDenied(string returnUrl = "/")
         {
@@ -187,7 +190,8 @@ namespace WebWikiForum.Controllers
             return View();
         }
 
-        // ==================== LOGOUT ====================
+        // ==================== ĐĂNG XUẤT ====================
+
 
         public async Task<IActionResult> Logout()
         {
@@ -195,7 +199,8 @@ namespace WebWikiForum.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        // ==================== SECURITY PIN & FORGOT PASSWORD ====================
+        // ==================== MÃ PIN BẢO MẬT & QUÊN MẬT KHẨU ====================
+
 
         [HttpGet]
         public IActionResult SetupPin()
@@ -248,7 +253,7 @@ namespace WebWikiForum.Controllers
                 return View();
             }
 
-            // Store user ID in session or pass via TempData for the next step
+            // Lưu ID người dùng trong session hoặc truyền qua TempData cho bước tiếp theo
             TempData["ResetUserId"] = user.Id;
             return RedirectToAction("VerifyPin");
         }
@@ -314,7 +319,8 @@ namespace WebWikiForum.Controllers
             return RedirectToAction("ForgotPassword");
         }
 
-        // ==================== USER PROFILE ====================
+        // ==================== HỒ SƠ NGƯỜI DÙNG ====================
+
 
         [HttpGet]
         public async Task<IActionResult> Profile()
@@ -365,7 +371,7 @@ namespace WebWikiForum.Controllers
  
             if (user == null) return RedirectToAction("Logout");
 
-            // Handle Avatar Upload
+            // Xử lý upload ảnh đại diện
             if (model.AvatarFile != null && model.AvatarFile.Length > 0)
             {
                 try 
@@ -383,7 +389,7 @@ namespace WebWikiForum.Controllers
                 }
             }
 
-            // Handle Cover Image Upload
+            // Xử lý upload ảnh bìa
             if (model.CoverImageFile != null && model.CoverImageFile.Length > 0)
             {
                 try
@@ -447,7 +453,8 @@ namespace WebWikiForum.Controllers
             return View("PublicProfile", model);
         }
 
-        // ==================== PASSWORD HELPERS ====================
+        // ==================== HÀM TIỆN ÍCH MẬT KHẨU ====================
+
 
         private static string HashPassword(string password)
         {

@@ -62,7 +62,7 @@ namespace WebWikiForum.Controllers
                     }
 
                     if (string.IsNullOrEmpty(imageUrl)) {
-                        imageUrl = "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=800&auto=format&fit=crop"; // Default
+                        imageUrl = "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=800&auto=format&fit=crop"; // Ảnh mặc định
                     }
 
                     var news = new News
@@ -128,7 +128,7 @@ namespace WebWikiForum.Controllers
                 {
                     if (imageFile != null && imageFile.Length > 0)
                     {
-                        // Delete old image if it's on Cloudinary (not a generic unsplash link)
+                        // Xóa ảnh cũ nếu đang ở Cloudinary (không phải link unsplash mặc định)
                         if (!string.IsNullOrEmpty(news.ImageUrl) && news.ImageUrl.Contains("res.cloudinary.com"))
                         {
                             var fileName = Path.GetFileName(news.ImageUrl);
@@ -277,7 +277,7 @@ namespace WebWikiForum.Controllers
                     }
                     
                     if (string.IsNullOrEmpty(fileName)) {
-                        fileName = "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=800&auto=format&fit=crop"; // Default
+                        fileName = "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=800&auto=format&fit=crop"; // Ảnh mặc định
                     }
 
                         string? coverFileName = null;
@@ -302,7 +302,7 @@ namespace WebWikiForum.Controllers
                             Tags = model.Tags,
                             YoutubeUrl = model.YoutubeUrl,
                             IntroVideoUrl = model.IntroVideoUrl,
-                        Status = "Approved" // Auto-approve for demo
+                        Status = "Approved" // Tự động duyệt cho mục đích demo
                     };
 
                     _context.Add(vtuber);
@@ -361,7 +361,7 @@ namespace WebWikiForum.Controllers
                 {
                     if (logoFile != null && logoFile.Length > 0)
                     {
-                        // Delete old logo if exists
+                        // Xóa logo cũ nếu tồn tại
                         if (!string.IsNullOrEmpty(agency.LogoUrl))
                         {
                             var oldFileName = Path.GetFileName(agency.LogoUrl);
@@ -371,7 +371,7 @@ namespace WebWikiForum.Controllers
                             }
                         }
 
-                        // Upload new logo
+                        // Upload logo mới
                         string? fileName = await _fileService.UploadImageAsync(logoFile, "agencies");
                         if (!string.IsNullOrEmpty(fileName))
                         {
@@ -439,7 +439,7 @@ namespace WebWikiForum.Controllers
                     }
                     
                     if (string.IsNullOrEmpty(fileName)) {
-                        fileName = "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=800&auto=format&fit=crop"; // Default logo
+                        fileName = "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=800&auto=format&fit=crop"; // Logo mặc định
                     }
 
                     string? coverFileName = null;
@@ -521,7 +521,7 @@ namespace WebWikiForum.Controllers
 
             try
             {
-                // Delete image file if exists
+                // Xóa file ảnh nếu tồn tại
                 if (!string.IsNullOrEmpty(vtuber.AvatarUrl))
                 {
                     var fileName = Path.GetFileName(vtuber.AvatarUrl);
@@ -585,7 +585,7 @@ namespace WebWikiForum.Controllers
                 {
                     if (avatarFile != null && avatarFile.Length > 0)
                     {
-                        // Delete old image if exists
+                        // Xóa ảnh cũ nếu tồn tại
                         if (!string.IsNullOrEmpty(vtuber.AvatarUrl))
                         {
                             var oldFileName = Path.GetFileName(vtuber.AvatarUrl);
@@ -595,7 +595,7 @@ namespace WebWikiForum.Controllers
                             }
                         }
 
-                        // Upload new image
+                        // Upload ảnh mới
                         string? fileName = await _fileService.UploadImageAsync(avatarFile, "vtubers");
                         if (!string.IsNullOrEmpty(fileName))
                         {
@@ -659,7 +659,7 @@ namespace WebWikiForum.Controllers
                 return NotFound();
             }
 
-            // Increment ViewCount
+            // Tăng lượt xem
             try
             {
                 vtuber.ViewCount++;
@@ -668,7 +668,7 @@ namespace WebWikiForum.Controllers
             }
             catch (Exception)
             {
-                // Silently fail if view count update fails to not block the user
+                // Im lặng nếu cập nhật view count thất bại để không cản người dùng
             }
             
             return View(vtuber);

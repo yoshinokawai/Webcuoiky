@@ -37,7 +37,7 @@ namespace WebWikiForum.Services
                 {
                     File = new FileDescription(file.FileName, stream),
                     Folder = "vtwiki/" + folderName,
-                    // Optional: Transformations to keep sizes consistent
+                    // Tùy chọn: Biến đổi để giữ kích thước nhất quán
                     Transformation = new Transformation().Quality(100).Effect("improve").Effect("sharpen:100").FetchFormat("auto").Dpr("auto")
                 };
 
@@ -49,15 +49,15 @@ namespace WebWikiForum.Services
                 throw new Exception($"Cloudinary Upload Error: {uploadResult.Error.Message}");
             }
 
-            // Return the full secure URL
+            // Trả về URL bảo mật đầy đủ
             return uploadResult.SecureUrl?.ToString();
         }
 
         public void DeleteFile(string fileName, string folderName)
         {
-            // Note: Cloudinary deletion requires the PublicId, not just the filename/URL.
-            // For a basic implementation, we can skip deletion or parse the public ID from the URL.
-            // Since this is a demo, we'll keep it simple and skip deletion for now.
+            // Lưu ý: Xóa file trên Cloudinary yêu cầu PublicId, không phải filename/URL.
+            // Với cách triển khai đơn giản, có thể bỏ qua hoặc phân tích public ID từ URL.
+            // Vì đây là demo, bỏ qua việc xóa cho đơn giản.
             if (string.IsNullOrEmpty(fileName)) return;
         }
     }

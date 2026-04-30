@@ -1,4 +1,4 @@
-@using System.Security.Claims
+﻿@using System.Security.Claims
 <!DOCTYPE html>
 <html lang="@System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName">
 <head>
@@ -41,7 +41,7 @@
     <header class="sticky top-0 z-50 w-full border-b border-slate-200/60 dark:border-slate-800/60 bg-surface-light/80 dark:bg-surface-dark/80 backdrop-blur-xl supports-[backdrop-filter]:bg-surface-light/60">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16 gap-4">
-                <!-- Left: Logo -->
+                <!-- Trái: Logo -->
                 <a href="/Home/Index" class="flex items-center gap-2 flex-shrink-0">
                     <div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary text-white shadow-sm ring-4 ring-primary/10">
                         <span class="material-symbols-outlined text-[20px]">smart_display</span>
@@ -49,7 +49,7 @@
                     <span class="text-xl font-black tracking-tight text-slate-900 dark:text-white ml-2"><span class="text-primary">VT</span>Wiki</span>
                 </a>
 
-                <!-- Middle: Navigation -->
+                <!-- Giữa: Điều hướng -->
                 <nav class="hidden lg:flex items-center gap-8">
                     <a class="text-sm font-bold @(ViewContext.RouteData.Values["Action"]?.ToString() == "Index" ? "text-primary border-b-2 border-primary" : "text-slate-700 dark:text-slate-300 hover:text-primary") transition-colors py-2" href="/Home/Index">@Localizer["Nav_Home"]</a>
                     
@@ -149,9 +149,9 @@
                     </div>
                 </nav>
 
-                <!-- Right: Search & Profile -->
+                <!-- Phải: Tìm kiếm & Hồ sơ -->
                 <div class="flex items-center gap-3 flex-1 justify-end">
-                    <!-- Dynamic Search -->
+                    <!-- Tìm kiếm động -->
                     <div class="relative hidden sm:block w-full max-w-[240px] group z-[70]">
                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                             <span class="material-symbols-outlined text-slate-400 text-[18px]">search</span>
@@ -171,7 +171,7 @@
                         </div>
                     </div>
 
-                    <!-- Language -->
+                    <!-- Ngôn ngữ -->
                     <div class="relative group z-50">
                         <button class="flex items-center gap-1 text-sm font-bold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors h-10 px-3 rounded-full border border-slate-200 dark:border-slate-700/50 hover:bg-slate-50 dark:hover:bg-slate-800/80">
                             <span class="material-symbols-outlined text-[18px]">language</span>
@@ -189,19 +189,19 @@
                         </div>
                     </div>
 
-                    <!-- Profile -->
+                    <!-- Hồ sơ -->
                     @await Component.InvokeAsync("NavbarProfile")
-                    <!-- Mobile Menu Button -->
+                    <!-- Nút menu mobile -->
                     <button id="mobileMenuBtn" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
                         <span class="material-symbols-outlined text-[28px]" id="menuIcon">menu</span>
                     </button>
                 </div>
             </div>
             
-            <!-- Mobile Dropdown Menu -->
+            <!-- Menu dropdown mobile -->
             <div id="mobileDropdown" class="lg:hidden hidden overflow-hidden transition-all duration-300 max-h-0 border-t border-slate-100 dark:border-slate-800">
                 <nav class="p-4 space-y-4 bg-white dark:bg-surface-dark shadow-inner max-h-[80vh] overflow-y-auto">
-                    <!-- Home Section -->
+                    <!-- Phần Trang chủ -->
                     <div class="space-y-1">
                         <a href="/Home/Index" class="flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-slate-700 dark:text-slate-300 hover:bg-primary/10 hover:text-primary transition-all">
                             <span class="material-symbols-outlined text-[20px]">home</span>
@@ -209,7 +209,7 @@
                         </a>
                     </div>
                     
-                    <!-- Explore Section -->
+                    <!-- Phần Khám phá -->
                     <div class="space-y-1">
                         <div class="px-4 py-1 text-[10px] font-black uppercase tracking-widest text-slate-400">@Localizer["Nav_Explore"]</div>
                         <a href="/Wiki/Agencies" class="flex items-center gap-3 px-4 py-2 rounded-xl text-sm font-bold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800">
@@ -234,7 +234,7 @@
                         </a>
                     </div>
 
-                    <!-- Community Section -->
+                    <!-- Phần Cộng đồng -->
                     <div class="space-y-1">
                         <div class="px-4 py-1 text-[10px] font-black uppercase tracking-widest text-slate-400">@Localizer["Nav_Community"]</div>
                         <a href="/Forum/CommunityHub" class="flex items-center gap-3 px-4 py-2 rounded-xl text-sm font-bold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800">

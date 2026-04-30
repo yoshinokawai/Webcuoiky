@@ -1,4 +1,4 @@
-/* Login Hero Background Section */
+/* Khu vực nền Banner trang Đăng nhập */
 .login-hero-bg {
     position: absolute;
     inset: 0;
@@ -10,7 +10,7 @@
     background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA9G3vFTFMQhg7boEgjIPndNNCAybDznl5cvjmRZNwiTxv1soDnii6b-EDcIAMpGbEFS1SU9crafgfJHRDmB98XOTIHNRlqhjMIAwrU7WUdI0JXW7AAAzLMqAITiVzwANQxGm3lhLmmJ-pKG_rkQ8WjuH36JFhBqOADNtNv3jrjUn6ruuKmWSEXNo7oAbFjSrdbGAnG2WYYeCkqknHWKELdx_0oQy_Pc7pHcUYS3BHgwgELCgxOCqo5BcVQ9PHYLbQMMAG7Ltmjpqo');
 }
 
-/* Gradient overlay for readability */
+/* Lới gradient tăng khả năng đọc */
 .login-hero-overlay {
     position: absolute;
     inset: 0;
@@ -26,7 +26,7 @@
     background-color: #0f172a;
 }
 
-/* Visual elements */
+/* Yếu tố thị giác */
 .login-icon-box {
     display: inline-flex;
     height: 3rem;
@@ -62,7 +62,7 @@
     width: 0.5rem;
 }
 
-/* Responsive adjustments */
+/* Điều chỉnh responsive */
 @media (max-width: 1023px) {
     .login-mobile-header {
         margin-bottom: 2.5rem;

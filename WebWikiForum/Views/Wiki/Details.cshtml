@@ -1,4 +1,4 @@
-@model WebWikiForum.Models.Vtuber
+﻿@model WebWikiForum.Models.Vtuber
 @{
     ViewData["Title"] = Model.Name + " - " + Localizer["Wiki_Profile_Type"].Value;
 
@@ -21,7 +21,7 @@
 <div class="max-w-4xl mx-auto px-4 py-8 sm:px-6 lg:px-8 mt-12 mb-20">
     <div class="bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-800 rounded-3xl overflow-hidden shadow-xl">
         
-        <!-- Header Banner -->
+        <!-- Banner tiêu đề -->
         <div class="h-64 sm:h-80 relative overflow-hidden bg-primary/10">
             @if (!string.IsNullOrEmpty(Model.CoverImageUrl))
             {
@@ -31,13 +31,13 @@
             {
                 <div class="absolute inset-0 bg-cover bg-center blur-2xl opacity-50 scale-110" style="background-image: url('@Model.AvatarUrl')"></div>
             }
-            <!-- pointer-events-none so the gradient doesn't block clicks on the cover -->
+            <!-- pointer-events-none để gradient không chặn click trên ảnh bìa -->
             <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent pointer-events-none"></div>
         </div>
 
-        <!-- Profile Content -->
+        <!-- Nội dung hồ sơ -->
         <div class="relative px-6 sm:px-12 pb-12">
-            <!-- Avatar Overlay -->
+            <!-- Lớp phủ Avatar -->
             <div class="-mt-24 sm:-mt-32 mb-6 flex justify-between items-end">
                 <div class="relative">
                     @if (!string.IsNullOrEmpty(Model.AvatarUrl))
@@ -72,7 +72,7 @@
                 </div>
             </div>
 
-            <!-- Basic Info -->
+            <!-- Thông tin cơ bản -->
             <div class="mb-8 border-b border-slate-200 dark:border-slate-800 pb-8">
                 <h1 class="text-4xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight mb-2">@Model.Name</h1>
                 
@@ -99,7 +99,7 @@
                 </div>
             </div>
 
-            <!-- Lore Section -->
+            <!-- Phần lịch sử nhân vật -->
             <div>
                 <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-200 mb-4 flex items-center gap-2">
                     <span class="material-symbols-outlined text-primary">auto_awesome</span>
@@ -117,7 +117,7 @@
                 </div>
             </div>
             
-            <!-- Intro Video Section -->
+            <!-- Phần video giới thiệu -->
             @if (!string.IsNullOrEmpty(Model.IntroVideoUrl) && !string.IsNullOrEmpty(introVideoId))
             {
                 <div class="mt-12">

@@ -1,4 +1,4 @@
-@model IEnumerable<ChatSessionSummary>
+﻿@model IEnumerable<ChatSessionSummary>
 @{
     ViewData["Title"] = Localizer["Chat_Session_History_Title"].Value.Replace("{0}", ViewBag.TargetUser as string ?? "User");
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -35,7 +35,7 @@
                 <a href="/Admin/ChatDetail?sessionId=@session.SessionId"
                    class="flex items-center gap-4 bg-white dark:bg-surface-dark rounded-2xl border border-slate-200 dark:border-slate-700 p-4 hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition-all duration-200 group">
 
-                    <!-- Session Icon / Avatar -->
+                    <!-- Icon Session / Ảnh đại diện -->
                     <div class="w-12 h-12 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/10 transition-all overflow-hidden border border-transparent group-hover:border-primary/20">
                         @if (!string.IsNullOrEmpty(session.AvatarUrl))
                         {
@@ -47,7 +47,7 @@
                         }
                     </div>
 
-                    <!-- Session Info -->
+                    <!-- Thông tin session -->
                     <div class="flex-1 min-w-0">
                         <div class="flex items-center justify-between mb-0.5">
                             <h3 class="font-bold text-slate-900 dark:text-white truncate">

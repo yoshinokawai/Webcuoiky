@@ -1,11 +1,11 @@
-@model IEnumerable<WebWikiForum.Models.Vtuber>
+﻿@model IEnumerable<WebWikiForum.Models.Vtuber>
 @section Styles {
     <link rel="stylesheet" href="~/css/Explore.css" />
 }
 
 <main class="max-w-[1200px] mx-auto px-4 md:px-10 py-8">
     <form method="get" asp-action="Explore" id="filterForm">
-        <!-- Search & Discovery Section -->
+        <!-- Phần tìm kiếm & khám phá -->
         <section class="mb-10">
             <h2 class="text-3xl font-bold mb-6 text-slate-900 dark:text-white">@Localizer["Explore_Title"]</h2>
             <div class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-primary/5">
@@ -31,7 +31,7 @@
                 </div>
 </div>
         <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-primary/10 shadow-sm mb-8 flex flex-wrap items-center gap-6">
-            <!-- Sort By -->
+            <!-- Sắp xếp theo -->
             <div class="flex flex-col gap-1.5 min-w-[180px]">
                 <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400 ml-1">@Localizer["Explore_Filter_SortBy"]</label>
                 <div class="relative">
@@ -44,7 +44,7 @@
                     <span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">expand_more</span>
                 </div>
             </div>
-            <!-- Content Type -->
+            <!-- Loại nội dung -->
             <div class="flex flex-col gap-1.5 min-w-[200px]">
                 <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400 ml-1">@Localizer["Explore_Filter_ContentType"]</label>
                 <div class="relative">

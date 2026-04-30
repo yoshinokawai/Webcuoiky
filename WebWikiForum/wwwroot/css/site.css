@@ -1,4 +1,4 @@
-/* Global styles for WebWikiForum */
+/* Style toàn cục cho WebWikiForum */
 
 :root {
     --color-primary: #994ce6;
@@ -43,7 +43,7 @@ html, body {
     transform: rotate(180deg);
 }
 
-/* Scrollbar styles */
+/* Style thanh cuộn */
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -61,7 +61,7 @@ html, body {
     background: rgba(153, 76, 230, 0.4);
 }
 
-/* Custom Select Arrow Fix */
+/* Sửa mũi tên Select tùy chỉnh */
 select {
     appearance: none !important;
     -webkit-appearance: none !important;

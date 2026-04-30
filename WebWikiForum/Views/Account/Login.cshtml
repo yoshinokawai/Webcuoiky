@@ -1,4 +1,4 @@
-@model WebWikiForum.ViewModels.LoginViewModel
+﻿@model WebWikiForum.ViewModels.LoginViewModel
 @{ Layout = "_Layout_Blank"; }
 @section Styles {
     <link rel="stylesheet" href="~/css/Login.css" />
@@ -6,11 +6,11 @@
 
 
 <div class="flex min-h-screen w-full overflow-hidden">
-    <!-- Left Side: Visual/Illustration -->
+    <!-- Bên trái: Hình ảnh minh họa -->
     <div class="relative hidden lg:flex w-1/2 flex-col justify-end p-12 overflow-hidden bg-primary/10">
         <div class="login-hero-bg" data-alt="Anime style illustration with purple neon lighting aesthetic"></div>
         <div class="login-hero-overlay"></div>
-        <!-- Content Overlay -->
+        <!-- Lớp phủ nội dung -->
 <div class="relative z-20 max-w-lg">
     <div class="login-icon-box">
         <span class="material-symbols-outlined text-2xl">auto_stories</span>
@@ -28,9 +28,9 @@
 </div>
 </div>
 </div>
-    <!-- Right Side: Login Form -->
+    <!-- Bên phải: Form Đăng nhập -->
     <div class="flex flex-1 flex-col justify-center items-center px-6 py-12 lg:px-24 w-full login-form-side relative">
-<!-- Mobile Top Nav (Back Home) -->
+<!-- Thanh điều hướng mobile (Về trang chủ) -->
 <div class="absolute top-6 left-6 lg:top-10 lg:left-10">
 <a class="group flex items-center gap-2 text-slate-500 hover:text-primary transition-colors text-sm font-medium" href="/">
 <span class="material-symbols-outlined text-lg group-hover:-translate-x-1 transition-transform">arrow_back</span>
@@ -38,7 +38,7 @@
             </a>
 </div>
 <div class="w-full max-w-[420px] flex flex-col">
-<!-- Header -->
+<!-- Tiêu đề trang -->
 <div class="mb-8">
 <div class="mb-6 h-12 w-12 flex items-center justify-center rounded-xl bg-primary text-white shadow-primary/30 shadow-lg">
 <span class="material-symbols-outlined">lock_open</span>
@@ -47,14 +47,14 @@
 <p class="text-slate-500 dark:text-slate-400">@Localizer["Account_Login_Subtitle"]</p>
 </div>
 
-<!-- Validation Errors -->
+<!-- Lỗi xác thực -->
 <div asp-validation-summary="All" class="text-red-500 text-sm mb-4"></div>
 
-<!-- Form -->
+<!-- Biểu mẫu -->
 <form asp-action="Login" asp-controller="Account" method="post" class="flex flex-col gap-5">
     @Html.AntiForgeryToken()
     <input type="hidden" asp-for="ReturnUrl" value="@ViewData["ReturnUrl"]" />
-    <!-- Username Input -->
+    <!-- Ô nhập tên đăng nhập -->
 <div class="space-y-1.5">
 <label class="block text-sm font-semibold text-slate-700 dark:text-slate-200" asp-for="Username">
                         @Localizer["Account_Login_Label_User"]
@@ -67,7 +67,7 @@
 </div>
 <span asp-validation-for="Username" class="text-red-500 text-xs mt-1 block"></span>
 </div>
-    <!-- Password Input -->
+    <!-- Ô nhập mật khẩu -->
 <div class="space-y-1.5">
 <label class="block text-sm font-semibold text-slate-700 dark:text-slate-200" asp-for="Password">
                         @Localizer["Account_Login_Label_Pass"]
@@ -83,7 +83,7 @@
 </div>
 <span asp-validation-for="Password" class="text-red-500 text-xs mt-1 block"></span>
 </div>
-    <!-- Options Row -->
+    <!-- Hàng tùy chọn -->
 <div class="flex items-center justify-between mt-1">
 <label class="flex items-center gap-2 cursor-pointer group">
 <input class="h-4 w-4 rounded border-slate-300 text-primary focus:ring-primary/30 transition-all" type="checkbox"/>
@@ -91,7 +91,7 @@
 </label>
 <a class="text-sm font-bold text-primary hover:text-primary-dark transition-colors" href="/Account/ForgotPassword">@Localizer["Account_Login_Forgot"]</a>
 </div>
-    <!-- Submit Button -->
+    <!-- Nút gửi -->
 <button class="mt-2 w-full flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold py-3.5 px-4 rounded-full shadow-lg shadow-primary/25 hover:shadow-primary/40 active:scale-[0.98] transition-all duration-200" type="submit">
 <span>@Localizer["Account_Login_Btn"]</span>
 <span class="material-symbols-outlined text-sm">login</span>

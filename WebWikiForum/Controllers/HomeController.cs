@@ -24,7 +24,7 @@ namespace WebWikiForum.Controllers
 
         public async Task<IActionResult> Index()
         {
-            // Top 5 VTubers for the Spotlight section
+            // Top 5 VTuber cho phần Spotlight
             ViewBag.Spotlight = await _context.Vtubers
                 .Include(v => v.Agency)
                 .OrderByDescending(v => v.ViewCount)
@@ -32,7 +32,7 @@ namespace WebWikiForum.Controllers
                 .Take(5)
                 .ToListAsync();
 
-            // Top 5 VTubers for the Trending section
+            // Top 5 VTuber cho phần Trending
             ViewBag.Trending = await _context.Vtubers
                 .Include(v => v.Agency)
                 .OrderByDescending(v => v.ViewCount)
@@ -40,20 +40,20 @@ namespace WebWikiForum.Controllers
                 .Take(5)
                 .ToListAsync();
 
-            // Top 5 Agencies for the Browse section
+            // Top 5 Agency cho phần Browse
             ViewBag.Agencies = await _context.Agencies
                 .OrderBy(a => a.Name)
                 .Take(5)
                 .ToListAsync();
 
-            // Recent Activities for the sidebar/feed
+            // Hoạt động gần đây cho sidebar/feed
             var recentActivities = await _context.Activities
                 .OrderByDescending(a => a.Timestamp)
                 .Take(4)
                 .ToListAsync();
             ViewBag.RecentActivities = recentActivities;
 
-            // Fetch avatars for these authors
+            // Lấy avatar cho các tác giả tương ứng
             var authors = recentActivities.Select(a => a.Author).Distinct().ToList();
             var userAvatars = await _context.Users
                 .Where(u => authors.Contains(u.Username))
@@ -61,7 +61,7 @@ namespace WebWikiForum.Controllers
                 .ToDictionaryAsync(u => u.Username, u => u.AvatarUrl);
             ViewBag.UserAvatars = userAvatars;
 
-            // Fetch top 3 news for the Home page
+            // Lấy top 3 tin tức cho trang chủ
             ViewBag.RecentNews = await _context.News
                 .OrderByDescending(n => n.PublishDate)
                 .Take(3)
@@ -72,7 +72,7 @@ namespace WebWikiForum.Controllers
 
         public async Task<IActionResult> Explore(string? searchTerm, string? sortBy, string? contentType, string? status, string? tab, string? language)
         {
-            // Defaults for persistence and logic
+            // Giá trị mặc định để giữ trạng thái bộ lọc và xử lý logic
             status ??= "Active";
             tab ??= "All";
             language ??= "All";
@@ -81,13 +81,13 @@ namespace WebWikiForum.Controllers
 
             var query = _context.Vtubers.Include(v => v.Agency).AsQueryable();
 
-            // Filter by Search Term
+            // Lọc theo từ khóa tìm kiếm
             if (!string.IsNullOrEmpty(searchTerm))
             {
                 query = query.Where(v => v.Name.Contains(searchTerm) || v.Lore.Contains(searchTerm) || v.Tags.Contains(searchTerm));
             }
 
-            // Filter by Status (Highly robust: maps Active to Approved for backwards compatibility)
+            // Lọc theo trạng thái (tương thích cao: ánh xạ Active sang Approved để tương thích ngược)
             if (status != "All")
             {
                 if (status == "Active")
@@ -100,7 +100,7 @@ namespace WebWikiForum.Controllers
                 }
             }
 
-            // Filter by Language (Extremely permissive match for EN/JP/ID/KR)
+            // Lọc theo ngôn ngữ (khớp rộng rãi: EN/JP/ID/KR/VN)
             if (language != "All")
             {
                 string l = language;
@@ -134,13 +134,13 @@ namespace WebWikiForum.Controllers
                 }
             }
 
-            // Filter by Content Type (Tags)
+            // Lọc theo loại nội dung (Tags)
             if (contentType != "All Types")
             {
                 query = query.Where(v => v.Tags.Contains(contentType));
             }
 
-            // Filter by Tab
+            // Lọc theo Tab
             if (tab == "Agencies")
             {
                 query = query.Where(v => v.AgencyId != null);
@@ -150,29 +150,29 @@ namespace WebWikiForum.Controllers
                 query = query.Where(v => v.IsIndependent == true);
             }
 
-            // Sorting
+            // Sắp xếp
             query = sortBy switch
             {
                 "Most Popular" => query.OrderByDescending(v => v.ViewCount),
                 "A-Z" => query.OrderBy(v => v.Name),
                 "Z-A" => query.OrderByDescending(v => v.Name),
-                _ => query.OrderByDescending(v => v.DebutDate) // Default: Newest Debut
+                _ => query.OrderByDescending(v => v.DebutDate) // Mặc định: Ra mắt mới nhất
             };
 
-            // Statistics for Sidebar
+            // Thống kê cho Sidebar
             ViewBag.TotalArticles = await _context.Vtubers.CountAsync() + await _context.Agencies.CountAsync() + 15;
             ViewBag.TotalEditors = (await _context.Vtubers.CountAsync() / 2) + 5;
             ViewBag.TalentsTracked = await _context.Vtubers.CountAsync();
             ViewBag.AgenciesCount = await _context.Agencies.CountAsync();
 
-            // Trending VTubers (Top 2 by views)
+            // VTuber trending (Top 2 theo lượt xem)
             ViewBag.Trending = await _context.Vtubers
                 .Include(v => v.Agency)
                 .OrderByDescending(v => v.ViewCount)
                 .Take(2)
                 .ToListAsync();
 
-            // ViewData for maintaining filter state in the UI
+            // ViewData để duy trì trạng thái bộ lọc trên giao diện
             ViewData["SearchTerm"] = searchTerm;
             ViewData["SortBy"] = sortBy;
             ViewData["ContentType"] = contentType;
@@ -207,7 +207,7 @@ namespace WebWikiForum.Controllers
                 RecentActivities = activities,
                 TotalArticles = await _context.Vtubers.CountAsync() + await _context.Agencies.CountAsync() + await _context.News.CountAsync(),
                 TotalEditors = await _context.Activities.Select(a => a.Author).Distinct().CountAsync(),
-                TotalMedia = await _context.Activities.CountAsync(a => a.ActivityType == "Media") + (await _context.Vtubers.CountAsync() * 2), // Estimation
+                TotalMedia = await _context.Activities.CountAsync(a => a.ActivityType == "Media") + (await _context.Vtubers.CountAsync() * 2), // Ước tính
                 Last24hEdits = await _context.Activities.CountAsync(a => a.Timestamp > last24h),
                 
                 TopContributors = (await _context.Activities
@@ -239,7 +239,7 @@ namespace WebWikiForum.Controllers
             var topVtubers = await _context.Vtubers
                 .Include(v => v.Agency)
                 .OrderByDescending(v => v.ViewCount)
-                .Take(20) // Show top 20
+                .Take(20) // Hiển thị top 20
                 .ToListAsync();
                 
             return View(topVtubers);

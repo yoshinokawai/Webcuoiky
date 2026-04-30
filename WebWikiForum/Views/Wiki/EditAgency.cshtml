@@ -1,4 +1,4 @@
-@model WebWikiForum.ViewModels.AgencyViewModel
+﻿@model WebWikiForum.ViewModels.AgencyViewModel
 @{
     ViewData["Title"] = string.Format(Localizer["Wiki_Agency_Edit_Title"].Value, Model.Name);
 }
@@ -19,7 +19,7 @@
         <input type="hidden" name="id" value="@ViewBag.Id" />
         
         <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
-            <!-- Left: Logo & Cover Upload -->
+            <!-- Trái: Logo & Upload ảnh bìa -->
             <div class="md:col-span-4 space-y-4">
                 <div class="relative group">
                     <label class="block text-xs font-black text-slate-400 uppercase tracking-widest mb-2 text-center">@Localizer["Wiki_Label_Avatar"]</label>
@@ -69,7 +69,7 @@
                 </div>
             </div>
 
-            <!-- Right: Form Fields -->
+            <!-- Phải: Các trường biểu mẫu -->
             <div class="md:col-span-8 bg-white dark:bg-surface-dark rounded-3xl border border-slate-200 dark:border-slate-800 p-8 shadow-sm space-y-6">
                 <div asp-validation-summary="ModelOnly" class="text-red-500 text-sm mb-4"></div>
 
@@ -144,7 +144,7 @@
     </form>
 </div>
 
-<!-- Image Cropper Modal -->
+<!-- Modal cắt ảnh -->
 <div id="cropperModal" class="fixed inset-0 z-[200] hidden">
     <div class="flex items-center justify-center min-h-screen p-4">
         <div class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm"></div>

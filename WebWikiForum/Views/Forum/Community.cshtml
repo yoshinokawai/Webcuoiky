@@ -1,4 +1,4 @@
-@model IEnumerable<WebWikiForum.Models.Discussion>
+﻿@model IEnumerable<WebWikiForum.Models.Discussion>
 @{
     ViewData["Title"] = Localizer["Forum_Community_Title"];
 }
@@ -43,7 +43,7 @@
 </div>
 <div class="grid gap-4">
     @if (!showCards) {
-        <!-- Show topic list for filtered category -->
+        <!-- Hiển thị danh sách topic theo danh mục đã lọc -->
         @foreach (var topic in Model) {
             <div class="bg-white dark:bg-slate-800/50 p-6 rounded-xl border border-primary/5 hover:border-primary/20 transition-all flex flex-col md:flex-row gap-6 items-start md:items-center">
                 @{
@@ -80,7 +80,7 @@
             </div>
         }
     } else {
-        <!-- Categories Loop using real database stats -->
+        <!-- Vòng lặp danh mục dùng dữ liệu thực từ database -->
         @foreach (var cat in (IEnumerable<WebWikiForum.ViewModels.CategorySummary>)ViewBag.CategoryStats) {
             <a href="/Forum/Community?category=@cat.Identifier" class="bg-white dark:bg-slate-800/50 p-6 rounded-xl border border-primary/5 hover:border-primary/20 transition-all flex flex-col md:flex-row gap-6 items-start md:items-center">
                 <div class="size-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0">

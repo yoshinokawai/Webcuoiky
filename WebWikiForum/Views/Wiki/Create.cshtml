@@ -1,4 +1,4 @@
-@model WebWikiForum.ViewModels.VtuberViewModel
+﻿@model WebWikiForum.ViewModels.VtuberViewModel
 
 @{
     ViewData["Title"] = Localizer["Wiki_Create_Profile"];
@@ -17,7 +17,7 @@
             <div asp-validation-summary="ModelOnly" class="text-red-500 text-sm mb-4"></div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <!-- Avatar Upload -->
+                <!-- Upload ảnh đại diện -->
                 <div>
                     <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">@Localizer["Wiki_Label_Avatar"]</label>
                     <div class="mt-1 flex flex-col justify-center items-center px-6 pt-5 pb-6 border-2 border-slate-300 dark:border-slate-700 border-dashed rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors cursor-pointer" onclick="document.getElementById('avatarFile').click()">
@@ -33,7 +33,7 @@
                     </div>
                 </div>
 
-                <!-- Cover Image Upload -->
+                <!-- Upload ảnh bìa -->
                 <div>
                     <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">@Localizer["Wiki_Label_CoverImage"]</label>
                     <div class="mt-1 flex flex-col justify-center items-center px-6 pt-5 pb-6 border-2 border-slate-300 dark:border-slate-700 border-dashed rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors cursor-pointer" onclick="document.getElementById('coverImageFile').click()">

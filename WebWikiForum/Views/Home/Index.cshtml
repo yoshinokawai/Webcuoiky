@@ -1,4 +1,4 @@
-@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResource> Localizer
+﻿@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResource> Localizer
 @section Styles {
     <link rel="stylesheet" href="~/css/Index.css" />
 }
@@ -21,7 +21,7 @@
             }
         </div>
         
-        <!-- Slider Navigation -->
+        <!-- Điều hướng slider -->
         <button class="slider-btn prev absolute left-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-white/80 dark:bg-slate-800/80 shadow-md flex items-center justify-center text-slate-700 dark:text-white hover:bg-primary hover:text-white transition-all opacity-0 group-hover:opacity-100">
             <span class="material-symbols-outlined">chevron_left</span>
         </button>
@@ -29,7 +29,7 @@
             <span class="material-symbols-outlined">chevron_right</span>
         </button>
         
-        <!-- Slider Dots -->
+        <!-- Chấm slider -->
         <div class="slider-dots absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex gap-2">
             @if (ViewBag.Spotlight != null)
             {

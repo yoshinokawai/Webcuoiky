@@ -20,7 +20,7 @@
 
 <div class="fixed inset-0 pointer-events-none bg-dots z-0"></div>
 <div class="relative z-10">
-    <!-- Hero Section -->
+    <!-- Phần banner chính -->
     <div class="relative h-64 md:h-80 w-full overflow-hidden">
         @if (!string.IsNullOrEmpty(Model.CoverImageUrl))
         {
@@ -36,7 +36,7 @@
         }
         <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
             <div class="max-w-7xl mx-auto px-4 w-full flex flex-col md:flex-row items-center gap-8 translate-y-12 md:translate-y-16 pointer-events-auto">
-                <!-- Agency Logo Large -->
+                <!-- Logo Agency cỡ lớn -->
                 <div class="w-32 h-32 md:w-48 md:h-48 rounded-3xl bg-white dark:bg-slate-800 shadow-2xl shadow-primary/20 border-4 border-white dark:border-slate-800 flex items-center justify-center overflow-hidden shrink-0">
                     @if (!string.IsNullOrEmpty(Model.LogoUrl))
                     {
@@ -47,7 +47,7 @@
                         <span class="text-4xl font-black text-primary">@Model.Name.Substring(0, 1)</span>
                     }
                 </div>
-                <!-- Agency Header Info -->
+                <!-- Thông tin tiêu đề Agency -->
                 <div class="text-center md:text-left text-white">
                     <div class="flex flex-wrap items-center justify-center md:justify-start gap-3 mb-2">
                         <span class="px-3 py-1 rounded-full bg-primary/20 backdrop-blur-md border border-primary/30 text-xs font-bold uppercase tracking-widest">
@@ -74,7 +74,7 @@
         </div>
     </div>
 
-    <!-- Main Content -->
+    <!-- Nội dung chính -->
     <div class="max-w-7xl mx-auto px-4 pt-24 md:pt-32 pb-16">
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <!-- Left Sidebar: About -->

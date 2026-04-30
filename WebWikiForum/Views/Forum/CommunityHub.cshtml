@@ -1,4 +1,4 @@
-@model IEnumerable<WebWikiForum.Models.Discussion>
+﻿@model IEnumerable<WebWikiForum.Models.Discussion>
 @{
     ViewData["Title"] = Localizer["Forum_Wiki_Breadcrumb"]; // Using Breadcrumb as Title for Hub
 }
@@ -6,7 +6,7 @@
 <div class="min-h-screen bg-slate-50 dark:bg-surface-dark/30 py-8 px-6 lg:px-40">
     <div class="max-w-[1440px] mx-auto space-y-8">
         
-        <!-- Header / Hero Section -->
+        <!-- Phần tiêu đề / Banner -->
         <header class="relative overflow-hidden rounded-3xl bg-primary p-8 lg:p-12 text-white shadow-2xl shadow-primary/20">
             <div class="relative z-10 max-w-2xl">
                 <h1 class="text-4xl lg:text-5xl font-black mb-4 leading-tight">@Localizer["Forum_Hub_Welcome"]</h1>
@@ -24,14 +24,14 @@
                 </div>
             </div>
 
-            <!-- Abstract Decor -->
+            <!-- Trang trí trừu tượng -->
             <div class="absolute -right-20 -top-20 size-[400px] bg-white/10 rounded-full blur-3xl pointer-events-none"></div>
             <div class="absolute right-20 bottom-0 size-[200px] bg-purple-400/20 rounded-full blur-2xl pointer-events-none"></div>
         </header>
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             
-            <!-- Main Content Area (2 Cols) -->
+            <!-- Khu vực nội dung chính (2 cột) -->
             <div class="lg:col-span-2 space-y-8">
                 
                 <!-- Recent Discussions Section -->
