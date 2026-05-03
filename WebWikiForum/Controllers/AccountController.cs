@@ -131,23 +131,13 @@ namespace WebWikiForum.Controllers
                 return View(model);
             }
 
-            // Xác thực quyền Admin
-            if (model.Role == "Admin")
-            {
-                if (model.AdminKey != "Yoshino")
-                {
-                    ModelState.AddModelError("AdminKey", "Invalid Admin Secret Key.");
-                    return View(model);
-                }
-            }
-
-            // Tạo tài khoản người dùng
+            // Tạo tài khoản người dùng (luôn là User — Admin trao role từ Dashboard)
             var user = new User
             {
                 Username = model.Username,
                 Email = model.Email,
                 PasswordHash = HashPassword(model.Password),
-                Role = model.Role ?? "User",
+                Role = "User", // Mọi tài khoản mới đều là User — Admin nâng quyền từ Dashboard
                 CreatedAt = DateTime.UtcNow,
                 SecurityPin = model.SecurityPin // Lưu mã PIN
             };

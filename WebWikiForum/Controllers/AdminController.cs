@@ -3,12 +3,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 using WebWikiForum.Data;
 using WebWikiForum.Models;
 using WebWikiForum.Services;
 using WebWikiForum.ViewModels;
 using System.IO;
 using System;
+using System.Security.Claims;
 
 namespace WebWikiForum.Controllers
 {
@@ -41,14 +43,130 @@ namespace WebWikiForum.Controllers
                                      .OrderByDescending(n => n.PublishDate)
                                      .ToListAsync();
 
+            // Lấy tất cả tài khoản người dùng (trừ chính Admin đang đăng nhập ra cuối)
+            var currentAdminId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "0");
+            var users = await _context.Users
+                                      .OrderBy(u => u.Role)
+                                      .ThenBy(u => u.Username)
+                                      .ToListAsync();
+
+            // Phân công Editor → Discussion (kèm navigation)
+            var assignments = await _context.EditorAssignments
+                                            .Include(a => a.Discussion)
+                                            .Include(a => a.Editor)
+                                            .ToListAsync();
+
+            // Danh sách Discussion để populate dropdown giao bài
+            var discussions = await _context.Discussions
+                                            .OrderByDescending(d => d.CreatedAt)
+                                            .ToListAsync();
+
             var viewModel = new AdminDashboardViewModel
             {
-                Vtubers = vtubers,
-                Agencies = agencies,
-                News = news
+                Vtubers      = vtubers,
+                Agencies     = agencies,
+                News         = news,
+                Users        = users,
+                EditorAssignments = assignments,
+                Discussions  = discussions
             };
 
             return View(viewModel);
+        }
+
+        // ── Quản lý Role Người dùng ────────────────────────────────────────
+
+        // POST: Admin/AssignRole
+        [HttpPost]
+        public async Task<IActionResult> AssignRole(int userId, string role)
+        {
+            // Không cho Admin tự hạ role của chính mình
+            var currentAdminId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "0");
+            if (userId == currentAdminId)
+            {
+                TempData["ErrorMessage"] = "Bạn không thể thay đổi role của chính mình.";
+                return RedirectToAction(nameof(Dashboard));
+            }
+
+            var validRoles = new[] { "User", "Editor", "Admin" };
+            if (!validRoles.Contains(role))
+            {
+                TempData["ErrorMessage"] = "Role không hợp lệ.";
+                return RedirectToAction(nameof(Dashboard));
+            }
+
+            var user = await _context.Users.FindAsync(userId);
+            if (user == null) return NotFound();
+
+            var oldRole = user.Role;
+            user.Role = role;
+
+            // Nếu hạ từ Editor xuống User/Admin: xóa hết phân công của người đó
+            if (oldRole == "Editor" && role != "Editor")
+            {
+                var assignments = _context.EditorAssignments.Where(a => a.EditorUserId == userId);
+                _context.EditorAssignments.RemoveRange(assignments);
+            }
+
+            await _context.SaveChangesAsync();
+            TempData["SuccessMessage"] = $"Đã đổi role của {user.Username} thành {role}.";
+            return RedirectToAction(nameof(Dashboard));
+        }
+
+        // POST: Admin/AssignEditorDiscussion
+        [HttpPost]
+        public async Task<IActionResult> AssignEditorDiscussion(int editorUserId, int discussionId)
+        {
+            var currentAdminId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "0");
+
+            // Kiểm tra user phải là Editor
+            var editor = await _context.Users.FindAsync(editorUserId);
+            if (editor == null || editor.Role != "Editor")
+            {
+                TempData["ErrorMessage"] = "Người dùng này không phải Editor.";
+                return RedirectToAction(nameof(Dashboard));
+            }
+
+            // Kiểm tra Discussion tồn tại
+            var discussion = await _context.Discussions.FindAsync(discussionId);
+            if (discussion == null) return NotFound();
+
+            // Tránh trùng lặp
+            var exists = await _context.EditorAssignments
+                .AnyAsync(a => a.EditorUserId == editorUserId && a.DiscussionId == discussionId);
+            if (exists)
+            {
+                TempData["ErrorMessage"] = "Bài viết này đã được giao cho Editor rồi.";
+                return RedirectToAction(nameof(Dashboard));
+            }
+
+            _context.EditorAssignments.Add(new EditorAssignment
+            {
+                EditorUserId      = editorUserId,
+                DiscussionId      = discussionId,
+                AssignedAt        = DateTime.UtcNow,
+                AssignedByAdminId = currentAdminId
+            });
+            await _context.SaveChangesAsync();
+            TempData["SuccessMessage"] = $"Đã giao bài '{discussion.Title}' cho {editor.Username}.";
+            return RedirectToAction(nameof(Dashboard));
+        }
+
+        // POST: Admin/RemoveEditorAssignment
+        [HttpPost]
+        public async Task<IActionResult> RemoveEditorAssignment(int assignmentId)
+        {
+            var assignment = await _context.EditorAssignments
+                .Include(a => a.Editor)
+                .Include(a => a.Discussion)
+                .FirstOrDefaultAsync(a => a.Id == assignmentId);
+
+            if (assignment == null) return NotFound();
+
+            _context.EditorAssignments.Remove(assignment);
+            await _context.SaveChangesAsync();
+            TempData["SuccessMessage"] = $"Đã xóa phân công bài '{assignment.Discussion.Title}' khỏi {assignment.Editor.Username}.";
+            return RedirectToAction(nameof(Dashboard));
         }
 
         // POST: Admin/Approve/5

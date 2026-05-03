@@ -177,6 +177,15 @@ namespace WebWikiForum.Controllers
             authors.AddRange(discussion.Replies.Select(r => r.Author));
             ViewBag.AuthorAvatars = await _GetAuthorAvatars(authors);
 
+            // Kiểm tra quyền Editor
+            bool isAssignedEditor = false;
+            if (User.Identity?.IsAuthenticated == true && User.IsInRole("Editor"))
+            {
+                var userId = int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "0");
+                isAssignedEditor = await _context.EditorAssignments.AnyAsync(a => a.EditorUserId == userId && a.DiscussionId == id);
+            }
+            ViewBag.IsAssignedEditor = isAssignedEditor;
+
             return View(discussion);
         }
 
@@ -216,6 +225,13 @@ namespace WebWikiForum.Controllers
 
             var discussion = await _context.Discussions.FindAsync(discussionId);
             if (discussion == null) return NotFound();
+
+            if (discussion.IsLocked)
+            {
+                // Nếu bài bị khóa, chỉ Admin hoặc Editor được giao mới được comment (hoặc cấm luôn cũng được, nhưng thường là cấm hết)
+                // Theo yêu cầu thông thường, bị khóa là không ai comment được.
+                return Forbid();
+            }
 
             var reply = new DiscussionReply
             {
@@ -317,7 +333,14 @@ namespace WebWikiForum.Controllers
             if (discussion == null) return NotFound();
 
             // Kiểm tra quyền truy cập
-            if (discussion.Author != (User.Identity?.Name ?? "") && !User.IsInRole("Admin"))
+            bool isAssignedEditor = false;
+            if (User.IsInRole("Editor"))
+            {
+                var userId = int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "0");
+                isAssignedEditor = await _context.EditorAssignments.AnyAsync(a => a.EditorUserId == userId && a.DiscussionId == id);
+            }
+
+            if (discussion.Author != (User.Identity?.Name ?? "") && !User.IsInRole("Admin") && !isAssignedEditor)
             {
                 return Forbid();
             }
@@ -332,7 +355,14 @@ namespace WebWikiForum.Controllers
             if (discussion == null) return NotFound();
 
             // Kiểm tra quyền truy cập
-            if (discussion.Author != (User.Identity?.Name ?? "") && !User.IsInRole("Admin"))
+            bool isAssignedEditor = false;
+            if (User.IsInRole("Editor"))
+            {
+                var userId = int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "0");
+                isAssignedEditor = await _context.EditorAssignments.AnyAsync(a => a.EditorUserId == userId && a.DiscussionId == model.Id);
+            }
+
+            if (discussion.Author != (User.Identity?.Name ?? "") && !User.IsInRole("Admin") && !isAssignedEditor)
             {
                 return Forbid();
             }
@@ -358,7 +388,14 @@ namespace WebWikiForum.Controllers
             if (discussion == null) return NotFound();
 
             // Kiểm tra quyền truy cập
-            if (discussion.Author != (User.Identity?.Name ?? "") && !User.IsInRole("Admin"))
+            bool isAssignedEditor = false;
+            if (User.IsInRole("Editor"))
+            {
+                var userId = int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "0");
+                isAssignedEditor = await _context.EditorAssignments.AnyAsync(a => a.EditorUserId == userId && a.DiscussionId == id);
+            }
+
+            if (discussion.Author != (User.Identity?.Name ?? "") && !User.IsInRole("Admin") && !isAssignedEditor)
             {
                 return Forbid();
             }
@@ -368,16 +405,69 @@ namespace WebWikiForum.Controllers
             return RedirectToAction("Community");
         }
 
+        [HttpPost]
+        public async Task<IActionResult> TogglePin(int id)
+        {
+            var discussion = await _context.Discussions.FindAsync(id);
+            if (discussion == null) return NotFound();
+
+            bool isAssignedEditor = false;
+            if (User.IsInRole("Editor"))
+            {
+                var userId = int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "0");
+                isAssignedEditor = await _context.EditorAssignments.AnyAsync(a => a.EditorUserId == userId && a.DiscussionId == id);
+            }
+
+            if (!User.IsInRole("Admin") && !isAssignedEditor)
+            {
+                return Forbid();
+            }
+
+            discussion.IsPinned = !discussion.IsPinned;
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Topic", new { id = id });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ToggleLock(int id)
+        {
+            var discussion = await _context.Discussions.FindAsync(id);
+            if (discussion == null) return NotFound();
+
+            bool isAssignedEditor = false;
+            if (User.IsInRole("Editor"))
+            {
+                var userId = int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "0");
+                isAssignedEditor = await _context.EditorAssignments.AnyAsync(a => a.EditorUserId == userId && a.DiscussionId == id);
+            }
+
+            if (!User.IsInRole("Admin") && !isAssignedEditor)
+            {
+                return Forbid();
+            }
+
+            discussion.IsLocked = !discussion.IsLocked;
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Topic", new { id = id });
+        }
+
         // --- Quản lý trả lời ---
 
         [HttpPost]
         public async Task<IActionResult> EditReply(int id, string content)
         {
-            var reply = await _context.DiscussionReplies.FindAsync(id);
+            var reply = await _context.DiscussionReplies.Include(r => r.Discussion).FirstOrDefaultAsync(r => r.Id == id);
             if (reply == null) return NotFound();
 
             // Kiểm tra quyền truy cập
-            if (reply.Author != (User.Identity?.Name ?? "") && !User.IsInRole("Admin"))
+            bool isAssignedEditor = false;
+            if (User.IsInRole("Editor") && reply.Discussion != null)
+            {
+                var userId = int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "0");
+                isAssignedEditor = await _context.EditorAssignments.AnyAsync(a => a.EditorUserId == userId && a.DiscussionId == reply.DiscussionId);
+            }
+
+            if (reply.Author != (User.Identity?.Name ?? "") && !User.IsInRole("Admin") && !isAssignedEditor)
             {
                 return Forbid();
             }
@@ -394,11 +484,18 @@ namespace WebWikiForum.Controllers
         [HttpPost]
         public async Task<IActionResult> DeleteReply(int id)
         {
-            var reply = await _context.DiscussionReplies.FindAsync(id);
+            var reply = await _context.DiscussionReplies.Include(r => r.Discussion).FirstOrDefaultAsync(r => r.Id == id);
             if (reply == null) return NotFound();
 
             // Kiểm tra quyền truy cập
-            if (reply.Author != (User.Identity?.Name ?? "") && !User.IsInRole("Admin"))
+            bool isAssignedEditor = false;
+            if (User.IsInRole("Editor") && reply.Discussion != null)
+            {
+                var userId = int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "0");
+                isAssignedEditor = await _context.EditorAssignments.AnyAsync(a => a.EditorUserId == userId && a.DiscussionId == reply.DiscussionId);
+            }
+
+            if (reply.Author != (User.Identity?.Name ?? "") && !User.IsInRole("Admin") && !isAssignedEditor)
             {
                 return Forbid();
             }

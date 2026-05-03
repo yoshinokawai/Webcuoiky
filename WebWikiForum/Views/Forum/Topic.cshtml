@@ -1,4 +1,4 @@
-﻿@model WebWikiForum.Models.Discussion
+@model WebWikiForum.Models.Discussion
 @{
     ViewData["Title"] = Model.Title;
 }
@@ -30,18 +30,39 @@
                 <div class="text-xs text-slate-500 font-medium">@Localizer["Forum_Topic_PostedOn"] @Model.CreatedAt.ToString("MMM dd, yyyy HH:mm")</div>
             </div>
             <div class="flex items-center gap-4">
-                @if (User.Identity?.IsAuthenticated == true && (User.Identity.Name == Model.Author || User.IsInRole("Admin")))
+                @if (User.Identity?.IsAuthenticated == true)
                 {
-                    <div class="flex items-center gap-2">
-                        <a asp-action="EditTopic" asp-route-id="@Model.Id" class="p-2 rounded-xl text-slate-400 hover:text-primary hover:bg-primary/5 transition-all" title="@Localizer["Forum_Topic_EditReply"]">
-                            <span class="material-symbols-outlined text-[20px]">edit</span>
-                        </a>
-                        <form asp-action="DeleteTopic" asp-route-id="@Model.Id" method="post" onsubmit="return confirm('@Localizer["Forum_Topic_ConfirmDeleteTitle"]');" class="inline">
-                            <button type="submit" class="p-2 rounded-xl text-slate-400 hover:text-red-500 hover:bg-red-50 transition-all" title="@Localizer["Forum_Topic_DeleteReply"]">
-                                <span class="material-symbols-outlined text-[20px]">delete</span>
-                            </button>
-                        </form>
-                    </div>
+                    bool isAuthor = User.Identity.Name == Model.Author;
+                    bool isAdmin = User.IsInRole("Admin");
+                    bool isEditor = ViewBag.IsAssignedEditor == true;
+                    bool canManage = isAuthor || isAdmin || isEditor;
+
+                    if (canManage)
+                    {
+                        <div class="flex items-center gap-2">
+                            @if (isAdmin || isEditor)
+                            {
+                                <form asp-action="TogglePin" asp-route-id="@Model.Id" method="post" class="inline">
+                                    <button type="submit" class="p-2 rounded-xl transition-all @(Model.IsPinned ? "text-primary bg-primary/10" : "text-slate-400 hover:text-primary hover:bg-primary/5")" title="Ghim bài">
+                                        <span class="material-symbols-outlined text-[20px] @(Model.IsPinned ? "fill-1" : "")">push_pin</span>
+                                    </button>
+                                </form>
+                                <form asp-action="ToggleLock" asp-route-id="@Model.Id" method="post" class="inline">
+                                    <button type="submit" class="p-2 rounded-xl transition-all @(Model.IsLocked ? "text-red-500 bg-red-50" : "text-slate-400 hover:text-red-500 hover:bg-red-50")" title="Khóa bài">
+                                        <span class="material-symbols-outlined text-[20px] @(Model.IsLocked ? "fill-1" : "")">lock</span>
+                                    </button>
+                                </form>
+                            }
+                            <a asp-action="EditTopic" asp-route-id="@Model.Id" class="p-2 rounded-xl text-slate-400 hover:text-primary hover:bg-primary/5 transition-all" title="@Localizer["Forum_Topic_EditReply"]">
+                                <span class="material-symbols-outlined text-[20px]">edit</span>
+                            </a>
+                            <form asp-action="DeleteTopic" asp-route-id="@Model.Id" method="post" onsubmit="return confirm('@Localizer["Forum_Topic_ConfirmDeleteTitle"]');" class="inline">
+                                <button type="submit" class="p-2 rounded-xl text-slate-400 hover:text-red-500 hover:bg-red-50 transition-all" title="@Localizer["Forum_Topic_DeleteReply"]">
+                                    <span class="material-symbols-outlined text-[20px]">delete</span>
+                                </button>
+                            </form>
+                        </div>
+                    }
                 }
                 <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
                     <span class="material-symbols-outlined text-primary text-[18px]">visibility</span>
@@ -109,18 +130,24 @@
                             <div class="text-[10px] text-slate-400 font-medium">@reply.CreatedAt.ToString("MMM dd, yyyy HH:mm")</div>
                         </div>
                         
-                        @if (User.Identity?.IsAuthenticated == true && (User.Identity.Name == reply.Author || User.IsInRole("Admin")))
+                        @if (User.Identity?.IsAuthenticated == true)
                         {
-                            <div class="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                                <button onclick="enableEditReply(@reply.Id)" class="p-1.5 rounded-lg text-slate-400 hover:text-primary hover:bg-primary/5 transition-all">
-                                    <span class="material-symbols-outlined text-[18px]">edit</span>
-                                </button>
-                                <form asp-action="DeleteReply" asp-route-id="@reply.Id" method="post" onsubmit="return confirm('@Localizer["Forum_Topic_DeleteConfirmReply"]');" class="inline">
-                                    <button type="submit" class="p-1.5 rounded-lg text-slate-400 hover:text-red-500 hover:bg-red-50 transition-all">
-                                        <span class="material-symbols-outlined text-[18px]">delete</span>
+                            bool isReplyAuthor = User.Identity.Name == reply.Author;
+                            bool isAdmin = User.IsInRole("Admin");
+                            bool isEditor = ViewBag.IsAssignedEditor == true;
+                            if (isReplyAuthor || isAdmin || isEditor)
+                            {
+                                <div class="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <button onclick="enableEditReply(@reply.Id)" class="p-1.5 rounded-lg text-slate-400 hover:text-primary hover:bg-primary/5 transition-all">
+                                        <span class="material-symbols-outlined text-[18px]">edit</span>
                                     </button>
-                                </form>
-                            </div>
+                                    <form asp-action="DeleteReply" asp-route-id="@reply.Id" method="post" onsubmit="return confirm('@Localizer["Forum_Topic_DeleteConfirmReply"]');" class="inline">
+                                        <button type="submit" class="p-1.5 rounded-lg text-slate-400 hover:text-red-500 hover:bg-red-50 transition-all">
+                                            <span class="material-symbols-outlined text-[18px]">delete</span>
+                                        </button>
+                                    </form>
+                                </div>
+                            }
                         }
                     </div>
 
@@ -161,7 +188,15 @@
     <div class="bg-white dark:bg-surface-dark p-8 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-800 sticky bottom-8 transform translate-z-10 z-20 ring-4 ring-background-light dark:ring-background-dark">
         <h4 class="text-lg font-black text-slate-900 dark:text-white mb-4">@Localizer["Forum_Topic_PostReplyTitle"]</h4>
         
-        @if (User.Identity?.IsAuthenticated == true)
+        @if (Model.IsLocked)
+        {
+            <div class="p-6 text-center bg-red-50 dark:bg-red-900/20 rounded-2xl border border-red-200 dark:border-red-800/50">
+                <span class="material-symbols-outlined text-red-500 text-3xl mb-2">lock</span>
+                <h4 class="text-lg font-bold text-red-600 dark:text-red-400 mb-1">Chủ đề đã bị khóa</h4>
+                <p class="text-red-500/80 text-sm">Bạn không thể thêm phản hồi mới vào chủ đề này.</p>
+            </div>
+        }
+        else if (User.Identity?.IsAuthenticated == true)
         {
             <form asp-action="PostReply" method="post" class="space-y-4">
                 <input type="hidden" name="discussionId" value="@Model.Id" />

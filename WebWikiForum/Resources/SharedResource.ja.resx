@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <data name="Nav_Home" xml:space="preserve">
     <value>ホーム</value>
@@ -2467,5 +2467,56 @@
   </data>
   <data name="Wiki_Label_CoverImage" xml:space="preserve">
     <value>カバー画像</value>
+  </data>
+  <data name="Dash_Tab_Users" xml:space="preserve">
+    <value>ユーザー</value>
+  </data>
+  <data name="Dash_Col_User" xml:space="preserve">
+    <value>ユーザー</value>
+  </data>
+  <data name="Dash_Col_Email" xml:space="preserve">
+    <value>メール</value>
+  </data>
+  <data name="Dash_Col_CreatedAt" xml:space="preserve">
+    <value>作成日</value>
+  </data>
+  <data name="Dash_Col_Role" xml:space="preserve">
+    <value>ロール</value>
+  </data>
+  <data name="Dash_Col_AssignedPosts" xml:space="preserve">
+    <value>割り当て投稿</value>
+  </data>
+  <data name="Dash_No_Users" xml:space="preserve">
+    <value>アカウントがありません。</value>
+  </data>
+  <data name="Dash_Label_You" xml:space="preserve">
+    <value>あなた</value>
+  </data>
+  <data name="Dash_Btn_AssignPost" xml:space="preserve">
+    <value>投稿を割り当て</value>
+  </data>
+  <data name="Dash_Modal_AssignTitle" xml:space="preserve">
+    <value>フォーラム投稿を割り当て</value>
+  </data>
+  <data name="Dash_Modal_AssignEditor" xml:space="preserve">
+    <value>編集者</value>
+  </data>
+  <data name="Dash_Modal_ChoosePost" xml:space="preserve">
+    <value>フォーラム投稿を選択</value>
+  </data>
+  <data name="Dash_Modal_SelectPost" xml:space="preserve">
+    <value>-- ディスカッションを選択 --</value>
+  </data>
+  <data name="Dash_Modal_Assign" xml:space="preserve">
+    <value>割り当て</value>
+  </data>
+  <data name="Dash_Modal_AssignedList" xml:space="preserve">
+    <value>割り当て済み投稿</value>
+  </data>
+  <data name="Dash_Modal_NoAssigned" xml:space="preserve">
+    <value>まだ投稿がありません。</value>
+  </data>
+  <data name="Dash_Posts_Count" xml:space="preserve">
+    <value>投稿</value>
   </data>
 </root>

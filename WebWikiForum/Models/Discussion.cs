@@ -30,6 +30,9 @@ namespace WebWikiForum.Models
 
         public bool IsPinned { get; set; } = false;
 
+        /// <summary>Khóa bài — không cho reply thêm</summary>
+        public bool IsLocked { get; set; } = false;
+
         public string? LastReplier { get; set; }
 
         public DateTime? LastReplyDate { get; set; }

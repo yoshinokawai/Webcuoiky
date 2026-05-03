@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <data name="Status_Active" xml:space="preserve">
     <value>Đang hoạt động</value>
@@ -2644,5 +2644,56 @@ Trung tâm Cộng đồng</value>
   </data>
   <data name="Wiki_Label_CoverImage" xml:space="preserve">
     <value>Ảnh bìa</value>
+  </data>
+  <data name="Dash_Tab_Users" xml:space="preserve">
+    <value>Người dùng</value>
+  </data>
+  <data name="Dash_Col_User" xml:space="preserve">
+    <value>Người dùng</value>
+  </data>
+  <data name="Dash_Col_Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Dash_Col_CreatedAt" xml:space="preserve">
+    <value>Ngày tạo</value>
+  </data>
+  <data name="Dash_Col_Role" xml:space="preserve">
+    <value>Role</value>
+  </data>
+  <data name="Dash_Col_AssignedPosts" xml:space="preserve">
+    <value>Bài được giao</value>
+  </data>
+  <data name="Dash_No_Users" xml:space="preserve">
+    <value>Chưa có tài khoản nào.</value>
+  </data>
+  <data name="Dash_Label_You" xml:space="preserve">
+    <value>Bạn</value>
+  </data>
+  <data name="Dash_Btn_AssignPost" xml:space="preserve">
+    <value>Giao bài</value>
+  </data>
+  <data name="Dash_Modal_AssignTitle" xml:space="preserve">
+    <value>Giao bài viết forum</value>
+  </data>
+  <data name="Dash_Modal_AssignEditor" xml:space="preserve">
+    <value>Editor</value>
+  </data>
+  <data name="Dash_Modal_ChoosePost" xml:space="preserve">
+    <value>Chọn bài viết forum</value>
+  </data>
+  <data name="Dash_Modal_SelectPost" xml:space="preserve">
+    <value>-- Chọn bài thảo luận --</value>
+  </data>
+  <data name="Dash_Modal_Assign" xml:space="preserve">
+    <value>Giao</value>
+  </data>
+  <data name="Dash_Modal_AssignedList" xml:space="preserve">
+    <value>Bài đã được giao</value>
+  </data>
+  <data name="Dash_Modal_NoAssigned" xml:space="preserve">
+    <value>Chưa có bài nào được giao.</value>
+  </data>
+  <data name="Dash_Posts_Count" xml:space="preserve">
+    <value>bài</value>
   </data>
 </root>

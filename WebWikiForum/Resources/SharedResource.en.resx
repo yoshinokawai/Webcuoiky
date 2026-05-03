@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <data name="Status_Active" xml:space="preserve">
     <value>Active</value>
@@ -2644,5 +2644,56 @@ Community Hub</value>
   </data>
   <data name="Wiki_Label_CoverImage" xml:space="preserve">
     <value>Cover Image</value>
+  </data>
+  <data name="Dash_Tab_Users" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="Dash_Col_User" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="Dash_Col_Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Dash_Col_CreatedAt" xml:space="preserve">
+    <value>Created</value>
+  </data>
+  <data name="Dash_Col_Role" xml:space="preserve">
+    <value>Role</value>
+  </data>
+  <data name="Dash_Col_AssignedPosts" xml:space="preserve">
+    <value>Assigned Posts</value>
+  </data>
+  <data name="Dash_No_Users" xml:space="preserve">
+    <value>No accounts found.</value>
+  </data>
+  <data name="Dash_Label_You" xml:space="preserve">
+    <value>You</value>
+  </data>
+  <data name="Dash_Btn_AssignPost" xml:space="preserve">
+    <value>Assign Posts</value>
+  </data>
+  <data name="Dash_Modal_AssignTitle" xml:space="preserve">
+    <value>Assign Forum Posts</value>
+  </data>
+  <data name="Dash_Modal_AssignEditor" xml:space="preserve">
+    <value>Editor</value>
+  </data>
+  <data name="Dash_Modal_ChoosePost" xml:space="preserve">
+    <value>Choose forum post</value>
+  </data>
+  <data name="Dash_Modal_SelectPost" xml:space="preserve">
+    <value>-- Select discussion --</value>
+  </data>
+  <data name="Dash_Modal_Assign" xml:space="preserve">
+    <value>Assign</value>
+  </data>
+  <data name="Dash_Modal_AssignedList" xml:space="preserve">
+    <value>Assigned Posts</value>
+  </data>
+  <data name="Dash_Modal_NoAssigned" xml:space="preserve">
+    <value>No posts assigned yet.</value>
+  </data>
+  <data name="Dash_Posts_Count" xml:space="preserve">
+    <value>posts</value>
   </data>
 </root>

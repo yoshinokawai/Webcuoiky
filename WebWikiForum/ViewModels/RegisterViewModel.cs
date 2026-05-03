@@ -22,9 +22,6 @@ namespace WebWikiForum.ViewModels
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; } = string.Empty;
 
-        public string Role { get; set; } = "User";
-
-        public string? AdminKey { get; set; }
 
         [Required(ErrorMessage = "6-digit Security PIN is required.")]
         [StringLength(6, MinimumLength = 6, ErrorMessage = "PIN must be exactly 6 digits.")]
