@@ -3,24 +3,49 @@
 @if (Model != null)
 {
     <div class="flex items-center gap-2">
+        @{
+            var activities = ViewData["RecentActivities"] as List<WebWikiForum.Models.Activity> ?? new List<WebWikiForum.Models.Activity>();
+            var hasActivities = activities.Any();
+        }
+
         <!-- Nút Thông Báo (Notification Bell) -->
         <div class="relative group z-50">
             <button class="relative w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-primary hover:bg-primary/10 transition-colors">
                 <span class="material-symbols-outlined text-[20px]">notifications</span>
-                <!-- Chấm đỏ -->
-                <span class="absolute top-2 right-2.5 w-2 h-2 rounded-full bg-red-500 border-2 border-white dark:border-surface-dark"></span>
+                @if (hasActivities)
+                {
+                    <!-- Chấm đỏ -->
+                    <span class="absolute top-2 right-2.5 w-2 h-2 rounded-full bg-red-500 border-2 border-white dark:border-surface-dark"></span>
+                }
             </button>
             <div class="absolute top-full right-0 w-80 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 origin-top transform">
                 <div class="bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700 rounded-2xl shadow-xl overflow-hidden">
                     <div class="p-4 border-b border-slate-100 dark:border-slate-700/50 flex items-center justify-between">
                         <h4 class="font-black text-slate-900 dark:text-white">Thông báo</h4>
-                        <button class="text-xs font-bold text-primary hover:underline">Đánh dấu đã đọc</button>
                     </div>
-                    <div class="max-h-80 overflow-y-auto p-2">
-                        <div class="p-8 text-center text-slate-500 text-sm">
-                            <span class="material-symbols-outlined text-4xl text-slate-300 mb-2 block">notifications_off</span>
-                            Chưa có thông báo nào mới.
-                        </div>
+                    <div class="max-h-80 overflow-y-auto p-2 space-y-1">
+                        @if (hasActivities)
+                        {
+                            @foreach (var activity in activities)
+                            {
+                                <div class="p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                                    <a href="@(activity.LinkUrl ?? "#")" class="block">
+                                        <p class="text-sm font-bold text-slate-800 dark:text-slate-200 line-clamp-2">@activity.Title</p>
+                                        <p class="text-xs text-slate-500 mt-1 flex justify-between">
+                                            <span>@activity.Author</span>
+                                            <span>@activity.Timestamp.ToString("HH:mm - dd/MM")</span>
+                                        </p>
+                                    </a>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div class="p-8 text-center text-slate-500 text-sm">
+                                <span class="material-symbols-outlined text-4xl text-slate-300 mb-2 block">notifications_off</span>
+                                Chưa có thông báo nào mới.
+                            </div>
+                        }
                     </div>
                     <div class="p-3 border-t border-slate-100 dark:border-slate-700/50 text-center bg-slate-50 dark:bg-slate-800/50">
                         <a href="#" class="text-xs font-bold text-slate-600 dark:text-slate-400 hover:text-primary transition-colors">Xem tất cả</a>

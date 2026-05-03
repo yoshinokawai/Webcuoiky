@@ -273,6 +273,7 @@ namespace WebWikiForum.Controllers
             {
                 _context.DiscussionLikes.Add(new DiscussionLike { DiscussionId = id, Username = username });
                 isLiked = true;
+                await _activityService.LogActivityAsync($"Liked discussion: {discussion.Title}", "", "Community", "Liked", username, $"/Forum/Topic/{id}", "New Like");
             }
             else
             {
@@ -307,6 +308,7 @@ namespace WebWikiForum.Controllers
             {
                 _context.DiscussionLikes.Add(new DiscussionLike { ReplyId = id, Username = username });
                 isLiked = true;
+                await _activityService.LogActivityAsync($"Liked a reply", "", "Community", "Liked", username, $"/Forum/Topic/{reply.DiscussionId}#reply-{id}", "New Like");
             }
             else
             {
