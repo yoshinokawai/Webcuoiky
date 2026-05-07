@@ -5,6 +5,7 @@
     <div class="flex items-center gap-2">
         @{
             var activities = ViewData["RecentActivities"] as List<WebWikiForum.Models.Activity> ?? new List<WebWikiForum.Models.Activity>();
+            var unreadCount = ViewData["UnreadCount"] as int? ?? 0;
             var hasActivities = activities.Any();
         }
 
@@ -12,10 +13,11 @@
         <div class="relative group z-50">
             <button class="relative w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-primary hover:bg-primary/10 transition-colors">
                 <span class="material-symbols-outlined text-[20px]">notifications</span>
-                @if (hasActivities)
+                @if (unreadCount > 0)
                 {
-                    <!-- Chấm đỏ -->
-                    <span class="absolute top-2 right-2.5 w-2 h-2 rounded-full bg-red-500 border-2 border-white dark:border-surface-dark"></span>
+                    <span class="absolute top-1.5 right-1.5 flex items-center justify-center w-4 h-4 text-[9px] font-bold text-white rounded-full bg-red-500 border border-white dark:border-surface-dark">
+                        @(unreadCount > 99 ? "99+" : unreadCount)
+                    </span>
                 }
             </button>
             <div class="absolute top-full right-0 w-80 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 origin-top transform">
@@ -33,9 +35,13 @@
                                     .Replace("Reply to:", Localizer["Notify_ReplyTo"].Value)
                                     .Replace("Liked discussion:", Localizer["Notify_LikedDiscussion"].Value)
                                     ?? "";
-                                <div class="p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
-                                    <a href="@(activity.LinkUrl ?? "#")" class="block">
-                                        <p class="text-sm font-bold text-slate-800 dark:text-slate-200 line-clamp-2">@localizedTitle</p>
+                                var isUnread = !activity.IsRead;
+                                var bgClass = isUnread ? "bg-primary/5 dark:bg-primary/10" : "hover:bg-slate-50 dark:hover:bg-slate-800/50";
+                                var readUrl = Url.Action("ReadNotification", "Account", new { id = activity.Id, redirectUrl = activity.LinkUrl ?? "/" });
+                                
+                                <div class="p-2 rounded-xl transition-colors @bgClass">
+                                    <a href="@readUrl" class="block">
+                                        <p class="text-sm text-slate-800 dark:text-slate-200 line-clamp-2 @(isUnread ? "font-bold" : "")">@localizedTitle</p>
                                         <p class="text-xs text-slate-500 mt-1 flex justify-between">
                                             <span>@activity.Author</span>
                                             <span>@activity.Timestamp.ToString("HH:mm - dd/MM")</span>

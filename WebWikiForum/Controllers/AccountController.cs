@@ -25,6 +25,24 @@ namespace WebWikiForum.Controllers
             _fileService = fileService;
         }
 
+        // ==================== THÔNG BÁO ====================
+        [HttpGet]
+        public async Task<IActionResult> ReadNotification(int id, string redirectUrl)
+        {
+            var activity = await _context.Activities.FindAsync(id);
+            if (activity != null && !activity.IsRead)
+            {
+                activity.IsRead = true;
+                await _context.SaveChangesAsync();
+            }
+            
+            if (string.IsNullOrEmpty(redirectUrl) || !Url.IsLocalUrl(redirectUrl))
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return LocalRedirect(redirectUrl);
+        }
+
         // ==================== ĐĂNG NHẬP ====================
 
 

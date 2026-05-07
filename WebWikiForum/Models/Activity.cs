@@ -32,5 +32,7 @@ namespace WebWikiForum.Models
         
         // Helper to get formatted detail like "+1,420 chars" or similar if we decide to store it
         public string? Detail { get; set; }
+
+        public bool IsRead { get; set; } = false;
     }
 }

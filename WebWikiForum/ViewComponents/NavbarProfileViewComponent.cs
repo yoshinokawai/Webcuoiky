@@ -71,7 +71,11 @@ namespace WebWikiForum.ViewComponents
                     .OrderByDescending(a => a.Timestamp)
                     .Take(10)
                     .ToListAsync();
+                
+                var unreadCount = activities.Count(a => !a.IsRead);
+                
                 ViewData["RecentActivities"] = activities;
+                ViewData["UnreadCount"] = unreadCount;
             }
 
             return View("Default", user);
