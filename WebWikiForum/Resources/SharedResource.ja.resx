@@ -2519,4 +2519,22 @@
   <data name="Dash_Posts_Count" xml:space="preserve">
     <value>投稿</value>
   </data>
+  <data name="Notify_Title" xml:space="preserve">
+    <value>通知</value>
+  </data>
+  <data name="Notify_Empty" xml:space="preserve">
+    <value>新しい通知はありません。</value>
+  </data>
+  <data name="Notify_ViewAll" xml:space="preserve">
+    <value>すべて表示</value>
+  </data>
+  <data name="Notify_LikedReply" xml:space="preserve">
+    <value>返信にいいね</value>
+  </data>
+  <data name="Notify_ReplyTo" xml:space="preserve">
+    <value>返信:</value>
+  </data>
+  <data name="Notify_LikedDiscussion" xml:space="preserve">
+    <value>投稿にいいね:</value>
+  </data>
 </root>

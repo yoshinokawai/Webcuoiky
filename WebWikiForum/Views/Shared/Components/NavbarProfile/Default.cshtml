@@ -21,16 +21,21 @@
             <div class="absolute top-full right-0 w-80 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 origin-top transform">
                 <div class="bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700 rounded-2xl shadow-xl overflow-hidden">
                     <div class="p-4 border-b border-slate-100 dark:border-slate-700/50 flex items-center justify-between">
-                        <h4 class="font-black text-slate-900 dark:text-white">Thông báo</h4>
+                        <h4 class="font-black text-slate-900 dark:text-white">@Localizer["Notify_Title"]</h4>
                     </div>
                     <div class="max-h-80 overflow-y-auto p-2 space-y-1">
                         @if (hasActivities)
                         {
                             @foreach (var activity in activities)
                             {
+                                var localizedTitle = activity.Title?
+                                    .Replace("Liked a reply", Localizer["Notify_LikedReply"].Value)
+                                    .Replace("Reply to:", Localizer["Notify_ReplyTo"].Value)
+                                    .Replace("Liked discussion:", Localizer["Notify_LikedDiscussion"].Value)
+                                    ?? "";
                                 <div class="p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
                                     <a href="@(activity.LinkUrl ?? "#")" class="block">
-                                        <p class="text-sm font-bold text-slate-800 dark:text-slate-200 line-clamp-2">@activity.Title</p>
+                                        <p class="text-sm font-bold text-slate-800 dark:text-slate-200 line-clamp-2">@localizedTitle</p>
                                         <p class="text-xs text-slate-500 mt-1 flex justify-between">
                                             <span>@activity.Author</span>
                                             <span>@activity.Timestamp.ToString("HH:mm - dd/MM")</span>
@@ -43,12 +48,12 @@
                         {
                             <div class="p-8 text-center text-slate-500 text-sm">
                                 <span class="material-symbols-outlined text-4xl text-slate-300 mb-2 block">notifications_off</span>
-                                Chưa có thông báo nào mới.
+                                @Localizer["Notify_Empty"]
                             </div>
                         }
                     </div>
                     <div class="p-3 border-t border-slate-100 dark:border-slate-700/50 text-center bg-slate-50 dark:bg-slate-800/50">
-                        <a href="#" class="text-xs font-bold text-slate-600 dark:text-slate-400 hover:text-primary transition-colors">Xem tất cả</a>
+                        <a href="#" class="text-xs font-bold text-slate-600 dark:text-slate-400 hover:text-primary transition-colors">@Localizer["Notify_ViewAll"]</a>
                     </div>
                 </div>
             </div>

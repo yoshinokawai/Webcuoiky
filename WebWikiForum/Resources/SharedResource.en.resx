@@ -2696,4 +2696,22 @@ Community Hub</value>
   <data name="Dash_Posts_Count" xml:space="preserve">
     <value>posts</value>
   </data>
+  <data name="Notify_Title" xml:space="preserve">
+    <value>Notifications</value>
+  </data>
+  <data name="Notify_Empty" xml:space="preserve">
+    <value>No new notifications.</value>
+  </data>
+  <data name="Notify_ViewAll" xml:space="preserve">
+    <value>View all</value>
+  </data>
+  <data name="Notify_LikedReply" xml:space="preserve">
+    <value>Liked a reply</value>
+  </data>
+  <data name="Notify_ReplyTo" xml:space="preserve">
+    <value>Reply to:</value>
+  </data>
+  <data name="Notify_LikedDiscussion" xml:space="preserve">
+    <value>Liked discussion:</value>
+  </data>
 </root>

@@ -2696,4 +2696,22 @@ Trung tâm Cộng đồng</value>
   <data name="Dash_Posts_Count" xml:space="preserve">
     <value>bài</value>
   </data>
+  <data name="Notify_Title" xml:space="preserve">
+    <value>Thông báo</value>
+  </data>
+  <data name="Notify_Empty" xml:space="preserve">
+    <value>Chưa có thông báo nào mới.</value>
+  </data>
+  <data name="Notify_ViewAll" xml:space="preserve">
+    <value>Xem tất cả</value>
+  </data>
+  <data name="Notify_LikedReply" xml:space="preserve">
+    <value>Đã thích một bình luận</value>
+  </data>
+  <data name="Notify_ReplyTo" xml:space="preserve">
+    <value>Trả lời:</value>
+  </data>
+  <data name="Notify_LikedDiscussion" xml:space="preserve">
+    <value>Đã thích bài viết:</value>
+  </data>
 </root>
