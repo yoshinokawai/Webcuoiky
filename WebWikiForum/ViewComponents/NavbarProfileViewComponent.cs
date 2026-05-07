@@ -59,7 +59,7 @@ namespace WebWikiForum.ViewComponents
 
                     if (relevantUrls.Any())
                     {
-                        query = query.Where(a => a.Action != "Commented" || relevantUrls.Contains(a.LinkUrl));
+                        query = query.Where(a => a.Action != "Commented" || (a.LinkUrl != null && relevantUrls.Contains(a.LinkUrl)));
                     }
                     else
                     {

@@ -58,39 +58,36 @@ using (var scope = app.Services.CreateScope())
             db.SaveChanges();
         }
 
-        // ===== SEED ADMIN ACCOUNTS =====
-        var adminAccounts = new[]
+        // ===== SEED ADMIN ACCOUNTS (from appsettings, NOT hardcoded) =====
+        var adminSection = app.Configuration.GetSection("AdminSeed").Get<List<AdminSeedEntry>>();
+        if (adminSection != null)
         {
-            new { Username = "Yoshino",  Email = "yoshino@vtwiki.com",  Password = "12345" },
-            new { Username = "Loc123",   Email = "loc123@vtwiki.com",   Password = "12345" },
-            new { Username = "QuocAnh", Email = "quocanh@vtwiki.com",  Password = "12345" },
-        };
-
-        foreach (var admin in adminAccounts)
-        {
-            if (!db.Users.Any(u => u.Username == admin.Username))
+            foreach (var admin in adminSection)
             {
-                db.Users.Add(new WebWikiForum.Models.User
+                if (!db.Users.Any(u => u.Username == admin.Username))
                 {
-                    Username     = admin.Username,
-                    Email        = admin.Email,
-                    PasswordHash = SeedHashPassword(admin.Password),
-                    Role         = "Admin",
-                    CreatedAt    = DateTime.UtcNow
-                });
-            }
-            else
-            {
-                // Promote existing account to Admin
-                var existing = db.Users.First(u => u.Username == admin.Username);
-                if (existing.Role != "Admin")
+                    db.Users.Add(new WebWikiForum.Models.User
+                    {
+                        Username     = admin.Username,
+                        Email        = admin.Email,
+                        PasswordHash = SeedHashPassword(admin.Password),
+                        Role         = "Admin",
+                        CreatedAt    = DateTime.UtcNow
+                    });
+                }
+                else
                 {
-                    existing.Role = "Admin";
-                    db.Users.Update(existing);
+                    // Promote existing account to Admin
+                    var existing = db.Users.First(u => u.Username == admin.Username);
+                    if (existing.Role != "Admin")
+                    {
+                        existing.Role = "Admin";
+                        db.Users.Update(existing);
+                    }
                 }
             }
+            db.SaveChanges();
         }
-        db.SaveChanges();
 
         // ===== ONE-TIME REGION STANDARDIZATION =====
         var allAgencies = await db.Agencies.ToListAsync();
@@ -181,3 +178,10 @@ app.MapControllerRoute(
 
 app.Run();
 
+// Helper class for deserializing AdminSeed config section
+public class AdminSeedEntry
+{
+    public string Username { get; set; } = "";
+    public string Email { get; set; } = "";
+    public string Password { get; set; } = "";
+}
