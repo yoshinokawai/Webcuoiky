@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebWikiForum.Models.Agency>
+@model IEnumerable<WebWikiForum.Models.Agency>
 @section Styles {
     <link rel="stylesheet" href="~/css/Agencies.css" />
 }
@@ -45,7 +45,7 @@
 </label>
 <div class="flex gap-2 pb-2 md:pb-0">
 <div class="relative min-w-[160px]">
-<select name="region" onchange="this.form.submit()" class="w-full h-12 pl-4 pr-10 rounded-xl bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200/50 dark:border-slate-700/50 hover:border-primary/30 focus:ring-2 focus:ring-primary/20 transition-all shadow-sm appearance-none cursor-pointer">
+<select name="region" onchange="this.form.submit()" class="custom-select w-full h-12 pl-4 pr-10 rounded-xl bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200/50 dark:border-slate-700/50 hover:border-primary/30 focus:ring-2 focus:ring-primary/20 transition-all shadow-sm appearance-none cursor-pointer">
 <option value="all">@Localizer["Agencies_Label_Region"]</option>
 <option value="Japan" selected='@(ViewData["Region"]?.ToString() == "Japan")'>@Localizer["Region_Japan"]</option>
 <option value="United States" selected='@(ViewData["Region"]?.ToString() == "United States")'>@Localizer["Region_United States"]</option>
@@ -54,17 +54,15 @@
 <option value="Indonesia" selected='@(ViewData["Region"]?.ToString() == "Indonesia")'>@Localizer["Region_Indonesia"]</option>
 <option value="Global" selected='@(ViewData["Region"]?.ToString() == "Global")'>@Localizer["Region_Global"]</option>
 </select>
-<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">expand_more</span>
 </div>
 <div class="relative min-w-[160px]">
-<select name="focus" onchange="this.form.submit()" class="w-full h-12 pl-4 pr-10 rounded-xl bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200/50 dark:border-slate-700/50 hover:border-primary/30 focus:ring-2 focus:ring-primary/20 transition-all shadow-sm appearance-none cursor-pointer">
+<select name="focus" onchange="this.form.submit()" class="custom-select w-full h-12 pl-4 pr-10 rounded-xl bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200/50 dark:border-slate-700/50 hover:border-primary/30 focus:ring-2 focus:ring-primary/20 transition-all shadow-sm appearance-none cursor-pointer">
 <option value="all">@Localizer["Agencies_Label_Focus"]</option>
 <option value="Idol" selected='@(ViewData["Focus"]?.ToString() == "Idol")'>@Localizer["Focus_Idol"]</option>
 <option value="Gaming" selected='@(ViewData["Focus"]?.ToString() == "Gaming")'>@Localizer["Focus_Gaming"]</option>
 <option value="Music" selected='@(ViewData["Focus"]?.ToString() == "Music")'>@Localizer["Focus_Music"]</option>
 <option value="Variety" selected='@(ViewData["Focus"]?.ToString() == "Variety")'>@Localizer["Focus_Variety"]</option>
 </select>
-<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">expand_more</span>
 </div>
 <button type="submit" class="flex h-12 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-primary px-4 text-white shadow-lg shadow-primary/20 transition-all hover:brightness-110">
 <span class="material-symbols-outlined text-lg">tune</span>

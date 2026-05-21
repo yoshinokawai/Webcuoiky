@@ -105,4 +105,59 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Custom Select Initialization
+    document.querySelectorAll("select.custom-select").forEach(select => {
+        select.style.display = 'none';
+        
+        const wrapper = document.createElement('div');
+        wrapper.className = 'relative inline-block w-full h-full';
+        
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        const classes = select.className.replace('custom-select', '').trim();
+        btn.className = classes + ' flex items-center justify-between text-left relative z-10';
+        
+        const selectedOpt = select.options[select.selectedIndex];
+        btn.innerHTML = `<span class="truncate block pr-6">${selectedOpt ? selectedOpt.text : ''}</span> <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">expand_more</span>`;
+        
+        const menu = document.createElement('div');
+        menu.className = 'absolute z-50 left-0 w-full mt-2 py-2 bg-white dark:bg-slate-800 border border-slate-200/50 dark:border-slate-700/50 rounded-xl shadow-xl overflow-hidden hidden flex-col transition-all origin-top max-h-[300px] overflow-y-auto';
+        
+        Array.from(select.options).forEach(opt => {
+            const item = document.createElement('div');
+            item.className = 'w-full text-left px-4 py-2.5 text-sm text-slate-700 dark:text-slate-200 hover:bg-primary/10 hover:text-primary transition-colors cursor-pointer ' + (opt.selected ? 'bg-primary/5 text-primary font-bold' : '');
+            item.textContent = opt.text;
+            item.onclick = () => {
+                select.value = opt.value;
+                btn.querySelector('span.truncate').textContent = opt.text;
+                menu.classList.add('hidden');
+                Array.from(menu.children).forEach(c => c.className = 'w-full text-left px-4 py-2.5 text-sm text-slate-700 dark:text-slate-200 hover:bg-primary/10 hover:text-primary transition-colors cursor-pointer');
+                item.className = 'w-full text-left px-4 py-2.5 text-sm text-slate-700 dark:text-slate-200 hover:bg-primary/10 hover:text-primary transition-colors cursor-pointer bg-primary/5 text-primary font-bold';
+                
+                const event = new Event('change', { bubbles: true });
+                select.dispatchEvent(event);
+            };
+            menu.appendChild(item);
+        });
+        
+        btn.onclick = (e) => {
+            e.stopPropagation();
+            document.querySelectorAll('.custom-select-menu').forEach(m => {
+                if (m !== menu) m.classList.add('hidden');
+            });
+            menu.classList.toggle('hidden');
+        };
+        
+        menu.classList.add('custom-select-menu');
+        wrapper.appendChild(btn);
+        wrapper.appendChild(menu);
+        
+        select.parentNode.insertBefore(wrapper, select);
+        wrapper.appendChild(select);
+    });
+    
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.custom-select-menu').forEach(m => m.classList.add('hidden'));
+    });
 });

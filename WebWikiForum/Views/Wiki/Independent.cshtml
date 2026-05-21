@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebWikiForum.Models.Vtuber>
+@model IEnumerable<WebWikiForum.Models.Vtuber>
 @section Styles {
     <link rel="stylesheet" href="~/css/Independent.css" />
 }
@@ -40,7 +40,7 @@
 </div>
 <div class="flex gap-3 pb-2 md:pb-0">
 <div class="relative min-w-[140px]">
-<select name="region" onchange="this.form.submit()" class="w-full h-full pl-4 pr-10 border border-primary/10 rounded-xl bg-white dark:bg-slate-900 text-sm font-semibold appearance-none cursor-pointer focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all">
+<select name="region" onchange="this.form.submit()" class="custom-select w-full h-full pl-4 pr-10 border border-primary/10 rounded-xl bg-white dark:bg-slate-900 text-sm font-semibold appearance-none cursor-pointer focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all">
 <option value="all">@Localizer["Indie_Filter_Region"]</option>
 <option value="Japan" selected='@(ViewData["Region"]?.ToString() == "Japan")'>@Localizer["Region_Japan"]</option>
 <option value="United States" selected='@(ViewData["Region"]?.ToString() == "United States")'>@Localizer["Region_United States"]</option>
@@ -49,10 +49,9 @@
 <option value="Indonesia" selected='@(ViewData["Region"]?.ToString() == "Indonesia")'>@Localizer["Region_Indonesia"]</option>
 <option value="Global" selected='@(ViewData["Region"]?.ToString() == "Global")'>@Localizer["Region_Global"]</option>
 </select>
-<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">expand_more</span>
 </div>
 <div class="relative min-w-[140px]">
-<select name="language" onchange="this.form.submit()" class="w-full h-full pl-4 pr-10 border border-primary/10 rounded-xl bg-white dark:bg-slate-900 text-sm font-semibold appearance-none cursor-pointer focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all">
+<select name="language" onchange="this.form.submit()" class="custom-select w-full h-full pl-4 pr-10 border border-primary/10 rounded-xl bg-white dark:bg-slate-900 text-sm font-semibold appearance-none cursor-pointer focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all">
 <option value="all">@Localizer["Indie_Filter_Language"]</option>
 <option value="English" selected='@(ViewData["Language"]?.ToString() == "English")'>@Localizer["Lang_English"]</option>
 <option value="Japanese" selected='@(ViewData["Language"]?.ToString() == "Japanese")'>@Localizer["Lang_Japanese"]</option>
@@ -60,7 +59,6 @@
 <option value="Vietnamese" selected='@(ViewData["Language"]?.ToString() == "Vietnamese")'>@Localizer["Lang_Vietnamese"]</option>
 <option value="Indonesian" selected='@(ViewData["Language"]?.ToString() == "Indonesian")'>@Localizer["Lang_Indonesian"]</option>
 </select>
-<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">expand_more</span>
 </div>
 </div>
 </div>
