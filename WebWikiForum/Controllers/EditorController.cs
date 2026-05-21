@@ -13,5 +13,10 @@ namespace WebWikiForum.Controllers
             return View();
         }
 
+        public IActionResult TranslateTool()
+        {
+            return View();
+        }
+
     }
 }

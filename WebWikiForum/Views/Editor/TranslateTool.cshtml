@@ -1,0 +1,757 @@
+@{
+    ViewData["Title"] = Localizer["TT_PageTitle"].Value + " - VTWiki";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/TranslateTool.css" />
+}
+
+<!-- Nền dot trang trí -->
+<div class="fixed inset-0 pointer-events-none opacity-[0.03] dark:opacity-[0.05] dot-pattern z-0"></div>
+
+<div class="relative z-10 min-h-screen"
+     data-str-enter-text="@Localizer["TT_Toast_EnterText"]"
+     data-str-same-lang="@Localizer["TT_Toast_SameLang"]"
+     data-str-enter-link="@Localizer["TT_Toast_EnterLink"]"
+     data-str-link-unsupported="@Localizer["TT_Toast_LinkUnsupported"]"
+     data-str-link-error="@Localizer["TT_Toast_LinkError"]"
+     data-str-translate-fail="@Localizer["TT_Toast_TranslateFail"]"
+     data-str-copied="@Localizer["TT_Toast_Copied"]"
+     data-str-cleared-history="@Localizer["TT_Toast_ClearedHistory"]"
+     data-str-reloaded="@Localizer["TT_Toast_Reloaded"]"
+     data-str-no-swap="@Localizer["TT_Toast_NoSwap"]"
+     data-str-placeholder="@Localizer["TT_Result_Placeholder"]"
+     data-str-translating="@Localizer["TT_Translating"]"
+     data-str-detected="@Localizer["TT_DetectedLang"]"
+     data-str-just-now="@Localizer["TT_Time_JustNow"]"
+     data-str-minutes-ago="@Localizer["TT_Time_MinutesAgo"]"
+     data-str-hours-ago="@Localizer["TT_Time_HoursAgo"]"
+     data-str-link-guide-title="@Localizer["TT_Link_GuideTitle"]"
+     data-str-link-guide-desc="@Localizer["TT_Link_GuideDesc"]"
+     data-str-link-open="@Localizer["TT_Link_Open"]"
+     data-str-link-copy-hint="@Localizer["TT_Link_CopyHint"]"
+     data-str-link-switch-btn="@Localizer["TT_Link_SwitchBtn"]"
+     data-str-link-see-guide="@Localizer["TT_Link_SeeGuide"]"
+     data-str-hist-reuse="@Localizer["TT_Hist_Reuse"]"
+     data-str-hist-copy="@Localizer["TT_Hist_Copy"]"
+     data-str-hist-delete="@Localizer["TT_Hist_Delete"]"
+     id="ttRoot">
+
+    <div class="mx-auto max-w-7xl px-4 py-8 lg:px-8">
+
+        <!-- Hero Banner -->
+        <div class="relative overflow-hidden rounded-2xl mb-10 tt-hero-banner">
+            <div class="tt-hero-particles"></div>
+            <div class="relative z-10 flex flex-col items-center justify-center py-16 px-6 text-center">
+                <div class="tt-icon-badge mb-5">
+                    <span class="material-symbols-outlined text-4xl">translate</span>
+                </div>
+                <h1 class="text-4xl font-black tracking-tight text-white sm:text-5xl lg:text-5xl mb-3">
+                    @Localizer["TT_HeroTitle"]
+                </h1>
+                <p class="max-w-xl text-lg text-white/75 mb-2">
+                    @Localizer["TT_HeroDesc_Before"]
+                    <span class="tt-platform-badge">Facebook</span>
+                    <span class="tt-platform-badge tt-x">X / Twitter</span>
+                    <span class="tt-platform-badge tt-yt">YouTube</span>
+                    @Localizer["TT_HeroDesc_After"]
+                </p>
+            </div>
+        </div>
+
+        <!-- Main Translator Card -->
+        <div class="tt-card mb-8">
+            <div class="tt-card-header">
+                <span class="material-symbols-outlined text-primary">auto_awesome</span>
+                <span class="font-bold text-slate-800 dark:text-slate-100">@Localizer["TT_CardTitle"]</span>
+            </div>
+
+            <!-- Input mode toggle -->
+            <div class="tt-mode-toggle mb-6">
+                <button id="btnModeText" class="tt-mode-btn active" onclick="switchMode('text')">
+                    <span class="material-symbols-outlined text-[18px]">edit_note</span>
+                    @Localizer["TT_Tab_Text"]
+                </button>
+                <button id="btnModeLink" class="tt-mode-btn" onclick="switchMode('link')">
+                    <span class="material-symbols-outlined text-[18px]">link</span>
+                    @Localizer["TT_Tab_Link"]
+                </button>
+            </div>
+
+            <!-- Text Input Panel -->
+            <div id="panelText" class="tt-panel">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Source -->
+                    <div class="tt-text-box">
+                        <div class="tt-text-box-header">
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-[16px] text-slate-400">article</span>
+                                <span class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">@Localizer["TT_Label_Source"]</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <select id="sourceLang" class="tt-lang-select">
+                                    <option value="auto">🔍 @Localizer["TT_Lang_Auto"]</option>
+                                    <option value="ja">🇯🇵 @Localizer["TT_Lang_JA"]</option>
+                                    <option value="ko">🇰🇷 @Localizer["TT_Lang_KO"]</option>
+                                    <option value="en">🇺🇸 @Localizer["TT_Lang_EN"]</option>
+                                    <option value="vi">🇻🇳 @Localizer["TT_Lang_VI"]</option>
+                                    <option value="zh-CN">🇨🇳 @Localizer["TT_Lang_ZH_CN"]</option>
+                                    <option value="zh-TW">🇹🇼 @Localizer["TT_Lang_ZH_TW"]</option>
+                                    <option value="fr">🇫🇷 @Localizer["TT_Lang_FR"]</option>
+                                    <option value="de">🇩🇪 @Localizer["TT_Lang_DE"]</option>
+                                    <option value="es">🇪🇸 @Localizer["TT_Lang_ES"]</option>
+                                    <option value="id">🇮🇩 @Localizer["TT_Lang_ID"]</option>
+                                    <option value="th">🇹🇭 @Localizer["TT_Lang_TH"]</option>
+                                    <option value="pt">🇧🇷 @Localizer["TT_Lang_PT"]</option>
+                                    <option value="ru">🇷🇺 @Localizer["TT_Lang_RU"]</option>
+                                </select>
+                                <button onclick="clearSource()" class="tt-clear-btn" title="@Localizer["TT_Btn_Clear"]">
+                                    <span class="material-symbols-outlined text-[16px]">close</span>
+                                </button>
+                            </div>
+                        </div>
+                        <textarea id="sourceText" class="tt-textarea" placeholder="@Localizer["TT_Textarea_Placeholder"]" autocomplete="off" spellcheck="false"></textarea>
+                        <div class="tt-char-count">
+                            <span id="charCount">0</span> @Localizer["TT_Chars"]
+                        </div>
+                    </div>
+
+                    <!-- Target -->
+                    <div class="tt-text-box">
+                        <div class="tt-text-box-header">
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-[16px] text-slate-400">transcribe</span>
+                                <span class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">@Localizer["TT_Label_Result"]</span>
+                            </div>
+                            <select id="targetLang" class="tt-lang-select">
+                                <option value="vi">🇻🇳 @Localizer["TT_Lang_VI"]</option>
+                                <option value="en">🇺🇸 @Localizer["TT_Lang_EN"]</option>
+                                <option value="ja">🇯🇵 @Localizer["TT_Lang_JA"]</option>
+                                <option value="ko">🇰🇷 @Localizer["TT_Lang_KO"]</option>
+                                <option value="zh-CN">🇨🇳 @Localizer["TT_Lang_ZH_CN"]</option>
+                                <option value="zh-TW">🇹🇼 @Localizer["TT_Lang_ZH_TW"]</option>
+                                <option value="fr">🇫🇷 @Localizer["TT_Lang_FR"]</option>
+                                <option value="de">🇩🇪 @Localizer["TT_Lang_DE"]</option>
+                                <option value="es">🇪🇸 @Localizer["TT_Lang_ES"]</option>
+                                <option value="id">🇮🇩 @Localizer["TT_Lang_ID"]</option>
+                                <option value="th">🇹🇭 @Localizer["TT_Lang_TH"]</option>
+                                <option value="pt">🇧🇷 @Localizer["TT_Lang_PT"]</option>
+                                <option value="ru">🇷🇺 @Localizer["TT_Lang_RU"]</option>
+                            </select>
+                        </div>
+                        <div class="tt-result-area" id="resultArea">
+                            <div class="tt-result-placeholder" id="resultPlaceholder">
+                                <span class="material-symbols-outlined text-4xl text-slate-300 dark:text-slate-600 mb-2">translate</span>
+                                <p class="text-sm text-slate-400">@Localizer["TT_Result_Placeholder"]</p>
+                            </div>
+                            <div id="resultText" class="tt-result-text hidden"></div>
+                            <div id="resultLoading" class="tt-loading-overlay hidden">
+                                <div class="tt-spinner"></div>
+                                <span class="text-sm text-slate-400 mt-2">@Localizer["TT_Translating"]</span>
+                            </div>
+                        </div>
+                        <div class="tt-result-actions hidden" id="resultActions">
+                            <button onclick="copyResult()" class="tt-action-btn">
+                                <span class="material-symbols-outlined text-[16px]">content_copy</span>
+                                @Localizer["TT_Btn_Copy"]
+                            </button>
+                            <button onclick="shareResult()" class="tt-action-btn">
+                                <span class="material-symbols-outlined text-[16px]">share</span>
+                                @Localizer["TT_Btn_Share"]
+                            </button>
+                            <div class="ml-auto">
+                                <span id="detectedLangBadge" class="tt-detected-badge hidden"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Swap lang button -->
+                <div class="flex justify-center my-2">
+                    <button onclick="swapLanguages()" class="tt-swap-btn" title="@Localizer["TT_Btn_Swap"]">
+                        <span class="material-symbols-outlined">swap_horiz</span>
+                        @Localizer["TT_Btn_Swap"]
+                    </button>
+                </div>
+            </div>
+
+            <!-- Link Input Panel -->
+            <div id="panelLink" class="tt-panel hidden">
+                <div class="tt-link-input-wrap">
+                    <div class="tt-link-platforms">
+                        <span class="tt-plat-icon tt-plat-fb" title="Facebook">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </span>
+                        <span class="tt-plat-icon tt-plat-x" title="X / Twitter">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        </span>
+                        <span class="tt-plat-icon tt-plat-yt" title="YouTube">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        </span>
+                    </div>
+                    <div class="relative flex-1">
+                        <svg class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                        <input id="linkInput" type="url" class="tt-link-input pl-11" placeholder="@Localizer["TT_Link_Placeholder"]" autocomplete="new-password" data-lpignore="true" spellcheck="false" />
+                    </div>
+                    <button onclick="fetchAndTranslateLink()" id="btnFetchLink" class="tt-fetch-btn">
+                        <span class="material-symbols-outlined text-[18px]">download</span>
+                        @Localizer["TT_Btn_FetchTranslate"]
+                    </button>
+                </div>
+
+                <!-- Link lang selectors -->
+                <div class="flex flex-wrap items-center gap-4 mt-5">
+                    <div class="flex items-center gap-2">
+                        <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">@Localizer["TT_From"]:</label>
+                        <select id="linkSourceLang" class="tt-lang-select">
+                            <option value="auto">🔍 @Localizer["TT_Lang_Auto"]</option>
+                            <option value="ja">🇯🇵 @Localizer["TT_Lang_JA"]</option>
+                            <option value="ko">🇰🇷 @Localizer["TT_Lang_KO"]</option>
+                            <option value="en">🇺🇸 @Localizer["TT_Lang_EN"]</option>
+                            <option value="vi">🇻🇳 @Localizer["TT_Lang_VI"]</option>
+                            <option value="zh-CN">🇨🇳 @Localizer["TT_Lang_ZH_CN"]</option>
+                            <option value="zh-TW">🇹🇼 @Localizer["TT_Lang_ZH_TW"]</option>
+                            <option value="fr">🇫🇷 @Localizer["TT_Lang_FR"]</option>
+                            <option value="de">🇩🇪 @Localizer["TT_Lang_DE"]</option>
+                        </select>
+                    </div>
+                    <span class="material-symbols-outlined text-slate-400">arrow_forward</span>
+                    <div class="flex items-center gap-2">
+                        <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">@Localizer["TT_To"]:</label>
+                        <select id="linkTargetLang" class="tt-lang-select">
+                            <option value="vi">🇻🇳 @Localizer["TT_Lang_VI"]</option>
+                            <option value="en">🇺🇸 @Localizer["TT_Lang_EN"]</option>
+                            <option value="ja">🇯🇵 @Localizer["TT_Lang_JA"]</option>
+                            <option value="ko">🇰🇷 @Localizer["TT_Lang_KO"]</option>
+                            <option value="zh-CN">🇨🇳 @Localizer["TT_Lang_ZH_CN"]</option>
+                            <option value="fr">🇫🇷 @Localizer["TT_Lang_FR"]</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Link result -->
+                <div id="linkResultArea" class="tt-link-result-area hidden mt-6">
+                    <div class="tt-link-result-header">
+                        <span id="linkPlatformBadge" class="tt-platform-result-badge"></span>
+                        <span id="linkSourceUrl" class="text-xs text-slate-400 truncate max-w-xs"></span>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-4">
+                        <div>
+                            <div class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">@Localizer["TT_Label_OriginalContent"]</div>
+                            <div id="linkOriginalText" class="tt-link-text-display"></div>
+                        </div>
+                        <div>
+                            <div class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">@Localizer["TT_Label_Result"]</div>
+                            <div id="linkTranslatedText" class="tt-link-text-display tt-translated"></div>
+                        </div>
+                    </div>
+                    <div class="flex gap-3 mt-4">
+                        <button onclick="copyLinkResult()" class="tt-action-btn">
+                            <span class="material-symbols-outlined text-[16px]">content_copy</span>
+                            @Localizer["TT_Btn_CopyResult"]
+                        </button>
+                    </div>
+                </div>
+
+                <div id="linkLoadingArea" class="hidden flex flex-col items-center py-10">
+                    <div class="tt-spinner mb-3"></div>
+                    <p class="text-sm text-slate-400">@Localizer["TT_Link_Loading"]</p>
+                </div>
+
+                <div id="linkErrorArea" class="hidden mt-4 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl text-sm text-red-600 dark:text-red-400"></div>
+            </div>
+
+            <!-- Translate Button -->
+            <div id="translateBtnWrap" class="flex justify-center mt-4">
+                <button onclick="translateText()" id="btnTranslate" class="tt-translate-btn">
+                    <span class="material-symbols-outlined">translate</span>
+                    @Localizer["TT_Btn_Translate"]
+                </button>
+            </div>
+        </div>
+
+        <!-- Translation History -->
+        <div class="tt-card">
+            <div class="tt-card-header justify-between">
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary">history</span>
+                    <span class="font-bold text-slate-800 dark:text-slate-100">@Localizer["TT_History_Title"]</span>
+                    <span class="tt-history-count-badge" id="historyCountBadge">0/5</span>
+                </div>
+                <button onclick="clearHistory()" class="tt-clear-history-btn" id="btnClearHistory">
+                    <span class="material-symbols-outlined text-[16px]">delete_sweep</span>
+                    @Localizer["TT_Btn_ClearAll"]
+                </button>
+            </div>
+
+            <div id="historyEmpty" class="tt-history-empty">
+                <span class="material-symbols-outlined text-5xl text-slate-300 dark:text-slate-600 mb-3">history_toggle_off</span>
+                <p class="text-sm text-slate-400 font-medium">@Localizer["TT_History_Empty"]</p>
+                <p class="text-xs text-slate-300 dark:text-slate-600 mt-1">@Localizer["TT_History_EmptyHint"]</p>
+            </div>
+
+            <div id="historyList" class="tt-history-list hidden"></div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Toast notification -->
+<div id="ttToast" class="tt-toast hidden">
+    <span class="material-symbols-outlined text-green-500">check_circle</span>
+    <span id="ttToastMsg"></span>
+</div>
+
+@section Scripts {
+<script>
+// ===== STRINGS FROM SERVER (localized) =====
+const root = document.getElementById('ttRoot');
+const S = {
+    enterText:      root.dataset.strEnterText,
+    sameLang:       root.dataset.strSameLang,
+    enterLink:      root.dataset.strEnterLink,
+    linkUnsupported:root.dataset.strLinkUnsupported,
+    linkError:      root.dataset.strLinkError,
+    translateFail:  root.dataset.strTranslateFail,
+    copied:         root.dataset.strCopied,
+    clearedHistory: root.dataset.strClearedHistory,
+    reloaded:       root.dataset.strReloaded,
+    noSwap:         root.dataset.strNoSwap,
+    placeholder:    root.dataset.strPlaceholder,
+    translating:    root.dataset.strTranslating,
+    detected:       root.dataset.strDetected,
+    justNow:        root.dataset.strJustNow,
+    minutesAgo:     root.dataset.strMinutesAgo,
+    hoursAgo:       root.dataset.strHoursAgo,
+    linkGuideTitle: root.dataset.strLinkGuideTitle,
+    linkGuideDesc:  root.dataset.strLinkGuideDesc,
+    linkOpen:       root.dataset.strLinkOpen,
+    linkCopyHint:   root.dataset.strLinkCopyHint,
+    linkSwitchBtn:  root.dataset.strLinkSwitchBtn,
+    linkSeeGuide:   root.dataset.strLinkSeeGuide,
+    histReuse:      root.dataset.strHistReuse,
+    histCopy:       root.dataset.strHistCopy,
+    histDelete:     root.dataset.strHistDelete,
+};
+
+// ==============================
+// STATE
+// ==============================
+let currentMode = 'text';
+let translationHistory = JSON.parse(localStorage.getItem('vtwiki_translate_history') || '[]');
+
+// ==============================
+// INIT
+// ==============================
+document.addEventListener('DOMContentLoaded', () => {
+    renderHistory();
+    const src = document.getElementById('sourceText');
+    src.addEventListener('input', () => {
+        document.getElementById('charCount').textContent = src.value.length;
+    });
+    src.addEventListener('keydown', e => {
+        if (e.ctrlKey && e.key === 'Enter') translateText();
+    });
+});
+
+// ==============================
+// MODE TOGGLE
+// ==============================
+function switchMode(mode) {
+    currentMode = mode;
+    document.getElementById('panelText').classList.toggle('hidden', mode !== 'text');
+    document.getElementById('panelLink').classList.toggle('hidden', mode !== 'link');
+    document.getElementById('translateBtnWrap').classList.toggle('hidden', mode !== 'text');
+    document.getElementById('btnModeText').classList.toggle('active', mode === 'text');
+    document.getElementById('btnModeLink').classList.toggle('active', mode === 'link');
+}
+
+// ==============================
+// TEXT TRANSLATION
+// ==============================
+async function translateText() {
+    const text = document.getElementById('sourceText').value.trim();
+    if (!text) { showToast(S.enterText, 'error'); return; }
+
+    const sl = document.getElementById('sourceLang').value;
+    const tl = document.getElementById('targetLang').value;
+
+    if (sl !== 'auto' && sl === tl) { showToast(S.sameLang, 'error'); return; }
+
+    document.getElementById('resultPlaceholder').classList.add('hidden');
+    document.getElementById('resultText').classList.add('hidden');
+    document.getElementById('resultActions').classList.add('hidden');
+    document.getElementById('resultLoading').classList.remove('hidden');
+    document.getElementById('btnTranslate').disabled = true;
+
+    try {
+        const result = await callGoogleTranslate(text, sl, tl);
+
+        document.getElementById('resultLoading').classList.add('hidden');
+        document.getElementById('resultText').classList.remove('hidden');
+        document.getElementById('resultActions').classList.remove('hidden');
+        document.getElementById('resultText').textContent = result.translatedText;
+
+        if (sl === 'auto' && result.detectedLang) {
+            const badge = document.getElementById('detectedLangBadge');
+            badge.textContent = `${S.detected}: ${getLangName(result.detectedLang)}`;
+            badge.classList.remove('hidden');
+        } else {
+            document.getElementById('detectedLangBadge').classList.add('hidden');
+        }
+
+        saveToHistory({
+            type: 'text',
+            source: text.length > 120 ? text.substring(0, 120) + '...' : text,
+            translated: result.translatedText.length > 120 ? result.translatedText.substring(0, 120) + '...' : result.translatedText,
+            fullTranslated: result.translatedText,
+            fromLang: sl === 'auto' ? (result.detectedLang || 'auto') : sl,
+            toLang: tl,
+            timestamp: Date.now()
+        });
+
+    } catch (err) {
+        document.getElementById('resultLoading').classList.add('hidden');
+        document.getElementById('resultPlaceholder').classList.remove('hidden');
+        document.getElementById('resultPlaceholder').innerHTML = `
+            <span class="material-symbols-outlined text-4xl text-red-300 mb-2">error</span>
+            <p class="text-sm text-red-400">${S.translateFail}</p>`;
+    } finally {
+        document.getElementById('btnTranslate').disabled = false;
+    }
+}
+
+// ==============================
+// GOOGLE TRANSLATE (unofficial)
+// ==============================
+async function callGoogleTranslate(text, sl, tl) {
+    const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sl}&tl=${tl}&dt=t&dt=ld&q=${encodeURIComponent(text)}`;
+    const res = await fetch(url);
+    if (!res.ok) throw new Error('Translation API error');
+    const data = await res.json();
+
+    let translated = '';
+    if (data[0]) {
+        for (const part of data[0]) {
+            if (part[0]) translated += part[0];
+        }
+    }
+
+    let detectedLang = null;
+    if (sl === 'auto' && data[2]) detectedLang = data[2];
+
+    return { translatedText: translated, detectedLang };
+}
+
+// ==============================
+// LINK TRANSLATION
+// ==============================
+async function fetchAndTranslateLink() {
+    const linkVal = document.getElementById('linkInput').value.trim();
+    if (!linkVal) { showToast(S.enterLink, 'error'); return; }
+
+    const platform = detectPlatform(linkVal);
+    if (!platform) {
+        document.getElementById('linkErrorArea').textContent = S.linkUnsupported;
+        document.getElementById('linkErrorArea').classList.remove('hidden');
+        return;
+    }
+
+    document.getElementById('linkErrorArea').classList.add('hidden');
+    document.getElementById('linkResultArea').classList.add('hidden');
+    document.getElementById('linkLoadingArea').classList.remove('hidden');
+    document.getElementById('btnFetchLink').disabled = true;
+
+    const sl = document.getElementById('linkSourceLang').value;
+    const tl = document.getElementById('linkTargetLang').value;
+
+    try {
+        await new Promise(r => setTimeout(r, 1200));
+
+        document.getElementById('linkLoadingArea').classList.add('hidden');
+        document.getElementById('linkResultArea').classList.remove('hidden');
+
+        const platformNames = { facebook: 'Facebook', twitter: 'X / Twitter', youtube: 'YouTube' };
+        const platformColors = { facebook: '#1877F2', twitter: '#000', youtube: '#FF0000' };
+
+        document.getElementById('linkPlatformBadge').textContent = platformNames[platform];
+        document.getElementById('linkPlatformBadge').style.background = platformColors[platform];
+        document.getElementById('linkSourceUrl').textContent = linkVal;
+
+        document.getElementById('linkOriginalText').innerHTML = `
+            <div class="flex flex-col items-center py-6 text-center">
+                <span class="material-symbols-outlined text-3xl text-amber-400 mb-2">info</span>
+                <p class="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1">${S.linkGuideTitle} ${platformNames[platform]}</p>
+                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed max-w-xs">${S.linkGuideDesc.replace('{platform}', platformNames[platform])}</p>
+                <a href="${linkVal}" target="_blank" rel="noopener" class="mt-3 inline-flex items-center gap-1 text-xs text-primary font-bold hover:underline">
+                    <span class="material-symbols-outlined text-[14px]">open_in_new</span>
+                    ${S.linkOpen}
+                </a>
+            </div>`;
+
+        document.getElementById('linkTranslatedText').innerHTML = `
+            <div class="flex flex-col items-center py-6 text-center">
+                <span class="material-symbols-outlined text-3xl text-slate-300 mb-2">translate</span>
+                <p class="text-xs text-slate-400">${S.linkCopyHint}</p>
+                <button onclick="switchMode('text')" class="mt-3 px-4 py-2 bg-primary text-white text-xs font-bold rounded-xl hover:brightness-110 transition-all">
+                    ${S.linkSwitchBtn}
+                </button>
+            </div>`;
+
+        saveToHistory({
+            type: 'link',
+            platform,
+            url: linkVal,
+            source: `Link ${platformNames[platform]}`,
+            translated: `${S.linkSeeGuide} → ${linkVal}`,
+            fullTranslated: '',
+            fromLang: sl,
+            toLang: tl,
+            timestamp: Date.now()
+        });
+
+    } catch(e) {
+        document.getElementById('linkLoadingArea').classList.add('hidden');
+        document.getElementById('linkErrorArea').textContent = S.linkError;
+        document.getElementById('linkErrorArea').classList.remove('hidden');
+    } finally {
+        document.getElementById('btnFetchLink').disabled = false;
+    }
+}
+
+function detectPlatform(url) {
+    if (/facebook\.com|fb\.com|fb\.me/i.test(url)) return 'facebook';
+    if (/twitter\.com|x\.com/i.test(url)) return 'twitter';
+    if (/youtube\.com|youtu\.be/i.test(url)) return 'youtube';
+    return null;
+}
+
+// ==============================
+// HISTORY
+// ==============================
+const MAX_HISTORY = 5;
+
+function saveToHistory(entry) {
+    translationHistory.unshift(entry);
+    if (translationHistory.length > MAX_HISTORY) {
+        translationHistory = translationHistory.slice(0, MAX_HISTORY);
+    }
+    localStorage.setItem('vtwiki_translate_history', JSON.stringify(translationHistory));
+    renderHistory();
+}
+
+function renderHistory() {
+    const list = document.getElementById('historyList');
+    const empty = document.getElementById('historyEmpty');
+    const badge = document.getElementById('historyCountBadge');
+    const clearBtn = document.getElementById('btnClearHistory');
+
+    badge.textContent = `${translationHistory.length}/5`;
+
+    if (translationHistory.length === 0) {
+        list.classList.add('hidden');
+        empty.classList.remove('hidden');
+        clearBtn.style.opacity = '0.4';
+        clearBtn.disabled = true;
+        return;
+    }
+
+    clearBtn.style.opacity = '1';
+    clearBtn.disabled = false;
+    empty.classList.add('hidden');
+    list.classList.remove('hidden');
+
+    list.innerHTML = translationHistory.map((h, i) => {
+        const time = formatTime(h.timestamp);
+        const fromName = getLangName(h.fromLang).replace('🔍 ', '');
+        const toName = getLangName(h.toLang);
+        const icon = h.type === 'link' ? `<span class="tt-hist-icon tt-hist-${h.platform || 'link'}">
+            ${getPlatformIcon(h.platform)}
+        </span>` : `<span class="tt-hist-icon tt-hist-text">
+            <span class="material-symbols-outlined text-[18px]">article</span>
+        </span>`;
+
+        let sourceText = escapeHtml(h.source);
+        let translatedText = escapeHtml(h.translated);
+
+        if (h.type === 'link' && h.platform) {
+            const pName = h.platform === 'facebook' ? 'Facebook' : h.platform === 'twitter' ? 'X / Twitter' : h.platform === 'youtube' ? 'YouTube' : h.platform;
+            sourceText = `Link ${pName}`;
+            translatedText = `${S.linkSeeGuide} → ${escapeHtml(h.url)}`;
+        }
+
+        return `
+        <div class="tt-history-item" style="animation-delay: ${i * 60}ms">
+            <div class="tt-hist-left">
+                ${icon}
+                <div class="tt-hist-content">
+                    <div class="tt-hist-langs">
+                        <span class="tt-hist-lang-from">${fromName}</span>
+                        <span class="material-symbols-outlined text-[13px] text-slate-400">arrow_forward</span>
+                        <span class="tt-hist-lang-to">${toName}</span>
+                        <span class="tt-hist-time">${time}</span>
+                    </div>
+                    <div class="tt-hist-source">${sourceText}</div>
+                    <div class="tt-hist-translated">${translatedText}</div>
+                </div>
+            </div>
+            <div class="tt-hist-actions">
+                ${h.fullTranslated ? `<button onclick="reuseHistory(${i})" class="tt-hist-btn" title="${S.histReuse}">
+                    <span class="material-symbols-outlined text-[16px]">refresh</span>
+                </button>
+                <button onclick="copyHistoryItem(${i})" class="tt-hist-btn" title="${S.histCopy}">
+                    <span class="material-symbols-outlined text-[16px]">content_copy</span>
+                </button>` : ''}
+                <button onclick="deleteHistoryItem(${i})" class="tt-hist-btn tt-hist-btn-delete" title="${S.histDelete}">
+                    <span class="material-symbols-outlined text-[16px]">close</span>
+                </button>
+            </div>
+        </div>`;
+    }).join('');
+}
+
+function reuseHistory(i) {
+    const h = translationHistory[i];
+    if (!h || !h.fullTranslated) return;
+    switchMode('text');
+    document.getElementById('sourceText').value = h.source.replace(/\.\.\.$/, '');
+    document.getElementById('charCount').textContent = document.getElementById('sourceText').value.length;
+    document.getElementById('targetLang').value = h.toLang;
+    if (h.fromLang !== 'auto') document.getElementById('sourceLang').value = h.fromLang;
+
+    document.getElementById('resultPlaceholder').classList.add('hidden');
+    document.getElementById('resultText').classList.remove('hidden');
+    document.getElementById('resultActions').classList.remove('hidden');
+    document.getElementById('resultText').textContent = h.fullTranslated;
+    document.getElementById('resultLoading').classList.add('hidden');
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    showToast(S.reloaded);
+}
+
+function deleteHistoryItem(i) {
+    translationHistory.splice(i, 1);
+    localStorage.setItem('vtwiki_translate_history', JSON.stringify(translationHistory));
+    renderHistory();
+}
+
+function copyHistoryItem(i) {
+    const h = translationHistory[i];
+    if (h?.fullTranslated) {
+        navigator.clipboard.writeText(h.fullTranslated);
+        showToast(S.copied);
+    }
+}
+
+function clearHistory() {
+    if (translationHistory.length === 0) return;
+    translationHistory = [];
+    localStorage.setItem('vtwiki_translate_history', '[]');
+    renderHistory();
+    showToast(S.clearedHistory, 'info');
+}
+
+// ==============================
+// UTILS
+// ==============================
+function clearSource() {
+    document.getElementById('sourceText').value = '';
+    document.getElementById('charCount').textContent = '0';
+    document.getElementById('resultText').classList.add('hidden');
+    document.getElementById('resultActions').classList.add('hidden');
+    document.getElementById('resultPlaceholder').classList.remove('hidden');
+    document.getElementById('resultPlaceholder').innerHTML = `
+        <span class="material-symbols-outlined text-4xl text-slate-300 dark:text-slate-600 mb-2">translate</span>
+        <p class="text-sm text-slate-400">${S.placeholder}</p>`;
+}
+
+function swapLanguages() {
+    const sl = document.getElementById('sourceLang');
+    const tl = document.getElementById('targetLang');
+    const resultText = document.getElementById('resultText');
+    const sourceText = document.getElementById('sourceText');
+
+    if (sl.value === 'auto') return showToast(S.noSwap, 'error');
+
+    const tmpLang = sl.value;
+    sl.value = tl.value;
+    tl.value = tmpLang;
+
+    if (resultText.textContent && !resultText.classList.contains('hidden')) {
+        sourceText.value = resultText.textContent;
+        document.getElementById('charCount').textContent = sourceText.value.length;
+        document.getElementById('resultPlaceholder').classList.remove('hidden');
+        document.getElementById('resultText').classList.add('hidden');
+        document.getElementById('resultActions').classList.add('hidden');
+    }
+}
+
+function copyResult() {
+    const text = document.getElementById('resultText').textContent;
+    if (text) { navigator.clipboard.writeText(text); showToast(S.copied); }
+}
+
+function copyLinkResult() {
+    const text = document.getElementById('linkTranslatedText').textContent;
+    if (text) { navigator.clipboard.writeText(text); showToast(S.copied); }
+}
+
+function shareResult() {
+    const text = document.getElementById('resultText').textContent;
+    if (navigator.share && text) { navigator.share({ text }); } else { copyResult(); }
+}
+
+function getLangName(code) {
+    const opt = document.querySelector(`#sourceLang option[value="${code}"]`);
+    if (opt) {
+        return opt.textContent.trim();
+    }
+    return code;
+}
+
+function formatTime(ts) {
+    const now = Date.now();
+    const diff = Math.floor((now - ts) / 1000);
+    if (diff < 60) return S.justNow;
+    if (diff < 3600) return S.minutesAgo.replace('{n}', Math.floor(diff/60));
+    if (diff < 86400) return S.hoursAgo.replace('{n}', Math.floor(diff/3600));
+    return new Date(ts).toLocaleDateString();
+}
+
+function escapeHtml(str) {
+    const d = document.createElement('div');
+    d.textContent = str || '';
+    return d.innerHTML;
+}
+
+function getPlatformIcon(platform) {
+    const icons = {
+        facebook: '<svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>',
+        twitter: '<svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>',
+        youtube: '<svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>',
+        link: '<span class="material-symbols-outlined text-[18px]">link</span>'
+    };
+    return icons[platform] || icons.link;
+}
+
+let toastTimer;
+function showToast(msg, type = 'success') {
+    const toast = document.getElementById('ttToast');
+    const icon = toast.querySelector('.material-symbols-outlined');
+    const msgEl = document.getElementById('ttToastMsg');
+
+    msgEl.textContent = msg;
+    icon.textContent = type === 'error' ? 'error' : type === 'info' ? 'info' : 'check_circle';
+    icon.className = `material-symbols-outlined ${type === 'error' ? 'text-red-500' : type === 'info' ? 'text-blue-500' : 'text-green-500'}`;
+
+    toast.classList.remove('hidden');
+    toast.classList.add('show');
+
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.classList.add('hidden'), 400);
+    }, 2500);
+}
+</script>
+}

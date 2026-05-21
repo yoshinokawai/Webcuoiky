@@ -2714,4 +2714,208 @@ Community Hub</value>
   <data name="Notify_LikedDiscussion" xml:space="preserve">
     <value>Liked discussion:</value>
   </data>
+  <data name="Tools_PostTranslator_Desc" xml:space="preserve">
+    <value>Translate posts from Facebook, X/Twitter, YouTube into any language. Saves the 5 most recent translations.</value>
+  </data>
+  <data name="Tools_PostTranslator_Btn" xml:space="preserve">
+    <value>Open Translation Tool</value>
+  </data>
+  <data name="TT_PageTitle" xml:space="preserve">
+    <value>Post Translation Tool</value>
+  </data>
+  <data name="TT_HeroTitle" xml:space="preserve">
+    <value>Post Translation Tool</value>
+  </data>
+  <data name="TT_HeroDesc_Before" xml:space="preserve">
+    <value>Translate posts from</value>
+  </data>
+  <data name="TT_HeroDesc_After" xml:space="preserve">
+    <value>into any language.</value>
+  </data>
+  <data name="TT_CardTitle" xml:space="preserve">
+    <value>Translate Content</value>
+  </data>
+  <data name="TT_Tab_Text" xml:space="preserve">
+    <value>Enter Text</value>
+  </data>
+  <data name="TT_Tab_Link" xml:space="preserve">
+    <value>Paste Post Link</value>
+  </data>
+  <data name="TT_Label_Source" xml:space="preserve">
+    <value>Original Text</value>
+  </data>
+  <data name="TT_Label_Result" xml:space="preserve">
+    <value>Translation</value>
+  </data>
+  <data name="TT_Label_OriginalContent" xml:space="preserve">
+    <value>Original Content</value>
+  </data>
+  <data name="TT_Lang_Auto" xml:space="preserve">
+    <value>Auto Detect</value>
+  </data>
+  <data name="TT_Lang_JA" xml:space="preserve">
+    <value>Japanese</value>
+  </data>
+  <data name="TT_Lang_KO" xml:space="preserve">
+    <value>Korean</value>
+  </data>
+  <data name="TT_Lang_EN" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="TT_Lang_VI" xml:space="preserve">
+    <value>Vietnamese</value>
+  </data>
+  <data name="TT_Lang_ZH_CN" xml:space="preserve">
+    <value>Chinese (Simplified)</value>
+  </data>
+  <data name="TT_Lang_ZH_TW" xml:space="preserve">
+    <value>Chinese (Traditional)</value>
+  </data>
+  <data name="TT_Lang_FR" xml:space="preserve">
+    <value>French</value>
+  </data>
+  <data name="TT_Lang_DE" xml:space="preserve">
+    <value>German</value>
+  </data>
+  <data name="TT_Lang_ES" xml:space="preserve">
+    <value>Spanish</value>
+  </data>
+  <data name="TT_Lang_ID" xml:space="preserve">
+    <value>Indonesian</value>
+  </data>
+  <data name="TT_Lang_TH" xml:space="preserve">
+    <value>Thai</value>
+  </data>
+  <data name="TT_Lang_PT" xml:space="preserve">
+    <value>Portuguese</value>
+  </data>
+  <data name="TT_Lang_RU" xml:space="preserve">
+    <value>Russian</value>
+  </data>
+  <data name="TT_Textarea_Placeholder" xml:space="preserve">
+    <value>Paste the post content here...&#10;&#10;Example: Tweet from X, Facebook caption, YouTube description...</value>
+  </data>
+  <data name="TT_Chars" xml:space="preserve">
+    <value>chars</value>
+  </data>
+  <data name="TT_Result_Placeholder" xml:space="preserve">
+    <value>Translation will appear here...</value>
+  </data>
+  <data name="TT_Translating" xml:space="preserve">
+    <value>Translating...</value>
+  </data>
+  <data name="TT_DetectedLang" xml:space="preserve">
+    <value>Detected</value>
+  </data>
+  <data name="TT_Btn_Clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="TT_Btn_Copy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="TT_Btn_CopyResult" xml:space="preserve">
+    <value>Copy Translation</value>
+  </data>
+  <data name="TT_Btn_Share" xml:space="preserve">
+    <value>Share</value>
+  </data>
+  <data name="TT_Btn_Swap" xml:space="preserve">
+    <value>Swap Languages</value>
+  </data>
+  <data name="TT_Btn_Translate" xml:space="preserve">
+    <value>Translate Now</value>
+  </data>
+  <data name="TT_Btn_FetchTranslate" xml:space="preserve">
+    <value>Fetch &amp; Translate</value>
+  </data>
+  <data name="TT_Btn_ClearAll" xml:space="preserve">
+    <value>Clear All</value>
+  </data>
+  <data name="TT_From" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="TT_To" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="TT_Link_Placeholder" xml:space="preserve">
+    <value>Paste FB / X / YouTube link here... (https://...)</value>
+  </data>
+  <data name="TT_Link_Loading" xml:space="preserve">
+    <value>Loading and translating content...</value>
+  </data>
+  <data name="TT_Link_GuideTitle" xml:space="preserve">
+    <value>How to translate from</value>
+  </data>
+  <data name="TT_Link_GuideDesc" xml:space="preserve">
+    <value>Due to browser security restrictions, content cannot be fetched automatically from {platform}. Copy the post content from {platform} and paste it into the &quot;Enter Text&quot; tab to translate.</value>
+  </data>
+  <data name="TT_Link_Open" xml:space="preserve">
+    <value>Open original link</value>
+  </data>
+  <data name="TT_Link_CopyHint" xml:space="preserve">
+    <value>After copying text, paste it in the &quot;Enter Text&quot; tab</value>
+  </data>
+  <data name="TT_Link_SwitchBtn" xml:space="preserve">
+    <value>Switch to Enter Text</value>
+  </data>
+  <data name="TT_Link_SeeGuide" xml:space="preserve">
+    <value>See guide</value>
+  </data>
+  <data name="TT_History_Title" xml:space="preserve">
+    <value>Recent Translation History</value>
+  </data>
+  <data name="TT_History_Empty" xml:space="preserve">
+    <value>No translations yet</value>
+  </data>
+  <data name="TT_History_EmptyHint" xml:space="preserve">
+    <value>History will save up to 5 recent translations</value>
+  </data>
+  <data name="TT_Hist_Reuse" xml:space="preserve">
+    <value>Reuse</value>
+  </data>
+  <data name="TT_Hist_Copy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="TT_Hist_Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="TT_Toast_EnterText" xml:space="preserve">
+    <value>Please enter text to translate!</value>
+  </data>
+  <data name="TT_Toast_SameLang" xml:space="preserve">
+    <value>Source and target language are the same!</value>
+  </data>
+  <data name="TT_Toast_EnterLink" xml:space="preserve">
+    <value>Please enter a link!</value>
+  </data>
+  <data name="TT_Toast_LinkUnsupported" xml:space="preserve">
+    <value>Link not supported. Please enter a Facebook, X/Twitter, or YouTube link.</value>
+  </data>
+  <data name="TT_Toast_LinkError" xml:space="preserve">
+    <value>An error occurred. Please try again.</value>
+  </data>
+  <data name="TT_Toast_TranslateFail" xml:space="preserve">
+    <value>Translation failed. Please try again.</value>
+  </data>
+  <data name="TT_Toast_Copied" xml:space="preserve">
+    <value>Copied!</value>
+  </data>
+  <data name="TT_Toast_ClearedHistory" xml:space="preserve">
+    <value>History cleared!</value>
+  </data>
+  <data name="TT_Toast_Reloaded" xml:space="preserve">
+    <value>Translation reloaded!</value>
+  </data>
+  <data name="TT_Toast_NoSwap" xml:space="preserve">
+    <value>Cannot swap when using Auto Detect</value>
+  </data>
+  <data name="TT_Time_JustNow" xml:space="preserve">
+    <value>Just now</value>
+  </data>
+  <data name="TT_Time_MinutesAgo" xml:space="preserve">
+    <value>{n} min ago</value>
+  </data>
+  <data name="TT_Time_HoursAgo" xml:space="preserve">
+    <value>{n} hr ago</value>
+  </data>
 </root>

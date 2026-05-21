@@ -2714,4 +2714,208 @@ Trung tâm Cộng đồng</value>
   <data name="Notify_LikedDiscussion" xml:space="preserve">
     <value>Đã thích bài viết:</value>
   </data>
+  <data name="Tools_PostTranslator_Desc" xml:space="preserve">
+    <value>Dịch bài đăng từ Facebook, X/Twitter, YouTube sang bất kỳ ngôn ngữ nào. Lưu lịch sử 5 bản dịch gần nhất.</value>
+  </data>
+  <data name="Tools_PostTranslator_Btn" xml:space="preserve">
+    <value>Mở Công cụ Dịch</value>
+  </data>
+  <data name="TT_PageTitle" xml:space="preserve">
+    <value>Công cụ Dịch Bài Đăng</value>
+  </data>
+  <data name="TT_HeroTitle" xml:space="preserve">
+    <value>Công cụ Dịch Bài Đăng</value>
+  </data>
+  <data name="TT_HeroDesc_Before" xml:space="preserve">
+    <value>Dịch bài đăng từ</value>
+  </data>
+  <data name="TT_HeroDesc_After" xml:space="preserve">
+    <value>sang bất kỳ ngôn ngữ nào.</value>
+  </data>
+  <data name="TT_CardTitle" xml:space="preserve">
+    <value>Dịch nội dung</value>
+  </data>
+  <data name="TT_Tab_Text" xml:space="preserve">
+    <value>Nhập văn bản</value>
+  </data>
+  <data name="TT_Tab_Link" xml:space="preserve">
+    <value>Dán link bài đăng</value>
+  </data>
+  <data name="TT_Label_Source" xml:space="preserve">
+    <value>Văn bản gốc</value>
+  </data>
+  <data name="TT_Label_Result" xml:space="preserve">
+    <value>Bản dịch</value>
+  </data>
+  <data name="TT_Label_OriginalContent" xml:space="preserve">
+    <value>Nội dung gốc</value>
+  </data>
+  <data name="TT_Lang_Auto" xml:space="preserve">
+    <value>Tự động nhận diện</value>
+  </data>
+  <data name="TT_Lang_JA" xml:space="preserve">
+    <value>Nhật (Japanese)</value>
+  </data>
+  <data name="TT_Lang_KO" xml:space="preserve">
+    <value>Hàn (Korean)</value>
+  </data>
+  <data name="TT_Lang_EN" xml:space="preserve">
+    <value>Anh (English)</value>
+  </data>
+  <data name="TT_Lang_VI" xml:space="preserve">
+    <value>Việt (Vietnamese)</value>
+  </data>
+  <data name="TT_Lang_ZH_CN" xml:space="preserve">
+    <value>Trung giản (Chinese Simp.)</value>
+  </data>
+  <data name="TT_Lang_ZH_TW" xml:space="preserve">
+    <value>Trung phồn (Chinese Trad.)</value>
+  </data>
+  <data name="TT_Lang_FR" xml:space="preserve">
+    <value>Pháp (French)</value>
+  </data>
+  <data name="TT_Lang_DE" xml:space="preserve">
+    <value>Đức (German)</value>
+  </data>
+  <data name="TT_Lang_ES" xml:space="preserve">
+    <value>Tây Ban Nha (Spanish)</value>
+  </data>
+  <data name="TT_Lang_ID" xml:space="preserve">
+    <value>Indonesia</value>
+  </data>
+  <data name="TT_Lang_TH" xml:space="preserve">
+    <value>Thái (Thai)</value>
+  </data>
+  <data name="TT_Lang_PT" xml:space="preserve">
+    <value>Bồ Đào Nha (Portuguese)</value>
+  </data>
+  <data name="TT_Lang_RU" xml:space="preserve">
+    <value>Nga (Russian)</value>
+  </data>
+  <data name="TT_Textarea_Placeholder" xml:space="preserve">
+    <value>Dán nội dung bài đăng vào đây...&#10;&#10;Ví dụ: Tweet từ X, caption Facebook, mô tả YouTube...</value>
+  </data>
+  <data name="TT_Chars" xml:space="preserve">
+    <value>ký tự</value>
+  </data>
+  <data name="TT_Result_Placeholder" xml:space="preserve">
+    <value>Bản dịch sẽ hiện ở đây...</value>
+  </data>
+  <data name="TT_Translating" xml:space="preserve">
+    <value>Đang dịch...</value>
+  </data>
+  <data name="TT_DetectedLang" xml:space="preserve">
+    <value>Nhận diện</value>
+  </data>
+  <data name="TT_Btn_Clear" xml:space="preserve">
+    <value>Xóa</value>
+  </data>
+  <data name="TT_Btn_Copy" xml:space="preserve">
+    <value>Sao chép</value>
+  </data>
+  <data name="TT_Btn_CopyResult" xml:space="preserve">
+    <value>Sao chép bản dịch</value>
+  </data>
+  <data name="TT_Btn_Share" xml:space="preserve">
+    <value>Chia sẻ</value>
+  </data>
+  <data name="TT_Btn_Swap" xml:space="preserve">
+    <value>Đổi chiều dịch</value>
+  </data>
+  <data name="TT_Btn_Translate" xml:space="preserve">
+    <value>Dịch ngay</value>
+  </data>
+  <data name="TT_Btn_FetchTranslate" xml:space="preserve">
+    <value>Tải &amp; Dịch</value>
+  </data>
+  <data name="TT_Btn_ClearAll" xml:space="preserve">
+    <value>Xóa tất cả</value>
+  </data>
+  <data name="TT_From" xml:space="preserve">
+    <value>Từ</value>
+  </data>
+  <data name="TT_To" xml:space="preserve">
+    <value>Sang</value>
+  </data>
+  <data name="TT_Link_Placeholder" xml:space="preserve">
+    <value>Dán link FB / X / YouTube vào đây... (https://...)</value>
+  </data>
+  <data name="TT_Link_Loading" xml:space="preserve">
+    <value>Đang tải và dịch nội dung...</value>
+  </data>
+  <data name="TT_Link_GuideTitle" xml:space="preserve">
+    <value>Hướng dẫn dịch link từ</value>
+  </data>
+  <data name="TT_Link_GuideDesc" xml:space="preserve">
+    <value>Do giới hạn bảo mật của trình duyệt, không thể tự động tải nội dung từ {platform}. Hãy sao chép nội dung từ {platform} và dán vào tab &quot;Nhập văn bản&quot; để dịch.</value>
+  </data>
+  <data name="TT_Link_Open" xml:space="preserve">
+    <value>Mở link gốc</value>
+  </data>
+  <data name="TT_Link_CopyHint" xml:space="preserve">
+    <value>Sau khi sao chép text, hãy dán vào tab &quot;Nhập văn bản&quot;</value>
+  </data>
+  <data name="TT_Link_SwitchBtn" xml:space="preserve">
+    <value>Chuyển sang Nhập văn bản</value>
+  </data>
+  <data name="TT_Link_SeeGuide" xml:space="preserve">
+    <value>Xem hướng dẫn</value>
+  </data>
+  <data name="TT_History_Title" xml:space="preserve">
+    <value>Lịch sử dịch gần đây</value>
+  </data>
+  <data name="TT_History_Empty" xml:space="preserve">
+    <value>Chưa có bản dịch nào</value>
+  </data>
+  <data name="TT_History_EmptyHint" xml:space="preserve">
+    <value>Lịch sử sẽ lưu 5 bản dịch gần nhất</value>
+  </data>
+  <data name="TT_Hist_Reuse" xml:space="preserve">
+    <value>Dùng lại</value>
+  </data>
+  <data name="TT_Hist_Copy" xml:space="preserve">
+    <value>Sao chép</value>
+  </data>
+  <data name="TT_Hist_Delete" xml:space="preserve">
+    <value>Xóa</value>
+  </data>
+  <data name="TT_Toast_EnterText" xml:space="preserve">
+    <value>Vui lòng nhập văn bản cần dịch!</value>
+  </data>
+  <data name="TT_Toast_SameLang" xml:space="preserve">
+    <value>Ngôn ngữ nguồn và đích giống nhau!</value>
+  </data>
+  <data name="TT_Toast_EnterLink" xml:space="preserve">
+    <value>Vui lòng nhập link!</value>
+  </data>
+  <data name="TT_Toast_LinkUnsupported" xml:space="preserve">
+    <value>Link không được hỗ trợ. Vui lòng nhập link từ Facebook, X/Twitter, hoặc YouTube.</value>
+  </data>
+  <data name="TT_Toast_LinkError" xml:space="preserve">
+    <value>Có lỗi xảy ra. Vui lòng thử lại.</value>
+  </data>
+  <data name="TT_Toast_TranslateFail" xml:space="preserve">
+    <value>Dịch thất bại. Vui lòng thử lại.</value>
+  </data>
+  <data name="TT_Toast_Copied" xml:space="preserve">
+    <value>Đã sao chép!</value>
+  </data>
+  <data name="TT_Toast_ClearedHistory" xml:space="preserve">
+    <value>Đã xóa lịch sử!</value>
+  </data>
+  <data name="TT_Toast_Reloaded" xml:space="preserve">
+    <value>Đã tải lại bản dịch!</value>
+  </data>
+  <data name="TT_Toast_NoSwap" xml:space="preserve">
+    <value>Không thể đổi khi đang dùng Tự động nhận diện</value>
+  </data>
+  <data name="TT_Time_JustNow" xml:space="preserve">
+    <value>Vừa xong</value>
+  </data>
+  <data name="TT_Time_MinutesAgo" xml:space="preserve">
+    <value>{n} phút trước</value>
+  </data>
+  <data name="TT_Time_HoursAgo" xml:space="preserve">
+    <value>{n} giờ trước</value>
+  </data>
 </root>

@@ -1,4 +1,4 @@
-﻿@section Styles {
+@section Styles {
     <link rel="stylesheet" href="~/css/FanTools.css" />
 }
 
@@ -236,6 +236,44 @@
 </div>
 </div>
 </section>
+</div>
+
+<!-- Translation Tools Section -->
+<section data-tool-section="translation" data-search-target="fantools">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-2xl font-bold flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">translate</span>
+                                @Localizer["Wiki_TranslationHeader"]
+                            </h2>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="group bg-white dark:bg-slate-800 rounded-xl overflow-hidden border border-primary/10 hover:border-primary/50 transition-all shadow-sm">
+<div class="h-40 relative overflow-hidden" style="background: linear-gradient(135deg, #6b21a8, #994ce6, #c084fc)">
+<div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 20px 20px;"></div>
+<div class="absolute inset-0 flex flex-col items-center justify-center gap-2">
+<span class="material-symbols-outlined text-6xl text-white/80">translate</span>
+<div class="flex gap-2">
+    <span class="text-[9px] font-black text-white/90 bg-white/20 px-2 py-0.5 rounded-full">Facebook</span>
+    <span class="text-[9px] font-black text-white/90 bg-white/20 px-2 py-0.5 rounded-full">X / Twitter</span>
+    <span class="text-[9px] font-black text-white/90 bg-white/20 px-2 py-0.5 rounded-full">YouTube</span>
+</div>
+</div>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-bold text-lg group-hover:text-primary transition-colors">Post Translator</h3>
+<span class="text-[10px] uppercase tracking-widest bg-primary/10 text-primary px-2 py-0.5 rounded-full font-bold">AI Tool</span>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-4 line-clamp-2">@Localizer["Tools_PostTranslator_Desc"]</p>
+<a href="/Editor/TranslateTool" class="w-full py-2.5 bg-primary/10 text-primary font-extrabold rounded-xl hover:bg-primary hover:text-white hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 text-xs flex items-center justify-center gap-2 group-hover:border-primary/30 border border-transparent">
+    <span class="material-symbols-outlined text-sm">open_in_new</span>
+    @Localizer["Tools_PostTranslator_Btn"]
+</a>
+</div>
+</div>
+</div>
+</section>
+
 </div>
 </div>
 </main>

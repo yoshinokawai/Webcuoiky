@@ -2537,4 +2537,208 @@
   <data name="Notify_LikedDiscussion" xml:space="preserve">
     <value>投稿にいいね:</value>
   </data>
+  <data name="Tools_PostTranslator_Desc" xml:space="preserve">
+    <value>Facebook、X/Twitter、YouTubeの投稿を任意の言語に翻訳します。最新5件の翻訳履歴を保存。</value>
+  </data>
+  <data name="Tools_PostTranslator_Btn" xml:space="preserve">
+    <value>翻訳ツールを開く</value>
+  </data>
+  <data name="TT_PageTitle" xml:space="preserve">
+    <value>投稿翻訳ツール</value>
+  </data>
+  <data name="TT_HeroTitle" xml:space="preserve">
+    <value>投稿翻訳ツール</value>
+  </data>
+  <data name="TT_HeroDesc_Before" xml:space="preserve">
+    <value>投稿を翻訳（</value>
+  </data>
+  <data name="TT_HeroDesc_After" xml:space="preserve">
+    <value>）から任意の言語へ。</value>
+  </data>
+  <data name="TT_CardTitle" xml:space="preserve">
+    <value>コンテンツを翻訳</value>
+  </data>
+  <data name="TT_Tab_Text" xml:space="preserve">
+    <value>テキストを入力</value>
+  </data>
+  <data name="TT_Tab_Link" xml:space="preserve">
+    <value>投稿リンクを貼り付け</value>
+  </data>
+  <data name="TT_Label_Source" xml:space="preserve">
+    <value>元のテキスト</value>
+  </data>
+  <data name="TT_Label_Result" xml:space="preserve">
+    <value>翻訳</value>
+  </data>
+  <data name="TT_Label_OriginalContent" xml:space="preserve">
+    <value>元のコンテンツ</value>
+  </data>
+  <data name="TT_Lang_Auto" xml:space="preserve">
+    <value>自動検出</value>
+  </data>
+  <data name="TT_Lang_JA" xml:space="preserve">
+    <value>日本語</value>
+  </data>
+  <data name="TT_Lang_KO" xml:space="preserve">
+    <value>韓国語</value>
+  </data>
+  <data name="TT_Lang_EN" xml:space="preserve">
+    <value>英語</value>
+  </data>
+  <data name="TT_Lang_VI" xml:space="preserve">
+    <value>ベトナム語</value>
+  </data>
+  <data name="TT_Lang_ZH_CN" xml:space="preserve">
+    <value>中国語（簡体）</value>
+  </data>
+  <data name="TT_Lang_ZH_TW" xml:space="preserve">
+    <value>中国語（繁体）</value>
+  </data>
+  <data name="TT_Lang_FR" xml:space="preserve">
+    <value>フランス語</value>
+  </data>
+  <data name="TT_Lang_DE" xml:space="preserve">
+    <value>ドイツ語</value>
+  </data>
+  <data name="TT_Lang_ES" xml:space="preserve">
+    <value>スペイン語</value>
+  </data>
+  <data name="TT_Lang_ID" xml:space="preserve">
+    <value>インドネシア語</value>
+  </data>
+  <data name="TT_Lang_TH" xml:space="preserve">
+    <value>タイ語</value>
+  </data>
+  <data name="TT_Lang_PT" xml:space="preserve">
+    <value>ポルトガル語</value>
+  </data>
+  <data name="TT_Lang_RU" xml:space="preserve">
+    <value>ロシア語</value>
+  </data>
+  <data name="TT_Textarea_Placeholder" xml:space="preserve">
+    <value>投稿のテキストをここに貼り付けてください...&#10;&#10;例：Xのツイート、Facebookのキャプション、YouTubeの説明...</value>
+  </data>
+  <data name="TT_Chars" xml:space="preserve">
+    <value>文字</value>
+  </data>
+  <data name="TT_Result_Placeholder" xml:space="preserve">
+    <value>翻訳がここに表示されます...</value>
+  </data>
+  <data name="TT_Translating" xml:space="preserve">
+    <value>翻訳中...</value>
+  </data>
+  <data name="TT_DetectedLang" xml:space="preserve">
+    <value>検出</value>
+  </data>
+  <data name="TT_Btn_Clear" xml:space="preserve">
+    <value>クリア</value>
+  </data>
+  <data name="TT_Btn_Copy" xml:space="preserve">
+    <value>コピー</value>
+  </data>
+  <data name="TT_Btn_CopyResult" xml:space="preserve">
+    <value>翻訳をコピー</value>
+  </data>
+  <data name="TT_Btn_Share" xml:space="preserve">
+    <value>シェア</value>
+  </data>
+  <data name="TT_Btn_Swap" xml:space="preserve">
+    <value>言語を入れ替え</value>
+  </data>
+  <data name="TT_Btn_Translate" xml:space="preserve">
+    <value>今すぐ翻訳</value>
+  </data>
+  <data name="TT_Btn_FetchTranslate" xml:space="preserve">
+    <value>取得 &amp; 翻訳</value>
+  </data>
+  <data name="TT_Btn_ClearAll" xml:space="preserve">
+    <value>すべてクリア</value>
+  </data>
+  <data name="TT_From" xml:space="preserve">
+    <value>から</value>
+  </data>
+  <data name="TT_To" xml:space="preserve">
+    <value>へ</value>
+  </data>
+  <data name="TT_Link_Placeholder" xml:space="preserve">
+    <value>FB / X / YouTubeのリンクを貼り付け... (https://...)</value>
+  </data>
+  <data name="TT_Link_Loading" xml:space="preserve">
+    <value>コンテンツを取得・翻訳中...</value>
+  </data>
+  <data name="TT_Link_GuideTitle" xml:space="preserve">
+    <value>翻訳の手順 -</value>
+  </data>
+  <data name="TT_Link_GuideDesc" xml:space="preserve">
+    <value>ブラウザのセキュリティ制限により、{platform}から自動でコンテンツを取得できません。{platform}からテキストをコピーして、&quot;テキストを入力&quot;タブに貼り付けて翻訳してください。</value>
+  </data>
+  <data name="TT_Link_Open" xml:space="preserve">
+    <value>元のリンクを開く</value>
+  </data>
+  <data name="TT_Link_CopyHint" xml:space="preserve">
+    <value>テキストをコピー後、&quot;テキストを入力&quot;タブに貼り付けてください</value>
+  </data>
+  <data name="TT_Link_SwitchBtn" xml:space="preserve">
+    <value>テキスト入力に切り替え</value>
+  </data>
+  <data name="TT_Link_SeeGuide" xml:space="preserve">
+    <value>手順を見る</value>
+  </data>
+  <data name="TT_History_Title" xml:space="preserve">
+    <value>翻訳履歴</value>
+  </data>
+  <data name="TT_History_Empty" xml:space="preserve">
+    <value>まだ翻訳がありません</value>
+  </data>
+  <data name="TT_History_EmptyHint" xml:space="preserve">
+    <value>履歴は最新5件の翻訳を保存します</value>
+  </data>
+  <data name="TT_Hist_Reuse" xml:space="preserve">
+    <value>再利用</value>
+  </data>
+  <data name="TT_Hist_Copy" xml:space="preserve">
+    <value>コピー</value>
+  </data>
+  <data name="TT_Hist_Delete" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="TT_Toast_EnterText" xml:space="preserve">
+    <value>翻訳するテキストを入力してください！</value>
+  </data>
+  <data name="TT_Toast_SameLang" xml:space="preserve">
+    <value>元の言語と翻訳先の言語が同じです！</value>
+  </data>
+  <data name="TT_Toast_EnterLink" xml:space="preserve">
+    <value>リンクを入力してください！</value>
+  </data>
+  <data name="TT_Toast_LinkUnsupported" xml:space="preserve">
+    <value>リンクはサポートされていません。Facebook、X/Twitter、YouTubeのリンクを入力してください。</value>
+  </data>
+  <data name="TT_Toast_LinkError" xml:space="preserve">
+    <value>エラーが発生しました。もう一度お試しください。</value>
+  </data>
+  <data name="TT_Toast_TranslateFail" xml:space="preserve">
+    <value>翻訳に失敗しました。もう一度お試しください。</value>
+  </data>
+  <data name="TT_Toast_Copied" xml:space="preserve">
+    <value>コピーしました！</value>
+  </data>
+  <data name="TT_Toast_ClearedHistory" xml:space="preserve">
+    <value>履歴を消去しました！</value>
+  </data>
+  <data name="TT_Toast_Reloaded" xml:space="preserve">
+    <value>翻訳を再読み込みしました！</value>
+  </data>
+  <data name="TT_Toast_NoSwap" xml:space="preserve">
+    <value>自動検出中は入れ替えできません</value>
+  </data>
+  <data name="TT_Time_JustNow" xml:space="preserve">
+    <value>たった今</value>
+  </data>
+  <data name="TT_Time_MinutesAgo" xml:space="preserve">
+    <value>{n}分前</value>
+  </data>
+  <data name="TT_Time_HoursAgo" xml:space="preserve">
+    <value>{n}時間前</value>
+  </data>
 </root>
