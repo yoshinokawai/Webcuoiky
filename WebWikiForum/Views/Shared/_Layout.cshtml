@@ -41,7 +41,7 @@
     <header class="sticky top-0 z-50 w-full border-b border-slate-200/60 dark:border-slate-800/60 bg-surface-light/80 dark:bg-surface-dark/80 backdrop-blur-xl supports-[backdrop-filter]:bg-surface-light/60">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16 gap-4">
-                <!-- Trái: Logo -->
+                <!-- TrÃ¡i: Logo -->
                 <a href="/Home/Index" class="flex items-center gap-2 flex-shrink-0">
                     <div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary text-white shadow-sm ring-4 ring-primary/10">
                         <span class="material-symbols-outlined text-[20px]">smart_display</span>
@@ -49,7 +49,7 @@
                     <span class="text-xl font-black tracking-tight text-slate-900 dark:text-white ml-2"><span class="text-primary">VT</span>Wiki</span>
                 </a>
 
-                <!-- Gi?a: Ði?u hu?ng -->
+                <!-- Gi?a: Ãi?u hu?ng -->
                 <nav class="hidden lg:flex items-center gap-8">
                     <a class="text-sm font-bold @(ViewContext.RouteData.Values["Action"]?.ToString() == "Index" ? "text-primary border-b-2 border-primary" : "text-slate-700 dark:text-slate-300 hover:text-primary") transition-colors py-2" href="/Home/Index">@Localizer["Nav_Home"]</a>
                     
@@ -149,9 +149,9 @@
                     </div>
                 </nav>
 
-                <!-- Ph?i: Tìm ki?m & H? so -->
+                <!-- Ph?i: TÃ¬m ki?m & H? so -->
                 <div class="flex items-center gap-3 flex-1 justify-end">
-                    <!-- Tìm ki?m d?ng -->
+                    <!-- TÃ¬m ki?m d?ng -->
                     <div class="relative hidden sm:block w-full max-w-[240px] group z-[70]">
                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                             <span class="material-symbols-outlined text-slate-400 text-[18px]">search</span>
@@ -171,7 +171,7 @@
                         </div>
                     </div>
 
-                    <!-- Ngôn ng? -->
+                    <!-- NgÃ´n ng? -->
                     <div class="relative group z-50">
                         <button class="flex items-center gap-1 text-sm font-bold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors h-10 px-3 rounded-full border border-slate-200 dark:border-slate-700/50 hover:bg-slate-50 dark:hover:bg-slate-800/80">
                             <span class="material-symbols-outlined text-[18px]">language</span>
@@ -182,8 +182,8 @@
                                 <form action="/Language/ChangeLanguage" method="post" class="flex flex-col">
                                     <input type="hidden" name="returnUrl" value="@(Context.Request.Path + Context.Request.QueryString)" />
                                     <button type="submit" name="culture" value="en" class="w-full text-left px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg">English</button>
-                                    <button type="submit" name="culture" value="vi" class="w-full text-left px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg">Ti?ng Vi?t</button>
-                                    <button type="submit" name="culture" value="ja" class="w-full text-left px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg">???</button>
+                                    <button type="submit" name="culture" value="vi" class="w-full text-left px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg">Tiáº¿ng Viá»‡t</button>
+                                    <button type="submit" name="culture" value="ja" class="w-full text-left px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg">æ—¥æœ¬èªž</button>
                                 </form>
                             </div>
                         </div>
@@ -191,7 +191,7 @@
 
                     <!-- H? so -->
                     @await Component.InvokeAsync("NavbarProfile")
-                    <!-- Nút menu mobile -->
+                    <!-- NÃºt menu mobile -->
                     <button id="mobileMenuBtn" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
                         <span class="material-symbols-outlined text-[28px]" id="menuIcon">menu</span>
                     </button>
@@ -209,7 +209,7 @@
                         </a>
                     </div>
                     
-                    <!-- Ph?n Khám phá -->
+                    <!-- Ph?n KhÃ¡m phÃ¡ -->
                     <div class="space-y-1">
                         <div class="px-4 py-1 text-[10px] font-black uppercase tracking-widest text-slate-400">@Localizer["Nav_Explore"]</div>
                         <a href="/Wiki/Agencies" class="flex items-center gap-3 px-4 py-2 rounded-xl text-sm font-bold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800">
@@ -534,3 +534,4 @@
     </script>
 </body>
 </html>
+
