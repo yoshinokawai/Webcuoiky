@@ -5,6 +5,7 @@ using WebWikiForum.Models;
 using WebWikiForum.Services;
 using System.Security.Claims;
 using System.Linq;
+using Microsoft.Extensions.Localization;
 
 namespace WebWikiForum.Controllers
 {
@@ -12,11 +13,13 @@ namespace WebWikiForum.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly IVNPayService _vnPayService;
+        private readonly IStringLocalizer<SharedResource> _localizer;
 
-        public DonationController(ApplicationDbContext context, IVNPayService vnPayService)
+        public DonationController(ApplicationDbContext context, IVNPayService vnPayService, IStringLocalizer<SharedResource> localizer)
         {
             _context = context;
             _vnPayService = vnPayService;
+            _localizer = localizer;
         }
 
         public IActionResult Index()
@@ -29,18 +32,21 @@ namespace WebWikiForum.Controllers
         {
             if (amount < 10000)
             {
-                TempData["Error"] = "Số tiền ủng hộ tối thiểu là 10,000 VND";
+                TempData["Error"] = _localizer["Donation_Error_MinAmount"].Value;
                 return RedirectToAction("Index");
             }
 
             int? userId = null;
-            if (User.Identity.IsAuthenticated)
+            if (User.Identity?.IsAuthenticated == true)
             {
-                var username = User.Identity.Name;
-                var user = _context.Users.FirstOrDefault(u => u.Username == username);
-                if (user != null)
+                var username = User.Identity?.Name;
+                if (!string.IsNullOrEmpty(username))
                 {
-                    userId = user.Id;
+                    var user = _context.Users.FirstOrDefault(u => u.Username == username);
+                    if (user != null)
+                    {
+                        userId = user.Id;
+                    }
                 }
             }
 
@@ -75,7 +81,7 @@ namespace WebWikiForum.Controllers
 
             if (response == null || response.VnPayResponseCode != "00")
             {
-                TempData["Message"] = $"Lỗi thanh toán VNPay: {response?.VnPayResponseCode}";
+                TempData["Message"] = string.Format(_localizer["Donation_Error_Callback"].Value, response?.VnPayResponseCode ?? "Unknown");
                 
                 // Update donation status if we have the ID
                 if (response != null && response.DonationId > 0)

@@ -2915,7 +2915,82 @@ Community Hub</value>
   <data name="TT_Time_MinutesAgo" xml:space="preserve">
     <value>{n} min ago</value>
   </data>
-  <data name="TT_Time_HoursAgo" xml:space="preserve">
-    <value>{n} hr ago</value>
+  <data name="Donation_Index_Title" xml:space="preserve">
+    <value>Support WikiForum via VNPay</value>
+  </data>
+  <data name="Donation_Header_Title" xml:space="preserve">
+    <value>Donate via VNPay</value>
+  </data>
+  <data name="Donation_Header_Subtitle" xml:space="preserve">
+    <value>All your contributions help maintain and grow the WikiForum community!</value>
+  </data>
+  <data name="Donation_Label_Amount" xml:space="preserve">
+    <value>Donation Amount (VND)</value>
+  </data>
+  <data name="Donation_Label_MinAmount" xml:space="preserve">
+    <value>Minimum 10,000 VND</value>
+  </data>
+  <data name="Donation_Label_Message" xml:space="preserve">
+    <value>Message (Optional)</value>
+  </data>
+  <data name="Donation_Placeholder_Message" xml:space="preserve">
+    <value>Share your thoughts with us...</value>
+  </data>
+  <data name="Donation_Btn_Submit" xml:space="preserve">
+    <value>Pay with VNPay</value>
+  </data>
+  <data name="Donation_Label_Secure" xml:space="preserve">
+    <value>Safe and secure payment through VNPay Sandbox</value>
+  </data>
+  <data name="Donation_Btn_Back" xml:space="preserve">
+    <value>Back to Donate Page</value>
+  </data>
+  <data name="Donation_Success_Title" xml:space="preserve">
+    <value>Payment Successful – VTWiki</value>
+  </data>
+  <data name="Donation_Success_Header" xml:space="preserve">
+    <value>Donation Successful! 🎉</value>
+  </data>
+  <data name="Donation_Success_Subheader" xml:space="preserve">
+    <value>Thank you for supporting VTWiki. Every contribution helps our community grow.</value>
+  </data>
+  <data name="Donation_Success_Message" xml:space="preserve">
+    <value>Your transaction has been successfully confirmed via VNPay Sandbox. Thank you so much!</value>
+  </data>
+  <data name="Donation_Success_Btn_Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Donation_Success_Btn_DonateAgain" xml:space="preserve">
+    <value>Donate Again</value>
+  </data>
+  <data name="Donation_Success_Btn_Explore" xml:space="preserve">
+    <value>Explore Community</value>
+  </data>
+  <data name="Donation_Fail_Title" xml:space="preserve">
+    <value>Payment Failed – VTWiki</value>
+  </data>
+  <data name="Donation_Fail_Header" xml:space="preserve">
+    <value>Payment Failed</value>
+  </data>
+  <data name="Donation_Fail_Subheader" xml:space="preserve">
+    <value>We are sorry! Your transaction could not be completed. You can try again or contact support if needed.</value>
+  </data>
+  <data name="Donation_Fail_Message_Default" xml:space="preserve">
+    <value>The transaction was cancelled or an error occurred during the VNPay payment process.</value>
+  </data>
+  <data name="Donation_Fail_Btn_Retry" xml:space="preserve">
+    <value>Try Again</value>
+  </data>
+  <data name="Donation_Fail_Btn_Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Donation_Fail_Btn_ViewTiers" xml:space="preserve">
+    <value>View Donation Tiers</value>
+  </data>
+  <data name="Donation_Error_MinAmount" xml:space="preserve">
+    <value>Minimum donation amount is 10,000 VND</value>
+  </data>
+  <data name="Donation_Error_Callback" xml:space="preserve">
+    <value>VNPay Payment Error: {0}</value>
   </data>
 </root>

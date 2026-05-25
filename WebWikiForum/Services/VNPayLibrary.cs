@@ -15,7 +15,7 @@ namespace WebWikiForum.Services
         private SortedList<string, string> _requestData = new SortedList<string, string>(new VNPayCompare());
         private SortedList<string, string> _responseData = new SortedList<string, string>(new VNPayCompare());
 
-        public void AddRequestData(string key, string value)
+        public void AddRequestData(string key, string? value)
         {
             if (!string.IsNullOrEmpty(value))
             {
@@ -23,7 +23,7 @@ namespace WebWikiForum.Services
             }
         }
 
-        public void AddResponseData(string key, string value)
+        public void AddResponseData(string key, string? value)
         {
             if (!string.IsNullOrEmpty(value))
             {
@@ -36,7 +36,7 @@ namespace WebWikiForum.Services
             return _responseData.TryGetValue(key, out var retValue) ? retValue : string.Empty;
         }
 
-        public string CreateRequestUrl(string baseUrl, string vnp_HashSecret)
+        public string CreateRequestUrl(string? baseUrl, string? vnp_HashSecret)
         {
             var data = new StringBuilder();
             foreach (var kv in _requestData)
@@ -48,24 +48,24 @@ namespace WebWikiForum.Services
             }
 
             var querystring = data.ToString();
-            baseUrl += "?" + querystring;
+            baseUrl = (baseUrl ?? string.Empty) + "?" + querystring;
             var signData = querystring;
             if (signData.Length > 0)
             {
                 signData = signData.Remove(signData.Length - 1, 1);
             }
 
-            var vnp_SecureHash = Utils.HmacSHA512(vnp_HashSecret, signData);
+            var vnp_SecureHash = Utils.HmacSHA512(vnp_HashSecret ?? string.Empty, signData);
             baseUrl += "vnp_SecureHash=" + vnp_SecureHash;
 
             return baseUrl;
         }
 
-        public bool ValidateSignature(string inputHash, string secretKey)
+        public bool ValidateSignature(string? inputHash, string? secretKey)
         {
             var rspRaw = GetResponseData();
-            var myChecksum = Utils.HmacSHA512(secretKey, rspRaw);
-            return myChecksum.Equals(inputHash, StringComparison.InvariantCultureIgnoreCase);
+            var myChecksum = Utils.HmacSHA512(secretKey ?? string.Empty, rspRaw);
+            return myChecksum.Equals(inputHash ?? string.Empty, StringComparison.InvariantCultureIgnoreCase);
         }
 
         private string GetResponseData()
@@ -100,7 +100,7 @@ namespace WebWikiForum.Services
 
     public class VNPayCompare : IComparer<string>
     {
-        public int Compare(string x, string y)
+        public int Compare(string? x, string? y)
         {
             if (x == y) return 0;
             if (x == null) return -1;

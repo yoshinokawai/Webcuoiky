@@ -1,5 +1,5 @@
 @{
-    ViewData["Title"] = "Ủng hộ WikiForum qua VNPay";
+    ViewData["Title"] = Localizer["Donation_Index_Title"];
 }
 
 <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden bg-slate-50 dark:bg-slate-900">
@@ -11,8 +11,8 @@
                     <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 24px 24px;"></div>
                     <div class="relative z-10">
                         <span class="material-symbols-outlined text-5xl mb-4">volunteer_activism</span>
-                        <h1 class="text-3xl font-black mb-2">Quyên góp qua VNPay</h1>
-                        <p class="text-white/80">Mọi sự đóng góp của bạn đều giúp duy trì và phát triển cộng đồng WikiForum lớn mạnh hơn!</p>
+                        <h1 class="text-3xl font-black mb-2">@Localizer["Donation_Header_Title"]</h1>
+                        <p class="text-white/80">@Localizer["Donation_Header_Subtitle"]</p>
                     </div>
                 </div>
 
@@ -28,14 +28,14 @@
                     <form asp-action="CreatePayment" asp-controller="Donation" method="post" class="space-y-6">
                         <!-- Số tiền -->
                         <div>
-                            <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Số tiền quyên góp (VND)</label>
+                            <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">@Localizer["Donation_Label_Amount"]</label>
                             <div class="relative">
                                 <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold">₫</span>
                                 <input type="number" name="amount" min="10000" step="1000" value="50000" required
                                        class="w-full bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 rounded-xl py-3 pl-10 pr-4 focus:ring-2 focus:ring-primary focus:border-primary transition-all text-slate-900 dark:text-white font-bold text-lg outline-none" />
                             </div>
                             <p class="text-xs text-slate-500 mt-2 flex items-center gap-1">
-                                <span class="material-symbols-outlined text-[14px]">info</span> Tối thiểu 10,000 VND
+                                <span class="material-symbols-outlined text-[14px]">info</span> @Localizer["Donation_Label_MinAmount"]
                             </p>
                             
                             <!-- Quick amount selection -->
@@ -48,17 +48,17 @@
 
                         <!-- Lời nhắn -->
                         <div>
-                            <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Lời nhắn (Không bắt buộc)</label>
-                            <textarea name="message" rows="4" placeholder="Chia sẻ cảm nghĩ của bạn với chúng tôi..."
+                            <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">@Localizer["Donation_Label_Message"]</label>
+                            <textarea name="message" rows="4" placeholder="@Localizer["Donation_Placeholder_Message"]"
                                       class="w-full bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 rounded-xl p-4 focus:ring-2 focus:ring-primary focus:border-primary transition-all text-slate-900 dark:text-white text-sm outline-none"></textarea>
                         </div>
 
                         <div class="pt-4">
                             <button type="submit" class="w-full flex items-center justify-center gap-3 bg-[#005BAA] hover:bg-[#004A8B] text-white font-bold text-lg py-4 px-8 rounded-xl shadow-lg shadow-[#005BAA]/30 transition-all transform hover:-translate-y-1">
-                                Thanh toán qua VNPay
+                                @Localizer["Donation_Btn_Submit"]
                             </button>
                             <p class="text-center text-xs text-slate-500 mt-4 flex items-center justify-center gap-1">
-                                <span class="material-symbols-outlined text-[14px] text-green-500">lock</span> Thanh toán an toàn, bảo mật thông qua hệ thống VNPay Sandbox
+                                <span class="material-symbols-outlined text-[14px] text-green-500">lock</span> @Localizer["Donation_Label_Secure"]
                             </p>
                         </div>
                     </form>
@@ -68,7 +68,7 @@
             <div class="text-center mt-8">
                 <a asp-controller="Home" asp-action="Donate" class="inline-flex items-center gap-2 text-slate-500 hover:text-primary transition-colors text-sm font-bold">
                     <span class="material-symbols-outlined text-[18px]">arrow_back</span>
-                    Quay lại trang Donate
+                    @Localizer["Donation_Btn_Back"]
                 </a>
             </div>
         </div>

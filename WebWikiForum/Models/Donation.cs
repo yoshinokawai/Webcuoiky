@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebWikiForum.Models
 {
@@ -12,6 +13,7 @@ namespace WebWikiForum.Models
 
         [Required]
         [Range(10000, double.MaxValue, ErrorMessage = "Số tiền tối thiểu là 10,000 VND")]
+        [Column(TypeName = "decimal(18, 2)")]
         public decimal Amount { get; set; }
 
         [MaxLength(500)]
