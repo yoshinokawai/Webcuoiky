@@ -45,5 +45,12 @@ namespace WebWikiForum.ViewModels
         [Url(ErrorMessage = "Please enter a valid URL")]
         [Display(Name = "Wiki_Label_IntroVideo")]
         public string? IntroVideoUrl { get; set; }
+
+        [Display(Name = "Wiki_Label_NewSongTitle")]
+        public string? NewSongTitle { get; set; }
+
+        [Url(ErrorMessage = "Please enter a valid URL")]
+        [Display(Name = "Wiki_Label_NewSongVideoUrl")]
+        public string? NewSongVideoUrl { get; set; }
     }
 }

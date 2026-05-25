@@ -264,7 +264,7 @@ namespace WebWikiForum.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public async Task<IActionResult> Create(VtuberViewModel model, IFormFile? avatarFile, IFormFile? coverImageFile)
+        public async Task<IActionResult> Create(VtuberViewModel model, IFormFile? avatarFile, IFormFile? coverImageFile, IFormFile? newSongVideoFile)
         {
             if (ModelState.IsValid)
             {
@@ -286,6 +286,16 @@ namespace WebWikiForum.Controllers
                             coverFileName = await _fileService.UploadImageAsync(coverImageFile, "vtubers");
                         }
 
+                        string? newSongVideoUrl = null;
+                        if (newSongVideoFile != null && newSongVideoFile.Length > 0)
+                        {
+                            newSongVideoUrl = await _fileService.UploadVideoAsync(newSongVideoFile, "vtubers/songs");
+                        }
+                        else if (!string.IsNullOrEmpty(model.NewSongVideoUrl))
+                        {
+                            newSongVideoUrl = model.NewSongVideoUrl;
+                        }
+
                         var vtuber = new Vtuber
                         {
                             Name = model.Name,
@@ -302,6 +312,8 @@ namespace WebWikiForum.Controllers
                             Tags = model.Tags,
                             YoutubeUrl = model.YoutubeUrl,
                             IntroVideoUrl = model.IntroVideoUrl,
+                            NewSongTitle = model.NewSongTitle,
+                            NewSongVideoUrl = newSongVideoUrl,
                         Status = "Approved" // Tự động duyệt cho mục đích demo
                     };
 
@@ -562,19 +574,22 @@ namespace WebWikiForum.Controllers
                 Language = vtuber.Language,
                 Tags = vtuber.Tags,
                 YoutubeUrl = vtuber.YoutubeUrl,
-                IntroVideoUrl = vtuber.IntroVideoUrl
+                IntroVideoUrl = vtuber.IntroVideoUrl,
+                NewSongTitle = vtuber.NewSongTitle,
+                NewSongVideoUrl = vtuber.NewSongVideoUrl
             };
 
             ViewBag.Agencies = await _context.Agencies.ToListAsync();
             ViewBag.CurrentAvatar = vtuber.AvatarUrl;
             ViewBag.CurrentCover = vtuber.CoverImageUrl;
+            ViewBag.CurrentNewSongVideo = vtuber.NewSongVideoUrl;
             ViewBag.Id = vtuber.Id;
             return View(model);
         }
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, VtuberViewModel model, IFormFile? avatarFile, IFormFile? coverImageFile)
+        public async Task<IActionResult> Edit(int id, VtuberViewModel model, IFormFile? avatarFile, IFormFile? coverImageFile, IFormFile? newSongVideoFile)
         {
             if (ModelState.IsValid)
             {
@@ -614,6 +629,30 @@ namespace WebWikiForum.Controllers
                         if (!string.IsNullOrEmpty(coverFileName)) vtuber.CoverImageUrl = coverFileName;
                     }
 
+                    if (newSongVideoFile != null && newSongVideoFile.Length > 0)
+                    {
+                        if (!string.IsNullOrEmpty(vtuber.NewSongVideoUrl) && vtuber.NewSongVideoUrl.Contains("res.cloudinary.com"))
+                        {
+                            var oldVideoName = Path.GetFileName(vtuber.NewSongVideoUrl);
+                            if (!string.IsNullOrEmpty(oldVideoName)) _fileService.DeleteFile(oldVideoName, "vtubers/songs");
+                        }
+                        vtuber.NewSongVideoUrl = await _fileService.UploadVideoAsync(newSongVideoFile, "vtubers/songs");
+                    }
+                    else if (!string.IsNullOrEmpty(model.NewSongVideoUrl))
+                    {
+                        vtuber.NewSongVideoUrl = model.NewSongVideoUrl;
+                    }
+                    else if (string.IsNullOrEmpty(model.NewSongVideoUrl) && newSongVideoFile == null)
+                    {
+                        // If user cleared the video link and didn't upload any file, remove the video url
+                        if (!string.IsNullOrEmpty(vtuber.NewSongVideoUrl) && vtuber.NewSongVideoUrl.Contains("res.cloudinary.com"))
+                        {
+                            var oldVideoName = Path.GetFileName(vtuber.NewSongVideoUrl);
+                            if (!string.IsNullOrEmpty(oldVideoName)) _fileService.DeleteFile(oldVideoName, "vtubers/songs");
+                        }
+                        vtuber.NewSongVideoUrl = null;
+                    }
+
                     vtuber.Name = model.Name;
                     vtuber.Age = model.Age;
                     vtuber.DebutDate = model.DebutDate;
@@ -626,6 +665,7 @@ namespace WebWikiForum.Controllers
                     vtuber.Tags = model.Tags;
                     vtuber.YoutubeUrl = model.YoutubeUrl;
                     vtuber.IntroVideoUrl = model.IntroVideoUrl;
+                    vtuber.NewSongTitle = model.NewSongTitle;
 
                     _context.Update(vtuber);
                     await _context.SaveChangesAsync();

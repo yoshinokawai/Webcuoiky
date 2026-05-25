@@ -26,6 +26,8 @@ namespace WebWikiForum.Models
         
         public string? CoverImageUrl { get; set; }
         public string? IntroVideoUrl { get; set; }
+        public string? NewSongTitle { get; set; }
+        public string? NewSongVideoUrl { get; set; }
 
         [StringLength(50)]
         public string Status { get; set; } = "Pending";

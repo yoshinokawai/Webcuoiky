@@ -2816,4 +2816,16 @@
   <data name="Donation_Error_Callback" xml:space="preserve">
     <value>VNPay決済エラー: {0}</value>
   </data>
+  <data name="Wiki_Label_NewSongTitle" xml:space="preserve">
+    <value>新曲のタイトル</value>
+  </data>
+  <data name="Wiki_Label_NewSongVideoUrl" xml:space="preserve">
+    <value>新曲のYouTubeビデオリンク</value>
+  </data>
+  <data name="Wiki_Label_NewSongVideoFile" xml:space="preserve">
+    <value>ビデオファイルのアップロード (MP4)</value>
+  </data>
+  <data name="Wiki_Section_NewSong" xml:space="preserve">
+    <value>新曲 / MV</value>
+  </data>
 </root>

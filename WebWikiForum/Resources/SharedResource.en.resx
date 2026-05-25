@@ -2993,4 +2993,16 @@ Community Hub</value>
   <data name="Donation_Error_Callback" xml:space="preserve">
     <value>VNPay Payment Error: {0}</value>
   </data>
+  <data name="Wiki_Label_NewSongTitle" xml:space="preserve">
+    <value>New Song Title</value>
+  </data>
+  <data name="Wiki_Label_NewSongVideoUrl" xml:space="preserve">
+    <value>Song Video YouTube Link</value>
+  </data>
+  <data name="Wiki_Label_NewSongVideoFile" xml:space="preserve">
+    <value>Upload Song Video (MP4)</value>
+  </data>
+  <data name="Wiki_Section_NewSong" xml:space="preserve">
+    <value>New Song / MV</value>
+  </data>
 </root>

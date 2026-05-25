@@ -53,6 +53,32 @@ namespace WebWikiForum.Services
             return uploadResult.SecureUrl?.ToString();
         }
 
+        public async Task<string?> UploadVideoAsync(IFormFile file, string folderName)
+        {
+            if (file == null || file.Length == 0)
+                return null;
+
+            var uploadResult = new VideoUploadResult();
+
+            using (var stream = file.OpenReadStream())
+            {
+                var uploadParams = new VideoUploadParams()
+                {
+                    File = new FileDescription(file.FileName, stream),
+                    Folder = "vtwiki/" + folderName
+                };
+
+                uploadResult = await _cloudinary.UploadAsync(uploadParams);
+            }
+
+            if (uploadResult.Error != null)
+            {
+                throw new Exception($"Cloudinary Video Upload Error: {uploadResult.Error.Message}");
+            }
+
+            return uploadResult.SecureUrl?.ToString();
+        }
+
         public void DeleteFile(string fileName, string folderName)
         {
             // Lưu ý: Xóa file trên Cloudinary yêu cầu PublicId, không phải filename/URL.

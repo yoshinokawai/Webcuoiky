@@ -6,6 +6,7 @@ namespace WebWikiForum.Services
     public interface IFileService
     {
         Task<string?> UploadImageAsync(IFormFile file, string folderName);
+        Task<string?> UploadVideoAsync(IFormFile file, string folderName);
         void DeleteFile(string fileName, string folderName);
     }
 }

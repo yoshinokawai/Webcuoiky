@@ -1,4 +1,4 @@
-﻿@model WebWikiForum.Models.Vtuber
+@model WebWikiForum.Models.Vtuber
 @{
     ViewData["Title"] = Model.Name + " - " + Localizer["Wiki_Profile_Type"].Value;
 
@@ -16,6 +16,7 @@
     }
     
     string introVideoId = GetYoutubeId(Model.IntroVideoUrl);
+    string newSongVideoId = GetYoutubeId(Model.NewSongVideoUrl);
 }
 
 <div class="max-w-4xl mx-auto px-4 py-8 sm:px-6 lg:px-8 mt-12 mb-20">
@@ -133,6 +134,35 @@
                             </div>
                         </div>
                     </a>
+                </div>
+            }
+
+            <!-- Phần bài hát mới / MV nhúng -->
+            @if (!string.IsNullOrEmpty(Model.NewSongVideoUrl))
+            {
+                <div class="mt-12">
+                    <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-200 mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary">music_note</span>
+                        @Localizer["Wiki_Section_NewSong"] @(string.IsNullOrEmpty(Model.NewSongTitle) ? "" : $"- {Model.NewSongTitle}")
+                    </h2>
+                    
+                    @if (!string.IsNullOrEmpty(newSongVideoId))
+                    {
+                        @* Youtube Embedded Player *@
+                        <div class="rounded-2xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-800 aspect-video max-w-3xl">
+                            <iframe class="w-full h-full" src="https://www.youtube.com/embed/@newSongVideoId" title="New Song Video Player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                    }
+                    else
+                    {
+                        @* HTML5 Video Player (Cloudinary Upload) *@
+                        <div class="rounded-2xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-800 bg-slate-950 aspect-video max-w-3xl">
+                            <video controls class="w-full h-full object-contain">
+                                <source src="@Model.NewSongVideoUrl" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    }
                 </div>
             }
             
