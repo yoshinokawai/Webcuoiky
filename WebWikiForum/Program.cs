@@ -29,6 +29,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("Cloudinary"));
 builder.Services.AddScoped<IFileService, FileService>();
 builder.Services.AddScoped<IActivityService, ActivityService>();
+builder.Services.AddScoped<IVNPayService, VNPayService>();
 builder.Services.AddHttpClient(); // For AI Chat proxy
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)

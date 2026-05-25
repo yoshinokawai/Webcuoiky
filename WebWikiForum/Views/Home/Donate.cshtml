@@ -1,4 +1,4 @@
-﻿@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResource> Localizer
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResource> Localizer
 @{
     ViewData["Title"] = Localizer["Page_Donate"];
 }
@@ -75,9 +75,9 @@
                         @Localizer["Donate_Tier_Supporter_Benefit3"]
                     </li>
                 </ul>
-                <button class="w-full py-3 bg-primary/10 text-primary font-bold rounded-xl hover:bg-primary hover:text-white transition-all">
+                <a asp-controller="Donation" asp-action="Index" class="block text-center w-full py-3 bg-primary/10 text-primary font-bold rounded-xl hover:bg-primary hover:text-white transition-all">
                     @Localizer["Donate_Btn_Supporter"]
-                </button>
+                </a>
             </div>
 
             <!-- Tier 2: Patron (Featured) -->
@@ -116,9 +116,9 @@
                         @Localizer["Donate_Tier_Patron_Benefit4"]
                     </li>
                 </ul>
-                <button class="w-full py-3 bg-primary text-white font-bold rounded-xl hover:bg-primary-dark transition-all shadow-md shadow-primary/20">
+                <a asp-controller="Donation" asp-action="Index" class="block text-center w-full py-3 bg-primary text-white font-bold rounded-xl hover:bg-primary-dark transition-all shadow-md shadow-primary/20">
                     @Localizer["Donate_Btn_Patron"]
-                </button>
+                </a>
             </div>
 
             <!-- Tier 3: Legendary -->
@@ -154,9 +154,9 @@
                         @Localizer["Donate_Tier_Legendary_Benefit4"]
                     </li>
                 </ul>
-                <button class="w-full py-3 bg-primary/10 text-primary font-bold rounded-xl hover:bg-primary hover:text-white transition-all">
+                <a asp-controller="Donation" asp-action="Index" class="block text-center w-full py-3 bg-primary/10 text-primary font-bold rounded-xl hover:bg-primary hover:text-white transition-all">
                     @Localizer["Donate_Btn_Legendary"]
-                </button>
+                </a>
             </div>
         </div>
     </section>

@@ -1,4 +1,4 @@
-﻿@section Styles {
+@section Styles {
     <link rel="stylesheet" href="~/css/Translation.css" />
 }
 
@@ -281,7 +281,7 @@
 <span class="material-symbols-outlined text-4xl text-primary mb-2">volunteer_activism</span>
 <h4 class="font-bold text-lg mb-2">@Localizer["Trans_Donate_Title"]</h4>
 <p class="text-xs text-slate-600 dark:text-slate-400 mb-4">@Localizer["Trans_Donate_Desc"]</p>
-<button class="bg-primary text-white text-xs font-bold px-4 py-2 rounded-lg">@Localizer["Trans_Btn_Donate"]</button>
+<a asp-controller="Donation" asp-action="Index" class="inline-block bg-primary text-white text-xs font-bold px-4 py-2 rounded-lg hover:bg-primary-dark transition-colors">@Localizer["Trans_Btn_Donate"]</a>
 </div>
 </div>
 </aside>
